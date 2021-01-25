@@ -4,32 +4,34 @@ The AssemblyLine development process and library for developing online legal eas
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
-## Installation
+## Install
 
 ```console
-yarn install
+npm install
 ```
 
 ## Local Development
 
-```console
-yarn start
-```
-
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
-
 ## Build
-
-```console
-yarn build
-```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Deployment
+```console
+npm run build
+```
+
+## Run locally
+
+This command runs `npm run build`, then starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server:
 
 ```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+npm run start
+```
+
+## Deploy
+
+```console
+GIT_USER=<Your GitHub username> npm deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
