@@ -160,4 +160,4 @@ A string that is alphanumeric has only digits 0 to 9 and the letters A to Z in i
 
 
 ## Other resources
-* [Different ways to name variables](https://stackoverflow.com/a/54330161/14144258)
+* [Different ways to name variables](https://en.wikipedia.org/wiki/Naming_convention_%28programming%29#Examples_of_multiple-word_identifier_formats)

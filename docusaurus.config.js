@@ -24,7 +24,7 @@ module.exports = {
         },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine/docassemble-AssemblyLine-documentation',
+          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation',
           label: 'GitHub',
           position: 'right',
         },
