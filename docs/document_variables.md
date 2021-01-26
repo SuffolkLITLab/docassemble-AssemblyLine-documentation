@@ -1,8 +1,8 @@
 ---
-id: variable_names
+id: document_variables
 title: Variable names in documents
-sidebar_label: Variable names
-slug: /variable_names
+sidebar_label: Document variables
+slug: /document_variables
 ---
 
 _Built-in AssemblyLine library names you can use in PDFs and docx files_
@@ -19,7 +19,7 @@ Video of overview: [The Basics of Naming Fields](https://youtu.be/qpfZon2M-GU)
 1. A refence guide for those pre-determined names.
 3. Rules (and some guidelines) for making [custom labels](#custom-field-labels), since most of your labels will be custom labels.
 
-**<ins>You should use the pre-defined labels in here exactly as they appear and only for the specific purposes described below.</ins>**
+**You should use the pre-defined labels in here exactly as they appear and only for the specific purposes described below.**
 
 Don't work on memorizing this material, though. You can take in what's in here and come back to look up specifics later when it you need them.
 

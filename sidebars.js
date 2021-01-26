@@ -2,7 +2,7 @@ module.exports = {
   someSidebar: {
     AssemblyLine: [
       'intro',
-      'variable_names',
+      'document_variables',
       'name_formats',
       'docs_style_guide',
     ],
