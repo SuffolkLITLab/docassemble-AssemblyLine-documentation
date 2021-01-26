@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'AssemblyLine',
-  tagline: 'A development process and docassemble library',
+  title: 'The docassemble AssemblyLine Project',
+  tagline: 'Online easy-form development in-a-box',
   url: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
   onBrokenLinks: 'throw',
@@ -10,7 +10,7 @@ module.exports = {
   projectName: 'docassemble-AssemblyLine-documentation', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'AssemblyLine',
+      title: 'The docassemble AssemblyLine Project',
       // logo: {
       //   alt: 'My Site Logo',
       //   src: 'img/logo.svg',

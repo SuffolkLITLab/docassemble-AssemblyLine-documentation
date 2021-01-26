@@ -1,6 +1,10 @@
 module.exports = {
   someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
+    AssemblyLine: [
+      'intro',
+      'variable_names',
+      'name_formats',
+      'docs_style_guide',
+    ],
   },
 };
