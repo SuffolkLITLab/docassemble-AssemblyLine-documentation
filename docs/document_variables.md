@@ -189,6 +189,7 @@ Label to use in the PDF | When to use it
 `docket_number` | A label for a field for the form filler to write a docket number. (Not for the court!)
 `court_name` | A label to write the full name of the court. E.g., Dorchester Division, Boston Municipal Court.
 `court_county` | A label to write the county that the court is in. Note: in many forms, this says 'ss' where the county should go.
+
 <!-- court_division (E.g., District Court) | **not yet implemented** -->
 <!-- court_name_short (E.g., Lowell, if full name is Lowell District Court) \| **not yet implemented** -->
 
@@ -222,6 +223,7 @@ Some things you really need to do or it will be very hard to write code for the 
 1. Field names **must start with a letter or underscore** (`_`) - not a number or anything else.
 1. Field names can only include **letters, numbers, and underscores**. No spaces or any other character.
 1. When you run across a large area that gives room for writing a paragraph, make sure it's one big field. If it's divided into multiple lines, put a message about it in its trello card or on the Slack #assembly-line channel.
+
 <!-- Check this previous one carefully. I'm not sure I understood what was meant. -->
 <!-- 1. Keep the length of variable names under 79 characters (unlikely you'll reach this limit, but just to be specific). -->
 
@@ -269,11 +271,12 @@ Let's pretend everyting is about an `incident` just to simplify these examples.
 Label to use in the PDF | When to use it
 ------------------------|-----------------------------------
 `incident_date` | A label for a field to write the full date of the incident.
-`incident_date_day` | A label for a field to write the day of the month of the incident.
-`incident_date_month` | A label for a field to write the month of the incident.
-`incident_date_day_month` | A label for a field to write both the day and the month of the incident. (Yes, we have run into this)
-`incident_date_4_digit_year` | A label for a field to write the 4-digit year of the incident (e.g. 2018).
-`incident_date_2_digit_year` | A label for a field to write the 2-digit year of the incident (e.g. 18 as in 02/03/**18**).
+
+<!-- `incident_date_day` | A label for a field to write the day of the month of the incident. -->
+<!-- `incident_date_month` | A label for a field to write the month of the incident. -->
+<!-- `incident_date_day_month` | A label for a field to write both the day and the month of the incident. (Yes, we have run into this) -->
+<!-- `incident_date_4_digit_year` | A label for a field to write the 4-digit year of the incident (e.g. 2018). -->
+<!-- `incident_date_2_digit_year` | A label for a field to write the 2-digit year of the incident (e.g. 18 as in 02/03/**18**). -->
 <!-- Need to support `incident_2_digit_year` | A label for a field to write the 2-digit year of the incident (e.g. 18 as in 02/03/**18**).-->
 <!-- Need to support `incident_4_digit_year` | A label for a field to write the 4-digit year of the incident (e.g. 2018). -->
 <!-- `incident_season` | A label for a field to write the season of the incident (e.g. winter). -->
