@@ -4,11 +4,13 @@ title: Documentation Style Guide
 sidebar_label: Docs Style Guide
 ---
 
-You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
+## Content Guidelines
+
+**Link to someone else's documentation when you can.** If you want to give information that isn't specific to AssemblyLine, try to find documentation that is being maintained by someone else. If it's something about Trello, try to find the Trello documentation. For Github, try to find Github documentation. Same for docassemble. Their projects will do a much better job keeping up to date than you can. Only make new documentation when the existing documentation doesn't exist or is not enough.
+
 
 ## Markdown Syntax
-
-To serve as an example page when styling markdown based Docusaurus sites.
+You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/) when styling markdown based Docusaurus sites.
 
 ## Headers
 

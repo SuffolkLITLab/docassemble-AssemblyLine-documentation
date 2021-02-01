@@ -148,6 +148,8 @@ _Purpose: Meet docassemble requirements_
 * All the words are squished together
 * All characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
+Each Project has to have a unique name, different from all other Project names.
+
 
 ## Definitions
 
