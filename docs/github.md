@@ -1,6 +1,6 @@
 ---
 id: github
-title: Sharing Code through Github
+title: Sharing Code Through Github
 sidebar_label: Github
 ---
 
@@ -20,22 +20,18 @@ Our goal is for each section to have these in order:
 Also:
 
 :::note
-**Extra Bandwidth**
-Notes you may come back to as you develop your knowledge.
+Notes you may come back to as you develop your knowledge and have extra bandwidth.
 :::
 
 :::info
-**Tip**
 Some info it might be good to pay extra attention to.
 :::
 
 :::caution
-**Complications**
 Warnings about common problems and maybe even ways to fix them.
 :::
 
 :::warning
-**Be careful!**
 Things you may regret not reading
 :::
 
@@ -139,6 +135,7 @@ Follow [the Project naming rules](name_formats.md#docassemble-projects-pascalcas
 1. Your file will be in the list below of available templates. 
 
 ---
+
 Once you have some of your code and your template documents ready you can push to GitHub for the first time and create a repository everyone can use.
 
 ---
