@@ -5,7 +5,9 @@ sidebar_label: Document variables
 slug: /document_variables
 ---
 
-_Built-in AssemblyLine library names you can use in PDFs and docx files_
+<!-- original: https://github.com/SuffolkLITLab/doc-assembly-line/blob/master/labeling-fields.md -->
+
+Built-in AssemblyLine library names you can use in PDFs and DOCX files
 
 <!-- Add links up there to tutorials on how to use those -->
 
@@ -40,7 +42,7 @@ To make label names, we stich together bits of words with meanings. We do that i
 
 These label rules work like that too - you'll combine prefixes and suffixes to build your labels, so look out for that pattern: `prefix_suffix`
 
-**Note:** Every field label in a PDF has to be unique. They cannot be repeated. We'll talk more about that later, but it's good to remember. In a Microsoft Word docx file, there is no rule that the fields need to be unique.
+**Note:** Every field label in a PDF has to be unique. They cannot be repeated. We'll talk more about that later, but it's good to remember. In a Microsoft Word DOCX file, there is no rule that the fields need to be unique.
 
 ### Figure out who is using your form
 
@@ -57,10 +59,10 @@ the user of the form is always going to be the plaintiff or petitioner.
 The person who is using your form and the person who your form's user is opposing should always get one of the
 special labels below:
 
-**Note:** We made PDF labels singular because you can't work with lists in many PDF editors. Docx variables representing people are all plural.
+**Note:** We made PDF labels singular because you can't work with lists in many PDF editors. DOCX variables representing people are all plural.
 Internally, all variables representing people are plural.
 
-PDF label | Docx label | Use case
+PDF label | DOCX label | Use case
 ----------|------------|----------
 `user` | `users`, `user[0]`, or `user[n]` (where `n` is any whole number; use sequentially | Will display the full name of the person who is filling out the online form
 `other_party` | `other_parties`, `other_parties[0]`, or `other_parties[n]` | The person suing or being sued by the person filling out the form; someone on the "other side" of the case.
@@ -69,7 +71,7 @@ PDF label | Docx label | Use case
 `petitioner` | `petitioners`, `petitioners[0]`, `petitioners[n]` | Petitioner in the case if we don't know if the petitioner is the user or other party.
 `respondent` | `respondents`, `respondents[0]`, `respondents[n]` | Plaintiff in the case if we don't know if the plaintiff is the user or other party.
 
-If the form has room for two people on one side of the case, you can reference `user1` and `user2` (on a PDF) or `users[0]` and `users[1]` (in a Docx). It's
+If the form has room for two people on one side of the case, you can reference `user1` and `user2` (on a PDF) or `users[0]` and `users[1]` (in a DOCX). It's
 important to always use one of these 4 labels for people who are actually part of the case, since we use those internally in many many places in our standard
 questions and to communicate information to the court.
 
@@ -100,7 +102,7 @@ Never use any of the labels below when the person identified by the label is a p
 For example, if they are the person using the form or the person who is on the opposing side of the case
 from the user of the form.
 
-PDF label | Docx label | Use case
+PDF label | DOCX label | Use case
 ----------|------------|----------
 `spouse` | `spouses`, `spouses[0]`, `spouses[n]` | A spouse whose information goes on the form but is not a party to the case.
 `child` | `children`, `children[0]`, `children[n]` | Any child whose information goes on the form.

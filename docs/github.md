@@ -2,9 +2,12 @@
 id: github
 title: Sharing Code Through Github
 sidebar_label: Github
+slug: /github
 ---
 
-This document tries to focus on issues that come up when integrating the docassemble playground with Github and, perhaps, git. Github itself has decent documentation for its own features.
+<!-- original: https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit -->
+
+Issues that come up when integrating the docassemble playground with Github and, perhaps, git. Github itself has decent documentation for its own features.
 
 
 ## About this guide 

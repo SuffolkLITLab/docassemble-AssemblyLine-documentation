@@ -1,6 +1,11 @@
-<!-- Copy and paste the converted output. -->
+---
+id: automated_testing
+title: Automated Integrated Testing
+sidebar_label: Automated Testing
+slug: /automated_integrated_testing
+---
 
-
+<!-- original: https://docs.google.com/document/d/1hkNr78mrU3Ha98tPUL4OKWi3eNnt-1Sba7L8470u06g/edit# -->
 
 ## (Pilot project) Automated/Integrated test running with the Assembly Line project
 

@@ -2,6 +2,7 @@
 id: docs_style_guide
 title: Documentation Style Guide
 sidebar_label: Docs Style Guide
+slug: /documentation_style_guide
 ---
 
 ## Content Guidelines
