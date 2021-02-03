@@ -7,6 +7,7 @@ module.exports = {
       'name_formats',
       'github',
       'docs_style_guide',
+      'pdfs',
     ],
   },
 };
