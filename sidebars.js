@@ -1,6 +1,7 @@
 module.exports = {
   someSidebar: {
     AssemblyLine: [
+      'bootcamp',
       'intro',
       'document_variables',
       'name_formats',
