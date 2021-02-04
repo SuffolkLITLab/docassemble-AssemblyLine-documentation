@@ -88,7 +88,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/SuffolkLITLab/docassemble-AssemblyLine/edit/master/website',
+            'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
         },
         // blog: {
         //   showReadingTime: true,
