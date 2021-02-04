@@ -1,5 +1,6 @@
 module.exports = {
   someSidebar: [
+    'bootcamp',
     'intro',
     'name_formats',
     'document_variables',
@@ -7,10 +8,12 @@ module.exports = {
       type: 'category',
       label: 'PDFs and DOCXs',
       items: [
+        'pdfs',
         'document_variables_reference',
       ],
     },
     'github',
     'docs_style_guide',
+    'pdfs',
   ],
 };

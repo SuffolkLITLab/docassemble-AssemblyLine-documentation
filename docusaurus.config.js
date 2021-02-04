@@ -1,7 +1,7 @@
 module.exports = {
   title: 'The docassemble AssemblyLine Project',
   tagline: 'Online easy-form development in-a-box',
-  url: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
+  url: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -88,7 +88,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/SuffolkLITLab/docassemble-AssemblyLine/edit/master/website',
+            'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
         },
         // blog: {
         //   showReadingTime: true,
