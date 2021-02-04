@@ -54,7 +54,7 @@ Other words the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assembly
 |  | signature_date |  |  |
 
 ## Reserved words (Suffixes)
-These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's second parent.
+These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's 2nd parent.
 
 <!-- TODO: check on mobile number -->
 
@@ -68,14 +68,14 @@ Reference material:
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
-| **First M. Last** - name of the second parent | parent<strong>_name</strong> | parents[0]<strong>.name</strong> | parents<strong>.gather()</strong> |
-| **First M. Last** - name of the second parent | parent<strong>_name_full</strong> | parents[0]<strong>.name</strong> | parents<strong>.gather()</strong> |
-| **First** - first name of second parent  | parent<strong>_name_first</strong> | parents[0]<strong>.name.first</strong> | parents<strong>.gather()</strong> |
+| **First M. Last** - name of the 2nd parent | parent<strong>_name</strong> | parents[0]<strong>.name</strong> | parents<strong>.gather()</strong> |
+| **First M. Last** - name of the 2nd parent | parent<strong>_name_full</strong> | parents[0]<strong>.name</strong> | parents<strong>.gather()</strong> |
+| **First** - first name of 2nd parent  | parent<strong>_name_first</strong> | parents[0]<strong>.name.first</strong> | parents<strong>.gather()</strong> |
 | **Middle** - middle name | parent<strong>_name_middle</strong> | parents[0]<strong>.name.middle</strong> | parents<strong>.gather()</strong> |
 | **M.** - middle initials | parent<strong>_name_middle_initial</strong> | parents[0]<strong>.name.middle_initial()</strong> | parents<strong>.gather()</strong> |
 | **Last** - last name | parent<strong>_name_last</strong> | parents[0]<strong>.name.last</strong> | parents<strong>.gather()</strong> |
 | **Jr** - suffix | parent<strong>_name_suffix</strong> | parents[0]<strong>.name.suffix</strong> | parents<strong>.gather()</strong> |
-| **female** - gender of second parent | parent<strong>_gender</strong> | parents[0]<strong>.gender</strong> | parents[0]<strong>.gender</strong> |
+| **female** - gender of 2nd parent | parent<strong>_gender</strong> | parents[0]<strong>.gender</strong> | parents[0]<strong>.gender</strong> |
 | **01/01/2001** - birthdate | parent<strong>_birthdate</strong> | parents[0]<strong>.birthdate</strong> | parents[0]<strong>.birthdate</strong> |
 | **01/01/2001** - birthdate | parent<strong>_age</strong> | parents[0]<strong>.birthdate</strong> | parents[0]<strong>.birthdate</strong> |
 | **someone@example.com** | parent<strong>_email</strong> | parents[0]<strong>.email</strong> | parents[0]<strong>.email</strong> |
@@ -90,8 +90,21 @@ Reference material:
 | **Suffolk County** | parent<strong>_address_county</strong> | parents[0]<strong>.address.county</strong> | parents[0]<strong>.address.county</strong> |
 | **USA** | parent<strong>_address_country</strong> | parents[0]<strong>.address.country</strong> | parents[0]<strong>.address.country</strong> |
 | **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_address_on_one_line</strong> | parents[0]<strong>.address.on_one_line()</strong> | parents[0]<strong>.address.on_one_line()</strong> |
-| **120 Tremont St, Unit 2** | parent<strong>_address_line_one</strong> | parents[0]<strong>.address.line_one()</strong> | parents[0]<strong>.address.line_one()</strong> |
-| **Boston, MA 02108** | parent<strong>_address_city_state_zip</strong> | parents[0]<strong>.address.line_two()</strong> | parents[0]<strong>.address.line_two()</strong> |
+| **120 Tremont St, Unit 2** | parent<strong>_address_line_one</strong> | parents[0]<strong>.mail_address.line_one()</strong> | parents[0]<strong>.mail_address.line_one()</strong> |
+| **Boston, MA 02108** | parent<strong>_address_city_state_zip</strong> | parents[0]<strong>.mail_address.line_two()</strong> | parents[0]<strong>.mail_address.line_two()</strong> |
+| Multiline full address | parent<strong>_mail_address_block</strong> | parents[0]<strong>.mail_address.block()</strong> | parents[0]<strong>.mail_address.block()</strong> |
+| **120 Tremont St** | parent<strong>_mail_address_street</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
+| **120 Tremont St** | parent<strong>_mail_address_address</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
+| **Unit 2** | parent<strong>_mail_address_street2</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
+| **Unit 2** | parent<strong>_mail_address_unit</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
+| **Boston** | parent<strong>_mail_address_city</strong> | parents[0]<strong>.mail_address.city</strong> | parents[0]<strong>.mail_address.city</strong> |
+| **MA** | parent<strong>_mail_address_state</strong> | parents[0]<strong>.mail_address.state</strong> | parents[0]<strong>.mail_address.state</strong> |
+| **02108** | parent<strong>_mail_address_zip</strong> | parents[0]<strong>.mail_address.zip</strong> | parents[0]<strong>.mail_address.zip</strong> |
+| **Suffolk County** | parent<strong>_mail_address_county</strong> | parents[0]<strong>.mail_address.county</strong> | parents[0]<strong>.mail_address.county</strong> |
+| **USA** | parent<strong>_mail_address_country</strong> | parents[0]<strong>.mail_address.country</strong> | parents[0]<strong>.mail_address.country</strong> |
+| **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_mail_address_on_one_line</strong> | parents[0]<strong>.mail_address.on_one_line()</strong> | parents[0]<strong>.mail_address.on_one_line()</strong> |
+| **120 Tremont St, Unit 2** | parent<strong>_mail_address_line_one</strong> | parents[0]<strong>.mail_address.line_one()</strong> | parents[0]<strong>.mail_address.line_one()</strong> |
+| **Boston, MA 02108** | parent<strong>_mail_address_city_state_zip</strong> | parents[0]<strong>.mail_address.line_two()</strong> | parents[0]<strong>.mail_address.line_two()</strong> |
 | An image of a signature | parent<strong>_signature</strong> | parents[0]<strong>.signature</strong> | parents[0]<strong>.signature</strong> |
 | **123-123-1234** - landline number | parent<strong>_phone</strong> | parents[0]<strong>.phone_number</strong> | parents[0]<strong>.phone_number</strong> |
 | **123-123-1234 (cell) 123-123-1234 (other)**  | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | parents[0]<strong>.phone_numbers()</strong> |
@@ -113,10 +126,27 @@ Situations where you have any these:
 1. The document needs the information for an item to be printed in mutiple places
 1. You have a big area where you want to list a group of names or other values
 
+<!-- TODO: Add definition of 'reserved word' in overview and link to that in the tip -->
+
+:::tip
+1. You can do the below for any reserved word  on the page.
+1. You can combine these methods.
+:::
+
+### Multiple items of one category
+For example, when there are multiple children.
+
+| Document output format | PDF label | Attachment | Interview order |
+|:-|:-|:-|:-|
+| **First M. Last** - name of the 2nd parent | parent<strong>2</strong>_name | parents<strong>[1].</strong>name | parents.gather() |
+| **14** - age of the 3rd child | child<strong>3</strong>_age | children<strong>[2]</strong>.age | children<strong>[2]</strong>.age |
+
 ### Repeat a value in multiple places
 
+<!-- TODO: Move some of this explanation to overview doc? -->
+
 :::warning
-In a PDF you **have** to use **unique label** for every field. See below for how to solve this.
+In a PDF you **have** to use **unique label** for every field. See below for how to deal with this.
 :::
 
 When docassemble reads PDFs, each field should have a **unique label**. That means if you need to put a plaintiff's name in mutiple places on the form, you need to add two underscores (`__`) and a number to the end of the label each time. **Example:** `plaintiff__1` and `plaintiff__2`.
@@ -124,25 +154,7 @@ When docassemble reads PDFs, each field should have a **unique label**. That mea
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - 1st appearance of name of 1st plaintiff | plaintiff<strong>__1</strong> | plaintiffs[0].gather() | plaintiffs[0].name |
-| **First M. Last** - 1st appearance of name of 1st plaintiff | plaintiff<strong>__2</strong> | plaintiffs[0].gather() | plaintiffs[0].name |
-
-
-### Multiple items of one category
-For example, when there are multiple children.
-
-| Document output format | PDF label | Attachment | Interview order |
-|:-|:-|:-|:-|
-| **First M. Last** - name of the second parent | parent2<strong>_name</strong> | parents[1]<strong>.name</strong> | parents<strong>.gather()</strong> |
-| **First M. Last** - name of the second parent | parent2<strong>_name_full</strong> | parents[1]<strong>.name</strong> | parents<strong>.gather()</strong> |
-| **First** - first name of second parent  | parent2<strong>_name_first</strong> | parents[1]<strong>.name.first</strong> | parents<strong>.gather()</strong> |
-| **Middle** - middle name | parent2<strong>_name_middle</strong> | parents[1]<strong>.name.middle</strong> | parents<strong>.gather()</strong> |
-| **M.** - middle initials | parent2<strong>_name_middle_initial</strong> | parents[1]<strong>.name.middle_initial()</strong> | parents<strong>.gather()</strong> |
-| **Last** - last name | parent2<strong>_name_last</strong> | parents[1]<strong>.name.last</strong> | parents<strong>.gather()</strong> |
-| **Jr** - suffix | parent2<strong>_name_suffix</strong> | parents[1]<strong>.name.suffix</strong> | parents<strong>.gather()</strong> |
-| **female** - gender of second parent | parent2<strong>_gender</strong> | parents[1]<strong>.gender</strong> | parents[1]<strong>.gender</strong> |
-|  |  |  |  |
-|  |  |  |  |
-
+| **First M. Last** - 2nd appearance of name of 1st plaintiff | plaintiff<strong>__2</strong> | plaintiffs[0].gather() | plaintiffs[0].name |
 
 ### Print all the names of things in a group in one spot
 List all the plaintiffs, all the courts, docket numbers, etc.
@@ -175,6 +187,16 @@ All [people words](#people) can be used
 |  | witnesses |  |  |
 |  | decedents |  |  |
 |  | interested_parties |  |  |
+
+
+## Combining
+You can combine the methods on this page in many ways. Here are some examples
+
+| Document output format | PDF label | Attachment | Interview order |
+|:-|:-|:-|:-|
+| **First M. Last** - 1st appearance of the name of the 2nd parent | parent<strong>2</strong>_name__1 | parents<strong>[1].</strong>name | parents.gather() |
+| **First M. Last** - 2nd appearance of the name of the 2nd parent | parent<strong>2</strong>_name__2 | parents<strong>[1].</strong>name | parents.gather() |
+| **14** - age of the 3rd child | child<strong>3</strong>_age | children<strong>[2]</strong>.age | children<strong>[2]</strong>.age |
 
 <!-- 
 #DOCX only
