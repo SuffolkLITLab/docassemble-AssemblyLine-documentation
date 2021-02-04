@@ -47,11 +47,11 @@ Other words the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assembly
 The list of `courts` will be soon be replaced with one single `trial_court` object
 :::
 
-| Document output format | PDF label | Attachment | Interview order |
-|:-|:-|:-|:-|
-| **Court Name** - name of the 1st court | court | courts[0] | courts[0] |
-| **123456** - 1st docket number | docket_number | docket_numbers[0] | docket_numbers[0] |
-|  | signature_date |  |  |
+| Use case | Document output format | PDF label | Attachment | Interview order |
+|:-|:-|:-|:-|:-|
+| name of the 1st court | **Court Name** | court | courts[0] | courts[0] |
+| 1st docket number |**123456** | docket_number | docket_numbers[0] | docket_numbers[0] |
+| Date that the user signs the form | **February 4, 2021** | signature_date | signature_date | signature_date |
 
 ## Suffixes: [Reserved words](#reserved-words) for attributes
 These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's parent.
@@ -59,6 +59,7 @@ These are attributes of people or things. One attribute of a `parent` might be t
 <!-- TODO: check on mobile number -->
 
 Reference material:
+
 1. [Names](https://docassemble.org/docs/objects.html#Name)
 1. [Other things to do with individuals](https://docassemble.org/docs/objects.html#Individual)
 
@@ -147,7 +148,7 @@ For example, when there are multiple children.
 In a PDF you **have** to use a **unique label** for every field. See below for how to deal with this.
 :::
 
-When docassemble reads PDFs, each field should have a **unique label**. That means if you need to put a plaintiff's name in mutiple places on the form, you need to add two underscores (`__`) and a number to the end of the label each time. **Example:** `plaintiff__1` and `plaintiff__2`.
+When docassemble reads PDFs, each field should have a **unique label**. That means if you need to put a plaintiff's name in multiple places on the form, you need to add two underscores (`__`) and a number to the end of the label each time. **Example:** `plaintiff__1` and `plaintiff__2`.
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
@@ -199,7 +200,6 @@ You can combine the methods on this page in many ways. Here are some examples
 | **14** - 2nd appearance of 3rd child's age | child<strong>3</strong>_age<strong>__2</strong> | children<strong>[2]</strong>.age | children<strong>[2]</strong>.birthdate |
 | 3rd appearance of a full list of all plaintiffs | plaintiffs<strong>__3</strong> | plaintiffs | plaintiffs.gather() |
 
-
 ## DOCX only
 Some [reserved words](#reserved-words) that are just in DOCX files.
 
@@ -208,14 +208,13 @@ Some [reserved words](#reserved-words) that are just in DOCX files.
 | **01/01/1991** - 1st child's date of birth  | children[0].birthdate | children[0].birthdate |
 | **January 1, 1991** - display birth | children[0].birthdate.format() | children[0].birthdate |
 | Age for young children - **2 years** or **4 months** or **2 weeks** or **2 days** | children[0].formatted_age() | - |
-| **Firstname1, Firstname2, and Firstname3** - the 1st names of all the childs joined with 'and'. Works for a single child too. | children.familiar() | - |
-| **Firstname1, Firstname2, or Firstname3** - the 1st names of all the childs joined with 'or'. Works for a single child too. | children[0].familiar_or() | - |
+| **Firstname1, Firstname2, and Firstname3** - the 1st names of all the children joined with 'and'. Works for a single child too. | children.familiar() | - |
+| **Firstname1, Firstname2, or Firstname3** - the 1st names of all the children joined with 'or'. Works for a single child too. | children.familiar_or() | - |
 | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** - one or more numbers of 1st parent | parents[0].phone_numbers() | - |
 
 :::info
 You can do more with `a_date.format()`. See [the docassemble DADateTime documentation](https://docassemble.org/docs/objects.html#DADateTime)
 :::
-
 
 ## Definitions
 
