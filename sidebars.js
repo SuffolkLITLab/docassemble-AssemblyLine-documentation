@@ -14,6 +14,5 @@ module.exports = {
     },
     'github',
     'docs_style_guide',
-    'pdfs',
   ],
 };
