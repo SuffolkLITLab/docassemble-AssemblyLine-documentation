@@ -14,7 +14,7 @@ We're operating out of [Suffolk Law's Legal Innovation and Technology Lab](https
 ## Get involved
 1. Two weekly standups (registration links to come)
 1. Teaching Tuesday (registration links to come)
-1. Docassemble Slack (registration links to come)
+1. [Docassemble Slack](https://docassemble.org/docs/support.html#tocAnchor-1-1)
 
 <!-- 
 You can find a more robust description of our work, including how to join our team on our website at:
