@@ -90,9 +90,9 @@ Reference material:
 | **Suffolk County** | parent<strong>_address_county</strong> | parents[0]<strong>.address.county</strong> | parents[0]<strong>.address.county</strong> |
 | **USA** | parent<strong>_address_country</strong> | parents[0]<strong>.address.country</strong> | parents[0]<strong>.address.country</strong> |
 | **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_address_on_one_line</strong> | parents[0]<strong>.address.on_one_line()</strong> | parents[0]<strong>.address.on_one_line()</strong> |
-| **120 Tremont St, Unit 2** | parent<strong>_address_line_one</strong> | parents[0]<strong>.mail_address.line_one()</strong> | parents[0]<strong>.mail_address.line_one()</strong> |
-| **Boston, MA 02108** | parent<strong>_address_city_state_zip</strong> | parents[0]<strong>.mail_address.line_two()</strong> | parents[0]<strong>.mail_address.line_two()</strong> |
-| Multiline full address | parent<strong>_mail_address_block</strong> | parents[0]<strong>.mail_address.block()</strong> | parents[0]<strong>.mail_address.block()</strong> |
+| **120 Tremont St, Unit 2** | parent<strong>_address_line_one</strong> | parents[0]<strong>.address.line_one()</strong> | parents[0]<strong>.address.line_one()</strong> |
+| **Boston, MA 02108** | parent<strong>_address_city_state_zip</strong> | parents[0]<strong>.address.line_two()</strong> | parents[0]<strong>.address.line_two()</strong> |
+| Multiline full mailing address | parent<strong>_mail_address_block</strong> | parents[0]<strong>.mail_address.block()</strong> | parents[0]<strong>.mail_address.block()</strong> |
 | **120 Tremont St** | parent<strong>_mail_address_street</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
 | **120 Tremont St** | parent<strong>_mail_address_address</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
 | **Unit 2** | parent<strong>_mail_address_street2</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
