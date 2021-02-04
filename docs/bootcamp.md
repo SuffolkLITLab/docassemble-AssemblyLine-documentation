@@ -9,6 +9,9 @@ slug: /bootcamp
 
 Thursday February 18th, February 25th, March 4th, March 11th from 11 AM EST-1 PM EST.
 
+You can join at [this zoom link](https://suffolk.zoom.us/j/96015143827); it'll be the same for all of the above times.
+The password is in your calendar invite: if you haven't received one yet, reach out to us on [Teams](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412)!
+
 # Outline of course
 
 ## Week 0
