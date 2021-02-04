@@ -2,7 +2,7 @@
 id: document_variables_reference
 title: Label Variables Quick Reference
 sidebar_label: Label Variables
-slug: /reference
+slug: /label_variables
 ---
 
 Lables and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://github.com/suffolkLITLab/docassemble-assemblylinewizard). It's more work now, but it should save you a bunch of work in the future.
@@ -194,8 +194,8 @@ You can combine the methods on this page in many ways. Here are some examples
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
-| **First M. Last** - 1st appearance of the name of the 2nd parent | parent<strong>2</strong>_name<strong>__1</strong> | parents<strong>[1]</strong>.name | parents.gather() |
-| **First M. Last** - 2nd appearance of the name of the 2nd parent | parent<strong>2</strong>_name<strong>__2</strong> | parents<strong>[1]</strong>.name | parents.gather() |
+| **First M. Last** - 1st appearance of the name of the 2nd parent | parent<strong>2</strong>_name<strong>__1</strong> | parents<strong>[1]</strong> | parents.gather() |
+| **First M. Last** - 2nd appearance of the name of the 2nd parent | parent<strong>2</strong>_name<strong>__2</strong> | parents<strong>[1]</strong> | parents.gather() |
 | **14** - 2nd appearance of 3rd child's age | child<strong>3</strong>_age<strong>__2</strong> | children<strong>[2]</strong>.age | children<strong>[2]</strong>.birthdate |
 | 3rd appearance of a full list of all plaintiffs | plaintiffs<strong>__3</strong> | plaintiffs | plaintiffs.gather() |
 
