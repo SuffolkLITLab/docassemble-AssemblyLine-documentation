@@ -5,13 +5,13 @@ sidebar_label: Label Variables
 slug: /label_variables
 ---
 
-Lables and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://github.com/suffolkLITLab/docassemble-assemblylinewizard). It's more work now, but it should save you a bunch of work in the future.
+Labels and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://github.com/suffolkLITLab/docassemble-assemblylinewizard). It's more work now, but it should save you a bunch of work in the future.
 
 :::info
 This is a subset of the variables in the AssemblyLine library. These are just the words that the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) knows. They help you generate your starting code.
 :::
 
-## Prefixes: [Reserved words](#reserved_words) for objects
+## Prefixes: [Reserved words](#reserved-words) for objects
 <!-- TODO: put in overview Objects can be things like people or courts. -->
 
 ### People
@@ -53,7 +53,7 @@ The list of `courts` will be soon be replaced with one single `trial_court` obje
 | **123456** - 1st docket number | docket_number | docket_numbers[0] | docket_numbers[0] |
 |  | signature_date |  |  |
 
-## Suffixes: [Reserved words](#reserved_words) for attributes
+## Suffixes: [Reserved words](#reserved-words) for attributes
 These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's parent.
 
 <!-- TODO: check on mobile number -->
@@ -201,7 +201,7 @@ You can combine the methods on this page in many ways. Here are some examples
 
 
 ## DOCX only
-Some [reserved words](#reserved_words) that are just in DOCX files.
+Some [reserved words](#reserved-words) that are just in DOCX files.
 
 | Document output format | DOCX | Interview order |
 |:-|:-|:-|
