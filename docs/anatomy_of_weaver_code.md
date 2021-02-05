@@ -76,7 +76,6 @@ code: |
 ```
 
 ## Main intro page
-
 Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right form (or the wrong one).
 
 ```yml
@@ -107,6 +106,18 @@ sections:
 ```
 
 ## Interview order
+Controls the order in which your screens are shown.
+
+There is some AssemblyLine code that comes before your own custom interview order code. You will probably leave this code alone:
+
+1. `nav.set_section()` comes after `al_intro_screen` and `a_258e_motion_for_impoundment_intro` so that the user can't click to edit their answers before they've actually been asked any questions.
+1. `allowed_courts` is currently connected to MassAccess, but it will be expanded in the future. It allows the developer to limit which courts the person filling out the form can pick from. That makes it easier for them to pick the right court.
+1. `user_role` tells AssemblyLine which questions to ask about the main party listed on the form.
+
+Code for your pages comes next. All your questions should be triggered in here. You will probably make major edits to the code here, changing the order and adding branching logic.
+
+<!-- TODO: Why is `allowed_courts` set lower down as opposed to before all questions or in some separate block? -->
+<!-- TODO: Should `nav.set_section()` come after the first actual question is asked if that's really the purpose? -->
 
 ```yml
 id: interview_order_a_258e_motion_for_impoundment
@@ -119,9 +130,8 @@ code: |
   allowed_courts = interview_metadata["a_258e_motion_for_impoundment"]["allowed courts"]
   nav.set_section('review_a_258e_motion_for_impoundment')
   user_role = 'plaintiff'
-
-  # Your interview's custom code
-
+  one_of_your_custom_questions
+  another_of_your_custom_questions
   # Set the answer file name.
   set_parts(subtitle=str(users))
   set_progress(16.67)
@@ -135,8 +145,22 @@ code: |
 ---
 ```
 
+There is some AssemblyLine code that comes after your own custom interview order code. You will probably leave this code alone as well:
 
-## Your interview intro
+1. `set_parts(subtitle=str(users))` adds to the information a logged in user will listed for this interview in their list of interviews. For an attorney, they should see the name of their clients. For a self representant litigant, they should see their name.
+1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
+1. `signature_date` is needed on every form that we know of.
+1. You should be very thoughtful when you use `store_variables_snapshot()`. It lets you gather data about how your form is being used. Care must be taken to anonymize it. Just removing a name is not sufficient.
+1. `a_258e_motion_for_impoundment_preview_question` will trigger [the preview screen](#preview).
+1. `basic_questions_signature_flow` allows the user to pick what device to sign on. This lets them send the form to a smartphone for signing.
+1. `users[0].signature` shows the user the signature screen.
+1. This final variable is customized for your interview. It lets you trigger all the code in this entire code block. If you are including this interview in another interview, you can use this variable to trigger this particular question order.
+
+
+## Your screens
+These `question` blocks control the screens your clients will see that are specific to your interview.
+
+### Your interview's intro
 
 ```yml
 comment: |
@@ -150,8 +174,8 @@ subquestion: |
 ---
 ```
 
-
-## Preview
+### Preview
+Users can see the final form that they will then be signing before they sign it.
 
 ```yml
 id: Review your form before you sign it
@@ -168,12 +192,15 @@ subquestion: |
 ```
 
 
-## Your screens
+## Your questions
+[Question blocks](https://docassemble.org/docs/questions.html) will show screens with information and questions. You will probably edit these blocks as you identify your needs and the needs of the people using your tools.
 
 ```yml
-id: Screen one
+id: information to be impounded
 question: |
-  Screen one
+  Information to be impounded
+subquestion: |
+  Information that you impound will be kept private from... TODO: add explanation.
 fields:
   - 'Impound personal information': impound_personal_information
     datatype: yesno
@@ -188,6 +215,7 @@ fields:
 
 
 ## Download
+Users will be able to download or email the form. They may sometimes be able to submit it to the court.
 
 ```yml
 progress: 100
