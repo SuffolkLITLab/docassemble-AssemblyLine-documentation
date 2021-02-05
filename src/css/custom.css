@@ -16,6 +16,11 @@
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
   --doc-sidebar-width: 15em !important;
+  --ifm-container-width: 100vw;
+}
+
+.container.docItemWrapper_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage- {
+  max-width: calc( var(--ifm-container-width) - var(--doc-sidebar-width) );
 }
 
 .docusaurus-highlight-code-line {
@@ -27,10 +32,4 @@
 
 .container {
   margin: 0;
-}
-
-@media (min-width: 997px) and (max-width: 1320px) {
-  .container.docItemWrapper_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage- {
-    max-width: unset;
-  } 
 }
