@@ -5,7 +5,7 @@ sidebar_label: Anatomy of the YAML
 slug: /generated_yaml
 ---
 
-The code [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) generates is just a starting point. Is uses the labels and variables you added to your templates](document_variables_reference.md) to make an interview that uses the AssemblyLine library.
+The code [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) generates is just a starting point. Is uses the [labels and variables you added to your templates](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
 
 Through that code, you can also see examples of [docassemble](https://docassemble.org) features you can use other places.
 
@@ -20,6 +20,9 @@ include:
 ```
 
 ## Metadata
+As the comment says, these [metadata block](https://docassemble.org/docs/initial.html#metadata) values do two things:
+1. Control the text in the browser tab of the interview
+1. Control the name of the interview on a user's list of saved interviews if they're logged in
 
 ```yml
 comment: |
@@ -34,6 +37,17 @@ metadata:
 
 
 ## AssemblyLine metadata
+Leave this block as it is if possible. This code block always gets run. The values of these variables affect how your code will work.
+
+Some of these variables just hold useful data for possible use in the future. Some are used by your code or the AssemblyLine code.
+
+1. `title`, `short title`, `description`, `original_form`, and `categories` allow your organization's site to show more information about your form and to organize your forms more easily.
+1. `allowed courts`: Currently used by MassAccess, we may develop this further. It can allow your code to decide which courts to let the user pick from when they need to pick their court.
+
+
+<!-- 1. `typical role`: controls which questions the user gets asked. -->
+<!-- 1. `logic block variable`: Used to trigger the main interview order block that tries to control the order in which questions are asked. -->
+<!-- 1. `attachment block variable`:  -->
 
 ```yml
 comment: |
@@ -61,15 +75,29 @@ code: |
 ---
 ```
 
-## Some defaults
+## Main intro page
+
+Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right form (or the wrong one).
 
 ```yml
 code: |
   interview_short_title = 'File a 209a 258e motion for impoundment'
 ---
+```
+
+## Case type questions
+Triggers specific AssemblyLine questions depending on its value.
+
+```yml
 code: |
   al_form_type = 'existing_case'
 ---
+```
+
+## Navigation
+[`navigation`](https://docassemble.org/docs/initial.html#navigation%20bar) and [`sections`](https://docassemble.org/docs/initial.html#sections) work with [`nav.set_section()`](https://docassemble.org/docs/functions.html#DANav.show_sections) to show the column on the left that lets your users jump to a screen that lets them edit their information in your interview. Avoids using the 'Back' button which deletes answers.
+
+```yml
 features:
   navigation: True
 ---
@@ -77,7 +105,6 @@ sections:
   - review_a_258e_motion_for_impoundment: Review your answers
 ---
 ```
-
 
 ## Interview order
 
@@ -93,7 +120,7 @@ code: |
   nav.set_section('review_a_258e_motion_for_impoundment')
   user_role = 'plaintiff'
 
-  # ...
+  # Your interview's custom code
 
   # Set the answer file name.
   set_parts(subtitle=str(users))
@@ -182,6 +209,9 @@ need: a_258e_motion_for_impoundment
 ## Attachments
 
 ### ALDocument
+
+Leave this block as it is if possible. Prepares to use this document in the `ALDocumentBundle`.
+
 :::info
 What ALDocument does:
 1. Usually you need to attachment blocks for a PDF - a preview without a signature and the final document with a signature. ALDocument takes care of that for you.
@@ -198,9 +228,9 @@ objects:
 ---
 ```
 
-Prepares to use this document in the `ALDocumentBundle`. You might want to leave this as it is.
-
 ### ALDocumentBundle
+
+Leave this block as it is if possible. Adds your file to two 'bundles' automatically - one for the user and one for the court.
 
 ```yml
 objects:
@@ -209,9 +239,9 @@ objects:
 ---
 ```
 
-Adds your file to two 'bundles' automatically - one for the user and one for the court. You might want to leave this as it is.
-
 ### Attachment block
+
+[How to fill in your PDF fields with docassemble](https://docassemble.org/docs/documents.html#pdf%20template%20file).
 
 ```yml
 attachment:
