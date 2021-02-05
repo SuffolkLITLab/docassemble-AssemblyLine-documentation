@@ -5,7 +5,7 @@ sidebar_label: Anatomy of the YAML
 slug: /generated_yaml
 ---
 
-The code [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) generates is just a starting point. Is uses the [labels and variables you added to your templates](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
+The code [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) generates is just a starting point. It uses the [labels and variables you added to your templates](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
 
 Through that code, you can also see examples of [docassemble](https://docassemble.org) features you can use other places.
 
