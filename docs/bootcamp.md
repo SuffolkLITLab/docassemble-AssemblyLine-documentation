@@ -5,7 +5,9 @@ sidebar_label: Bootcamp
 slug: /bootcamp
 ---
 
-[Sign up for the bootcamp here](https://forms.office.com/Pages/ResponsePage.aspx?id=qT9zeA5UuE6_KXPE7rY0Ep29qeo5z4ZGjzDlWqnZjHVUNzlCSVdVU0NWVDRQMVU1OFlBNVA3V1EwNCQlQCN0PWcu)
+:::info
+[Sign up for the bootcamp here!](https://forms.office.com/Pages/ResponsePage.aspx?id=qT9zeA5UuE6_KXPE7rY0Ep29qeo5z4ZGjzDlWqnZjHVUNzlCSVdVU0NWVDRQMVU1OFlBNVA3V1EwNCQlQCN0PWcu)
+:::
 
 ## Meeting times
 
@@ -69,7 +71,6 @@ additional questions.
     * Pushing changes to Github
 * Practice time and live help in breakout rooms
 
-
 ### Week 4: Advanced Docassemble, Installing the backend
 
 * Introduction to the docassemble.Income class
@@ -78,6 +79,5 @@ additional questions.
 * How to install individual packages on your Docassemble server
     * Creating short links
     * The index page
-
 
 Stay tuned for more details about our upcoming bootcamp.
