@@ -10,6 +10,7 @@ module.exports = {
       items: [
         'pdfs',
         'document_variables_reference',
+        'yaml_anatomy',
       ],
     },
     'github',
