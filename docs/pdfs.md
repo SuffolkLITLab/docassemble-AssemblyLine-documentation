@@ -8,7 +8,7 @@ slug: /pdfs
 ## Add labels and fields
 We recommend using [Documate](https://documate.wrkflows.io/). It can do everything that AssemblyLine makes use of as far as PDF labels and fields go.
 
-Watch a 2 minute video segment on [how to edit a PDF](https://documate.wrkflows.io/en/articles/1007) with [Documate](https://documate.wrkflows.io/)'s [online free PDF editor](https://www.documate.org/pdf).
+Watch a 2 minute video segment on [how to edit a PDF](https://documate.wrkflows.io/en/articles/1007) with Documate's [online free PDF editor](https://www.documate.org/pdf).
 <!-- <iframe width="1370" height="563" src="https://www.youtube.com/embed/HHGTWJ4r2hk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 <iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Documate's editor"></iframe>
 
