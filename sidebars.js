@@ -1,9 +1,8 @@
 module.exports = {
   someSidebar: [
-    'bootcamp',
     'intro',
+    'bootcamp',
     'name_formats',
-    'document_variables',
     {
       type: 'category',
       label: 'PDFs and DOCXs',
