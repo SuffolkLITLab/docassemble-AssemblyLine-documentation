@@ -5,6 +5,10 @@ sidebar_label: Editing PDFs
 slug: /pdfs
 ---
 
+:::note
+- [Sample PDF of the MA Family Law Generic Motion](./assets/generic_motion_family_law.pdf)
+:::
+
 ## Add labels and fields
 We recommend using [Documate](https://documate.wrkflows.io/). It can do everything that AssemblyLine makes use of as far as PDF labels and fields go.
 
