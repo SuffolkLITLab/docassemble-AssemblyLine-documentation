@@ -5,17 +5,22 @@ sidebar_label: Label Variables
 slug: /label_variables
 ---
 
-Labels and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://github.com/suffolkLITLab/docassemble-assemblylinewizard). It's more work now, but it should save you a bunch of work in the future.
+:::note
+- [Use the weaver to generate code](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
+- [See the GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
+:::
+
+Labels and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1). It's more work now, but it should save you a bunch of work in the future.
 
 :::info
-This is a subset of the variables in the AssemblyLine library. These are just the words that the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) knows. They help you generate your starting code.
+This is a subset of the variables in the AssemblyLine library. These are just the words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) knows. They help you generate your starting code.
 :::
 
 ## Prefixes: [Reserved words](#reserved-words) for objects
 <!-- TODO: put in overview Objects can be things like people or courts. -->
 
 ### People
-Words that the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) will automatically know are people.
+Words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know are people.
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
@@ -41,7 +46,7 @@ Words that the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblyl
 
 
 ### Other objects
-Other words the [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) will automatically know.
+Other words the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know.
 
 :::caution
 The list of `courts` will be soon be replaced with one single `trial_court` object
@@ -219,4 +224,4 @@ You can do more with `a_date.format()`. See [the docassemble DADateTime document
 ## Definitions
 
 ### Reserved words
-AssemblyLine's [ALWeaver](https://github.com/suffolkLITLab/docassemble-assemblylinewizard) has some specific words that it knows to look for so it can help make your work easier. Those **reserved words** are listed here.
+AssemblyLine's [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) has some specific words that it knows to look for so it can help make your work easier. Those **reserved words** are listed here.
