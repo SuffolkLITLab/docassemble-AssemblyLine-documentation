@@ -8,6 +8,7 @@ module.exports = {
       type: 'category',
       label: 'PDFs and DOCXs',
       items: [
+        'alweaver_overview',
         'pdfs',
         'document_variables_reference',
         'yaml_anatomy',
