@@ -5,152 +5,95 @@ sidebar_label: Name formats
 slug: /naming
 ---
 
-## Summary
+In programming languages (and sometimes in computer files and names in general),
+there are a lot of different rules that could be used to name different things like files
+and variables. When working in a large team, choosing consistent conventions for naming these
+things makes reading and writing code easier. At the Assembly Line project, we've settled on
+several conventions:
 
-### Goals
-* Fewer conventions to remember
-* Consistency
-
-Name formats:
 1. [`snake_case`](#snake_case)
 1. [`kebab-case`](#kebab_case)
 1. [`PascalCase`](#pascalcase)
 
-In order of importance, names should be:<br/>
-1. Descriptive/specific
-1. Short
+## Types of Naming Conventions
 
-
-## General descriptions
 ### snake_case
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with underscores (`_`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
-**When to use**
-- Variable names. **Example:** `number_of_people`
-- GitHub branch names. **Example:** `issue_12_address`
-- Documents/templates in docassemble (.pdf, .docx). **Example:** `protective_order.pdf`
-- YAML file names (.yml). **Example:** `protective_order.yml`
-- Image file names (.jpg, .png, .svg, .ico). **Example:** `name_on_summons.jpg`
-- Static files (.css, .py, .js, .json). **Example:** `styles.css`
+* Start with a letter, not a digit
+* Separate words with underscores (`_`) instead of spaces
+* All other characters are either 0 to 9 or lowercase a to z ([alphanumeric](#alphanumeric))
+
+Some examples: `number_of_people`, `issue_12_address`, `protective_order.pdf`
 
 ### kebab-case
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with dashes (`-`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
-**When to use**
-- Documents that people will download. **Example:** `protective-order.yml`
+* Start with a letter, not a digit
+* Separate words with dashes (`-`) instead of spaces
+* All other characters are either 0 to 9 or lowercase a to z ([alphanumeric](#alphanumeric))
+
+Some examples: `protective-order.yml`
 
 ### PascalCase
-* Always start with a letter, not a digit
+
+* Start with a letter, not a digit
 * Each word starts with an uppercase letter
 * All the words are squished together
 * All characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
+Some examples: `ProtectiveOrder`, `ProtectiveOrderRemoveAddress`
 
-**When to use**
-- Package names. **Example:** ProtectiveOrder
-- docassemble Project names. **Example:** ProtectiveOrderRemoveAddress
+## Uses of Naming Conventions
 
+### Form Files stored in docassemble: [snake_case](#snake_case)
 
-## Details
-### Forms stored in docassemble: [snake_case](#snake_case)
-_Purpose: Clear to lawyers and can be used as a variable name_
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with underscores (`_`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
-
-**Extra info**
-* Avoid using the section numbers of the law unless they are the common name of the form. **Example:** `protective_order.pdf`
-* Include at least one descriptive term. **Example:** use `protective_order_209A.pdf`, even if attorneys call it "209A".
+* Makes it clear to lawyers, and we can use the file name as a variable name as well.
+* Avoid using the section numbers of the law unless they are the common name of the form.  
+* Include at least one descriptive term.
+  * Example: use `protective_order_209A.pdf`, even if attorneys call it "209A".
 * Avoid adding suffixes or information about the progress of the form at the end of the file. For example, use `protective_order.pdf` over `protective_order_processed.pdf` or `protective_order_reviewed.pdf`.
 * In all other ways, use the common name of the form - the name attorneys know it by.
 
 ### Downloadable documents: [kebab-case](#kebab_case)
-_Purpose: Accurate and visually clear to the person downloading_
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with dashes (`-`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
-**Extra info**
-* We use dashes (`-`) because underscores (`_`) are sometimes hard to see in file names, especially if the text is underlined.
-* Exactly the same as [the docassemble form name](#forms_stored_in_docassemble_snake_case) in all other ways.
+* We use dashes (`-`) because underscores (`_`) can be hard to see in file names, especially if the text is underlined.
+* Exactly the same as [the docassemble form name](#form_files_stored_in_docassemble_snake_case) in all other ways.
 
 ### Other files stored in docassemble: [snake_case](#snake_case)
-_Purpose: A name that's accurate and clear to developers_
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with underscores (`_`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
-No extra special conventions.
+* `snake_case` is a common convention and is clear to developers
 
 ### PDF variables:  [snake_case](#snake_case)
-_Purpose: Meet PDF or docx requirements and get AssemblyLine perks_
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with underscores (`_`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
-See more details about [document variable names](document_variables).
+* Meets PDF or docx requirements and is consistent with AssemblyLine (which will help you!)
+* See more details about [document variable names](document_variables).
 
 ### Code variables: [snake_case](#snake_case) mostly
-_Purpose: Clear and short, in that order_
-* Always start with a letter, not a digit
-* All characters are lowercase
-* Separate words with underscores (`_`) instead of spaces
-* All other characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
 
-**Extra info**
+Naming variables is hard, but good code variables are clear and short, in that order.
 
-[`snake_case`](#snake_case):
-- Regular variable names
-- Objects
-- Methods of classes
+#### [`snake_case`](#snake_case)
 
-[`PascalCase`](#pascalcase):
-- Classes
+* Regular variable names (`reason_for_appeal`)
+* Objects (`judges`, `other_parties`)
+* Methods of classes (`template.get_pdf_fields()`)
 
-Variable names should read close to natural English out loud. Avoid 'hungarian notation'. Variable names with their type in them are using hungarian notation. Good variable names can do most of the work.
+#### [`PascalCase`](#pascalcase)
 
-**Avoid**
-- `is_parent_bool` indicating a boolean
-- `children_list` indicating a list
-- `countries_dict` indicating a dictionary
+* Classes (`PlaygroundSection`)
 
-**Exceptions**
-There are times where adding extra information into the variable name does help make things more clear.
-- `got_notice_date`
-- [The convensions for our PDF and docx variables](document_variables)
+Variable names should read close to natural English out loud. Avoid putting the type of the variable in its name, sometimes called hungarian notation:
+for example, using `is_parent_bool` to indicate a boolean, or `children_list` indicating a list.
 
-Good variable names can do the work most of the time.
-- For a boolean value, use a word or phrase that you can answer with yes or no. They are often verb-noun pairs. `has_` and `is_` can be useful. **Examples:** `is_minor`, `was_convicted`, `has_court_date`.
-- Use a plural word for a list of things. Use a singular word for one thing. **Examples:** `children`, `child`
-<!-- TODO: Add link to guidance on naming variables -->
+Adding extra information into the variable name does help make things more clear, for example, `got_notice_date`, or `plaintiff_email`. But this is helpful because we're describing the contents of the variable, not it's type. Our [conventions for our PDF and docx variables](document_variables) go into more detail on this.
 
+For a boolean value, use a word or phrase that you can answer with yes or no. They are often verb-noun pairs. `has_` and `is_` can be useful. **Examples:** `is_minor`, `was_convicted`, `has_court_date`.
 
-### Packages: [PascalCase](#pascalcase)
-_Purpose: Meet python package and docassemble requirements and stay consistent_
-* Always start with a letter, not a digit
-* Each word starts with an uppercase letter
-* All the words are squished together
-* All characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
+Use a plural word for a list of things, and a singular word for one thing. **Examples:** `children`, `child`
 
-### Docassemble Projects: [PascalCase](#pascalcase)
-_Purpose: Meet docassemble requirements_
-* Always start with a letter, not a digit
-* Each word starts with an uppercase letter
-* All the words are squished together
-* All characters are either 0 to 9 or a to z ([alphanumeric](#alphanumeric))
+### Docassemble Projects/Packages: [PascalCase](#pascalcase)
 
-Each Project has to have a unique name, different from all other Project names.
-
+* docassemble packages (which are python packages) are required to be PascalCase.
+* Each Project has to have a unique name, different from all other Project names.
 
 ## Definitions
 
@@ -159,8 +102,8 @@ A string that is alphanumeric has only digits 0 to 9 and the letters A to Z in i
 
 **Yes:** `A` `b` `12` `CZ` `5`
 
-**No:** `A!` `(b)` `$12` `"CZ"` `0.5` 
-
+**No:** `A!` `(b)` `$12` `"CZ"` `0.5`
 
 ## Other resources
+
 * [Different ways to name variables](https://en.wikipedia.org/wiki/Naming_convention_%28programming%29#Examples_of_multiple-word_identifier_formats)
