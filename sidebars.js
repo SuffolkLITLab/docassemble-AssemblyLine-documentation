@@ -2,6 +2,7 @@ module.exports = {
   someSidebar: [
     'intro',
     'bootcamp',
+    'getting_started',
     'name_formats',
     {
       type: 'category',
