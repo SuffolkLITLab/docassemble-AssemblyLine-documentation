@@ -5,9 +5,13 @@ sidebar_label: Label Variables
 slug: /label_variables
 ---
 
-:::note
-- [Use the weaver to generate code](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
-- [See the GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
+:::note Resources
+- [The Weaver code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
+- [The ALWeaver GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
+
+**Samples**
+- [Sample PDF of the MA Family Law Generic Motion](./assets/generic_motion_family_law.pdf)
+- [Sample DOCX of the MA Family Law Generic Motion](./assets/generic_motion_family_law.docx)
 :::
 
 Labels and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1). It's more work now, but it should save you a bunch of work in the future.
