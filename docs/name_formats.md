@@ -68,6 +68,7 @@ _Purpose: Clear to lawyers and can be used as a variable name_
 **Extra info**
 * Avoid using the section numbers of the law unless they are the common name of the form. **Example:** `protective_order.pdf`
 * Include at least one descriptive term. **Example:** use `protective_order_209A.pdf`, even if attorneys call it "209A".
+* Avoid adding suffixes or information about the progress of the form at the end of the file. For example, use `protective_order.pdf` over `protective_order_processed.pdf` or `protective_order_reviewed.pdf`.
 * In all other ways, use the common name of the form - the name attorneys know it by.
 
 ### Downloadable documents: [kebab-case](#kebab_case)
