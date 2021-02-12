@@ -5,18 +5,14 @@ sidebar_label: Editing PDFs
 slug: /pdfs
 ---
 
-:::note
-- [Edit your PDFs with Documate](https://www.documate.org/pdf)
-- [Use the weaver to generate code](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
-- [Sample PDF of the MA Family Law Generic Motion](./assets/generic_motion_family_law.pdf)
-:::
-
 ## Add labels and fields
-We recommend using [Documate](https://documate.wrkflows.io/). It can do everything that AssemblyLine makes use of as far as PDF labels and fields go.
+We recommend using [the Documate online free PDF editor](https://www.documate.org/pdf). It can do everything that AssemblyLine makes use of as far as PDF labels and fields go. Documate has [a page that talks about its PDF editor](https://documate.wrkflows.io/).
 
-Watch a 2 minute video segment on [how to edit a PDF](https://documate.wrkflows.io/en/articles/1007) with Documate's [online free PDF editor](https://www.documate.org/pdf).
-<!-- <iframe width="1370" height="563" src="https://www.youtube.com/embed/HHGTWJ4r2hk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+Watch a 2 minute video segment on [how to edit a PDF](https://documate.wrkflows.io/en/articles/1007) with Documate's editor.
 <iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Documate's editor"></iframe>
+
+## Delete extra pages
+If you have a Google, Adobe, Facebook, or Apple account, or if you're willing to make a new account, [Adobe will let you delete PDF pages for free online](https://www.adobe.com/acrobat/online/delete-pdf-pages.html). All your fields will be left alone. The documents will be saved in your account.
 
 ## Adobe Live Cycle
 If the form was created in Adobe Live Cycle, you will not be able to add form
