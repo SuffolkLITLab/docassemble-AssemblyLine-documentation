@@ -1,7 +1,7 @@
 ---
 id: pdfs
 title: Working with PDF files
-sidebar_label: Editing PDFs
+sidebar_label: Tools to edit PDFs
 slug: /pdfs
 ---
 

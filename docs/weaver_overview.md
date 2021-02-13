@@ -1,30 +1,26 @@
 ---
 id: alweaver_overview
-title: AssemblyLine Weaver Code Generator Overview
-sidebar_label: Generating Code
+title: AssemblyLine Weaver overview
+sidebar_label: ALWeaver overview
 slug: /generating_code
 ---
 
-:::note Resources
-- [Edit your PDFs with Documate](https://www.documate.org/pdf)
-- [Use the weaver to generate code](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
-- [See the ALWeaver GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
+<!-- Boilerplate, Baseline, kit, ready to build, some assembly required, something to build on, starting point, blank slate, foundation, groundwork, starter dough, groundwork, spark -->
 
-**Samples**
-- [Sample PDF of the MA Family Law Generic Motion](./assets/generic_motion_family_law.pdf)
-- [Sample DOCX of the MA Family Law Generic Motion](./assets/generic_motion_family_law.docx)
-:::
+You can use the labels and variables of your PDFs and DOCXs in combination with the ALWeaver to help you generate starter code that is ready to work with the AssemblyLine library. You will then be able to edit that code to get the interview you want.
 
-Use your PDFs and DOCXs to help you generate code that will work well with the AssemblyLine library.
+If you have [prepared your PDF or DOCX using certain conventions](doc_vars_reference.md), the weaver will handle the fields it recognizes without further prompting. It will ask questions about the rest of the fields. It will try to recognize fields that ask about people and organizations.
 
-<!-- TODO: Add link to a future page (template overview page?) that lists steps for getting a template ready -->
-
-Once you have your PDF or DOCX file ready:
+To generate the starter code:
+1. If you have a PDF, [add labels to it](doc_vars_reference.md)
 1. [Go to the weaver's page](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
 1. Upload your PDF or DOCX
-1. Select the type of each field
-1. Give labels to the individual question fields that the user will see. **Example:** What is your court date?
-1. Build pages with headings, explanatory text, and the fields that will appear there
+1. Select the field type of each field (e.g. text, date, checkbox)
+1. Give labels to the individual question fields that the user will see
+1. Build a page by writing a heading and explanatory text
+1. Pick which fields will go on that page
 
-The anatomy of a generated interview page:
-![One page of an interview made of a heading and explantory text and the fields](./assets/interview_screen_or_page.png)
+A page might look like this:
+![One page of an interview made up of a heading, explantory text, and the fields](./assets/interview_screen_or_page.png)
+
+You can see [the ALWeaver docassemble package on GitHub](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)

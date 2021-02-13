@@ -1,35 +1,28 @@
 ---
 id: document_variables_reference
-title: Label Variables Quick Reference
-sidebar_label: Label Variables
+title: Label variables quick reference
+sidebar_label: Add labels and variables
 slug: /label_variables
 ---
 
-:::note Resources
-- [The Weaver code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
-- [The ALWeaver GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
+To save time and effort later, use naming convension in your PDFs and DOCXs that the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will understand.
 
-**Samples**
-- [Sample PDF of the MA Family Law Generic Motion](./assets/generic_motion_family_law.pdf)
-- [Sample DOCX of the MA Family Law Generic Motion](./assets/generic_motion_family_law.docx)
-:::
+Note that these are just the words that the ALWeaver knows. They help you generate your starting code. They are just a subset of the variables in the AssemblyLine library. 
 
-Labels and variables you can use in your PDFs and DOCXs to make the most of the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1). It's more work now, but it should save you a bunch of work in the future.
-
-:::info
-This is a subset of the variables in the AssemblyLine library. These are just the words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) knows. They help you generate your starting code.
-:::
+## Example documents
+- [A fully labeled PDF](./assets/generic_motion_family_law.pdf)
+- [The DOCX version of the same motion](./assets/generic_motion_family_law.docx)
 
 ## Prefixes: [Reserved words](#reserved-words) for objects
-<!-- TODO: put in overview Objects can be things like people or courts. -->
+<!-- TODO: put in overview Objects can be things like people or a court (trial_court). -->
 
-### People
+### People Prefixes
 Words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know are people.
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - name of the 1st user | user | user[0] | user[0] |
-| **First M. Last** - name of the 1st other_party | other_party | other_parties[0] | other_parties[0] |
+| **First M. Last** - name of the 1st other party | other_party | other_parties[0] | other_parties[0] |
 | **First M. Last** - name of the 1st plaintiff | plaintiff | plaintiff[0] | plaintiff[0] |
 | **First M. Last** - name of the 1st defendant | defendant | defendant[0] | defendant[0] |
 | **First M. Last** - name of the 1st petitioner | petitioner | petitioner[0] | petitioner[0] |
@@ -43,39 +36,46 @@ Words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewiz
 | **First M. Last** - name of the 1st debt_collector | debt_collector | debt_collector[0] | debt_collector[0] |
 | **First M. Last** - name of the 1st creditor | creditor | creditors[0]| creditors[0] |
 | **First M. Last** - name of the 1st child | child | children[0] | children[0] |
-| **First M. Last** - name of the 1st guardian_ad_litem | guardian_ad_litem | guardians_ad_litem[0] | guardians_ad_litem[0] |
+| **First M. Last** - name of the 1st guardian ad litem | guardian_ad_litem | guardians_ad_litem[0] | guardians_ad_litem[0] |
 | **First M. Last** - name of the 1st witnesses | witnesses | witnesses[0] | witnesses[0] |
 | **First M. Last** - name of the 1st decedent | decedent | decedents[0] | decedents[0] |
-| **First M. Last** - name of the 1st interested_party | interested_party | interested_parties[0] | interested_parties[0] |
+| **First M. Last** - name of the 1st interested party | interested_party | interested_parties[0] | interested_parties[0] |
 
 
-### Other objects
+### Other reserved words
 Other words the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know.
-
-:::caution
-The list of `courts` will be soon be replaced with one single `trial_court` object
-:::
 
 | Use case | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|:-|
-| name of the 1st court | **Court Name** | court | courts[0] | courts[0] |
+| name of the court | **Court Name** | trial_court | trial_court | trial_court |
 | 1st docket number |**123456** | docket_number | docket_numbers[0] | docket_numbers[0] |
 | Date that the user signs the form | **February 4, 2021** | signature_date | signature_date | signature_date |
 
 ## Suffixes: [Reserved words](#reserved-words) for attributes
-These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's parent.
 
-<!-- TODO: check on mobile number -->
+<!-- TODO: Double check an example county name -->
+<!-- TODO: Come up with a second address for the mailing address? -->
 
-Reference material:
+### Field types
+<!-- These suffixes can be used to get the ALWeaver to automatically set the type of field that will be used and to create variables more effectively. It may affect the code that is generated. -->
 
-1. [Names](https://docassemble.org/docs/objects.html#Name)
-1. [Other things to do with individuals](https://docassemble.org/docs/objects.html#Individual)
+**`_date`**
+Something ending in `_date` will automatically show up in the weaver already set as a date field.
+**Example:** `hearing_date`
 
- <!-- TODO: Double check how county name would appear -->
- <!-- TODO: Come up with a second address for the mailing address? -->
+**`_yes` combined with `_no`**
+<!-- TODO: Move to overview doc if that's ever created -->
+For PDFs specifically. When two otherwise identical labels in a PDF end in `_yes` and `_no`, they will be combined into one variable in the interview order, and will appear in the online interview as a single checkbox.
+**Example:**
+`is_minor_yes` and `is_minor_no`
 
-### People
+| Document output format | PDF label | Attachment | Interview order |
+|:-|:-|:-|:-|
+| Minor 'Yes' checkbox is checked or blank | is_minor_yes | "is_minor_yes": ${ is_minor is True } | is_minor |
+| Minor 'No' checkbox is checked or blank | is_minor_no | "is_minor_no": ${ is_minor is not True } | is_minor |
+
+### People Suffixes
+<!-- These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's parent. -->
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
@@ -116,17 +116,31 @@ Reference material:
 | **Boston, MA 02108** | parent<strong>_mail_address_city_state_zip</strong> | parents[0]<strong>.mail_address.line_two()</strong> | parents[0]<strong>.mail_address.address</strong> |
 | An image of a signature | parent<strong>_signature</strong> | parents[0]<strong>.signature</strong> | parents[0]<strong>.signature</strong> |
 | **123-123-1234** - landline number of 1st parent | parent<strong>_phone_number</strong> | parents[0]<strong>.phone_number</strong> | parents[0]<strong>.phone_number</strong> |
+| **123-123-1234** - mobile number of 1st parent | parent<strong>_mobile_number</strong> | parents[0]<strong>.mobile_number</strong> | parents[0]<strong>.mobile_number</strong> |
 | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** - one or more phone numbers of 1st parent | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | - |
 
-:::info
-`.phone_numbers()` is a method that AssemblyLine has added
+<!-- 
+:::info Custom AssemblyLine methods
+- `.phone_numbers()`
+- `.familiar()`
+- `.familiar_or()`
 :::
+-->
 
-### Courts
+<!-- TODO: Do the resources below belong elsewhere? -->
+<!-- TODO: This is stuff I've gotten questions about -->
+
+Docassemble resources:
+1. [Names](https://docassemble.org/docs/objects.html#Name)
+1. [Other things to do with individuals](https://docassemble.org/docs/objects.html#Individual)
+
+### Court
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
-| **Division name** - division of the 1st court | court<strong>_division</strong> | courts[0]<strong>.division</strong> | courts[0]<strong>.division</strong> |
-| **County name** - county of the 1st court | court<strong>_county</strong> | courts[0]<strong>.address.county</strong> | courts[0]<strong>.address.county</strong> |
+| **Court name** - name of the court | trial_court | trial_court | trial_court |
+| **County name** - county of the court | trial_court<strong>_county</strong> | trial_court<strong>.address.county</strong> | trial_court<strong>.address.address</strong> |
+| **Division name** - division of the court | trial_court<strong>_division</strong> | trial_court<strong>.division</strong> | trial_court<strong>.division</strong> |
+| **Department name** - deparment of the court | trial_court<strong>_deparment</strong> | trial_court<strong>.deparment</strong> | trial_court<strong>.deparment</strong> |
 
 
 ## More than one
@@ -137,10 +151,7 @@ Situations where you have any these:
 
 <!-- TODO: Add definition of 'reserved word' in overview and link to that in the tip -->
 
-:::tip
-1. You can do the below for any reserved word  on the page.
-1. You can combine these methods.
-:::
+You can do the below for any reserved word  on the page. You can also use these methods in combination.
 
 ### Multiple items of one category
 For example, when there are multiple children.
@@ -165,18 +176,12 @@ When docassemble reads PDFs, each field should have a **unique label**. That mea
 | **First M. Last** - 2nd appearance of name of 1st plaintiff | plaintiff<strong>__2</strong> | plaintiffs[0].gather() | plaintiffs[0].name |
 
 ### Print all the items in one spot
-List all the plaintiffs, all the courts, all the docket numbers, etc.
+List all the plaintiffs, all the docket numbers, etc. All [people words](#people_prefixes) can be used.
 
-:::info
-All [people words](#people) can be used
-:::
-
-<!-- TODO: Check on way that courts are 'gathered'? -->
 <!-- TODO: Check on way that docket numbers are 'gathered'? -->
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
-| **Court1 Name, Court2 Name** - names of all courts | courts | courts | courts.gather |
 | **123456, 654321** - list of all docket numbers | docket_numbers | docket_numbers | docket_numbers |
 | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** - one or more phone numbers of 1st parent | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | - |
 | **First M. Last** of every user | users | users | users.gather() |
@@ -221,9 +226,7 @@ Some [reserved words](#reserved-words) that are just in DOCX files.
 | **Firstname1, Firstname2, or Firstname3** - the 1st names of all the children joined with 'or'. Works for a single child too. | children.familiar_or() | - |
 | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** - one or more numbers of 1st parent | parents[0].phone_numbers() | - |
 
-:::info
-You can do more with `a_date.format()`. See [the docassemble DADateTime documentation](https://docassemble.org/docs/objects.html#DADateTime)
-:::
+For more about `.format()`, see [the docassemble DADateTime documentation](https://docassemble.org/docs/objects.html#DADateTime)
 
 ## Definitions
 

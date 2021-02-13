@@ -1,7 +1,7 @@
 ---
 id: content_style_guide
-title: Content and Plain Language Style Guide for Interviews
-sidebar_label: Content Style Guide
+title: Content and plain language style guide for interviews
+sidebar_label: Content style guide
 slug: /content_and_plain_language_style_guide
 ---
 
