@@ -90,10 +90,10 @@ For a boolean value, use a word or phrase that you can answer with yes or no. Th
 
 Use a plural word for a list of things, and a singular word for one thing. **Examples:** `children`, `child`
 
-### Docassemble Projects/Packages: [PascalCase](#pascalcase)
+### Docassemble Projects and Packages: [PascalCase](#pascalcase)
 
-* docassemble packages (which are python packages) are required to be PascalCase.
 * Each Project has to have a unique name, different from all other Project names.
+* Your Package name doesn't have to be the same as your Project name. A Package's name should be the name of the form for which you are making the interview, but using [PascalCase](#pascalcase).
 
 ## Definitions
 
