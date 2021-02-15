@@ -5,7 +5,7 @@ sidebar_label: Add labels and variables
 slug: /label_variables
 ---
 
-To save time and effort later, use naming convension in your PDFs and DOCXs that the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will understand.
+To save time and effort later, use the naming conventions in your PDFs and DOCXs that the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will understand.
 
 Note that these are just the words that the ALWeaver knows. They help you generate your starting code. They are just a subset of the variables in the AssemblyLine library. 
 
