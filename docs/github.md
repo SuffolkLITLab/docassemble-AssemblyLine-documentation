@@ -166,17 +166,16 @@ A docassemble **Package** bundles code, metadata, dependencies, and your PDF’s
 Also see docassemble docs about [pushing a Package to GitHub by committing](https://docassemble.org/docs/packages.html#github) and [about Packages in general](https://docassemble.org/docs/packages.html).
 
 :::caution
-Sometimes docassemble will not create a new repository on GitHub. If you give the Package the name of a Package that is already in either your repository or in the repository of one of your organizations, docassemble will try to push to that repository instead of creating a new repository. There is currently no way to avoid this.
+Sometimes docassemble will not create a new repository on GitHub. If your Package name matches the name of a Package that is already in your GitHub repository or in a repository of an organization you belong to, docassemble will try to push to that repository instead of creating a new repository.
+
+In most cases, you will get a "merge conflict" error when this happens.
 :::
 
 **Summary**
 1. Go to "Playground" > "Folders" > "Packages".
-1. Give your new Package a name
-
-<!-- Rationale: AssemblyLine-specific (good practice) instructions are included here. -->
-
-1. [Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to.
-1. Once in the Playground, tap “Folder” then “Packages”
+1. Give your new Package a name.
+1. Save it.
+1. Commit to GitHub.
 
 <!-- TODO: use pic where project name is different than form name. -->
 <!-- TODO: Advanced note: If you make changes to the files or re-upload your PDF or DOCX to your Templates folder, as long as you use the same name, everything updates by itself. If you change the name, you will need to select that file in here again.  -->
@@ -185,45 +184,54 @@ Sometimes docassemble will not create a new repository on GitHub. If you give th
 <!-- TODO: Add... caution?: Never hit “Install”. Leave it alone. -->
 <!-- TODO: Add advanced: One convention for commit messages is to write them as if they were an item in a todo list. **Example:** “Fix #19, update income question” - start with a verb (link to committing and to issues sections) -->
 
-3. Use the form name to name your Package. Use [the Project naming rules](name_formats.md#docassemble-projects-and-packages-pascalcase). Note that the full GitHub repository name will be “docassemble-” plus this name. **Example:** Marriage without Delay form is named “MarriageWithoutDelay”.
-1. Add a description of what the form is
-1. Scroll down to the boxes further down the page. Use cmd/ctrl + click to select the YAML files you want to have in your repository. For example, we would select your_new_project.yml
-1. Select the template file you want in your repository (the PDF or DOCX)
-1. Scroll down to the bottom and tap Save
-1. Once your package saves and the page reloads, the GitHub button will appear near the Save button
-1. Tap GitHub
-1. Commit message - tell the group what you are doing. A common first commit message is “Initial commit”.
-1. Click ‘Commit’.
-1. Look at the bottom of the Package screen again. Just above the ‘Github’ button will be links to your new repository. One link may say ‘published on GitHub. That is a link to the repository for this Package.
+**Details**
 
-See the [docassemble docs on pushing your package to GitHub by committing](https://docassemble.org/docs/packages.html#github)
+[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. Once in the Playground, tap “Folder” then “Packages”
+![Open the Packages folder](./assets/da_playground_folders_packages.png)
+
+[Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. **Example:** The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
+![Name the Package](./assets/da_package_name.png)
+
+Scroll down to the boxes further down the page. Use cmd/ctrl + click to select the YAML files and documents you want to have in your repository. For example, here we would select plaintiff_s_motion_to_modify.yml and plaintiff_s_motion_to_modify.pdf.
+![Select your files](./assets/da_package_select_files.png)
+
+Scroll down to the bottom and tap Save.
+![Select your files](./assets/da_package_save.png)
+
+If you have [configured your GitHub account](#connect-github-to-your-docassemble-account), once your package saves and the page reloads the GitHub button will appear near the Save button. Tap GitHub.
+![Tap the GitHub button](./assets/da_package_github_button.png)
+
+You **must** write a message describing what this commit is for. Usually it sums up the purpose of the changes you have made to the code. This is the first commit message, though, and a common first commit message is "Initial commit". When your message is ready, tap "Commit".
+![Tap the GitHub button](./assets/da_package_commit_message_and_button)
+
+Look at the bottom of the Package screen again. Just above the Github button will be links to your new repository.
+![Tap the GitHub button](./assets/da_package_links_to_github)
+
+You can also read the [docassemble docs on pushing your package to GitHub by committing](https://docassemble.org/docs/packages.html#github)
 
 ### Transfer ownership to your organziation
 
-After transferring, You will still be able to access it/change it/edit it afterwards. Your organization might need to [give permissions](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization) to other people who need to work on the code.
+After the repository's ownership is transferred, only people who have permissions in your organization will be able to work on the code. Your organization can [give people permissions through GitHub](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization).
 
-1. [Transfer ownership of your repository to your organization](https://docs.github.com/en/github/administering-a-repository/transferring-a-repository).
-
-:::caution
-**Complications**
-If you get a pink error message that says you don't have permissions, you have not been added as a member of the GitHub organization. See how to [join your organization](#join_your_organization).
-
-![Cannot transfer repo](./assets/github_cannot_transfer.png)
-:::
+Read the GitHub docs on [transfering ownership of your repository](https://docs.github.com/en/github/administering-a-repository/transferring-a-repository#transferring-a-repository-owned-by-your-user-account).
 
 <!-- TODO: Transferring before divorcing a fork from upstream will cause an error -->
 
-2. If your organization has teams, pick which teams can have access to this repository.
-
+If your organization has teams, pick which teams can have access to this repository.
 ![Transfer to teams](./assets/github_transfer_to_team.png)
 
-3. Check your organization's GitHub page to make sure your project appears there.
-1. Give the administrator the new link to the repository and ask them to [give the rest of the team permissions on it](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository).
+Check your organization's GitHub page to make sure your project appears there. You may have to ask give the administrator the new link to the repository and ask them to [give the rest of the team permissions on it](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository).
 
+:::caution
+If you get a pink error message that says you don't have permissions, you have not been [added as a member of that GitHub organization](#join_your_organization).
+![Cannot transfer repo](./assets/github_cannot_transfer.png)
+:::
+
+<!-- Bookmark 12_github -->
 
 ### Making issues
 
-Keywords: Tasks/todo lists, bugs, features, documentation, review, milestone
+Keywords: Tasks, todo lists, bugs, features, documentation, review, milestones
 
 <!-- TODO: Add link to maturity model -->
 
@@ -258,7 +266,7 @@ A branch can be for just one commit.
 1. In the branches dropdown, select `New Branch`
 1. Give the branch a [snake_case](name_formats.md#snake-case) name. There are no other requirements.
 
-:::note
+:::note Requires more bandwidth
 A branch name reminds you and your collaborators, at a glance, what topic, problem, of feature the branch is for. 1-3 words separated by underscores is usually a good guideline. **Example:** `income_questions` or `income_calculations`
  
 **More advanced:** Include the issue number and type of goal of the branch. **Example:** `116_fix_income_calculations` or `42_feature_deductables`.
