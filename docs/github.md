@@ -1,7 +1,7 @@
 ---
 id: github
-title: Sharing Code Through Github
-sidebar_label: Github
+title: Using Github with docassemble
+sidebar_label: Github tutorials
 slug: /github
 ---
 

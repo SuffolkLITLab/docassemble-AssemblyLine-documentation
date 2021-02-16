@@ -1,16 +1,11 @@
 ---
 id: yaml_anatomy
-title: The Anatomy of an ALWeaver Generated YAML File
-sidebar_label: Anatomy of the YAML
+title: The parts of an ALWeaver generated YAML file
+sidebar_label: View the generated code
 slug: /generated_yaml
 ---
 
-:::note
-- [Use the weaver to generate code](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
-- [See the GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
-:::
-
-The code [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) generates is just a starting point. It uses the [labels and variables you added to your templates](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
+The code [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) generates is just a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
 
 Through that code, you can also see examples of [docassemble](https://docassemble.org) features you can use other places.
 
@@ -42,9 +37,11 @@ metadata:
 
 
 ## AssemblyLine metadata
-Leave this block as it is if possible. This code block always gets run. The values of these variables affect how your code will work.
+<!-- This might not get done in time, so better to have nothing than something confusing. -->
 
-Some of these variables just hold useful data for possible use in the future. Some are used by your code or the AssemblyLine code.
+<!-- Leave this block as it is if possible. This code block always gets run. The values of these variables affect how your code will work. -->
+
+<!-- Some of these variables be used in the future to help with stuff. Some are used by your code or the AssemblyLine code. -->
 
 1. `title`, `short title`, `description`, `original_form`, and `categories` allow your organization's site to show more information about your form and to organize your forms more easily.
 1. `allowed courts`: Currently used by MassAccess, we may develop this further. It can allow your code to decide which courts to let the user pick from when they need to pick their court.
@@ -248,7 +245,7 @@ Leave this block as it is if possible. Prepares to use this document in the `ALD
 :::info
 What ALDocument does:
 1. Usually you need to attachment blocks for a PDF - a preview without a signature and the final document with a signature. ALDocument takes care of that for you.
-1. It lets you combine files in different ways easily. For example, when sending a packet to the court you might want to add a cover page, but when sending one to the client you might want to include an instruciton sheet instead.
+1. It lets you combine files in different ways easily. For example, when sending a packet to the court you might want to add a cover page, but when sending one to the client you might want to include an instruction sheet instead.
 :::
 
 <!-- 

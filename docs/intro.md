@@ -1,7 +1,7 @@
 ---
 id: intro
 title: The docassemble AssemblyLine Project
-sidebar_label: Intro
+sidebar_label: About
 slug: /
 ---
 

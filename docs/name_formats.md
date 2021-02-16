@@ -8,7 +8,7 @@ slug: /naming
 In programming languages (and sometimes in computer files and names in general),
 there are a lot of different rules that could be used to name different things like files
 and variables. When working in a large team, choosing consistent conventions for naming these
-things makes reading and writing code easier. At the Assembly Line project, we've settled on
+things makes reading and writing code easier. At the AssemblyLine project, we've settled on
 several conventions:
 
 1. [`snake_case`](#snake_case)
