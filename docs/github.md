@@ -82,8 +82,32 @@ Once the server is done you can return to the Playground using the menu under yo
 
 ![Return to Playground from GitHub integrations](./assets/da_dropdown_github_to_playground.png)
 
+### Make issues
 
-## New form
+Keywords: Tasks, todo lists, bugs, features, documentation, milestones
+
+<!-- TODO: Add link to maturity model? -->
+
+#### When to make an issue
+
+You can make an issue to:
+1. Document a decision. It is useful to include who was involved in the discussion and why that decision was made. Some example decisions might be about language choices, question-type, order, and flow. When new people come to work on the form we don’t want to duplicate work that’s already been done or to re-interrogate old decisions without the context of why they were made.
+1. Add a new task. For example, problems that needs to be researched or programmed. Research could involve consulting a specific SME (subject matter expert) and you, or someone commenting on the issue, could note their name.
+1. Categorize and organize tasks. For example, MVP items, version 2 improvements, and bugs.
+
+Give all the links possible! All context!
+
+#### What to do with issues
+
+See the GitHub docs about:
+1. [Making an issue](https://docs.github.com/en/github/managing-your-work-on-github/creating-an-issue).
+1. [Assigning the task to yourself or another member](https://docs.github.com/en/github/managing-your-work-on-github/assigning-issues-and-pull-requests-to-other-github-users).
+1. [Adding labels](https://docs.github.com/en/github/managing-your-work-on-github/managing-labels).
+1. [Creating milestones](https://docs.github.com/en/github/managing-your-work-on-github/creating-and-editing-milestones-for-issues-and-pull-requests).
+1. [Adding a milestone to an issue](https://docs.github.com/en/github/managing-your-work-on-github/associating-milestones-with-issues-and-pull-requests) (you can only have one milestone one per issue).
+
+
+## New forms
 
 ### Go to the Playground
 ![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
@@ -252,23 +276,6 @@ If you get a pink error message that says you don't have permissions, you have n
 :::
 
 <!-- Bookmark 12_github -->
-
-### Making issues
-
-Keywords: Tasks, todo lists, bugs, features, documentation, review, milestones
-
-<!-- TODO: Add link to maturity model -->
-
-Quick reference: [Make an issue](https://docs.github.com/en/github/managing-your-work-on-github/creating-an-issue) and <a href="https://docs.github.com/en/github/managing-your-work-on-github/managing-labels">add labels if appropriate</a>. If you know who will work on it, <a href="https://docs.github.com/en/github/managing-your-work-on-github/assigning-issues-and-pull-requests-to-other-github-users">assign them to the issue</a>. <a href="https://docs.github.com/en/github/managing-your-work-on-github/creating-and-editing-milestones-for-issues-and-pull-requests">Create milestones</a>, like MVP, and <a href="https://docs.github.com/en/github/managing-your-work-on-github/associating-milestones-with-issues-and-pull-requests">add them to issues</a>.
-
-**In an issue, we want:**
-
-1. Documentation of decisions and why they were made (language choices, question-type/order/flow decisions, …) and who was involved in the discussion. When different people work on the form, we don’t want to duplicate work that’s already been done or to re-interrogate old ground/rationales without the context.
-1. Everything that still needs to be researched, answered, done to move this forward, items for MVP (minimum viable product), and potential post-MVP improvements: 
-1. Open questions, what needs SME (subject matter expert) consultation, who to talk to
-1. Concrete things to change
-
-Give all the links possible! All context!
 
 ## Sharing new edits to your code
 
