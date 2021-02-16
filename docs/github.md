@@ -62,19 +62,24 @@ These are some thing GitHub lets you do and why you might want them.
 
 **Details**
 
-Open docassemble  and select “Profle”from the drop down menu
+Open docassemble  and select “Profle”from the drop down menu.
+
 ![Open your profile from the sign-in dropdown menu in the top right](./assets/da_dropdown_profile.png)
 
 Tap “Other Settings” and then “GitHub integration” from the drop down menu.
+
 ![Navigate to GitHub the integrations page](./assets/da_settings_github_integration.png)
 
 Tap “Configure”.
+
 ![Tap 'Configure' on the GitHub integrations page](./assets/da_settings_github_integration.png)
 
 Tap to authorize your docassemble server on GitHub. It will restart the server.
+
 ![Authorize docassemble](./assets/da_github_authorize.png)
 
 Once the server is done you can return to the Playground using the menu under your email address.
+
 ![Return to Playground from GitHub integrations](./assets/da_dropdown_github_to_playground.png)
 
 
@@ -102,17 +107,21 @@ Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packa
 **Details**
 
 In the Playground, tap the top left dropdown and select "Manage Projects".
+
 ![Navigate to "Manage Projects"](./assets/da_playground_manage_projects.png)
 
 Make a new Project and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
+
 ![Create a new Project](./assets/da_projects_new.png)
 
 ![Name a new Project](./assets/da_project_new_project_name.png)
 
 Tap your new Project's name.
+
 ![Open a Project](./assets/da_projects_open.png)
 
 The Playground will open the Project with a default "test.yml" file. Either [add a new file](#create-a-new-yaml-file) or upload your generated `.yml` file by tapping "Upload".
+
 ![Upload a YAML file in the Playground](./assets/da_playground_upload_yaml.png)
 
 [Create your Package and push it to GitHub](#create-a-new-repository).
@@ -123,13 +132,16 @@ The Playground will open the Project with a default "test.yml" file. Either [add
 
 **Details**
 
-[Go to the Playground](go-to-the-playground) and tap "Add".
+[Go to the Playground](#go-to-the-playground) and tap "Add".
+
 ![Tap "Add"](./assets/da_playground_add.png)
 
 Give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake-case) and add some text to the file. Even `---` is enough. Then save the file.
+
 ![Name and save the file](./assets/da_playground_save.png)
 
 Your save options should change below the code area to indicate the save was successful.
+
 ![The editor buttons change once the file has been saved once](./assets/da_playground_after_save.png)
 
 ### Upload a YAML file
@@ -146,18 +158,21 @@ See the docassemble docs about [uploading template files](https://docassemble.or
 
 **Details**
 
-[Go to the Playground](go-to-the-playground) and make sure you're in the right Project.
+[Go to the Playground](#go-to-the-playground) and make sure you're in the right Project.
+
 ![Check your Project's name](./assets/da_project_new_playground.png)
 
 Tap “Folders” and then “Templates”.
+
 ![Open the Templates folder](./assets/da_playground_folders_templates.png)
 
 Your file will be in the list below of available templates.
+
 ![Open the Templates folder](./assets/da_templates_list.png)
 
 
 ### Create a new repository
-aka. Create a new Package, commit/upload a new Package to GitHub for the first time.
+aka. Create a new Package, commit or upload a new Package to GitHub for the first time.
 
 This is about creating a brand new Package from new files. If you are creating a new Package from the files of an old Package, we hope to develop a section for that in the future.
 
@@ -186,26 +201,33 @@ In most cases, you will get a "merge conflict" error when this happens.
 
 **Details**
 
-[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. Once in the Playground, tap “Folder” then “Packages”
+[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. Once in the Playground, tap “Folder” then “Packages”.
+
 ![Open the Packages folder](./assets/da_playground_folders_packages.png)
 
 [Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. **Example:** The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
+
 ![Name the Package](./assets/da_package_name.png)
 
 Scroll down to the boxes further down the page. Use cmd/ctrl + click to select the YAML files and documents you want to have in your repository. For example, here we would select plaintiff_s_motion_to_modify.yml and plaintiff_s_motion_to_modify.pdf.
+
 ![Select your files](./assets/da_package_select_files.png)
 
 Scroll down to the bottom and tap Save.
+
 ![Select your files](./assets/da_package_save.png)
 
 If you have [configured your GitHub account](#connect-github-to-your-docassemble-account), once your package saves and the page reloads the GitHub button will appear near the Save button. Tap GitHub.
+
 ![Tap the GitHub button](./assets/da_package_github_button.png)
 
 You **must** write a message describing what this commit is for. Usually it sums up the purpose of the changes you have made to the code. This is the first commit message, though, and a common first commit message is "Initial commit". When your message is ready, tap "Commit".
-![Tap the GitHub button](./assets/da_package_commit_message_and_button)
+
+![Tap the GitHub button](./assets/da_package_commit_message_and_button.png)
 
 Look at the bottom of the Package screen again. Just above the Github button will be links to your new repository.
-![Tap the GitHub button](./assets/da_package_links_to_github)
+
+![Tap the GitHub button](./assets/da_package_links_to_github.png)
 
 You can also read the [docassemble docs on pushing your package to GitHub by committing](https://docassemble.org/docs/packages.html#github)
 
@@ -218,12 +240,14 @@ Read the GitHub docs on [transfering ownership of your repository](https://docs.
 <!-- TODO: Transferring before divorcing a fork from upstream will cause an error -->
 
 If your organization has teams, pick which teams can have access to this repository.
+
 ![Transfer to teams](./assets/github_transfer_to_team.png)
 
 Check your organization's GitHub page to make sure your project appears there. You may have to ask give the administrator the new link to the repository and ask them to [give the rest of the team permissions on it](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository).
 
 :::caution
 If you get a pink error message that says you don't have permissions, you have not been [added as a member of that GitHub organization](#join_your_organization).
+
 ![Cannot transfer repo](./assets/github_cannot_transfer.png)
 :::
 
