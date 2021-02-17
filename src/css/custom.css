@@ -47,6 +47,12 @@
   margin-bottom: calc( 2 * var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading) );
 }
 
+.markdown>h4,
+.markdown>h5,
+.markdown>h6 {
+    margin-top: calc(4 * var(--ifm-heading-vertical-rhythm-top) * var(--ifm-leading));
+}
+
 img {
   border: 2px solid var(--ifm-color-secondary);
   border-radius: 3px;
