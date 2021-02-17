@@ -14,7 +14,7 @@ GitHub lets you collaborate with your team more easily, helps other people help 
 
 These are some thing GitHub lets you do and why you might want them.
 
-### Branches and commits
+### Why: branches and commits
 * Avoid introducing breaking changes to the working code.
 * Work on multiple features/changes at the same time, keeping each isolated from the others. Either collaborators can work that way or one individual and isolate specific issues to work on.
 * Try implementing a feature multiple different ways.
@@ -22,14 +22,14 @@ These are some thing GitHub lets you do and why you might want them.
 * Clearly see what has changed between versions of your code when you lose track.
 * Get reviews/tests from other people to make sure code is working before adding it to the main/master working branch.
 
-### [Issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues)
+### Why: [issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues)
 * Track tasks that need doing and add context to them.
 * Track decisions that have been made.
 * Search the tasks when looking for relevant information.
 * Assign tasks to specific people.
 * See the tasks that were assigned to you specifically.
 
-### Community
+### Why: community
 * People with more experience can pull your code in more easily to experiment with it and troubleshoot more effectively.
 * When your time on the project is over, other people can take up the code to continue developing it.
 
