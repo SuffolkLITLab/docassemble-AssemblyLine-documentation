@@ -5,6 +5,8 @@ sidebar_label: View the generated code
 slug: /generated_yaml
 ---
 
+🚧 This page is very much under construction as of 02/17/2021 as we develop the weaver's capabilities. 🚧
+
 The code [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) generates is just a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
 
 Through that code, you can also see examples of [docassemble](https://docassemble.org) features you can use other places.
