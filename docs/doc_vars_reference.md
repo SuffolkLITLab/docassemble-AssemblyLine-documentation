@@ -21,7 +21,7 @@ Words that the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblyline
 
 If you want to add your own, see [the section below](#custom-people)
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - name of the 1st user | user | user[0] | user[0] |
 | **First M. Last** - name of the 1st other party | other_party | other_parties[0] | other_parties[0] |
@@ -44,12 +44,16 @@ If you want to add your own, see [the section below](#custom-people)
 | **First M. Last** - name of the 1st interested party | interested_party | interested_parties[0] | interested_parties[0] |
 
 ### Custom people
-If you use a word with [person-like suffixes](#people-suffixes), the weaver will try to recognize it. It will ask you if you want to turn that into a list of people.
+If you use a word with [person-like suffixes](#people-suffixes), the weaver will try to recognize it. It will ask you if you want to turn that into a list of people. In a DOCX, the word you use needs to be plural. In the PDF, making the word plural is a good idea, but is not required.
+
+| Document output format | PDF label | DOCX or attachment block | Interview order |
+|:-|:-|:-|:-|
+| **01001** - zipcode of the 1st blue person | <strong>blue_people2</strong>_address_zip | <strong>blue_people[1]</strong>.address.zip | blue_people[1].address.address |
 
 ### Other reserved words
 Other words the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know.
 
-| Use case | Document output format | PDF label | Attachment | Interview order |
+| Use case | Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|:-|
 | name of the court | **Court Name** | trial_court | trial_court | trial_court |
 | 1st docket number |**123456** | docket_number | docket_numbers[0] | docket_numbers[0] |
@@ -73,7 +77,7 @@ For PDFs specifically. When two otherwise identical labels in a PDF end in `_yes
 **Example:**
 `is_minor_yes` and `is_minor_no`
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | Minor 'Yes' checkbox is checked or blank | is_minor_yes | "is_minor_yes": ${ is_minor is True } | is_minor |
 | Minor 'No' checkbox is checked or blank | is_minor_no | "is_minor_no": ${ is_minor is not True } | is_minor |
@@ -81,7 +85,7 @@ For PDFs specifically. When two otherwise identical labels in a PDF end in `_yes
 ### People suffixes
 <!-- These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's parent. -->
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - name of the 1st parent | parent<strong>_name</strong> | parents[0]<strong>.name</strong> | parents<strong>.gather()</strong> |
 | **First M. Last** - name of the 1st parent | parent<strong>_name_full</strong> | parents[0]<strong>.name</strong> | parents<strong>.gather()</strong> |
@@ -139,7 +143,7 @@ Docassemble resources:
 1. [Other things to do with individuals](https://docassemble.org/docs/objects.html#Individual)
 
 ### Court
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **Court name** - name of the court | trial_court | trial_court | trial_court |
 | **County name** - county of the court | trial_court<strong>_county</strong> | trial_court<strong>.address.county</strong> | trial_court<strong>.address.address</strong> |
@@ -160,7 +164,7 @@ You can do the below for any reserved word  on the page. You can also use these 
 ### Multiple items of one category
 For example, when there are multiple children.
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - name of the 2nd parent | parent<strong>2</strong>_name | parents<strong>[1]</strong>.name | parents.gather() |
 | **14** - age of the 3rd child | child<strong>3</strong>_age | children<strong>[2]</strong>.age | children<strong>[2]</strong>.age |
@@ -174,7 +178,7 @@ In a PDF you **have** to use a **unique label** for every field. See below for h
 
 When docassemble reads PDFs, each field should have a **unique label**. That means if you need to put a plaintiff's name in multiple places on the form, you need to add two underscores (`__`) and a number to the end of the label each time. **Example:** `plaintiff__1` and `plaintiff__2`.
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - 1st appearance of name of 1st plaintiff | plaintiff<strong>__1</strong> | plaintiffs[0].gather() | plaintiffs[0].name |
 | **First M. Last** - 2nd appearance of name of 1st plaintiff | plaintiff<strong>__2</strong> | plaintiffs[0].gather() | plaintiffs[0].name |
@@ -184,7 +188,7 @@ List all the plaintiffs, all the docket numbers, etc. All [people words](#people
 
 <!-- TODO: Check on way that docket numbers are 'gathered'? -->
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **123456, 654321** - list of all docket numbers | docket_numbers | docket_numbers | docket_numbers |
 | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** - one or more phone numbers of 1st parent | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | - |
@@ -211,7 +215,7 @@ List all the plaintiffs, all the docket numbers, etc. All [people words](#people
 ## Combining
 You can combine the methods on this page in many ways. Here are some examples
 
-| Document output format | PDF label | Attachment | Interview order |
+| Document output format | PDF label | DOCX or attachment block | Interview order |
 |:-|:-|:-|:-|
 | **First M. Last** - 1st appearance of the name of the 2nd parent | parent<strong>2</strong>_name<strong>__1</strong> | parents<strong>[1]</strong> | parents.gather() |
 | **First M. Last** - 2nd appearance of the name of the 2nd parent | parent<strong>2</strong>_name<strong>__2</strong> | parents<strong>[1]</strong> | parents.gather() |
