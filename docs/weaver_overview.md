@@ -13,7 +13,7 @@ If you have [prepared your PDF or DOCX using certain conventions](doc_vars_refer
 
 To generate the starter code:
 1. If you have a PDF, [add labels to it](doc_vars_reference.md)
-1. [Go to the weaver's page](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
+1. [Go to the weaver's page](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1)
 1. Upload your PDF or DOCX
 1. Select the field type of each field (e.g. text, date, checkbox)
 1. Give labels to the individual question fields that the user will see

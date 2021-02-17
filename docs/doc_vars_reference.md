@@ -5,7 +5,7 @@ sidebar_label: Add labels and variables
 slug: /label_variables
 ---
 
-To save time and effort later, use the naming conventions in your PDFs and DOCXs that the [AssemblyLine Weaver interview code generator](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will understand.
+To save time and effort later, use the naming conventions in your PDFs and DOCXs that the [AssemblyLine Weaver interview code generator](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will understand.
 
 Note that these are just the words that the ALWeaver knows. They help you generate your starting code. They are just a subset of the variables in the AssemblyLine library. 
 
@@ -17,7 +17,7 @@ Note that these are just the words that the ALWeaver knows. They help you genera
 <!-- TODO: put in overview Objects can be things like people or a court (trial_court). -->
 
 ### People Prefixes
-Words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know are people.
+Words that the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know are people.
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
@@ -43,7 +43,7 @@ Words that the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewiz
 
 
 ### Other reserved words
-Other words the [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know.
+Other words the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know.
 
 | Use case | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|:-|
@@ -231,4 +231,4 @@ For more about `.format()`, see [the docassemble DADateTime documentation](https
 ## Definitions
 
 ### Reserved words
-AssemblyLine's [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) has some specific words that it knows to look for so it can help make your work easier. Those **reserved words** are listed here.
+AssemblyLine's [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) has some specific words that it knows to look for so it can help make your work easier. Those **reserved words** are listed here.
