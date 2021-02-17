@@ -27,13 +27,13 @@ If you are finding this page after February 18th, 2021, be sure to watch the vid
 
 Read:
 
-1. If you are unfamiliar with the Assembly Line project, please give the [intro page](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/) a look
+1. If you are unfamiliar with the Assembly Line project, please give the [intro page](/docs) a look
 1. Read over this short [introduction to Docassemble](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
 1. And if you want more context, consider reading [what should you use Docassemble for?](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/practical-guide-docassemble)
 
 Do:
 
-After signing up, you should have recievd invites to our docassemble server (https://apps-dev.suffolklitlab.org) and [our MS TEAMS group](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412).
+After signing up, you should have received invites to our docassemble server (https://apps-dev.suffolklitlab.org) and [our MS TEAMS group](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412).
 
 1. Confirm that you can access the docassemble server and your developer account at https://apps-dev.suffolklitlab.org
 1. Confirm that you can access the [Suffolk LIT Lab Teams group](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412)
@@ -44,12 +44,14 @@ After signing up, you should have recievd invites to our docassemble server (htt
 _After this session has run, a video will be made available here._
 
 Resources from the session:
-* [Labeling PDF variables](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/pdfs)
-* [Naming Variables Quick Reference](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/label_variables)
+
+* [Labeling PDF variables](pdfs)
+* [Naming Variables Quick Reference](label_variables)
 * [The LIST taxonomy](https://taxonomy.legal/)
-* [Runing templates through the Weaver](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/generating_code)
+* [Running templates through the Weaver](generating_code)
 
 Homework:
+
 * Label and run your own PDF or Word file through the weaver
 
 ### Week 2: Using Trello, Editing your interview file. 2/25/2021
