@@ -27,7 +27,7 @@ If you are finding this page after February 18th, 2021, be sure to watch the vid
 
 Read:
 
-1. If you are unfamiliar with the Assembly Line project, please give the [intro page](/docs) a look
+1. If you are unfamiliar with the Assembly Line project, please give the [intro page](intro.md) a look
 1. Read over this short [introduction to Docassemble](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
 1. And if you want more context, consider reading [what should you use Docassemble for?](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/practical-guide-docassemble)
 
@@ -45,10 +45,10 @@ _After this session has run, a video will be made available here._
 
 Resources from the session:
 
-* [Labeling PDF variables](pdfs)
-* [Naming Variables Quick Reference](label_variables)
+* [Labeling PDF variables](pdfs.md)
+* [Naming Variables Quick Reference](doc_vars_reference.md)
 * [The LIST taxonomy](https://taxonomy.legal/)
-* [Running templates through the Weaver](generating_code)
+* [Running templates through the Weaver](weaver_overview.md)
 
 Homework:
 
