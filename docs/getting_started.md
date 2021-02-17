@@ -12,6 +12,8 @@ How do you develop and deploy court forms effectively? This is what has worked f
 Much of the documentation on this site is meant as reference material to support a developer as they work through the [step-by-step process](https://trello.com/c/uRD0ZIOc/1-form-name-type-of-law) this project has found useful.
 
 ## Summary
+These steps will be filled out as we fill out this documentation.
+
 1. Set up the system for your organization
    1. Create a docassemble server
    1. Configure the server
