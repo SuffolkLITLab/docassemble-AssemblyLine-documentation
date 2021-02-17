@@ -34,8 +34,6 @@ Also, when a user is completing multiple forms at the same time, if all these na
 
 Please contact us if you think we missed a commonly used field name that we might add to these automated names.
 
-If you have more questions, please ask us in the Slack channel.
-
 ## Field labels: The basics
 
 To make label names, we stich together bits of words with meanings. We do that in English too - there are `lamp`s and there's the color `red`. We put those together to describe a `red lamp`. In our labels, that might look a bit more like `lamp_red`. We might call `lamp` a prefix and `red` a suffix, though that kind of language might get complicated if we get into things like `lamp_red_tall`.
@@ -224,7 +222,7 @@ Some things you really need to do or it will be very hard to write code for the 
 
 1. Field names **must start with a letter or underscore** (`_`) - not a number or anything else.
 1. Field names can only include **letters, numbers, and underscores**. No spaces or any other character.
-1. When you run across a large area that gives room for writing a paragraph, make sure it's one big field. If it's divided into multiple lines, put a message about it in its trello card or on the Slack #assembly-line channel.
+1. When you run across a large area that gives room for writing a paragraph, make sure it's one big field.
 
 <!-- Check this previous one carefully. I'm not sure I understood what was meant. -->
 <!-- 1. Keep the length of variable names under 79 characters (unlikely you'll reach this limit, but just to be specific). -->

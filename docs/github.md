@@ -375,7 +375,7 @@ aka. Merging your code, combining code, making a PR, a pull request, a merge req
 1. Then tap "Create pull request 
    1. Once you've created the pull request, tap Reviewers.
    1. Add the GitHub username of your team member who will test your work to make sure it's working as intended (review).
-   1. Message the person you've made the reviewer in Slack to let them know you've assigned them as a reviewer.
+   1. Message the person you've made the reviewer to let them know you've assigned them as a reviewer.
 
 ### Reviewing someone else's code
 (WIP)
