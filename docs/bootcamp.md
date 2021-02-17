@@ -39,7 +39,7 @@ After signing up, you should have recievd invites to our docassemble server (htt
 1. Confirm that you can access the [Suffolk LIT Lab Teams group](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412)
 1. **Optional:** Work through this [Hello, World](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world) exercise making use of your developer account. NOTE: this may be challenging for those of you without prior programing experience. You will **NOT** be behind if you can't do it all on your own. Use the [#coding-help](https://teams.microsoft.com/l/channel/19%3ae16e9e9701a5445ea4035b5cb776a4cc%40thread.tacv2/coding-help?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412) channel on Teams if you are stuck and want help.
 
-### Week 1: Introduction and getting started using the Assembly Line automated interview generator, 2/18/2021
+### Week 1: Introduction and getting started using the Assembly Line interview Weaver, 2/18/2021
 
 _After this session has run, a video will be made available here._
 
