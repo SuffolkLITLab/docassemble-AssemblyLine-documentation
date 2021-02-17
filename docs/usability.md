@@ -7,31 +7,29 @@ slug: /content_and_plain_language_guide
 
 <!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->
 
-## Plain language and readability
-
+## Readability
+Readability and plain language.
 
 ### Use sentence case, not Title Case for page headings
 
-Title case capitalizes each word in a sentence. It is harder to read and not idiomatic for websites.
-
+`Sentence case` only capitalizes the first word while `Title Case` capitalizes each word in a sentence. `Sentence case` is easier to read and most websites use it.
 
 ### Only use all capital letters for acronyms
 
 For example, the Department of Children and Families (DCF), Transitional Assistance for Families and Dependent Children (TAFDC). 
 
-
-### Use bold for emphasis. Do not use italics, underlines, or all capital letters
+### Use bold for emphasis. Avoid underlines, italics, or all capital letters
 
 Bold text is easy to identify and read.
-Italics are hard to read. Capital letters are similarly difficult to read. When you are on a webpage, underlines should always mean a link to a new page.
 
+When you are on a webpage, underlines should always mean a link to a new page. Italics are hard to read. Capital letters are similarly difficult to read.
 
 ### Write in active voice, not passive voice
+It can be a difficult concept to describe, but this convention can be very helpful.
 
-[https://writingcenter.ashford.edu/active-vs-passive-voice](https://writingcenter.ashford.edu/active-vs-passive-voice)
+Below, you can see a summary of some useful articulations found in [this article about the topic from the University of Arizona writing center](https://writingcenter.uagc.edu/active-vs-passive-voice).
 
-This is the part I find most useful: **What are some tips to locate and avoid passive voice?**
-
+#### Tips to locate and avoid passive voice?
 **Does it make sense?**
 
 If you can say the subject, action, and object in the order they appear in the sentence and it makes sense, you have written in active voice. For instance, you can say “Sally drove car” [re: Sally drove the car off the cliff] and can understand the meaning. However, if you say “Car driven Sally” [re: The car was driven off the cliff by Sally] it does not make sense; this scenario would indicate that you wrote the sentence in passive voice.
@@ -44,70 +42,68 @@ For example, “by Sally” or “by the dog” might be a sign that the sentenc
 
 Look for words like is, was, were, are, or been. These words might signal passive voice.
 
+### Write out “or” rather than using `/` to separate related concepts or and/or
+Avoid “and/or” all together. Avoid  this Janus-faced term. It can often be replaced by "and" or "or" with no loss in meaning.
 
-### Write out the word “or” rather than using a / to separate related concepts or and/or.
+If you think the "and/or" concept is important in a sentence, use this format instead: "Option one **or** option 2 **or** both." For example, use "Take a sleeping pill **or** a warm drink, **or** both." Do think about other possibilities. For example, "Take a sleeping pill, maybe with a warm drink."
 
-Avoid “and/or” all together. Avoid  this Janus-faced term. It can often be replaced by and or or with no loss in meaning. Where it seems needed {take a sleeping pill and/or a warm drink}, try . . . or . . . , or both {take a sleeping pill or a warm drink, or both}. But think of other possibilities {take a sleeping pill, perhaps with a warm drink}. [Chicago Manual of Style](https://www.chicagomanualofstyle.org/book/ed17/part2/ch05/psec250.html)
-
+You can read more in the [Chicago Manual of Style](https://www.chicagomanualofstyle.org/book/ed17/part2/ch05/psec250.html)
 
 ### Other than the “question” field, use headings sparingly and appropriately
-
 For screen readers, we need to keep heading levels consistent and in the appropriate priority order on the screen. (level 1, 2, etc)
 
 In general we have 2 levels of priority for text: the **question** text which is heading level 2. Then the **subquestion** text which is usually not formatted with any headings. If you use any headings inside the **subquestion**, make sure they are only heading level 3 or smaller. Avoid using headings in the subquestion unless absolutely necessary to group a large amount of text.
 
-
 ### Keep headings short
-
 A heading should only be about one line of text on the screen.
 
 
 ### Keep text short in general
-
-Some users struggle to read large amounts of text on the screen. Keep the text short and to the point. You can add additional information with help buttons.
+Some users struggle to read large amounts of text on the screen. Keep the text short and to the point. You can add more information with [help buttons](#help-buttons).
 
 
 ### Avoid using ‘please’
-
-Omit the word “please” when asking for information.
-
-“Describe” instead of “Please describe”.
+Omit the word “please” when asking for information. For example, use “Describe” instead of “Please describe”.
 
 
 ### Use “need” not “want” when referring to the protections or relief the plaintiff requests
-
 When someone goes to court it’s because they **need** something, not want it. The word “need” is more empowering.
 
 
 ### Avoid adverbs, especially intensifiers, where possible (e.g. ‘very’)
-
 Intensifiers weaken instead of strengthen our arguments. Use facts to persuade instead.
 
-See: [https://sites.utexas.edu/legalwriting/2017/01/17/intensifiers-part-2-replace-and-specify/](https://sites.utexas.edu/legalwriting/2017/01/17/intensifiers-part-2-replace-and-specify/) 
+See [https://sites.utexas.edu/legalwriting/2017/01/17/intensifiers-part-2-replace-and-specify/](https://sites.utexas.edu/legalwriting/2017/01/17/intensifiers-part-2-replace-and-specify/) 
 
 
 ### Avoid contractions (can’t, don’t)
-
 Write out the words instead, like “cannot” or “do not”.
 
 
 ### Avoid idioms (‘get the hang of it’, ‘sit tight’)
-
 Other examples: Up in the air, on the ball, rule of thumb.
 
 
 ### Use simple words
+See [the United States government's table showing how to simplify words](https://plainlanguage.gov/guidelines/words/use-simple-words-phrases/)
 
-[https://plainlanguage.gov/guidelines/words/use-simple-words-phrases/](https://plainlanguage.gov/guidelines/words/use-simple-words-phrases/) (there are other useful sections on the left)
+Below is a shortened version of the list. Whenever it is possible, replace the words in the left column with the words in the right column.
 
+| Replace this | Use this |
+|:-|:-|
+| obtain | get |
+| receive | get |
+| whether | if |
+| such as | like |
+| provide | give |
+| assist | help |
 
 ### Say what to do. Avoid saying what not to do.
-
 It is usually easier to understand rules as a positive rather than a negative.
 
-Examples
+Examples:
 
-**Stay away from:** Be careful not to leave information out of your description.
+**Avoid:** Be careful not to leave information out of your description.
 
 **Use:** Use lots of details in your description.
 
@@ -118,9 +114,9 @@ A compound question asks the user to answer more than one thing in the same ques
 
 Examples:
 
-**Stay away from: **Do you currently have a case in the Probate and Family Court or are you planning to file one?
+**Avoid:** Do you currently have a case in the Probate and Family Court or are you planning to file one?
 
-**Consider: **Tell us about your cases \
+**Consider:** Tell us about your cases
 
 - [ ] I have a case in the Probate and Family Court now.
 
@@ -175,9 +171,6 @@ When you give the user a list of options that requires them to make a choice, gi
 
 
 ### Make sms messages separate from email messages
-
-
-
 1. SMS messages function better when they are short with short urls.
 
     SMS has a character limit per message and it will “page” (create a new message) ones that are too long. Assume one message to be 160 characters long (https://www.twilio.com/docs/glossary/what-sms-character-limit). That works well on some phones, but not others. All the messages will get there, but sometimes in the wrong order and might break the URL into parts.
@@ -189,27 +182,17 @@ When you give the user a list of options that requires them to make a choice, gi
 
 
 ## Other content resources
-
-How to write [good legal stuff](https://www.law.indiana.edu/instruction/tanford/web/reference/how2writegood.pdf)
-
-Readable [Info Sheet](https://www.masslegalservices.org/system/files/library/Create%20a%20Readable%20Info%20Sheet%20in%206%20Steps.pdf)
-
-
-
-Make it Readable [cheat sheet](https://cheatography.com/stevem/cheat-sheets/make-it-readable/)
-[UK.gov](http://uk.gov/) style guide - [online](https://www.gov.uk/guidance/content-design/writing-for-gov-uk#date-ranges)
-
-En rules or em dashes ([google search](https://www.google.com/search?client=safari&rls=en&q=en+rules+or+em+dashes&ie=UTF-8&oe=UTF-8) for this)
-
-Mass Legal Services [page](https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) w/ info Caroline wrote
-
-MailChimp [style guide](https://styleguide.mailchimp.com/word-list/)
-
-[Gerunds and Participles](https://www.geist.com/writers/writers-toolbox/gerunds-and-participles-avoid-ing-words/): Avoiding -ING words
+* How to write [good legal stuff](https://www.law.indiana.edu/instruction/tanford/web/reference/how2writegood.pdf)
+* Readable [Info Sheet](https://www.masslegalservices.org/system/files/library/Create%20a%20Readable%20Info%20Sheet%20in%206%20Steps.pdf)
+* Make it Readable [cheat sheet](https://cheatography.com/stevem/cheat-sheets/make-it-readable/)
+* [UK.gov](http://uk.gov/) style guide - [online](https://www.gov.uk/guidance/content-design/writing-for-gov-uk#date-ranges)
+* En rules or em dashes ([google search](https://www.google.com/search?client=safari&rls=en&q=en+rules+or+em+dashes&ie=UTF-8&oe=UTF-8) for this)
+* Mass Legal Services [page](https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) w/ info Caroline wrote
+* MailChimp [style guide](https://styleguide.mailchimp.com/word-list/)
+* [Gerunds and Participles](https://www.geist.com/writers/writers-toolbox/gerunds-and-participles-avoid-ing-words/): Avoiding -ING words
 
 
 ## Choosing the right interview interface elements
-
 
 ### Radio buttons vs dropdown menus
 
@@ -217,16 +200,14 @@ Prefer radio buttons when the user always needs to interact with it, unless ther
 
 Keep drop down menus when the interface would be cluttered and especially if the information in the drop-down menu is optional and part of a long list of fields that need to be grouped on the same screen.
 
-An example of a drop-down menu that’s acceptable is for name.suffix. This isn’t interacted with often and is an optional field. Using radio buttons could be visually busy with minor benefits.
+An example of a drop-down menu that’s acceptable is for the suffix of a name, like Jr. or III. This isn’t interacted with often and is an optional field. Using radio buttons could be visually busy with minor benefits.
 
 
 ### Buttons vs Next
 
-We have chosen to use one-click buttons for yes/no when it’s appropriate to ask only one question on a screen rather than yes/no/radio with a “next” button. Although this is inconsistent, it is easier to interact with on a mobile phone. Worth revisiting with user testing.
-
+We have chosen to use one-click buttons (`yesno`) for questions that can only be answered with "yes" or "no" when it’s appropriate to ask only one question on a screen rather than radio buttons (`datatype: yesnoradio`) that are combined with a “next” button. Although this is inconsistent, it is easier to interact with on a mobile phone. Worth revisiting with user testing.
 
 ### Collecting items in a list
-
 
 #### Guiding Principles
 
@@ -268,7 +249,9 @@ Help text is any form of just-in-time explanation that assists a user with provi
 **Avoid giving a treatise and asking the user of the interview to learn a rule and apply it** to their own facts; instead, ask purely factual questions and apply the rule for the user whenever possible.
 
 
-#### Green Text / terms
+#### Defined terms
+
+Terms are green text on the page that the user can click on to read more.
 
 ![Terms that have explanations show up as green text](./assets/green_text_terms.png)
 
@@ -276,12 +259,14 @@ Help text is any form of just-in-time explanation that assists a user with provi
 
 Docassemble’s “terms” feature allows you to click on a word and receive help in a small popup.
 
-Pros: it is unobtrusive and easy to use. You can still view the other text on the screen so the answer appears in context. 
+**Pros:** it is unobtrusive and easy to use. You can still view the other text on the screen so the answer appears in context. 
 
-Cons: you can only fit a small amount of text. It is not immediately clear that the text is clickable. It should not be used for critical information.
+**Cons:** it can only fit a small amount of text. It is not immediately clear that the text is clickable. It should not be used for critical information.
 
 
-#### Green Button / help button
+#### Help buttons
+
+Help buttons are green buttons at the bottom of the page.
 
 ![Help button](./assets/help_button.png)
 ![Help screen](./assets/help_screen.png)
@@ -290,9 +275,9 @@ Cons: you can only fit a small amount of text. It is not immediately clear that 
 
 The screen-specific “help” button is modal and the label can be customized. When you click on the button, it takes you to a separate screen. You click “Back” to return to the page content.
 
-Pros: it is highly discoverable. It is clearly an interface element you can click on to interact with. You can view a large amount of text at one time without distraction.
+**Pros:** it is highly discoverable. It is clearly an interface element you can click on to interact with. You can view a large amount of text at one time without distraction.
 
-Cons: it is modal. This removes the surrounding context on the screen. The user needs to remember their question while viewing the help text.
+**Cons:** it is modal. This removes the surrounding context on the screen. The user needs to remember their question while viewing the help text.
 
 Help button labels should be in the form of a question.
 
