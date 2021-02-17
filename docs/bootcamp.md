@@ -9,46 +9,54 @@ slug: /bootcamp
 [Sign up for the bootcamp here!](https://forms.office.com/Pages/ResponsePage.aspx?id=qT9zeA5UuE6_KXPE7rY0Ep29qeo5z4ZGjzDlWqnZjHVUNzlCSVdVU0NWVDRQMVU1OFlBNVA3V1EwNCQlQCN0PWcu)
 :::
 
+## Goals
+
+This bootcamp aims to bring you up to speed on the Document Assembly Line Project. It will do this by helping you start to automate a form of your choosing and introducing you to a number of Assembly Line tools and practices. By the end of the bootcamp, you should feel comfortable participating in discussions with other members of the team about your work and how to troubleshoot issues you are facing.
+
 ## Meeting times
 
-Thursday February 18th, February 25th, March 4th, March 11th from 11 AM EST-1 PM EST.
+Thursdays @ 11am-1pm Eastern: February 18th, February 25th, March 4th, and March 11th, 2021.
 
-You can join at [this zoom link](https://suffolk.zoom.us/j/96015143827); it'll be the same for all of the above times.
-The password is in your calendar invite: if you haven't received one yet, reach out to us on [Teams](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412)!
+Each bootcamp meeting will be at [this Zoom link](https://suffolk.zoom.us/j/96015143827). If you signed up at the link above, you should have received the Zoom link and the password in a calendar invite. If you haven't received an invite or you haven't signed up, email "mass access at suffolk dot edu."
+
+If you are finding this page after February 18th, 2021, be sure to watch the videos for past sessions below before joining the next live session.
 
 ## Outline of course
 
 ### Week 0
 
-Before you join the bootcamp, you should join our server, which is 
-https://apps-dev.suffolklitlab.org. You will receive an invitation; if not,
-just register and request to be elevated. Note this is only a resource available
-to registered participants in our bootcamp. It is not a public docassemble server.
-
 Read:
 
-1. [About the project](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/)
-1. [Introduction to Docassemble](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
-1. [What should you use Docassemble for?](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/practical-guide-docassemble)
+1. If you are unfamiliar with the Assembly Line project, please give the [intro page](intro.md) a look
+1. Read over this short [introduction to Docassemble](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
+1. And if you want more context, consider reading [what should you use Docassemble for?](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/practical-guide-docassemble)
 
 Do:
 
-1. Make sure you are signed up for an account at https://apps-dev.suffolklitlab.org
-1. Make sure you are signed up to the [Suffolk LIT Lab Teams](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412) server.
-1. Work through the [Hello, World](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world) exercise. NOTE: this may be challenging for some to do independently. You won't be behind if you can't do it all on your own. Still feel free to join us on February 18th. The work on February 18th will be independent.
+After signing up, you should have received invites to our docassemble server (https://apps-dev.suffolklitlab.org) and [our MS TEAMS group](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412).
 
-Use the [#coding-help](https://teams.microsoft.com/l/channel/19%3ae16e9e9701a5445ea4035b5cb776a4cc%40thread.tacv2/coding-help?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412) channel on Teams if you are stuck and want help.
+1. Confirm that you can access the docassemble server and your developer account at https://apps-dev.suffolklitlab.org
+1. Confirm that you can access the [Suffolk LIT Lab Teams group](https://teams.microsoft.com/l/channel/19%3a143ac652e7f1494aacda1f6793b21ccc%40thread.tacv2/bootcamp?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412)
+1. **Optional:** Work through this [Hello, World](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world) exercise making use of your developer account. NOTE: this may be challenging for those of you without prior programing experience. You will **NOT** be behind if you can't do it all on your own. Use the [#coding-help](https://teams.microsoft.com/l/channel/19%3ae16e9e9701a5445ea4035b5cb776a4cc%40thread.tacv2/coding-help?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412) channel on Teams if you are stuck and want help.
 
-### Week 1: Introduction and getting started using the Assembly Line automated interview generator, 2/18/2021
+### Week 1: Introduction and getting started using the Assembly Line interview Weaver, 2/18/2021
 
-* Introduction
-* How to label a PDF or Word document
-* Introduction to LIST taxonomy
-* How to run a template through the wizard
+_After this session has run, a video will be made available here._
 
-Homework: work on your own PDF or Word file.
+Resources from the session:
+
+* [Labeling PDF variables](pdfs.md)
+* [Naming Variables Quick Reference](doc_vars_reference.md)
+* [The LIST taxonomy](https://taxonomy.legal/)
+* [Running templates through the Weaver](weaver_overview.md)
+
+Homework:
+
+* Label and run your own PDF or Word file through the weaver
 
 ### Week 2: Using Trello, Editing your interview file. 2/25/2021
+
+_After this session has run, a video will be made available here._
 
 * Explaining the Trello board and checklists
 * Editing your interview file
@@ -64,14 +72,18 @@ additional questions.
 
 ### Week 3: Using Github, Customizing Branding. 3/4/2021
 
+_After this session has run, a video will be made available here._
+
 * Using Github in Docassemble
-* Customzing basic branding
+* Customizing basic branding
     * Logo
     * Intro screen
     * Pushing changes to Github
 * Practice time and live help in breakout rooms
 
 ### Week 4: Advanced Docassemble, Installing the backend
+
+_After this session has run, a video will be made available here._
 
 * Introduction to the docassemble.Income class
 * Working with tables and repeated data
@@ -80,4 +92,4 @@ additional questions.
     * Creating short links
     * The index page
 
-Stay tuned for more details about our upcoming bootcamp.
+

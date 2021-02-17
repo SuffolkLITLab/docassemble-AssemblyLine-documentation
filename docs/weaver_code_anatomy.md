@@ -1,16 +1,11 @@
 ---
 id: yaml_anatomy
-title: The Anatomy of an ALWeaver Generated YAML File
-sidebar_label: Anatomy of the YAML
+title: The parts of an ALWeaver generated YAML file
+sidebar_label: View the generated code
 slug: /generated_yaml
 ---
 
-:::note
-- [Use the weaver to generate code](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1)
-- [See the GitHub repository](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
-:::
-
-The code [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) generates is just a starting point. It uses the [labels and variables you added to your templates](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
+The code [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) generates is just a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses the AssemblyLine library.
 
 Through that code, you can also see examples of [docassemble](https://docassemble.org) features you can use other places.
 
@@ -42,9 +37,11 @@ metadata:
 
 
 ## AssemblyLine metadata
-Leave this block as it is if possible. This code block always gets run. The values of these variables affect how your code will work.
+<!-- This might not get done in time, so better to have nothing than something confusing. -->
 
-Some of these variables just hold useful data for possible use in the future. Some are used by your code or the AssemblyLine code.
+<!-- Leave this block as it is if possible. This code block always gets run. The values of these variables affect how your code will work. -->
+
+<!-- Some of these variables be used in the future to help with stuff. Some are used by your code or the AssemblyLine code. -->
 
 1. `title`, `short title`, `description`, `original_form`, and `categories` allow your organization's site to show more information about your form and to organize your forms more easily.
 1. `allowed courts`: Currently used by MassAccess, we may develop this further. It can allow your code to decide which courts to let the user pick from when they need to pick their court.
@@ -153,7 +150,7 @@ code: |
 There is some AssemblyLine code that comes after your own custom interview order code. You will probably leave this code alone as well:
 
 1. `set_parts(subtitle=str(users))` adds to the information a logged in user will listed for this interview in their list of interviews. For an attorney, they should see the name of their clients. For a self representant litigant, they should see their name.
-1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/assembly_line/#/1&new_session=1) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
+1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
 1. `signature_date` is needed on every form that we know of.
 1. You should be very thoughtful when you use `store_variables_snapshot()`. It lets you gather data about how your form is being used. Care must be taken to anonymize it. Just removing a name is not sufficient.
 1. `a_258e_motion_for_impoundment_preview_question` will trigger [the preview screen](#preview).
@@ -248,7 +245,7 @@ Leave this block as it is if possible. Prepares to use this document in the `ALD
 :::info
 What ALDocument does:
 1. Usually you need to attachment blocks for a PDF - a preview without a signature and the final document with a signature. ALDocument takes care of that for you.
-1. It lets you combine files in different ways easily. For example, when sending a packet to the court you might want to add a cover page, but when sending one to the client you might want to include an instruciton sheet instead.
+1. It lets you combine files in different ways easily. For example, when sending a packet to the court you might want to add a cover page, but when sending one to the client you might want to include an instruction sheet instead.
 :::
 
 <!-- 

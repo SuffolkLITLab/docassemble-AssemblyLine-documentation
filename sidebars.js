@@ -6,11 +6,11 @@ module.exports = {
     'name_formats',
     {
       type: 'category',
-      label: 'PDFs and DOCXs',
+      label: 'Generate Code',
       items: [
+        'alweaver_overview',
         'pdfs',
         'document_variables_reference',
-        'alweaver_overview',
         'yaml_anatomy',
       ],
     },

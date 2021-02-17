@@ -1,7 +1,7 @@
 ---
 id: github
-title: Sharing Code Through GitHub
-sidebar_label: GitHub
+title: Using Github with docassemble
+sidebar_label: Github tutorials
 slug: /github
 ---
 <!-- original: https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit -->

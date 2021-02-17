@@ -1,11 +1,15 @@
 ---
 id: getting_started
-title: Getting Started
-sidebar_label: Getting Started
+title: Getting started
+sidebar_label: Getting started
 slug: /getting_started
 ---
 
-How do you develop and deploy effectively? This is what has worked for us. Adjust it when you need to. We'd love to hear about the changes you make!
+<!-- TODO: Add link to someplace to give feedback or some kind of forum. -->
+
+How do you develop and deploy court forms effectively? This is what has worked for us. Adjust it when you need to. We'd love to hear about the changes you make for your organization!
+
+Much of the documentation on this site is meant as reference material to support a developer as they work through the [step-by-step process](https://trello.com/c/uRD0ZIOc/1-form-name-type-of-law) this project has found useful.
 
 ## Summary
 1. Set up the system for your organization
@@ -27,7 +31,7 @@ How do you develop and deploy effectively? This is what has worked for us. Adjus
    1. Write tests for and test the interview
    1. Deploy the interview
 
-Below are some techniques and knowledge we have found useful for starting the development of a form.
+Below are some general techniques and knowledge we have found useful for starting the development of a form.
 
 ## Stick to an MVP
 **MVP:** Minimum viable product - first make something that works. 
