@@ -13,11 +13,13 @@ Note that these are just the words that the ALWeaver knows. They help you genera
 - [A fully labeled PDF](./assets/generic_motion_family_law.pdf)
 - [The DOCX version of the same motion](./assets/generic_motion_family_law.docx)
 
-## Prefixes: [Reserved words](#reserved-words) for objects
+## Prefixes: [reserved words](#reserved-words) for objects
 <!-- TODO: put in overview Objects can be things like people or a court (trial_court). -->
 
-### People Prefixes
+### People prefixes
 Words that the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know are people.
+
+If you want to add your own, see [the section below](#custom-people)
 
 | Document output format | PDF label | Attachment | Interview order |
 |:-|:-|:-|:-|
@@ -41,6 +43,8 @@ Words that the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblyline
 | **First M. Last** - name of the 1st decedent | decedent | decedents[0] | decedents[0] |
 | **First M. Last** - name of the 1st interested party | interested_party | interested_parties[0] | interested_parties[0] |
 
+### Custom people
+If you use a word with [person-like suffixes](#people-suffixes), the weaver will try to recognize it. It will ask you if you want to turn that into a list of people.
 
 ### Other reserved words
 Other words the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically know.
@@ -51,7 +55,7 @@ Other words the [ALWeaver](https://apps-test.suffolklitlab.org/start/assemblylin
 | 1st docket number |**123456** | docket_number | docket_numbers[0] | docket_numbers[0] |
 | Date that the user signs the form | **February 4, 2021** | signature_date | signature_date | signature_date |
 
-## Suffixes: [Reserved words](#reserved-words) for attributes
+## Suffixes: [reserved words](#reserved-words) for attributes
 
 <!-- TODO: Double check an example county name -->
 <!-- TODO: Come up with a second address for the mailing address? -->
@@ -74,7 +78,7 @@ For PDFs specifically. When two otherwise identical labels in a PDF end in `_yes
 | Minor 'Yes' checkbox is checked or blank | is_minor_yes | "is_minor_yes": ${ is_minor is True } | is_minor |
 | Minor 'No' checkbox is checked or blank | is_minor_no | "is_minor_no": ${ is_minor is not True } | is_minor |
 
-### People Suffixes
+### People suffixes
 <!-- These are attributes of people or things. One attribute of a `parent` might be their `birthdate`. In the table below, imagine we need information about someone's parent. -->
 
 | Document output format | PDF label | Attachment | Interview order |
