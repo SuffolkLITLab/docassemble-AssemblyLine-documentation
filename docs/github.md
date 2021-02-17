@@ -62,15 +62,15 @@ These are some thing GitHub lets you do and why you might want them.
 
 **Details**
 
-Open docassemble  and select “Profle”from the drop down menu.
+Open docassemble  and select "Profle"from the drop down menu.
 
 ![Open your profile from the sign-in dropdown menu in the top right](./assets/da_dropdown_profile.png)
 
-Tap “Other Settings” and then “GitHub integration” from the drop down menu.
+Tap "Other Settings" and then "GitHub integration" from the drop down menu.
 
 ![Navigate to GitHub the integrations page](./assets/da_settings_github_integration.png)
 
-Tap “Configure”.
+Tap "Configure".
 
 ![Tap 'Configure' on the GitHub integrations page](./assets/da_settings_github_integration.png)
 
@@ -91,7 +91,7 @@ Keywords: Tasks, todo lists, bugs, features, documentation, milestones
 #### When to make an issue
 
 You can make an issue to:
-1. Document a decision. It is useful to include who was involved in the discussion and why that decision was made. Some example decisions might be about language choices, question-type, order, and flow. When new people come to work on the form we don’t want to duplicate work that’s already been done or to re-interrogate old decisions without the context of why they were made.
+1. Document a decision. It is useful to include who was involved in the discussion and why that decision was made. Some example decisions might be about language choices, question-type, order, and flow. When new people come to work on the form we don't want to duplicate work that's already been done or to re-interrogate old decisions without the context of why they were made.
 1. Add a new task. For example, problems that needs to be researched or programmed. Research could involve consulting a specific SME (subject matter expert) and you, or someone commenting on the issue, could note their name.
 1. Categorize and organize tasks. For example, MVP items, version 2 improvements, and bugs.
 
@@ -186,7 +186,7 @@ See the docassemble docs about [uploading template files](https://docassemble.or
 
 ![Check your Project's name](./assets/da_project_new_playground.png)
 
-Tap “Folders” and then “Templates”.
+Tap "Folders" and then "Templates".
 
 ![Open the Templates folder](./assets/da_playground_folders_templates.png)
 
@@ -200,7 +200,7 @@ aka. Create a new Package, commit or upload a new Package to GitHub for the firs
 
 This is about creating a brand new Package from new files. If you are creating a new Package from the files of an old Package, we hope to develop a section for that in the future.
 
-A docassemble **Package** bundles code, metadata, dependencies, and your PDF’s or DOCX files into one place for you and others to access. You get to pick and choose the files that you want to go into that particular Package.
+A docassemble **Package** bundles code, metadata, dependencies, and your PDF's or DOCX files into one place for you and others to access. You get to pick and choose the files that you want to go into that particular Package.
 
 Also see docassemble docs about [pushing a Package to GitHub by committing](https://docassemble.org/docs/packages.html#github) and [about Packages in general](https://docassemble.org/docs/packages.html).
 
@@ -219,13 +219,13 @@ In most cases, you will get a "merge conflict" error when this happens.
 <!-- TODO: use pic where project name is different than form name. -->
 <!-- TODO: Advanced note: If you make changes to the files or re-upload your PDF or DOCX to your Templates folder, as long as you use the same name, everything updates by itself. If you change the name, you will need to select that file in here again.  -->
 <!-- Advanced note: A good commit message also helps you find your place when you need look back through your code -->
-<!-- TODO: Add... note?: Avoid the “install package” checkbox. Leave it alone. -->
-<!-- TODO: Add... caution?: Never hit “Install”. Leave it alone. -->
-<!-- TODO: Add advanced: One convention for commit messages is to write them as if they were an item in a todo list. **Example:** “Fix #19, update income question” - start with a verb (link to committing and to issues sections) -->
+<!-- TODO: Add... note?: Avoid the "install package" checkbox. Leave it alone. -->
+<!-- TODO: Add... caution?: Never hit "Install". Leave it alone. -->
+<!-- TODO: Add advanced: One convention for commit messages is to write them as if they were an item in a todo list. **Example:** "Fix #19, update income question" - start with a verb (link to committing and to issues sections) -->
 
 **Details**
 
-[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. Once in the Playground, tap “Folder” then “Packages”.
+[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. Once in the Playground, tap "Folder" then "Packages".
 
 ![Open the Packages folder](./assets/da_playground_folders_packages.png)
 
@@ -277,7 +277,7 @@ If you get a pink error message that says you don't have permissions, you have n
 
 ## Sharing new edits to your code
 
-You **will** make mistakes. You will accidentally include changes you didn’t mean to include or push to the wrong branch. The great thing is that you can’t break things permanently. GitHub uses `git` and that's what it's for. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
+You **will** make mistakes. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` and that's what it's for. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
 
 ### Making a new branch for a new goal or bug fix
 
@@ -307,24 +307,24 @@ A commit message describes the specific changes you just made that are working t
 <!-- TODO: Add link to making branches off of branches from within docassemble? (add section) -->
 <!-- TODO: Link to definition of 'base branch' -->
 
-<!-- You can also make a branch off of *that* new branch if you want. There’s nothing special about the main branch. They’re all just branches. You pull from `some_branch`, edit code, then ‘commit’ to a ‘New branch’ we’ll call `yet_another_branch` and you’ve done it. `some_branch` is now the **base** branch of `yet_another_branch`. -->
+<!-- You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`. -->
 
 #### Branches vs. commits
 **Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
 
 **Commits** should encapsulate one particular action in a branch. One commit might be adding one question or getting one part of the code working, even if other parts still need some work. Together, individual commits add up to the complete feature. A commit might fix typos, improve readability of the first three questions, or add the question about debt.
 
-<!-- Here’s where we left off. This is the code we pushed in our first commit.  -->
+<!-- Here's where we left off. This is the code we pushed in our first commit.  -->
 <!-- 
 :::note
 Our convention for formatting: All lowercase alphanumeric separated by underscores.
 
-One convention for branch names: They’re to remind you and your collaborators basically what it’s for at a glance, so one to three words separated by underscores is usually a good guideline. **Example:** income_questions or income_calculations.
+One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. **Example:** income_questions or income_calculations.
 
-**More advanced:** The  issue number and type of action you’re doing and. **Example:** 116_fix_income_calculations or 42_feature_deductables.
+**More advanced:** The  issue number and type of action you're doing and. **Example:** 116_fix_income_calculations or 42_feature_deductables.
 :::
 
-*This is an example of creating a new branch that relates to an “issue” created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
+*This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
  -->
 <!-- A similar  message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
 
@@ -332,15 +332,15 @@ One convention for branch names: They’re to remind you and your collaborators 
 
 aka. Savepoints, saving your progress, bookmark where your code is at right now.
 
-After you’ve made a new branch, you can commit to it until you’re done with your goal/feature or bug fix.
+After you've made a new branch, you can commit to it until you're done with your goal/feature or bug fix.
 
 :::tip
-**COMMIT EARLY AND OFTEN** (bears repeating). GitHub can’t help you if you don’t use it.
+**COMMIT EARLY AND OFTEN** (bears repeating). GitHub can't help you if you don't use it.
 :::
 
 **When to commit**
 
-When you first start, create a daily alarm in your phone to commit all code that you haven’t yet committed that day.
+When you first start, create a daily alarm in your phone to commit all code that you haven't yet committed that day.
 
 In general, you commit working code. You might also commit broken code to make it easier for other people to help you. You can make a new branch for broken code if you want to keep one branch for working code only.
 
@@ -348,14 +348,14 @@ In general, you commit working code. You might also commit broken code to make i
 1. Folders > Packages > GitHub
 1. In the branches dropdown, select the branch you want to add your changes to.
 1. Commit message: Describe what your commit does (see below for more guidance)
-1. Tap ‘Commit’
+1. Tap 'Commit'
 1. See your **commit** on GitHub!
 
 <!-- TODO: Add the below back in when we have images as the GitHub docs on this currently do not show something useful (https://docs.github.com/en/github/committing-changes-to-your-project/differences-between-commit-views):
 
 If you want, you can see them one at a time and see very clearly what changes you made so you can make sure they were the changes you wanted. -->
 
-<!-- **Most important:** It doesn’t actually matter what you put here. It can be more useful or less useful. You just have to put something here. -->
+<!-- **Most important:** It doesn't actually matter what you put here. It can be more useful or less useful. You just have to put something here. -->
 
 One convention for commit messages: Write it as if it were a todo list item. When you look back on your list of commits you should be able to construct a todo list of what needed to get done. If commits need to get peeled back, these might help you recover the tasks that need doing. **Example:** Update court codes
 
@@ -363,36 +363,36 @@ One convention for commit messages: Write it as if it were a todo list item. Whe
 
 aka. Merging your code, combining code, making a PR, a pull request, a merge request.
 
-<!-- 1. If you tap “2 branches” (it won’t always be ‘2’) and you will see all branches committed to the repository. -->
+<!-- 1. If you tap "2 branches" (it won't always be '2') and you will see all branches committed to the repository. -->
 <!-- Here is the one we committed.  -->
 
 1. In GitHub, go to the 'Pull requests' tab
-1. Tap “New pull request” 
+1. Tap "New pull request" 
 1. Give it a title that sums up what the changes accomplished
 1. In the description [add a checklist](https://docs.github.com/en/github/managing-your-work-on-github/about-task-lists#creating-task-lists) of things the reviewer needs to check or test
-1. If this PR is related to an issue, use ‘#’ and then the issue number in the description and GitHub will make a link to that issue automatically. **Example:** #23
+1. If this PR is related to an issue, use '#' and then the issue number in the description and GitHub will make a link to that issue automatically. **Example:** #23
 1. Explain to the reviewer what they need to test
-1. Then tap “Create pull request 
-   1. Once you’ve created the pull request, tap Reviewers.
-   1. Add the GitHub username of your team member who will test your work to make sure it’s working as intended (review).
-   1. Message the person you’ve made the reviewer in Slack to let them know you’ve assigned them as a reviewer.
+1. Then tap "Create pull request 
+   1. Once you've created the pull request, tap Reviewers.
+   1. Add the GitHub username of your team member who will test your work to make sure it's working as intended (review).
+   1. Message the person you've made the reviewer in Slack to let them know you've assigned them as a reviewer.
 
-### Reviewing someone else’s code
+### Reviewing someone else's code
 (WIP)
 
-Don’t let pull requests hang around too long. Other code will get edited and merge conflicts will crop up.
+Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up.
 
 You must test the code. The requester should have left notes on what needs to be tested in the description of the pull request (PR).
 
 1. [Pull the code](#get-github-code-into-your-playground) into a [new Project](#create-a-new-project) in your Playground
 1. Test the behavior that is affected by the changes in their code or
 1. If it works as expected
-  1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select ‘Approve’
+  1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select 'Approve'
   1. Merge their branch
   1. Depending on your agreed upon practices, delete the branch. Near the bottom of the pull request, click Delete branch.
 1. If it does not work as expected
   1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing
-  1. Select ‘Request Changes’
+  1. Select 'Request Changes'
   1. Let the requester know about your review
 1. [Delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review
 
@@ -403,106 +403,106 @@ Sometimes it can help to look at the pull request (PR) [file comparison tab](htt
 <!-- TODO: Add pictures -->
 :::note
 1. You can [make comments connected to specific lines of code](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
-1. If you have write permissions on the repository, you can make a pull request with someone’s branch even if they’re not there.
+1. If you have write permissions on the repository, you can make a pull request with someone's branch even if they're not there.
 :::
 
 ### Get GitHub code into your Playground
 
-aka. Uploading your code to the Playground, uploading someone else’s code to the Playground, reviewing, pulling, getting your old code back, seeing someone else’s code, working on someone else’s code
+aka. Uploading your code to the Playground, uploading someone else's code to the Playground, reviewing, pulling, getting your old code back, seeing someone else's code, working on someone else's code
    
   
 :::warning
-**WARNING:** All the files in the repository will replace files of the same name in this Project. Imagine being on your computer, copying a bunch of files to a folder, and getting the message “This file already exists in this folder. Do you want to replace it?”. It’s the same thing, but docassemble doesn’t give you that warning.
+**WARNING:** All the files in the repository will replace files of the same name in this Project. Imagine being on your computer, copying a bunch of files to a folder, and getting the message "This file already exists in this folder. Do you want to replace it?". It's the same thing, but docassemble doesn't give you that warning.
 :::
 
 1. Make a new Project
 1. Go to your Playground then Folders > Packages
-1. In the menu of blue text at the top, tap ‘Pull’
+1. In the menu of blue text at the top, tap 'Pull'
 1. Get the web address (url) of the repository you want to get the code from (need example) \
 1. Pick the branch you want to pull from
-1. Tap ‘Pull’
+1. Tap 'Pull'
 1. Go back to your Playground and play! That is, test the functionality in the interview that the code could affect.
 
 
-**Once you’ve made a new project**
+**Once you've made a new project**
 
 1. In your new Project, select Folders, then Packages.
-1. In the menu at the top, tap “Pull”
+1. In the menu at the top, tap "Pull"
 1. Grab the URL from GitHub for the repository you are pulling from.
 1. Back in docassemble, paste the URL where it asks for the GitHub URL
-1. Drop down the menu for GitHub Branch and select the branch you are going to review. Here we are reviewing a branch called “Teammate Code”
-1. Tap “Pull”
-1. Return to the Playground and you should see the code you’ve pulled in.
+1. Drop down the menu for GitHub Branch and select the branch you are going to review. Here we are reviewing a branch called "Teammate Code"
+1. Tap "Pull"
+1. Return to the Playground and you should see the code you've pulled in.
 1. The .yml file will hopefully be something other than test as it is here, you will see updates or new code, indicated here by the squiggly 1. bracket.
-1. “Save and Run” this code, test it for what your teammate has been working on in this section.
+1. "Save and Run" this code, test it for what your teammate has been working on in this section.
 
 ### Combining code - accepting changes
 
-aka. Merging/merge, pulling/pull, adding someone else’s changes to your code
+aka. Merging/merge, pulling/pull, adding someone else's changes to your code
 
 1. That person should have made a pull request with their branch.
 1. Test their code.
-1. Optional, but decent practice: In GitHub, leave a review message and approval, or ask for changes (in the ‘files changed’ tab). (bandwidth: add 1. comments on lines)
-1. If you approve of it, hit ‘Merge pull request’ at the bottom of the ‘conversations’ tab.
-1. Hit ‘Confirm merge’ finish.
+1. Optional, but decent practice: In GitHub, leave a review message and approval, or ask for changes (in the 'files changed' tab). (bandwidth: add 1. comments on lines)
+1. If you approve of it, hit 'Merge pull request' at the bottom of the 'conversations' tab.
+1. Hit 'Confirm merge' finish.
 1. You or they should delete their branch.
 1. You and they should delete the Playground Project you created for the branch.
 
-In your GitHub repository, tap “Pull request”
+In your GitHub repository, tap "Pull request"
 
-You will see a list of pull request for the repository, tap on the one you’ve finished testing.
+You will see a list of pull request for the repository, tap on the one you've finished testing.
 
-<!-- Here the pull request is “Add examples in questions” -->
+<!-- Here the pull request is "Add examples in questions" -->
 
-A screen similar to this will appear, you can tap “Files changed” to do a review of what in the code was changed.
+A screen similar to this will appear, you can tap "Files changed" to do a review of what in the code was changed.
 
 This is a side by side comparison of the code.  
 
-Tap “Review changes”
+Tap "Review changes"
 
 Provide information in the review.
 
-If you are not ready to merge the code because you have a question or hesitation, select “Comment”.
+If you are not ready to merge the code because you have a question or hesitation, select "Comment".
 
-If the code is working and looks good, it is ready to merge and select “Approve”.
+If the code is working and looks good, it is ready to merge and select "Approve".
 
-If you found an error or think something needs to change before merging, select “Request changes” 
+If you found an error or think something needs to change before merging, select "Request changes" 
 
-Tap “Submit review”
+Tap "Submit review"
 
-If you’ve approved the code, move forward in the steps.
+If you've approved the code, move forward in the steps.
 
 Finishing your review will automatically move you back to the Conversation tab seen here.
 
 If you are ready to merge: 
 
-Mid way on the screen is the “Merge pull request” option 
+Mid way on the screen is the "Merge pull request" option 
 
 Tap it.
 
 To make sure, it asks again.
 
-Tap “Confirm merge” 
+Tap "Confirm merge" 
 
-The box, once a green icon is now purple, and you’ve successfully merged the pull request.
+The box, once a green icon is now purple, and you've successfully merged the pull request.
 
-You will end up with tons of branches and forget what is what. Once its merged tap “Delete branch.”
+You will end up with tons of branches and forget what is what. Once its merged tap "Delete branch."
 
 You will see a message similar to this once complete.
 
 The final step is to delete the Project in the Dev App.
 
-### ‘Merge conflicts’ when combining code
+### 'Merge conflicts' when combining code
 
 aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches
 
 Two kinds of merge conflicts
 
-1. GitHub allows you to ‘resolve’ the conflict:
+1. GitHub allows you to 'resolve' the conflict:
    1. Use a [diff checker](https://www.diffchecker.com/) (difference checker) to show you the differences between the conflicting files.
    1. Use the GitHub interface to - carefully - edit code or (maybe better) follow the procedure outlined below for situations where GitHub does not offer this option.
    1. Upload to your repository and test whatever could be affected by the changed code (for example, email sending if the changed code influenced emails, even if your code was working on just a new question)
-1. GitHub is unable to help you resolve the issue (it doesn’t offer the option):
+1. GitHub is unable to help you resolve the issue (it doesn't offer the option):
    1. Compare the code of the two branches in GitHub or use a different [diff-checker](https://www.diffchecker.com/) (difference checker) to show you the differences between the conflicting files.
    1. Pick and choose the changes you want to bring over and manually move them to the playground.
 1. Open your files in the conflicting branch.
@@ -520,7 +520,7 @@ aka. I want to see how my changes will work in the interview, merge conflicts, u
 1. Make a PR to the base branch.
 1. Merge it.
 1. Version created earlier:
-1. Your **base** branch is often your repository’s ‘master’, but not always. It’s the branch you want to add the new code to. For this exercise, 1. we’ll assume it’s ‘master’.
+1. Your **base** branch is often your repository's 'master', but not always. It's the branch you want to add the new code to. For this exercise, 1. we'll assume it's 'master'.
 1. If other people changed code and merged it into the master branch already, you might want to make sure that this new code will work with the changes now in the master branch. This is what you do.
 
 
@@ -528,37 +528,37 @@ aka. I want to see how my changes will work in the interview, merge conflicts, u
 1. Make another branch off of the master branch.
 1. Merge the new code into that branch.
 1. Do the usual tests with that code.
-1. When it’s ready, merge that newest branch into master (by making a pull request into master).
+1. When it's ready, merge that newest branch into master (by making a pull request into master).
 1. If your team has agreed on this convention, delete the branch.
 1. Delete the Project on your Playground.
-1. Close the issues associated with the changes (if they haven’t been closed automatically through magical means you can read about in another, more bandwidth, section)
+1. Close the issues associated with the changes (if they haven't been closed automatically through magical means you can read about in another, more bandwidth, section)
 
-We’re still thinking about what to do If they update their code in the meantime and you need to see the combination/merged version.
+We're still thinking about what to do If they update their code in the meantime and you need to see the combination/merged version.
 
 
 ## Errors when committing/pushing from docassemble
 
-1. Look at the bottom of the error on the page. Also, ask us for more details if your issue isn’t on here or if this is not enough information.
+1. Look at the bottom of the error on the page. Also, ask us for more details if your issue isn't on here or if this is not enough information.
 1. Text in the page: **Detached head** - this is a red herring. This is actually a natural part of the process.
-1. Text at the bottom of the screen:** access to this repository** - you don’t have permission to push the code to the repository. Make sure the person or organization that owns the repository has given you ‘write’ permissions. If it’s SuffolLITLab, give David or Quinten the link to the repository and ask them to ‘give the team permissions to write to the repository.’
+1. Text at the bottom of the screen:** access to this repository** - you don't have permission to push the code to the repository. Make sure the person or organization that owns the repository has given you 'write' permissions. If it's SuffolLITLab, give David or Quinten the link to the repository and ask them to 'give the team permissions to write to the repository.'
 1. Text at the bottom of the screen:** nothing to commit, working tree clean** - this means that no changes were detected in your project. This might happen if:
 
 
 
 1. You did not add the file you edited to your package by cmd/ctrl + clicking it on the packages page and then saving (in your docassemble Playground Packages page). Make sure the **name of the file you changed** is **exactly the same** as a name that is currently selected on the Packages page.
-1. You actually haven’t made any changes to those files. What was the last edit you made?
+1. You actually haven't made any changes to those files. What was the last edit you made?
     1. Find a diff checker, like [https://www.diffchecker.com/](https://www.diffchecker.com/).
     1. Go to GitHub and get the file you think has changed.
     1. Copy the text in it.
     1. Put it in the left side of the diff checker
-    1. Go to the Playground to the file you think you’ve changed.
+    1. Go to the Playground to the file you think you've changed.
     1. Copy the text and put it in the right side of the diff checker.
     7. Press the button to compare the text.
-1. You’re making a new branch, but you haven’t edited any files (if you think you have edited files, see the above as well).
-1. In your project, you pulled from a branch recently and didn’t make any edits to those files. When was the last time you pulled?
+1. You're making a new branch, but you haven't edited any files (if you think you have edited files, see the above as well).
+1. In your project, you pulled from a branch recently and didn't make any edits to those files. When was the last time you pulled?
 
 
-### I made edits, but docassemble says I can’t push to GitHub
+### I made edits, but docassemble says I can't push to GitHub
 
 See section about one reason docassemble might not be able to see that.
 
@@ -618,22 +618,22 @@ aka. Make a new package, cherry picking some files to make a package, select ind
 1. On the Packages page, select the old Package
 1. If you want these new files in your current Package:
 1. Select the files you want from the new Package
-1. Hit ‘Save’
+1. Hit 'Save'
 1. Commit
 1. If you want to get rid of other files from the repository you pulled in, unselect them in the Packages page and delete the files one by one in the Playground.
 1. If you pull again from the repository of the files you deleted, you will get all the old files back again.
 
 
-### I don’t have control of the master branch but want to work on the code anyway
+### I don't have control of the master branch but want to work on the code anyway
 
-aka. forking a repository, making a PR from a forked repository, working with someone else’s repository.
+aka. forking a repository, making a PR from a forked repository, working with someone else's repository.
 
-1. First of all, you should get them to transfer it to SuffolkLITLab and then get David or Quinten to give ‘write’ permissions to the doc assembly line team.
+1. First of all, you should get them to transfer it to SuffolkLITLab and then get David or Quinten to give 'write' permissions to the doc assembly line team.
 
 :::tip
 **Important!** First fork the repository (make your own copy) in GitHub so you have it in your account. This will make sure GitHub automatically knows that your code is connected to that original code.
 :::
 
-2. Get that fork’s code into your Playground.
+2. Get that fork's code into your Playground.
 1. Edit it.
 1. Make a PR in the usual way.
