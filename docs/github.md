@@ -275,41 +275,33 @@ If you get a pink error message that says you don't have permissions, you have n
 ![Cannot transfer repo](./assets/github_cannot_transfer.png)
 :::
 
-<!-- Bookmark 12_github -->
-
 ## Sharing new edits to your code
 
-Keywords: Experiment with code while still protecting working code, make new features, committing (saving) to a new branch, committing (saving) to an existing branch, checking/reviewing someone else’s code, combining code.
-
-:::tip
-You **will** make mistakes. You will accidentally include changes you didn’t mean to include or push to the wrong branch. The great thing is that you can’t break things permanently. That's what `git` prevents. Someone more experienced may need to lend a hand, but it's all there. You won’t believe it right now, but you’ll come to find it comforting over time.
-:::
+You **will** make mistakes. You will accidentally include changes you didn’t mean to include or push to the wrong branch. The great thing is that you can’t break things permanently. GitHub uses `git` and that's what it's for. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
 
 ### Making a new branch for a new goal or bug fix
 
-Make a new branch when you first start working on a feature/goal, like income questions, or fixing a bug in old code.
-
-A branch can be for just one commit.
+Make a new branch when you first start working on a feature or goal. For example, income questions or a bug fix.
 
 **Summary**
-1. Make at least one change. <!-- **Example:** New comment added.  -->
-1. Tap Folders, then Packages, then the GitHub button at the bottom of the Packages page
+1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
+1. Tap "Folders" > "Packages" > "GitHub" <!-- TODO: Should we break these paths out into their own sections? -->
 1. In the branches dropdown, select `New Branch`
-1. Give the branch a [snake_case](name_formats.md#snake-case) name. There are no other requirements.
+1. Give the branch a [snake_case](name_formats.md#snake-case) name.
+1. Commit your changes.
 
-:::note Requires more bandwidth
+You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
+
+<!-- TODO: Move the naming conventions here to the name formats doc? -->
+:::note Branch name
 A branch name reminds you and your collaborators, at a glance, what topic, problem, of feature the branch is for. 1-3 words separated by underscores is usually a good guideline. **Example:** `income_questions` or `income_calculations`
  
 **More advanced:** Include the issue number and type of goal of the branch. **Example:** `116_fix_income_calculations` or `42_feature_deductables`.
 :::
 
-5. Add a commit message. You have to put something here. There are no other requirements. A commit message describes the specific changes you just made that are working towards the goal of the branch. You can write commit messages as if they were an item in a todo list. It helps to start with a verb. **Example:** `Close #19, update cash income question`.
-6. Tap ‘Commit’
-1. Rejoice!
-
-<!-- TODO: Add link to looking at branches on GitHub -->
-<!-- TODO: Add link to comparing branches on GitHub -->
-You will now be able to see your new **branch** on GitHub! If you want, you can compare your branch to any other branch and see the exact differences.
+:::note Commit message
+A commit message describes the specific changes you just made that are working towards the goal of the branch. You can write a commit message as if it is an item in a todo list. It helps to start with a verb. **Example:** `Close #19, update cash income question`.
+:::
 
 <!-- TODO: Add link to making branches off of branches from within GitHub? -->
 <!-- TODO: Add link to making branches off of branches from within docassemble? (add section) -->
@@ -317,19 +309,10 @@ You will now be able to see your new **branch** on GitHub! If you want, you can 
 
 <!-- You can also make a branch off of *that* new branch if you want. There’s nothing special about the main branch. They’re all just branches. You pull from `some_branch`, edit code, then ‘commit’ to a ‘New branch’ we’ll call `yet_another_branch` and you’ve done it. `some_branch` is now the **base** branch of `yet_another_branch`. -->
 
-:::note
-**Branches vs. Commits**
+#### Branches vs. commits
 **Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
 
 **Commits** should encapsulate one particular action in a branch. One commit might be adding one question or getting one part of the code working, even if other parts still need some work. Together, individual commits add up to the complete feature. A commit might fix typos, improve readability of the first three questions, or add the question about debt.
-:::
-
-:::note
-**Linking and closing issues with commits and PR descriptions**
-If you reference a GitHub issue number in a specific way in your commit message, the issue will automatically get a link to the commit. **Example:** `Fix income typos, #15` or `Fix income typos, addresses #15`
- 
-You can also [close issues with your commits](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) when they get merged into the 'main' branch. **Example:** `Add all financial questions, fixes #15`
-:::
 
 <!-- Here’s where we left off. This is the code we pushed in our first commit.  -->
 <!-- 
@@ -583,19 +566,11 @@ See section about one reason docassemble might not be able to see that.
 ## Advanced/Needs bandwidth
 
 
-### Issues
+### Close an issue with a PR
 
-*GitHub documentation is usually easy to find online. Also, there are link to GitHub documentation in the above text, this will just be a place to collect related links.*
+See the GitHub docs on [closing an issue with a PR](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue). It will only take effect when merging into your default branch (usually the one called 'main'). Example: `Add all financial questions, fix #15`
 
-**Closing issues with commits**
-
-See [the GitHub documentation](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
-
-When you make your commit message, or somewhere in the comments of your commit message, use this formula:
-
-The word ‘fixes’ then the ‘#’ then, with no space, the issue number.
-
-**Ex:** Fixes #22
+You can also just link an issue to a PR or commit by simply omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue.
 
 <!-- **Adding a link to an issue in your commit or PR**
 
