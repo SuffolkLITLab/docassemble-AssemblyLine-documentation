@@ -15,7 +15,7 @@ This documentation is under construction, but we are currently running an [Assem
 
 The video below provides an overview of the project (0-10 min) and a detailed look at one of the forms (12-30 min). _Note: This video is a lecture from the course [Coding the Law](https://www.codingthelaw.org/Fall_2020/level/3/#intro_vid). So please disregard comments about "prior classes" and pending homework assignments at the end._
 
-[![Overview Video](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/assets/images/assembly-line-overview.png)](https://www.youtube.com/watch?v=AECHOvmaUv4)
+[![Overview Video](./assets/assembly-line-overview.png)](https://www.youtube.com/watch?v=AECHOvmaUv4)
 
 ## Get involved
 
