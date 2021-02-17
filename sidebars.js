@@ -3,7 +3,6 @@ module.exports = {
     'intro',
     'bootcamp',
     'getting_started',
-    'name_formats',
     {
       type: 'category',
       label: 'Generate Code',
@@ -14,7 +13,9 @@ module.exports = {
         'yaml_anatomy',
       ],
     },
+    'content_guide',
     'github',
+    'name_formats',
     'docs_style_guide',
   ],
 };
