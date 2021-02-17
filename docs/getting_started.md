@@ -14,14 +14,14 @@ Much of the documentation on this site is meant as reference material to support
 ## Summary
 These steps will be filled out as we fill out this documentation.
 
-1. Set up the system for your organization
+1. Set up the system for your organization (happens once in the lifetime of an organization)
    1. Create a docassemble server
    1. Configure the server
    1. Add developers to the server
    1. Enable GitHub
    1. Add the AssemblyLine package to your server
    1. [Copy the Trello checklist boards](#checklists_and_trello)
-1. Work on a specific form
+1. Work on a specific form (happens repeatedly for developers)
    1. Copy the template card in your organization's Trello board
    1. [Move the card through the Trello lists](#buffer_lists), completing the checklists as you go
    1. [Identify your MVP](#stick_to_an_mvp)
