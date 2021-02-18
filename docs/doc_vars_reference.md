@@ -17,7 +17,7 @@ Note: prefixes are [Reserved words](#reserved-words) for objects.
 <!-- TODO: put in overview Objects can be things like people or a court (trial_court). -->
 
 ### People Prefixes
-Vartiable names the [Weaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically treat as people.
+Variable names the [Weaver](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1) will automatically treat as people.
 
 | Use case | Document output format  | PDF label | YAML/DOCX | Interview order |
 |:-|:-|:-|:-|:-|
