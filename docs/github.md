@@ -124,7 +124,7 @@ Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packa
 
 **Summary**
 1. Go to "Playground" > "Manage Projects" and create a new Project and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
-1. Go back to "Playground" and upload your files or make a new file. The name of the YAML file should be the [name of your form](name_formats.md#form-files-stored-in-docassemble-snake-case).
+1. Go back to "Playground" and upload your files or make a new file. The name of the YAML file should be the [name of your form](name_formats.md#form-files-stored-in-docassemble-snake_case).
 1. Go to "Folder" > "Packages" and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. [Commit/push the package to GitHub](https://docassemble.org/docs/packages.html#github).
 
@@ -152,7 +152,7 @@ The Playground will open the Project with a default "test.yml" file. Either [add
 
 ### Create a new YAML file
 **Summary**
-1. Go to the Playground, tap "Add", and give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake-case).
+1. Go to the Playground, tap "Add", and give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_case).
 
 **Details**
 
@@ -160,7 +160,7 @@ The Playground will open the Project with a default "test.yml" file. Either [add
 
 ![Tap "Add"](./assets/da_playground_add.png)
 
-Give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake-case) and add some text to the file. Even `---` is enough. Then save the file.
+Give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_cases enough. Then save the file.
 
 ![Name and save the file](./assets/da_playground_save.png)
 
@@ -377,8 +377,11 @@ aka. Merging your code, combining code, making a PR, a pull request, a merge req
    1. Add the GitHub username of your team member who will test your work to make sure it's working as intended (review).
    1. Message the person you've made the reviewer to let them know you've assigned them as a reviewer.
 
+:::note
+🚧 The sections below are heavily under construction 🚧
+:::
+
 ### Reviewing someone else's code
-(WIP)
 
 Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up.
 
@@ -508,23 +511,24 @@ Two kinds of merge conflicts
 1. Open your files in the conflicting branch.
 1. Copy and paste them into the right-hand side of the diff checker.
 
-### The main branch changed while I was working on a different branch
+### The original branch changed while I was working on a different branch
+aka. I want to see how my changes will work in the interview, merge conflicts, updating to master, updating to the base branch, catching up to the base branch, combining two branches, branches have diverged
 
-aka. I want to see how my changes will work in the interview, merge conflicts, updating to master, updating to the base branch, catching up to the base branch, combining two branches
+Your **base branch** is the branch that you want to add this new code to. It is often your repository's 'master' or 'main', but not always. There are different reasons you might want to combine changes that have diverged.
+1. If your base branch got changed and you either need or want to be able to work with those changes too, you can make a branch that combines both branches and use that to move forward.
+1. If you base branch got changed and you want to now merge your own changes into the base branch.
 
-1. The start is the same whether you have merge conflicts or not.
 1. Make a new branch from the base branch.
-1. Make a PR from the requesting branch to that branch.
+1. Make a pull request from the base branch into your branch.
 1. Fix merge conflicts.
 1. Review.
-1. Make a PR to the base branch.
-1. Merge it.
-1. Version created earlier:
-1. Your **base** branch is often your repository's 'master', but not always. It's the branch you want to add the new code to. For this exercise, 1. we'll assume it's 'master'.
-1. If other people changed code and merged it into the master branch already, you might want to make sure that this new code will work with the changes now in the master branch. This is what you do.
+1. Merge it when ready.
 
+If you want to continue making changes independently, this will be the branch you will now pull into your Playground.
 
+If you want to bring your changes into the base branch, you are now ready to [make a pull request](#request-others-merge-your-code) on the base branch.
 
+<!-- 
 1. Make another branch off of the master branch.
 1. Merge the new code into that branch.
 1. Do the usual tests with that code.
@@ -534,7 +538,7 @@ aka. I want to see how my changes will work in the interview, merge conflicts, u
 1. Close the issues associated with the changes (if they haven't been closed automatically through magical means you can read about in another, more bandwidth, section)
 
 We're still thinking about what to do If they update their code in the meantime and you need to see the combination/merged version.
-
+ -->
 
 ## Errors when committing/pushing from docassemble
 
@@ -542,8 +546,6 @@ We're still thinking about what to do If they update their code in the meantime 
 1. Text in the page: **Detached head** - this is a red herring. This is actually a natural part of the process.
 1. Text at the bottom of the screen:** access to this repository** - you don't have permission to push the code to the repository. Make sure the person or organization that owns the repository has given you 'write' permissions. If it's SuffolLITLab, give David or Quinten the link to the repository and ask them to 'give the team permissions to write to the repository.'
 1. Text at the bottom of the screen:** nothing to commit, working tree clean** - this means that no changes were detected in your project. This might happen if:
-
-
 
 1. You did not add the file you edited to your package by cmd/ctrl + clicking it on the packages page and then saving (in your docassemble Playground Packages page). Make sure the **name of the file you changed** is **exactly the same** as a name that is currently selected on the Packages page.
 1. You actually haven't made any changes to those files. What was the last edit you made?
