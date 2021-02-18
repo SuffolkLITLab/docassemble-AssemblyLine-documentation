@@ -12,9 +12,10 @@ You can use the labels and variables of your PDFs and DOCXs in combination with 
 If you have [prepared your PDF or DOCX using certain conventions](doc_vars_reference.md), the weaver will handle the fields it recognizes without further prompting. It will ask questions about the rest of the fields. It will try to recognize fields that ask about people and organizations.
 
 To generate the starter code:
-1. If you have a PDF, [add labels to it](doc_vars_reference.md)
-1. If you have a PDF, [check your labels](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/pdf_field_tester&new_session=1)
-1. [Go to the weaver's page](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1&new_session=1)
+1. If you have a PDF, [add labels to it](pdfs.md) 
+   1. [Check your labels](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/pdf_field_tester?new_session=1)
+1. If you have a DOCX, make use of the [DOCX naming conventions](doc_vars_reference.md) when adding variables between {{ and }} marks, as in [this example](./assets/generic_motion_family_law.docx).
+1. [Go to the weaver's page](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1?new_session=1)
 1. Upload your PDF or DOCX
 1. Select the field type of each field (e.g. text, date, checkbox)
 1. Give labels to the individual question fields that the user will see
