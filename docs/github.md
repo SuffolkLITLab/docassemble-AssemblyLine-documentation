@@ -387,17 +387,28 @@ Don't let pull requests hang around too long. Other code will get edited and mer
 
 You must test the code. The requester should have left notes on what needs to be tested in the description of the pull request (PR).
 
-1. [Pull the code](#get-github-code-into-your-playground) into a [new Project](#create-a-new-project) in your Playground
-1. Test the behavior that is affected by the changes in their code or
-1. If it works as expected
-  1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select 'Approve'
-  1. Merge their branch
-  1. Depending on your agreed upon practices, delete the branch. Near the bottom of the pull request, click Delete branch.
-1. If it does not work as expected
-  1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing
-  1. Select 'Request Changes'
-  1. Let the requester know about your review
-1. [Delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review
+**Summary**
+1. Pull the code into the a new Project in your Playground.
+1. If the behavior is as expected, approve the changes and merge the branch.
+1. If the behavior is not as expected, request changes.
+
+**Details**
+
+[Make a new Project in docassemble](#create-a-new-project) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
+![Name of pull request branch](./assets/github_pull_request_branch_name.png)
+
+
+Test the behavior that is affected by the changes in their code. If it works as expected:
+1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select 'Approve'
+1. Merge their branch
+1. Depending on your agreed upon practices, delete the branch. Near the bottom of the pull request, click Delete branch.
+
+If it does not work as expected
+1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing
+1. Select 'Request Changes'
+1. Let the requester know about your review
+
+[Delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review
 
 Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed.
 
