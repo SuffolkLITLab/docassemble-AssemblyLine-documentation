@@ -383,6 +383,8 @@ aka. Merging your code, combining code, making a PR, a pull request, a merge req
 
 ### Reviewing someone else's code
 
+<!-- TODO: Change to 'Test someone else's code'? -->
+
 Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up.
 
 You must test the code. The requester should have left notes on what needs to be tested in the description of the pull request (PR).
