@@ -362,17 +362,16 @@ You can see [a list of your repository's branches in GitHub](https://docs.github
 1. [Request a review from another member](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review).
 1. Send a message to that person to let them know you've assigned them as a reviewer.
 
-:::note
-🚧 The sections below are heavily under construction 🚧
-:::
+### Test someone else's code
 
-### Review someone else's code
+When someone assigns you as a reviewer for the pull request, you will be able to see that in [your GitHub pull request list](https://github.com/pulls) or [your notifications page](https://github.com/notifications). You can read more in [the GitHub documentation on seeing your issues and pull requests](see how to navigate therehttps://docs.github.com/en/github/managing-your-work-on-github/viewing-all-of-your-issues-and-pull-requests).
 
 <!-- TODO: Change to 'Test someone else's code'? -->
+<!-- TODO: Create section on merge conflicts -->
 
-Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up.
+Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up, making it hard to bring the code back together.
 
-You must test the code. The requester should have left notes on what needs to be tested in the description of the pull request (PR).
+The requester should have left notes on what needs to be tested in the description of the pull request (PR).
 
 **Summary**
 1. Pull the code into the a new Project in your Playground.
@@ -384,34 +383,37 @@ You must test the code. The requester should have left notes on what needs to be
 [Make a new Project in docassemble](#create-a-new-project) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
 ![Name of pull request branch](./assets/github_pull_request_branch_name.png)
 
+Test the behavior that is affected by the changes in their code. Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed. If it works as expected:
 
-Test the behavior that is affected by the changes in their code. If it works as expected:
-1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select 'Approve'
-1. Merge their branch
-1. Depending on your agreed upon practices, delete the branch. Near the bottom of the pull request, click Delete branch.
+1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results.
+1. As described in that documentation, select 'Approve'.
+1. [Merge their branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request).
+1. Depending on your agreed upon practices, [delete the branch](https://docs.github.com/en/github/administering-a-repository/deleting-and-restoring-branches-in-a-pull-request#deleting-a-branch-used-for-a-pull-request).
 
-If it does not work as expected
-1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing
-1. Select 'Request Changes'
-1. Let the requester know about your review
+If the interview does not work as expected:
 
-[Delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review
+1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing.
+1. As described in that documentation, select 'Request Changes'.
+1. Let the requester know about your review.
 
-Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed.
+Finally, [delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review.
 
 <!-- Clarifying: Comparing the code on GitHub   -->
 <!-- Pictures from GitHub as to where to see the comparison. -->
 <!-- TODO: Add pictures -->
 :::note
 1. You can [make comments connected to specific lines of code](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
-1. If you have write permissions on the repository, you can make a pull request with someone's branch even if they're not there.
+1. You can make a pull request with someone's branch even if they're not there as long as you have write permissions on the repository.
+:::
+
+:::tip
+🚧 The sections below are heavily under construction 🚧
 :::
 
 ### Get GitHub code into your Playground
 
 aka. Uploading your code to the Playground, uploading someone else's code to the Playground, reviewing, pulling, getting your old code back, seeing someone else's code, working on someone else's code
-   
-  
+
 :::warning
 **WARNING:** All the files in the repository will replace files of the same name in this Project. Imagine being on your computer, copying a bunch of files to a folder, and getting the message "This file already exists in this folder. Do you want to replace it?". It's the same thing, but docassemble doesn't give you that warning.
 :::
