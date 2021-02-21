@@ -56,7 +56,7 @@ Some examples: `ProtectiveOrder`, `ProtectiveOrderRemoveAddress`
 ### Downloadable documents: [kebab-case](#kebab_case)
 
 * We use dashes (`-`) because underscores (`_`) can be hard to see in file names, especially if the text is underlined.
-* Exactly the same as [the docassemble form name](#form_files_stored_in_docassemble_snake_case) in all other ways.
+* Exactly the same as [the docassemble form name](#form-files-stored-in-docassemble-snake_case) in all other ways.
 
 ### Other files stored in docassemble: [snake_case](#snake_case)
 
@@ -64,8 +64,9 @@ Some examples: `ProtectiveOrder`, `ProtectiveOrderRemoveAddress`
 
 ### PDF variables:  [snake_case](#snake_case)
 
-* Meets PDF or docx requirements and is consistent with AssemblyLine (which will help you!)
-* See more details about [document variable names](document_variables.md).
+* Each label name must be unique. See how to [ensure uniqueness while still creating fields that display the same value](doc_vars_reference.md#print-a-value-in-multiple-places).
+* Meets PDF or docx requirements
+* Is consistent with AssemblyLine conventions (which will help you!). See more details about [labels' variable names in documents](doc_vars_reference.md).
 
 ### Code variables: [snake_case](#snake_case) mostly
 
@@ -84,7 +85,7 @@ Naming variables is hard, but good code variables are clear and short, in that o
 Variable names should read close to natural English out loud. Avoid putting the type of the variable in its name, sometimes called hungarian notation:
 for example, using `is_parent_bool` to indicate a boolean, or `children_list` indicating a list.
 
-Adding extra information into the variable name does help make things more clear, for example, `got_notice_date`, or `plaintiff_email`. But this is helpful because we're describing the contents of the variable, not it's type. Our [conventions for our PDF and docx variables](document_variables.md) go into more detail on this.
+Adding extra information into the variable name does help make things more clear, for example, `got_notice_date`, or `plaintiff_email`. But this is helpful because we're describing the purpose of the variable, not it's type. Our [conventions for our PDF and docx variables](doc_vars_reference.md) has some good examples.
 
 For a boolean value, use a word or phrase that you can answer with yes or no. They are often verb-noun pairs. `has_` and `is_` can be useful. **Examples:** `is_minor`, `was_convicted`, `has_court_date`.
 
@@ -100,9 +101,9 @@ Use a plural word for a list of things, and a singular word for one thing. **Exa
 ### Alphanumeric
 A string that is alphanumeric has only digits 0 to 9 and the letters A to Z in it. The letters can be lowercase or uppercase.
 
-**Yes:** `A` `b` `12` `CZ` `5`
+**Yes:** `A` `b` `12` `ab12` `CZ` `5`
 
-**No:** `A!` `(b)` `$12` `"CZ"` `0.5`
+**No:** `A!` `(b)` `ab 12` `$12` `"CZ"` `0.5`
 
 ## Other resources
 
