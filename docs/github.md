@@ -221,7 +221,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 <!-- Advanced note: A good commit message also helps you find your place when you need look back through your code -->
 <!-- TODO: Add... note?: Avoid the "install package" checkbox. Leave it alone. -->
 <!-- TODO: Add... caution?: Never hit "Install". Leave it alone. -->
-<!-- TODO: Add advanced: One convention for commit messages is to write them as if they were an item in a todo list. **Example:** "Fix #19, update income question" - start with a verb (link to committing and to issues sections) -->
+<!-- TODO: Add advanced: One convention for commit messages is to write them as if they were an item in a todo list. Example: "Fix #19, update income question" - start with a verb (link to committing and to issues sections) -->
 
 **Details**
 
@@ -229,7 +229,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 
 ![Open the Packages folder](./assets/da_playground_folders_packages.png)
 
-[Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. **Example:** The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
+[Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. Example: The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
 
 ![Name the Package](./assets/da_package_name.png)
 
@@ -245,7 +245,7 @@ If you have [configured your GitHub account](#connect-github-to-your-docassemble
 
 ![Tap the GitHub button](./assets/da_package_github_button.png)
 
-You **must** write a message describing what this commit is for. Usually it sums up the purpose of the changes you have made to the code. This is the first commit message, though, and a common first commit message is "Initial commit". When your message is ready, tap "Commit".
+You **must** write a message describing what this commit is for. [Read more about commit messages here](#commit-messages). This is the first commit message, though, and a common first commit message is "Initial commit". When your message is ready, tap "Commit".
 
 ![Tap the GitHub button](./assets/da_package_commit_message_and_button.png)
 
@@ -275,56 +275,27 @@ If you get a pink error message that says you don't have permissions, you have n
 ![Cannot transfer repo](./assets/github_cannot_transfer.png)
 :::
 
-## Sharing new edits to your code
+## Sharing code
 
 You **will** make mistakes. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` and that's what it's for. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
 
-### Making a new branch for a new goal or bug fix
-
-Make a new branch when you first start working on a feature or goal. For example, income questions or a bug fix.
-
-<!-- TODO: Reduce this to just being about a new branch. Make a section for starting a new goal or bug fix that links to making a new branch and making commits. -->
-
-1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
-1. Tap "Folders" > "Packages" > "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
-1. In the branches dropdown, select `New Branch`.
-1. Give the branch a [snake_case](name_formats.md#snake-case) name.
-1. Commit your changes.
-
-You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
-
-<!-- TODO: Move the naming conventions here to the name formats doc? -->
-:::note Branch name
-A branch name reminds you and your collaborators, at a glance, what topic, problem, of feature the branch is for. 1-3 words separated by underscores is usually a good guideline. **Example:** `income_questions` or `income_calculations`
- 
-**More advanced:** Include the issue number and type of goal of the branch. **Example:** `116_fix_income_calculations` or `42_feature_deductables`.
-:::
-
-:::note Commit message
-A commit message describes the specific changes you just made that are working towards the goal of the branch. You can write a commit message as if it is an item in a todo list. It helps to start with a verb. **Example:** `Close #19, update cash income question`.
-:::
-
-<!-- TODO: Add link to making branches off of branches from within GitHub? -->
-<!-- TODO: Add link to making branches off of branches from within docassemble? (add section) -->
-<!-- TODO: Link to definition of 'base branch' -->
-
-<!-- You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`. -->
-
-### Commit again - EARLY AND OFTEN
+### Commit - EARLY AND OFTEN
 
 aka. Savepoints, saving your progress, bookmark where your code is at right now.
 
-Note: When you first start, create a daily alarm in your phone to commit all code that you haven't yet committed that day.
+Commits help preserve your work, help you find old working code when something breaks, and help you track down bugs by peeling back only a few changes at a time till you get to a working version.
+
+Note: When you first start, it's hard to remember to stop and commit. Create a daily alarm in your phone to commit all code that you haven't yet committed that day.
 
 :::tip
 **COMMIT EARLY AND OFTEN** (bears repeating). GitHub can't help you if you don't use it.
 :::
 
-You can commit to a branch as many, or as few, times as you want. Developers usually commit code only when it's working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can make a new branch for the broken code and commit to that branch.
+You can commit to a branch as many, or as few, times as you want. Developers often wait to commit code until they have it working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit to that branch.
 
 1. Go to the correct Project and make at least one change (edit or add a file).
 1. Go to Playground > Folders > Packages > GitHub.
-1. In the branches dropdown, select the branch you want to add your changes to or create a new branch.
+1. In the branches dropdown, select the branch you want to add your changes to or [create a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix).
 1. Write a [commit message](#commit-messages) (required)
 1. Tap 'Commit'
 1. See your **commit** on GitHub!
@@ -334,6 +305,28 @@ You can commit to a branch as many, or as few, times as you want. Developers usu
 If you want, you can see them one at a time and see very clearly what changes you made so you can make sure they were the changes you wanted. -->
 
 <!-- **Most important:** It doesn't actually matter what you put here. It can be more useful or less useful. You just have to put something here. -->
+
+### Making a new branch for a new goal or bug fix
+
+Make a new branch when you first start working on a feature or goal. For example, income questions or a bug fix. It preserves your previous work so that it isn't affected by these changes and lets other people see the changes before they're completely added in. This is very similar to committing changes, but has a couple additional steps.
+
+<!-- TODO: Reduce this to just being about a new branch. Make a section for starting a new goal or bug fix that links to making a new branch and making commits. -->
+
+1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
+1. Tap "Folders" > "Packages" > "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
+1. In the branches dropdown, select `New Branch`.
+1. Give the branch a [snake_case](name_formats.md#snake-case) name.
+1. Commit your changes with a [commit message](#commit-messages).
+
+You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
+
+<!-- TODO: Move the naming conventions here to the name formats doc? -->
+:::note Branch name
+A branch name reminds you and your collaborators, at a glance, what topic, problem, of feature the branch is for. 1-3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
+ 
+**More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductables`.
+:::
+
 
 #### Branches vs. commits
 **Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
@@ -345,38 +338,35 @@ If you want, you can see them one at a time and see very clearly what changes yo
 :::note
 Our convention for formatting: All lowercase alphanumeric separated by underscores.
 
-One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. **Example:** income_questions or income_calculations.
+One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. Example: income_questions or income_calculations.
 
-**More advanced:** The  issue number and type of action you're doing and. **Example:** 116_fix_income_calculations or 42_feature_deductables.
+**More advanced:** The  issue number and type of action you're doing and. Example: 116_fix_income_calculations or 42_feature_deductables.
 :::
 
 *This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
  -->
-<!-- A similar  message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
+<!-- A similar message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
 
 ### Request others merge your code
 
 aka. Merging your code, combining code, making a PR, a pull request, a merge request.
 
+You can see [a list of your repository's branches in GitHub](https://docs.github.com/en/github/administering-a-repository/viewing-branches-in-your-repository) and you can make a pull request from there to merge a branch's changes into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch).
+
 <!-- 1. If you tap "2 branches" (it won't always be '2') and you will see all branches committed to the repository. -->
 <!-- Here is the one we committed.  -->
 
-1. In GitHub, go to the 'Pull requests' tab
-1. Tap "New pull request" 
-1. Give it a title that sums up what the changes accomplished
-1. In the description [add a checklist](https://docs.github.com/en/github/managing-your-work-on-github/about-task-lists#creating-task-lists) of things the reviewer needs to check or test
-1. If this PR is related to an issue, use '#' and then the issue number in the description and GitHub will make a link to that issue automatically. **Example:** #23
-1. Explain to the reviewer what they need to test
-1. Then tap "Create pull request 
-   1. Once you've created the pull request, tap Reviewers.
-   1. Add the GitHub username of your team member who will test your work to make sure it's working as intended (review).
-   1. Message the person you've made the reviewer to let them know you've assigned them as a reviewer.
+1. [Create a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request).
+1. If this PR is related to an issue, edit the description to link to the issue. You can use the same format as described in [the section about closing an issue with a PR](#close-an-issue-with-a-pr).
+1. Edit the description to [add a checklist](https://docs.github.com/en/github/managing-your-work-on-github/about-task-lists#creating-task-lists) of things the reviewer needs to check or test.
+1. [Request a review from another member](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review).
+1. Send a message to that person to let them know you've assigned them as a reviewer.
 
 :::note
 🚧 The sections below are heavily under construction 🚧
 :::
 
-### Reviewing someone else's code
+### Review someone else's code
 
 <!-- TODO: Change to 'Test someone else's code'? -->
 
@@ -577,15 +567,19 @@ See section about one reason docassemble might not be able to see that.
 
 ### Commit messages
 
-A commit message describes the specific changes you just made that are working towards the goal of the branch. You can write a commit message as if it is an item in a todo list. It helps to start with a verb. **Example:** `Update cash income question`.
+<!-- When you're more comfortable with commit messages, take a moment to think what your recent changes have accomplished. -->
 
-When you look back on your list of commits you would be able to construct a todo list of what needed to get done. If commits need to be undone (reverted), these might help you recover the tasks that need doing.
+A commit message is required to make a commit. The most important part of a It describes the specific changes you just made that are working towards the goal of the branch. You can write a commit message as if it is an item in a todo list. It helps to start with a verb. Example: `Update cash income question`.
+
+When you look back on your list of such commits, you would be able to construct a todo list of what needed to get done. If commits need to be undone (reverted), these might help you recover the tasks that need doing.
+
+Regular commit messages can also link to or close issues, just like [the commit messages of a PR can reference or close issues](#close-an-issue-with-a-pr). Pro tip: they're actually all just regular commit messages.
 
 ### Close an issue with a PR
 
-See the GitHub docs on [closing an issue with a PR](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue). It will only take effect when merging into your default branch (usually the one called 'main'). Example: `Add all financial questions, fix #15`
+See the GitHub docs on [closing an issue with a PR](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue). The issue will only be closed when the PR is merged into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch) (usually the one called 'main'). Example: `Add all financial questions, fix #15`
 
-You can also just link an issue to a PR or commit by simply omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue.
+You can also just create a link to an issue with a PR or commit by simply omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue. Example: `Add question about assets, #15`
 
 <!-- **Adding a link to an issue in your commit or PR**
 
@@ -612,6 +606,17 @@ TODO
 **Making a new branch without any new content** (TODO)
 
 This has to be done on GitHub. GitHub documentation might help.
+
+You can make branches off of
+
+TODO: Add link to making branches off of branches from within docassemble? (add section)
+
+
+
+
+TODO: Link to definition of 'base branch'
+
+ You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`.
  -->
 
 ### Extra information GitHub can show you
