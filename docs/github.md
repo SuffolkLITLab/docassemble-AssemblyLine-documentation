@@ -283,10 +283,11 @@ You **will** make mistakes. You will accidentally include changes you didn't mea
 
 Make a new branch when you first start working on a feature or goal. For example, income questions or a bug fix.
 
-**Summary**
+<!-- TODO: Reduce this to just being about a new branch. Make a section for starting a new goal or bug fix that links to making a new branch and making commits. -->
+
 1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
-1. Tap "Folders" > "Packages" > "GitHub" <!-- TODO: Should we break these paths out into their own sections? -->
-1. In the branches dropdown, select `New Branch`
+1. Tap "Folders" > "Packages" > "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
+1. In the branches dropdown, select `New Branch`.
 1. Give the branch a [snake_case](name_formats.md#snake-case) name.
 1. Commit your changes.
 
@@ -309,6 +310,31 @@ A commit message describes the specific changes you just made that are working t
 
 <!-- You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`. -->
 
+### Commit again - EARLY AND OFTEN
+
+aka. Savepoints, saving your progress, bookmark where your code is at right now.
+
+Note: When you first start, create a daily alarm in your phone to commit all code that you haven't yet committed that day.
+
+:::tip
+**COMMIT EARLY AND OFTEN** (bears repeating). GitHub can't help you if you don't use it.
+:::
+
+You can commit to a branch as many, or as few, times as you want. Developers usually commit code only when it's working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can make a new branch for the broken code and commit to that branch.
+
+1. Go to the correct Project and make at least one change (edit or add a file).
+1. Go to Playground > Folders > Packages > GitHub.
+1. In the branches dropdown, select the branch you want to add your changes to or create a new branch.
+1. Write a [commit message](#commit-messages) (required)
+1. Tap 'Commit'
+1. See your **commit** on GitHub!
+
+<!-- TODO: Add the below back in when we have images as the GitHub docs on this currently do not show something useful (https://docs.github.com/en/github/committing-changes-to-your-project/differences-between-commit-views):
+
+If you want, you can see them one at a time and see very clearly what changes you made so you can make sure they were the changes you wanted. -->
+
+<!-- **Most important:** It doesn't actually matter what you put here. It can be more useful or less useful. You just have to put something here. -->
+
 #### Branches vs. commits
 **Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
 
@@ -327,37 +353,6 @@ One convention for branch names: They're to remind you and your collaborators ba
 *This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
  -->
 <!-- A similar  message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
-
-### Commit again - EARLY AND OFTEN
-
-aka. Savepoints, saving your progress, bookmark where your code is at right now.
-
-After you've made a new branch, you can commit to it until you're done with your goal/feature or bug fix.
-
-:::tip
-**COMMIT EARLY AND OFTEN** (bears repeating). GitHub can't help you if you don't use it.
-:::
-
-**When to commit**
-
-When you first start, create a daily alarm in your phone to commit all code that you haven't yet committed that day.
-
-In general, you commit working code. You might also commit broken code to make it easier for other people to help you. You can make a new branch for broken code if you want to keep one branch for working code only.
-
-1. Make at least one change (edit or add a file).
-1. Folders > Packages > GitHub
-1. In the branches dropdown, select the branch you want to add your changes to.
-1. Commit message: Describe what your commit does (see below for more guidance)
-1. Tap 'Commit'
-1. See your **commit** on GitHub!
-
-<!-- TODO: Add the below back in when we have images as the GitHub docs on this currently do not show something useful (https://docs.github.com/en/github/committing-changes-to-your-project/differences-between-commit-views):
-
-If you want, you can see them one at a time and see very clearly what changes you made so you can make sure they were the changes you wanted. -->
-
-<!-- **Most important:** It doesn't actually matter what you put here. It can be more useful or less useful. You just have to put something here. -->
-
-One convention for commit messages: Write it as if it were a todo list item. When you look back on your list of commits you should be able to construct a todo list of what needed to get done. If commits need to get peeled back, these might help you recover the tasks that need doing. **Example:** Update court codes
 
 ### Request others merge your code
 
@@ -383,21 +378,34 @@ aka. Merging your code, combining code, making a PR, a pull request, a merge req
 
 ### Reviewing someone else's code
 
+<!-- TODO: Change to 'Test someone else's code'? -->
+
 Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up.
 
 You must test the code. The requester should have left notes on what needs to be tested in the description of the pull request (PR).
 
-1. [Pull the code](#get-github-code-into-your-playground) into a [new Project](#create-a-new-project) in your Playground
-1. Test the behavior that is affected by the changes in their code or
-1. If it works as expected
-  1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select 'Approve'
-  1. Merge their branch
-  1. Depending on your agreed upon practices, delete the branch. Near the bottom of the pull request, click Delete branch.
-1. If it does not work as expected
-  1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing
-  1. Select 'Request Changes'
-  1. Let the requester know about your review
-1. [Delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review
+**Summary**
+1. Pull the code into the a new Project in your Playground.
+1. If the behavior is as expected, approve the changes and merge the branch.
+1. If the behavior is not as expected, request changes.
+
+**Details**
+
+[Make a new Project in docassemble](#create-a-new-project) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
+![Name of pull request branch](./assets/github_pull_request_branch_name.png)
+
+
+Test the behavior that is affected by the changes in their code. If it works as expected:
+1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results and select 'Approve'
+1. Merge their branch
+1. Depending on your agreed upon practices, delete the branch. Near the bottom of the pull request, click Delete branch.
+
+If it does not work as expected
+1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing
+1. Select 'Request Changes'
+1. Let the requester know about your review
+
+[Delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review
 
 Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed.
 
@@ -567,6 +575,11 @@ See section about one reason docassemble might not be able to see that.
 
 ## Advanced/Needs bandwidth
 
+### Commit messages
+
+A commit message describes the specific changes you just made that are working towards the goal of the branch. You can write a commit message as if it is an item in a todo list. It helps to start with a verb. **Example:** `Update cash income question`.
+
+When you look back on your list of commits you would be able to construct a todo list of what needed to get done. If commits need to be undone (reverted), these might help you recover the tasks that need doing.
 
 ### Close an issue with a PR
 
