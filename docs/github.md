@@ -363,7 +363,7 @@ You can see [a list of your repository's branches in GitHub](https://docs.github
 #### Reviewing PRs
 <!-- One of the github teaching tuesdays? -->
 
-When someone assigns you as a reviewer for the pull request, you will be able to see that in [your GitHub pull request list](https://github.com/pulls) or [your notifications page](https://github.com/notifications). You can read more in [the GitHub documentation on seeing your issues and pull requests](see how to navigate therehttps://docs.github.com/en/github/managing-your-work-on-github/viewing-all-of-your-issues-and-pull-requests).
+When someone assigns you as a reviewer for a pull request, you will be able to see it in [your GitHub pull request list](https://github.com/pulls) or [your notifications page](https://github.com/notifications). You can read more in [the GitHub documentation on seeing your issues and pull requests](see how to navigate therehttps://docs.github.com/en/github/managing-your-work-on-github/viewing-all-of-your-issues-and-pull-requests). To just look at the pull requests for a repository, go to the 'Pull Requests' tab on the repository's home page.
 
 <!-- TODO: Change to 'Test someone else's code'? -->
 <!-- TODO: Create section on merge conflicts -->
@@ -456,6 +456,7 @@ When you return to the Playground, you should see a file from the code you have 
 🚧 The sections below are heavily under construction 🚧
 :::
 
+<!-- 
 ### Combining code - accepting changes
 
 aka. Merging/merge, pulling/pull, adding someone else's changes to your code
@@ -472,7 +473,7 @@ In your GitHub repository, tap "Pull request"
 
 You will see a list of pull request for the repository, tap on the one you've finished testing.
 
-<!-- Here the pull request is "Add examples in questions" -->
+Here the pull request is "Add examples in questions"
 
 A screen similar to this will appear, you can tap "Files changed" to do a review of what in the code was changed.
 
@@ -511,6 +512,7 @@ You will end up with tons of branches and forget what is what. Once its merged t
 You will see a message similar to this once complete.
 
 The final step is to delete the Project in the Dev App.
+-->
 
 ### 'Merge conflicts' when combining code
 
