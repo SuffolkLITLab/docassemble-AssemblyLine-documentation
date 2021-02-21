@@ -433,10 +433,8 @@ Copy the GitHub url of the repository you are pulling from.
 
 ![Get the repository url](./assets/github_repo_url.png)
 
-Make sure there is no trailing slash.
-
-**Yes:** https://github.com/some_user/docassemble-SomeRepository
-
+Make sure there is no trailing slash.<br/>
+**Yes:** https://github.com/some_user/docassemble-SomeRepository <br/>
 **No:** https://github.com/some_user/docassemble-SomeRepository<strong>/</strong>
 
 

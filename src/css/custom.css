@@ -50,11 +50,21 @@
 .markdown>h4,
 .markdown>h5,
 .markdown>h6 {
-    margin-top: calc(4 * var(--ifm-heading-vertical-rhythm-top) * var(--ifm-leading));
+  margin-top: calc(4 * var(--ifm-heading-vertical-rhythm-top) * var(--ifm-leading));
 }
 
 img {
   border: 2px solid var(--ifm-color-secondary);
   border-radius: 3px;
   max-width: 75%;
+}
+
+p {
+  margin: 0 0 calc(3 * var(--ifm-paragraph-margin-bottom));
+}
+
+.markdown > pre,
+.markdown > ul,
+.markdown > p {
+  margin-bottom: calc(3 * var(--ifm-leading));
 }
