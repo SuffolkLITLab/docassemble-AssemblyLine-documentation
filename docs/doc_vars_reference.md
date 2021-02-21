@@ -120,7 +120,7 @@ Note: When using these suffixes in a DOCX, the base varible name should be plura
 | An image of a signature | - | parent<strong>_signature</strong> | parents[0]<strong>.signature</strong> | parents[0]<strong>.signature</strong> |
 | landline number of 1st parent | **123-123-1234**  | parent<strong>_phone_number</strong> | parents[0]<strong>.phone_number</strong> | parents[0]<strong>.phone_number</strong> |
 | mobile number of 1st parent | **123-123-1234** | parent<strong>_mobile_number</strong> | parents[0]<strong>.mobile_number</strong> | parents[0]<strong>.mobile_number</strong> |
-| one or more phone numbers of 1st parent | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)**  | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | - |
+| one or more phone numbers of 1st parent | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)**  | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | parents[0]<strong>.phone_number</strong> |
 
 <!-- 
 :::info Custom AssemblyLine methods
@@ -186,7 +186,7 @@ List all the plaintiffs, all the docket numbers, etc. All [people words](#people
 | Use Case | Document output format | PDF label | YAML/DOCX | Interview order |
 |:-|:-|:-|:-|:-|
 | list of all docket numbers | **123456, 654321** | docket_numbers | docket_numbers | docket_numbers |
-| one or more phone numbers of 1st parent | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | - |
+| one or more phone numbers of 1st parent | **123-123-1234 (cell)** or **123-123-1234 (other)** or **123-123-1234 (cell) 123-123-1234 (other)** | parent<strong>_phones</strong> | parents[0]<strong>.phone_numbers()</strong> | parents[0]<strong>.phone_number</strong> |
 | full name of every user | **First M. Last** | users | users | users.gather() |
 | full name of every other_party | **First M. Last** | other_parties | other_parties | other_parties.gather() |
 | full name of every plaintiff | **First M. Last** | plaintiffs | plaintiffs | plaintiffs.gather() |
