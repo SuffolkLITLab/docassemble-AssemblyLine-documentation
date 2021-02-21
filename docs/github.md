@@ -125,7 +125,7 @@ Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packa
 **Summary**
 1. Go to "Playground" > "Manage Projects" and create a new Project and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. Go back to "Playground" and upload your files or make a new file. The name of the YAML file should be the [name of your form](name_formats.md#form-files-stored-in-docassemble-snake_case).
-1. Go to "Folder" > "Packages" and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
+1. [Go to Packages](#navigate-to-packages) and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. [Commit/push the package to GitHub](https://docassemble.org/docs/packages.html#github).
 
 **Details**
@@ -211,7 +211,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 :::
 
 **Summary**
-1. Go to "Playground" > "Folders" > "Packages".
+1. [Go to "Packages"](#navigate-to-packages).
 1. Give your new Package a name.
 1. Save it.
 1. Commit to GitHub.
@@ -225,11 +225,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 
 **Details**
 
-[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. Once in the Playground, tap "Folder" then "Packages".
-
-![Open the Packages folder](./assets/da_playground_folders_packages.png)
-
-[Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. Example: The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
+[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. [Go to the Project's Packages folder](#navigate-to-packages). [Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. Example: The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
 
 ![Name the Package](./assets/da_package_name.png)
 
@@ -294,7 +290,7 @@ Note: When you first start, it's hard to remember to stop and commit. Create a d
 You can commit to a branch as many, or as few, times as you want. Developers often wait to commit code until they have it working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit to that branch.
 
 1. Go to the correct Project and make at least one change (edit or add a file).
-1. Go to Playground > Folders > Packages > GitHub.
+1. [Go to "Packages"](#navigate-to-packages).
 1. In the branches dropdown, select the branch you want to add your changes to or [create a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix).
 1. Write a [commit message](#commit-messages) (required)
 1. Tap 'Commit'
@@ -313,7 +309,7 @@ Make a new branch when you first start working on a feature or goal. For example
 <!-- TODO: Reduce this to just being about a new branch. Make a section for starting a new goal or bug fix that links to making a new branch and making commits. -->
 
 1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
-1. Tap "Folders" > "Packages" > "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
+1. [Go to "Packages"](#navigate-to-packages) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
 1. In the branches dropdown, select `New Branch`.
 1. Give the branch a [snake_case](name_formats.md#snake-case) name.
 1. Commit your changes with a [commit message](#commit-messages).
@@ -322,7 +318,7 @@ You will now be able to see your new branch on GitHub! If you want, you can [com
 
 <!-- TODO: Move the naming conventions here to the name formats doc? -->
 :::note Branch name
-A branch name reminds you and your collaborators, at a glance, what topic, problem, of feature the branch is for. 1-3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
+A branch name reminds you and your collaborators, at a glance, what topic, problem, or feature the branch is for. 1 to 3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
  
 **More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductables`.
 :::
@@ -362,7 +358,10 @@ You can see [a list of your repository's branches in GitHub](https://docs.github
 1. [Request a review from another member](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review).
 1. Send a message to that person to let them know you've assigned them as a reviewer.
 
-### Test someone else's code
+### Testing someone else's code
+
+#### Reviewing PRs
+<!-- One of the github teaching tuesdays? -->
 
 When someone assigns you as a reviewer for the pull request, you will be able to see that in [your GitHub pull request list](https://github.com/pulls) or [your notifications page](https://github.com/notifications). You can read more in [the GitHub documentation on seeing your issues and pull requests](see how to navigate therehttps://docs.github.com/en/github/managing-your-work-on-github/viewing-all-of-your-issues-and-pull-requests).
 
@@ -406,38 +405,58 @@ Finally, [delete the Project](https://docassemble.org/docs/playground.html#proje
 1. You can make a pull request with someone's branch even if they're not there as long as you have write permissions on the repository.
 :::
 
-:::tip
-🚧 The sections below are heavily under construction 🚧
-:::
-
 ### Get GitHub code into your Playground
 
 aka. Uploading your code to the Playground, uploading someone else's code to the Playground, reviewing, pulling, getting your old code back, seeing someone else's code, working on someone else's code
 
 :::warning
 **WARNING:** All the files in the repository will replace files of the same name in this Project. Imagine being on your computer, copying a bunch of files to a folder, and getting the message "This file already exists in this folder. Do you want to replace it?". It's the same thing, but docassemble doesn't give you that warning.
+
+If you want to save your changes, [create a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for it before pulling the new code in.
 :::
 
-1. Make a new Project
-1. Go to your Playground then Folders > Packages
-1. In the menu of blue text at the top, tap 'Pull'
-1. Get the web address (url) of the repository you want to get the code from (need example) \
-1. Pick the branch you want to pull from
-1. Tap 'Pull'
-1. Go back to your Playground and play! That is, test the functionality in the interview that the code could affect.
+**Summary**
+
+1. [Make a new Project in docassemble](#create-a-new-project) and [go to "Packages"](#navigate-to-packages).
+1. In the menu of blue text at the top, tap 'Pull'.
+1. Go to GitHub and get the url (web address) of the repository that has the code.
+1. From the dropdown, pick the branch you want to pull from and tap 'Pull'.
+1. Go back to your Playground and play!
+
+**Details**
+
+[Make a new Project in docassemble](#create-a-new-project) then [go to your Packages folder](#navigate-to-packages). In the menu at the top, tap "Pull".
+
+![Navigate to the Package Pull page](./assets/da_package_navigate_to_pull.png)
+
+Copy the GitHub url of the repository you are pulling from.
+
+![Get the repository url](./assets/github_repo_url.png)
+
+Make sure there is no trailing slash.
+
+**Yes:** https://github.com/some_user/docassemble-SomeRepository
+
+**No:** https://github.com/some_user/docassemble-SomeRepository<strong>/</strong>
 
 
-**Once you've made a new project**
+Back in docassemble, paste the url in the text field.
 
-1. In your new Project, select Folders, then Packages.
-1. In the menu at the top, tap "Pull"
-1. Grab the URL from GitHub for the repository you are pulling from.
-1. Back in docassemble, paste the URL where it asks for the GitHub URL
-1. Drop down the menu for GitHub Branch and select the branch you are going to review. Here we are reviewing a branch called "Teammate Code"
-1. Tap "Pull"
-1. Return to the Playground and you should see the code you've pulled in.
-1. The .yml file will hopefully be something other than test as it is here, you will see updates or new code, indicated here by the squiggly 1. bracket.
-1. "Save and Run" this code, test it for what your teammate has been working on in this section.
+![Paste the repository url](./assets/da_package_pull_repo_url.png)
+
+Tap the dropdown menu and select the branch you want to bring in.
+
+![Choose the right branch](./assets/da_package_pull_repo_branch.png)
+
+Tap "Pull".
+
+![Tap the Pull button](./assets/da_package_pull_branch_button.png)
+
+When you return to the Playground, you should see a file from the code you have pulled in.
+
+:::tip
+🚧 The sections below are heavily under construction 🚧
+:::
 
 ### Combining code - accepting changes
 
@@ -539,6 +558,11 @@ If you want to bring your changes into the base branch, you are now ready to [ma
 
 We're still thinking about what to do If they update their code in the meantime and you need to see the combination/merged version.
  -->
+
+## Find pages in docassemble
+
+### Navigate to Packages
+![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
 
 ## Errors when committing/pushing from docassemble
 
