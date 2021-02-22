@@ -79,9 +79,7 @@ Tap to authorize your docassemble server on GitHub. It will restart the server.
 
 ![Authorize docassemble](./assets/da_github_authorize.png)
 
-Once the server is done you can return to the Playground using the menu under your email address.
-
-![Return to Playground from GitHub integrations](./assets/da_dropdown_github_to_playground.png)
+Once the server is done you can [return to the Playground](#go-to-the-playground).
 
 ### Make issues
 
@@ -106,7 +104,6 @@ See the GitHub docs about:
 1. [Adding labels](https://docs.github.com/en/github/managing-your-work-on-github/managing-labels).
 1. [Creating milestones](https://docs.github.com/en/github/managing-your-work-on-github/creating-and-editing-milestones-for-issues-and-pull-requests).
 1. [Adding a milestone to an issue](https://docs.github.com/en/github/managing-your-work-on-github/associating-milestones-with-issues-and-pull-requests) (you can only have one milestone one per issue).
-
 
 ## New forms
 
@@ -275,7 +272,7 @@ If you get a pink error message that says you don't have permissions, you have n
 
 ## Sharing code
 
-Mistakes will happen. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` and it's made for rolling back changes. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
+Mistakes will happen. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` for version control and it's specifically made for rolling back changes. Docassemble does not give full access to its features and its a complex ecosystem, so someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
 
 ### Commit - EARLY AND OFTEN
 
@@ -343,16 +340,13 @@ One convention for branch names: They're to remind you and your collaborators ba
  -->
 <!-- A similar message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
 
-### Request others merge your code
+### Request others test your code
 
 <!-- TODO: Consider adding procedure with an intermediate branch -->
 
-aka. Merging your code, combining code, making a PR, a pull request, a merge request.
+aka. Getting a review, making a PR, a pull request, a merge request.
 
 You can see [a list of your repository's branches in GitHub](https://docs.github.com/en/github/administering-a-repository/viewing-branches-in-your-repository) and you can make a pull request from there to merge a branch's changes into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch).
-
-<!-- 1. If you tap "2 branches" (it won't always be '2') and you will see all branches committed to the repository. -->
-<!-- Here is the one we committed.  -->
 
 1. [Create a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request).
 1. If this PR is related to an issue, edit the description to link to the issue. You can use the same format as described in [the section about closing an issue with a PR](#close-an-issue-with-a-pr).
@@ -360,7 +354,7 @@ You can see [a list of your repository's branches in GitHub](https://docs.github
 1. [Request a review from another member](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review).
 1. Send a message to that person to let them know you've assigned them as a reviewer.
 
-#### Merge conflicts
+### Merge conflicts
 
 aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches, branches diverged
 
@@ -391,6 +385,52 @@ Either way, the most reliable way to deal with this situation is, unfortunately,
 
 <!-- TODO: Add section about updating to a base branch with the warning that conflicts will cause both branches to update -->
 
+
+### Errors when committing from docassemble
+
+aka. I made edits, but docassemble says I can't push to GitHub.
+
+When you get an error committing (and pushing) from docassemble, nothing has been changed on GitHub. One of three things is probably going on.
+
+1. You have technically not made any changes to the code that is actually being pushed to GitHub.
+1. You lack [permissions for that repository](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github).
+1. The changes between your branch and the branch on GitHub do not match up. That is, there's a [merge conflict](#merge-conflicts).
+
+Scroll to the bottom of the page of the error. The text on this page is a step-by-step log of what is happening in git, the version control technology GitHub uses, and the most recent message is at the bottom. Ignore the line talking about a `Detached head` - this is a red herring. It's actually a natural intermediate part of the process.
+
+#### `nothing to commit, working tree clean`
+
+This means git cannot detect any changes in your code. You cannot commit anything from docassemble if you have not made changes, not even to a new branch. These are possible ways to confirm the problem:
+1. If you created a new file you may have not added it to your Package yet. In the image below, only **court_form.docx** has been selected.
+
+![Tap the Pull button](./assets/da_package_template_files.png)
+
+On a Mac use **cmd + click** to select a file you need. On a PC use **ctrl + click**. If there are two files with very similar names, make sure the name of the file you need exactly matches up with the name you are clicking.
+
+2. You may have forgotten to save the changes you made to a file. If you still have the file open, you can tap 'Save'. If the file is closed, you will have to make the changes again.
+3. You may not have made any changes to files even if you thought you did. To sanity check changes to a code file:
+    1. Find a diff checker, like [https://www.diffchecker.com/](https://www.diffchecker.com/).
+    1. [Go to the Playground](#go-to-the-playground) to the file you think you've changed.
+    1. Copy all the text there.
+    1. Go back to the diff checker and paste it in the right-hand column.
+    1. In GitHub, navigate to the file you think you changed.
+    1. Copy the text in it.
+    1. Put it in the left side of the diff checker.
+    1. Press the button to compare the text.
+
+If you do not see differences between the files, you have not made the edits you think you have. Are you in the right Project? Did you change a file with a very similar name to another file?
+
+#### [`403`](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#403)
+
+A `403` error, `remote: Permission to ... denied to ...`, means you have not been given [permission](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github) to change things in that repository. The person or organization that owns the package will have to give you or the team you are on 'write' permissions. They could also add you to a team that already has write permissions.
+
+If you are trying to make a new repository on your GitHub account, you may belong to an organization that owns a Package by the same name. You may not have permission to change that repository. You will either have to change the name of your Package, have the organization delete that repository, or have the admin give you or your team 'write' permissions as described above.
+
+#### `CONFLICT (content)`
+
+The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#merge-conflicts) looks like in docassemble in git. Simply [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) and commit the changes there. Work out the merge conflicts afterwards.
+
+
 ### Testing someone else's code
 
 #### Reviewing PRs
@@ -401,7 +441,7 @@ When someone assigns you as a reviewer for a pull request, you will be able to s
 <!-- TODO: Change to 'Test someone else's code'? -->
 <!-- TODO: Create section on merge conflicts -->
 
-Don't let pull requests hang around too long. Other code will get edited and merge conflicts will crop up, making it hard to bring the code back together.
+Don't let pull requests hang around too long. Other code will get edited and [merge conflicts](#merge-conflicts) will crop up, making it hard to bring the code back together.
 
 The requester should have left notes on what needs to be tested in the description of the pull request (PR).
 
@@ -434,9 +474,10 @@ Finally, [delete the Project](https://docassemble.org/docs/playground.html#proje
 <!-- Clarifying: Comparing the code on GitHub   -->
 <!-- Pictures from GitHub as to where to see the comparison. -->
 <!-- TODO: Add pictures -->
+
 :::note
 1. You can [make comments connected to specific lines of code](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
-1. You can make a pull request with someone's branch even if they're not there as long as you have write permissions on the repository.
+1. You can make a pull request with someone's branch even if the person is not there as long as you have write permissions on the repository.
 :::
 
 ### Get GitHub code into your Playground
@@ -574,6 +615,7 @@ If you want to bring your changes into the base branch, you are now ready to [ma
 We're still thinking about what to do If they update their code in the meantime and you need to see the combination/merged version.
  -->
 
+
 ## Navigating
 
 Find docassemble pages like the Playground and the Packages pages.
@@ -582,37 +624,14 @@ Find docassemble pages like the Playground and the Packages pages.
 ![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
 
 ### Navigate to Packages
-Playground > Folders > Packages
+[Playground](#go-to-the-playground) > Folders > Packages
 
 ![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
+
 
 :::caution
 🚧 The sections below are heavily under construction 🚧
 :::
-
-## Errors when committing/pushing from docassemble
-
-1. Look at the bottom of the error on the page. Also, ask us for more details if your issue isn't on here or if this is not enough information.
-1. Text in the page: **Detached head** - this is a red herring. This is actually a natural part of the process.
-1. Text at the bottom of the screen:** access to this repository** - you don't have permission to push the code to the repository. Make sure the person or organization that owns the repository has given you 'write' permissions. If it's SuffolLITLab, give David or Quinten the link to the repository and ask them to 'give the team permissions to write to the repository.'
-1. Text at the bottom of the screen:** nothing to commit, working tree clean** - this means that no changes were detected in your project. This might happen if:
-
-1. You did not add the file you edited to your package by cmd/ctrl + clicking it on the packages page and then saving (in your docassemble Playground Packages page). Make sure the **name of the file you changed** is **exactly the same** as a name that is currently selected on the Packages page.
-1. You actually haven't made any changes to those files. What was the last edit you made?
-    1. Find a diff checker, like [https://www.diffchecker.com/](https://www.diffchecker.com/).
-    1. Go to GitHub and get the file you think has changed.
-    1. Copy the text in it.
-    1. Put it in the left side of the diff checker
-    1. Go to the Playground to the file you think you've changed.
-    1. Copy the text and put it in the right side of the diff checker.
-    7. Press the button to compare the text.
-1. You're making a new branch, but you haven't edited any files (if you think you have edited files, see the above as well).
-1. In your project, you pulled from a branch recently and didn't make any edits to those files. When was the last time you pulled?
-
-
-### I made edits, but docassemble says I can't push to GitHub
-
-See section about one reason docassemble might not be able to see that.
 
 
 ## Advanced/Needs bandwidth
@@ -632,27 +651,12 @@ Regular commit messages can also link to or close issues, just like [the commit 
 See the GitHub docs on [closing an issue with a PR](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue). The issue will only be closed when the PR is merged into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch) (usually the one called 'main'). Example: `Add all financial questions, fix #15`
 
 You can also just create a link to an issue with a PR or commit by simply omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue. Example: `Add question about assets, #15`
-
-<!-- **Adding a link to an issue in your commit or PR**
+<!-- 
+**Adding a link to an issue in your commit or PR**
 
 Do not use a closing keyword. Just use the issue number alone in your PR description. Ex: #22. GitHub should note the connection in the relevant issue.
-
-**In an issue, add a reference/link to a PR**
-TODO
-
-**In an issue, add a reference/link to a commit**
-TODO
-
-**Assign someone to an issue**
-TODO
-
-**Add a label to an issue**
-TODO
-
-**Add a milestone to an issue**
-TODO
-
-
+-->
+<!-- 
 ### Branches
 
 **Making a new branch without any new content** (TODO)
@@ -661,14 +665,18 @@ This has to be done on GitHub. GitHub documentation might help.
 
 You can make branches off of
 
+TODO: Link to definition of 'base branch'
+
+You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`.
+
 TODO: Add link to making branches off of branches from within docassemble? (add section)
 
 TODO: Add more about what's important to look at for a pull request?
 
-TODO: Link to definition of 'base branch'
+TODO: Add section on getting rid of zombie files.
 
- You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`.
- -->
+TODO: Add HTTP status error codes to a 'further reading'/'other resources' section?
+-->
 
 ### Extra information GitHub can show you
 
