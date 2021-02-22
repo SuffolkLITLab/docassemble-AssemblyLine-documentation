@@ -23,6 +23,7 @@ To generate the starter code:
 1. Pick which fields will go on that page
 
 A page might look like this:
+
 ![One page of an interview made up of a heading, explanatory text, and the fields](./assets/interview_screen_or_page.png)
 
 You can see [the ALWeaver docassemble package on GitHub](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
