@@ -674,6 +674,8 @@ TODO: Add section on getting rid of zombie files.
 TODO: Add HTTP status error codes to a 'further reading'/'other resources' section?
 
 TODO: Add updating a branch to the changes in its base branch. Include warning about merge conflict that will make changes in both branches.
+
+TODO: Why to keep default branch clean. e.g. if a hot fix is needed, it can be implemented without concern for other stuff that's broken.
 -->
 
 <!-- 
