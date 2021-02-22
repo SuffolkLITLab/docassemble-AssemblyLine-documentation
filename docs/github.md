@@ -121,7 +121,7 @@ Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packa
 
 1. [Go to "Playground"](#go-to-the-playground) > "Manage Projects", create a new Project, and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. Go back to "Playground" and upload your files or make a new file. The name of the YAML file should be the [name of your form](name_formats.md#form-files-stored-in-docassemble-snake_case).
-1. [Go to Packages](#navigate-to-packages) and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
+1. [Go to Packages](#go-to-the-package) and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. [Commit/push the package to GitHub](https://docassemble.org/docs/packages.html#github).
 
 **Details**
@@ -157,13 +157,13 @@ The Playground will open the Project with a default "test.yml" file. Either [add
 
 ![Tap "Add"](./assets/da_playground_add.png)
 
-Give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_cases enough. Then save the file.
+Give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_case). Then save the file.
 
-![Name and save the file](./assets/da_playground_save.png)
+![Name and save the YAML file](./assets/da_playground_save.png)
 
 Your save options should change below the code area to indicate the save was successful.
 
-![The editor buttons change once the file has been saved once](./assets/da_playground_after_save.png)
+![The editor buttons change once the file has been saved the first time](./assets/da_playground_after_save.png)
 
 ### Upload a YAML file
 See the [docassemble docs about Playground YAML files](https://docassemble.org/docs/playground.html#interview_files).
@@ -210,7 +210,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 
 **Summary**
 
-1. [Go to "Packages"](#navigate-to-packages).
+1. [Go to "Packages"](#go-to-the-package).
 1. Give your new Package a name.
 1. Save it.
 1. Commit to GitHub.
@@ -224,7 +224,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 
 **Details**
 
-[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. [Go to the Project's Packages folder](#navigate-to-packages). [Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. Example: The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
+[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. [Go to the Project's Packages folder](#go-to-the-package). [Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. Example: The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
 
 ![Name the Package](./assets/da_package_name.png)
 
@@ -234,7 +234,7 @@ Scroll down to the boxes further down the page. Use cmd/ctrl + click to select t
 
 Scroll down to the bottom and tap Save.
 
-![Select your files](./assets/da_package_save.png)
+![Save the Package settings](./assets/da_package_save.png)
 
 If you have [configured your GitHub account](#connect-github-to-your-docassemble-account), once your package saves and the page reloads the GitHub button will appear near the Save button. Tap GitHub.
 
@@ -242,11 +242,11 @@ If you have [configured your GitHub account](#connect-github-to-your-docassemble
 
 You **must** write a message describing what this commit is for. [Read more about commit messages here](#commit-messages). This is the first commit message, though, and a common first commit message is "Initial commit". When your message is ready, tap "Commit".
 
-![Tap the GitHub button](./assets/da_package_commit_message_and_button.png)
+![Write a commit message](./assets/da_package_commit_message_and_button.png)
 
 Look at the bottom of the Package screen again. Just above the Github button will be links to your new repository.
 
-![Tap the GitHub button](./assets/da_package_links_to_github.png)
+![Links to the repository](./assets/da_package_links_to_github.png)
 
 You can also read the [docassemble docs on pushing your package to GitHub by committing](https://docassemble.org/docs/packages.html#github)
 
@@ -287,7 +287,7 @@ Note: When you first start, it's hard to remember to stop and commit. Create a d
 You can commit to a branch as many, or as few, times as you want. Developers often wait to commit code until they have it working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit to that branch.
 
 1. Go to the correct Project and make at least one change (edit or add a file).
-1. [Go to "Packages"](#navigate-to-packages).
+1. [Go to "Packages"](#go-to-the-package).
 1. In the branches dropdown, select the branch you want to add your changes to or [create a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix).
 1. Write a [commit message](#commit-messages) (required)
 1. Tap 'Commit'
@@ -306,7 +306,7 @@ Make a new branch when you first start working on a feature or goal. For example
 <!-- TODO: Reduce this to just being about a new branch. Make a section for starting a new goal or bug fix that links to making a new branch and making commits. -->
 
 1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
-1. [Go to "Packages"](#navigate-to-packages) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
+1. [Go to "Packages"](#go-to-the-package) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
 1. In the branches dropdown, select `New Branch`.
 1. Give the branch a [snake_case](name_formats.md#snake-case) name.
 1. Commit your changes with a [commit message](#commit-messages).
@@ -403,7 +403,7 @@ Scroll to the bottom of the page of the error. The text on this page is a step-b
 This means git cannot detect any changes in your code. You cannot commit anything from docassemble if you have not made changes, not even to a new branch. These are possible ways to confirm the problem:
 1. If you created a new file you may have not added it to your Package yet. In the image below, only **court_form.docx** has been selected.
 
-![Tap the Pull button](./assets/da_package_template_files.png)
+![Unselected template files](./assets/da_package_template_files.png)
 
 On a Mac use **cmd + click** to select a file you need. On a PC use **ctrl + click**. If there are two files with very similar names, make sure the name of the file you need exactly matches up with the name you are clicking.
 
@@ -454,6 +454,7 @@ The requester should have left notes on what needs to be tested in the descripti
 **Details**
 
 [Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
+
 ![Name of pull request branch](./assets/github_pull_request_branch_name.png)
 
 Test the behavior that is affected by the changes in their code. Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed. If it works as expected:
@@ -492,7 +493,7 @@ If you want to save your changes, [create a new branch](#making-a-new-branch-for
 
 **Summary**
 
-1. [Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) and [go to "Packages"](#navigate-to-packages).
+1. [Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) and [go to "Packages"](#go-to-the-package).
 1. In the menu of blue text at the top, tap 'Pull'.
 1. Go to GitHub and get the url (web address) of the repository that has the code.
 1. From the dropdown, pick the branch you want to pull from and tap 'Pull'.
@@ -500,7 +501,7 @@ If you want to save your changes, [create a new branch](#making-a-new-branch-for
 
 **Details**
 
-[Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) then [go to your Packages folder](#navigate-to-packages). In the menu at the top, tap "Pull".
+[Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) then [go to your Packages folder](#go-to-the-package). In the menu at the top, tap "Pull".
 
 ![Navigate to the Package Pull page](./assets/da_package_navigate_to_pull.png)
 
@@ -623,15 +624,10 @@ Find docassemble pages like the Playground and the Packages pages.
 ### Go to the Playground
 ![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
 
-### Navigate to Packages
+### Go to the Package
 [Playground](#go-to-the-playground) > Folders > Packages
 
 ![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
-
-
-:::caution
-🚧 The sections below are heavily under construction 🚧
-:::
 
 
 ## Advanced/Needs bandwidth
@@ -676,43 +672,56 @@ TODO: Add more about what's important to look at for a pull request?
 TODO: Add section on getting rid of zombie files.
 
 TODO: Add HTTP status error codes to a 'further reading'/'other resources' section?
+
+TODO: Add updating a branch to the changes in its base branch. Include warning about merge conflict that will make changes in both branches.
 -->
 
+<!-- 
+What was this about?
 ### Extra information GitHub can show you
 
-<!-- **Comparing code** -->
+**Comparing code**
 
 **Am I in the right branch?**
 
 1. Look at the last commit and its date (pic needed). Does that match up with what you remember?
 1. Compare the file you have in the playground with the file in that branch of the repository.
 1. If not, try a different branch
+-->
 
+### Which branch am I editing?
 
-### Pick just some files from a package to make a new repository
+In docassemble it can be hard to tell if you are in the correct Project or which branch's files you are editing.
 
-aka. Make a new package, cherry picking some files to make a package, select individual files
+1. [Go to Playground > Folders > Packages](#go-to-the-package).
+1. Scroll down to the GitHub section.
+1. You will see the name of this package's branch in the links above the GitHub button and can follow a link to go to the repository.
 
-1. Pull in the repository with the files you want
-1. On the Packages page, select the old Package
-1. If you want these new files in your current Package:
-1. Select the files you want from the new Package
-1. Hit 'Save'
-1. Commit
-1. If you want to get rid of other files from the repository you pulled in, unselect them in the Packages page and delete the files one by one in the Playground.
-1. If you pull again from the repository of the files you deleted, you will get all the old files back again.
+![Links to GitHub repository](./assets/da_package_links_to_github.png)
 
+### Make a new package with selected files
 
-### I don't have control of the master branch but want to work on the code anyway
+aka. Make a new package, cherry pick some files to make a package, select individual files.
+
+1. If you have not done so yet, pull in the repository branch with the files you want.
+1. Stay in the Packages page.
+1. At the top of the page, tap "Add".
+1. Give the new package [a name using the appropriate rules](name_formats.md#docassemble-projects-and-packages-pascalcase).
+1. Select the file you want in this package. They can be the same files as before.
+1. [Commit](#commit---early-and-often)
+
+### Edit a package without write permission
 
 aka. forking a repository, making a PR from a forked repository, working with someone else's repository.
 
-1. First of all, you should get them to transfer it to SuffolkLITLab and then get David or Quinten to give 'write' permissions to the doc assembly line team.
+If you do not have write permissions on a repository, you can still see play with its code and even make a pull request to help them change the code.
 
-:::tip
-**Important!** First fork the repository (make your own copy) in GitHub so you have it in your account. This will make sure GitHub automatically knows that your code is connected to that original code.
-:::
+1. Make sure the repository is not owned by an organization you belong to. If it does, ask an admin to [set your permissions](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github) correctly.
+1. On GitHub, [fork the repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
+1. In docassemble [make a new Project](https://docassemble.org/docs/playground.html#projects) and [pull](#get-github-code-into-your-playground) from that forked repository.
+1. Make a small edit and [make a commit](#commit---early-and-often) to make sure you are able to push to your fork.
+1. You can now treat this as you would treat any other package.
 
-2. Get that fork's code into your Playground.
-1. Edit it.
-1. Make a PR in the usual way.
+When you make a pull request from one branch of your fork to another branch of your fork, make sure the chosen branches in the dropdowns are correct. GitHub will automatically set your pull request to use the original owner's repository instead of your own.
+
+If you later do want to offer your changes to the owner of the original repository, you can [make a pull request from your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
