@@ -57,6 +57,7 @@ These are some thing GitHub lets you do and why you might want them.
 ### Connect GitHub to your docassemble account
 
 **Summary**
+
 1. Go to your docassemble "Profile" > "Other Settings" > "GitHub integration"
 1. Authorize docassemble to access your GitHub account
 
@@ -109,12 +110,9 @@ See the GitHub docs about:
 
 ## New forms
 
-### Go to the Playground
-![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
+### Prepare a new Project
 
-### Create a new project
-
-Create a new project. See [the docassemble docs on how to create new Projects](https://docassemble.org/docs/playground.html#projects).
+You can also see [the docassemble docs on how to create new Projects](https://docassemble.org/docs/playground.html#projects).
 
 :::caution
 Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packages-pascalcase) or you will get an error: a unique name that starts with an alphabetical letter and uses only alphanumeric characters.
@@ -123,7 +121,8 @@ Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packa
 <!-- (TODO: Add link to pushing the package) -->
 
 **Summary**
-1. Go to "Playground" > "Manage Projects" and create a new Project and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
+
+1. [Go to "Playground"](#go-to-the-playground) > "Manage Projects", create a new Project, and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. Go back to "Playground" and upload your files or make a new file. The name of the YAML file should be the [name of your form](name_formats.md#form-files-stored-in-docassemble-snake_case).
 1. [Go to Packages](#navigate-to-packages) and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
 1. [Commit/push the package to GitHub](https://docassemble.org/docs/packages.html#github).
@@ -134,7 +133,7 @@ In the Playground, tap the top left dropdown and select "Manage Projects".
 
 ![Navigate to "Manage Projects"](./assets/da_playground_manage_projects.png)
 
-Make a new Project and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
+[Make a new Project](https://docassemble.org/docs/playground.html#projects) and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
 
 ![Create a new Project](./assets/da_projects_new.png)
 
@@ -152,7 +151,8 @@ The Playground will open the Project with a default "test.yml" file. Either [add
 
 ### Create a new YAML file
 **Summary**
-1. Go to the Playground, tap "Add", and give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_case).
+
+[Go to the Playground](#go-to-the-playground), tap "Add", and give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_case).
 
 **Details**
 
@@ -178,7 +178,8 @@ See the docassemble docs to [use a zip file to upload a package](https://docasse
 See the docassemble docs about [uploading template files](https://docassemble.org/docs/playground.html#templates).
 
 **Summary**
-1. Navigate to Playground > "Folders" > "Templates" and upload your file.
+
+[Navigate to Playground](#go-to-the-playground) > "Folders" > "Templates" and upload your file.
 
 **Details**
 
@@ -211,6 +212,7 @@ In most cases, you will get a "merge conflict" error when this happens.
 :::
 
 **Summary**
+
 1. [Go to "Packages"](#navigate-to-packages).
 1. Give your new Package a name.
 1. Save it.
@@ -273,7 +275,7 @@ If you get a pink error message that says you don't have permissions, you have n
 
 ## Sharing code
 
-You **will** make mistakes. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` and that's what it's for. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
+Mistakes will happen. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` and it's made for rolling back changes. Someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
 
 ### Commit - EARLY AND OFTEN
 
@@ -283,9 +285,7 @@ Commits help preserve your work, help you find old working code when something b
 
 Note: When you first start, it's hard to remember to stop and commit. Create a daily alarm in your phone to commit all code that you haven't yet committed that day.
 
-:::tip
 **COMMIT EARLY AND OFTEN** (bears repeating). GitHub can't help you if you don't use it.
-:::
 
 You can commit to a branch as many, or as few, times as you want. Developers often wait to commit code until they have it working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit to that branch.
 
@@ -345,6 +345,8 @@ One convention for branch names: They're to remind you and your collaborators ba
 
 ### Request others merge your code
 
+<!-- TODO: Consider adding procedure with an intermediate branch -->
+
 aka. Merging your code, combining code, making a PR, a pull request, a merge request.
 
 You can see [a list of your repository's branches in GitHub](https://docs.github.com/en/github/administering-a-repository/viewing-branches-in-your-repository) and you can make a pull request from there to merge a branch's changes into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch).
@@ -357,6 +359,37 @@ You can see [a list of your repository's branches in GitHub](https://docs.github
 1. Edit the description to [add a checklist](https://docs.github.com/en/github/managing-your-work-on-github/about-task-lists#creating-task-lists) of things the reviewer needs to check or test.
 1. [Request a review from another member](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review).
 1. Send a message to that person to let them know you've assigned them as a reviewer.
+
+#### Merge conflicts
+
+aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches, branches diverged
+
+Sometimes when you start to [make a pull request](#request-others-merge-your-code), GitHub will tell you that you have a [merge conflict](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-merge-conflicts). This means that while you were making changes to your branch, changes were also made to the branch you are trying to merge with and they changed the same lines of code. Git will not decide which bits of code to keep where - you have to decide that.
+
+These are unavoidable and a pain to deal with. Everyone runs into them now and again and they are tricky to resolve without introducing bugs.
+
+:::tip
+Ways to reduce the likelyhood of merge conflicts:
+
+1. If possible, make the goals of your branches small so that you only make a few changes on a branch before making a pull request with it.
+1. Merge pull requests in the order they were made.
+1. Avoid editing the same sections of code at the same time.
+1. If you are working with collaborators, try to make sure you are working on tasks that do not edit the same lines.
+:::
+
+You can still make your pull request, but GitHub will prohibit merging. There are two ways GitHub might handle merge conflicts:
+
+1. GitHub allows you to ['resolve' the conflict in GitHub itself](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-on-github) by editing the files in GitHub.
+1. GitHub is unable to help you resolve the issue (it doesn't offer the option).
+
+Either way, the most reliable way to deal with this situation is, unfortunately, to redo your changes on top of the new code:
+
+1. Make the pull request as usual, but simply use it as a tool. The changes you made will be highlighted in the [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests).
+1. In docassemble [create a new Project](https://docassemble.org/docs/playground.html#projects) and pull in the other branch (the one you want to merge with).
+1. Using the file comparison as a guide, manually add your changes back.
+1. Make sure functionality affected by your code changes still works the way it should.
+
+<!-- TODO: Add section about updating to a base branch with the warning that conflicts will cause both branches to update -->
 
 ### Testing someone else's code
 
@@ -373,13 +406,14 @@ Don't let pull requests hang around too long. Other code will get edited and mer
 The requester should have left notes on what needs to be tested in the description of the pull request (PR).
 
 **Summary**
-1. Pull the code into the a new Project in your Playground.
+
+1. Pull the code into the a [new Project](https://docassemble.org/docs/playground.html#projects) in your Playground.
 1. If the behavior is as expected, approve the changes and merge the branch.
 1. If the behavior is not as expected, request changes.
 
 **Details**
 
-[Make a new Project in docassemble](#create-a-new-project) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
+[Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
 ![Name of pull request branch](./assets/github_pull_request_branch_name.png)
 
 Test the behavior that is affected by the changes in their code. Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed. If it works as expected:
@@ -417,7 +451,7 @@ If you want to save your changes, [create a new branch](#making-a-new-branch-for
 
 **Summary**
 
-1. [Make a new Project in docassemble](#create-a-new-project) and [go to "Packages"](#navigate-to-packages).
+1. [Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) and [go to "Packages"](#navigate-to-packages).
 1. In the menu of blue text at the top, tap 'Pull'.
 1. Go to GitHub and get the url (web address) of the repository that has the code.
 1. From the dropdown, pick the branch you want to pull from and tap 'Pull'.
@@ -425,7 +459,7 @@ If you want to save your changes, [create a new branch](#making-a-new-branch-for
 
 **Details**
 
-[Make a new Project in docassemble](#create-a-new-project) then [go to your Packages folder](#navigate-to-packages). In the menu at the top, tap "Pull".
+[Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) then [go to your Packages folder](#navigate-to-packages). In the menu at the top, tap "Pull".
 
 ![Navigate to the Package Pull page](./assets/da_package_navigate_to_pull.png)
 
@@ -451,10 +485,6 @@ Tap "Pull".
 ![Tap the Pull button](./assets/da_package_pull_branch_button.png)
 
 When you return to the Playground, you should see a file from the code you have pulled in.
-
-:::tip
-🚧 The sections below are heavily under construction 🚧
-:::
 
 <!-- 
 ### Combining code - accepting changes
@@ -514,22 +544,7 @@ You will see a message similar to this once complete.
 The final step is to delete the Project in the Dev App.
 -->
 
-### 'Merge conflicts' when combining code
-
-aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches
-
-Two kinds of merge conflicts
-
-1. GitHub allows you to 'resolve' the conflict:
-   1. Use a [diff checker](https://www.diffchecker.com/) (difference checker) to show you the differences between the conflicting files.
-   1. Use the GitHub interface to - carefully - edit code or (maybe better) follow the procedure outlined below for situations where GitHub does not offer this option.
-   1. Upload to your repository and test whatever could be affected by the changed code (for example, email sending if the changed code influenced emails, even if your code was working on just a new question)
-1. GitHub is unable to help you resolve the issue (it doesn't offer the option):
-   1. Compare the code of the two branches in GitHub or use a different [diff-checker](https://www.diffchecker.com/) (difference checker) to show you the differences between the conflicting files.
-   1. Pick and choose the changes you want to bring over and manually move them to the playground.
-1. Open your files in the conflicting branch.
-1. Copy and paste them into the right-hand side of the diff checker.
-
+<!-- 
 ### The original branch changed while I was working on a different branch
 aka. I want to see how my changes will work in the interview, merge conflicts, updating to master, updating to the base branch, catching up to the base branch, combining two branches, branches have diverged
 
@@ -546,7 +561,7 @@ Your **base branch** is the branch that you want to add this new code to. It is 
 If you want to continue making changes independently, this will be the branch you will now pull into your Playground.
 
 If you want to bring your changes into the base branch, you are now ready to [make a pull request](#request-others-merge-your-code) on the base branch.
-
+ -->
 <!-- 
 1. Make another branch off of the master branch.
 1. Merge the new code into that branch.
@@ -559,10 +574,21 @@ If you want to bring your changes into the base branch, you are now ready to [ma
 We're still thinking about what to do If they update their code in the meantime and you need to see the combination/merged version.
  -->
 
-## Find pages in docassemble
+## Navigating
+
+Find docassemble pages like the Playground and the Packages pages.
+
+### Go to the Playground
+![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
 
 ### Navigate to Packages
+Playground > Folders > Packages
+
 ![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
+
+:::caution
+🚧 The sections below are heavily under construction 🚧
+:::
 
 ## Errors when committing/pushing from docassemble
 
@@ -637,8 +663,7 @@ You can make branches off of
 
 TODO: Add link to making branches off of branches from within docassemble? (add section)
 
-
-
+TODO: Add more about what's important to look at for a pull request?
 
 TODO: Link to definition of 'base branch'
 
