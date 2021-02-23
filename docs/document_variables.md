@@ -94,7 +94,7 @@ that we have pre-selected tells our tool that these are people, so we can handle
 birthdates, etc. correctly.
 
 We can freely add more labels to this list if you need them for your form. Ideally, talk to us about that
-before running your form through the wizard.
+before running your form through the weaver.
 
 Never use any of the labels below when the person identified by the label is a party to the case.
 For example, if they are the person using the form or the person who is on the opposing side of the case
