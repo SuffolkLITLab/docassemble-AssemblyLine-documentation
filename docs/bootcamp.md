@@ -1,6 +1,6 @@
 ---
 id: bootcamp
-title: Suffolk LIT Lab Assembly Line Bootcamp
+title: Suffolk LIT Lab's Document Assembly Line Bootcamp
 sidebar_label: Bootcamp
 slug: /bootcamp
 ---
@@ -11,7 +11,7 @@ slug: /bootcamp
 
 ## Goals
 
-This bootcamp aims to bring you up to speed on the Document Assembly Line Project. It will do this by helping you start to automate a form of your choosing and introducing you to a number of Assembly Line tools and practices. By the end of the bootcamp, you should feel comfortable participating in discussions with other members of the team about your work and how to troubleshoot issues you are facing.
+This bootcamp aims to bring you up to speed on the Document Assembly Line project. It will do this by helping you start to automate a form of your choosing and introducing you to a number of Assembly Line tools and practices. By the end of the bootcamp, you should feel comfortable participating in discussions with other members of the team about your work and how to troubleshoot issues you are facing.
 
 ## Meeting times
 
@@ -41,14 +41,14 @@ After signing up, you should have received invites to our docassemble server (ht
 
 ### Week 1: Introduction and getting started using the Assembly Line interview Weaver, 2/18/2021
 
-_After this session has run, a video will be made available here._
+Here is [a video of our first session](https://www.youtube.com/watch?v=SILuBSKWoaw) (~2 hours).
 
 Resources from the session:
 
+* [Running templates through the Weaver](weaver_overview.md)
 * [Labeling PDF variables](pdfs.md)
 * [Naming Variables Quick Reference](doc_vars_reference.md)
 * [The LIST taxonomy](https://taxonomy.legal/)
-* [Running templates through the Weaver](weaver_overview.md)
 
 Homework:
 
@@ -58,7 +58,10 @@ Homework:
 
 _After this session has run, a video will be made available here._
 
-* Explaining the Trello board and checklists
+* Explaining the Trello boards and checklists
+    * [Pre-processing](https://trello.com/b/TLXUvTFb/1-assembly-line-bootcamp-pre-processing) 
+    * [Development](https://trello.com/b/kciaTOph/2-assembly-line-bootcamp-development) 
+    * [Testing](https://trello.com/b/om3C3Iy6/3-assembly-line-bootcamp-testing) 
 * Editing your interview file
     * Reordering questions
     * Adding basic logic
