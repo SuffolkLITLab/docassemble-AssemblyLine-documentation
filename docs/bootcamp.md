@@ -41,7 +41,7 @@ After signing up, you should have received invites to our docassemble server (ht
 
 ### Week 1: Introduction and getting started using the Assembly Line interview Weaver, 2/18/2021
 
-Here is [a video of our first session](https://www.youtube.com/watch?v=SILuBSKWoaw) (~2 hours).
+[![Bootcamp Week 1](./assets/bootcamp_week_1.png)](https://www.youtube.com/watch?v=SILuBSKWoaw)
 
 Resources from the session:
 
@@ -56,12 +56,12 @@ Homework:
 
 ### Week 2: Using Trello, Editing your interview file. 2/25/2021
 
-_After this session has run, a video will be made available here._
+[![Bootcamp Week 2](./assets/bootcamp_week_2.png)](https://www.youtube.com/watch?v=Nn_ciny-xWo)
 
 * Explaining the Trello boards and checklists
-    * [Pre-processing](https://trello.com/b/TLXUvTFb/1-assembly-line-bootcamp-pre-processing) 
-    * [Development](https://trello.com/b/kciaTOph/2-assembly-line-bootcamp-development) 
-    * [Testing](https://trello.com/b/om3C3Iy6/3-assembly-line-bootcamp-testing) 
+    * [Pre-processing](https://trello.com/b/TLXUvTFb/1-assembly-line-bootcamp-pre-processing)
+    * [Development](https://trello.com/b/kciaTOph/2-assembly-line-bootcamp-development)
+    * [Testing](https://trello.com/b/om3C3Iy6/3-assembly-line-bootcamp-testing)
 * Editing your interview file
     * Reordering questions
     * Adding basic logic
