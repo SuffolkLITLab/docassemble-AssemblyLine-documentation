@@ -75,14 +75,13 @@ additional questions.
 
 ### Week 3: Using Github, Customizing Branding. 3/4/2021
 
-_After this session has run, a video will be made available here._
+[![Bootcamp Week 1](./assets/bootcamp_week_3.png)](https://www.youtube.com/watch?v=VAzXYEacN78)
 
-* Using Github in Docassemble
-* Customizing basic branding
+* [Using Github in Docassemble](github.md)
+* Customizing basic branding with the [ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction) package.
     * Logo
     * Intro screen
     * Pushing changes to Github
-* Practice time and live help in breakout rooms
 
 ### Week 4: Advanced Docassemble, Installing the backend
 
