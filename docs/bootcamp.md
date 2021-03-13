@@ -109,4 +109,4 @@ Basic runtime | docassemble.AssemblyLine | https://github.com/SuffolkLITLab/doca
 Massachusetts-specific runtime code | docassemble.MassAccess | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
 Optional "toolbox"/helper functions | docassemble.ALToolbox | https://github.com/SuffolkLITLab/docassemble-ALToolbox
 Income gathering functionality | docassemble.income | https://github.com/GBLS/docassemble-income
-
+Customizable starting point for your jurisdiction | * | https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction
