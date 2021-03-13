@@ -96,4 +96,17 @@ additional questions.
     * Creating short links
     * The index page
 
+A list of the packages we installed:
+
+You can install from either PyPI or from Github. PyPI will handle installing
+related packages and is slightly simpler. Installing from Github will always get
+you the latest "bleeding edge" version.
+
+Purpose | On PyPI | On Github
+--------|---------|-------------
+Weaver (for creating interviews) | docassemble.assemblylinewizard | https://github.com/SuffolkLITLab/docassemble-assemblylinewizard
+Basic runtime | docassemble.AssemblyLine | https://github.com/SuffolkLITLab/docassemble-AssemblyLine
+Massachusetts-specific runtime code | docassemble.MassAccess | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
+Optional "toolbox"/helper functions | docassemble.ALToolbox | https://github.com/SuffolkLITLab/docassemble-ALToolbox
+Income gathering functionality | docassemble.income | https://github.com/GBLS/docassemble-income
 
