@@ -85,8 +85,10 @@ additional questions.
 
 ### Week 4: Advanced Docassemble, Installing the backend
 
-_After this session has run, a video will be made available here._
+[![Bootcamp Week 4](./assets/bootcamp_week_4.png)](https://www.youtube.com/watch?v=-YtGtVI79dY)
 
+* Here's the [video on setting up your own docassemble server](https://www.youtube.com/watch?v=JXdOCLMFPHc) 
+* [docassemble-ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction) package
 * Introduction to the docassemble.Income class
 * Working with tables and repeated data
 * How to install the Assembly Line packages on your Docassemble server
