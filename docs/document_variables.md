@@ -18,7 +18,7 @@ Video of overview: [The Basics of Naming Fields](https://youtu.be/qpfZon2M-GU)
 ## What?
 
 1. Explanations of the use of pre-determined names you should use when labeling fields in a PDF to make automation possible.
-1. A refence guide for those pre-determined names.
+1. A reference guide for those pre-determined names.
 3. Rules (and some guidelines) for making [custom labels](#custom-field-labels), since most of your labels will be custom labels.
 
 **You should use the pre-defined labels in here exactly as they appear and only for the specific purposes described below.**
@@ -266,7 +266,7 @@ Labels for fields that are asking for a full date should generally end in `_date
 
 (Remember that `prefix_birtdate` and `signature_date` are pre-determined labels.)
 
-Let's pretend everyting is about an `incident` just to simplify these examples.
+Let's pretend everything is about an `incident` just to simplify these examples.
 
 Label to use in the PDF | When to use it
 ------------------------|-----------------------------------
@@ -286,7 +286,7 @@ Label to use in the PDF | When to use it
 
 What if there are two plaintiffs or three docket numbers? Or multiples of any other item?
 
-This program can hanlde plural values. If we want to talk about more than one "plaintiff", we can say which plaintiff we mean - the first one, the second one, the third one, and so on. We add a number as part of our prefix.
+This program can handle plural values. If we want to talk about more than one "plaintiff", we can say which plaintiff we mean - the first one, the second one, the third one, and so on. We add a number as part of our prefix.
 
 Label to use in the PDF | When to use it
 ------------------------|-----------------------------------

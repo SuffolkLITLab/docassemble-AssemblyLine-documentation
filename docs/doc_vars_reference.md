@@ -78,7 +78,7 @@ For PDFs specifically. When two otherwise identical labels in a PDF end in `_yes
 ### Suffixes for People and Things
 Suffixes can be added to people or things to provide attributes. Consider that we want to collect information about a `parent` in some proceeding. One attribute of this parent might be their `birthdate`, another might be their `address`. In the table below we show how this could be expanded in the case of some general `parent`.
 
-Note: When using these suffixes in a DOCX, the base varible name should be plural (e.g., `parents`). 
+Note: When using these suffixes in a DOCX, the base variable name should be plural (e.g., `parents`).
 
 | Use Case | Document output format | PDF label | YAML/DOCX | Interview order |
 |:-|:-|:-|:-|:-|
@@ -95,7 +95,7 @@ Note: When using these suffixes in a DOCX, the base varible name should be plura
 | email | **someone@example.com** | parent<strong>_email</strong> | parents[0]<strong>.email</strong> | parents[0]<strong>.email</strong> |
 | address street | **120 Tremont St** | parent<strong>_address_street</strong> | parents[0]<strong>.address.address</strong> | parents[0]<strong>.address.address</strong> |
 |  | **120 Tremont St** | parent<strong>_address_address</strong> | parents[0]<strong>.address.address</strong> | parents[0]<strong>.address.address</strong> |
-| addess street 2 | **Unit 2** | parent<strong>_address_street2</strong> | parents[0]<strong>.address.unit</strong> | parents[0]<strong>.address.unit</strong> |
+| address street 2 | **Unit 2** | parent<strong>_address_street2</strong> | parents[0]<strong>.address.unit</strong> | parents[0]<strong>.address.unit</strong> |
 | address unit | **Unit 2** | parent<strong>_address_unit</strong> | parents[0]<strong>.address.unit</strong> | parents[0]<strong>.address.unit</strong> |
 | address city | **Boston** | parent<strong>_address_city</strong> | parents[0]<strong>.address.city</strong> | parents[0]<strong>.address.city</strong> |
 | address state | **MA** | parent<strong>_address_state</strong> | parents[0]<strong>.address.state</strong> | parents[0]<strong>.address.state</strong> |
@@ -105,7 +105,7 @@ Note: When using these suffixes in a DOCX, the base varible name should be plura
 | Full address on 1 line | **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_address_on_one_line</strong> | parents[0]<strong>.address.on_one_line()</strong> | parents[0]<strong>.address.address</strong> |
 | address 1st line | **120 Tremont St, Unit 2** | parent<strong>_address_line_one</strong> | parents[0]<strong>.address.line_one()</strong> | parents[0]<strong>.address.address</strong> |
 | address city, state zip | **Boston, MA 02108** | parent<strong>_address_city_state_zip</strong> | parents[0]<strong>.address.line_two()</strong> | parents[0]<strong>.address.address</strong> |
-| mailing adress street | **120 Tremont St** | parent<strong>_mail_address_street</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
+| mailing address street | **120 Tremont St** | parent<strong>_mail_address_street</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
 |  | **120 Tremont St** | parent<strong>_mail_address_address</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
 | mailing address street 2 | **Unit 2** | parent<strong>_mail_address_street2</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
 | mailing address unit | **Unit 2** | parent<strong>_mail_address_unit</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
@@ -143,13 +143,13 @@ Additional Docassemble resources:
 | name of the court | **Court name** | trial_court | trial_court | trial_court |
 | county of the court | **County name** | trial_court<strong>_county</strong> | trial_court<strong>.address.county</strong> | trial_court<strong>.address.address</strong> |
 | division of the court | **Division name** | trial_court<strong>_division</strong> | trial_court<strong>.division</strong> | trial_court<strong>.division</strong> |
-| deparment of the court | **Department name** | trial_court<strong>_deparment</strong> | trial_court<strong>.deparment</strong> | trial_court<strong>.deparment</strong> |
+| department of the court | **Department name** | trial_court<strong>_department</strong> | trial_court<strong>.department</strong> | trial_court<strong>.department</strong> |
 
 
 ## More than one
 Situations where you have any of these:
 1. More than one item in a group, like 2 parents
-1. The document needs the information for an item to be printed in mutiple places
+1. The document needs the information for an item to be printed in multiple places
 1. You have a big area where you want to list a group of names or other values
 
 <!-- TODO: Add definition of 'reserved word' in overview and link to that in the tip -->
