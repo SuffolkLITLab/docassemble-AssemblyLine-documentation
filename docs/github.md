@@ -63,7 +63,7 @@ These are some thing GitHub lets you do and why you might want them.
 
 **Details**
 
-Open docassemble  and select "Profle"from the drop down menu.
+Open docassemble and select "Profile" from the drop down menu.
 
 ![Open your profile from the sign-in dropdown menu in the top right](./assets/da_dropdown_profile.png)
 
@@ -250,11 +250,11 @@ Look at the bottom of the Package screen again. Just above the Github button wil
 
 You can also read the [docassemble docs on pushing your package to GitHub by committing](https://docassemble.org/docs/packages.html#github)
 
-### Transfer ownership to your organziation
+### Transfer ownership to your organization
 
 After the repository's ownership is transferred, only people who have permissions in your organization will be able to work on the code. Your organization can [give people permissions through GitHub](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization).
 
-Read the GitHub docs on [transfering ownership of your repository](https://docs.github.com/en/github/administering-a-repository/transferring-a-repository#transferring-a-repository-owned-by-your-user-account).
+Read the GitHub docs on [transferring ownership of your repository](https://docs.github.com/en/github/administering-a-repository/transferring-a-repository#transferring-a-repository-owned-by-your-user-account).
 
 <!-- TODO: Transferring before divorcing a fork from upstream will cause an error -->
 
@@ -317,7 +317,7 @@ You will now be able to see your new branch on GitHub! If you want, you can [com
 :::note Branch name
 A branch name reminds you and your collaborators, at a glance, what topic, problem, or feature the branch is for. 1 to 3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
  
-**More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductables`.
+**More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductibles`.
 :::
 
 
@@ -333,7 +333,7 @@ Our convention for formatting: All lowercase alphanumeric separated by underscor
 
 One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. Example: income_questions or income_calculations.
 
-**More advanced:** The  issue number and type of action you're doing and. Example: 116_fix_income_calculations or 42_feature_deductables.
+**More advanced:** The issue number and type of action you're doing and. Example: 116_fix_income_calculations or 42_feature_deductibles.
 :::
 
 *This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
@@ -438,7 +438,6 @@ The text `CONFLICT (content): Merge conflict` means the branch you are trying to
 
 When someone assigns you as a reviewer for a pull request, you will be able to see it in [your GitHub pull request list](https://github.com/pulls) or [your notifications page](https://github.com/notifications). You can read more in [the GitHub documentation on seeing your issues and pull requests](see how to navigate therehttps://docs.github.com/en/github/managing-your-work-on-github/viewing-all-of-your-issues-and-pull-requests). To just look at the pull requests for a repository, go to the 'Pull Requests' tab on the repository's home page.
 
-<!-- TODO: Change to 'Test someone else's code'? -->
 <!-- TODO: Create section on merge conflicts -->
 
 Don't let pull requests hang around too long. Other code will get edited and [merge conflicts](#merge-conflicts) will crop up, making it hard to bring the code back together.

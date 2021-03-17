@@ -1,6 +1,6 @@
 ---
 id: docs_style_guide
-title: Documentation style suide
+title: Documentation style guide
 sidebar_label: Docs style guide
 slug: /documentation_style_guide
 ---
@@ -9,7 +9,7 @@ slug: /documentation_style_guide
 
 **Link to someone else's documentation when you can.** If you want to give information that isn't specific to AssemblyLine, try to find documentation that is being maintained by someone else. If it's something about Trello, try to find the Trello documentation. For Github, try to find Github documentation. Same for docassemble. Their projects will do a much better job keeping up to date than you can. Only make new documentation when the existing documentation doesn't exist or is not enough.
 
-**Avoid resource link or index-type pages.** This site will have a search bar. Because of that, collections of links or pages that index other pages or content will end up appearing in the search findings even though they will not take the user to the meat of what they're looking for. [Agolia's docsearch](https://docsearch.algolia.com/) will power our searches. See [Agolia's passage on the topic](https://docsearch.algolia.com/docs/tips/#avoid-duplicates-by-promoting-unicity) and [the more extensive article they link to](https://www.algolia.com/blog/engineering/how-to-build-a-helpful-search-for-technical-documentation-the-laravel-example/#1-relevant-content-only) (search for 'Relevant content onlyl').
+**Avoid resource link or index-type pages.** This site will have a search bar. Because of that, collections of links or pages that index other pages or content will end up appearing in the search findings even though they will not take the user to the meat of what they're looking for. [Agolia's docsearch](https://docsearch.algolia.com/) will power our searches. See [Agolia's passage on the topic](https://docsearch.algolia.com/docs/tips/#avoid-duplicates-by-promoting-unicity) and [the more extensive article they link to](https://www.algolia.com/blog/engineering/how-to-build-a-helpful-search-for-technical-documentation-the-laravel-example/#1-relevant-content-only) (search for 'Relevant content only').
 
 
 ## Markdown Syntax
