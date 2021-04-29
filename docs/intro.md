@@ -15,7 +15,7 @@ This documentation is under construction, but we are currently running a [Docume
 
 The video below provides an overview of the project (0-10 min) and a detailed look at one of the forms (12-30 min). _Note: This video is a lecture from the course [Coding the Law](https://www.codingthelaw.org/Fall_2020/level/3/#intro_vid). So please disregard comments about "prior classes" and pending homework assignments at the end._
 
-[![Overview Video](./assets/assembly-line-overview.png)](https://www.youtube.com/watch?v=AECHOvmaUv4)
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AECHOvmaUv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Get involved
 
