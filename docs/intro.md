@@ -29,7 +29,7 @@ You can find a more robust description of our work, including how to join our te
 https://suffolklitlab.org/doc-assembly-line/
  -->
 
-## Related repos
+## Our Repositories
 - [The ALWeaver](https://github.com/SuffolkLITLab/docassemble-assemblylinewizard) for generating code.
 - [The AssemblyLine docassemble package](https://github.com/SuffolkLITLab/docassemble-AssemblyLine) with functionality designed for court forms.
 

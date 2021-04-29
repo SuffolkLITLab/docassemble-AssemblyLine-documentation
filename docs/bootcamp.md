@@ -6,7 +6,8 @@ slug: /bootcamp
 ---
 
 :::info
-[Sign up for the bootcamp here!](https://forms.office.com/Pages/ResponsePage.aspx?id=qT9zeA5UuE6_KXPE7rY0Ep29qeo5z4ZGjzDlWqnZjHVUNzlCSVdVU0NWVDRQMVU1OFlBNVA3V1EwNCQlQCN0PWcu)
+This pages is about the bootcamp that we ran from February 18th, 2021 to March 11th, 2021. Although the camp is already finished, you can
+follow along yourself using the resources on this page!
 :::
 
 ## Goals
@@ -104,9 +105,9 @@ you the latest "bleeding edge" version.
 
 Purpose | On PyPI | On Github
 --------|---------|-------------
-Weaver (for creating interviews) | docassemble.assemblylinewizard | https://github.com/SuffolkLITLab/docassemble-assemblylinewizard
-Basic runtime | docassemble.AssemblyLine | https://github.com/SuffolkLITLab/docassemble-AssemblyLine
-Massachusetts-specific runtime code | docassemble.MassAccess | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
-Optional "toolbox"/helper functions | docassemble.ALToolbox | https://github.com/SuffolkLITLab/docassemble-ALToolbox
-Income gathering functionality | docassemble.income | https://github.com/GBLS/docassemble-income
+Weaver (for creating interviews) | [docassemble.assemblylinewizard](https://pypi.org/project/docassemble.assemblylinewizard/) | https://github.com/SuffolkLITLab/docassemble-assemblylinewizard
+Basic runtime | [docassemble.AssemblyLine](https://pypi.org/project/docassemble.AssemblyLine/) | https://github.com/SuffolkLITLab/docassemble-AssemblyLine
+Massachusetts-specific runtime code | [docassemble.MassAccess](https://pypi.org/project/docassemble.MassAccess/) | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
+Optional "toolbox"/helper functions | [docassemble.ALToolbox](https://pypi.org/project/docassemble.ALToolbox/) | https://github.com/SuffolkLITLab/docassemble-ALToolbox
+Income gathering functionality | [docassemble.income](https://pypi.org/project/docassemble.income/) | https://github.com/GBLS/docassemble-income
 Customizable starting point for your jurisdiction | * | https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction
