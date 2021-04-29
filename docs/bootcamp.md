@@ -6,7 +6,8 @@ slug: /bootcamp
 ---
 
 :::info
-[Sign up for the bootcamp here!](https://forms.office.com/Pages/ResponsePage.aspx?id=qT9zeA5UuE6_KXPE7rY0Ep29qeo5z4ZGjzDlWqnZjHVUNzlCSVdVU0NWVDRQMVU1OFlBNVA3V1EwNCQlQCN0PWcu)
+This pages is about the bootcamp that we ran from February 18th, 2021 to March 11th, 2021. Although the camp is already finished, you can
+follow along yourself using the resources on this page!
 :::
 
 ## Goals
@@ -41,7 +42,7 @@ After signing up, you should have received invites to our docassemble server (ht
 
 ### Week 1: Introduction and getting started using the Assembly Line interview Weaver, 2/18/2021
 
-[![Bootcamp Week 1](./assets/bootcamp_week_1.png)](https://www.youtube.com/watch?v=SILuBSKWoaw)
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/SILuBSKWoaw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Resources from the session:
 
@@ -56,7 +57,7 @@ Homework:
 
 ### Week 2: Using Trello, Editing your interview file. 2/25/2021
 
-[![Bootcamp Week 2](./assets/bootcamp_week_2.png)](https://www.youtube.com/watch?v=Nn_ciny-xWo)
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Nn_ciny-xWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * Explaining the Trello boards and checklists
     * [Pre-processing](https://trello.com/b/TLXUvTFb/1-assembly-line-bootcamp-pre-processing)
@@ -75,7 +76,7 @@ additional questions.
 
 ### Week 3: Using Github, Customizing Branding. 3/4/2021
 
-[![Bootcamp Week 1](./assets/bootcamp_week_3.png)](https://www.youtube.com/watch?v=VAzXYEacN78)
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VAzXYEacN78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * [Using Github in Docassemble](github.md)
 * Customizing basic branding with the [ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction) package.
@@ -85,7 +86,7 @@ additional questions.
 
 ### Week 4: Advanced Docassemble, Installing the backend
 
-[![Bootcamp Week 4](./assets/bootcamp_week_4.png)](https://www.youtube.com/watch?v=-YtGtVI79dY)
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-YtGtVI79dY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * Here's the [video on setting up your own docassemble server](https://www.youtube.com/watch?v=JXdOCLMFPHc) 
 * [docassemble-ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction) package
@@ -104,9 +105,9 @@ you the latest "bleeding edge" version.
 
 Purpose | On PyPI | On Github
 --------|---------|-------------
-Weaver (for creating interviews) | docassemble.assemblylinewizard | https://github.com/SuffolkLITLab/docassemble-assemblylinewizard
-Basic runtime | docassemble.AssemblyLine | https://github.com/SuffolkLITLab/docassemble-AssemblyLine
-Massachusetts-specific runtime code | docassemble.MassAccess | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
-Optional "toolbox"/helper functions | docassemble.ALToolbox | https://github.com/SuffolkLITLab/docassemble-ALToolbox
-Income gathering functionality | docassemble.income | https://github.com/GBLS/docassemble-income
+Weaver (for creating interviews) | [docassemble.assemblylinewizard](https://pypi.org/project/docassemble.assemblylinewizard/) | https://github.com/SuffolkLITLab/docassemble-assemblylinewizard
+Basic runtime | [docassemble.AssemblyLine](https://pypi.org/project/docassemble.AssemblyLine/) | https://github.com/SuffolkLITLab/docassemble-AssemblyLine
+Massachusetts-specific runtime code | [docassemble.MassAccess](https://pypi.org/project/docassemble.MassAccess/) | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
+Optional "toolbox"/helper functions | [docassemble.ALToolbox](https://pypi.org/project/docassemble.ALToolbox/) | https://github.com/SuffolkLITLab/docassemble-ALToolbox
+Income gathering functionality | [docassemble.income](https://pypi.org/project/docassemble.income/) | https://github.com/GBLS/docassemble-income
 Customizable starting point for your jurisdiction | * | https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction
