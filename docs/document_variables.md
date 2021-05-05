@@ -11,9 +11,7 @@ Built-in AssemblyLine library names you can use in PDFs and DOCX files
 
 <!-- Add links up there to tutorials on how to use those -->
 
-[![](https://suffolklitlab.org/doc-assembly-line/images/naming_vid.png)](https://youtu.be/qpfZon2M-GU)
-Video of overview: [The Basics of Naming Fields](https://youtu.be/qpfZon2M-GU)
-
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/qpfZon2M-GU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## What?
 
