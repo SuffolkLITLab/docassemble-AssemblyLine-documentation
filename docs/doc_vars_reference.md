@@ -48,8 +48,12 @@ Other names the [Weaver](https://apps-test.suffolklitlab.org/start/assemblylinew
 | Use case | Document output format | PDF label | YAML/DOCX | Interview order |
 |:-|:-|:-|:-|:-|
 | name of the court | **Court Name** | trial_court | trial_court | trial_court |
-| 1st docket number | **123456** | docket_number | docket_numbers[0] | docket_numbers[0] |
+| docket number (singular) | **123456** | docket_number | docket_number | docket_number |
+| docket number (plural) | **123456** | docket_numbers | docket_numbers | docket_numbers |
 | Date that the user signs the form | **February 4, 2021** | signature_date | signature_date | signature_date |
+| User needs an interpreter | Checkbox checked | user_needs_interpreter | user_needs_interpreter | user_needs_interpreter |
+| User's preferred language | **Spanish** | user_preferred_language | user_preferred_language | user_preferred_language |
+
 
 ## Suffixes: 
 Note: Suffixes are [Reserved words](#reserved-words) for attributes.
@@ -105,18 +109,18 @@ Note: When using these suffixes in a DOCX, the base variable name should be plur
 | Full address on 1 line | **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_address_on_one_line</strong> | parents[0]<strong>.address.on_one_line()</strong> | parents[0]<strong>.address.address</strong> |
 | address 1st line | **120 Tremont St, Unit 2** | parent<strong>_address_line_one</strong> | parents[0]<strong>.address.line_one()</strong> | parents[0]<strong>.address.address</strong> |
 | address city, state zip | **Boston, MA 02108** | parent<strong>_address_city_state_zip</strong> | parents[0]<strong>.address.line_two()</strong> | parents[0]<strong>.address.address</strong> |
-| mailing address street | **120 Tremont St** | parent<strong>_mail_address_street</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
-|  | **120 Tremont St** | parent<strong>_mail_address_address</strong> | parents[0]<strong>.mail_address.address</strong> | parents[0]<strong>.mail_address.address</strong> |
-| mailing address street 2 | **Unit 2** | parent<strong>_mail_address_street2</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
-| mailing address unit | **Unit 2** | parent<strong>_mail_address_unit</strong> | parents[0]<strong>.mail_address.unit</strong> | parents[0]<strong>.mail_address.unit</strong> |
-| mailing address city | **Boston** | parent<strong>_mail_address_city</strong> | parents[0]<strong>.mail_address.city</strong> | parents[0]<strong>.mail_address.city</strong> |
-| mailing address state | **MA** | parent<strong>_mail_address_state</strong> | parents[0]<strong>.mail_address.state</strong> | parents[0]<strong>.mail_address.state</strong> |
-| mailing address zip | **02108** | parent<strong>_mail_address_zip</strong> | parents[0]<strong>.mail_address.zip</strong> | parents[0]<strong>.mail_address.zip</strong> |
-| mailing address country | **USA** | parent<strong>_mail_address_country</strong> | parents[0]<strong>.mail_address.country</strong> | parents[0]<strong>.mail_address.country</strong> |
-| Multi-line full mailing address | ~ | parent<strong>_mail_address_block</strong> | parents[0]<strong>.mail_address.block()</strong> | parents[0]<strong>.mail_address.address</strong> |
-| mailing address on 1 line | **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_mail_address_on_one_line</strong> | parents[0]<strong>.mail_address.on_one_line()</strong> | parents[0]<strong>.mail_address.address</strong> |
-| mailing address 1st line | **120 Tremont St, Unit 2** | parent<strong>_mail_address_line_one</strong> | parents[0]<strong>.mail_address.line_one()</strong> | parents[0]<strong>.mail_address.address</strong> |
-| mailing address city, state zip | **Boston, MA 02108** | parent<strong>_mail_address_city_state_zip</strong> | parents[0]<strong>.mail_address.line_two()</strong> | parents[0]<strong>.mail_address.address</strong> |
+| mailing address street | **120 Tremont St** | parent<strong>_mailing_address_street</strong> | parents[0]<strong>.mailing_address.address</strong> | parents[0]<strong>.mailing_address.address</strong> |
+|  | **120 Tremont St** | parent<strong>_mailing_address_address</strong> | parents[0]<strong>.mailing_address.address</strong> | parents[0]<strong>.mailing_address.address</strong> |
+| mailing address street 2 | **Unit 2** | parent<strong>_mailing_address_street2</strong> | parents[0]<strong>.mailing_address.unit</strong> | parents[0]<strong>.mailing_address.unit</strong> |
+| mailing address unit | **Unit 2** | parent<strong>_mailing_address_unit</strong> | parents[0]<strong>.mailing_address.unit</strong> | parents[0]<strong>.mailing_address.unit</strong> |
+| mailing address city | **Boston** | parent<strong>_mailing_address_city</strong> | parents[0]<strong>.mailing_address.city</strong> | parents[0]<strong>.mailing_address.city</strong> |
+| mailing address state | **MA** | parent<strong>_mailing_address_state</strong> | parents[0]<strong>.mailing_address.state</strong> | parents[0]<strong>.mailing_address.state</strong> |
+| mailing address zip | **02108** | parent<strong>_mailing_address_zip</strong> | parents[0]<strong>.mailing_address.zip</strong> | parents[0]<strong>.mailing_address.zip</strong> |
+| mailing address country | **USA** | parent<strong>_mailing_address_country</strong> | parents[0]<strong>.mailing_address.country</strong> | parents[0]<strong>.mailing_address.country</strong> |
+| Multi-line full mailing address | ~ | parent<strong>_mailing_address_block</strong> | parents[0]<strong>.mailing_address.block()</strong> | parents[0]<strong>.mailing_address.address</strong> |
+| mailing address on 1 line | **120 Tremont St, Unit 2, Boston, MA 02108** | parent<strong>_mailing_address_on_one_line</strong> | parents[0]<strong>.mailing_address.on_one_line()</strong> | parents[0]<strong>.mailing_address.address</strong> |
+| mailing address 1st line | **120 Tremont St, Unit 2** | parent<strong>_mailing_address_line_one</strong> | parents[0]<strong>.mailing_address.line_one()</strong> | parents[0]<strong>.mailing_address.address</strong> |
+| mailing address city, state zip | **Boston, MA 02108** | parent<strong>_mailing_address_city_state_zip</strong> | parents[0]<strong>.mailing_address.line_two()</strong> | parents[0]<strong>.mailing_address.address</strong> |
 | An image of a signature | - | parent<strong>_signature</strong> | parents[0]<strong>.signature</strong> | parents[0]<strong>.signature</strong> |
 | landline number of 1st parent | **123-123-1234**  | parent<strong>_phone_number</strong> | parents[0]<strong>.phone_number</strong> | parents[0]<strong>.phone_number</strong> |
 | mobile number of 1st parent | **123-123-1234** | parent<strong>_mobile_number</strong> | parents[0]<strong>.mobile_number</strong> | parents[0]<strong>.mobile_number</strong> |
