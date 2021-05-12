@@ -49,7 +49,7 @@ Other names the [Weaver](https://apps-test.suffolklitlab.org/start/assemblylinew
 |:-|:-|:-|:-|:-|
 | name of the court | **Court Name** | trial_court | trial_court | trial_court |
 | docket number (singular) | **123456** | docket_number | docket_number | docket_number |
-| docket number (plural) | **123456** | docket_numbers | docket_numbers | docket_numbers |
+| docket number (of multiple) | **123456** | docket_numbers1 | docket_numbers[0] | docket_numbers[0] |
 | Date that the user signs the form | **February 4, 2021** | signature_date | signature_date | signature_date |
 | User needs an interpreter | Checkbox checked | user_needs_interpreter | user_needs_interpreter | user_needs_interpreter |
 | User's preferred language | **Spanish** | user_preferred_language | user_preferred_language | user_preferred_language |
