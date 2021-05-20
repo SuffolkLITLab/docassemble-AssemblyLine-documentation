@@ -6,7 +6,7 @@ title: al_document
 #### html\_safe\_str
 
 ```python
-html_safe_str(the_string) -> str
+html_safe_str(the_string: str) -> str
 ```
 
 Return a string that can be used as an html class or id
@@ -36,7 +36,7 @@ Required attributes:
   - field_name-&gt;str represents the name of a docassemble variable
   - overflow_trigger-&gt;int
 
-Optional/planned (not implemented yet):    
+Optional/planned (not implemented yet):
   - headers-&gt;dict(attribute: display label for table)
   - field_style-&gt;&quot;list&quot;|&quot;table&quot;|&quot;string&quot; (optional: defaults to &quot;string&quot;)
 
@@ -52,7 +52,7 @@ that is not contained in the safe_value().
 #### max\_lines
 
 ```python
- | max_lines(input_width=80, overflow_message_length=0)
+ | max_lines(input_width: int = 80, overflow_message_length=0) -> int
 ```
 
 Estimate the number of rows in the field in the output document.
@@ -60,7 +60,7 @@ Estimate the number of rows in the field in the output document.
 #### value
 
 ```python
- | value()
+ | value() -> Any
 ```
 
 Return the full value, disregarding overflow. Could be useful in addendum
@@ -70,7 +70,7 @@ pages.
 #### safe\_value
 
 ```python
- | safe_value(overflow_message="", input_width=80, preserve_newlines=False)
+ | safe_value(overflow_message: str = "", input_width: int = 80, preserve_newlines: bool = False)
 ```
 
 Try to return just the portion of the variable
@@ -79,7 +79,7 @@ that is _shorter than_ the overflow trigger. Otherwise, return empty string.
 #### value\_if\_defined
 
 ```python
- | value_if_defined()
+ | value_if_defined() -> Any
 ```
 
 Return the value of the field if it is defined, otherwise return an empty string.
@@ -98,7 +98,7 @@ By default, skip empty attributes and the `complete` attribute.
 #### type
 
 ```python
- | type()
+ | type() -> str
 ```
 
 list | object_list | other
@@ -106,7 +106,7 @@ list | object_list | other
 #### is\_list
 
 ```python
- | is_list()
+ | is_list() -> bool
 ```
 
 Identify whether the field is a list, whether of objects/dictionaries or just plain variables.
@@ -114,7 +114,7 @@ Identify whether the field is a list, whether of objects/dictionaries or just pl
 #### is\_object\_list
 
 ```python
- | is_object_list()
+ | is_object_list() -> bool
 ```
 
 Identify whether the field represents a list of either dictionaries or objects.
@@ -122,7 +122,7 @@ Identify whether the field represents a list of either dictionaries or objects.
 #### overflow\_markdown
 
 ```python
- | overflow_markdown()
+ | overflow_markdown() -> str
 ```
 
 Return a formatted markdown table or bulleted list representing the values in the list.
@@ -134,7 +134,7 @@ of the table.
 #### overflow\_docx
 
 ```python
- | overflow_docx(path="docassemble.ALDocumentDict:data/templates/addendum_table.docx")
+ | overflow_docx(path: str = "docassemble.ALDocumentDict:data/templates/addendum_table.docx")
 ```
 
 Light wrapper around insert_docx_template() that inserts a formatted table into a docx
@@ -152,7 +152,7 @@ class ALAddendumFieldDict(DAOrderedDict)
 Object representing a list of fields in your output document, together
 with the character limit for each field.
 
-Provides convenient methods to determine if an addendum is needed and to 
+Provides convenient methods to determine if an addendum is needed and to
 control the display of fields so the appropriate text (overflow or safe amount)
 is displayed in each context.
 
@@ -197,10 +197,10 @@ __getstate__ method Pickle uses.
 class ALDocument(DADict)
 ```
 
-An opinionated collection of typically three attachment blocks:
-1. The final version of a document, at typical key &quot;final&quot;
-2. The preview version of a document, at typical key &quot;preview&quot;
-3. An addendum of a document, at the attribute `addendum`
+An opinionated dictionary of attachment blocks. Typically there are three:
+1. The final version of a document with a signature. Use key=&quot;final&quot; as an argument in a method.
+2. The preview version of a document with no signature. Use key=&quot;preview&quot; as an argument in a method.
+3. An addendum of a document contained in the attribute `addendum`. E.g. `my_doc.addendum`.
 
 Each form that an interview generates will get its own ALDocument object.
 
@@ -212,19 +212,84 @@ Multiple documents can use the same addendum template, with just the case captio
 varying.
 
 Required attributes:
-  - filename: name used for output PDF
-  - title: display name for the output PDF
-  - enabled
-  - has_addendum: set to False if the document never has overflow, like for a DOCX template
+- filename: name used for output PDF
+- title: display name for the output PDF
+- enabled: if this document should be created. See examples.
 
 Optional attribute:
-  - addendum: an attachment block
-  - overflow_fields
+- addendum: an attachment block
+- overflow_fields: ALAddendumFieldDict instance. These values will be used to detect and handle overflow.
+- has_addendum: Defaults to False. Set to True if the document could have overflow, like for a PDF template.
+
+**Examples**:
+
+  
+  Simple use where the document is always enabled and will have no addendum
+```
+---
+objects:
+  - my_doc: ALDocument.using(filename=&quot;myDoc.pdf&quot;, title=&quot;myDoc&quot;, enabled=True)
+--- 
+attachment:
+    variable name: my_doc[i]  # This will usually be &quot;final&quot; or &quot;preview&quot;
+    ...
+```
+  
+  Enable a document conditionally
+```
+---
+# See that `enabled` is not defined here
+objects:
+  - my_doc: ALDocument.using(filename=&quot;myDoc.pdf&quot;, title=&quot;myDoc&quot;)
+  - affidavit_of_indigency: ALDocument.using(filename=&quot;affidavit-of-indigency.pdf&quot;, title=&quot;Affidavit of Indigency&quot;)
+---
+# an example of an arbitrary condition
+code: |
+  my_doc.enabled = condition1 and condition2
+  enable_my_doc_conditionally = True
+---
+# A common example many interviews would encounter for an affidavit of indigency
+code: |  
+  affidavit_of_indigency.enabled = ask_indigency_questions and is_indigent
+---
+attachment:
+    variable name: my_doc[i]
+    ...
+---
+attachment:
+    variable name: affidavit_of_indigency[i]
+    ...
+---
+```
+  
+  For a document that may need an addendum, you must specify this when the object is created
+  or in a mandatory code block. The addendum will only be triggered if the document has &quot;overflow&quot;
+  in one of the fields that you specify.
+```
+---
+objects:
+  - my_doc: ALDocument.using(filename=&quot;myDoc.pdf&quot;, title=&quot;myDoc&quot;, enabled=True, has_addendum=True)
+--- 
+attachment:
+    variable name: my_doc[i]
+    ...
+---
+generic object: ALDocument
+attachment:
+  variable name: x.addendum
+  docx template file: docx_addendum.docx
+---
+code: |
+  my_doc.overflow_fields[&#x27;big_text_variable&#x27;].overflow_trigger = 640 # Characters 
+  my_doc.overflow_fields[&#x27;big_text_variable&#x27;].label = &quot;Big text label&quot; # Optional - you may use in your addendum
+  my_doc.overflow_fields[&#x27;list_of_objects_variable&#x27;].overflow_trigger = 4 # Items in the list
+  my_doc.overflow_fields.gathered = True      
+```
 
 #### as\_docx
 
 ```python
- | as_docx(key='final', refresh=True)
+ | as_docx(key: str = 'final', refresh: bool = True) -> DAFile
 ```
 
 Returns the assembled document as a single DOCX file, if possible. Otherwise returns a PDF.
@@ -232,7 +297,7 @@ Returns the assembled document as a single DOCX file, if possible. Otherwise ret
 #### as\_list
 
 ```python
- | as_list(key='final', refresh=True)
+ | as_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
 ```
 
 Returns a list of the document and its addendum, if any.
@@ -242,7 +307,7 @@ This behavior is the default.
 #### safe\_value
 
 ```python
- | safe_value(field_name, overflow_message=None, preserve_newlines=False, input_width=80)
+ | safe_value(field_name: str, overflow_message: str = None, preserve_newlines: bool = False, input_width: int = 80)
 ```
 
 Shortcut syntax for accessing the &quot;safe&quot; (shorter than overflow trigger)
@@ -251,7 +316,7 @@ value of a field that we have specified as needing an addendum.
 #### overflow\_value
 
 ```python
- | overflow_value(field_name: str, overflow_message=None, preserve_newlines=False, input_width=80)
+ | overflow_value(field_name: str, overflow_message: str = None, preserve_newlines: bool = False, input_width: int = 80)
 ```
 
 Shortcut syntax for accessing the &quot;overflow&quot; value (amount that exceeds overflow trigger)
@@ -290,7 +355,7 @@ Use case: providing a list of documents in a specific order.
 #### enabled\_documents
 
 ```python
- | enabled_documents()
+ | enabled_documents() -> List[Any]
 ```
 
 Returns the enabled documents
@@ -298,7 +363,7 @@ Returns the enabled documents
 #### as\_flat\_list
 
 ```python
- | as_flat_list(key='final', refresh=True)
+ | as_flat_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
 ```
 
 Returns the nested bundle as a single flat list. This could be the preferred way to deliver forms to the
@@ -307,7 +372,7 @@ court, e.g.--one file per court form/cover letter.
 #### get\_titles
 
 ```python
- | get_titles(key='final') -> List[str]
+ | get_titles(key: str = 'final') -> List[str]
 ```
 
 Gets all of titles of the documents in a list
@@ -315,7 +380,7 @@ Gets all of titles of the documents in a list
 #### as\_pdf\_list
 
 ```python
- | as_pdf_list(key='final', refresh=True)
+ | as_pdf_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
 ```
 
 Returns the nested bundles as a list of PDFs that is only one level deep.
@@ -323,7 +388,7 @@ Returns the nested bundles as a list of PDFs that is only one level deep.
 #### as\_editable\_list
 
 ```python
- | as_editable_list(key='final', refresh=True)
+ | as_editable_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
 ```
 
 Return a flat list of the editable versions of the docs in this bundle.
@@ -332,7 +397,7 @@ Not yet tested with editable PDFs.
 #### download\_list\_html
 
 ```python
- | download_list_html(key='final', format='pdf', view=True, refresh=True) -> str
+ | download_list_html(key: str = 'final', format: str = 'pdf', view: bool = True, refresh: bool = True) -> str
 ```
 
 Returns string of a table to display a list
@@ -362,17 +427,17 @@ include an editable (Word) copy of the file, iff it is available.
 #### send\_email
 
 ```python
- | send_email(to: any = None, key: str = 'final', editable: bool = False, template=None, **kwargs)
+ | send_email(to: any = None, key: str = 'final', editable: bool = False, template: any = None, **kwargs) -> bool
 ```
 
 Send an email with the current bundle as a single flat pdf or as editable documents.
-Can be used the same as https://docassemble.org/docs/functions.html#send_email with 
+Can be used the same as https://docassemble.org/docs/functions.html#send_email with
 two optional additional params.
 
 keyword arguments:
-@param [editable] {bool} - Optional. User wants the editable docs. Default: False
-@param [key] {string} - Optional. Which version of the doc. Default: &#x27;final&#x27;
 @param to {string} - Same as da send_email `to` - email address(es) or objects with such.
+@param [key] {string} - Optional. Which version of the doc. Default: &#x27;final&#x27;
+@param [editable] {bool} - Optional. User wants the editable docs. Default: False
 @param template {object} - Same as da `send_email` `template` variable.
 @param * {*} - Any other parameters you&#x27;d send to a da `send_email` function
 
@@ -403,16 +468,16 @@ different scenarios.
 #### preview
 
 ```python
- | preview(format='PDF', bundle='user_bundle')
+ | preview(format: str = 'PDF', bundle: str = 'user_bundle') -> DAFile
 ```
 
-Create a copy of the document as a single PDF that is suitable for a preview version of the 
+Create a copy of the document as a single PDF that is suitable for a preview version of the
 document (before signature is added).
 
 #### as\_attachment
 
 ```python
- | as_attachment(format='PDF', bundle='court_bundle')
+ | as_attachment(format: str = 'PDF', bundle: str = 'court_bundle') -> List[DAFile]
 ```
 
 Return a list of PDF-ified documents, suitable to make an attachment to send_mail.
