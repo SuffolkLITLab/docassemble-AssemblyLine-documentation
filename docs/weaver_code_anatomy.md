@@ -17,12 +17,14 @@ you use more advanced features of [docassemble](https://docassemble.org), knowin
 will help.
 
 ## Include
-Imports the AssemblyLine package and, 🚧 for now 🚧, the MassAccess package too. As described in the [docassemble documentation](https://docassemble.org/docs/initial.html#include), this incorporates the questions in these two YAML files, as if the contents of those files were copy pasted right in this block. This gives you
-access to all of the pre-created questions in AssemblyLine.
+Imports the AssemblyLine package, and the jurisdiction and organization packages that you checked in the Weaver. By default, the jurisdiction package is ALMassachusetts, and the organization package is  the MassAccess package. 
+As described in the [docassemble documentation](https://docassemble.org/docs/initial.html#include), this incorporates the questions in these YAML files, as if the contents of those files were copy pasted right in this block. 
+This gives you access to all of the pre-created questions in AssemblyLine.
 
 ```yml
 include:
   - docassemble.AssemblyLine:al_package.yml
+  - docassemble.ALMassachusetts:al_massachusetts.yml
   - docassemble.MassAccess:massaccess.yml
 ---
 ```
@@ -57,19 +59,21 @@ code: |
   if not defined("interview_metadata['a_258e_motion_for_impoundment']"):
     interview_metadata.initializeObject('a_258e_motion_for_impoundment')
   interview_metadata['a_258e_motion_for_impoundment'].update({
-    'title': '209a 258e motion for impoundment',
-    'short title': '209a 258e motion for impoundment',
-    'description': '209a 258e motion for impoundment',
-    'original_form': '',
-    'allowed courts': [
-      'Land Court',
+    "al_weaver_version": "0.82",
+    "generated on": "2021-05-28",
+    "title": "209a 258e motion for impoundment",
+    "short title": "209a 258e motion for impoundment",
+    "description": "209a 258e motion for impoundment",
+    "original_form": "",
+    "allowed courts": [
+      "Land Court",
     ],
-    'categories': [
-      'BE-04-00-00-00',
+    "categories": [
+      "BE-04-00-00-00",
     ],
-    'logic block variable': 'a_258e_motion_for_impoundment',
-    'attachment block variable': 'a_258e_motion_for_impoundment_attachment',
-    'typical role': 'plaintiff',
+    "logic block variable": "a_258e_motion_for_impoundment",
+    "attachment block variable": "a_258e_motion_for_impoundment_attachment",
+    "typical role": "plaintiff",
   })
 ---
 ```
@@ -78,13 +82,12 @@ code: |
 1. `original_form` is simply a link to the original, fillable PDF form that this interview is automating, if it exists.
 1. 🚧 `allowed courts` allows your code to decide which courts to let the user pick from when they need to pick their court, usually used in conjunction with [AL Generic Jurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction).
 1. `categories` is the [LIST taxonomy](https://taxonomy.legal/) code for this interview, which can be used by your organization to organize your interviews.
-
 1. `attachment block variable` used to be used in the code that sends documents to courts. It's now deprecated in favor of the [ALDocument object block](#aldocument-object-block)
 1. `logic block variable` is also deprecated
 1. `typical role`: controls which questions the user gets asked, and serves the same purpose as the code in the [interview order block](#interview-order)
 
 ## Main intro page
-Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right form (or the wrong one). Note that this can (and maybe should) be different from the short title in the [metadata block](#metadata)
+Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right (or wrong) form. Note that this can (and should) be different from the short title in the [metadata block](#metadata)
 
 ```yml
 code: |
@@ -106,12 +109,12 @@ code: |
 ```
 
 ## Navigation
-[`navigation`](https://docassemble.org/docs/initial.html#navigation%20bar) and [`sections`](https://docassemble.org/docs/initial.html#sections) work with [`nav.set_section()`](https://docassemble.org/docs/functions.html#DANav.show_sections) to show the column on the left that lets your users jump to a screen that lets them edit their information in your interview. Avoids using the 'Back' button which deletes answers.
+[`navigation`](https://docassemble.org/docs/initial.html#navigation%20bar) and [`sections`](https://docassemble.org/docs/initial.html#sections) work with [`nav.set_section()`](https://docassemble.org/docs/functions.html#DANav.show_sections) to show the column on the left that lets your users jump to a screen that lets them edit their information in your interview. 
+Avoids using the 'Back' button which deletes answers.
+
+By default, there is a single "Review" section, that covers the whole interview.
 
 ```yml
-features:
-  navigation: True
----
 sections:
   - review_a_258e_motion_for_impoundment: Review your answers
 ---
@@ -119,8 +122,6 @@ sections:
 
 ## Interview order
 Controls the order in which your screens are shown.
-
-There is a block with the id of `main_order_<name-of-your-interview-here>` that is directly after this block. You shouldn't have to change this code unless you are 🚧 combining multiple interviews together 🚧.
 
 The full interview order block will look something like this. We'll go over each line individually below.
 
@@ -153,12 +154,11 @@ Code for your pages comes next. All your questions should be triggered in here. 
 1. This final variable is customized for your interview. It lets you trigger all the code in this entire code block. If you are including this interview in another interview, you can use this variable to trigger this particular question order. It is also triggered in the [main order block](#main-order)
 
 ## Main Order
+This block controls the higher-level order of the interview, anything that isn't questions specific to your interview, like intro screens, signatures, etc. 
+You shouldn't have to change that code unless you are 🚧 combining multiple interviews together 🚧.
 
 ```yml
 mandatory: True
-comment: |
-  This block includes the logic for standalone interviews.
-  Delete mandatory: True to include in another interview
 id: main_order_a_258e_motion_for_impoundment
 code: |
   al_intro_screen
@@ -179,7 +179,8 @@ There is some AssemblyLine code that comes after your own custom interview order
 
 1. `set_parts(subtitle=str(users))` adds to the information a logged in user will listed for this interview in their list of interviews. For an attorney, they should see the name of their clients. For a self represented litigant, they should see their name.
 1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
-1. `signature_date` is needed on every form that has a signature (it holds the date that the user is signing the form).
+1. `signature_date` is the date that the user signed the form, and is needed on every form that has a signature.
+1. `store_variables_snapshot()` lets you gather data about this interview session. _You should be very thoughtful  about what you store, and care must be taken to anonymize it_. Just removing a name is not sufficient.
 1. You should be very thoughtful when you use `store_variables_snapshot()`. It lets you gather data about how your form is being used. Care must be taken to anonymize it. Just removing a name is not sufficient.
 1. `a_258e_motion_for_impoundment_preview_question` will trigger [the preview screen](#preview).
 1. `basic_questions_signature_flow` allows the user to pick what device to sign on. This lets them send the form to a smartphone for signing.
@@ -191,8 +192,6 @@ These `question` blocks control the screens your clients will see that are speci
 ### Your interview's intro
 
 ```yml
-comment: |
-  This question is used to introduce your interview. Please customize
 id: 209a 258e motion for impoundment
 continue button field: a_258e_motion_for_impoundment_intro
 question: |
@@ -265,16 +264,9 @@ need: a_258e_motion_for_impoundment
 
 Leave this block as it is if possible. Prepares to use this document in the `ALDocumentBundle`.
 
-:::info
-What ALDocument does:
-
-1. Usually you need to attachment blocks for a PDF - a preview without a signature and the final document with a signature. ALDocument takes care of that for you.
-1. It lets you combine files in different ways easily. For example, when sending a packet to the court you might want to add a cover page, but when sending one to the client you might want to include an instruction sheet instead.
-:::
-
-<!-- 
-1. AssemblyLine is working on ways to help the final download screen present those documents to the user more clearly with less work from the developer.
- -->
+Usually you need to make several different attachment blocks for a PDF: a preview without a signature and the final document with a signature. 
+The ALDocument class takes care of that for you. It also contains some nice features like adding addendums if
+an interviewee's answers are too long.
 
 ```yml
 objects:
@@ -286,6 +278,9 @@ objects:
 
 Leave this block as it is if possible. Adds your file to two 'bundles' automatically - one for the user and one for the court.
 
+The ALDocumentBundle class lets you combine files in different ways easily. For example, when sending a packet to the court you might want to add a cover page, but when sending one to the client you might want to include an instruction sheet instead. With the ALDocumentBundle class, this is as simple as adding the new attachment to the
+`elements` parameter below.
+
 ```yml
 objects:
   - al_user_bundle: ALDocumentBundle.using(elements=[a_258e_motion_for_impoundment_attachment], filename="209a_258e_motion_for_impoundment.pdf", title="All forms to download for your records")
@@ -295,18 +290,20 @@ objects:
 
 ### Attachment block
 
+An [attachment block](https://docassemble.org/docs/documents.html#attachment) for a PDF. This is how you will put your user's answers into a PDF's fields. You will have one for every PDF in your form. Its name is based on your PDF file name.
+
 [How to fill in your PDF fields with docassemble](https://docassemble.org/docs/documents.html#pdf%20template%20file).
 
 ```yml
 attachment:
-    variable name: a_258e_motion_for_impoundment_attachment[i]
     name: 209a 258e motion for impoundment
-    filename: a_258e_motion_for_impoundment
+    filename: a-258e-motion-for-impoundment
+    variable name: a_258e_motion_for_impoundment_attachment[i]
     skip undefined: True
     pdf template file: 209a_258e_motion_for_impoundment.pdf
     fields: 
       - "signature_date": ${ signature_date }
-      # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
+      # It's a signature: test which file version this is; leave empty unless it's the final version
       - "user_signature": ${ users[0].signature if i == 'final' else '' }
       - "impound_personal_information": ${ impound_personal_information }
       - "impound_case_record_information": ${ impound_case_record_information }
@@ -317,29 +314,6 @@ attachment:
       - "motion_allowed_ex_parte": ${ motion_allowed_ex_parte }
       - "motion_allowed_after_hearing": ${ motion_allowed_after_hearing }
       - "motion_denied": ${ motion_denied }
----
-```
-
-An [attachment block](https://docassemble.org/docs/documents.html#attachment) for a PDF. This is how you will put your user's answers into a PDF's fields. You will have one for every PDF in your form. Its name is based on your PDF file name.
-
-<!-- 
-```yml
-filename: a_258e_motion_for_impoundment
-```
-This is the filename the user will see. Underscores are hard to see in filenames sometimes. You might change this to something like `a-258e-motion-for-impoundment`.
- -->
-
-## ALDocument Object Block
-
-<!-- TODO(brycew): flesh this out more -->
-
-```yml
-objects:
-  - a_258e_motion_for_impoundment_attachment: ALDocument.using(title="258e Motion for Impoundment", filename="a_258e_motion_for_impoundment", enabled=True, has_addendum=False)
----
-objects:
-  - al_user_bundle: ALDocumentBundle.using(elements=[a_258e_motion_for_impoundment_attachment], filename="a_258e_motion_for_impoundment.pdf", title="All forms to download for your records")
-  - al_court_bundle: ALDocumentBundle.using(elements=[a_258e_motion_for_impoundment_attachment], filename="a_258e_motion_for_impoundment.pdf", title="All forms to download for your records")
 ---
 ```
 
@@ -361,3 +335,7 @@ review:
       **Impound personal information**:
       ${ word(yesno(impound_personal_information)) }
 ```
+
+There might be additional blocks that start like `continue button field: users.revisit` or `table: users.table`.
+These blocks are used by the review screen to display and edit multiple pieces of information, like plaintiffs 
+and their contact information.
