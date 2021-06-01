@@ -18,8 +18,6 @@ module.exports = {
     'name_formats',
     'docs_style_guide',
     ],	
-    "API Documentation": [
-      require("./docs/reference/sidebar.json")
-    ],
+    "API Documentation": require("./docs/reference/sidebar.json")
   },
 };
