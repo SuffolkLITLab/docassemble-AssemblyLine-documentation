@@ -105,7 +105,7 @@ you the latest "bleeding edge" version.
 
 Purpose | On PyPI | On Github
 --------|---------|-------------
-Weaver (for creating interviews) | [docassemble.assemblylinewizard](https://pypi.org/project/docassemble.assemblylinewizard/) | https://github.com/SuffolkLITLab/docassemble-assemblylinewizard
+Weaver (for creating interviews) | [docassemble.ALWeaver](https://pypi.org/project/docassemble.ALWeaver/) | https://github.com/SuffolkLITLab/docassemble-ALWeaver
 Basic runtime | [docassemble.AssemblyLine](https://pypi.org/project/docassemble.AssemblyLine/) | https://github.com/SuffolkLITLab/docassemble-AssemblyLine
 Massachusetts-specific runtime code | [docassemble.MassAccess](https://pypi.org/project/docassemble.MassAccess/) | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
 Optional "toolbox"/helper functions | [docassemble.ALToolbox](https://pypi.org/project/docassemble.ALToolbox/) | https://github.com/SuffolkLITLab/docassemble-ALToolbox

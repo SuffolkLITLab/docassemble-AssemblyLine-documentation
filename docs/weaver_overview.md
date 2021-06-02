@@ -13,9 +13,9 @@ If you have [prepared your PDF or DOCX using certain conventions](doc_vars_refer
 
 To generate the starter code:
 1. If you have a PDF, [add labels to it](pdfs.md) 
-   1. [Check your labels](https://apps-dev.suffolklitlab.org/run/assemblylinewizard/pdf_field_tester?new_session=1)
+   1. [Check your labels](https://apps-dev.suffolklitlab.org/run/ALWeaver/pdf_field_tester?new_session=1)
 1. If you have a DOCX, make use of the [DOCX naming conventions](doc_vars_reference.md) when adding variables between {{ and }} marks, as in [this example](./assets/generic_motion_family_law.docx).
-1. [Go to the weaver's page](https://apps-test.suffolklitlab.org/start/assemblylinewizard/assembly_line/#/1?new_session=1)
+1. [Go to the weaver's page](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1?new_session=1)
 1. Upload your PDF or DOCX
 1. Select the field type of each field (e.g. text, date, checkbox)
 1. Give labels to the individual question fields that the user will see
@@ -26,4 +26,4 @@ A page might look like this:
 
 ![One page of an interview made up of a heading, explanatory text, and the fields](./assets/interview_screen_or_page.png)
 
-You can see [the ALWeaver docassemble package on GitHub](https://github.com/suffolkLITLab/docassemble-assemblylinewizard)
+You can see [the ALWeaver docassemble package on GitHub](https://github.com/suffolkLITLab/docassemble-ALWeaver)

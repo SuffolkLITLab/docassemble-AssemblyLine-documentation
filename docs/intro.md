@@ -30,6 +30,6 @@ https://suffolklitlab.org/doc-assembly-line/
  -->
 
 ## Our Repositories
-- [The ALWeaver](https://github.com/SuffolkLITLab/docassemble-assemblylinewizard) for generating code.
+- [The ALWeaver](https://github.com/SuffolkLITLab/docassemble-ALWeaver) for generating code.
 - [The AssemblyLine docassemble package](https://github.com/SuffolkLITLab/docassemble-AssemblyLine) with functionality designed for court forms.
 
