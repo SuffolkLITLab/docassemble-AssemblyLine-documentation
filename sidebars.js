@@ -8,6 +8,7 @@ module.exports = {
       label: 'Generate Code',
       items: [
         'alweaver_overview',
+	'customizing_interview',
         'pdfs',
         'document_variables_reference',
         'yaml_anatomy',
