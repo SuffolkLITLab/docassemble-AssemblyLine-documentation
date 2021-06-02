@@ -1,5 +1,9 @@
-[
-  "reference/al_general",
-  "reference/al_courts",
-  "reference/al_document"
-]
+{
+  "items": [
+    "reference/al_courts",
+    "reference/al_document",
+    "reference/al_general"
+  ],
+  "label": "API Reference",
+  "type": "category"
+}

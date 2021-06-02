@@ -1,6 +1,6 @@
 module.exports = {
-  someSidebar: {
-    'Using the AssemblyLine Framework': ['intro',
+  someSidebar: [
+    'intro',
     'bootcamp',
     'getting_started',
     {
@@ -17,7 +17,6 @@ module.exports = {
     'github',
     'name_formats',
     'docs_style_guide',
-    ],	
-    "API Documentation": require("./docs/reference/sidebar.json")
-  },
+    require('./docs/reference/sidebar.json')
+  ],
 };
