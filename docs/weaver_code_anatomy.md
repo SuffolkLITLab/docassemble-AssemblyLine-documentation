@@ -20,8 +20,7 @@ will help.
 An include block incorporates content (code blocks, questions blocks, etc.) from other YAML files. When you run the interview, docassemble acts as if all of the content in the YAML files listed below was copied and pasted right in this exact spot. 
 This is described in more detail in the [docassemble documentation](https://docassemble.org/docs/initial.html#include).
 
-This include block includes the AssemblyLine package, as well as the jurisdiction and organization packages that you picked in the Weaver. By default, the jurisdiction package is ALMassachusetts, and the organization package is the MassAccess package.
-This gives you access to all of the pre-created questions in AssemblyLine.
+This `include` block includes the AssemblyLine package, giving you access to all of the pre-created questions in AssemblyLine. It also adds the jurisdiction and organization packages that you picked in the Weaver. By default, the jurisdiction package is ALMassachusetts, and the organization package is the MassAccess package.
 
 ```yml
 include:
@@ -89,7 +88,7 @@ code: |
 1. `typical role`: controls which questions the user gets asked about themselves and other parties. 
 
 ## Main intro page
-Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right (or wrong) form. Note that this can (and should) be a more direct and detailed call to action, e.g. ("File a ___" or "Ask the court for ____"), rather than a simple short title, like the short title in the [metadata block](#metadata).
+Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right (or wrong) form. Note that this can (and should) be a more direct and detailed call to action, e.g. ("File a \_\_\_\_" or "Ask the court for \_\_\_\_"), rather than a simple short title, like the short title in the [metadata block](#metadata).
 
 ```yml
 code: |
@@ -180,8 +179,6 @@ code: |
 
 There is some AssemblyLine code that comes after your own custom interview order code. You will probably leave this code alone as well:
 
-1. `set_parts(subtitle=str(users))` adds to the information a logged in user will listed for this interview in their list of interviews. For an attorney, they should see the name of their clients. For a self represented litigant, they should see their name.
-1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
 1. `signature_date` is the date that the user signed the form, and is needed on every form that has a signature.
 1. `store_variables_snapshot()` lets you gather data about this interview session. _You should be very thoughtful about what you store, and care must be taken to anonymize it_. Just removing a name is not sufficient.
   
