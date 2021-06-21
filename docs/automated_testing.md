@@ -11,19 +11,31 @@ slug: /automated_integrated_testing
 
 <!-- ## Setup
 
-Talk to us about it.
+For now, talk to us about it.
+
+- Have admin permissions on the repo
+- Use the setup interview (https://apps-dev.suffolklitlab.org/start/test-setup/)
+- Add this element to the page somewhere: <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
+
+Secrets
+
+PLAYGROUND_PASSWORD
+PLAYGROUND_ID
+PLAYGROUND_EMAIL
 -->
 
 ## Summary
 
 1. You write and edit `.feature` test files in your Sources folder.
-1. There's a maximum of 2 minutes per individual Step or table row. That can't be customized yet.
+1. There's a maximum of 2 minutes per individual Step or table row. Longer than that and the test will error. That can't be customized yet.
 1. Tests are run when you commit.
 1. Tests can download PDF files, but humans have to review them to see if they're right.
 1. Tests that error should create screenshots from when the error happened.
 1. Tests create report files. They don't have a lot right now, but they might have some clues when something unexpected happens.
 
-For interacting with things on GitHub, look for how to use the 'Actions' tab.
+For interacting with things on GitHub, look for how to use the [Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity) tab.
+
+Give us feedback and ideas by making issues at https://github.com/plocket/docassemble-cucumber/issues.
 
 ## Example
 
@@ -49,11 +61,29 @@ Feature: The user has children
 
 ```
 
+## First test
+
+You can write a really simple test right away that just makes sure your a file runs using the name of the file. Write a `Scenario` for each file you want to test.
+
+```
+Feature: Interviews load
+
+  Scenario: The 209A loads
+    Given I start the interview at "ma_209a_package"
+
+  Scenario: The Plaintiff's Motion to Modify loads
+    Given I start the interview at "plaintiffs_motion_to_modify_209a"
+```
+
+More complex tests might wait till your code is pretty much how you want it. Every time you change your variable names, you may have to update the tests.
+
 ## Story tables syntax
 
-Very basically, a **story table** contains a list of variables and values. The order in which they appear does not matter, which gives a lot more flexibility when developers are changing around the order of questions.
+Very basically, a **story table** contains a list of variables and values. The order in which you list the rows does not matter, which gives a lot more flexibility when developers are changing around the order of questions. Whenever pages with those variables appear, they will be given the value listed.
 
 Tip: it can be easy to lose track of what variables you've included, so it can be useful keep the rows in alphabetical order.
+
+You can have multiple tables per Scenario and you can put other steps between tables. Remember that each table needs to state the `id` of the `question` where it should stop.
 
 ### Story table description
 
@@ -63,13 +93,13 @@ The step that triggers a story table is
     And I get to the question id "some id!" with this data:
 ```
 
-Under that, you put the header row of the table:
+It needs to know the `id` of the page where it will stop. You can find the `id` in the `question` block in the YAML (or using the Sources tab in a live interview). Under that, you put the header row of the table:
 
 ```
       | var | value | trigger |
 ```
 
-Under that, you add a row for every field that you want to interact with during the interview. Start with a blank row then fill it in:
+This labels the three columns you will use. Under that, you add a row for every field that you want to interact with during the interview. Start with a blank row then fill it in:
 ```
       |  |  |  |
 ```
@@ -96,12 +126,12 @@ In the **trigger** column, write the name of the intrinsic name of the variable 
 
 Simple field types with their values
 
-[yesno buttons](https://docassemble.org/docs/fields.html#yesno), [yesnoradio](https://docassemble.org/docs/fields.html#fields%20yesno) choice 'yes', etc.
+The 'yes' choice of [yesno buttons](https://docassemble.org/docs/fields.html#yesno), [yesnoradio](https://docassemble.org/docs/fields.html#fields%20yesno) fields, etc.
 ```
       | has_hair | True | has_hair |
 ```
 
-[yesnomaybe buttons](https://docassemble.org/docs/fields.html#yesnomaybe) or [datatype: yesnomaybe](https://docassemble.org/docs/fields.html#fields%20yesno) choice 'maybe'
+The 'maybe' choice in [yesnomaybe buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [datatype: yesnomaybe](https://docassemble.org/docs/fields.html#fields%20yesno) fields
 ```
       | has_hair | None | has_hair |
 ```
@@ -150,12 +180,14 @@ The `value` for a row setting a signature doesn't matter. All signatures will be
 
 ### Other notes
 
-Don't worry about accidentally including variables that won't show up during the test. They'll just be ignored.
+Don't worry about accidentally including variables that won't show up during the test. Extra rows will be ignored.
 
 
 ## Steps
 
-You can use the [steps](https://cucumber.io/docs/gherkin/reference/#steps) below (listed in aphabetical order):
+[Steps](https://cucumber.io/docs/gherkin/reference/#steps) happen one after the other sequentially. It's a bit more like you're the user clicking through the form. They can let you do things like download a file or make sure an user input invalidation message appears. If you change the order of the questions, even if you don't change any variable names, you'll have to update the tests.
+
+Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all be used interchangeably. It doesn't matter which you use.
 
 ### Starting Step
 
@@ -163,11 +195,12 @@ Leave out the extension of the file. Use just the name by itself.
 ```
     Given I start the interview at "yaml_file_name"
 ```
+<!-- Given I start the interview at "filename" in lang "Español" -->
 <!-- And I am using a mobile -->
 
 ### Observe things about the page
 
-To check the id, look at the YAML `question` block and copy the id from there. Adding this Step into the code of the test can help you, as a human, keep track of what fields you should be filling in next.
+To check the id, look at the YAML `question` block and copy the id from there. Adding this Step into the code of the test can help you, as a human, keep track of what fields you should be filling in next. It will also show up in the logs of the tests and can help you see where things went wrong.
 ```
     Then the question id should be "some yaml block id!"
 ```
@@ -181,7 +214,7 @@ To check the id, look at the YAML `question` block and copy the id from there. A
     Then I arrive at the next page
 ```
 
-Screenshots will be in the GitHub action's 'artifacts'.
+Screenshots will be in the GitHub action's [artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
 ```
     Then I take a screenshot
@@ -212,7 +245,7 @@ Checking phrases will be language specific. Also, docassemble sometimes uses som
     When I tap to continue
 ```
 
-Set most fields like this
+Use this Step to set the values of fields. Comparing this to the story table described above, the first quotes contain the equivalent of the `var` column and the second quotes contain the `value` you want to set.
 ```
     When I set the variable "users[i].hair_color" to "blue"
 ```
@@ -222,20 +255,25 @@ Sign on a signature field. All signatures are the same.
     When I sign
 ```
 
-Specifically for the Document Assembly Line four-part name questions. No punctuation.
+Specifically for the Document Assembly Line 4-part name questions. No punctuation. We recommend you just use 2 names - the first name and last name - but you can have all these formats:
+
+- Firstname Lastname
+- Firstname Middlename Lastname
+- Firstname Middlename Lastname Suffix (where suffix is one of the dropdown suffix choices, like `II`)
+
 ```
     When I set the name of "x[i]" to "Ulli User"
 ```
 
-Specifically for the Document Assembly Line address questions. 
-<!-- Get Tremont address "112 Southampton St., Unit 1, Boston, MA 02118" -->
+Specifically for the Document Assembly Line 5-field address questions. t can be any address you want that matches the format shown, commas and all.
+
 ```
-    When I set the address of "users[0]" to "______"
+    When I set the address of "users[0]" to "120 Tremont Street, Unit 1, Boston, MA 02108"
 ```
 
 The Step for the story table, which is better described in sections above.
 ```
-I get to the question id "some yml block id" with this data:
+    I get to the question id "some yml block id" with this data:
 ```
 
 ### Other actions
@@ -244,12 +282,14 @@ I get to the question id "some yml block id" with this data:
     When I tap to continue
 ```
 
-Documents will be in the GitHub action's 'artifacts'.
+Documents will be in the GitHub action's [artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts). At the moment, this step will fail if it takes more than 2 minutes to download.
 ```
     Then I download "file-name.pdf"
 ```
 
-You can give this any number of seconds, though all Steps will timeout after two minutes.
+This Step will let you wait for any number of seconds less than 120 when you are on a page. It can help in some situations where you run into timing issues. It does nothing for the timing of other steps. You can give this Step any number of seconds, though all Steps will timeout after two minutes. You can add multiple rows of these if you want.
+
+The situations that need this are pretty rare, but here's an example: You navigate to a new page and set a field. Sometimes it works fine, but someimtes the test says the element does not exist. The page needs an extra few seconds to load. Add this step in to give it that time.
 ```
     When I wait 10 seconds
 ```
@@ -257,280 +297,7 @@ You can give this any number of seconds, though all Steps will timeout after two
 <!-- When I tap the defined text link {string} -->
 <!-- When I do nothing -->
 
-
-## Test instructions details
-
-### Add a new test
-
-Go to your Playground > the dropdown Folders menu > Sources.
-
-Add a new file that ends in the extension `.feature`. Ex: `has_children.feature`
-
-The next time you commit, your test will be run. You can add and edit multiple test files.
-
-### When do tests run?
-
-Tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
-
-If you know how to use GitHub actions, you can also run the tests manually from GitHub actions with some more options.
-
-### Scenario descriptions
-
-These affect the names of error screenshot files and such things, so try to use useful descriptions.
-
-<!-- 
-
-Don’t worry if you accidentally put an extra value in a column that is not a required column for that field-type. It should work just fine. It might be a little confusing for you to look at later when you don’t remember what you were doing, though.
-
-Extra variables in the table also are not a problem. You can have as many extra rows as you want and it won’t get in the way of testing with stories/tables.
-
-
-### Special story table rows 
-{#special-story-table-rows}
-
-
-```
-WARNING: As of 2021/01/17 these tests can only handle ONE SIGNATURE ROW per 'story' table. Sorry about that, folks. See Github issue.
-```
-
-
-
-#### Signing 
-{#signing}
-
-For a signature page, use a signature row:
-
-
-```
-    ||| /sign |
-```
-
-
-Signing cannot be set for any specific variable or in any particular order. After running into a signature page, a signature row will be used up. If your interview has 3 signatures, you need 3 signature rows.
-
-
-```
-Feature: Signatures all the way down
-Scenario: This interview only has signatures, but it has three of them.
-  Given I start the interview at "my_interview_YAML_file_name"
-  And the user gets to the question id "admit_to_ward" with the data:
-    | var | choice | value |
-    ||| /sign |
-    ||| /sign |
-    ||| /sign |
-```
-
-
-
-### Other **Steps** you can use 
-{#other-steps-you-can-use}
-
-**Steps** here can work in multiple languages unless there’s a note that says they can’t. Stuff in double quotes can be whatever you want it to be.
-
-
-#### General-use sentences 
-{#general-use-sentences}
-
-
-   **Step sentence**
-   **More info**
-   Given I start the interview at "z"
-   "z" is the name of the YAML file you run when you start the interview.
-   And I take a screenshot named "z"
-
-Or
-
-And I take a screenshot
-   A way to try to troubleshoot. Images created like this will be in the <a href="https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts">Github ‘artifacts’</a> of the <a href="https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity">action</a> after the tests finish. This testing framework gives each screenshot a unique name, so you can take as many as you want.
-   And I wait 2 seconds
-   "2" can be any number under 120. You can use it to give something time to load. If you want to wait longer, you can add two or three of these **Steps** in a row. It only works in between other **Steps** as a separate **Step** - it is unable to extend a previous **Step**. We’re working on how to let the developer add extra-long wait times to some **Steps**.
-   I download "z.zip"
-   “z.zip” can be any file name with any extension. It should be a page element that the user can click on to download something. Files created like this will be in the <a href="https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts">Github test ‘artifacts’</a> of the <a href="https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity">action</a> after the tests finish. It should not take more than 2 minutes to download. We plan to make that more flexible later if this framework seems useful to people.
-   Then I will be told an answer is invalid
-   Checks that some kind of message is visible on the page telling the user that their answer was invalid.
-   Then the "z.com" link opens a working page
-   "z.com" can be any address. Checks that the link is on the page and that it leads to a working page. This can be a way to check that something like an ‘Escape’ link is working.
-   And I am using a mobile/pc
-   Not as fancy as you think. There are some features that simulate a phone, but we think it is not fully featured. For headers used, see the <a href="#bookmark=id.9wdh1mwnt9uu">Specs section</a>. Yeah, this says ‘I’ instead of ‘user’. We’re not paragons of consistency… yet…
-
-
-
-#### Very controlled test **Steps** 
-{#very-controlled-test-steps}
-
-These are usually not useful, but might help if you need to get very fine-grained with the behavior of the test. Some of them are very limited in their use.
-
-
-   **Step sentence**
-   **More info**
-   When I tap to continue
-   For ‘continue’ buttons that don’t have a variable name
-   Then the question id should be "z"
-   "z" is the id of the question. This can help print useful errors to the console when something goes wrong and helps keep track in your code.
-   Then I arrive at the next page
-   Checks the url of the page has changed. For example, the user was able to continue.
-   Then I can't continue
-   Checks that the url is the same since the last **Step**. You can test whether the interview correctly stopped a user from going on when they hadn’t filled in enough information and other such things.
-   Then I SHOULD see the phrase "z"
-   ONLY WORKS IN ONE LANGUAGE. Will not work to test translations.
-   Then I should NOT see the phrase "z"
-   ONLY WORKS IN ONE LANGUAGE. Will not work to test translations.
-   And I set the name of "users[0]" to "Uli Ula Ulther III"
-   For the variable name given, this fills in an AssemblyLine 4-field name question with the 4-part name given. The name suffixes are limited to certain choices. See AssemblyLine files.
-   And I set the address of the var "tenant" to "112 Southampton St., Unit 1, Boston, MA 02118"
-   For the variable name given, this fills in an AssemblyLine 5-field address question with the 5-part address given. It can be any address you want that matches the format shown, commas and all. See AssemblyLine files.
-
-
-
-### Specs 
-{#specs}
-
-
-#### Devices 
-{#devices}
-
-Not as fancy as you might want. Uses some features, but we’re not sure how fully featured it is.
-
-**mobile:** Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36
-
-**pc:** Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36
-
-
-
-
-## Set up testing for your repo (todo) 
-{#set-up-testing-for-your-repo-todo}
-
-
-
-1. Add [SECRETS](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) based on an account that is on the server you will be testing. Copy then **Name** exactly as you see it here:
-
-   
-**Name**
-   **Value**
-   PLAYGROUND_EMAIL
-   email used to log into that account
-   PLAYGROUND_PASSWORD
-   password used to log into that account
-   PLAYGROUND_ID
-   To see this, log into that account and run an interview in the playground. Look at the URL. It will have this anatomy:
-
-<a href="https://some-server.org/interview?i=docassemble.playground1234ProjectName%3Afile_name.yml">https://some-server.org/interview?i=docassemble.playground1234ProjectName%3Afile_name.yml</a>
-
-“1234” is the spot where you will find your id. See what number yours is and type that as the value.
-
-
-
-
-2. Contact someone from the [testing repo](https://github.com/plocket/docassemble-cucumber). Either:
-    1. Give them permissions to push to a new branch on your repository or
-    2. Make a new branch on your repo for adding this testing framework. Copy the files you are told to. Edit the file in the way you are told. Commit those files. You should end up with these additional files and folders:
-        1. testing/features/example.feature
-        2. .github/workflow/run_form_tests.yml
-        3. package.json
-        4. .gitignore
-3. Merge that branch into your default branch (usually main or master)
-4. [You can now see the tests running](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity).
-
-If you’re only editing in GitHub you can start writing your tests and committing them to see how they go.
-
-If you’re writing your tests locally, you will need to make a .env file that will have those same environment variables in them. Your .env file should look like this:
-
-
-## Create a test 
-{#create-a-test}
-
-
-### Create a test file 
-{#create-a-test-file}
-
-
-
-1. Either [in GitHub](https://docs.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository) or in your own editor, open the folder ‘tests/features’
-2. Make a new file.
-3. Add this code:
-
-    ```
-Feature: Feature description
-
-To add:
-[ ] Child HAS a guardian ad litem
-[ ] Child does NOT have a guardian ad litem
-
-
-```
-
-
-4. Replace ‘Feature description’ with a description of the purpose of the tests in this file.
-5. Delete the text under that or replace it with notes you have. The example shows how you can add a checklist of situations you might want to remember to cover in here.
-6. Name the file. Example: 1_child.feature
-    1. Always end the file with ‘.feature’.
-    2. Use a descriptive name.
-7. Add **Scenarios** or **Examples** to the file (see how you can [generate an interview Scenario from a completed interview](#bookmark=id.8qqq5w9ws641) below)
-8. [Save/commit the file with a commit message](https://docs.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository). Something like ‘Add examples for a parent with one child’
-9. [Check to see if your code passes or not](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity).
-
-
-### Generate code from an interview 
-{#generate-code-from-an-interview}
-
-Generate one ‘story table’ in an **Example** or **Scenario**: [https://repl.it/@plocket/generatetestsfromobj#index.js](https://repl.it/@plocket/generatetestsfromobj#index.js)
-
-
-#### Generate the code 
-{#generate-the-code}
-
-
-
-1. Decide on the values and branching path that you want to be able to automatically test in the future.
-2. Go through your interview following that path and with those values all the way to the page you want to end on.
-3. Take note of the question **id** on the final page.
-4. Tap the ‘Sources’ link in the header of that final page.
-5. Tap on the ‘Show all variables and values’ link just under the ‘Readability’ chart.
-6. Select and copy all the contents on that page
-    1. Mac: `cmd + a` then` cmd + c`
-    2. PC: `ctrl + a` then `ctrl + c`
-7. [Tap this link](https://repl.it/@plocket/generatetestsfromobj#da_data.json)
-8. WARNING: IF YOU LEAVE THIS PAGE your changes will not be saved.
-9. After the next step, a popup will appear. Just hit the ‘x’ in the circle outside the box on the top right.
-10. Select all the text on that page and then paste what you copied from the variables and values page.
-    3. Mac: `cmd + a` then` cmd + v`
-    4. PC: `ctrl + a` then `ctrl + v`
-11. You’ll see the pop up asking you to join. Just close it by hitting the ‘x’ in the circle outside the box on the top right.
-12. In the left column, click on ‘index.js’
-13. In the header, click on the ‘Run’ button. It should be near the center.
-14. Copy the output that will show up in the ‘output’ column on the right.
-15. Paste that text into your test file somewhere under the **Feature:** description.
-16. Change the fake description of the **Scenario** to describe what will be specifically covered by this story.
-17. Change the fake question id to be the real question id of that final page.
-18. Change the fake YAML file name to be the actual name of the YAML file that starts your interview.
-19. [Save/commit the file](https://docs.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository).
-20. [Check to see if your code passes or not](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity).
-
-
-#### Generating data again using the same repl.it page 
-{#generating-data-again-using-the-same-repl-it-page}
-
-If you already ran the code once and there is still output text in the column on the right, make sure you hit the hard-to-see gray ‘delete’ or ‘x’ button in the top right of the ‘output’ column on the right.
-
-
-#### Make new tests from that code 
-{#make-new-tests-from-that-code}
-
-
-
-1. Copy the code of the **Scenario** or **Example**.
-2. Move to above that **Scenario** or **Example** or below the bottom of the whole **Scenario** or **Example**.
-3. Delete the **Scenario** or **Example** description.
-4. Add ‘TODO: ‘ to the description, then the text that describes what you will test.
-5. Change the values of the variables that need changing.
-6. When you’re done, remove the ‘TODO: ‘ from the **Scenario** or **Example** description.
-7. [Save/commit the file](https://docs.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository).
-8. [Check to see if your code passes or not](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity).
-
-
-
-
+<!--
 ## Failing tests 
 {#failing-tests}
 
@@ -578,198 +345,17 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 2. Try to search for the text of the error online (don’t spend more than 20 min on this, though)
 3. Ask one of us. Remember that this framework is under development. Something might be wrong with our code.
 
+-->
 
+<!--
 
+### Translations
 
-## Cucumber keywords we use 
-{#cucumber-keywords-we-use}
+Always give your `choices` values that are separate from their labels and will never be translated.
 
-We are using a library called cucumber. It is based on a library called gherkin.
-
-
-### We are doing it wrong. On purpose. 
-{#we-are-doing-it-wrong-on-purpose}
-
-We are NOT using cucumber as intended. We do some things a little differently. We will try to let you know which ones.
-
-Cucumber’s main purpose is to make it easier to discuss the behavior of a tool with non-coders so everyone can understand what is supposed to happen. Cucumber specifications are supposed to show the big picture. They are supposed to be written for one specific project. Usually, the coders would write complex and specific code so that the specifications (**Steps**) that people read can give a really quick, clear picture of what is going on.
-
-Usually the **code is specific and the Steps are general.**
-
-For example, they might want to be able to write this sentence:
-
-
-```
-  When a mother with three children wants her address impounded
-```
-
-
-We are not writing specifications for a single interview, though. We also are not writing specifications that show the big picture.
-
-We are writing a _testing_ framework that can be used with every docassemble interview. We flip things a bit.
-
-For us our **code has to be general and the Steps are specific.**
-
-
-```
-  When I tap to continue
-```
-
-
-
-### `Feature` 
-{#`feature`}
-
-It is generally best to use documentation that a library creates for itself so that it stays up-to-date: [https://cucumber.io/docs/gherkin/reference/#feature](https://cucumber.io/docs/gherkin/reference/#feature). Let us know if we should add more information.
-
-
-### `Scenario`/`Example` 
-{#`scenario`-`example`}
-
-It is generally best to use documentation that a library creates for itself so that it stays up-to-date: [https://cucumber.io/docs/gherkin/reference/#example](https://cucumber.io/docs/gherkin/reference/#example). Let us know if we should add more information.
-
-What we do differently:
-
-We often use many more than 3 to 5 **Steps** in a **Scenario** or **Example**. [Like we said before](#bookmark=id.lm0ajwvdd3es), because we’re building a testing framework, our **Steps** are much more specific.
-
-
-### `Step` keywords 
-{#`step`-keywords}
-
-We use these **Step** keywords: ‘Given’, ‘And’, ‘When’, and ‘Then’.
-
-It is generally best to use documentation that a library creates for itself so that it stays up-to-date: [https://cucumber.io/docs/gherkin/reference/#steps](https://cucumber.io/docs/gherkin/reference/#steps). Let us know if we should add more information.
-
-What we do differently:
-
-You can repeat **Steps** any time during a **Scenario**. Just write what the test should do. Something like this will work just fine:
-
-
-```
-  And I wait 30 seconds
-  And I wait 10 seconds
-```
-
-
-
-
-
-## Types of tests 
-{#types-of-tests}
-
-
-### Make sure user cannot continue (story tables) 
-{#make-sure-user-cannot-continue-story-tables}
-
-A story table won’t work 
-
-
-
-
-## Story Tables (todo) 
-{#story-tables-todo}
-
-More details about what ‘story tables’ are and how they work
-
-
-
-
-## **Steps** 
-{#steps}
-
-A **Step** is one instruction that you can give to the test. Each of these steps is something we’ve programmed specifically for docassemble tests.
-
-It is generally best to use documentation that a library creates for itself so that it stays up-to-date: [https://cucumber.io/docs/gherkin/reference/#steps](https://cucumber.io/docs/gherkin/reference/#steps). Let us know if we should add more information.
-
-
-### What a **Step** looks like 
-{#what-a-step-looks-like}
-
-Step syntax.
-
-**Steps** come after their **Scenario:** row and are indented one level more than their **Scenario:** row. You have to start each **Step** with ‘Given’, ‘And’, ‘When’, or ‘Then’. Those words are interchangeable - you can use whichever one you want. 
-
-Each **Step** is a sentence. Sometimes a **Step** has more information right under it, like with our story tables. That information is still part of the same step. In this example there are three steps and the indentation for each **Step** has been highlighted in green:
-
-
-```
-Feature: A description of the purpose of the tests in this file.
-Scenario: A description of what's being specifically tested in this example.
-  Given I start the interview at "my_interview_YAML_file_name"
-  And the user gets to the question id "admit_to_ward" with the data:
-    | var | choice | value |
-    | False | has_ears | true |
-    | hair_color | blue | true |
-    | foot_types | None of the above | true |
-    ||| /sign |
-  When I download "my_zip.zip"
-```
-
-
-The **Steps** are:
-
-
-
-1. The line that starts with ‘Given’
-2. The line that starts with ‘And’ which has a table in it
-3. The line that starts with ‘When’
-
-**Steps** CANNOT BE MIXED with each other. That is, an error will be caused if a story table **Step** has another **Step** inside it. This will cause an error:
-
-
-```
-Feature: A description of the purpose of this file.
-Scenario: A description of what's being specifically tested in this example.
-  Given I start the interview at "my_interview_YAML_file_name"
-  And the user gets to the question id "page_4_id" with the data:
-    | var | choice | value |
-    | False | has_ears | true |
-    | hair_color | blue | true |
-  And I wait 20 seconds
-    | foot_types | None of the above | true |
-  When I download "my_zip.zip"
-```
-
-
-_(Why `page_id_4?` Because you started on page 1, you went up to page 3, then the ALKiln automatically tapped to continue. We can consider changing it if it becomes a common problem.)_
-
-You might be able to do something like this instead:
-
-
-```
-Feature: A description of the purpose of this file.
-Scenario: A description of what's being specifically tested in this example.
-  Given I start the interview at "my_interview_YAML_file_name"
-  And the user gets to the question id "page_2_id" with the data:
-    | var | choice | value |
-    | False | has_ears | true |
-  When I set the "blue" choice of var "hair_color" to "true"
-  And I tap to continue
-  And I wait 20 seconds
-  And the user gets to the question id "page_4_id" with the data:
-    | foot_types | None of the above | true |
-  When I download "my_zip.zip"
-```
-
-
-
-
-
-## Translation testing 
-{#translation-testing}
-
-A lot of **Steps** are language agnostic. That is, they don’t care about the language in your interview.
-
-
-### WATCH OUT! 
-{#watch-out}
-
-Always give your `choices` values that are separate from their labels.
-
-In docassemble, you can write `choices` a couple of different ways.
+In docassemble, you can write `choices` a few different ways.
 
 Bad
-
 
 ```
 question: |
@@ -783,9 +369,7 @@ fields:
       - blue
 ```
 
-
 Good
-
 
 ```
 question: |
@@ -799,24 +383,32 @@ fields:
       - blue: blue
 ```
 
-
-If your field is like the Bad example, the label of a choice is also its value and the translations will break the tests. This is because the label will be translated. Since the label is also the value, the value in the translated version of the interview will be different than the value you wrote in for your test.
+If your field is like the Bad example, the label of a choice is also its value and the translations will break the tests. This is because the label will be translated. Since the label written this way is also the value, the value in the translated version of the interview will be different than the value you wrote in for your test.
 
 If your field is like the Good example, the value of the choice should never get translated so it should always be the same and the tests will be happy.
 
-
-### How to know if a **Step** is language agnostic 
-{#how-to-know-if-a-step-is-language-agnostic}
-
-A **Step** can work for any language as long as it does not depend on a word that will be translated. For example, if it:
-
-
-
-1. Uses a variable name to set the value. Watch out for [special cases](#bookmark=id.3b9fid1tlalm).
-2. Does not use a word on the screen at all. Example: And I wait for 1 second
-3. Is only dependant on a word that is inside an element and never gets translated, like a link address or file name: And I download “my_file.zip”
 -->
 
+
+## Test instructions details
+
+### Add a new test
+
+Go to your Playground > the dropdown Folders menu > Sources.
+
+Add a new file that ends in the extension `.feature`. Ex: `has_children.feature`
+
+The next time you commit, your test will be run. You can add and edit multiple test files.
+
+### When do tests run?
+
+Tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
+
+If you know how to use GitHub [actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity), you can also run the tests manually from GitHub actions with some more options.
+
+### Scenario descriptions
+
+Scenario descriptions affect the names of error screenshot files and such things, so try to use useful descriptions.
 
 <!-- I think this info is useful, but I'm not sure where it should go.
 ## About writing tests
@@ -857,6 +449,36 @@ Right now we're focused on two things:
 
 1. The interview runs.
 1. The interview keeps working when superficial things about it change. Things like changing the order of questions, the language, or adding translations.
+-->
+
+<!--
+## Reading results
+
+Output at the end of the test (in the console)
+
+- The report
+- The errors with their Steps listed (that can be annoying with long tables)
+- The final count
+
+Artifacts
+
+- error screenshots
+- reports
+- custom screenshots
+-->
+
+<!--
+## Running locally
+
+.env
+
+BASE_URL
+REPO_URL
+BRANCH_PATH
+EXTRA_LANGUAGES
+DEBUG
+
+Debug/Non-headless mode
 -->
 
 <!-- 
