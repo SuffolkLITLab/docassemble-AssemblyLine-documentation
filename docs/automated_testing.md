@@ -121,7 +121,7 @@ In the **value** column, write what you want the field to be set to. For checkbo
 
 ### trigger
 
-In the **trigger** column, write the name of the intrinsic name of the variable that will trigger the page for this field. This column is optional in most cases. In cases where the page is using an [index variable](https://docassemble.org/docs/fields.html#index%20variables) or a [`generic object`](https://docassemble.org/docs/modifiers.html#generic%20object).
+In the **trigger** column, write the intrinsic name of the variable that will trigger the page where this field appears. This column is necessary in cases where the page is using an [index variable](https://docassemble.org/docs/fields.html#index%20variables) or a [`generic object`](https://docassemble.org/docs/modifiers.html#generic%20object), and optional everywhere else.
 
 
 ### Story table examples
