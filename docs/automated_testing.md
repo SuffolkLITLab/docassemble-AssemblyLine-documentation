@@ -79,7 +79,7 @@ More complex tests might wait till your code is pretty much how you want it. Eve
 
 ## Story tables
 
-Very basically, a **story table** contains a list of variables and values. The order in which you list the rows does not matter, which gives a lot more flexibility when developers are changing around the order of questions. Whenever pages with those variables appear, they will be given the value listed.
+Very basically, a **story table** contains a list of variables and values. When the test is going through the interview and arrives on a page that has a field that defines the variable, the field will be set with the value. The order in which you list the rows does not matter, which gives a lot more flexibility when developers are changing around the order of questions.
 
 :::tip 
 It can be easy to lose track of what variables you've included, so it can be useful keep the rows in alphabetical order.
