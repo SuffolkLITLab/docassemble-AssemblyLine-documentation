@@ -17,11 +17,11 @@ For now, talk to us about it.
 - Use the setup interview (https://apps-dev.suffolklitlab.org/start/test-setup/)
 - Add this element to the page somewhere: <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
 
-Secrets
+If you run the tests locally, add these environment variables to your `.env` file:
 
-PLAYGROUND_PASSWORD
-PLAYGROUND_ID
-PLAYGROUND_EMAIL
+ -` PLAYGROUND_EMAIL`: the docassemble server email for the account that is running the tests.
+- `PLAYGROUND_PASSWORD`: the docassemble server password for the account that is running the tests.
+- `PLAYGROUND_ID`: the id that shows up in interviews when the testing account runs the tests from the server playground.
 -->
 
 ## Summary
