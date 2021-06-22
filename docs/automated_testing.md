@@ -77,7 +77,7 @@ Feature: Interviews load
 
 More complex tests might wait till your code is pretty much how you want it. Every time you change your variable names, you may have to update the tests.
 
-## Story tables syntax
+## Story tables
 
 Very basically, a **story table** contains a list of variables and values. The order in which you list the rows does not matter, which gives a lot more flexibility when developers are changing around the order of questions. Whenever pages with those variables appear, they will be given the value listed.
 
