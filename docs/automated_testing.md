@@ -81,7 +81,9 @@ More complex tests might wait till your code is pretty much how you want it. Eve
 
 Very basically, a **story table** contains a list of variables and values. The order in which you list the rows does not matter, which gives a lot more flexibility when developers are changing around the order of questions. Whenever pages with those variables appear, they will be given the value listed.
 
-Tip: it can be easy to lose track of what variables you've included, so it can be useful keep the rows in alphabetical order.
+:::tip 
+It can be easy to lose track of what variables you've included, so it can be useful keep the rows in alphabetical order.
+:::
 
 You can have multiple tables per Scenario and you can put other steps between tables. Remember that each table needs to state the `id` of the `question` where it should stop.
 
