@@ -24,11 +24,11 @@ If you run the tests locally, add these environment variables to your `.env` fil
 - `PLAYGROUND_ID`: the id that shows up in interviews when the testing account runs the tests from the server playground.
 -->
 
-## Summary
+## Quick Reference
 
 1. You write and edit `.feature` test files in your Sources folder.
 1. There's a maximum of 2 minutes per individual Step or table row. Longer than that and the test will error. That can't be customized yet.
-1. Tests are run when you commit.
+1. Tests are run in GitHub when you commit.
 1. Tests can download PDF files, but humans have to review them to see if they're right.
 1. Tests that error should create screenshots from when the error happened.
 1. Tests create report files. They don't have a lot right now, but they might have some clues when something unexpected happens.
@@ -37,7 +37,7 @@ For interacting with things on GitHub, look for how to use the [Actions](https:/
 
 Give us feedback and ideas by making issues at https://github.com/plocket/docassemble-cucumber/issues.
 
-## Example
+### Example
 
 The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for quick reference of some of our features:
 
@@ -51,7 +51,9 @@ Feature: The user has children
     And I get to the question id "benefits" with this data:
       | var | value | trigger |
       | x[i].name.first | Cashmere | children[0].name.first |
+      | x[i].name.last | Davis | children[0].name.first |
       | x[i].name.first | Casey | children[1].name.first |
+      | x[i].name.last | Davis | children[1].name.first |
       | x.there_are_any | True | children.there_are_any |
       | x.target_number | 2 | children.there_is_another |
     When I set the var "benefits['SSI']" to "True"
@@ -63,7 +65,7 @@ Feature: The user has children
 
 ## First test
 
-You can write a really simple test right away that just makes sure your a file runs using the name of the file. Write a `Scenario` for each file you want to test.
+You can write a really simple test right away that just makes sure your YAML file runs using the name of the YAML file. Write a `Scenario` for each file you want to test.
 
 ```
 Feature: Interviews load
@@ -121,22 +123,35 @@ In the **value** column, write what you want the field to be set to. For checkbo
 
 ### trigger
 
-In the **trigger** column, write the intrinsic name of the variable that will trigger the page where this field appears. Example:
+In the **trigger** column, write the name of the variable that triggers the page on which the field appears.
 
-For the below, the `trigger` is `users[0].hair_color`. That is the intrinsic name of the variable that triggers that question screen.
+For the below, the `trigger` is `users[0].hair.how_much`.
 
 ```
 ---
+id: interview order
 mandatory: True
 code: |
-  users[0].hair_color
+  users[0].hair.how_much
 ---
-id: hair color
+id: hair
 question: |
-  What is your hair color?
+  Tell us about your hair
 fields:
-  - no label: users[i].hair_color
+  - How much hair do you have?: users[i].hair.how_much
+  - What color is your hair?: users[i].hair.color
 ```
+
+The table rows for that would look like this:
+
+```
+      | var | value | trigger |
+      | users[i].hair.how_much | Enough | users[0].hair.how_much |
+      | users[i].hair.color | Sea green | users[0].hair.how_much |
+```
+
+Even though the `var` columns were different, both rows had `users[0].hair.how_much` in their `trigger` column. That's because when the docassemble asks for `users[0].hair.how_much`, both fields are on that page and both variables have to be set.
+
 
 There are some rare cases where no `trigger` exists. For example, `question` blocks with the `mandatory` specifier:
 
@@ -151,34 +166,34 @@ In those cases, leave the `trigger` column empty. If you're not sure, ask us.
 
 ### Story table examples
 
-Simple field types with their values
+Simple field types with their values.
 
 The 'yes' choice of [yesno buttons](https://docassemble.org/docs/fields.html#yesno), [yesnoradio](https://docassemble.org/docs/fields.html#fields%20yesno) fields, etc.
 ```
       | has_hair | True | has_hair |
 ```
 
-The 'maybe' choice in [yesnomaybe buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [datatype: yesnomaybe](https://docassemble.org/docs/fields.html#fields%20yesno) fields
+The 'maybe' choice in [yesnomaybe buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [datatype: yesnomaybe](https://docassemble.org/docs/fields.html#fields%20yesno) fields.
 ```
       | has_hair | None | has_hair |
 ```
 
-Checkboxes with multiple choices. `True` means 'checked' and `False` means 'unchecked'.
+Checkboxes with multiple choices. The value 'True' means to check the checkbox and 'False' means to uncheck it.
 ```
       | benefits['SSI'] | True | benefits |
 ```
 
-Radio or dropdown choices
+Radio or dropdown choices.
 ```
       | favorite_color | green | favorite_color |
 ```
 
-Text field or textarea
+Text field or textarea. Even if the answer has multiple lines, you can only use one line. When a new line is supposed to appear, instead use `\n`. See below:
 ```
       | favorite_color | Blue.\nNo, green!\nAaah... | favorite_color |
 ```
 
-A generic object with an index variable. The `trigger` column is required here
+A generic object with an index variable.
 ```
       | x[i].name.first | Umi | users[1].name.first |
 ```
@@ -213,7 +228,7 @@ Don't worry about accidentally including variables that won't show up during the
 
 ## Steps
 
-[Steps](https://cucumber.io/docs/gherkin/reference/#steps) happen one after the other sequentially. It's a bit more like you're the user clicking through the form. They can let you do things like download a file or make sure an user input invalidation message appears. If you change the order of the questions, even if you don't change any variable names, you'll have to update the tests.
+[Steps](https://cucumber.io/docs/gherkin/reference/#steps) happen one after the other sequentially. It's a bit more like you're the user clicking through the form. They can let you do things like download a file or make sure an user input invalidation message appears. If you change the order of the questions, even if you don't change any variable names, you may have to update these types of steps to change their order to match the new order of the screens.
 
 Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all be used interchangeably. It doesn't matter which you use.
 
