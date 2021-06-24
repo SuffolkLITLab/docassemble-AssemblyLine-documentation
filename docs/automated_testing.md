@@ -53,8 +53,8 @@ Feature: The user has children
       | x[i].name.first | Cashmere | children[0].name.first |
       | x[i].name.first | Casey | children[1].name.first |
       | x.there_are_any | True | children.there_are_any |
-      | x.there_is_another | 2 | children.there_is_another |
-    When I set the var "benefits['SSI']" to "true"
+      | x.target_number | 2 | children.there_is_another |
+    When I set the var "benefits['SSI']" to "True"
     And I tap to continue
     Then the question id should be "download"
     And I download "some_motion.pdf"
@@ -101,7 +101,7 @@ It needs to know the `id` of the page where it will stop. You can find the `id` 
       | var | value | trigger |
 ```
 
-This labels the three columns you will use. Under that, you add a row for every field that you want to interact with during the interview. Start with a blank row then fill it in:
+This labels the three columns the test will use. Under that, add a row for every field that you want the test to interact with during the interview. Start with a blank row then fill it in:
 ```
       |  |  |  |
 ```
@@ -116,13 +116,38 @@ In the **var** column, write the name of the variable you want to set **as it ap
 
 ### value
 
-In the **value** column, write what you want the field to be set to. For checkboxes, `true` means 'checked' and `false` means 'unchecked'.
+In the **value** column, write what you want the field to be set to. For checkboxes, `True` means 'checked' and `False` means 'unchecked'.
 
 
 ### trigger
 
-In the **trigger** column, write the intrinsic name of the variable that will trigger the page where this field appears. This column is necessary in cases where the page is using an [index variable](https://docassemble.org/docs/fields.html#index%20variables) or a [`generic object`](https://docassemble.org/docs/modifiers.html#generic%20object), and optional everywhere else.
+In the **trigger** column, write the intrinsic name of the variable that will trigger the page where this field appears. Example:
 
+For the below, the `trigger` is `users[0].hair_color`. That is the intrinsic name of the variable that triggers that question screen.
+
+```
+---
+mandatory: True
+code: |
+  users[0].hair_color
+---
+id: hair color
+question: |
+  What is your hair color?
+fields:
+  - no label: users[i].hair_color
+```
+
+There are some rare cases where no `trigger` exists. For example, `question` blocks with the `mandatory` specifier:
+
+```
+mandatory: True
+question: |
+  Do you like mandatory questions?
+yesno: likes_mandatory_questions
+```
+
+In those cases, leave the `trigger` column empty. If you're not sure, ask us.
 
 ### Story table examples
 
@@ -138,9 +163,9 @@ The 'maybe' choice in [yesnomaybe buttons](https://docassemble.org/docs/fields.h
       | has_hair | None | has_hair |
 ```
 
-Checkboxes with multiple choices
+Checkboxes with multiple choices. `True` means 'checked' and `False` means 'unchecked'.
 ```
-      | benefits['SSI'] | true | benefits |
+      | benefits['SSI'] | True | benefits |
 ```
 
 Radio or dropdown choices
@@ -160,17 +185,18 @@ A generic object with an index variable. The `trigger` column is required here
 
 ### `.there_is_another` loop
 
-This special row's `value` should be the number of items that this interview will have. The below row will tell the test that you will create three users.
+The `var` column of the story table is prohibited from containing `.there_is_another`. Instead, in the `var` column replace it with `.target_number`. In the `value` column, put the necessary number of that type of item. The `trigger` column should remain as it usually does - it should contain the name of the page's trigger varaible. Example:
 
-```
-      | x.there_is_another | 3 | users.there_is_another |
-```
-
-You will still need to add the rows for the information for all three `users`.
+For a loop using `.there_is_another`, these values:
 ```
       | x[i].name.first | Umi | users[0].name.first |
       | x[i].name.first | Ulli | users[1].name.first |
       | x[i].name.first | Ulla | users[2].name.first |
+```
+
+would also require a row like this:
+```
+      | x.target_number | 3 | users.there_is_another |
 ```
 
 ### Story table signature
