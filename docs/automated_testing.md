@@ -200,9 +200,11 @@ A generic object with an index variable.
 
 ### `.there_is_another` loop
 
-The `var` column of the story table is prohibited from containing `.there_is_another`. Instead, in the `var` column replace it with `.target_number`. In the `value` column, put the necessary number of that type of item. The `trigger` column should remain as it usually does - it should contain the name of the page's trigger varaible. Example:
+You can use `.there_is_another` in your interview. You can also use the Step to set that value. In story tables, though, you must replace `.there_is_another` in your `var` column - replace it with `.target_number`. In the `value` column, put the number of items of that type. 
 
-For a loop using `.there_is_another`, these values:
+The `trigger` column stays the same as it usually does - it should have the name of the page's trigger varaible. Example:
+
+For a loop using `.there_is_another` and these values:
 ```
       | x[i].name.first | Umi | users[0].name.first |
       | x[i].name.first | Ulli | users[1].name.first |
