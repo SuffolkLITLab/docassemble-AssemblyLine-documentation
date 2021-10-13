@@ -40,7 +40,7 @@ More concise version without description; suitable for a responsive case.
  | short_description() -> str
 ```
 
-Returns a Markdown formatted string that includes the disambiguated name and 
+Returns a Markdown formatted string that includes the disambiguated name and
 the description of the court, for inclusion in the results page with radio
 buttons.
 
@@ -71,7 +71,7 @@ Built around Pandas dataframe.
  | filter_courts(court_types: list, column='department') -> list
 ```
 
-Return a subset of courts, only the name column and index. 
+Return a subset of courts, only the name column and index.
 
 If you do not want the list to be filtered, set court_types to None (or falsy value)
 
