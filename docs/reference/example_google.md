@@ -312,5 +312,5 @@ will be included in the output, if
 This behavior can be enabled by changing the following setting in
 Sphinx&#x27;s conf.py::
 
-    napoleon_include_special_with_doc = True
+napoleon_include_special_with_doc = True
 
