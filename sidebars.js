@@ -3,6 +3,7 @@ module.exports = {
     'intro',
     'bootcamp',
     'getting_started',
+    'al_project_architecture',
     {
       type: 'category',
       label: 'Generate Code',
