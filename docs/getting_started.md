@@ -13,12 +13,14 @@ How do you develop and deploy court forms effectively? This is what has worked f
 
 This happens once in the lifetime of an organization. These steps will be filled out as we develop this documentation further. Talk to us to learn more.
 
-1. Create a docassemble server
-1. Configure the server
-1. Add developers to the server
-1. Enable GitHub
-1. Add the AssemblyLine package to your server
+1. [Create a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/setup-server)
+1. [Add the AssemblyLine package to your server](installation.md)
 1. [Copy](https://help.trello.com/article/802-copying-cards-lists-or-boards) the Trello [checklist boards](#trello-boards)
+
+You should also consider:
+
+1. [enabling GitHub Playground integration](https://docassemble.org/docs/config.html#github)
+2. inviting each developer who will use your server to [create their own accounts](https://docassemble.org/docs/users.html#add)
 
 Below are some general techniques and knowledge we have found useful for starting the development of a form.
 
