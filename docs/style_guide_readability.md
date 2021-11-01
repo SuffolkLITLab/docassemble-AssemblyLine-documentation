@@ -1,8 +1,8 @@
 ---
-id: content_guide
-title: Content and plain language guide for interviews
-sidebar_label: Usability
-slug: /content_and_plain_language_guide
+id: style_guide_readability
+title: Readability for Interactive Forms
+sidebar_label: Readability
+slug: /style_guide/readability
 ---
 
 <!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->

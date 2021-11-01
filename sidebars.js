@@ -16,10 +16,25 @@ module.exports = {
         'yaml_anatomy',
       ],
     },
-    'content_guide',
+    {
+      type: 'category',
+      label: 'Content Style Guide',
+      items: [
+        'style_guide_readability'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Coding Style Guide',
+      items: [
+        'coding_style',
+        'coding_style_python',
+        'coding_style_yaml',
+        'docs_style_guide'
+      ]
+    },
     'github',
     'name_formats',
-    'docs_style_guide',
     require('./docs/reference/sidebar.json')
   ],
 };
