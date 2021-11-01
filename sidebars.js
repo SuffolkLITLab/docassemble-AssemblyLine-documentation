@@ -16,7 +16,22 @@ module.exports = {
         'yaml_anatomy',
       ],
     },
-    'content_guide',
+    {
+      type: 'category',
+      label: 'Content Style Guide',
+      items: [
+        'style_guide_readability'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Coding Style Guide',
+      items: [
+        'coding_style',
+        'coding_style_python',
+        'coding_style_yaml'
+      ]
+    },
     'github',
     'name_formats',
     'docs_style_guide',
