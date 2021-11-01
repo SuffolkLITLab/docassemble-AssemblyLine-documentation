@@ -10,7 +10,7 @@ module.exports = {
   projectName: 'docassemble-AssemblyLine-documentation', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'The docassemble AssemblyLine Project',
+      title: 'The Document Assembly Line Project',
       // logo: {
       //   alt: 'My Site Logo',
       //   src: 'img/logo.svg',
