@@ -29,12 +29,12 @@ module.exports = {
       items: [
         'coding_style',
         'coding_style_python',
-        'coding_style_yaml'
+        'coding_style_yaml',
+        'docs_style_guide'
       ]
     },
     'github',
     'name_formats',
-    'docs_style_guide',
     require('./docs/reference/sidebar.json')
   ],
 };
