@@ -30,6 +30,9 @@ module.exports = {
         'coding_style',
         'coding_style_python',
         'coding_style_yaml',
+        'coding_style_yaml_structure',
+        'coding_style_yaml_dynamic',
+        'coding_style_yaml_translation',
         'docs_style_guide'
       ]
     },
