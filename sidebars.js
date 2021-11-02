@@ -20,7 +20,15 @@ module.exports = {
       type: 'category',
       label: 'Content Style Guide',
       items: [
+        'style_guide_formatting',
         'style_guide_readability'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'How to write good questions',
+      items: [
+        'question_style_overview'
       ]
     },
     {

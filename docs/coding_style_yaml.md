@@ -11,18 +11,30 @@ Docassemble interviews are written in
 Keeping your YAML files neat and organized can help other developers understand
 your code.
 
+## Use Python conventions for variable names and Python code in your YAML files
+
+See [Python style guide](coding_style_python.md).
+
 ## Organize and name your files
 ### Avoid spaces in file names; use lowercase letters
 
-YAML files should be named without spaces. You may choose to use snake_case
-(underscores separating words) or kebab-case (hyphens separating words). Using
-snake case avoids problems with some command-line tools, as well as being more
-consistent with Python file name conventions, but one challenge is that
-snake_case underscores can be hard to see in a file browser window.
+Files in your Docassemble package, including YAML files, Python modules, and any
+static resource files or data sources, should all be be named without spaces.
+You may choose to use snake_case (underscores separating words) or kebab-case
+(hyphens separating words). Using snake case avoids problems with some
+command-line tools, as well as being more consistent with Python file name
+conventions, but one challenge is that snake_case underscores can be hard to see
+in a file browser window.
 
 Use lowercase letters in file names. Some filesystems (Unix and Linux) are
 case sensitive. Using a consistent case can reduce problems. Lower case is
 the most commonly used convention.
+
+### Avoid using leading numbers in file names
+
+Where possible, avoid using leading digits in file names. Leading digits
+are not valid in Python variable names, and it is often convenient to have
+variable names and file names have matching prefixes.
 
 ### Use descriptive names for YAML files
 
@@ -64,10 +76,10 @@ If you want to design a file to be re-used:
 1. name each file clearly
 
 For example: if you have one interview file that includes many other interview
-files, you might call it something like `eviction_umbrella`. If you have just
+files, you might call it something like `eviction_umbrella.yml`. If you have just
 one small file whose only purpose is to run just one other interview, you might
-call it `eviction_standalone`.
+call it `eviction_standalone.yml`.
 
 Alternatively, if you want to give the standalone runtime version of the
 interview the shorter, more descriptive name, you could name the `include`d
-file `eviction_include.yml`.
+file `eviction_base.yml`.

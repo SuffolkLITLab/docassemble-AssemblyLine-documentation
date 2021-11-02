@@ -29,6 +29,51 @@ It may be helpful to use `snake_case` for `choices` values. This will help
 signal that they are static terms that will not change when other interview
 language changes.
 
+### Avoid hardcoded string in code - use templates instead
+
+Avoid placing literal English text inside code blocks, functions and methods. Instead,
+use Docassemble `template` blocks. You should use an `f` string or explicitly
+convert `template`s to `str` to avoid certain Docassemble bugs.
+
+Example:
+
+```yaml
+---
+template: my_text_template
+content: |
+  Hello, World
+---
+code: |
+  list_options = [{'option1': str(my_text_template)}]
+```
+
+Template blocks will become part of the Docassemble XLSX or XLIFF translation
+file, which makes them the most convenient way to handle text that must be
+translated.
+
+### Do not add a language modifier to blocks in the default language
+
+For certain kinds of metadata, such as navigation sections, the only way to make
+them change when the interview language changes is to add a `language:` modifier.
+
+Leave the default language with no modifier. E.g., if your interview is written
+in English, do not add a `language: en` modifier. Instead, add the modifier
+to each new language as you go.
+
+Example:
+
+```yaml
+# English
+sections: 
+  - Section 1
+  - Section 2
+---
+language: es
+sections:
+  - Sección 1
+  - Sección 2
+```    
+
 ### Avoid using the language functions from `pattern.en` in your interview
 
 Docassemble includes very useful features to conjugate verbs, match gender, and

@@ -21,6 +21,17 @@ and words should separated by an underscore.
 
 Example: `number_of_people`, `issue_12_address`
 
+### Do not annotate variable names with type (Hungarian notation)
+
+Use descriptive variable names, but do not include the type as part of the name.
+
+E.g., `user_name_TE` for a "text" or `str` type. This limits your ability to change
+the datatype later and usually does not add helpful information.
+
+However: you may want to specify types that also have a **semantic** meaning, such
+as `_date` or `_list`. These usually aid in clarity and do not limit the specific
+datatype of the variable.
+
 ### Exceptions to PEP 8
 
 #### Tab width

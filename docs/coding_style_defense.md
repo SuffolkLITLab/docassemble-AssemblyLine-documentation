@@ -24,10 +24,15 @@ inherits from one of those classes.
 Check for existence if an attribute or object may not be defined:
 
 1. use `hasattr` to check if an optional attribute is defined
-1. use `defined()` (sparingly) to check if an object or variable has been defined (note there are
-significant performance implications with `defined()` so it should be used carefully)
-1. use `.get()` with all dictionary looks. Include a default value of the correct type, especially for nested lookups in API results.
-1. check list length before using a list index, or if you are using a DAList, use the `.item()` method.
+1. use `defined()` (sparingly) to check if an object or variable has been
+   defined (note there are significant performance implications with `defined()`
+   so it should be used carefully)
+1. use `.get()` with all dictionary lookups. Include a default value of the
+   correct type, especially for nested lookups in API results.
+1. check list length before using a list index, or if you are using a DAList,
+   use the `.item()` method.
+1. Use the `next(iter(some_list), default_value)` pattern when trying to gather
+   the first item in a list that may be empty.
 
 e.g.:
 
@@ -44,8 +49,8 @@ When assembling documents, use the `skip undefined` modifier in production.
 to replace spelled-out logic in your interview. It leaves undefined fields
 blank rather than triggering an exception.
 
-When you use `skip undefined` it is important that you trigger all required variables
-in your interview order block.
+When you use `skip undefined` it is important that you trigger all required
+variables in your interview order block.
 
 ## Use Python 3.8's `f` strings when composing strings
 
@@ -65,3 +70,27 @@ some_new_string = f"I like {fruit} the best"
 
 In addition to handling converting the value `fruit` to string, the `f` string
 example is often clearer and easier to read, with less punctuation.
+
+## Convert types or use more abstract interfaces
+
+Does your function return a list, a set, or a tuple? Be careful when working
+with collections that you know which datastructure you are using.
+
+When you create a function that accepts a list, you may want to explicitly
+convert to a list before working with it in case a developer passes in a `set`.
+## Check for None
+
+It is common for Python functions to return `None` in certain error
+conditions. Make sure that you handle that possibility.
+
+## Handle API error states
+
+When working with APIs, be careful to handle possible failures. Decide what the
+failure state should be for your end user. Ordinarily, API integrations in
+Docassemble are for convenience and your user should be able to continue in some
+fashion. You should never drop down to a Docassemble error screen when an
+external dependency fails or is unavailable.
+
+# Further reading and sources
+
+* [Defensive Programming](https://en.wikipedia.org/wiki/Defensive_programming), Wikipedia
