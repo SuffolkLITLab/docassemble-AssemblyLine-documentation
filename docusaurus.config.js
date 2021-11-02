@@ -1,7 +1,7 @@
 module.exports = {
   title: 'The Document Assembly Line Project',
   tagline: 'Online easy-form development in-a-box that powers CourtFormsOnline.org',
-  url: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation',
+  url: 'https://suffolklitlab.org',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
