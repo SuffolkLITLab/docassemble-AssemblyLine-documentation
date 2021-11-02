@@ -54,7 +54,7 @@ we suggest you start to learn more.
 
 ## Our Repositories
 
-All code generated as part of this project is available for free under
+All code generated as part of this project is available for free on GitHub under
 the MIT license.
 
 - [The ALWeaver](https://github.com/SuffolkLITLab/docassemble-ALWeaver) for

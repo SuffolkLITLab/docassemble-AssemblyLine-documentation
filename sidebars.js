@@ -33,6 +33,7 @@ module.exports = {
         'coding_style_yaml_structure',
         'coding_style_yaml_dynamic',
         'coding_style_yaml_translation',
+        'coding_style_defense',
         'docs_style_guide'
       ]
     },
