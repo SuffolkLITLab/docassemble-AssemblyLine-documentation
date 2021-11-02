@@ -1,5 +1,5 @@
 ---
-id: pdfs
+id: pdf_templates
 title: Working with PDF files
 sidebar_label: Tools to edit PDFs
 slug: /pdfs

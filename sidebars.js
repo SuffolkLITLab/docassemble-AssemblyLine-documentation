@@ -7,13 +7,15 @@ module.exports = {
     'al_project_architecture',
     {
       type: 'category',
-      label: 'Generate Code',
+      label: 'Authoring your interview',
       items: [
+        'plan_interview',
+        'pdf_templates',
+        'docx_templates',
         'alweaver_overview',
-	'customizing_interview',
-        'pdfs',
-        'document_variables_reference',
+      	'customizing_interview',
         'yaml_anatomy',
+        'document_variables_reference',
       ],
     },
     {

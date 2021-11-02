@@ -12,7 +12,7 @@ You can use the labels and variables of your PDFs and DOCXs in combination with 
 If you have [prepared your PDF or DOCX using certain conventions](doc_vars_reference.md), the weaver will handle the fields it recognizes without further prompting. It will ask questions about the rest of the fields. It will try to recognize fields that ask about people and organizations.
 
 To generate the starter code:
-1. If you have a PDF, [add labels to it](pdfs.md) 
+1. If you have a PDF, [add labels to it](pdf_templates.md) 
    1. [Check your labels](https://apps-dev.suffolklitlab.org/start/ALWeaver/assembly_line?new_session=1)
 1. If you have a DOCX, make use of the [DOCX naming conventions](doc_vars_reference.md) when adding variables between {{ and }} marks, as in [this example](./assets/generic_motion_family_law.docx).
 1. [Go to the weaver's page](https://apps-dev.suffolklitlab.org/start/ALWeaver/assembly_line?new_session=1)
