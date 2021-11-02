@@ -1,7 +1,9 @@
 ---
 id: coding_style_defense
-title: "Safe" coding
-sidebar_label: "Safe" coding
+title: |
+   "Safe" coding
+sidebar_label: |
+   "Safe" coding
 slug: /coding_style_guide/defense
 ---
 
