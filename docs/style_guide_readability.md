@@ -38,30 +38,15 @@ possibilities. For example, "Take a sleeping pill, maybe with a warm drink."
 You can read more in the [Chicago Manual of
 Style](https://www.chicagomanualofstyle.org/book/ed17/part2/ch05/psec250.html)
 
-
-### Avoid using 'please'
-Omit the word "please" when asking for information. For example, use "Describe" instead of "Please describe".
-
-
-### Use "need" not "want" when referring to the protections or relief the plaintiff requests
-When someone goes to court it's because they **need** something, not want it. The word "need" is more empowering.
-
-
-### Avoid adverbs, especially intensifiers, where possible (e.g. 'very')
-Intensifiers weaken instead of strengthen our arguments. Use facts to persuade instead.
-
-See [https://sites.utexas.edu/legalwriting/2017/01/17/intensifiers-part-2-replace-and-specify/](https://sites.utexas.edu/legalwriting/2017/01/17/intensifiers-part-2-replace-and-specify/) 
-
-
-### Avoid contractions (can't, don't)
+## Avoid contractions (can't, don't)
 Write out the words instead, like "cannot" or "do not".
 
 
-### Avoid idioms ('get the hang of it', 'sit tight')
+## Avoid idioms ('get the hang of it', 'sit tight')
 Other examples: Up in the air, on the ball, rule of thumb.
 
 
-### Use simple words
+## Use simple words
 See [the United States government's table showing how to simplify words](https://plainlanguage.gov/guidelines/words/use-simple-words-phrases/)
 
 Below is a shortened version of the list. Whenever it is possible, replace the words in the left column with the words in the right column.
@@ -75,7 +60,7 @@ Below is a shortened version of the list. Whenever it is possible, replace the w
 | provide | give |
 | assist | help |
 
-### Say what to do. Avoid saying what not to do.
+## Say what to do. Avoid saying what not to do.
 It is usually easier to understand rules as a positive rather than a negative.
 
 Examples:
@@ -85,7 +70,7 @@ Examples:
 **Use:** Use lots of details in your description.
 
 
-### Ask one question at a time
+## Ask one question per sentence
 
 A compound question asks the user to answer more than one thing in the same question. 
 

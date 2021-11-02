@@ -21,7 +21,8 @@ module.exports = {
       label: 'Content Style Guide',
       items: [
         'style_guide_formatting',
-        'style_guide_readability'
+        'style_guide_readability',
+        'style_guide_respect'
       ]
     },
     {
