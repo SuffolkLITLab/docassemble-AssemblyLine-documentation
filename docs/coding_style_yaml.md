@@ -1,14 +1,22 @@
 ---
 id: coding_style_yaml
-title: Interview files (YAML)
-sidebar_label: Interview files (YAML)
+title: Interview files
+sidebar_label: Interview files
 slug: /coding_style_guide/yaml
 ---
 
 Docassemble interviews are written in
 [YAML](https://suffolklitlab.org/legal-tech-class/docs/yaml).
 
-Keeping your YAML files neat and organized can help other developers understand
+They may also contain:
+
+* template files
+* images
+* css
+* javascript
+* data sources in CSV, XLSX, or JSON format
+
+Keeping your files neat and organized can help other developers understand
 your code.
 
 ## Use Python conventions for variable names and Python code in your YAML files
@@ -73,13 +81,18 @@ If you want to design a file to be re-used:
 1. avoid putting any mandatory blocks in the file
 1. use the `named block` pattern for the `interview order` block
 1. reference your `named block` in the file users will run
-1. name each file clearly
+1. describe the function of each file in the name
 
-For example: if you have one interview file that includes many other interview
-files, you might call it something like `eviction_umbrella.yml`. If you have just
-one small file whose only purpose is to run just one other interview, you might
-call it `eviction_standalone.yml`.
+We recommend the annotations:
 
-Alternatively, if you want to give the standalone runtime version of the
-interview the shorter, more descriptive name, you could name the `include`d
-file `eviction_base.yml`.
+1. `to_include` for the file with the interview logic, attachment block, and questions
+1. `standalone` for a file that includes and then runs just one `to_include` file
+1. `umbrella` for a file that generates multiple templates
+
+Example:
+
+Filename                | Purpose
+------------------------|--------------
+eviction_to_include.yml | The interview order block, questions, and content for one interview that cannot be run from this file.
+eviction_standalone.yml | Include and run just one interview about evictions
+eviction_umbrella.yml   | Include and run multiple interviews related to eviction
