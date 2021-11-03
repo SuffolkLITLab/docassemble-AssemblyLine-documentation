@@ -31,7 +31,11 @@ module.exports = {
       type: 'category',
       label: 'How to write good questions',
       items: [
-        'question_style_overview'
+        'question_style_overview',
+        'question_style_structure',
+        'question_style_help_your_user',
+        'question_style_organize_fields',
+        'question_style_sensitivities',
       ]
     },
     {
@@ -43,6 +47,7 @@ module.exports = {
         'coding_style_yaml',
         'coding_style_yaml_structure',
         'coding_style_yaml_dynamic',
+        'coding_style_yaml_interface',
         'coding_style_yaml_translation',
         'coding_style_defense',
         'docs_style_guide'
