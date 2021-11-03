@@ -83,6 +83,17 @@ Next, upload this file to the Docassemble playground's `Packages` folder.
 
 ![Folders | Packages ](./assets/playground_packages_menu.png)
 
+:::caution If you are using Safari on a Mac OS computer
+Safari, by default, will turn your downloaded package into
+a folder on your PC.
+
+Before downloading the package, turn off that behavior:
+
+1. open Safari 
+1. click Preferences
+1. under the General tab, uncheck the option **Open 'safe' files after downloading**
+:::
+
 ## Example of a page in a Docassemble interview
 A page might look like this:
 

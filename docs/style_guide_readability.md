@@ -8,6 +8,25 @@ slug: /style_guide/readability
 <!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->
 
 Write with clarity and simplicity. Below are some rules that can help make your writing easier to understand.
+
+## Target a 6th grade reading level
+
+Overall, your goal in writing should be to make it readable by someone with a
+6th grade education level. Studies consistently show that the [average American
+can read and understand content written at an 8th grade
+level](https://www.wyliecomm.com/2021/08/whats-the-latest-u-s-literacy-rate/),
+with significant numbers of Americans reading at a lower level.
+
+You can measure the readability of your text with automated tools:
+
+* in Docassemble, by clicking the "source" button
+* by installing the free [WriteClearly bookmarklet](https://www.openadvocate.org/writeclearly/)
+* by using free tools such as [Hemingway](https://hemingwayapp.com/)
+
+However, learning to write clearly is not just about getting a good "grade" on your writing
+from one of the tools listed above. Try reading the rules below. Start out with these
+rules in mind before you write.
+
 ## Write in active voice, not passive voice
 It can be a difficult concept to describe, but this convention can be very helpful.
 
@@ -60,6 +79,10 @@ Below is a shortened version of the list. Whenever it is possible, replace the w
 | provide | give |
 | assist | help |
 
+## Use short sentences without multiple clauses
+
+Shorter sentences are usually easier to read. Sentences that say only
+one thing are also usually easier to read.
 ## Say what to do. Avoid saying what not to do.
 It is usually easier to understand rules as a positive rather than a negative.
 

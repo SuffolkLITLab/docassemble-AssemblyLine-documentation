@@ -10,6 +10,17 @@ slug: /customizing_interview
 When you have finished using the Weaver, download your package. This will put a
 .zip file in the Downloads folder on your computer.
 
+:::caution If you are using Safari on a Mac OS computer
+Safari, by default, will turn your downloaded package into
+a folder on your PC.
+
+Before downloading the package, turn off that behavior:
+
+1. open Safari 
+1. click Preferences
+1. under the General tab, uncheck the option **Open 'safe' files after downloading**
+:::
+
 First, create a new "Project" in your playground. Using projects will
 help you keep your Docassemble code organized.
 

@@ -184,7 +184,7 @@ Substitute any name for a person for `users` below.
 
  PDF variation               | Docassemble / DOCX form    | Meaning
 -----------------------------|----------------------------|-----------
-`users1_address_block`       | `users[0].addres.block`    | Full address, on multiple lines
+`users1_address_block`       | `users[0].address.block()`    | Full address, on multiple lines
 `users1_address_on_one_line` | `users[0].address.on_one_line()` | Full address on one line
 `users1_address_line_one`    | `users[0].address.line_one()` | Line one of the address, including unit or apartment number
 `users1_address_line_two`    | `users[0].address.line_two()` | Line two of the address, usually city, state, and Zip/postal code
