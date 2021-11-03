@@ -12,10 +12,10 @@ module.exports = {
         'plan_interview',
         'pdf_templates',
         'docx_templates',
+        'document_variables_reference',
         'alweaver_overview',
       	'customizing_interview',
         'yaml_anatomy',
-        'document_variables_reference',
       ],
     },
     {

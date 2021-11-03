@@ -53,7 +53,7 @@ Resources from the session:
 
 Homework:
 
-* Label and run your own PDF or Word file through the weaver
+* Label and run your own PDF or Word file through the Weaver
 
 ### Week 2: Using Trello, Editing your interview file. 2/25/2021
 
