@@ -65,7 +65,7 @@ Some examples: `ProtectiveOrder`, `ProtectiveOrderRemoveAddress`
 ### PDF variables:  [snake_case](#snake_case)
 
 * Each label name must be unique. See how to [ensure uniqueness while still creating fields that display the same value](doc_vars_reference.md#print-a-value-in-multiple-places).
-* Meets PDF or docx requirements
+* Meets PDF or DOCX requirements
 * Is consistent with AssemblyLine conventions (which will help you!). See more details about [labels' variable names in documents](doc_vars_reference.md).
 
 ### Code variables: [snake_case](#snake_case) mostly
@@ -85,7 +85,7 @@ Naming variables is hard, but good code variables are clear and short, in that o
 Variable names should read close to natural English out loud. Avoid putting the type of the variable in its name, sometimes called hungarian notation:
 for example, using `is_parent_bool` to indicate a boolean, or `children_list` indicating a list.
 
-Adding extra information into the variable name does help make things more clear, for example, `got_notice_date`, or `plaintiff_email`. But this is helpful because we're describing the purpose of the variable, not it's type. Our [conventions for our PDF and docx variables](doc_vars_reference.md) has some good examples.
+Adding extra information into the variable name does help make things more clear, for example, `got_notice_date`, or `plaintiff_email`. But this is helpful because we're describing the purpose of the variable, not it's type. Our [conventions for our PDF and DOCX variables](doc_vars_reference.md) has some good examples.
 
 For a boolean value, use a word or phrase that you can answer with yes or no. They are often verb-noun pairs. `has_` and `is_` can be useful. **Examples:** `is_minor`, `was_convicted`, `has_court_date`.
 

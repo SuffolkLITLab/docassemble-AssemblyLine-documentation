@@ -148,7 +148,7 @@ of the table.
  | overflow_docx(path: str = "docassemble.ALDocumentDict:data/templates/addendum_table.docx")
 ```
 
-Light wrapper around insert_docx_template() that inserts a formatted table into a docx
+Light wrapper around insert_docx_template() that inserts a formatted table into a DOCX 
 file. If the object in the list is a plain string/int, it returns a bulleted list.
 
 Using this method will not give you any control at all over the formatting, but you can directly
