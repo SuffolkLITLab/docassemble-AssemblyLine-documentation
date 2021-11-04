@@ -1,7 +1,8 @@
 module.exports = {
   title: 'The Document Assembly Line Project',
-  tagline: 'Online easy-form development in-a-box that powers CourtFormsOnline.org',
+  tagline: 'From paper to webform, made easier',
   url: 'https://suffolklitlab.org',
+  //baseUrl: '/',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -75,6 +76,7 @@ module.exports = {
       copyright: `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> - AssemblyLine Docs Built with Docusaurus.`,
     },
   },
+  plugins: ['@docusaurus/plugin-ideal-image'],  
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -85,12 +87,14 @@ module.exports = {
           editUrl:
             'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
         },
-        // blog: {
+        //blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
         //   editUrl:
         //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
-        // },
+        //},
+        pages: {
+        },        
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
