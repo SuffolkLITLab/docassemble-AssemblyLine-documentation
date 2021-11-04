@@ -97,7 +97,7 @@
                <img
                  alt={translate({message: 'The Document Assembly Line project'})}
                  className={styles.heroLogo}
-                 src={require('./assets/undraw_Work_together_re_5yhn.png').default}
+                 src={useBaseUrl('/img/undraw_Work_together_re_5yhn.png')}
                  width="50%"
                />
                <span
@@ -154,7 +154,8 @@
                  <img
                    alt="Pre-built questions and components"
                    className={styles.featureImage}
-                   src={require('./assets/undraw_building_blocks_n0nc.png').default}
+                   // src={require('./assets/undraw_building_blocks_n0nc.png').default}
+                   src={useBaseUrl('/img/undraw_building_blocks_n0nc.png')}
                  />
                  <h2 className={clsx(styles.featureHeading)}>
                    <Translate>Pre-built questions and components</Translate>
@@ -171,7 +172,7 @@
                  <img
                    className={styles.featureImage}
                    alt="Docassemble"
-                   src={require('./assets/docassemble-white.png').default}
+                   src={useBaseUrl('/img/docassemble-white.png')}
                  />
                  <h2 className={clsx(styles.featureHeading)}>
                    <Translate>Powered by Docassemble</Translate>
@@ -188,7 +189,7 @@
                  <img
                    alt="No spaghetti code here"
                    className={styles.featureImage}
-                   src={require('./assets/undraw_Code_review_re_woeb.png').default}
+                   src={useBaseUrl('/img/undraw_Code_review_re_woeb.png')}
                  />
                  <h2 className={clsx(styles.featureHeading)}>
                    <Translate>No spaghetti code here</Translate>
@@ -210,7 +211,7 @@
                  <img
                    alt="Ready for Translation"
                    className={styles.featureImage}
-                   src={require('./assets/undraw_Around_the_world_re_n353.png').default}
+                   src={useBaseUrl('/img/undraw_Around_the_world_re_n353.png')}
                  />
                  <h2 className={clsx(styles.featureHeading)}>
                    <Translate>Ready for Translation</Translate>
@@ -227,7 +228,7 @@
                  <img
                    alt="Assembly-line process"
                    className={styles.featureImage}
-                   src={require('./assets/undraw_Collaborators_re_hont.png').default}
+                   src={useBaseUrl('/img/undraw_Collaborators_re_hont.png')}
                  />
                  <h2 className={clsx(styles.featureHeading)}>
                    <Translate>Assembly-line process</Translate>
@@ -245,7 +246,7 @@
                  <img
                    alt="Deliver straight to a court"
                    className={styles.featureImage}
-                   src={require('./assets/undraw_Message_sent_re_q2kl.png').default}
+                   src={useBaseUrl('/img/undraw_Message_sent_re_q2kl.png')}
                  />
                  <h2 className={clsx(styles.featureHeading)}>
                    <Translate>Deliver straight to a court</Translate>
