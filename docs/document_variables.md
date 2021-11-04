@@ -1,7 +1,7 @@
 ---
 id: document_variables
-title: Variable names in documents
-sidebar_label: Document variables
+title: Field labels to use in template files
+sidebar_label: Field labels to use in template files
 slug: /document_variables
 ---
 

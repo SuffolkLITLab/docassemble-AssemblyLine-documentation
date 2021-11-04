@@ -47,13 +47,13 @@ After signing up, you should have received invites to our docassemble server (ht
 Resources from the session:
 
 * [Running templates through the Weaver](weaver_overview.md)
-* [Labeling PDF variables](pdfs.md)
+* [Labeling PDF variables](pdf_templates.md)
 * [Naming Variables Quick Reference](doc_vars_reference.md)
 * [The LIST taxonomy](https://taxonomy.legal/)
 
 Homework:
 
-* Label and run your own PDF or Word file through the weaver
+* Label and run your own PDF or Word file through the Weaver
 
 ### Week 2: Using Trello, Editing your interview file. 2/25/2021
 

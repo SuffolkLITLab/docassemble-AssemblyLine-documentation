@@ -1,12 +1,14 @@
 ---
 id: yaml_anatomy
-title: The parts of an ALWeaver generated YAML file
-sidebar_label: View the generated code
+title: |
+  Appendix: Understanding the YAML code
+sidebar_label: |
+  Appendix: Understanding the YAML code
 slug: /generated_yaml
 ---
 
 :::caution
-This page is very much under construction as we develop the weaver's capabilities. These 🚧 emoji notes features that are being actively developed in the Weaver and thus might change
+This page is very much under construction as we develop the Weaver's capabilities. These 🚧 emoji notes features that are being actively developed in the Weaver and thus might change
 :::
 
 The [ALWeaver](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) generates code that is a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses questions and features from the AssemblyLine library.
