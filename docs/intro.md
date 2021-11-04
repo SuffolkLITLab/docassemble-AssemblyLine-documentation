@@ -5,24 +5,25 @@ sidebar_label: About
 slug: /
 ---
 
-<!-- original: https://github.com/SuffolkLITLab/doc-assembly-line/blob/master/README.md -->
+The Document Assembly Line project will help you produce **[beautiful guided interviews](https://courtformsonline.org)** in no time.
 
-The Document Assembly Line project has produced a set of open-source tools and
-processes to help groups quickly and effectively create mobile-friendly online
-court forms and _pro se_ materials. The documentation provided here aims to help
-groups adapt this work and create local versions of the assembly line.
+Go straight from a PDF or DOCX file to a runnable prototype in less than an hour.
 
-Though we have focused on producing Massachusetts content at
-https://courtformsonline.org, we have built our tools with replicability in
-mind. Our novel code is released under an [MIT
-License](https://github.com/SuffolkLITLab/doc-assembly-line/blob/master/LICENSE),
-and we have intentionally built on the open source
-[docassemble](https://docassemble.org/) platform.
+We used [open source tools](https://docassemble.org) and [modern project
+management techniques](https://trello.com) to:
 
-This documentation is under construction, but we are currently running a
-[Document Assembly Line
-bootcamp](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/bootcamp)
-to help those interested in replicating this work.
+* gather more than 200 volunteers from around the world
+* break the process of document automation into a series of small steps, so a
+  volunteer with just a few hours can still make a difference
+* build a [tool](weaver_overview.md) that takes specially prepared court forms and turns them directly
+  into draft [Docassemble](https://docassemble.org) interviews, ready to get
+  feedback and iterate on
+* draft easy to read questions and [guidelines](question_style_overview.md) to promote access to justice
+  for users of all abilities and languages
+
+![building_blocks](./assets/undraw_building_blocks_n0nc.png)
+
+## Our work 
 
 The video below provides an overview of the project (0-10 min) and a detailed
 look at one of the forms (12-30 min). _Note: This video is a lecture from the
@@ -32,6 +33,58 @@ disregard comments about "prior classes" and pending homework assignments at the
 end._
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AECHOvmaUv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>
+<a class="button button--primary" href="https://courtformsonline.org">Visit CourtFormsOnline.org</a>
+</p>
+
+## Our tools
+
+We built the **[Weaver](weaver_overview.md)** to help turn a [labeled](doc_vars_reference.md)
+PDF or Word document into a draft of a guided interview.
+
+We built a **library of model questions** for common court form fields, like:
+
+* names and addresses
+* the user's role in a court case
+* contact information
+* selecting and identifying a court
+
+These questions have been written to target a 6th grade reading level and to be
+usable by people with different abilities.
+
+We built an **[electronic-filing
+integration](https://github.com/SuffolkLITLab/EfileProxyServer)** for Tyler
+Technologies EFMs so your finished court form can be delivered straight to an
+electronic docket. It works in Louisiana's home-grown e-filing system, too.
+
+We are in the process of building an **automated style checker** and
+**visualization tool** to help courts and legal aid providers understand how
+their forms can be improved, both on an individual form level and in the
+aggregate.
+
+## Form features
+
+All of the forms produced by our tools:
+
+* have a common look and feel, with reusable components
+* mobile friendly layout so users can do everything on a smartphone
+* help in context to guide users to filling in the form correctly
+* use a standardized structure and questions to build consistency and gain trust
+* use address autocompletion, to improve accuracy and save user time
+* allow users to text, email, or share a link to their work in progress with a
+  friend or advocate helping them complete a form
+* integrated feedback form to help users report bugs or send praise quickly
+* gather anonymized statistics in aggregate for reporting on usage
+* use our database of court locations and jurisdictions in Massachusetts to
+  guide users to file in the right venue
+* digital signatures
+
+Some forms can also be directly filed with a court, using either email,
+our integration with Tyler Technologies, or our integration with
+Louisiana's Jefferson Parish.
+
+<!-- TODO: add some images of the features here -->
 
 ## Get involved
 
