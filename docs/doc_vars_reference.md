@@ -99,7 +99,7 @@ Docassemble syntax from the beginning if you are identifying a specific person i
 
 ## Labels for people, places, and things
 
-### Labels for people's names
+### Labels for people's names {#standard-roles}
 
 * `users` (Always use this for the person benefiting from the form)
 * `other_parties` (Always use this for the opposing party)
@@ -136,7 +136,7 @@ listed above. Just use them in a way that matches specific information about the
 below--like `custom_name`, `custom_name_first`, etc. and the Weaver tool will
 prompt you to decide if they should be treated as like people in the automation process.
 
-#### Different forms of someone's name
+#### Different forms of someone's name {#peron-names}
 
 Substitute the name `users` with any of the names listed above.
 
@@ -160,7 +160,7 @@ added to the form, separated by a comma. Writing `users.familiar()`
 will list all of the first names of each `user` separated by a comma.
 
 This works for any Docassemble list.
-### Demographic data for people
+### Demographic data for people {#person-demographics}
 
 Substitute any name for a person for `users` below.
 
@@ -178,7 +178,7 @@ Substitute any name for a person for `users` below.
 `user_needs_interpreter` | `user_needs_interpreter` | User needs an interpreter (for checkbox field)
 `user_preferred_language`| `user_preferred_language` | User's preferred language
 
-### Addresses
+### Addresses {#address-fields}
 
 Substitute any name for a person for `users` below.
 
@@ -201,7 +201,7 @@ The Assembly Line framework also supports mailing addresses. Replace `address` w
 to ask a separate question about the user's mailing address.
 :::
 
-### Other contact information
+### Other contact information {#person-contact-information}
 
 Substitute any name for a person for `users` below.
 
@@ -212,7 +212,7 @@ Substitute any name for a person for `users` below.
 `users1_phones`              | `users[0].phone_numbers()` | A list of both mobile and other phone numbers
 `users1_email`               | `users[0].email`           | Email
 
-### Signatures
+### Signatures {#person-signatures}
 
 Substitute any name for a person for `users` below.
 
@@ -221,7 +221,7 @@ Substitute any name for a person for `users` below.
 `users1_signature`           | `users[0].signature`       | Signature
 `signature_date`             | `signature_date`           | Date the form is completed (automatically filled in by default)
 
-### Information about court and court processes
+### Information about court and court processes {#courts}
 
  PDF variation               | Docassemble / DOCX form    | Meaning
 -----------------------------|----------------------------|-----------
@@ -238,7 +238,7 @@ Usually, it is not recommended to mark the type of fields in Docassemble. There 
 a few exceptions that both mark type and carry a separate meaning that the Weaver
 will recognize.
 
-### Indicating paired yes/no checkboxes
+### Indicating paired yes/no checkboxes {#yes-no-fields}
 
 The Weaver turns paired yes/no checkboxes into a single Docassemble variable.
 
@@ -248,7 +248,7 @@ Use any valid keyword to replace `is_minor` in the example below.
 -----------------------------|----------------------------|-----------
 `is_minor_yes`, `is_minor_no`| `is_minor`                 | Indicates the user is a minor
 
-### Marking dates
+### Marking dates {#dates}
 
 Marking dates is optional. If you do mark a field with the `_date` suffix,
 the Weaver will automatically recognize it as a date.
@@ -259,7 +259,7 @@ Replace `firm_founding` with any valid keyword in the example below.
 -----------------------|----------------------------|-----------
 `firm_founding_date`   | `firm_founding_date`       | Will be recognized as a date field by the Weaver.
 
-### Marking currency figures
+### Marking currency figures {#currency-fields}
 
 Marking currency values is optional. If you do mark a field with `_amount` or `_value`,
 the Weaver will automatically recognize it as a currency amount.
@@ -310,6 +310,11 @@ field or variable names. `snake_case` is the name for a style that uses all
 lower case letters and separates words with an underscore like this:
 `my_custom_variable`.
 
+## Keep field labels short but readable
+
+Spell out full words, but use names that are short enough to scan quickly. Labels
+that are too long (over 30 characters) may be difficult to use inside Docassemble.
+Try dropping connecting words to keep field labels short but explanatory.
 ## You can always edit your template again
 
 Do your best to get your template right before running it through the Weaver.

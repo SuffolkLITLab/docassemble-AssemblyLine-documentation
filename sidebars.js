@@ -20,22 +20,24 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Content Style Guide',
-      items: [
-        'style_guide_formatting',
-        'style_guide_readability',
-        'style_guide_respect'
-      ]
-    },
-    {
-      type: 'category',
       label: 'How to write good questions',
       items: [
         'question_style_overview',
+        'style_guide_readability',
+        'style_guide_formatting',
+        'style_guide_respect',
         'question_style_structure',
         'question_style_help_your_user',
         'question_style_organize_fields',
         'question_style_sensitivities',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Question library',
+      items: [
+        'question_library/ql_names',
+        'question_library/ql_addresses'
       ]
     },
     {

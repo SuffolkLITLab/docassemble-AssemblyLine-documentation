@@ -108,7 +108,7 @@ But:
 validation is too strict or that the validation rules may change.
 
 Instead, you may just want to provide help text that suggests
-how the user should fill the field in.
+how the user should fill the field.
 
 For example, allow space for the user to provide information like phone numbers
 and addreses that are from a different country.

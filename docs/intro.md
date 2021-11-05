@@ -5,9 +5,11 @@ sidebar_label: About
 slug: /
 ---
 
-The Document Assembly Line project will help you produce **[beautiful guided interviews](https://courtformsonline.org)** in no time.
+The Document Assembly Line project will help you produce **[beautiful guided interviews](https://courtformsonline.org)** 
+more quickly.
 
-Go straight from a PDF or DOCX file to a runnable prototype in less than an hour.
+Go straight from a PDF or DOCX file to a runnable prototype in less than an hour. Build out from
+there with expert-vetted questions and standardized components.
 
 We used [open source tools](https://docassemble.org) and [modern project
 management techniques](https://trello.com) to:

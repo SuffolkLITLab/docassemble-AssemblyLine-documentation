@@ -8,6 +8,7 @@ slug: /style_guide/respect
 Write in a way that respects your reader. Do not tell your reader how to think or feel.
 Respect the perspective that they bring to using your legal form.
 
+
 ## Avoid using 'please'
 
 Omit the word "please" when asking for information. For example, use "Describe"

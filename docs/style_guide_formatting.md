@@ -5,7 +5,7 @@ sidebar_label: Formatting text
 slug: /style_guide/formatting
 ---
 
-<!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->
+
 
 ### Use sentence case, not Title Case for page headings
 
