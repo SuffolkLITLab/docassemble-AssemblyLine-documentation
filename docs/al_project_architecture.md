@@ -23,6 +23,5 @@ Below is a snapshot of the Project's overall architecture as of **October 2021**
 1. [ALDashboard](https://github.com/suffolkLITLab/docassemble-ALDashboard)
 
 1. [AssemblyLine-
-documentation](https://github.com/suffolkLITLab/docassemble-AssemblyLine-
-documentation)
+documentation](https://github.com/suffolkLITLab/docassemble-AssemblyLine-documentation)
 1. [ALRecipes](https://github.com/suffolkLITLab/docassemble-ALRecipes)
