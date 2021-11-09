@@ -1,9 +1,15 @@
 ---
 id: docs_style_guide
-title: Documentation style guide
-sidebar_label: Docs style guide
+title: |
+  Appendix: Adding content to this documentation site
+sidebar_label: |
+  Appendix: Adding content to this documentation site
 slug: /documentation_style_guide
 ---
+
+Read the guidance below before contributing to our documentation page.
+It includes information about formatting text in Docusaurus, the platform
+this website runs on.
 
 ## Content Guidelines
 

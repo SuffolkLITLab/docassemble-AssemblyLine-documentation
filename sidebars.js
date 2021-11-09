@@ -3,6 +3,16 @@ module.exports = {
     'intro',
     'bootcamp',
     'getting_started',
+    {
+      type: 'category',
+      label: 'Assembly Line Process',
+      items: [
+        'assembly_line_steps',
+        'assembly_line_steps_roles',
+        'assembly_line_steps_planning_time',
+        'assembly_line_steps_step_by_step',
+      ],
+    },
     'installation',
     'al_project_architecture',
     {
