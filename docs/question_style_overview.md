@@ -19,7 +19,13 @@ It will help you understand:
 
 ## Who contributed to this guide
 
-Members of the Document Assembly Line team, especia
+Members of the Document Assembly Line team, especially:
+* Kate Barry
+* David Colarusso
+* Maeve MacGlinchey
+* Caroline Robinson
+* Quinten Steenhuis
+* Michelle
 
 ## Other content resources
 * [How to write good questions for forms (NHS)](https://service-manual.nhs.uk/content/how-to-write-good-questions-for-forms)
