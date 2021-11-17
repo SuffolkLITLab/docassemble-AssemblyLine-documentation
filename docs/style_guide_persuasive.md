@@ -9,17 +9,17 @@ Write in a way that respects your reader. Do not tell your reader how to think o
 Respect the perspective that they bring to using your legal form.
 
 
-## Avoid using 'please'
+## Avoid using 'please' {#please}
 
 Omit the word "please" when asking for information. For example, use "Describe"
 instead of "Please describe".
 
-## Use "need" not "want" when referring to the protections or relief the plaintiff requests
+## Use "need" not "want" when referring to the protections or relief the plaintiff requests {#need-not-want}
 
 When someone goes to court it's because they **need** something, not want it.
 Using the word "want" can be dismissive of the plaintiff's goals and objectives.
 
-## Avoid adverbs, especially intensifiers, where possible (e.g. 'very')
+## Avoid adverbs, especially intensifiers, where possible (e.g. 'very') {#avoid-adverbs}
 
 Intensifiers weaken instead of strengthen our arguments. Use facts to persuade
 instead.

@@ -9,7 +9,7 @@ slug: /style_guide/readability
 
 Write with clarity and simplicity. Below are some rules that can help make your writing easier to understand.
 
-## Target a 6th grade reading level
+## Target a 6th grade reading level {#target-reading-level}
 
 Overall, your goal in writing should be to make it readable by someone with a
 6th grade education level. Studies consistently show that the [average American
@@ -27,7 +27,7 @@ However, learning to write clearly is not just about getting a good "grade" on y
 from one of the tools listed above. Try reading the rules below. Start out with these
 rules in mind before you write.
 
-## Write in active voice, not passive voice
+## Write in active voice, not passive voice {#active-voice}
 It can be a difficult concept to describe, but this convention can be very helpful.
 
 Below, you can see a summary of some useful articulations found in [this article about the topic from the University of Arizona writing center](https://writingcenter.uagc.edu/active-vs-passive-voice).
@@ -57,15 +57,15 @@ possibilities. For example, "Take a sleeping pill, maybe with a warm drink."
 You can read more in the [Chicago Manual of
 Style](https://www.chicagomanualofstyle.org/book/ed17/part2/ch05/psec250.html)
 
-## Avoid contractions (can't, don't)
+## Avoid contractions (can't, don't) {#avoid-contractions}
 Write out the words instead, like "cannot" or "do not".
 
 
-## Avoid idioms ('get the hang of it', 'sit tight')
+## Avoid idioms ('get the hang of it', 'sit tight') {#avoid-idioms}
 Other examples: Up in the air, on the ball, rule of thumb.
 
 
-## Use simple words
+## Use simple words {#simple-words}
 See [the United States government's table showing how to simplify words](https://plainlanguage.gov/guidelines/words/use-simple-words-phrases/)
 
 Below is a shortened version of the list. Whenever it is possible, replace the words in the left column with the words in the right column.
@@ -79,10 +79,11 @@ Below is a shortened version of the list. Whenever it is possible, replace the w
 | provide | give |
 | assist | help |
 
-## Use short sentences without multiple clauses
+## Use short sentences without multiple clauses {#short-sentences}
 
 Shorter sentences are usually easier to read. Sentences that say only
 one thing are also usually easier to read.
+
 ## Say what to do. Avoid saying what not to do.
 It is usually easier to understand rules as a positive rather than a negative.
 
