@@ -76,7 +76,10 @@ module.exports = {
       copyright: `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> - AssemblyLine Docs Built with Docusaurus.`,
     },
   },
-  plugins: ['@docusaurus/plugin-ideal-image'],  
+  plugins: [
+    '@docusaurus/plugin-ideal-image',
+    require.resolve('@cmfcmf/docusaurus-search-local')
+  ],  
   presets: [
     [
       '@docusaurus/preset-classic',
