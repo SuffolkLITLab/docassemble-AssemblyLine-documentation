@@ -10,7 +10,7 @@ Docassemble interviews are written in
 
 They may also contain:
 
-* template files
+* template files (e.g., DOCX, PDF, or Markdown (.md) files)
 * images
 * css
 * javascript
@@ -28,10 +28,10 @@ See [Python style guide](coding_style_python.md).
 
 Files in your Docassemble package, including YAML files, Python modules, and any
 static resource files or data sources, should all be be named without spaces.
-You may choose to use snake_case (underscores separating words) or kebab-case
+You may choose to use `snake_case` (underscores separating words) or `kebab-case`
 (hyphens separating words). Using snake case avoids problems with some
 command-line tools, as well as being more consistent with Python file name
-conventions, but one challenge is that snake_case underscores can be hard to see
+conventions, but one challenge is that `snake_case` underscores can be hard to see
 in a file browser window.
 
 Use lowercase letters in file names. Some filesystems (Unix and Linux) are
@@ -79,7 +79,7 @@ Docassemble allows you to include one interview into another interview file.
 If you want to design a file to be re-used:
 
 1. avoid putting any mandatory blocks in the file
-1. use the `named block` pattern for the `interview order` block
+1. use the [`named block` pattern](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#triggering-code-and-then-continuing-using-named-blocks) for the `interview order` block
 1. reference your `named block` in the file users will run
 1. describe the function of each file in the name
 
