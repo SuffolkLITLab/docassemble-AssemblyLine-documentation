@@ -67,6 +67,14 @@ module.exports = {
     },
     'github',
     'name_formats',
+    {
+      type: 'category',
+      label: 'Feature documentation',
+      items: [
+        'framework/framework_overview',
+        'framework/altoolbox'
+      ]
+    },
     require('./docs/reference/sidebar.json')
   ],
 };
