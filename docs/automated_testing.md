@@ -1,7 +1,7 @@
 ---
 id: automated_testing
-title: Automated Integrated Testing
-sidebar_label: Automated Testing
+title: Automated testing
+sidebar_label: Automated testing
 slug: /automated_integrated_testing
 ---
 

@@ -1,8 +1,8 @@
 ---
 id: altoolbox
 title: |
-    ALToolbox utility components
-sidebar_label: ALToolbox
+    ALToolbox functions and components
+sidebar_label: ALToolbox functions and components
 slug: /framework/altoolbox
 ---
 

@@ -66,13 +66,14 @@ module.exports = {
       ]
     },
     'github',
-    'name_formats',
+    //'name_formats',
     {
       type: 'category',
       label: 'Feature documentation',
       items: [
         'framework/framework_overview',
-        'framework/altoolbox'
+        'framework/altoolbox',
+        'automated_testing',
       ]
     },
     require('./docs/reference/sidebar.json')
