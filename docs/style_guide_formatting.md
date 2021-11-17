@@ -13,7 +13,7 @@ slug: /style_guide/formatting
 each word in a sentence. `Sentence case` is easier to read and most websites use
 it.
 
-### Keep headings short
+### Keep headings short {#short-headings}
 A heading should only be about one line of text on the screen.
 
 ### Keep text short in general
