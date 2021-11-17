@@ -29,18 +29,18 @@ Check for existence if an attribute or object may not be defined:
    so it should be used carefully)
 1. use `.get()` with all dictionary lookups. Include a default value of the
    correct type, especially for nested lookups in API results.
+   e.g.:
+
+   ```python
+   my_dict.get('key1',{}).get('key2','')
+   # NOT
+   # my_dict['key1']['key2']
+   ```
 1. check list length before using a list index, or if you are using a DAList,
    use the `.item()` method.
 1. Use the `next(iter(some_list), default_value)` pattern when trying to gather
    the first item in a list that may be empty.
 
-e.g.:
-
-```python
-my_dict.get('key1',{}).get('key2','')
-# NOT
-# my_dict['key1']['key2']
-```
 
 ## Use `skip undefined` on attachment blocks
 
