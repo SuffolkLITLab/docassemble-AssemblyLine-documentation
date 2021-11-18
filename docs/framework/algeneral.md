@@ -12,7 +12,7 @@ Line interviews.
 
 ## Python classes for representing people and addresses
 
-### ALAddress and ALAddressList classes
+### ALAddress and ALAddressList classes {#ALAddress}
 
 The `ALAddress` class is an extension of the built-in Docassemble
 [`Address`](https://docassemble.org/docs/objects.html#Address) class.
@@ -64,7 +64,7 @@ The `address_fields()` method includes the following optional parameters:
 * `show_country`: defaults to `False`. If enabled, a country drop down menu will
   be displayed.
 
-#### ALAddressList
+#### ALAddressList {#ALAddressList}
 
 The `ALAddressList` class is simply a collection of `ALAddress`es. It is used to
 allow you to collect multiple addresses in one go and otherwise works exactly
@@ -82,7 +82,7 @@ Example:
 
 The `previous_addresses` attribute of an `ALIndividual` is an `ALAddressList`.
 
-### ALIndividual and ALPeopleList classes
+### ALIndividual and ALPeopleList classes {#ALIndividual}
 
 The `ALIndividual` is an extension of the Docassemble
 [`Individual`](https://docassemble.org/docs/objects.html#Individual) class. It
@@ -117,16 +117,19 @@ entitities.
 * `initials()` is used to return a string with the 1, 2, or 3 initial letters of
   a person's name. E.g., `QKS` for Quinten K Steenhuis.
 
-Attributes:
+Read-only attributes:
+
+The following are all read-only attributes you can use with PDF checkbox fields.
+They return `True` or `False` depending on the value of the `gender` attribute.
 
 * `gender_male`
 * `gender_female`
 * `gender_nonbinary`
-* `gender_other`
+* `gender_other` (True if and only if the `gender` attribute is not "female" or "male")
 * `gender_unknown`
 * `gender_self_described`
 
-#### ALPeopleList
+#### ALPeopleList {#ALPeopleList}
 
 The `ALPeopleList` class is used to represent a group of people. Otherwise it
 works exactly like the built-in Docassemble [`DAList`
@@ -135,14 +138,17 @@ object](https://docassemble.org/docs/objects.html#DAList).
 It also has the following additional methods:
 
 * `familiar()` returns a comma-separated list of just the first name of each
-  member of the list, with `and` joining the last two items (note that `and` may
-  be translated using
-  [`words.yml`](https://docassemble.org/docs/config.html#words))
+  member of the list, with `and` joining the last two items 
 * `familiar_or()` returns a comma-separated list of just the first name of each
   member of the list, with `or` joining the last two items
 * `short_list(limit:int, truncate_string:str=', et. al.')` returns a list that
   will be cut off at the `limit` provided. By default, `, et. al.` is appended.
   The text can be customized.
+
+:::note 
+In the lists above, `and` and `or` can be translated using
+[`words.yml`](https://docassemble.org/docs/config.html#words))
+:::
 
 Example:
 
@@ -150,7 +156,7 @@ Example:
 list contains John Smith, Jane Smith, and Jane Doe. `et al` is not used if the
 list is at or below the limit provided.
 
-### Classes for specific kinds of people
+### Classes for specific kinds of people {#other-people}
 
 Currently, the Assembly Line interviews provide these classes that you can use 
 to target questions to a specific type of person:
@@ -165,7 +171,8 @@ Each class subclasses `ALIndividual` and shares its methods and attributes.
 There are no special attributes or methods of these classes. They are simply
 provided for you to customize questions.
 
-<!-- 
+<!-- Note these are not really useful outside of stock questions
+
 ## Standalone functions
 
 ### section_links

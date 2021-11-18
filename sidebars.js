@@ -73,8 +73,9 @@ module.exports = {
       label: 'Feature documentation',
       items: [
         'framework/framework_overview',
-        'framework/altoolbox',
         'framework/algeneral',
+        'framework/aldocument',
+        'framework/altoolbox',
         'automated_testing',
       ]
     },
