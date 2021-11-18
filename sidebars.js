@@ -47,7 +47,8 @@ module.exports = {
       label: 'Question library',
       items: [
         'question_library/ql_names',
-        'question_library/ql_addresses'
+        'question_library/ql_addresses',
+        'question_library/ql_gender'
       ]
     },
     {
@@ -73,6 +74,7 @@ module.exports = {
       items: [
         'framework/framework_overview',
         'framework/altoolbox',
+        'framework/algeneral',
         'automated_testing',
       ]
     },
