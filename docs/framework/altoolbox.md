@@ -180,3 +180,20 @@ Parameters:
 include:
   - docassemble.ALToolbox:copy_button.yml
 ```
+
+## Escape button 
+
+The `escape_button.yml` file adds a red "Escape" button in the 
+top navigation area that takes you to https://google.com when you click
+on it.
+
+You may choose to use this if you have vulnerable clients, such as those living
+with a domestic abuser.
+
+To include in your interview:
+
+```yaml
+---
+include:
+  - docassemble.ALToolbox:escape_button.yml
+```  
