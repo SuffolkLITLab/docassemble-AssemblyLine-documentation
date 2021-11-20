@@ -51,7 +51,7 @@ id: example question
 question: |
   What is your favorite fruit?
 subquestion: |
-  ${ fruit_explanation }
+  ${ collapse_template(fruit_explanation) }
 ---
 template: fruit_explanation
 subject: |
