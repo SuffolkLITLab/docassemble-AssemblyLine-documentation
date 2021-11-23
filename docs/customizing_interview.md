@@ -171,6 +171,7 @@ The valid values are:
 - Filed in or responding to an existing court case: `'existing_case'`
 - Part of an appeal of a court case: `'appeal'`
 - Form that is not filed in a court: `'other_form'`
+- Letter: `'letter'`
 - Other: `'other'`
 
 If the "form type" is not `starts_case` but the party using the form

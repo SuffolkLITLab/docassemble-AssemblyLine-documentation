@@ -74,6 +74,7 @@ module.exports = {
       label: 'Feature documentation',
       items: [
         'framework/framework_overview',
+        'framework/magic_variables',
         'framework/algeneral',
         'framework/aldocument',
         'framework/altoolbox',
