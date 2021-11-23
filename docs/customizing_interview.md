@@ -173,6 +173,17 @@ The valid values are:
 - Form that is not filed in a court: `'other_form'`
 - Other: `'other'`
 
+If the "form type" is not `starts_case` but the party using the form
+is always the plaintiff or defendant, you can also set that directly:
+
+```yaml
+code: |
+  user_ask_role = 'plaintiff'
+```
+
+Valid values are either `"plaintiff"` or `"defendant"`. Use these exact values
+even if the form user is called "petitioner" or "respondent".
+
 ### Setting the number of people in a group, such as the number of `users`
 
 If you are prompted to specify whether there is another user or opposing party

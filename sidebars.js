@@ -40,6 +40,7 @@ module.exports = {
         'question_style_help_your_user',
         'question_style_organize_fields',
         'question_style_sensitivities',
+        'question_style_validation'
       ]
     },
     {

@@ -118,3 +118,6 @@ Examples:
 * Mass Legal Services [page](https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) w/ info Caroline wrote
 * MailChimp [style guide](https://styleguide.mailchimp.com/word-list/)
 * [Gerunds and Participles](https://www.geist.com/writers/writers-toolbox/gerunds-and-participles-avoid-ing-words/): Avoiding -ING words
+* [LSC-funded readability materials and course](https://sites.google.com/a/lawny.org/plain-language-library/)
+* [Plain Language Guide](https://bit.ly/plainlanguageguide), National
+  Association for Court Management
