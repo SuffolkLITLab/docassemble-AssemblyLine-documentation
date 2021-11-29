@@ -79,6 +79,7 @@ module.exports = {
         'framework/aldocument',
         'framework/altoolbox',
         'automated_testing',
+        'framework/efiling',
       ]
     },
     require('./docs/reference/sidebar.json')
