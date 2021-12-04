@@ -1,13 +1,20 @@
 ---
 id: getting_started
-title: Getting started
-sidebar_label: Getting started
+title: |
+  Getting started: Setting up your own Assembly Line
+sidebar_label: |
+  Getting started: Setting up your own Assembly Line
 slug: /getting_started
 ---
 
 <!-- TODO: Add link to someplace to give feedback or some kind of forum. -->
 
-How do you develop and deploy court forms effectively? This is what has worked for us. Adjust it when you need to. We'd love to hear about the changes you make for your organization!
+The guidance below is for organizations that want to set up their **own** copy of the 
+Assembly Line, not for individual automators.
+
+How do you develop and deploy court forms effectively? This is what has worked
+for us. Adjust it when you need to. We'd love to hear about the changes you make
+for your organization!
 
 ## Setting up your organization
 

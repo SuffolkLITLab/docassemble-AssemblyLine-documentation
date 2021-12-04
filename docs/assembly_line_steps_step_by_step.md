@@ -5,7 +5,11 @@ sidebar_label: Step-by-step
 slug: /assembly_line_steps/steps
 ---
 
-Below is a brief explanation of the content on our [Trello boards](#trello).
+
+The guidance below is for organizations that want to set up their **own** copy of the 
+Assembly Line, not for individual automators.
+
+Below is a brief explanation of the content on our sample [Trello boards](#trello).
 
 ## Pre-processing
 

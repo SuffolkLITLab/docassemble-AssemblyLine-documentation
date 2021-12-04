@@ -5,6 +5,10 @@ sidebar_label: The Assembly Line process
 slug: /assembly_line_steps
 ---
 
+
+The guidance below is for organizations that want to set up their **own** copy of the 
+Assembly Line, not for individual automators.
+
 We think that the most important work we did came not from computer code, but a
 process: the process of automating a legal form, broken down into a series of
 small steps.
