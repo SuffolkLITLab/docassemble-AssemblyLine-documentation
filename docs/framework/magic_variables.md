@@ -23,6 +23,21 @@ Docassemble will use the code block that is "latest" (closest to the bottom) of
 your main interview file. This way, you can include a default in a global file
 and then override it as needed in an individual interview.
 
+
+### `AL_ORGANIZATION_TITLE`
+
+Used to set the organization title (which appears above the form title) in the
+navigation bar.
+
+By default, this variable is set to the value of
+[`appname`](https://docassemble.org/docs/config.html#appname) in the system-wide
+configuration.
+
+```yaml
+code: |
+  AL_ORGANIZATION_TITLE = "CourtFormsOnline"
+```
+
 ### Localization and translation variables
       
 * `AL_DEFAULT_COUNTRY`: [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) 2
