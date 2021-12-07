@@ -38,6 +38,35 @@ code: |
   AL_ORGANIZATION_TITLE = "CourtFormsOnline"
 ```
 
+### `AL_ORGANIZATION_HOMEPAGE`
+
+Used to set the `exit url` and the url that you will be taken to if you click
+the title in the navigation bar.
+
+### `al_logo`
+
+Used to set a small icon (ideally 40px high, max) that will be displayed next to
+the form title and brand name in the navigation bar.
+
+Example:
+
+```yaml
+---
+objects:
+  - al_logo: DAStaticFile.using(filename="lit_logo_light.png")
+```
+
+If your logo is taller than 40px, you can add a CSS rule to limit the maximum
+height, like this:
+
+```css
+.al-logo img {
+  max-height: 40px;
+}
+```
+
+Add this to a CSS file in your `data/static` folder that you then include in
+your interviews directly or via a shared YAML file.
 ### Localization and translation variables
       
 * `AL_DEFAULT_COUNTRY`: [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) 2
