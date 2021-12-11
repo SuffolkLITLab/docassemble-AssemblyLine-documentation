@@ -9,6 +9,27 @@ slug: /automated_integrated_testing
 
 🚧 Reference for writing automated integrated tests with the Assembly Line testing framework.
 
+## Intro
+
+The Kiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
+
+**Kiln works with any docassemble interview**, though it was developed through the Document Assembly Line project.
+
+Docacon 2021, 10 minute intro presentation:
+
+<!-- &amp;end=4115 -->
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YB-e-MGtLgI?&amp;start=3482" title="10 minute intro of Assembly Line Kiln testing framework at Docacon 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+1. Set up your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository.
+1. In Docassemble, make a new Project and pull in the updated code.
+1. Write tests in your Sources folder. The setup process will give you an example test to start you off.
+
+Whenever you push to GitHub, GitHub will run the tests automatically with a bot that goes to whatever interviews you named in the tests and fills in the fields. You can see the tests running in your [GitHub Actions tab](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity).
+
+At the end, you can see a report right in the GitHub Action or [download the report artifact to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+
 <!-- ## Setup
 
 For now, talk to us about it.
@@ -27,11 +48,11 @@ If you run the tests locally, add these environment variables to your `.env` fil
 ## Quick Reference
 
 1. You write and edit `.feature` test files in your Sources folder.
-1. There's a maximum of 2 minutes per individual Step or table row. Longer than that and the test will error. That can't be customized yet.
+1. By default, each Step or field may only take 2 minutes. You can change that with the "the maximum seconds" Step listed in the Steps.
 1. Tests are run in GitHub when you commit.
-1. Tests can download PDF files, but humans have to review them to see if they're right.
-1. Tests that error should create screenshots from when the error happened.
-1. Tests create report files. They don't have a lot right now, but they might have some clues when something unexpected happens.
+1. Tests can download PDF files, but humans have to review them to see if they've come out right.
+1. Tests that error will create screenshots from when the error happened.
+1. Tests create report files you can download. They're in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 
 For interacting with things on GitHub, look for how to use the [Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity) tab.
 
@@ -47,7 +68,7 @@ Feature: The user has children
 
   @fast @child_benefits
   Scenario: child has benefits
-    Given I start the interview at "some_file_name"
+    Given I start the interview at "some_file_name.yml"
     And I get to the question id "benefits" with this data:
       | var | value | trigger |
       | x[i].name.first | Cashmere | children[0].name.first |
@@ -71,10 +92,10 @@ You can write a really simple test right away that just makes sure your YAML fil
 Feature: Interviews load
 
   Scenario: The 209A loads
-    Given I start the interview at "ma_209a_package"
+    Given I start the interview at "ma_209a_package.yml"
 
   Scenario: The Plaintiff's Motion to Modify loads
-    Given I start the interview at "plaintiffs_motion_to_modify_209a"
+    Given I start the interview at "plaintiffs_motion_to_modify_209a.yml"
 ```
 
 More complex tests might wait till your code is pretty much how you want it. Every time you change your variable names, you may have to update the tests.
@@ -234,14 +255,19 @@ Don't worry about accidentally including variables that won't show up during the
 
 Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all be used interchangeably. It doesn't matter which you use.
 
-### Starting Step
+### Starting Steps
 
-Leave out the extension of the file. Use just the name by itself.
+Open an interview in your package by using its filename.
 ```
-    Given I start the interview at "yaml_file_name"
+    Given I start the interview at "yaml_file_name.yml"
 ```
 <!-- Given I start the interview at "filename" in lang "Español" -->
 <!-- And I am using a mobile -->
+
+After you've started the interview, customize the amount of time you will give each Step in that Scenario. Remember that you can use this as many times as you want.
+```
+    Given the maximum seconds for each Step is 200
+```
 
 ### Observe things about the page
 
@@ -286,6 +312,8 @@ Checking phrases will be language specific. Also, docassemble sometimes uses som
 
 ### Set fields
 
+Use this Step to continue to the next page. The text on the button itself doesn't matter.
+
 ```
     When I tap to continue
 ```
@@ -323,16 +351,17 @@ The Step for the story table, which is better described in sections above.
 
 ### Other actions
 
+Use this Step to continue to the next page. The text on the button itself doesn't matter.
 ```
     When I tap to continue
 ```
 
-Documents will be in the GitHub action's [artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts). At the moment, this step will fail if it takes more than 2 minutes to download.
+Download documents. The documents will be in [the GitHub action's artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts). If you think this step could take more than 2 minutes, use the "maximum seconds for each Step" Step 9described in another section) to give the file more time to download.
 ```
     Then I download "file-name.pdf"
 ```
 
-This Step will let you wait for any number of seconds less than 120 when you are on a page. It can help in some situations where you run into timing issues. It does nothing for the timing of other steps. You can give this Step any number of seconds, though all Steps will timeout after two minutes. You can add multiple rows of these if you want.
+This Step will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 120 seconds, but you can increase that with the "maximum seconds for each Step" Step. It can help in some situations where you run into timing issues. It does nothing for the timing of other steps. You can give this Step any number of seconds, though all Steps will timeout after two minutes. You can add multiple rows of these if you want.
 
 The situations that need this are pretty rare, but here's an example: You navigate to a new page and set a field. Sometimes it works fine, but someimtes the test says the element does not exist. The page needs an extra few seconds to load. Add this step in to give it that time.
 ```
@@ -437,6 +466,12 @@ If your field is like the Good example, the value of the choice should never get
 
 ## Test instructions details
 
+### Private GitHub repositories
+
+:::caution
+If your GitHub repository is private, your test account will need to be linked to a GitHub account that has access to that private repository.
+:::
+
 ### Add a new test
 
 Go to your Playground > the dropdown Folders menu > Sources.
@@ -453,7 +488,7 @@ If you know how to use GitHub [actions](https://docs.github.com/en/free-pro-team
 
 ### Scenario descriptions
 
-Scenario descriptions affect the names of error screenshot files and such things, so try to use useful descriptions.
+Scenario descriptions affect the names of error screenshot files and report headings, so try to use useful descriptions.
 
 <!-- I think this info is useful, but I'm not sure where it should go.
 ## About writing tests
@@ -472,10 +507,10 @@ You can write a really simple test right away that just makes sure your a file r
 Feature: Interviews load
 
   Scenario: The 209A loads
-    Given I start the interview at "ma_209a_package"
+    Given I start the interview at "ma_209a_package.yml"
 
   Scenario: The Plaintiff's Motion to Modify loads
-    Given I start the interview at "plaintiffs_motion_to_modify_209a"
+    Given I start the interview at "plaintiffs_motion_to_modify_209a.yml"
 ```
 
 More complex tests might wait till your code is pretty much how you want it. Every time you change your variable names, you may have to update the tests.
@@ -541,14 +576,14 @@ Who are the main users of the testing framework?
 
 ## Built with
 
-It uses cucumber, puppeteerjs, cheerio, and runs the assertions using mocha and chai.
+Kiln uses cucumber, puppeteerjs, cheerio, and runs the assertions using mocha and chai.
 
 Even though this is built off of [cucumber](https://cucumber.io/), this framework has a different, less lofty, purpose. cucumber focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
 
 ## Repositories
 
-The framework is at https://github.com/plocket/docassemble-cucumber.
+The framework's repository is at https://github.com/SuffolkLITLab/ALKiln.
 
-The interview for setting up tets for a repo is at https://apps-dev.suffolklitlab.org/start/test-setup/. It can only set up repository-specific secrets right now. The repo for that interview is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
+The interview for setting up tets for a repo is at https://apps-dev.suffolklitlab.org/start/test-setup/. The repo for that interview is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
 
 The repo for the interviews for testing the framework is also at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
