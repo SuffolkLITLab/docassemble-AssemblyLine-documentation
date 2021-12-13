@@ -13,7 +13,8 @@ JavaScript file.
 
 ## Live demos 
 
-To get a hands-on experience on any of these functions, you can go to [ALToolbox's overview page](Quinten: please add the overview page live link here) to run the demo interview you are interested in.
+To get a hands-on experience on any of these functions, you can go to [ALToolbox's overview page](https://apps-dev.suffolklitlab.org/start/ALToolbox/altoolbox_overview) to run the demo interview you are interested in.
+
 
 The overview page also provides instructions for those who want to contribute to ALToolbox.
 
