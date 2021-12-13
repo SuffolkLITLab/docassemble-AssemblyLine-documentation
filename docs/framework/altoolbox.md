@@ -11,6 +11,13 @@ Line framework. Follow the instructions to include each component in your
 interview, which may involve including a single YAML file or a module, CSS, and
 JavaScript file.
 
+## Live demos 
+
+To get a hands-on experience on any of these functions, you can go to [ALToolbox's overview page](https://apps-dev.suffolklitlab.org/start/ALToolbox/altoolbox_overview) to run the demo interview you are interested in.
+
+
+The overview page also provides instructions for those who want to contribute to ALToolbox.
+
 ## Collapsible help text
 
 Use `collapse_template()` to display an accordion-style information box that
@@ -61,6 +68,23 @@ content: |
 ```
 
 [Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
+
+## Display markdown template with a scroll bar
+
+`display_template()` displays a Docassemble
+[`template`](https://docassemble.org/docs/initial.html#template) with a scroll bar to save screen space if the content is long.
+
+It also displays the subject line along with the content, and allows you to add styles to the display. You can turn the scroll bar on and off. 
+
+Example: `display_template(my_template, scrollable=True, class_name="my_color")`.
+
+Include this in your interview:
+
+```yaml
+---
+include:
+  - docassemble.ALToolbox.display_template.yml
+```
 
 ## Display a series of tabs
 
@@ -197,3 +221,15 @@ To include in your interview:
 include:
   - docassemble.ALToolbox:escape_button.yml
 ```  
+
+## International phone number input validation 
+
+Use a custom datatype `phone` field to define the phone number input, and it will validate the country code for you. Run the demo interview to see how it works and detailed implementation instruction.
+
+To include in your interview:
+
+```yaml
+---
+include:
+  - docassemble.ALToolbox:phone-number-validation.yml
+``` 
