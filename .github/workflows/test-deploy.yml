@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [main]
     paths: [website/**]
+  workflow_dispatch:
+    paths: [website/**]
+  
 
 jobs:
   test-deploy:
