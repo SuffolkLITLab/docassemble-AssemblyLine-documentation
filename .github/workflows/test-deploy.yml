@@ -3,10 +3,7 @@ name: Test deployment of documentation
 on:
   pull_request:
     branches: [main]
-    paths: [website/**]
   workflow_dispatch:
-    paths: [website/**]
-  
 
 jobs:
   test-deploy:
@@ -19,8 +16,6 @@ jobs:
           node-version: 14.x
           cache: npm
       - name: Test build
-        working-directory: website
         run: |
-          npm install
           npm ci
           npm run build
