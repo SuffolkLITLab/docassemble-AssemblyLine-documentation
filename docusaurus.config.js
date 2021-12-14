@@ -1,13 +1,13 @@
 module.exports = {
   title: 'The Document Assembly Line Project',
   tagline: 'From paper to webform, made easier',
-  url: 'https://suffolklitlab.org',
-  //baseUrl: '/',
+  url: 'https://plocket.github.io',
+  // baseUrl: '/',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'SuffolkLITLab', // Usually your GitHub org/user name.
+  organizationName: 'plocket', // Usually your GitHub org/user name.
   projectName: 'docassemble-AssemblyLine-documentation', // Usually your repo name.
   themeConfig: {
     navbar: {
@@ -20,7 +20,7 @@ module.exports = {
         // { to: 'docs/', activeBasePath: 'docs', label: 'Docs', position: 'left', },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation',
+          href: 'https://github.com/plocket/docassemble-AssemblyLine-documentation',
           label: 'GitHub',
           position: 'right',
         },
@@ -68,7 +68,7 @@ module.exports = {
             // },
             {
               label: 'GitHub',
-              href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
+              href: 'https://github.com/plocket/docassemble-AssemblyLine',
             },
           ],
         },
@@ -88,7 +88,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
+            'https://github.com/plocket/docassemble-AssemblyLine-documentation/edit/main/',
         },
         //blog: {
         //   showReadingTime: true,
