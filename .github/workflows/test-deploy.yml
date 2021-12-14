@@ -17,6 +17,5 @@ jobs:
           cache: npm
       - name: Test build
         run: |
-          npm install
           npm ci
           npm run build
