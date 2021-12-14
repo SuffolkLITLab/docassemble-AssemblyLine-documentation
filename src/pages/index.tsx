@@ -95,7 +95,7 @@
            <div className={styles.heroInner}>
              <h1 className={styles.heroProjectTagline}>
                <img
-                 alt={translate({message: 'The Awesome People project'})}
+                 alt={translate({message: 'The Most Awesome People project'})}
                  className={styles.heroLogo}
                  src={useBaseUrl('/img/undraw_Work_together_re_5yhn.png')}
                  width="50%"
