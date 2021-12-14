@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
-  
 
 jobs:
   test-deploy:
@@ -17,7 +16,6 @@ jobs:
           node-version: 14.x
           cache: npm
       - name: Test build
-        working-directory: website
         run: |
           npm install
           npm ci
