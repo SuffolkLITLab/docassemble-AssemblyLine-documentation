@@ -1,11 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy documentation to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths: [website/**]
   workflow_dispatch:
-    paths: [website/**]
 
 jobs:
   deploy:
@@ -18,7 +16,6 @@ jobs:
           node-version: 14.x
           cache: npm
       - name: Build website
-        working-directory: website
         run: |
           npm ci
           npm run build
