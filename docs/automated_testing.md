@@ -45,6 +45,27 @@ If you run the tests locally, add these environment variables to your `.env` fil
 - `PLAYGROUND_ID`: the id that shows up in interviews when the testing account runs the tests from the server playground.
 -->
 
+## Security
+
+Using a third-party library or package is always a risk. That said, we're working on some measures to help secure our code and to give you access to more secure ways to do this stuff. You can follow this conversation in GitHub at https://github.com/SuffolkLITLab/ALKiln/issues/425.
+
+### Disable the tests
+
+If you become worried about the tests, there are different ways you can stop the tests from running.
+
+In order to run, the test setup interview added a "workflow" file to your repository. GitHub sometimes calls that an "action". That's what triggers the tests. You can manage that workflow, and your actions in general, in GitHub.
+
+#### Disabling tests in one repository
+GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
+
+You can also delete the file from your repository completely. If you go to the front page of your repository, the file is in the `workflows` folder of the `.github` folder. It's called `run_form_tests.yml`. GitHub's instructions about how to delete a file are at https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository.
+
+Another option is to disable or limiting all tests, all actions, in your repository. GitHub's documentation for managing repository actions is at https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository.
+
+#### Disabling tests for the whole organization
+
+You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
+
 ## Quick Reference
 
 1. You write and edit `.feature` test files in your Sources folder.
