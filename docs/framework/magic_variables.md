@@ -186,6 +186,19 @@ Valid values:
 - Letter: `'letter'`
 - Other: `'other'`
 
+### `github_repo_name`
+
+This can be set to the name of the github repository (without owner name)
+so that you can test the feedback form and `about` page links within the
+Docassemble playground.
+
+Example:
+
+```yaml
+code: |
+  github_repo_name = "docassemble-AssemblyLine"
+```
+
 ## Run-time options
 
 These options are ones that you can sometimes configure when you author the
