@@ -19,11 +19,11 @@ The `<Contrib>` tag has the following attributes:
 * page_id: the text of the in-page anchor link
 * socials (optional): a list of 2 element lists: first element is the URL, second is what it's called (LinkedIn, personal website, etc.)
 -->
-
+import useBaseUrl from '@docusaurus/useBaseUrl';
 export const Contrib = ({children, name, pic, page_id, socials}) => (
   <tr id={page_id}>
     <td>
-      <img src={(pic) ? pic : "/img/contributors/robby.jpg"} alt={ name + " Profile Picture"}/>
+      <img src={(pic) ? useBaseUrl(pic) : useBaseUrl("/img/contributors/robby.jpg")} alt={ name + " Profile Picture"}/>
       <br/> <sub><b><a href={"#" + page_id}>{name}</a></b></sub>
     </td>
     <td>{children}</td>
