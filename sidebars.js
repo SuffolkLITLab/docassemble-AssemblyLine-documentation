@@ -83,6 +83,7 @@ module.exports = {
                 'framework/efiling',
             ]
         },
+        'contributors',
         require('./docs/reference/sidebar.json')
     ],
 };
