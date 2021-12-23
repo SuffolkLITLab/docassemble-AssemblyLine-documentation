@@ -49,3 +49,14 @@ Avoid validation when:
 * [UK.gov guidance on writing error messages](https://design-system.service.gov.uk/components/error-message/#be-clear-and-concise)
 * [UK's NHS guidance on writing error messages](https://service-manual.nhs.uk/design-system/components/error-message)
 * https://uxplanet.org/how-to-write-good-error-messages-858e4551cd4
+
+## How to use warnings
+
+Sometimes you don’t want to stop the user, you just want to let the user know to double check their answer. Unfortunately, we still don’t have a good model for this and are looking for evidence-based research on it. Here are some unverified possibilities.
+
+* For important choices, you can use a follow up screen to warn someone about their choice. If it’s not that important, you might consider skipping the validation completely.
+* For radio buttons, you might only show the warning if they choose something you want to draw their attention to.
+* A modal pop-up is one way to tell the user something might be wrong. Some people find those confusing and annoying.
+* Another option is to show warning text under the field as soon as the user starts answering. You would hide it as soon as the answer looked good. You would allow the user to continue either way. With this method, some people may feel they’re being scolded before they’ve been given a chance to put in their answer.
+* A possible way around the issue is to offer an “I know what I’m doing” checkbox that reveals a different field - one that won’t stop the user.
+* Alternatively, you could have a review screen for the user before they submit their final answer and show the warning there. It’s not immediate, but they could choose to edit the answer at that point.
