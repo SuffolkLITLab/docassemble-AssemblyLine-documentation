@@ -135,6 +135,27 @@ You can have multiple tables in one Scenario and you can put other steps between
 A story table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
+### Generate a story table
+
+You can use the [story table generator](https://plocket.github.io/al_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
+
+Follow these instructions to use the generator:
+
+1. If you don't have one already, [add a new test file](#how-do-i-add-a-new-test-file). You can leave out the Scenario.
+1. Ensure your server config is set up to [show debug info](https://docassemble.org/docs/config.html#debug).
+1. Run your interview manually until you reach the page you want the story table to get to.
+1. Open the "source" display of the interview. Currently, that looks like angle brackets, `</>`, in the header of the page.
+1. Note the `id` of the page.
+1. Tap the "Show variables and values" button. It will open a new tab showing a big JSON object.
+1. Copy all the text on that page.
+1. Go to the [story table generator](https://plocket.github.io/al_story/).
+1. Paste the JSON into the text area there, as instructed.
+1. Use the other input fields to help finalize your Scenario, including the page `id`.
+1. Copy the Scenario that has been generated for you.
+1. Paste that into the already prepared test file.
+
+This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic).
+
 ### Step description
 
 The Step that triggers a story table is
@@ -143,7 +164,7 @@ The Step that triggers a story table is
     And I get to the question id "some id!" with this data:
 ```
 
-It needs to know the `id` of the page it should get to. You can find the `id` in the `question` block in the YAML, or using the Sources tab in a live interview. The Sources tab is in the header and looks like angle brackets around a forward slash: `</>`.
+**question id:** The story table needs to know the `id` of the page this story table should get to. You can find the `id` in the `question` block in the YAML, or using the `</>` button in the header of an open interview.
 
 
 ### Rows
@@ -163,6 +184,8 @@ Under that, add a blank row for a field that you want the test to interact with 
 ```
       |  |  |  |
 ```
+
+You must include a row for every variable that need to be set in order to get to the page with the `id` you chose.
 
 ### var
 
@@ -197,7 +220,7 @@ The last example makes sure that the date is 10 years in the past, ensuring that
 
 ### trigger
 
-`trigger` is an optional value in most cases. It is mandatory for rows that list [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`). Your interview **must always** include [some special HTML](#a-missing-trigger-variable) to let the trigger variable work properly. As you can see, you will get a warning in the report if you leave that out.
+`trigger` is an optional value in most cases. It is mandatory for rows that list [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`). Your interview **must always** include [some special HTML](#trigger_variable_code) to let the trigger variable work properly. As you can see, you will get a warning in the report if you leave that out.
 
 In the `trigger` column, write the name of the variable that triggers the page on which the field appears.
 
@@ -575,6 +598,43 @@ If your field is like the Good example, the value of the choice should never get
 
 -->
 
+## Tips
+
+_Some of these are just good practices to follow when coding your interviews_
+
+In questions with choices, give a value for each label. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
+
+Not great with just labels:
+```yml
+question: Tell me about yourself
+fields:
+  - Favorite color
+```
+
+Better with values as well:
+```ymlquestion: Tell me about yourself
+fields:
+  - Favorite color: user_favorite_color
+```
+
+It's always possible to use the labels alone, but giving a value as well ensures your tests will work for translated versions of your interview. It also helps your code be more translatable in general.
+
+---
+
+Add a [unique id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. This also helps your team communicate with each other more easily.
+
+---
+
+Avoid `noyes` type fields. For one thing, the [story table generator](#generate-a-story-table) code will need less editing. For another, we've found that humans tend to find those confusing too.
+
+---
+
+If your package is not importing specifically al_package.yml from the styled Assembly Line package, make sure to add the [trigger variable code](#trigger_variable_code) to your interview.
+
+---
+
+Use old Scenarios or story tables to help you make new ones. You don't have to make everything from scratch.
+
 ## Errors and Warnings
 
 This section will be filled out as we go.
@@ -587,7 +647,10 @@ That warning isn't a bug, but if the above doesn't apply to you, you can ignore 
 
 If you are using a story table with index variables or generic objects, you need to add some code to the interview file where you set your [`metadata` block](https://docassemble.org/docs/initial.html#metadata). It controls items like `title` and `authors`.
 
-Add this code to your `metadata` block to insert an invisible element to all your screens:
+<!-- This has to be a bit farther up than the code. For some reason the header isn't taken into account when jumping here. -->
+<a name="trigger_variable_code"></a>
+
+Add this code to your `metadata` block to insert an invisible element in all your screens:
 
 ```yml
   post: |
