@@ -17,71 +17,37 @@ The Kiln (Assembly Line Kiln) framework runs tests on your docassemble interview
 
 Docacon 2021, 10 minute intro presentation:
 
-<!-- &amp;end=4115 -->
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YB-e-MGtLgI?&amp;start=3482" title="10 minute intro of Assembly Line Kiln testing framework at Docacon 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YB-e-MGtLgI?start=3482&end=4115" title="10 minute intro of Assembly Line Kiln testing framework at Docacon 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-1. Set up your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository.
+## Start
+
+1. Prepare your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository.
 1. In Docassemble, make a new Project and pull in the updated code.
-1. Write tests in your Sources folder. The setup process will give you an example test to start you off.
+1. Write tests in your Sources folder. You should already have an example test there to start with, created by the test setup interview.
 
-Whenever you push to GitHub, GitHub will run the tests automatically with a bot that goes to whatever interviews you named in the tests and fills in the fields. You can see the tests running in your [GitHub Actions tab](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity).
+
+## How does it work?
+
+Whenever you push to GitHub, GitHub will run the tests automatically with a bot that goes to whatever interviews you named in the tests and fills in the fields. You can see the tests running in your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
 At the end, you can see a report right in the GitHub Action or [download the report artifact to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 
-<!-- ## Setup
 
-For now, talk to us about it.
-
-- Have admin permissions on the repo
-- Use the setup interview (https://apps-dev.suffolklitlab.org/start/test-setup/)
-- Add this element to the page somewhere: <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
-
-If you run the tests locally, add these environment variables to your `.env` file:
-
- -` PLAYGROUND_EMAIL`: the docassemble server email for the account that is running the tests.
-- `PLAYGROUND_PASSWORD`: the docassemble server password for the account that is running the tests.
-- `PLAYGROUND_ID`: the id that shows up in interviews when the testing account runs the tests from the server playground.
--->
-
-## Security
-
-Using a third-party library or package is always a risk. That said, we're working on some measures to help secure our code and to give you access to more secure ways to do this stuff. You can follow this conversation in GitHub at https://github.com/SuffolkLITLab/ALKiln/issues/425.
-
-### Disable the tests
-
-If you become worried about the tests, there are different ways you can stop the tests from running.
-
-In order to run, the test setup interview added a "workflow" file to your repository. GitHub sometimes calls that an "action". That's what triggers the tests. You can manage that workflow, and your actions in general, in GitHub.
-
-#### Disabling tests in one repository
-GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
-
-You can also delete the file from your repository completely. If you go to the front page of your repository, the file is in the `workflows` folder of the `.github` folder. It's called `run_form_tests.yml`. GitHub's instructions about how to delete a file are at https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository.
-
-Another option is to disable or limiting all tests, all actions, in your repository. GitHub's documentation for managing repository actions is at https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository.
-
-#### Disabling tests for the whole organization
-
-You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
-
-## Quick Reference
+## Quick reminders
 
 1. You write and edit `.feature` test files in your Sources folder.
-1. By default, each Step or field may only take 2 minutes. You can change that with the "the maximum seconds" Step listed in the Steps.
+1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
 1. Tests are run in GitHub when you commit.
-1. Tests can download PDF files, but humans have to review them to see if they've come out right.
-1. Tests that error will create screenshots from when the error happened.
-1. Tests create report files you can download. They're in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
-
-For interacting with things on GitHub, look for how to use the [Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity) tab.
+1. Tests can download files, but humans have to review them to see if they've come out right.
+1. You will be able to download screenshots of pages that errored. They're in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. ALKiln also creates test reports that you can download in the same place.
 
 Give us feedback and ideas by making issues at https://github.com/plocket/docassemble-cucumber/issues.
 
 ### Example
 
-The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for quick reference of some of our features:
+The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for a quick refresher on some of our features:
 
 ```
 @children
@@ -107,7 +73,7 @@ Feature: I have children
 
 ## First test
 
-You can write a really simple test right away that just makes sure your YAML file runs using the name of the YAML file. Write a `Scenario` for each file you want to test.
+You can write a really simple test right away that just makes sure your YAML file runs. Write a `Scenario` for each file you want to test.
 
 ```
 Feature: Interviews load
@@ -119,7 +85,7 @@ Feature: Interviews load
     Given I start the interview at "plaintiffs_motion_to_modify_209a.yml"
 ```
 
-More complex tests might wait till your code is pretty much how you want it. Every time you change your variable names, you may have to update the tests.
+You can wait to write more complex tests till your code is more stable.
 
 ## Story tables
 
@@ -480,7 +446,7 @@ Use the "continue" Step to continue to the next page. The text on the button its
 
 ---
 
-Use the "download" Step to download documents. The documents will be in [the GitHub action's artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts). If you think this step could take more than 2 minutes, use the "maximum seconds for each Step" Step) to give the file more time to download.
+Use the "download" Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
 ```
     Then I download "file-name.pdf"
 ```
@@ -548,61 +514,18 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 ### Some other mysterious error 
 {#some-other-mysterious-error}
 
-
-
 1. You can rerun the test
 2. Try to search for the text of the error online (don’t spend more than 20 min on this, though)
 3. Ask one of us. Remember that this framework is under development. Something might be wrong with our code.
 
 -->
 
-<!--
-
-### Translations
-
-Always give your `choices` values that are separate from their labels and will never be translated.
-
-In docassemble, you can write `choices` a few different ways.
-
-Bad
-
-```
-question: |
-  What is your favorite color?
-fields:
-  - Colors: favorite_color
-    input type: radio
-    choices:
-      - green
-      - red
-      - blue
-```
-
-Good
-
-```
-question: |
-  What is your favorite color?
-fields:
-  - Colors: favorite_color
-    input type: radio
-    choices:
-      - green: green
-      - red: red
-      - blue: blue
-```
-
-If your field is like the Bad example, the label of a choice is also its value and the translations will break the tests. This is because the label will be translated. Since the label written this way is also the value, the value in the translated version of the interview will be different than the value you wrote in for your test.
-
-If your field is like the Good example, the value of the choice should never get translated so it should always be the same and the tests will be happy.
-
--->
 
 ## Tips
 
 _Some of these are just good practices to follow when coding your interviews_
 
-In questions with choices, give a value for each label. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
+In questions with choices, give each label a value. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
 
 Not great with just labels:
 ```yml
@@ -633,9 +556,137 @@ If your package is not importing specifically al_package.yml from the styled Ass
 
 ---
 
+You can write tests that just go part-way through an interview. That way, you can work on adding more content and yet also be sure that the work you've already done isn't affected by the new changes.
+
+---
+
 Use old Scenarios or story tables to help you make new ones. You don't have to make everything from scratch.
 
-## Errors and Warnings
+## Test results
+
+To see the list of past tests or running tests, go to your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
+
+One of the rows should have the text of the commit you just made. The test may have a yellow dot next to it. That means it's still running. When the dot has turned into a red 'x' or a green checkmark, tap on the name to go to the test's Summary page.
+
+<!-- 
+**Your test's status:** If your test has a green circle with a checkmark, the test has passed. If it has a red circle with an 'x', something went wrong. If it has a yellow circle, the test is still running.
+
+**Summary page:** You can tap on the name of a test to be taken to its summary page. At the bottom, there might be items for you to download as zip files. GitHub calls those "artifacts" and ALKiln can create a few different kinds. You can read about artifacts in [GitHub's own documentation about artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts). Read about our specific artifacts in the sections below.
+
+**Jobs page:** GitHub also has a page where you can more details about what happened during the test.
+
+To see more details about how the test steps ran on GitHub, go to the left column. Tap on the first item under "Jobs".
+ -->
+
+### Summary page
+
+ALKiln automatically creates a report for each set of tests. If there are errors, it creates screenshots of those errors. You can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the Summary page.
+
+### Error screenshots' artifacts
+
+When a test fails on an interview page, ALKiln will take a screenshot of the page. ALKiln saves these files in the "errors" GitHub artifact. The screenshot's name will be made of the scenario description and a timestamp of when the screenshot was taken.
+
+There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined.
+
+### Reports
+
+We're always trying to understand what people would find helpful in these reports. Tell us about your experiences at https://github.com/SuffolkLITLab/ALKiln/issues.
+
+ALKiln saves the report in the "report" GitHub artifact. A report might look something like this:
+
+```
+Assembly Line Kiln Automated Testing Report - Wed, 29 Dec 2021 17:49:00 GMT
+
+
+===============================
+===============================
+Failed scenarios:
+
+---------------
+Scenario: I get to the download page
+---------------
+
+ERROR: The question id was supposed to be "download", but it's actually "agree-to-terms".
+**-- Scenario Failed --**
+
+
+===============================
+===============================
+Passed scenarios:
+
+---------------
+Scenario: I fill in my name
+---------------
+screen id: user-name
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+```
+
+A report has a title with the date and time. It also has two main sections - the failed Scenarios and the Scenarios that passed.
+
+Within each of those, every Scenario will have its own section. In the Scenario's section, ALKiln will list the id of each screen where fields were set in the order in which they appeared. Under each `screen id` will be the names of the variables whose fields were set and the values they were set to. We're still working out some issues here.
+
+---
+
+If you used a [story table](#story-tables) Step, a Scenario might look more like this:
+
+```
+---------------
+Scenario: I fill in my name
+---------------
+screen id: user-name
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+
+  Rows that got set:
+    And I get the question id "child information" with this data:
+      | var | value | trigger |
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+  Unused rows:
+      | defendant.name.first | Sam |  |
+      | defendant.name.last | Defo |  |
+```
+
+Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id.
+
+Rows are listed in alphabetical order. If you have thoughts on pros and cons, we'd love to hear from you.
+
+If everything looks right to you there, you can copy and paste the text under "Rows that got set" into your test to get rid of the extra rows you've got hanging around.
+
+---
+
+If a screen loaded with an error message, ALKiln will try to reload a few times, and will try to log the error message that it saw:
+
+```
+---------------
+Scenario: I opened the interview
+---------------
+
+ERROR: On final attempt to load interview, got "Reference to invalid playground path"
+
+ERROR: On final attempt to load interview, got "Reference to invalid playground path"
+
+ERROR: On final attempt to load interview, got "Reference to invalid playground path"
+
+ERROR: Failed to load "a-great-interview" after 3 tries. Each try gave the page 30 seconds to load.
+**-- Scenario Failed --**
+```
+
+You will probably find a screenshot of the page in your [error artifacts](#error-screenshots-artifacts).
+
+Also watch the [errors and warnings](#errors-and-warnings) section for updates on similar information.
+
+### Your screenshots' artifacts
+
+You can choose to take a screenshot of a page with the `Then I take a screenshot` Step. ALKiln saves these files in the "screenshots" GitHub artifact.
+
+### Your downloaded files' artifacts
+
+You can choose to download a file with the `Then I download "file-name.pdf"` Step. ALKiln saves these in the "downloads" GitHub artifact. You can read more about that Step in the [Other actions](#other-actions) section.
+
+
+## Errors and warnings
 
 This section will be filled out as we go.
 
@@ -662,6 +713,28 @@ If you already have something in your `post:` metadata, just add that code anywh
 If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
 
 <!-- ### Access Denied -->
+
+
+## Security
+
+Using a third-party library or package is always a risk. That said, we're working on some measures to help secure our code and to give you access to more secure ways to do this stuff. You can follow this conversation in GitHub at https://github.com/SuffolkLITLab/ALKiln/issues/425.
+
+### Disable the tests
+
+If you become worried about the tests, there are different ways you can stop the tests from running.
+
+In order to run, the test setup interview added a "workflow" file to your repository. GitHub sometimes calls that an "action". That's what triggers the tests. You can manage that workflow, and your actions in general, in GitHub.
+
+#### Disabling tests in one repository
+GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
+
+You can also delete the file from your repository completely. If you go to the front page of your repository, the file is in the `workflows` folder of the `.github` folder. It's called `run_form_tests.yml`. GitHub's instructions about how to delete a file are at https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository.
+
+Another option is to disable or limiting all tests, all actions, in your repository. GitHub's documentation for managing repository actions is at https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository.
+
+#### Disabling tests for the whole organization
+
+You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
 
 ## FAQ
@@ -692,8 +765,8 @@ Scenario: The specific situation that this test is written for
 
 Make sure that
 
-1. `Feature` is on the first line.
-1. Each `Scenario` starts each new test in the file.
+1. `Feature:` and it's description is on the first line.
+1. Each test starts with a `Scenario:` and its description.
 1. `Given I start the interview...` is the first line under `Scenario`.
 
 After that, you can add the story table or other Steps that will test your code. Add the file to the files you commit to GitHub. From then on, GitHub will run that tests whenever you commit, or push, to GitHub.
@@ -711,11 +784,9 @@ Scenario: I allow unsupervised visitation
   Given I start the interview at "restraining_order.yml"
 ```
 
-The story table or other Steps under each scenario will be a bit different because they each test a different path for the user.
+The Steps under each scenario will be a bit different because they each test a different path for the user.
 
 <!-- The `Scenario` descriptions will later be used in the test report and names of downloaded files, so make each one different. -->
-
-<!-- And I get to the question id "download" with this data: -->
 
 ### How do I add a new test to an existing test file?
 
@@ -731,19 +802,21 @@ Scenario: I allow unsupervised visitation
   Given I start the interview at "restraining_order.yml"
 ```
 
-Make sure the line containing the `Scenario` description, as seen above, is below the line containing the `Feature` description.
+Make sure to leave the `Feature` line at the very top of the file.
 
-After the `Given` step, you can add the story table or other Steps that will test your code.
+After the `Given` step, you can add the story table or other Steps that will test your interview.
+
+ALKiln uses the `Scenario` description to label test results. Try to use something you'll recognize later.
 
 ### When do tests run?
 
 Tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
-If you know how to use GitHub [actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#viewing-the-jobs-activity), you can also run the tests manually from GitHub actions with some more options.
+If you know how to use GitHub [actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity), you can also run the tests manually from GitHub actions with some more options.
 
 ### Why should I write a Scenario description?
 
-Scenario descriptions affect the names of error screenshot files and report headings, so try to use useful descriptions.
+Scenario descriptions affect the names of error screenshot files and report headings, so try to write something you will recognize later.
 
 <!-- I think this info is useful, but I'm not sure where it should go.
 ## About writing tests
@@ -751,32 +824,6 @@ Scenario descriptions affect the names of error screenshot files and report head
 **Who?**
 
 It is easier to write the tests if you have access to the YAML code and can understand a bit about docassemble.
-
-**What?**
-
-There are a couple kinds of tests you can write.
-
-You can write a really simple test right away that just makes sure your a file runs using the name of the file. Write a `Scenario` for each file you want to test.
-
-```
-Feature: Interviews load
-
-  Scenario: The 209A loads
-    Given I start the interview at "ma_209a_package.yml"
-
-  Scenario: The Plaintiff's Motion to Modify loads
-    Given I start the interview at "plaintiffs_motion_to_modify_209a.yml"
-```
-
-More complex tests might wait till your code is pretty much how you want it. Every time you change your variable names, you may have to update the tests.
-
-**Where?**
-
-The Sources folder. (Go to your Playground > the dropdown Folders menu > Sources.)
-
-**When?**
-
-Write the simple test described above as soon as you want. For the rest, write most of the tests after your code is mostly stable - you don't plan to change the variables that much.
 
 **Why?**
 
@@ -837,8 +884,8 @@ Even though this is built using [cucumberjs](https://cucumber.io/), this framewo
 
 ## Repositories
 
-The framework's repository is at https://github.com/SuffolkLITLab/ALKiln.
+ALKiln's repository is at https://github.com/SuffolkLITLab/ALKiln.
 
-The interview for setting up tests for a repo is at https://apps-dev.suffolklitlab.org/start/test-setup/. The repo for that interview is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
+The developer test setup interivew's repo is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
 
-The repo for the interviews for testing the framework is also at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
+ALKiln also tests itself using some of the interviews at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
