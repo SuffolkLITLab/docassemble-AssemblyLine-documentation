@@ -1,0 +1,7 @@
+/* The github tutorials page has a lot of images and we want
+*    to keep their size under control more easily.  */
+.medium_width img {
+  border: 2px solid var(--ifm-color-secondary);
+  border-radius: 3px;
+  max-width: 75%;
+}
