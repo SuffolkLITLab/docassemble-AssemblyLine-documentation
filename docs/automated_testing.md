@@ -91,6 +91,17 @@ You can wait to write more complex tests till your code is more stable.
 
 **Story table** Steps, in our opinion, are the most effective and flexible way to set the values of fields in ALKiln in most cases. Using them, it doesn't matter what order you use to list your fields or what order your pages come in. It also doesn't matter if you include extra fields accidentally. They are a snapshot of the user who's filling out the form for that test.
 
+Example:
+
+```
+    And I get to the question id "has sink" with this data:
+      | var | value | trigger |
+      | last_haircut_date | today - 730 | last_haircut_date |
+      | wants_virtual_haircut | True | wants_virtual_haircut |
+      | scissors[i].length | 2 | scissors[0].length |
+      | scissors[i].length | 7 | scissors[1].length |
+```
+
 You can write a story table that goes all the way through your interview, or a story table that only goes part way.
 
 Very basically, you tell the story table Step what `question` you want to get to and the variables and values it will need to get there. Whenever the test gets to a page, it checks your story table for any variables that match a variable on the page. When it finds a match, it sets the value of the field. When it's done with a page, it continues to the next page until it reaches the terminal `question`.
