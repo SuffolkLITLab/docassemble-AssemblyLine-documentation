@@ -126,7 +126,7 @@ Add the following exact text to the `http` section: `uwsgi_read_timeout 300s;`
 
 ![Edit uwsgi timeout](./assets/edit_uwsgi_timeout.png)
 
-Type CTRL+O, CTRL+X to save and exit the configuration file.
+Type CTRL+O, Enter, and then CTRL+X to save and exit the configuration file.
 
 Type the following commands to restart the nginx process:
 
@@ -175,7 +175,7 @@ Copy and paste the contents  [custom HTML 504 gateway timeout
 page](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/data/static/custom_504.html)
 into the open `nano` editor on your server.
 
-Type CTRL+O CTRL+X to save and close the editor.
+Type CTRL+O, Enter, and then CTRL+X to save and close the editor.
 
 Edit the `nginx` configuration file to point to your new custom error page:
 
@@ -186,7 +186,7 @@ nano /etc/nginx/nginx.conf
 Add this line of code to the configuration file, inside the main `http` `{}`
 brackets: `error_page 504 /errors/custom_504.html;`
 
-Type CTRL+O CTRL+X to save and close the editor.
+Type CTRL+O, Enter, and then CTRL+X to save and close the editor.
 
 Restart the nginx process:
 
