@@ -639,7 +639,7 @@ screen id: user-name
       | user.name.last | Plaintiff |  |
 
   Rows that got set:
-    And I get the question id "child information" with this data:
+    And I get to the question id "child information" with this data:
       | var | value | trigger |
       | user.name.first | Maru |  |
       | user.name.last | Plaintiff |  |
