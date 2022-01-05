@@ -22,7 +22,7 @@ you to:
 1. edit existing field properties
 
 Documate has [a page that talks about its PDF
-editor](https://documate.wrkflows.io/).
+editor](https://help.documate.org/articles/unlocking-pdf-documents).
 
 Adobe Acrobat can still be helpful. The most important feature it has that
 Documate lacks is the ability to automatically recognize blank spaces and turn
@@ -30,7 +30,7 @@ them into fields. You may decide to use a trial version of Adobe Acrobat for
 this feature, which is only needed at the beginning of your project.
 
 Watch a 2 minute video segment on [how to edit a
-PDF](https://documate.wrkflows.io/en/articles/1007) with Documate's editor.
+PDF](https://help.documate.org/articles/unlocking-pdf-documents) with Documate's editor.
 <iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Documate's editor">
 </iframe>
 
