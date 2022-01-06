@@ -27,6 +27,7 @@ module.exports = {
                 'alweaver_overview',
                 'customizing_interview',
                 'yaml_anatomy',
+                'github',
             ],
         },
         {
@@ -68,7 +69,6 @@ module.exports = {
                 'docs_style_guide'
             ]
         },
-        'github',
         //'name_formats',
         {
             type: 'category',
