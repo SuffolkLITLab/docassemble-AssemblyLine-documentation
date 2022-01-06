@@ -426,6 +426,8 @@ A `403` error, `remote: Permission to ... denied to ...`, means you have not bee
 
 If you are trying to make a new repository on your GitHub account, you may belong to an organization that owns a Package by the same name. You may not have permission to change that repository. You will either have to change the name of your Package, have the organization delete that repository, or have the admin give you or your team 'write' permissions as described above.
 
+If you think your GitHub account does have permission, try re-doing your GitHub integration. You can manage your GitHub integration through the menu on your Profile page.
+
 #### `CONFLICT (content)`
 
 The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#merge-conflicts) looks like in docassemble in git. Simply [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) and commit the changes there. Work out the merge conflicts afterwards.
