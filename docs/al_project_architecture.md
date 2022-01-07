@@ -19,7 +19,7 @@ Below is a snapshot of the Project's overall architecture as of **October 2021**
 1. [MassAccess](https://github.com/suffolkLITLab/docassemble-MassAccess)
 1. [ALToolbox](https://github.com/suffolkLITLab/docassemble-ALToolbox)
 
-1. [ALKiln Integrated/Automated Testing](https://github.com/SuffolkLITLab/ALKiln)
+1. [ALKiln](https://github.com/SuffolkLITLab/ALKiln)
 1. [ALDashboard](https://github.com/suffolkLITLab/docassemble-ALDashboard)
 
 1. [AssemblyLine-
