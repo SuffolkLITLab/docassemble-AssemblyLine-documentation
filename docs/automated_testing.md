@@ -750,6 +750,38 @@ Another option is to disable or limiting all tests, all actions, in your reposit
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
 
+## Customizations
+
+### Automate making a GitHub issue when tests fail
+
+1. Go to your GitHub repository.
+1. Tap on the `.github` folder, then on `workflows`, then on the run_form_tests.yml.
+1. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
+1. Add the below code under the last line of text in the file.
+1. Do not add any GitHub new secrets to your repository for this, even if you know how to.
+
+```yml
+      - name: If tests failed create an issue
+        if: ${{ failure() }}
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: ALKiln tests failed
+          body: |
+            An ALKiln test failed. See the action at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}.
+          labels: |
+            bug
+```
+
+:::warning
+Avoid changing the value `github_token` and avoid creating a new secret for it. The variable `secrets.github_token` is a value that your repository has by default.
+:::
+
+If you use the code above, the [GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) will contain a link to the workflow's action page itself.
+
+You can edit the values of `title`, `body`, and `bug` to customize the issue.
+
+
 ## FAQ
 
 ### I have a private GitHub repository. Can I use this testing framework?
