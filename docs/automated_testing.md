@@ -466,7 +466,23 @@ Leave out other parts of file's url.
 
 ---
 
-Use this Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
+Use the "upload" step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#templates) along with your tests.
+
+As you can see in the examples, if you want to upload more than one file you must separate their names with a comma.
+
+```
+And I upload "irrefutable_evidence.jpg, refutable_evidence.pdf" to "evidence_files"
+```
+
+To do this in a story table use the name of the variable as usual and use the name of the file or files in the value column.
+
+```
+      | evidence_files | irrefutable_evidence.jpg, refutable_evidence.pdf |  |
+```
+
+---
+
+Use the "custom timeout" Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
     Then the maximum seconds for each Step is 200
@@ -474,7 +490,7 @@ Use this Step to give your pages or Steps more time to finish. The default maxim
 
 ---
 
-You can use the following "wait" Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
+Use the "wait" Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
 
 Waiting can help in some situations where you run into timing issues. It does nothing for the timing of other steps. You can give this Step any number of seconds, though all Steps will timeout after two minutes. You can add multiple rows of these if you want.
 
