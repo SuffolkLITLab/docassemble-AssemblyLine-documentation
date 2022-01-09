@@ -759,7 +759,9 @@ Yes, you can use ALKiln with a private repository, though you have to do a bit o
 1. Pick a GitHub account that has permission to change the private repository. 
 1. Make sure the account on your docassemble server that you linked to the tests is integrated with the GitHub account. See [docassemble's documentation on integrating a GitHub account](https://docassemble.org/docs/packages.html#github).
 
-As that documentation explains, the GitHub account _must_ be unique to the account on your docassemble server. No two accounts on a docassemble server can be connected to the same GitHub account.
+As that documentation explains, no two accounts on a docassemble server can be connected to the same GitHub account.
+
+Also, there are some limits on the amount of time private repositories can run workflows: https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
 
 ### How do I add a new test file?
 
