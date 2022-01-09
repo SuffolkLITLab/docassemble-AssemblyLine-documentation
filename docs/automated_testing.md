@@ -741,6 +741,35 @@ If you already have something in your `post:` metadata, just add that code anywh
 
 If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
 
+### Timeout or "took too long" error
+
+Different problems can cause the report to say that something "took too long" or cause a "timeout" error to show up in the logs of the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
+
+This error can happen when the test is trying to go to the wrong url, usually because:
+
+1. The `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) has a typo or the server address is wrong. This secret is usually created by the [setup interview](#start). It is supposed to be the address of the docassemble server where the docassemble testing account is located. Find the right server name and edit the secret to contain that server name. Exclude an ending `/`.
+1. The `Given I start the interview at...` Step is naming an interview that doesn't exist. Check for a typo in the file name.
+
+A "timeout" error can also happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
+
+1. The page was trying to load a big file.
+1. The server was busy for too long.
+1. The server is down.
+
+If a page was taking to load a big files, use the "custom timeout" Step to give the page more time to load.
+
+If the server was busy, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow). As of 01/2022 you have to navigate to the newly running tests manually. For example, by going to the Actions page again.
+
+You can download and look at your ["error" artifacts screenshots](http://localhost:3000/docassemble-AssemblyLine-documentation/docs/automated_integrated_testing#error-screenshots-artifacts) to check for more details.
+
+### Invalid playground path error
+
+If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo.
+
+### UnhandledPromiseRejection error
+
+This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
+
 <!-- ### Access Denied -->
 
 
