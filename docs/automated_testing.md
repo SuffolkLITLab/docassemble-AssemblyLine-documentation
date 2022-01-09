@@ -29,9 +29,9 @@ Docacon 2021, 10 minute intro presentation:
 
 ## How does it work?
 
-Whenever you push to GitHub, GitHub will run the tests automatically with a bot that goes to whatever interviews you named in the tests and fills in the fields. You can see the tests running in your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
+Whenever you push to GitHub, GitHub will run the tests automatically with a bot that goes to whatever interviews you named in the tests and fills in the fields. You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
-At the end, you can see a report right in the GitHub Action or [download the report artifact to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+At the end, you can see a report and logs right in the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs) or [download the report artifact to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 
 
 ## Quick reminders
@@ -466,7 +466,23 @@ Leave out other parts of file's url.
 
 ---
 
-Use this Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
+Use the "upload" step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#templates) along with your tests.
+
+As you can see in the examples, if you want to upload more than one file you must separate their names with a comma.
+
+```
+And I upload "irrefutable_evidence.jpg, refutable_evidence.pdf" to "evidence_files"
+```
+
+To do this in a story table use the name of the variable as usual and use the name of the file or files in the value column.
+
+```
+      | evidence_files | irrefutable_evidence.jpg, refutable_evidence.pdf |  |
+```
+
+---
+
+Use the "custom timeout" Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
     Then the maximum seconds for each Step is 200
@@ -474,7 +490,7 @@ Use this Step to give your pages or Steps more time to finish. The default maxim
 
 ---
 
-You can use the following "wait" Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
+Use the "wait" Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
 
 Waiting can help in some situations where you run into timing issues. It does nothing for the timing of other steps. You can give this Step any number of seconds, though all Steps will timeout after two minutes. You can add multiple rows of these if you want.
 
@@ -578,6 +594,8 @@ Use old Scenarios or story tables to help you make new ones. You don't have to m
 To see the list of past tests or running tests, go to your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
 One of the rows should have the text of the commit you just made. The test may have a yellow dot next to it. That means it's still running. When the dot has turned into a red 'x' or a green checkmark, tap on the name to go to the test's Summary page.
+
+To see the full output text of the test run, its logs, follow [these GitHub instructions](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
 
 <!-- 
 **Your test's status:** If your test has a green circle with a checkmark, the test has passed. If it has a red circle with an 'x', something went wrong. If it has a yellow circle, the test is still running.
@@ -723,6 +741,35 @@ If you already have something in your `post:` metadata, just add that code anywh
 
 If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
 
+### Timeout or "took too long" error
+
+Different problems can cause the report to say that something "took too long" or cause a "timeout" error to show up in the logs of the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
+
+This error can happen when the test is trying to go to the wrong url, usually because:
+
+1. The `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) has a typo or the server address is wrong. This secret is usually created by the [setup interview](#start). It is supposed to be the address of the docassemble server where the docassemble testing account is located. Find the right server name and edit the secret to contain that server name. Exclude an ending `/`.
+1. The `Given I start the interview at...` Step is naming an interview that doesn't exist. Check for a typo in the file name.
+
+A "timeout" error can also happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
+
+1. The page was trying to load a big file.
+1. The server was busy for too long.
+1. The server is down.
+
+If a page was taking to load a big files, use the "custom timeout" Step to give the page more time to load.
+
+If the server was busy, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow). As of 01/2022 you have to navigate to the newly running tests manually. For example, by going to the Actions page again.
+
+You can download and look at your ["error" artifacts screenshots](http://localhost:3000/docassemble-AssemblyLine-documentation/docs/automated_integrated_testing#error-screenshots-artifacts) to check for more details.
+
+### Invalid playground path error
+
+If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo.
+
+### UnhandledPromiseRejection error
+
+This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
+
 <!-- ### Access Denied -->
 
 
@@ -748,6 +795,38 @@ Another option is to disable or limiting all tests, all actions, in your reposit
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
 
+## Customizations
+
+### Automate making a GitHub issue when tests fail
+
+1. Go to your GitHub repository.
+1. Tap on the `.github` folder, then on `workflows`, then on the run_form_tests.yml.
+1. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
+1. Add the below code under the last line of text in the file.
+1. Do not add any GitHub new secrets to your repository for this, even if you know how to.
+
+```yml
+      - name: If tests failed create an issue
+        if: ${{ failure() }}
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: ALKiln tests failed
+          body: |
+            An ALKiln test failed. See the action at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}.
+          labels: |
+            bug
+```
+
+:::warning
+Avoid changing the value `github_token` and avoid creating a new secret for it. The variable `secrets.github_token` is a value that your repository has by default.
+:::
+
+If you use the code above, the [GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) will contain a link to the workflow's action page itself.
+
+You can edit the values of `title`, `body`, and `bug` to customize the issue.
+
+
 ## FAQ
 
 ### I have a private GitHub repository. Can I use this testing framework?
@@ -757,7 +836,9 @@ Yes, you can use ALKiln with a private repository, though you have to do a bit o
 1. Pick a GitHub account that has permission to change the private repository. 
 1. Make sure the account on your docassemble server that you linked to the tests is integrated with the GitHub account. See [docassemble's documentation on integrating a GitHub account](https://docassemble.org/docs/packages.html#github).
 
-As that documentation explains, the GitHub account _must_ be unique to the account on your docassemble server. No two accounts on a docassemble server can be connected to the same GitHub account.
+As that documentation explains, no two accounts on a docassemble server can be connected to the same GitHub account.
+
+Also, there are some limits on the amount of time private repositories can run workflows: https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
 
 ### How do I add a new test file?
 
