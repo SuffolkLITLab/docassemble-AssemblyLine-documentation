@@ -1,9 +1,14 @@
 ---
 id: github
-title: Using Github with docassemble
-sidebar_label: Github tutorials
+title: Using GitHub with docassemble
+sidebar_label: GitHub tutorials
 slug: /github
 ---
+
+import styles from "../src/css/images.module.css"
+
+<div className={ styles.medium_width }>
+
 <!-- original: https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit -->
 
 Ways to use GitHub in combination with docassemble. GitHub itself has decent documentation for its own features.
@@ -728,3 +733,5 @@ If you do not have write permissions on a repository, you can still see play wit
 When you make a pull request from one branch of your fork to another branch of your fork, make sure the chosen branches in the dropdowns are correct. GitHub will automatically set your pull request to use the original owner's repository instead of your own.
 
 If you later do want to offer your changes to the owner of the original repository, you can [make a pull request from your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
+
+</div>
