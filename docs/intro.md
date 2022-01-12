@@ -25,6 +25,64 @@ management techniques](https://trello.com) to:
 
 ![building_blocks](./assets/undraw_building_blocks_n0nc.png)
 
+<p>
+<a class="button button--primary" href="https://courtformsonline.org">Visit CourtFormsOnline.org</a>
+</p>
+
+## Get involved
+
+The Assembly Line Project is operated by [Suffolk Law's Legal Innovation and
+Technology Lab](https://suffolklitlab.org/). Email <a
+href="mailto:massaccess@suffolk.edu">massaccess@suffolk.edu</a> to reach out!
+
+### How we can help you
+
+Suffolk Law School is looking for grant partners with our funder, [Pew](https://www.pewtrusts.org/en/projects/civil-legal-system-modernization)! Our grant cycle runs from October 2021 through October 2023.
+
+Partners can be:
+
+* Courts
+* Legal aids and other nonprofits
+* Law schools
+
+We are in the early stage of building tools that help someone through the
+lifecycle of a court form. We want early users to help us build the right tools
+with the right features. We can help partners:
+
+* [Visualize existing PDF forms](https://suffolklitlab.org/form-explorer/)
+  across an entire jurisdiction
+    * Gain machine learning-driven insights into:
+    * Readability
+    * Ease of completion
+    * Shared fields and redundancies in your existing forms
+* [Automate existing forms with Docassemble](plan_interview.md)
+    * Eliminate repetitive work with integrated interview templates
+    * Use standardized guided interview structure, questions and components
+    * Translate into multiple languages
+    * Get to a rough prototype with one click
+* [Electronically file](framework/efiling.md) forms straight to a case
+  management system
+* [Get advice](question_style_overview.md) and guidance on drafting questions
+* Get automated insights to improve your guided interview
+    * Get instant feedback from our ongoing [style guide](question_style_overview.md)
+
+Our tools are free and open source. Use them on your own or with our help.
+
+### How you can help us
+
+We are looking for experienced court administrators, legal experts, and document
+automators to help us:
+
+* Share existing, completed paper PDF forms from court dockets so we can
+  understand the lifecycle of existing forms and identify intances where
+  litigants are spending the most time
+* Focus our insights on existing PDF forms to deliver the most value to courts
+* Help us create a more useful model of what makes forms easy or hard for
+  litigants to understand and use (we think readability is not enough)
+* Improve and extend our [library of questions](question_library/names.md)
+* Use and give us feedback on our [Assembly Line Weaver](plan_interview.md) tool
+* Expand our [e-filing](framework/efiling.md) capabilities
+
 ## Our work 
 
 The video below provides an overview of the project (0-10 min) and a detailed
@@ -36,9 +94,6 @@ end._
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AECHOvmaUv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>
-<a class="button button--primary" href="https://courtformsonline.org">Visit CourtFormsOnline.org</a>
-</p>
 
 ## Our tools
 
@@ -88,24 +143,6 @@ Louisiana's Jefferson Parish.
 
 <!-- TODO: add some images of the features here -->
 
-## Get involved
-
-We operate out of [Suffolk Law's Legal Innovation and Technology
-Lab](https://suffolklitlab.org/) in cooperation with the Massachusetts [Access
-to Justice Commission](https://massa2j.org/) and are staffed almost entirely by
-volunteers and students. We have optional standup meetings twice a week and
-online trainings every Tuesday, all of which are recorded. See [prior
-meetings](https://www.youtube.com/playlist?list=PLy6i9GFGw5GzcPqGyZQ06lPp35v6S5-YF).
-Most of the group's work takes place on [MS
-Teams](https://teams.microsoft.com/l/team/19%3a8b0fa1d62a014c7d9c27b69939e38644%40thread.tacv2/conversations?groupId=eaa9bd9d-cf39-4686-8f30-e55aa9d98c75&tenantId=78733fa9-540e-4eb8-bf29-73c4eeb63412).
-If you are interested in joining the team, email "mass access at suffolk dot
-edu," and we will send you an invite.
-
-You can also email that address if you're interested in joining our [Document
-Assembly Line
-bootcamp](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/bootcamp).
-The Bootcamp should give you a good feel for what the work entails and is where
-we suggest you start to learn more.   
 
 ## Our Repositories
 
