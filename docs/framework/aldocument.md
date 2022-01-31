@@ -372,10 +372,224 @@ content: |
 
 ## Working with overflow text, ALAddendumField and ALAddendumFieldDict
 
+The `ALDocument` class has a special Addendum feature for working with fields
+that may not fit into a PDF. For example: the PDF may have room for 3 lines, but
+the user may have a longer story to tell.
+
+Addenda can be used for both text fields and lists of items, such as children,
+where the original form may not allow enough room.
+
+The default addendum file for an AssemblyLine interview uses a special
+attribute, `label`, to decide how to format the text in the addendum. It will
+put objects, such as people, that are in a list into a table in the output.
+
+### Overview
+
+Each `ALDocument` has a dictionary attribute named `overflow_fields`. The
+dictionary will contain a complete list of each field in the document that may
+trigger the addendum. The length of each field will be evaluated to decide if
+the addendum needs to be generated, based on the user's answers in the
+interview. If there are no `overflow_fields` or each `overflow_field` is below
+the specified limit for that field, no addendum will be generated.
+
+You can use the AssemblyLine's default addendum template, which works well for a
+court form, or you can supply your own template file to use for the addendum.
+Usually, the addendum will be a Word document so it can expand to fit all of the
+content.
+
+Here is the basic process of using an addendum:
+
+1. set the `has_addendum` attribute of the `ALDocument` to `True`
+1. add an `ALAddendumField` object to the `overflow_fields` dictionary attribute
+   of the `ALDocument` for each field that you want to handle in the addendum
+1. set the `overflow_trigger` attribute of the `ALAddendumField` to match the
+  maximum number of _characters_ or _items_ that may appear in that field
+1. optionally, set the value of the `label` attribute of the `ALAddendumField`
+   (this is used in the default addendum file)
+1. optionally, specify the template file that you want to use for the addendum
+
+### Example
+
+Below is a complete example that demonstrates how to use a custom addendum.
+
+1. the addendum is enabled
+1. we specify a custom addendum template
+1. we add the `reasons_for_request` variable to the fields that will be checked
+   for the addendum and say it can contain at most 640 characters
+1. we limit the number of characters that will go onto the main PDF form to the "safe" number of characters   
+
+```yaml
+---
+objects:
+  # highlight-start
+  - CRA_Motion_to_Dismiss_attachment: ALDocument.using(filename="CRA_Motion_to_Dismiss", title="Motion to Dismiss CRA", enabled=True, has_addendum=True, default_overflow_message="[See addendum]")  
+  # highlight-end
+---
+objects:
+  - al_user_bundle: ALDocumentBundle.using(elements=[CRA_Motion_to_Dismiss_attachment], title="Forms to download and deliver to court", filename="motion_to_dismiss_CRA.pdf")
+---
+attachment:
+  # highlight-start
+  variable name: CRA_Motion_to_Dismiss_attachment.addendum
+  # highlight-end
+  docx template file: CRA_Motion_to_Dismiss_addendum.docx
+---
+# highlight-start
+code: |
+  CRA_Motion_to_Dismiss_attachment.overflow_fields['reasons_for_request'].overflow_trigger = 640
+  CRA_Motion_to_Dismiss_attachment.overflow_fields['reasons_for_request'].label = "Reasons for request"
+  CRA_Motion_to_Dismiss_attachment.overflow_fields.gathered = True  
+# highlight-end  
+---
+attachment:
+    variable name: CRA_Motion_to_Dismiss_attachment[i]
+    name: CRA Motion to Dismiss
+    filename: CRA_Motion_to_Dismiss
+    skip undefined: True
+    pdf template file: CRA_Motion_to_Dismiss.pdf
+    fields: 
+      # highlight-start
+      - "reasons_for_request": ${ CRA_Motion_to_Dismiss_attachment.safe_value('reasons_for_request') }
+      # highlight-end
+      - "docket_number": ${ docket_number }
+      - "user_signature": ${ users[0].signature_if_final(i) }
+      - "signature_date": ${ signature_date }
+```      
+
+If you would like to make your own custom Addendum file, you can start by
+examining the [generic
+addendum](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/templates/al_basic_addendum.docx)
+file included in the AssemblyLine repository. This example is very flexible, and may have more features
+than you need for your addendum.
+
 ## Handling uploaded documents with ALExhibitDocument and ALExhibitList
+
+Uploaded documents can raise a lot of complex issues, from validating specific
+file formats and limiting size to a figure the server can process, to gathering,
+organizing, and grouping pages. If you would like to handle files that are
+uploaded by the interview user during the course of the interview, the
+`ALExhibitDocument` class can handle some of the complexity for you.
+
+`ALExhibitDocuments` have:
+
+1. pre-written questions
+1. validation of uploads for both size and valid image or document formats
+1. the ability to add a document one page at a time, such as with a smartphone camera
+1. the ability to add multiple labeled documents in one go
+1. the ability to rearrange pages
+1. an optional table of contents
+1. an optional cover page for each document
+1. optional page numbering
+1. optional OCRing
+
+To trigger asking for the user to upload documents at a specific time in your
+interview, you can use the `.gather()` method of  `your_document.exhibits`.
+
+You may want to
+[customize](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/a652df44f9cc9ea87f81fe2d88053d2c1f773d97/docassemble/AssemblyLine/data/questions/ql_baseline.yml#L1469)
+this screen by copying and pasting the block linked above into your interview.
+This feature is fairly complex, so try just changing the wording and leave the
+validation code alone.
+
+You can use an `ALExhibitDocument` by creating an `ALExhibitDocument` in an 
+`objects` block and adding that object to an `ALDocumentBundle`.
+
+Below is a simple snippet that demonstrates how to use an `ALExhibitDocument`.
+
+1. we use the default options, which include adding sequential Bates numbers to
+pages, generating a table of contents, and adding individual cover pages for
+each exhibit.
+1. we trigger the questions about exhibits at a specific point in the interview.
+
+```yaml
+---
+objects:
+  - exhibit_attachment: ALExhibitDocument.using(
+          title="Exhibits",
+          filename="exhibits",
+          # highlight-start
+          add_page_numbers=True,
+          include_table_of_contents=True,
+          include_exhibit_cover_pages=True,
+          # highlight-end
+        )
+---
+id: interview order
+mandatory: True
+code: |
+  al_intro_screen
+  # ...
+  # highlight-start
+  exhibit_attachment.exhibits.gather()
+  # highlight-end
+  # ...
+---
+objects:
+  - al_user_bundle: ALDocumentBundle.using(elements=[my_instructions, my_main_attachment, exhibit_attachment], filename="user_bundle.pdf", title="All forms to download for your records")  
+```
+
+### Customizing Exhibits
+
+You can add your own template for the table of contents by customizing
+`your_document.cover_page`. Use [the stock table of
+contents](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/templates/exhibit_table_of_contents.docx)
+template as a model. It has some fancy math to figure out what page number to
+start the exhibits at, based on whether it thinks the table of contents itself
+will spill onto a second page.
+
+You can add your own template for the individual cover pages for each document,
+too. Use the [stock cover page
+template](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/templates/exhibit_table_of_contents.docx)
+as a model.
+
+By default, exhibits are labeled sequentially as `A`, `B,` and so on. You can supply your own method for 
+labeling each exhibit by defining the `auto_labeler` attribute of the `your_document.exhibits` object
+to be a Python function that accepts an integer and returns a string. The default labeler is just the 
+Docassemble function [`alpha`](https://docassemble.org/docs/functions.html#alpha). If, for example,
+you wanted to use Roman numerals:
+
+```yaml
+mandatory: True
+code: |
+  exhibit_attachment.exhibits.auto_labeler = roman
+```
+
+where `roman` is referring to the [Docassemble
+function](https://docassemble.org/docs/functions.html#roman).
+
+You can also define your own labeling function, like:
+
+```yaml
+mandatory: True
+code: |
+  exhibit_attachment.exhibits.auto_labeler = lambda y: str(y+1)
+```
+
+Which would make the exhibit labels `1`, `2`, and so on. You need to ensure that
+your label override gets triggered, which is demonstrated above by adding the
+`mandatory: True` modifier to the block that defines it.
+
+## ALStaticDocument
+
+The `ALStaticDocument` class is provided to give you a simple method to include
+plain PDF or Word instructions that do not have any variables included in them
+and have only one version (rather than a preview and final version). It can also
+work for image files or any file that can be converted to PDF.
+
+To use an `ALStaticDocument` in your bundle, upload the desired PDF, Word,
+or image file to the `static` folder in your Docassemble package, and 
+initialize it like this:
+
+```yaml
+objects:
+  - my_static_file: ALStaticDocument.using(filename="my_static_file.pdf", title="Instructions", enabled=True)
+---
+objects:
+  - al_court_bundle: ALDocumentBundle.using(elements=[my_static_file], title="Forms to download")
+```
 
 ## Creating XLSX files with ALTableDocument
 
-## ALStaticDocument
+
 
 ## ALUntransformedDocument
