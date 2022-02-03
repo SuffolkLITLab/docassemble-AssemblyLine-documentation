@@ -47,6 +47,19 @@ Do not use:
 * radio buttons
 * drop-down menus
 
+## Use auto-expanding text fields for name fields
+
+It's important to use the right kind of text field for different kinds of
+fields. On occasion people may have very long names, and it isn't appropriate to
+send someone's name to an addendum. One good solution for variable length fields
+that cannot be sent to an addendum is to use the Adobe Acrobat font size "Auto".
+When you use "auto" sized text, use the height of the field to make sure that
+the text does not exceed 12 pts. Otherwise the completed document can look very
+odd.
+
+For multi-line text boxes, make sure that you turn off "scroll long text" and
+turn on "multi-line".
+
 ## Use the Assembly Line's standard field labels for PDF templates
 
 Use the [specific names for labels](doc_vars_reference.md) for full
