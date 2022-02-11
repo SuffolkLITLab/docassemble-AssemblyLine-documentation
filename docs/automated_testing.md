@@ -7,13 +7,15 @@ slug: /automated_integrated_testing
 
 <!-- original: https://docs.google.com/document/d/1hkNr78mrU3Ha98tPUL4OKWi3eNnt-1Sba7L8470u06g/edit# -->
 
-🚧 Reference for writing automated integrated tests with the Assembly Line testing framework.
+🚧
+
+Reference for writing automated integrated tests with the Assembly Line testing framework. This is under very active development.
 
 ## Intro
 
 The Kiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
 
-**Kiln works with any docassemble interview**, though it was developed through the Document Assembly Line project.
+**Kiln works with any docassemble interview**, though it is being developed through the Document Assembly Line project.
 
 Docacon 2021, 10 minute intro presentation:
 
@@ -243,7 +245,7 @@ In those cases, leave the `trigger` column empty.
 
 _Simple field types with their values._
 
-The 'yes' choice of [yesno buttons](https://docassemble.org/docs/fields.html#yesno), [yesnoradio](https://docassemble.org/docs/fields.html#fields%20yesno) fields, etc.
+The 'yes' choice of [`yesno` buttons](https://docassemble.org/docs/fields.html#yesno) or [`yesno` fields](https://docassemble.org/docs/fields.html#fields%20yesno) like `yesno` checkboxes and `yesnoradio`s.
 ```
       | has_hair | True | has_hair |
 ```
@@ -292,10 +294,12 @@ The `trigger` column should have the name of the page's trigger variable, as usu
 
 ### Story table signature
 
-The `value` for a row setting a signature doesn't matter. All signatures will be a dot.
+The `value` for a row setting a signature doesn't matter. All signatures will be a single dot.
 ```
       | user.signature |  | user.signature |
 ```
+
+Avoid taking a screenshot of a signature page. The screenshot will erase the signature.
 
 ### Other story table notes
 
@@ -310,8 +314,10 @@ Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all b
 
 ### Starting Steps
 
+_Establishing Steps that you might use as the first few lines of a "Scenario" - a test. They can also be used at any other time._ 
+
 :::warning
-You **must** include the `interview` Step in each Scenario before setting any fields.
+You **must** include the `interview` Step in each Scenario **before setting any fields**.
 :::
 
 Use an interview's filename in the `interview` Step to open the interview you want to test.
@@ -324,49 +330,108 @@ This Step must **always** be included in **each** `Scenario` **before** setting 
 
 ---
 
+The `wait` Step can be a way to pause before the test tries to go to the interview's first page.
+
+```
+    Given I wait 120 seconds
+    When I start the interview at "yaml_file_name.yml"
+```
+
+This Step can also be used anywhere in your scenario to wait between Steps.
+
+<!-- Maybe put this in the errors/warnings section:
+
+You might need this if your tests repeatedly fail on one Step, especially if it only happens sometimes. This is because some situations can cause race conditions that make the tests believe the next page has loaded even though it hasn't. We haven't yet found a way to detect all of these and it might never be possible. -->
+
+---
+
 <!-- Given I start the interview at "filename" in lang "Español" -->
 <!-- And I am using a mobile -->
 
-You can also start by giving your interview more time to load. The default maximum time is 30 seconds. This Step can be useful if you know that your interview takes longer to load.
+You can also start by making sure the test will give the interview's first page time to load once the test goes there. The default maximum time is 30 seconds. This Step can be useful if you know that your interview's first page takes longer to load.
 
 ```
     Given the maximum seconds for each Step is 200
+    When I start the interview at "yaml_file_name.yml"
 ```
 
-This Step can also be used anywhere else in your Scenario to give Steps more time to complete their action.
+This Step can also be used anywhere else in your Scenario to give Steps more time to finish.
+
+---
+
+You can use the `log in` Step to sign into your docassemble server before going to the interview:
+
+```
+    Given I sign in with the email "USER_EMAIL" and the password "USER_PASSWORD"
+    When I start the interview at "yaml_file_name.yml"
+```
+
+This is a complex Step to use. To make it work, you have to add GitHub secrets and edit the YAML file in your repository's `.github/workflows/` folder.
+
+[GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) are a way to store sensitive information. If you don't encrypt the login information, others will be able to see it in your code.
+
+1. Follow the GitHub instructions in the link above to set two GitHub secrets - one for the email of the account you want to sign in with and one for the password of that account.
+
+`USER_EMAIL` and `USER_PASSWORD` are just placeholders in our example. You can name them whatever you want to. These are the words we'll use to refer to them in here. You can add these to one repository or you can add these to your organization, whichever is right for you.
+
+2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
+
+It should include lines that look like this:
+```yml
+         with:
+           SERVER_URL: "${{ secrets.SERVER_URL }}"
+           PLAYGROUND_EMAIL: "${{ secrets.PLAYGROUND_EMAIL }}"
+           PLAYGROUND_PASSWORD: "${{ secrets.PLAYGROUND_PASSWORD }}"
+           PLAYGROUND_ID: "${{ secrets.PLAYGROUND_ID }}"
+           EXTRA_LANGUAGES: "${{ secrets.EXTRA_LANGUAGES }}"
+```
+
+3. Add two more lines under those:
+
+```yml
+           USER_EMAIL: "${{ secrets.USER_EMAIL }}"
+           USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
+```
+
+4. Make sure you use the same words as the GitHub secrets you made.
+5. Write the `log in` Step and use the names of these secrets as the values.
 
 ### Observe things about the page
 
-To check the id, look at the YAML `question` block and copy the id from there. This Step can help humans keep track of what page the tests are on. It will also show up in the logs of the tests and can help you see where things went wrong.
+The `question id` Step will make sure the page's question id is right. This Step can help humans keep track of what page the tests are on. It will also show up in the logs of the tests and can help you see where things went wrong.
+
+Copy the `id` value from the YAML `question` block of the screen you want to test.
+
 ```
     Then the question id should be "some yaml block id!"
 ```
 
 ---
 
-Some other observational steps are
+The `invalid answers` Step can check that the user was prevented from continuing.
 
-```
-    Then I can't continue
-```
 ```
     Then I will be told an answer is invalid
 ```
-```
-    Then I arrive at the next page
-```
+
+<!--
+I don't think these are trustworthy enough yet
+Then I can't continue
+Then I arrive at the next page
+-->
 
 ---
 
-Screenshots will be in the GitHub action's [artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts).
+The `screenshot` Step will take a picture of the screen that will be put in the GitHub action's [artifacts](#your-screenshots-artifacts).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
+
 ```
     Then I take a screenshot
 ```
 
 ---
 
-You can make sure a link appears on the page. For example, a link to quickly leave the page for forms that deal with domestic abuse.
+The `link` Step can make sure a link appears on the page. For example, a link to quickly leave the page for forms that deal with domestic abuse.
 
 ```
     Then I should see the link to "a-url.com"
@@ -376,9 +441,12 @@ You can make sure a link appears on the page. For example, a link to quickly lea
 
 ---
 
-Checking phrases will be language specific.
+The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
-Be aware that sometimes the characters in your code and the characters on screen aren't the same. In our code, we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). It's best to copy the text straight from the screen.
+::: warning
+Sometimes the characters in your code and the characters on screen aren't the same. In our code, we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). It's best to copy the text straight from the screen.
+:::
+
 ```
     Then I SHOULD see the phrase "some phrase"
 ```
@@ -394,7 +462,7 @@ Be aware that sometimes the characters in your code and the characters on screen
 
 ### Set fields
 
-Use this Step to continue to the next page. The text on the button itself doesn't matter.
+The `continue` Step will tap the button to continue to the next page. The text on the button itself doesn't matter.
 
 ```
     When I tap to continue
@@ -402,7 +470,9 @@ Use this Step to continue to the next page. The text on the button itself doesn'
 
 ---
 
-Use this Step to set the values of fields. Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
+Use the `set value` Step to set the values of fields.
+
+Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
 
 ```
     When I set the variable "users[i].hair_color" to "blue"
@@ -412,14 +482,15 @@ For example, you can use the special word `today` as a value to set dates.
 
 ---
 
-Sign on a signature field. All signatures are the same.
+Sign on a signature page. All signatures are the same - one dot.
+
 ```
     When I sign
 ```
 
 ---
 
-The "name" Step is specifically for the Document Assembly Line 4-part name questions.
+The `name` Step is specifically for the Document Assembly Line 4-part name questions.
 
 Avoid punctuation. We recommend you just use 2 names - the first name and last name - but you can have all these formats:
 
@@ -433,7 +504,7 @@ Avoid punctuation. We recommend you just use 2 names - the first name and last n
 
 ---
 
-The "address" Step is specifically for the Document Assembly Line 4-part address questions.
+The `address` Step is specifically for the Document Assembly Line 4-part address questions.
 
 It allows a US address format, but can otherwise be any address you want that matches the format of the example below. Remember the commas.
 
@@ -443,21 +514,22 @@ It allows a US address format, but can otherwise be any address you want that ma
 
 ---
 
-Use the story table Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
+Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
+
 ```
     I get to the question id "some question block id" with this data:
 ```
 
 ### Other actions
 
-Use the "continue" Step to continue to the next page. The text on the button itself doesn't matter.
+Use the `continue` Step to continue to the next page. The text on the button itself doesn't matter.
 ```
     When I tap to continue
 ```
 
 ---
 
-Use the "download" Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/downloading-workflow-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
+Use the `download` Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](#your-downloaded-files-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
 ```
     Then I download "file-name.pdf"
 ```
@@ -466,7 +538,7 @@ Leave out other parts of file's url.
 
 ---
 
-Use the "upload" step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#templates) along with your tests.
+Use the `upload` step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#templates) along with your tests.
 
 As you can see in the examples, if you want to upload more than one file you must separate their names with a comma.
 
@@ -474,7 +546,7 @@ As you can see in the examples, if you want to upload more than one file you mus
 And I upload "irrefutable_evidence.jpg, refutable_evidence.pdf" to "evidence_files"
 ```
 
-To do this in a story table use the name of the variable as usual and use the name of the file or files in the value column.
+In a story table, use the name of the variable as usual and use the name of the file or files in the `value` column.
 
 ```
       | evidence_files | irrefutable_evidence.jpg, refutable_evidence.pdf |  |
@@ -482,7 +554,7 @@ To do this in a story table use the name of the variable as usual and use the na
 
 ---
 
-Use the "custom timeout" Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
+Use the `custom timeout` Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
     Then the maximum seconds for each Step is 200
@@ -490,14 +562,15 @@ Use the "custom timeout" Step to give your pages or Steps more time to finish. T
 
 ---
 
-Use the "wait" Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
+Use the `wait` Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
 
-Waiting can help in some situations where you run into timing issues. It does nothing for the timing of other steps. You can give this Step any number of seconds, though all Steps will timeout after two minutes. You can add multiple rows of these if you want.
-
-The situations that need this are pretty rare, but here's an example: You navigate to a new page and set a field. Sometimes the test passes, but sometimes the test says an element on this page does not exist. The problem is probably that the page sometimes needs an extra few seconds to load. Add this step in to give it that time.
 ```
     When I wait 10 seconds
 ```
+
+This Step can be used multiple times.
+
+Waiting can help in some situations where you run into problems with timing. The situations that need this are pretty rare, but here's an example: You navigate to a new page and set a field. Sometimes the test passes, but sometimes the test says an element on this page does not exist. The problem is probably that the page sometimes needs an extra few seconds to load. Add this step in to give it that time.
 
 Example:
 
@@ -797,13 +870,13 @@ You can disable these tests, or any actions, for a whole organization. GitHub's 
 
 ## Customizations
 
-### Automate making a GitHub issue when tests fail
+### Make a GitHub issue when tests fail
 
 1. Go to your GitHub repository.
-1. Tap on the `.github` folder, then on `workflows`, then on the run_form_tests.yml.
+1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
 1. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
 1. Add the below code under the last line of text in the file.
-1. Do not add any GitHub new secrets to your repository for this, even if you know how to.
+1. Avoid adding any new GitHub secrets to your repository for this.
 
 ```yml
       - name: If tests failed create an issue
@@ -826,6 +899,33 @@ If you use the code above, the [GitHub issue](https://docs.github.com/en/issues/
 
 You can edit the values of `title`, `body`, and `bug` to customize the issue.
 
+If you've run the Setup interview more recently, you will already have this code in your file, though it will be inactive. You just have to remove the comment symbols (`#`) from the lines of code.
+
+### Schedule test runs
+
+You can decide to run these tests daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
+
+1. Go to your GitHub repository.
+1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
+1. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
+1. Near the top of the code, you will see something like this:
+
+```yml
+  on:
+    push:
+```
+
+5. Between those two lines, add code, like this:
+
+```yml
+
+    schedule:
+      - cron: '0 1 * * TUE'
+```
+
+The GitHub docs can tell you more about [triggering workflows on a schedule](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events). If you want to change the interval, [these examples of cron syntax](https://crontab.guru/examples.html) can help a lot.
+
+If you've run the Setup interview more recently, you will already have this code in your file, though it will be inactive. You just have to remove the comment symbols (`#`) from the lines of code.
 
 ## FAQ
 
