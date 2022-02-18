@@ -24,6 +24,26 @@ your code.
 See [Python style guide](coding_style_python.md).
 
 ## Organize and name your files
+
+### Use descriptive package names; include state and forum identifiers
+
+For the Docassemble package, use names that help someone understand at a glance
+what your form does and where it can be used:
+
+* include the form **function** and subject area. E.g., `EvictionStay` not
+  just `Stay` or `Motion`
+* include the state abbreviation if it is state-specific. E.g., `MAEvictionStay`
+* include a forum abbreviation if a form with a similar name exists in a more
+  common forum. E.g., `MAAppealsEvictionStay` if you can request a stay in the
+  Appeals and the trial courts. But: you likely don't need to specify
+  `MATrialEvictionStay` if most of your forms are designed for the trial level.
+* unless you have a good reason, avoid internal court form reference numbers in
+  package names (you may want one interview to handle multiple forms in the
+  future)
+
+Descriptive names will help you and external parties looking for examples in the
+future locate your package on GitHub.
+
 ### Avoid spaces in file names; use lowercase letters
 
 Files in your Docassemble package, including YAML files, Python modules, and any
