@@ -362,7 +362,7 @@ This Step can also be used anywhere else in your Scenario to give Steps more tim
 You can use the `log in` Step to sign into your docassemble server before going to the interview:
 
 ```
-    Given I sign in with the email "USER_EMAIL" and the password "USER_PASSWORD"
+    Given I log in with the email "USER_EMAIL" and the password "USER_PASSWORD"
     When I start the interview at "yaml_file_name.yml"
 ```
 
