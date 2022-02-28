@@ -22,7 +22,7 @@ These examples are created to handle sencarios that are currently unavailable in
 
 These recipes are ready to be inserted into your interview. You can access them either from the live demo page, or more convienently from your Playground's **Example blocks** area. 
 
-![Example blocks](./assets/alrecipes-examples.png)
+![Example blocks](../assets/alrecipes-examples.png)
 
 ## Add AssemblyLine examples to your Playground
 
