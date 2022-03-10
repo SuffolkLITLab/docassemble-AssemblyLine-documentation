@@ -848,7 +848,9 @@ This is a misleading error. You need to read the text of the whole paragraph to 
 
 ## Security
 
-Using a third-party library or package is always a risk. That said, we're working on some measures to help secure our code and to give you access to more secure ways to do this stuff. You can follow this conversation in GitHub at https://github.com/SuffolkLITLab/ALKiln/issues/425.
+Using a third-party library or package is always a risk. That said, we take measures to help secure our code, such as protecting our release branches and requiring reviews before merging any new code.
+
+In addition, here are some actions you can take to manage the security of the tests, as well as general guidelines for server security.
 
 ### Disable the tests
 
@@ -866,6 +868,36 @@ Another option is to disable or limit all tests, all actions, in your repository
 #### Disabling tests for the whole organization
 
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
+
+### Use a separate server just for testing
+
+Keep the test server completely separate from production server so that no sensitive information can be revealed to potential malicious actors.
+
+In addition, some general good practices are:
+
+* Never share API keys or passwords between servers.
+* Periodically clear out the test server and start a new docker container from scratch.
+* Occasionally check the test server to make sure it's not running resource stealing code (blockchain miners, etc.)
+
+### See GitHub's security docs
+
+GitHub has documentation on some best practices as well: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions
+
+### Use ALKiln's commit sha
+
+This one requires prior technical knowledge. To summarize, you can freeze the version of the ALKiln code your repository's tests use by referencing a specific ALKiln commit sha in your workflow file.
+
+1. Go to [ALKiln's repository](https://github.com/SuffolkLITLab/ALKiln). For example, for the v4 branch, you can go to https://github.com/SuffolkLITLab/ALKiln/commits/releases/v4.
+2. Find the sha of a commit you like.
+3. In your repository's directory, go to .github/workflows and find the file running the tests. There's a line in there that look's something like this:
+
+```yml
+uses: suffolkLITLab/ALKiln@releases/v4
+```
+
+4. Change `releases/v4` to the commit sha.
+
+When you want to update to a new version of the ALKiln, update that sha manually.
 
 
 ## Customizations
