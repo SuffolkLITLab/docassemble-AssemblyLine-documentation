@@ -79,6 +79,7 @@ module.exports = {
                 'framework/algeneral',
                 'framework/aldocument',
                 'framework/altoolbox',
+                'framework/alrecipes',
                 'automated_testing',
                 'framework/efiling',
             ]
