@@ -20,8 +20,13 @@ module.exports = {
         // { to: 'docs/', activeBasePath: 'docs', label: 'Docs', position: 'left', },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation',
+          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://courtformsonline.org',
+          label: 'CourtFormsOnline',
           position: 'right',
         },
       ],
