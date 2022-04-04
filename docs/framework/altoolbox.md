@@ -6,6 +6,9 @@ sidebar_label: ALToolbox functions and components
 slug: /framework/altoolbox
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The functions and classes listed on this page can be used without the Assembly
 Line framework. Follow the instructions to include each component in your
 interview, which may involve including a single YAML file or a module, CSS, and
@@ -233,3 +236,78 @@ To include in your interview:
 include:
   - docassemble.ALToolbox:phone-number-validation.yml
 ``` 
+
+## BirthDate and ThreePartsDate custom datatypes
+
+Use the custom datatype `BirthDate` or `ThreePartsDate` to ask the user
+to enter a date that might be very far in the past or in the future,
+where the standard calendar picker can slow the user down. This input
+will display a separate month, day, and year input. The Month input will
+be a dropdown menu with a list of months.
+
+Example:
+
+
+
+<Tabs>
+  <TabItem value="Preview" label="Preview" default>
+
+![Preview of BirthDate selector with 3 separate inputs for month, day and year](../assets/BirthDate.png)
+
+  </TabItem>
+  <TabItem value="Code" label="Code">
+
+```yaml
+---
+question: |
+  When were you born?
+fields:
+  - no label: users[0].birthdate
+    datatype: BirthDate
+```
+
+  </TabItem>
+</Tabs>
+
+`BirthDate` and `ThreePartsDate` are exactly the same, except that a `BirthDate`
+is limited to a date in the past.
+
+Both `BirthDate` and `ThreePartsDate` will be available for you to use in your
+interview if the `docassemble-ALToolbox` repository is installed on your server.
+You do not need to explicitly include any code in your interview YAML file to
+use them.
+
+## Shorthand function to display a checkbox in replace of a True/False boolean value in a DOCX template
+
+Use the `output_checkbox()` function to display a checked or unchecked value in a DOCX template.
+It can reduce the risk of typos and make your templates slightly easier to read.
+
+By default, the "checkbox" will be the literal value `[  ]` or `[X]` rather than a Word form control.
+
+Example:
+
+```yaml
+---
+question: |
+  Do you live in Florida?
+yesno: user_lives_in_florida
+```
+
+Then in the DOCX template, you could write
+`{{ output_checkbox(user_lives_in_florida) }}` instead of the messier
+`{% if user_lives_in_florida %}[X]{% else %}[  ]{% endif %}`.
+
+`output_checkbox()` has two optional keyword paramters:
+
+- `checked_value (str)`: defaults to `[X]` but can be set to any string or even
+  a `DAFile` or `DAStaticFile` with the image of a checkbox
+- `unchecked_value (str)`: opposite meaning of `checked_value` and defaults to `[  ]`.
+
+`output_checkbox()` is contained in `misc.py` which means it is already included
+if you use the AssemblyLine framework. If you do not use the AssemblyLine framework, you 
+can include it as follows:
+
+```
+modules:
+  - docassemble.ALToolbox.misc
+```
