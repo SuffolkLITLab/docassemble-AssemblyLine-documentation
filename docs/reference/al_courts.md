@@ -3,6 +3,8 @@ sidebar_label: al_courts
 title: al_courts
 ---
 
+Package for a very simple / MVP list of courts that is mostly signature compatible w/ MACourts for now
+
 ## ALCourt Objects
 
 ```python
@@ -17,7 +19,7 @@ address and can use any of those three features of the court to do the filtering
 #### short\_label
 
 ```python
- | short_label() -> str
+def short_label() -> str
 ```
 
 Returns a string that represents a nice, disambiguated label for the court.
@@ -28,7 +30,7 @@ list.
 #### short\_label\_and\_address
 
 ```python
- | short_label_and_address() -> str
+def short_label_and_address() -> str
 ```
 
 Returns a markdown formatted string with the name and address of the court.
@@ -37,7 +39,7 @@ More concise version without description; suitable for a responsive case.
 #### short\_description
 
 ```python
- | short_description() -> str
+def short_description() -> str
 ```
 
 Returns a Markdown formatted string that includes the disambiguated name and
@@ -47,7 +49,7 @@ buttons.
 #### from\_row
 
 ```python
- | from_row(df_row, ensure_lat_long=True) -> None
+def from_row(df_row, ensure_lat_long=True) -> None
 ```
 
 Loads data from a single Pandas Dataframe into a court object.
@@ -68,7 +70,7 @@ Built around Pandas dataframe.
 #### filter\_courts
 
 ```python
- | filter_courts(court_types: list, column='department') -> list
+def filter_courts(court_types: Optional[List], column="department") -> list
 ```
 
 Return a subset of courts, only the name column and index.
@@ -78,7 +80,7 @@ If you do not want the list to be filtered, set court_types to None (or falsy va
 #### as\_court
 
 ```python
- | as_court(intrinsicName, index, ensure_lat_long=True)
+def as_court(intrinsicName, index, ensure_lat_long=True)
 ```
 
 Return the court at the specified index as an ALCourt object

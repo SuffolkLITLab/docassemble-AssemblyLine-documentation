@@ -6,7 +6,7 @@ title: al_document
 #### html\_safe\_str
 
 ```python
-html_safe_str(the_string: str) -> str
+def html_safe_str(the_string: str) -> str
 ```
 
 Return a string that can be used as an html class or id
@@ -14,7 +14,7 @@ Return a string that can be used as an html class or id
 #### table\_row
 
 ```python
-table_row(title: str, button_htmls: List[str] = []) -> str
+def table_row(title: str, button_htmls: List[str] = []) -> str
 ```
 
 Uses the provided title and list of button html strings to
@@ -33,8 +33,8 @@ The items can be strings or lists/list-like objects. It does not know
 how to handle overflow for a dictionary, e.g.
 
 Required attributes:
-- field_name-&gt;str represents the name of a docassemble variable
-- overflow_trigger-&gt;int
+- field_name (str): represents the name of a docassemble variable
+- overflow_trigger (int | bool): determines when text is cut off and sent to addendum
 
 Optional/planned (not implemented yet):
 - headers-&gt;dict(attribute: display label for table)
@@ -43,7 +43,9 @@ Optional/planned (not implemented yet):
 #### overflow\_value
 
 ```python
- | overflow_value(preserve_newlines: bool = False, input_width: int = 80, overflow_message: str = "")
+def overflow_value(preserve_newlines: bool = False,
+                   input_width: int = 80,
+                   overflow_message: str = "")
 ```
 
 Try to return just the portion of the variable (list-like object or string)
@@ -52,7 +54,7 @@ that is not contained in the safe_value().
 #### max\_lines
 
 ```python
- | max_lines(input_width: int = 80, overflow_message_length=0) -> int
+def max_lines(input_width: int = 80, overflow_message_length=0) -> int
 ```
 
 Estimate the number of rows in the field in the output document.
@@ -60,7 +62,7 @@ Estimate the number of rows in the field in the output document.
 #### value
 
 ```python
- | value() -> Any
+def value() -> Any
 ```
 
 Return the full value, disregarding overflow. Could be useful in addendum
@@ -70,7 +72,10 @@ pages.
 #### safe\_value
 
 ```python
- | safe_value(overflow_message: str = "", input_width: int = 80, preserve_newlines: bool = False, _original_value=None)
+def safe_value(overflow_message: str = "",
+               input_width: int = 80,
+               preserve_newlines: bool = False,
+               _original_value=None)
 ```
 
 Try to return just the portion of the variable
@@ -90,7 +95,7 @@ that is _shorter than_ the overflow trigger. Otherwise, return empty string.
 #### value\_if\_defined
 
 ```python
- | value_if_defined() -> Any
+def value_if_defined() -> Any
 ```
 
 Return the value of the field if it is defined, otherwise return an empty string.
@@ -99,7 +104,8 @@ Addendum should never trigger docassemble&#x27;s variable gathering.
 #### columns
 
 ```python
- | columns(skip_empty_attributes: bool = True, skip_attributes: set = {'complete'}) -> list
+def columns(skip_empty_attributes: bool = True,
+            skip_attributes: set = {"complete"}) -> Optional[list]
 ```
 
 Return a list of the columns in this object.
@@ -109,7 +115,7 @@ By default, skip empty attributes and the `complete` attribute.
 #### type
 
 ```python
- | type() -> str
+def type() -> str
 ```
 
 list | object_list | other
@@ -117,7 +123,7 @@ list | object_list | other
 #### is\_list
 
 ```python
- | is_list() -> bool
+def is_list() -> bool
 ```
 
 Identify whether the field is a list, whether of objects/dictionaries or just plain variables.
@@ -125,7 +131,7 @@ Identify whether the field is a list, whether of objects/dictionaries or just pl
 #### is\_object\_list
 
 ```python
- | is_object_list() -> bool
+def is_object_list() -> bool
 ```
 
 Identify whether the field represents a list of either dictionaries or objects.
@@ -133,7 +139,7 @@ Identify whether the field represents a list of either dictionaries or objects.
 #### overflow\_markdown
 
 ```python
- | overflow_markdown() -> str
+def overflow_markdown() -> str
 ```
 
 Return a formatted markdown table or bulleted list representing the values in the list.
@@ -145,10 +151,12 @@ of the table.
 #### overflow\_docx
 
 ```python
- | overflow_docx(path: str = "docassemble.ALDocumentDict:data/templates/addendum_table.docx")
+def overflow_docx(
+    path: str = "docassemble.ALDocumentDict:data/templates/addendum_table.docx"
+)
 ```
 
-Light wrapper around insert_docx_template() that inserts a formatted table into a DOCX 
+Light wrapper around insert_docx_template() that inserts a formatted table into a docx
 file. If the object in the list is a plain string/int, it returns a bulleted list.
 
 Using this method will not give you any control at all over the formatting, but you can directly
@@ -175,7 +183,7 @@ optional:
 #### initializeObject
 
 ```python
- | initializeObject(*pargs, **kwargs)
+def initializeObject(*pargs, **kwargs)
 ```
 
 When we create a new entry implicitly, make sure we also set the .field_name
@@ -184,7 +192,7 @@ attribute to the key name so it knows its own field_name.
 #### defined\_fields
 
 ```python
- | defined_fields(style='overflow_only')
+def defined_fields(style="overflow_only")
 ```
 
 Return a filtered list of just the defined fields.
@@ -193,7 +201,7 @@ If the &quot;style&quot; is set to overflow_only, only return the overflow value
 #### has\_overflow
 
 ```python
- | has_overflow() -> bool
+def has_overflow() -> bool
 ```
 
 Returns True if any defined field&#x27;s length exceeds the overflow trigger.
@@ -255,8 +263,10 @@ on the final download screen.
 - `title` _str_ - display name for the output PDF
 - `enabled` _bool_ - if this document should be created. See examples.
 - `addendum` _DAFile | DAFileCollection_ - (optional) an attachment block
-- `overflow_fields` _ALAddendumField_ - (optional) ALAddendumFieldDict instance. These values will be used to detect and handle overflow.
-- `has_addendum` _bool_ - (optional) Defaults to False. Set to True if the document could have overflow, like for a PDF template.
+- `overflow_fields` _ALAddendumField_ - (optional) ALAddendumFieldDict
+  instance. These values will be used to detect and handle overflow.
+- `has_addendum` _bool_ - (optional) Defaults to False. Set to True if the
+  document could have overflow, like for a PDF template.
   
 
 **Notes**:
@@ -268,9 +278,7 @@ on the final download screen.
   variable that is posed to the interview user to work around this
   limitation.
   
-
-**Examples**:
-
+- `Examples` - # TODO: the code blocks aren&#x27;t working right yet on the Docusaurus page.
   
   Simple use where the document is always enabled and will have no addendum
   --------------------------------------------------------------------------
@@ -280,7 +288,15 @@ on the final download screen.
   - my_doc: ALDocument.using(filename=&quot;myDoc.pdf&quot;, title=&quot;myDoc&quot;, enabled=True)
   ---
   attachment:
-  variable name: my_doc[i]  # This will usually be &quot;final&quot; or &quot;preview&quot;
+  variable name: my_doc[i]  # This same template will be used for the `preview` and `final` keys
+- `content` - |
+  Here is some content
+  
+  % if i == &#x27;final&#x27;:
+  ${ users[0].signature }
+  % elif i == &#x27;preview&#x27;:
+  [ Your signature here ]
+  % endif
   ```
   
   Enable a document conditionally
@@ -340,7 +356,7 @@ on the final download screen.
 #### as\_docx
 
 ```python
- | as_docx(key: str = 'final', refresh: bool = True) -> DAFile
+def as_docx(key: str = "final", refresh: bool = True) -> DAFile
 ```
 
 Returns the assembled document as a single DOCX file, if possible. Otherwise returns a PDF.
@@ -348,7 +364,7 @@ Returns the assembled document as a single DOCX file, if possible. Otherwise ret
 #### as\_list
 
 ```python
- | as_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
+def as_list(key: str = "final", refresh: bool = True) -> List[DAFile]
 ```
 
 Returns a list of the document and its addendum, if any.
@@ -358,7 +374,10 @@ This behavior is the default.
 #### safe\_value
 
 ```python
- | safe_value(field_name: str, overflow_message: str = None, preserve_newlines: bool = False, input_width: int = 80)
+def safe_value(field_name: str,
+               overflow_message: str = None,
+               preserve_newlines: bool = False,
+               input_width: int = 80)
 ```
 
 Shortcut syntax for accessing the &quot;safe&quot; (shorter than overflow trigger)
@@ -367,7 +386,10 @@ value of a field that we have specified as needing an addendum.
 #### overflow\_value
 
 ```python
- | overflow_value(field_name: str, overflow_message: str = None, preserve_newlines: bool = False, input_width: int = 80)
+def overflow_value(field_name: str,
+                   overflow_message: str = None,
+                   preserve_newlines: bool = False,
+                   input_width: int = 80)
 ```
 
 Shortcut syntax for accessing the &quot;overflow&quot; value (amount that exceeds overflow trigger)
@@ -415,7 +437,8 @@ A class that allows one-line initialization of static documents to include in an
 #### as\_docx
 
 ```python
- | as_docx(key: str = 'final', refresh: bool = True) -> Union[DAStaticFile, DAFile]
+def as_docx(key: str = "final",
+            refresh: bool = True) -> Union[DAStaticFile, DAFile]
 ```
 
 Returns the assembled document as a single DOCX file, if possible. Otherwise returns a PDF.
@@ -448,10 +471,22 @@ Use case: providing a list of documents in a specific order.
   - title
   optional attribute: enabled
 
+#### as\_pdf
+
+```python
+def as_pdf(key: str = "final", refresh: bool = True) -> Optional[DAFile]
+```
+
+Returns the Bundle as a single PDF DAFile, or None if none of the documents are enabled.
+
 #### as\_zip
 
 ```python
- | as_zip(key: str = 'final', refresh: bool = True, title: str = '') -> DAFile
+def as_zip(key: str = "final",
+           refresh: bool = True,
+           title: str = "",
+           format="pdf",
+           include_pdf=True) -> DAFile
 ```
 
 Returns a zip file containing the whole bundle
@@ -459,7 +494,7 @@ Returns a zip file containing the whole bundle
 #### enabled\_documents
 
 ```python
- | enabled_documents(refresh: bool = True) -> List[Any]
+def enabled_documents(refresh: bool = True) -> List[Any]
 ```
 
 Returns the enabled documents
@@ -471,7 +506,7 @@ Returns the enabled documents
 #### as\_flat\_list
 
 ```python
- | as_flat_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
+def as_flat_list(key: str = "final", refresh: bool = True) -> List[DAFile]
 ```
 
 Returns the nested bundle as a single flat list. This could be the preferred way to deliver forms to the
@@ -480,7 +515,7 @@ court, e.g.--one file per court form/cover letter.
 #### get\_titles
 
 ```python
- | get_titles(key: str = 'final') -> List[str]
+def get_titles(key: str = "final", refresh: bool = True) -> List[str]
 ```
 
 Gets all of titles of the documents in a list
@@ -488,33 +523,63 @@ Gets all of titles of the documents in a list
 #### as\_pdf\_list
 
 ```python
- | as_pdf_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
+def as_pdf_list(key: str = "final", refresh: bool = True) -> List[DAFile]
 ```
 
 Returns the nested bundles as a list of PDFs that is only one level deep.
 
+#### as\_docx\_list
+
+```python
+def as_docx_list(key: str = "final", refresh: bool = True) -> List[DAFile]
+```
+
+Returns the nested bundles as a list of DOCX files. If the file isn&#x27;t able
+to be represented as a DOCX, the original file or a PDF will be returned instead.
+
 #### as\_editable\_list
 
 ```python
- | as_editable_list(key: str = 'final', refresh: bool = True) -> List[DAFile]
+def as_editable_list(key: str = "final", refresh: bool = True) -> List[DAFile]
 ```
 
-Return a flat list of the editable versions of the docs in this bundle.
-Not yet tested with editable PDFs.
+Return a flat list of the DOCX versions of the docs in this bundle, if they exist.
 
 #### download\_list\_html
 
 ```python
- | download_list_html(key: str = 'final', format: str = 'pdf', view: bool = True, refresh: bool = True, include_zip: bool = True, view_label="View", view_icon: str = "eye", download_label: str = "Download", download_icon: str = "download", zip_label: str = "Download zip", zip_icon: str = "file-archive") -> str
+def download_list_html(key: str = "final",
+                       format: str = "pdf",
+                       view: bool = True,
+                       refresh: bool = True,
+                       include_zip: bool = True,
+                       view_label="View",
+                       view_icon: str = "eye",
+                       download_label: str = "Download",
+                       download_icon: str = "download",
+                       zip_label: str = None,
+                       zip_icon: str = "file-archive") -> str
 ```
 
 Returns string of a table to display a list
 of pdfs with &#x27;view&#x27; and &#x27;download&#x27; buttons.
 
+`format` is one of:
+* pdf
+* docx
+* original
+
 #### download\_html
 
 ```python
- | download_html(key: str = 'final', format: str = 'pdf', view: bool = True, refresh: bool = True) -> str
+def download_html(key: str = "final",
+                  format: str = "pdf",
+                  view: bool = True,
+                  refresh: bool = True,
+                  view_label: str = "View",
+                  view_icon: str = "eye",
+                  download_label: str = "Download",
+                  download_icon: str = "download") -> str
 ```
 
 Returns an HTML string of a table to display all the docs
@@ -523,7 +588,8 @@ combined into one pdf with &#x27;view&#x27; and &#x27;download&#x27; buttons.
 #### send\_button\_html
 
 ```python
- | send_button_html(key: str = 'final', show_editable_checkbox: bool = True) -> str
+def send_button_html(key: str = "final",
+                     show_editable_checkbox: bool = True) -> str
 ```
 
 Generate HTML for an input box and button that allows someone to send
@@ -533,60 +599,4 @@ Optionally, display a checkbox that allows someone to decide whether or not to
 include an editable (Word) copy of the file, iff it is available.
 
 #### send\_email
-
-```python
- | send_email(to: any = None, key: str = 'final', editable: bool = False, template: any = None, **kwargs) -> bool
-```
-
-Send an email with the current bundle as a single flat pdf or as editable documents.
-Can be used the same as https://docassemble.org/docs/functions.html#send_email with
-two optional additional params.
-
-keyword arguments:
-@param to {string} - Same as da send_email `to` - email address(es) or objects with such.
-@param [key] {string} - Optional. Which version of the doc. Default: &#x27;final&#x27;
-@param [editable] {bool} - Optional. User wants the editable docs. Default: False
-@param template {object} - Same as da `send_email` `template` variable.
-@param * {*} - Any other parameters you&#x27;d send to a da `send_email` function
-
-#### table\_css
-
-```python
- | table_css()
-```
-
-Return the css styles for the view/download table.
-This will be hard to develop with and it will be a bit
-harder to override for developers using this module.
-
-## ALDocumentBundleDict Objects
-
-```python
-class ALDocumentBundleDict(DADict)
-```
-
-A dictionary with named bundles of ALDocuments.
-In the assembly line, we expect to find two predetermined bundles:
-court_bundle and user_bundle.
-
-It may be helpful in some circumstances to have a &quot;bundle&quot; of bundles. E.g.,
-you may want to present the user multiple combinations of documents for
-different scenarios.
-
-#### preview
-
-```python
- | preview(format: str = 'PDF', bundle: str = 'user_bundle') -> DAFile
-```
-
-Create a copy of the document as a single PDF that is suitable for a preview version of the
-document (before signature is added).
-
-#### as\_attachment
-
-```python
- | as_attachment(format: str = 'PDF', bundle: str = 'court_bundle') -> List[DAFile]
-```
-
-Return a list of PDF-ified documents, suitable to make an attachment to send_mail.
 
