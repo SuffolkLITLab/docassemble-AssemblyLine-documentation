@@ -84,6 +84,13 @@ module.exports = {
                 'framework/efiling',
             ]
         },
+        {
+            type: 'category',
+            label: 'Analytics',
+            items: [
+                'analytics/tracking_usage'
+            ]
+        },
         'contributors',
         require('./docs/reference/sidebar.json')
     ],

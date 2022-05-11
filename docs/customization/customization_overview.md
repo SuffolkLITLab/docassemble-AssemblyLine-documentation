@@ -9,13 +9,22 @@ slug: /customization/overview
 
 You can customize Docassemble, and Assembly Line interviews, with a Bootstrap 5 theme.
 
+### Customizing the logo and title for Assembly Line interviews
+
+You should also customize the:
+* [Title](framework/magic_variables.md#al_organization_title)
+* [Home page](framework/magic_variables.md#al_organization_homepage)
+* and [logo](framework/magic_variables.md#al_logo)
+
+### Creating a custom CSS theme with Bootstrap.build
+
 If you want to build a custom theme, you can:
 
 1. build one from Bootstrap 5 source
 1. start with a theme generator tool like [bootstrap.build](https://bootstrap.build/)
   and in some cases, add some custom CSS to make it work with Docassemble.
 
-### Starting with bootstrap.build
+Using bootstrap.build is the simplest option for most authors.
 
 1. Visit the [bootstrap.build](https://bootstrap.build/) website.
 1. Click the button to open the Builder
