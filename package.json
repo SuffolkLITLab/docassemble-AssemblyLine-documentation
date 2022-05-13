@@ -33,5 +33,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "optionalDependencies": 
+    { 
+      "fsevents": "2.1.2"
+    }
 }
