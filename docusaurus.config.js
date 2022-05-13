@@ -83,8 +83,14 @@ module.exports = {
   },
   plugins: [
     '@docusaurus/plugin-ideal-image',
-    require.resolve('@cmfcmf/docusaurus-search-local')
-  ],  
+  ],
+  themes: [
+	  [
+	  require.resolve("@easyops-cn/docusaurus-search-local"),
+	  {
+		  hashed: true,
+	  }],
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
