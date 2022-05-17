@@ -6,6 +6,29 @@ sidebar_label: Special variables for Assembly Line interviews
 slug: /framework/magic_variables
 ---
 
+## Server-wide configuration options
+
+These are settings that can be configured by editing the global server
+configuration. They are not configurable on a per-interview basis.
+
+### Enable or disable answer sets
+
+Add the following entry in your global
+[config.yml](https://docassemble.org/docs/config.html#edit) to turn on the
+[Answer Set](answer_sets.md) feature that allows users to save answers for reuse in other
+interviews.
+
+```yaml
+assembly line:
+  enable answer sets: True
+  enable answer set imports: True
+```  
+
+The `enable answer set imports` feature separately controls whether users can
+import answers from a JSON file that is uploaded to the server. While this
+allows user control over their data and can be especially helpful for tests,
+this feature carries some risk and is disabled by default.
+
 ## Global configuration options
 
 These variables are recommended to be set in a package that all of your
