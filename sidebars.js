@@ -82,6 +82,7 @@ module.exports = {
                 'framework/alrecipes',
                 'automated_testing',
                 'framework/efiling',
+                'framework/answer_sets'
             ]
         },
         {
