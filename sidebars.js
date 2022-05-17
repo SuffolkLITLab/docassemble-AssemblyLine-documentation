@@ -69,6 +69,13 @@ module.exports = {
                 'docs_style_guide'
             ]
         },
+        {
+            type: 'category',
+            label: 'Measuring form complexity',
+            items: [
+                'complexity/complexity'
+            ]
+        },
         //'name_formats',
         {
             type: 'category',
