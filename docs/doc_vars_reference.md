@@ -24,6 +24,65 @@ them.
 When you access the labeled field in your Docassemble code, it is usually called
 a `variable`.
 
+### General rules for labels
+
+1. Labels should be valid Python variable names that start with a letter
+1. Variable names are case sensitive - make them all lowercase
+1. Use the Python `snake_case` format for field labels
+1. Use short but descriptive labels
+1. Always use labels from this page if they match the concepts in your interview
+
+PDF and DOCX `labels` should also work as valid [Python variable
+names](coding_style_python.md). The basic rule is that Python variable names
+need to start with a letter and can only contain letters, digits, and the `_`
+underscore character. Do not use variable names that are on this [list of
+special variable names](https://docassemble.org/docs/special.html#reserved) that
+have a different meaning in Docassemble.
+
+Field names are case sensitive. The convention is to never re-use variable names
+with different capitalizations to store different things. Stick with all lower
+case names for fields when possible.
+
+In PDFs, labels should be all one word, lowercase, with multiple words separated
+by an underscore, the `_` character. This convention is called `snake_case`. Do
+not use a `.` symbol or `[]` inside a PDF field's `label`.
+
+In a DOCX file, you can use the `.` symbol as well as brackets `[]` but they
+have a special meaning. The `.` separates an `object` from its `attribute`, and
+the `[]` indicates that you are referencing a list of items. Beginners should
+avoid these symbols **except** when instructed to do so for one of the variable
+names below.
+
+Use variable names that are descriptive but also short. Avoid using
+abbreviations. A good rule of thumb is to spell out acronyms and initialisms for
+clarity, but to freely remove words other than nouns and verbs to keep the names
+short. Use a name you would still understand if you read it in a year.
+
+About 30 characters is a good limit to the length of a variable name. It's
+unusual to need more than that. If your variable name is shorter than 5 characters,
+it might not be descriptive enough.
+
+There are no hard and fast rules other than the ones listed above, but here are
+some conventions that may help you:
+
+1. Drop words from the variable name that don't add specific meaning. Filler
+   words like "a", "the", etc. are almost never needed. Stick with nouns and
+   verbs.
+1. Yes/no variables (also called `boolean`) commonly start with a form of the
+   verb "to be" or "to have", paired with a noun. E.g., `is_attorney` or
+   `has_notice_to_quit`. You can also use other verbs--`writes_docassemble` or
+   `saved_status` or `wants_copies_returned`.
+1. Do not include the **type** of variable in the variable name itself. It is
+   usually redundant and is not a common Python style. Exception: you might add
+   something like `_list` or `_date` that is both a type and is descriptive of
+   the variable's real world contents.
+1. There are now a number of [samples of
+   interviews](https://github.com/search?q=%22docassemble.AssemblyLine%22&type=code)
+   built with the Assembly Line framework that you can find online. You can get
+   ideas for variable names to use in your interview that match if they apply to
+   the same concepts.
+
+
 ### How the Assembly Line labels work
 
 We have identified common fields that exist in most paper court forms:
