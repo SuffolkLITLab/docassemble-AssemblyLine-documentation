@@ -26,11 +26,11 @@ a `variable`.
 
 ### General rules for labels
 
-1. Labels should be valid Python variable names that start with a letter
-1. Variable names are case sensitive - make them all lowercase
-1. Use the Python `snake_case` format for field labels
-1. Use short but descriptive labels
-1. Always use labels from this page if they match the concepts in your interview
+You should always use the specific labels from this page when they match the
+concepts in your form. But if you cannot find a matching label, use the general
+rules below to add as many custom labels as you need.
+
+#### Labels should be valid Python variable names that start with a letter
 
 PDF and DOCX `labels` should also work as valid [Python variable
 names](coding_style_python.md). The basic rule is that Python variable names
@@ -39,9 +39,13 @@ underscore character. Do not use variable names that are on this [list of
 special variable names](https://docassemble.org/docs/special.html#reserved) that
 have a different meaning in Docassemble.
 
+#### Variable names are case sensitive - make them all lowercase
+
 Field names are case sensitive. The convention is to never re-use variable names
 with different capitalizations to store different things. Stick with all lower
 case names for fields when possible.
+
+#### Use the Python `snake_case` format for field labels
 
 In PDFs, labels should be all one word, lowercase, with multiple words separated
 by an underscore, the `_` character. This convention is called `snake_case`. Do
@@ -53,6 +57,8 @@ the `[]` indicates that you are referencing a list of items. Beginners should
 avoid these symbols **except** when instructed to do so for one of the variable
 names below.
 
+#### Use short but descriptive labels
+
 Use variable names that are descriptive but also short. Avoid using
 abbreviations. A good rule of thumb is to spell out acronyms and initialisms for
 clarity, but to freely remove words other than nouns and verbs to keep the names
@@ -61,6 +67,8 @@ short. Use a name you would still understand if you read it in a year.
 About 30 characters is a good limit to the length of a variable name. It's
 unusual to need more than that. If your variable name is shorter than 5 characters,
 it might not be descriptive enough.
+
+#### Some suggestions for coming up with custom labels
 
 There are no hard and fast rules other than the ones listed above, but here are
 some conventions that may help you:
@@ -82,6 +90,10 @@ some conventions that may help you:
    ideas for variable names to use in your interview that match if they apply to
    the same concepts.
 
+When you're stuck, feel free to ask for help! It's a good idea to get a second
+opinion the first few times you label a document. A fellow programmer may have
+some good ideas to make your variable names shorter, clearer, or more closely
+follow programming conventions.
 
 ### How the Assembly Line labels work
 
@@ -355,34 +367,11 @@ Docassemble does not do anything with the digit. Feel free to use `__1`, `__99` 
 other series of digits, in any order.
 :::
 
-## Adding custom field labels not listed above
-
-### Add as many field labels as you need
-
-The list above is a small sample of the fields that you will need for your form.
-Use as many custom names for fields as you need.
-### Stick with Docassemble conventions
-
-The most important convention is to use
-[`snake_case`](coding_style_python.md#use-snake_case-for-variable-names) for
-field or variable names. `snake_case` is the name for a style that uses all
-lower case letters and separates words with an underscore like this:
-`my_custom_variable`.
-
-## Keep field labels short but readable
-
-Spell out full words, but use names that are short enough to scan quickly. Labels
-that are too long (over 30 characters) may be difficult to use inside Docassemble.
-Try dropping connecting words to keep field labels short but explanatory.
-## You can always edit your template again
+## Remember, you will always have a chance to fix things later
 
 Do your best to get your template right before running it through the Weaver.
-However:
+Getting things right at the beginning can save you a lot of time and effort.
 
-* you can always edit your template later
-* keep your DOCX file logic simple at first to make it easier to run through the
-  Weaver
-
-When you make changes to your template, you do not need to run it through the
-Weaver again. You can upload your edited template directly to the Docassemble
-playground's templates folder.
+However, you can always edit your template later. When you make changes to your
+template, you do not need to run it through the Weaver again. You can upload
+your edited template directly to the Docassemble playground's templates folder.
