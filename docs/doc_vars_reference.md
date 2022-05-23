@@ -262,7 +262,7 @@ Substitute any name for a person for `users` below.
 `users1_address_address`     | `users[0].address.address` | Street address
 `users1_address_unit`        | `users[0].address.unit`    | Apartment, unit, or suite
 `users1_address_city`        | `users[0].address.city`    | City or town
-`users1_address_state`       | `users[0].address.state`   | State, province, or sublocality (dependent on country)
+`users1_address_state`       | `users[0].address.state`   | State, province, or sub-locality (dependent on country)
 `users1_address_zip`         | `users[0].address.zip`     | Zip or postal code
 `users1_address_county`      | `users[0].address.county`  | County or parish
 `users1_address_country`     | `users[0].address.country` | Country

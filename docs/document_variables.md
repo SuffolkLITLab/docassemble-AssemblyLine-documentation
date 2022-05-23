@@ -262,7 +262,7 @@ Again, don't try to memorize these. After your first read through, use this more
 
 Labels for fields that are asking for a full date should generally end in `_date` (e.g. `incident_date`), but some forms want you to put dates in differently. For example, they want the day, month, or year given separately.
 
-(Remember that `prefix_birtdate` and `signature_date` are pre-determined labels.)
+(Remember that `prefix_birthdate` and `signature_date` are pre-determined labels.)
 
 Let's pretend everything is about an `incident` just to simplify these examples.
 

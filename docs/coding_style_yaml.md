@@ -54,7 +54,7 @@ command-line tools, as well as being more consistent with Python file name
 conventions, but one challenge is that `snake_case` underscores can be hard to see
 in a file browser window.
 
-Use lowercase letters in file names. Some filesystems (Unix and Linux) are
+Use lowercase letters in file names. Some file systems (Unix and Linux) are
 case sensitive. Using a consistent case can reduce problems. Lower case is
 the most commonly used convention.
 
