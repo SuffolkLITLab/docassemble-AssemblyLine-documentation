@@ -117,7 +117,7 @@
                <Link className="button button--primary" to="/docs">
                  <Translate>Get Started</Translate>
                </Link>
-               <Link className="button button--info" to="https://courtformsonline.org">
+               <Link className="button button--secondary" to="https://courtformsonline.org">
                  <Translate>View our work</Translate>
                </Link>
                <span className={styles.indexCtasGitHubButtonWrapper}>
