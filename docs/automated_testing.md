@@ -540,13 +540,6 @@ Use the `story table` Step to make sure the test reaches a particular screen giv
 
 ### Other actions
 
-Use the `continue` Step to continue to the next page. The text on the button itself doesn't matter.
-```
-    When I tap to continue
-```
-
----
-
 Use the `download` Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](#your-downloaded-files-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
 ```
     Then I download "file-name.pdf"
