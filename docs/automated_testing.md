@@ -480,7 +480,7 @@ to get an element on the page, and can add any additional wait time after tappin
 ```
 
 If you are using the [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs), you can say that you're tapping the tab,
-and Kiln will tap and wait until the tab is fully visible.
+and ALKiln will tap and wait until the tab is fully visible.
 
 ```
     When I tap the "TabGroup-specific_tab_name-tab" tab
