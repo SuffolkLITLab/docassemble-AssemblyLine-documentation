@@ -86,10 +86,12 @@ module.exports = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: {
-          from: '/docs/framework/efiling',
-          to: '/docs/efiling/overview'
-        }
+        redirects: [
+          {
+            from: '/docs/framework/efiling',
+            to: '/docs/efiling/overview'
+          }
+        ]
       }
     ]
   ],

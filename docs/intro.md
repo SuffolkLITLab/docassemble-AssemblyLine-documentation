@@ -51,20 +51,20 @@ with the right features. We can help partners:
 
 * [Visualize existing PDF forms](https://suffolklitlab.org/form-explorer/)
   across an entire jurisdiction
-    * Gain machine learning-driven insights into:
-    * Readability
-    * Ease of completion
-    * Shared fields and redundancies in your existing forms
+  * Gain machine learning-driven insights into:
+  * Readability
+  * Ease of completion
+  * Shared fields and redundancies in your existing forms
 * [Automate existing forms with Docassemble](plan_interview.md)
-    * Eliminate repetitive work with integrated interview templates
-    * Use standardized guided interview structure, questions and components
-    * Translate into multiple languages
-    * Get to a rough prototype with one click
-* [Electronically file](framework/efiling.md) forms straight to a case
+  * Eliminate repetitive work with integrated interview templates
+  * Use standardized guided interview structure, questions and components
+  * Translate into multiple languages
+  * Get to a rough prototype with one click
+* [Electronically file](efiling/overview.md) forms straight to a case
   management system
 * [Get advice](question_style_overview.md) and guidance on drafting questions
 * Get automated insights to improve your guided interview
-    * Get instant feedback from our ongoing [style guide](question_style_overview.md)
+  * Get instant feedback from our ongoing [style guide](question_style_overview.md)
 
 Our tools are free and open source. Use them on your own or with our help.
 
@@ -81,9 +81,9 @@ automators to help us:
   litigants to understand and use (we think readability is not enough)
 * Improve and extend our [library of questions](question_library/names.md)
 * Use and give us feedback on our [Assembly Line Weaver](plan_interview.md) tool
-* Expand our [e-filing](framework/efiling.md) capabilities
+* Expand our [e-filing](efiling/overview.md) capabilities
 
-## Our work 
+## Our work
 
 The video below provides an overview of the project (0-10 min) and a detailed
 look at one of the forms (12-30 min). _Note: This video is a lecture from the
