@@ -1,9 +1,9 @@
 ---
-id: efiling
+id: overview 
 title: |
-    E-filing through Assembly Line
-sidebar_label: E-filing
-slug: /framework/efiling
+    E-filing with Assembly Line
+sidebar_label: Overview
+slug: /efiling/overview
 ---
 
 ## Overview
@@ -23,7 +23,7 @@ The biggest part of the e-filing feature is the [E-file Proxy Server](https://gi
 
 You can host the proxy server on the same machine as a docassemble server, using docker-compose, or set up a separate HTTPS enabled server that servers multiple docassemble servers.
 
-Further documentation on using the Proxy Server can be found [on Github](https://github.com/SuffolkLITLab/EfileProxyServer/tree/main/docs). 
+Further documentation on using the Proxy Server can be found [on Github](https://github.com/SuffolkLITLab/EfileProxyServer/tree/main/docs).
 
 ### EFSP Docassemble Package
 
@@ -35,4 +35,3 @@ The EFSP package also contains a generic filing interview that can be used an ex
 :::caution
 The generic filing interview is made for development purposes, and not intended for non-expert (legal or technical) use.
 :::
-

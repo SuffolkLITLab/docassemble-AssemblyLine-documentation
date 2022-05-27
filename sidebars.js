@@ -88,8 +88,15 @@ module.exports = {
                 'framework/altoolbox',
                 'framework/alrecipes',
                 'automated_testing',
-                'framework/efiling',
                 'framework/answer_sets'
+            ]
+        },
+        {
+            type: 'category',
+            label: 'E-filing',
+            items: [
+                'efiling/overview',
+                'efiling/efiling_through_docassemble'
             ]
         },
         {

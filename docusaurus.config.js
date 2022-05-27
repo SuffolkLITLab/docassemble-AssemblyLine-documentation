@@ -83,6 +83,17 @@ module.exports = {
   },
   plugins: [
     '@docusaurus/plugin-ideal-image',
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/docs/framework/efiling',
+            to: '/docs/efiling/overview'
+          }
+        ]
+      }
+    ]
   ],
   themes: [
 	  [
