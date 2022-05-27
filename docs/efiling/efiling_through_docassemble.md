@@ -2,7 +2,7 @@
 id: efiling_through_docassemble
 title: |
   E-filing through Docassemble
-sidebar_label: Filing + Docassemble
+sidebar_label: Integrating Docassemble interviews with e-filing
 slug: /efiling/docassemble
 ---
 
