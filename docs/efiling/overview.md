@@ -119,7 +119,7 @@ to connect with Tyler Technologies and JeffNet:
 
 Many states are also interested in the accessibility of guided interview that
 use an e-filing integration. We have produced a [test
-suite](../automated_testing.mdautomated_testing.md) that can provide automated
+suite](../automated_testing.md) that can provide automated
 accessibility information to audit Docassemble interview compliance with WCAG AA
 and AAA certification levels.
 
