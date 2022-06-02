@@ -57,7 +57,6 @@ filing uploaded through the vendor's first-party system.**
 
 ### Which courts can the LIT Lab's product talk to?
 
-
 The LIT Lab is a certified EFSP, or Electronic Filing Service Provider, for the
 [Tyler Technologies](https://www.tylertech.com/products/odyssey/file-serve)
 system. We have a signed agreement with Illinois, and have finished the
@@ -120,8 +119,7 @@ to connect with Tyler Technologies and JeffNet:
 Many states are also interested in the accessibility of guided interview that
 use an e-filing integration. We have produced a [test
 suite](../automated_testing.md) that can provide automated
-accessibility information to audit Docassemble interview compliance with WCAG AA
-and AAA certification levels.
+accessibility information to audit Docassemble interview compliance with WCAG 2.0 and 2.1's A and AA certification levels.
 
 ### For users of the Assembly Line framework
 
