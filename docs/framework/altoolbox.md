@@ -14,10 +14,11 @@ Line framework. Follow the instructions to include each component in your
 interview, which may involve including a single YAML file or a module, CSS, and
 JavaScript file.
 
+The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, see the "Live demos" section below if you want the latest and complete info.
+
 ## Live demos 
 
 To get a hands-on experience on any of these functions, you can go to [ALToolbox's overview page](https://apps-dev.suffolklitlab.org/start/ALToolbox/altoolbox_overview) to run the demo interview you are interested in.
-
 
 The overview page also provides instructions for those who want to contribute to ALToolbox.
 
