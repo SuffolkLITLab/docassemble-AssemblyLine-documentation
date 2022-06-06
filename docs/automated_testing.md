@@ -460,7 +460,7 @@ Sometimes the characters in your code and the characters on screen aren't the sa
 <!-- Then the "a" link opens in the same window -->
 
 
-### Set fields
+### Set fields / Interact with page
 
 The `continue` Step will tap the button to continue to the next page. The text on the button itself doesn't matter.
 
@@ -470,7 +470,25 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ---
 
-Use the `set value` Step to set the values of fields.
+You can also tap or click on specific elements, like buttons on a page.
+You can use any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
+to get an element on the page, and can add any additional wait time after tapping the element.
+
+```
+    When I tap the "#element-id" element
+    And I tap the "#other-element" element and wait for 5 seconds
+```
+
+If you are using the [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs), you can say that you're tapping the tab,
+and ALKiln will tap and wait until the tab is fully visible.
+
+```
+    When I tap the "TabGroup-specific_tab_name-tab" tab
+```
+
+---
+
+Use the `set variable` Step to set the values of fields.
 
 Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
 
@@ -521,13 +539,6 @@ Use the `story table` Step to make sure the test reaches a particular screen giv
 ```
 
 ### Other actions
-
-Use the `continue` Step to continue to the next page. The text on the button itself doesn't matter.
-```
-    When I tap to continue
-```
-
----
 
 Use the `download` Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](#your-downloaded-files-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
 ```
