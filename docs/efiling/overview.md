@@ -186,3 +186,25 @@ The EFSP package also contains a generic filing interview that can be used an ex
 :::caution
 The generic filing interview is made for development purposes, and not intended for non-expert (legal or technical) use.
 :::
+
+### Handling cases with fees
+
+Some cases require fees. In Louisiana's Jefferson Parish, the court prefers to
+collect fees after the case is filed.
+
+In jurisdictions that use the Tyler Technologies EFM, fees can be collected at
+the time the case is filed. Collection of payment information happens on a page
+entirely controlled by Tyler technologies. Interviews request a fee calculation,
+pass off control to the Tyler Payment Gateway, and then once payment is
+completed control passes back to the interview.
+
+The Suffolk e-filing server also allows filing cases with a fee waiver. Some
+courts may require that the litigant provide payment information even if they
+have filed a fee waiver. That can be a court-by-court decision.
+
+**Payment information is never stored on the Suffolk e-filing server, or inside
+the guided interview.**
+
+Below is a technical diagram showing the fee collection process:
+
+[![](https://mermaid.ink/img/pako:eNplkctuwjAQRX9l5G3JD3jBplBUdVGksMxmiG_Akh_gR6sI8e91SkCm9crSnHt9bF9E7xWEFBHnDNdjpfkQ2HaOylr5nmOE3Rs0y-XL-q3dUovwhSCpzXurEzEN2mh3uAUqYgrsRjOhr2z6bDiBBiDeyN9RU6DmqXV31JHKoaBQhHRArDJ1-5Ss9CS9kwMUnXi0cIm0G3ywnLR3_-_ycKPtjG-K3TePkjZIj44heEs5IlTKfxNT15PHff75QdUSC2FRfLQqb32Z-jqRjrDohCxbhYGzSZ3o3LWg-aRK-1rp5IOQA5uIheCcfDu6XsgUMu7Q_F8zdf0BXUKbJA)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNplkctuwjAQRX9l5G3JD3jBplBUdVGksMxmiG_Akh_gR6sI8e91SkCm9crSnHt9bF9E7xWEFBHnDNdjpfkQ2HaOylr5nmOE3Rs0y-XL-q3dUovwhSCpzXurEzEN2mh3uAUqYgrsRjOhr2z6bDiBBiDeyN9RU6DmqXV31JHKoaBQhHRArDJ1-5Ss9CS9kwMUnXi0cIm0G3ywnLR3_-_ycKPtjG-K3TePkjZIj44heEs5IlTKfxNT15PHff75QdUSC2FRfLQqb32Z-jqRjrDohCxbhYGzSZ3o3LWg-aRK-1rp5IOQA5uIheCcfDu6XsgUMu7Q_F8zdf0BXUKbJA)
