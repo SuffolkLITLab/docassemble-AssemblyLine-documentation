@@ -97,7 +97,7 @@
                <img
                  alt={translate({message: 'The Document Assembly Line project'})}
                  className={styles.heroLogo}
-                 src={useBaseUrl('/img/undraw_Work_together_re_5yhn.png')}
+                 src={useBaseUrl('/img/undraw_work_together_re_5yhn.svg')}
                  width="50%"
                />
                <span
@@ -117,7 +117,7 @@
                <Link className="button button--primary" to="/docs">
                  <Translate>Get Started</Translate>
                </Link>
-               <Link className="button button--info" to="https://courtformsonline.org">
+               <Link className="button button--secondary" to="https://courtformsonline.org">
                  <Translate>View our work</Translate>
                </Link>
                <span className={styles.indexCtasGitHubButtonWrapper}>
@@ -253,10 +253,8 @@
                  </h2>
                  <p className="padding-horiz--md">
                    <Translate>
-                     Integrate forms directly with Tyler Technologies
-                     EFMs
-                     and courts in Louisiana, without paying an EFSP
-                     middleman.
+                     Integrate forms directly with Tyler Technologies EFMs
+                     and courts in Louisiana, without paying an EFSP middleman.
                    </Translate>
                  </p>
                </div>
