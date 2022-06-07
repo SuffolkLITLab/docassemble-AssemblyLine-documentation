@@ -97,7 +97,7 @@
                <img
                  alt={translate({message: 'The Document Assembly Line project'})}
                  className={styles.heroLogo}
-                 src={useBaseUrl('/img/undraw_Work_together_re_5yhn.png')}
+                 src={useBaseUrl('/img/undraw_work_together_re_5yhn.svg')}
                  width="50%"
                />
                <span

@@ -23,7 +23,7 @@ management techniques](https://trello.com) to:
 * draft easy to read questions and [guidelines](question_style_overview.md) to promote access to justice
   for users of all abilities and languages
 
-![building_blocks](./assets/undraw_building_blocks_n0nc.png)
+![building_blocks](./assets/undraw_fill_form_re_cwyf.svg)
 
 <p>
 <a class="button button--primary" href="https://courtformsonline.org">Visit CourtFormsOnline.org</a>
