@@ -253,10 +253,8 @@
                  </h2>
                  <p className="padding-horiz--md">
                    <Translate>
-                     Integrate forms directly with Tyler Technologies
-                     EFMs
-                     and courts in Louisiana, without paying an EFSP
-                     middleman.
+                     Integrate forms directly with Tyler Technologies EFMs
+                     and courts in Louisiana, without paying an EFSP middleman.
                    </Translate>
                  </p>
                </div>
