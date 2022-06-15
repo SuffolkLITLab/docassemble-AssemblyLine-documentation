@@ -462,7 +462,135 @@ addendum](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/do
 file included in the AssemblyLine repository. This example is very flexible, and may have more features
 than you need for your addendum.
 
-## Handling uploaded documents with ALExhibitDocument and ALExhibitList
+## Handling uploaded documents
+
+If you want to allow your user to upload a document, you have at least 3 options:
+
+1. Insert the uploaded image or document into the template, using `Jinja2` tags
+   in a DOCX file or using a `signature` field in a PDF. 
+1. The `ALExhibitDocument` class, or
+1. The `ALDocumentUpload` class.
+
+### Choosing the right file upload method
+
+Use a simple file field when someone needs to upload a single page or smaller
+image that can be inserted into the middle of an existing template.
+
+Use the `ALExhibitDocument` when you need to handle a set of multiple exhibits
+of an unknown class and you want features like document titles, pagination, OCR,
+and a table of contents.
+
+Use the `ALDocumentUpload` class when someone needs to upload a full page document,
+but you already know the title and you want it to be a standalone document in the
+final download, or if you want to append it to an existing download at the end of
+the interview.
+
+### Using a simple file field
+
+In a Word document, you can simply use a [`datatype:
+file`](https://docassemble.org/docs/fields.html#file) field. Then,
+put the field representing the file upload in your document with ordinary
+`Jinja2` tags.
+
+```yaml
+---
+question: |
+  Upload a picture of your favorite pet
+fields:
+  - Pet picture: pet_picture
+    datatype: file
+    accept: |
+      "image/*"
+```
+
+And the DOCX template would include something like this:
+
+```
+The user's favorite pet picture looks like this:
+
+{{ pet_picture }}
+```
+
+You can also insert images into PDFs! When you prepare the PDF template,
+use the `digital signature` field type. Then, use the `fields` statement
+in the attachment block to assign the field to the PDF.
+
+```
+attachment:
+  pdf template file: my_file.pdf
+  fields:
+    - "my_image_field": ${ pet_picture }
+```
+
+### Handling basic file attachments with the ALDocumentUpload class
+
+The `ALDocumentUpload` class is the right choice when you:
+
+1. need just one or a small number of documents uploaded
+1. want the uploaded document to be attached as-is to your final output
+1. don't need any of the special features of the `ALExhibitDocument` class.
+
+`ALDocumentUpload` provides a simple wrapper around the `file` upload type
+that just makes it compatible with the `ALDocumentBundle` class.
+
+Documents uploaded using this class will be added as a standalone file inside
+the bundle. They will typically fill the full page. This is perfect, for
+example, if you need the user to upload some critical document and you know
+exactly which document it is in advance. For example: a notice or letter that
+you know the user should have received.
+
+When the user needs to upload multiple documents and you want to provide flexibility
+about which documents they upload and what order they are in, it may make more sense
+to use the `ALExhibitDocument` class.
+
+Example:
+
+```yaml
+---
+objects:
+  - eviction_notice_attachment: ALDocumentUpload.using(
+          title="Eviction notice",
+          filename="eviction_notice",
+        )
+---
+depends on:
+  - has_eviction_notice
+code: |
+  eviction_notice_attachment.enabled=has_eviction_notice
+---
+id: interview order
+mandatory: True
+code: |
+  al_intro_screen
+  # ...
+  # highlight-start
+  if has_eviction_notice:
+    eviction_notice_attachment.file
+  # highlight-end
+  # ...
+---
+objects:
+  # highlight-start
+  - al_user_bundle: ALDocumentBundle.using(elements=[my_instructions, my_main_attachment, eviction_notice_attachment], filename="user_bundle.pdf", title="All forms to download for your records")  
+  # highlight-end
+---
+id: eviction notice
+question: |
+  Eviction notice
+subquestion: |
+  If you have a copy of the notice you got from your landlord, upload it now.
+fields:
+  - Do you have the eviction notice available now?: has_eviction_notice
+    datatype: yesnoradio
+  - Upload it now: eviction_notice_attachment.file
+    datatype: file
+    accept: |
+      "image/*"
+    show if: has_eviction_notice
+```
+
+
+### Using the full power of ALExhibitDocument
 
 Uploaded documents can raise a lot of complex issues, from validating specific
 file formats and limiting size to a figure the server can process, to gathering,
@@ -500,6 +628,8 @@ Below is a simple snippet that demonstrates how to use an `ALExhibitDocument`.
 pages, generating a table of contents, and adding individual cover pages for
 each exhibit.
 1. we trigger the questions about exhibits at a specific point in the interview.
+1. we also add the `exhibit_attachment` document into the ALDocumentBundle
+by adding it to the `elements=[...]` list inside the bundle's definition
 
 ```yaml
 ---
@@ -520,12 +650,15 @@ code: |
   al_intro_screen
   # ...
   # highlight-start
-  exhibit_attachment.exhibits.gather()
+  if exhibit_attachment.exhibits.has_exhibits:
+    exhibit_attachment.exhibits.gather()
   # highlight-end
   # ...
 ---
 objects:
+  # highlight-start
   - al_user_bundle: ALDocumentBundle.using(elements=[my_instructions, my_main_attachment, exhibit_attachment], filename="user_bundle.pdf", title="All forms to download for your records")  
+  # highlight-end
 ```
 
 ### Customizing Exhibits
