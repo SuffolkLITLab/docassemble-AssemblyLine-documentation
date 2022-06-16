@@ -136,7 +136,7 @@ Your new `custom.css` file is in the
 ~/bootstrap-5.1.3/dist/css` directory. Copy this file to your Docassemble
 `static` folder and reference it as a `bootstrap theme`.
 
-### Using custom fonts
+### Using custom fonts in the frontend
 
 You can use custom webfonts with Docassemble, just like you can with any other web
 product.
@@ -171,3 +171,31 @@ Example:
 
 In the example above, MyTheme is a Docassemble package that is installed
 server-wide. my_font is both the name of a web font and the name of the WOFF file.
+
+### Using custom fonts when creating PDF files from DOCX templates
+
+If you would like to use a font **other than** the Microsoft fonts popular in
+the late 1990s-2000 era (Arial, Times New Roman, Courier) then you will need to
+install the fonts on your Docassemble server.
+
+Make sure that you have a license for each font you want to install.
+
+1. Locate the .otf or .ttf file representing the font that you want to use
+   inside your Word template
+1. Copy the font to your docassemble server
+1. Copy the font inside the docker container
+1. reset the font cache
+1. restart the docassemble supervisor processes
+
+```bash
+scp ~/myfont.ttf apps.example.com:
+ssh apps.example.com
+docker cp myfont.ttf mycontainer:/usr/share/fonts
+docker exec mycontainer /bin/bash
+fc-cache -f -v
+supervisorctl restart uwsgi
+supervisorctl start reset
+```
+
+Finally, you may need to do a `docker stop -t 600 mycontainer` followed by a
+`docker start mycontainer` to help Docassemble see the new font.
