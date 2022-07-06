@@ -51,7 +51,8 @@ module.exports = {
             items: [
                 'question_library/ql_names',
                 'question_library/ql_addresses',
-                'question_library/ql_gender'
+                'question_library/ql_gender',
+                'question_library/ql_language',
             ]
         },
         {
