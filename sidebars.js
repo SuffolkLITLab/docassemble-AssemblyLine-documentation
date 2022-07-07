@@ -89,7 +89,8 @@ module.exports = {
                 'framework/altoolbox',
                 'framework/alrecipes',
                 'automated_testing',
-                'framework/answer_sets'
+                'framework/answer_sets',
+                'framework/reserved_keywords',
             ]
         },
         {
