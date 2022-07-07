@@ -35,9 +35,11 @@ rules below to add as many custom labels as you need.
 PDF and DOCX `labels` should also work as valid [Python variable
 names](coding_style_python.md). The basic rule is that Python variable names
 need to start with a letter and can only contain letters, digits, and the `_`
-underscore character. Do not use variable names that are on this [list of
-special variable names](https://docassemble.org/docs/special.html#reserved) that
-have a different meaning in Docassemble.
+underscore character. Some variable names are
+[reserved](framework/reserved_keywords.md) and have a special meaning inside
+AssemblyLine interviews. You should not use a variable name on the
+[reserved](framework/reserved_keywords.md) list. Doing so can lead to 
+hard to track bugs.
 
 #### Variable names are case sensitive - make them all lowercase
 
@@ -375,3 +377,7 @@ Getting things right at the beginning can save you a lot of time and effort.
 However, you can always edit your template later. When you make changes to your
 template, you do not need to run it through the Weaver again. You can upload
 your edited template directly to the Docassemble playground's templates folder.
+
+## See also
+
+- [List of reserved variable names](framework/reserved_keywords.md)
