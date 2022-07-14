@@ -100,11 +100,11 @@ For this guide, we'll stick with a single court, to make things simple to unders
 
 variable name | purpose | example value | example meaning
 ---------|-----------|-----------|-------------
-`tyler_case_category` | the over arching category of the case | `"7306"` | Adoption
-`tyler_case_type` | the specific type of case | `"25361"` | Adoption
-`case_subtype` | optional, if there needs to be more specific case types | N/A | N/A
+`efile_case_category` | the over arching category of the case | `"7306"` | Adoption
+`efile_case_type` | the specific type of case | `"25361"` | Adoption
+`efile_case_subtype` | optional, if there needs to be more specific case types | N/A | N/A
 `party_type` | what the role of an individual or party is in the case | `"7067"` or `"20640"` | Adoptive parent or child
-`tyler_filing_type` | what the filing actually is, usually the name of the document | `"29730"` | Application
+`filing_type` | what the filing actually is, usually the name of the document | `"29730"` | Application
 `document_type` | If the document is confidential or not | `"5766"` | Non-confidential
 `filing_component` | If this is the lead document or if it's an attachment | `"332"` | Lead document
 
@@ -123,8 +123,8 @@ For each object in `users` and in `other_parties`, your interview needs to defin
 ```yaml
 code: |
   trial_court = 'adams`
-  tyler_case_category = '7306'
-  tyler_case_type= '25361'
+  efile_case_category = '7306'
+  efile_case_type= '25361'
 ---
 code: |
   users[i].name.first
@@ -145,7 +145,7 @@ The following variables must also be defined:
 * `lead_contact`: this is the person who will be contacted about the status of this filing, and can just be set to `users[0]`.
 * `tyler_payment_id`: This is the payment information that Tyler needs to collect payment for the filing. It is the string of the payment method ID. We'll deal more with this in the advanced guide (coming soon), but  for now, we'll assume that the filer qualifies for a fee waiver, and can use the global waiver payment account, "global" meaning that any filer can use when filing. You can get this waiver payment account from the config: `get_config('efile proxy', {}).get('global waiver', '')`.
 * `al_court_bundle` should be an ALDocumentBundle, containing all of the documents that you want to file. Each top level ALDocument or ALDocumentBundle in `al_court_bundle` will be treated as a separate filing, and each filing needs the following attributes:
-  * `filing_component` and `tyler_filing_type`
+  * `filing_component` and `filing_type`
   * `filename`: this will be defined by default when declaring the ALDocument
   * `filing_parties`: these are the parties that are initiating the filing. When the party that's filing is also being added in that filing, the value is the `instanceName` of docassemble var representing that individual. Usually this will be `"users[0]"`.
   * `filing_action`: for us, this will be `"efile"`
@@ -155,7 +155,7 @@ The following variables must also be defined:
 code: |
   main_document.document_type = '5766'
   main_document.filing_component = '332'
-  main_document.tyler_filing_type = '29730'
+  main_document.filing_type = '29730'
   main_document.filing_parties = ['users[0]']
   main_document.filing_action = 'efile'
   main_document.completed = True
