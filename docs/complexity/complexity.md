@@ -73,43 +73,76 @@ YAML interview file.
 The current work is taking place inside a
 [GitHub](https://github.com/SuffolkLITLab/docassemble-ALLinter) repository.
 
+You may also want to [explore](https://suffolk-form-explorer.herokuapp.com/)
+our database of 10,000 forms to see what features you can spot that might
+be relevant to our work.
+
 ## Features under consideration
 
 ### Use of written language
-* Traditional [readability](style_guide_readability.md) scores
-* The frequency of terms in the English language
-* Use of legal terms of art (like "proof") that may be confused with common
-  usage terms
+
+#### Concepts measured in traditional [readability](style_guide_readability.md) scores
 * Sentence length
+* Number of syllables
+* The frequency of words in the English language
+
+#### Legal-specific features
 * Presence of legal citations
-* Is a question double or triple barrelled (asking multiple questions to be
-  answered in one field)
+* Use of legal-specific vocabulary, especially if it looks like a "normal" term.
+  E.g., "proof"
+
+#### Nature of the question itself
+* Is the question double or triple barrelled (asking multiple questions to be
+  answered in one field)?
+* Is the question itself **conditional**? E.g., containing an instruction "if
+  your answer to question 1 was 'yes'"
+
+### Length of the form
 * The total number of fields
 * The total number of fields per page
 * The total number of pages
-* Use of conditional questions, especially any instructions such as "skip
-  questions 1-3" on paper forms
+* The total length of answers expected (e.g., large open text fields)
 
 ### Nature of the response required
+* Is the question redundant with another question on the same form, or provided
+  in an earlier required form in the same process?
 * Does the information need to be exact, such as a date or dollar figure?
-* Does the information need to be looked up or requested from a third party?
-* Is the information requested sensitive?
-* Is the information requested **personally identifying**, such as name,
-  address, or contact information?
 * Is the user being asked to perform a calculation, such as subtracting dollar
   figures or dates?
-* Appropriate use of checkboxes, radio buttons, text and area fields
-* The availability of "I don't know" responses when multiple choice options are
-  provided
+* Does the question ask for a social security number, driver's license number,
+  bank account number, health insurance card number, or other traditional
+  Personally Identifying Information ("PII")?
+* Is the information otherwise personal, such as a birth date?
+* Is the information sensitive for people with concerns for personal
+  safety--such as a phone number or address?
+* Does the user need to read a lot of options to find the one that applies to
+  them?
+* Is an "I don't know" response available when used with a list of options?
+* Does the information need to be looked up or requested from a third party?
+* Are checkboxes, radio buttons, short-answer text and long-answer area fields
+  used appropriately?
 
 ### Features related to organizing content and providing context
-* Use of a logical grouping of fields, such as keeping similar questions
-  together in sections
-* Use of a question order that maximizes the litigants comfort with the form
-  (e.g., asking for the most private questions after asking "safer" questions)
-* The existence of explanations or glossaries of complicated words
-* Presence or absence of navigation features and progress bars
-* Presence of early screen-out questions to avoid inappropriate use of the form
+* Does the form provide context that helps the user understand:
+    - What the form is
+    - Who is supposed to use it
+    - Who is not supposed to use it
+    - What do with the form when they are finished
+* Are similar fields near each other in the form or on screen?
+* Are fields grouped into a logical hierarchy, with headings, labels, and
+  whitespace?
+* Are questions asked in an order that builds trust and confidence, such as
+  placing the most personal questions later in the interview or form?
+* If a complex term must be used, is it explained in context or in a glossary?
+* Does the (interactive) form include a progress bar or navigation?
+
+### Features related to visual design
+* Is the form legible?
+* Is there sufficient whitespace on the form?
+* Does the placement of fields and headings on the form follow a logical
+  information hierarchy?
+* Are there many fields on the page that need to be completed by a third party,
+  such as a clerk or other court employee?
 
 ## Our reading list
 
@@ -118,3 +151,4 @@ The current work is taking place inside a
 * [Benchmarking everyday documents](https://uploads-ssl.webflow.com/5c06fb475dbf1265069aba1e/5c2bb2a81110ecda570573fe_SC5Benchmarkingv4.pdf), Martin Evans, April 2011
 * [What makes a good document?](https://www.reading.ac.uk/web/files/simplification/SC2CriteriaGoodDoc-7.pdf), Rob Waller, April 2011
 * [How to estimate burden](https://pra.digital.gov/burden/estimation/), digital.gov
+* [The power of white space](https://www.interaction-design.org/literature/article/the-power-of-white-space)
