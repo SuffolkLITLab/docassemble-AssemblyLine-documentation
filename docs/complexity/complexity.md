@@ -152,3 +152,4 @@ be relevant to our work.
 * [What makes a good document?](https://www.reading.ac.uk/web/files/simplification/SC2CriteriaGoodDoc-7.pdf), Rob Waller, April 2011
 * [How to estimate burden](https://pra.digital.gov/burden/estimation/), digital.gov
 * [The power of white space](https://www.interaction-design.org/literature/article/the-power-of-white-space)
+* [Clearmark awards criteria](https://centerforplainlanguage.org/awards/clearmark/criteria/)
