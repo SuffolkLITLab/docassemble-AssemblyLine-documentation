@@ -59,15 +59,15 @@ module.exports = {
             type: 'category',
             label: 'Coding Style Guide',
             items: [
-                'coding_style',
-                'coding_style_python',
-                'coding_style_yaml',
-                'coding_style_yaml_structure',
-                'coding_style_yaml_dynamic',
-                'coding_style_yaml_interface',
-                'coding_style_yaml_translation',
-                'coding_style_defense',
-                'docs_style_guide'
+                'coding_style/coding_style_overview',
+                'coding_style/python',
+                'coding_style/yaml',
+                'coding_style/yaml_structure',
+                'coding_style/yaml_dynamic',
+                'coding_style/yaml_interface',
+                'coding_style/yaml_translation',
+                'coding_style/defense',
+                'coding_style/docs_style_guide'
             ]
         },
         {

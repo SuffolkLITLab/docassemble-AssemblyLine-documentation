@@ -18,13 +18,13 @@ A heading should only be about one line of text on the screen.
 
 ### Keep text short in general
 Some users struggle to read large amounts of text on the screen. Keep the text
-short and to the point. You can add more information with the [progresive disclosure
-element](coding_style_yaml_interface.md).
+short and to the point. You can add more information with the [progressive disclosure
+element](coding_style/yaml_interface.md).
 
 ### Only use all capital letters for acronyms
 
 For example, the Department of Children and Families (DCF), Transitional
-Assistance for Families and Dependent Children (TAFDC). 
+Assistance for Families and Dependent Children (TAFDC).
 
 ### Use bold for emphasis. Avoid underlines, italics, or all capital letters
 

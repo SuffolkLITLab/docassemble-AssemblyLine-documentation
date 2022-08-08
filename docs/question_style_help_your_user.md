@@ -7,7 +7,7 @@ slug: /style_guide/question_help_your_user
 
 ## Provide help information in context
 
-Use the [help options](coding_style_yaml_interface.md#adding-help-in-context)
+Use the [help options](coding_style/yaml_interface.md#adding-help-in-context)
 that your interview platform offers. Not all users will need the same help.
 Too much information on screen can be confusing.
 
@@ -111,4 +111,4 @@ Instead, you may just want to provide help text that suggests
 how the user should fill the field.
 
 For example, allow space for the user to provide information like phone numbers
-and addreses that are from a different country.
+and addresses that are from a different country.

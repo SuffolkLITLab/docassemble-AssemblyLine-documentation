@@ -1,5 +1,5 @@
 ---
-id: coding_style_yaml
+id: yaml
 title: Interview files
 sidebar_label: Interview files
 slug: /coding_style_guide/yaml
@@ -21,7 +21,7 @@ your code.
 
 ## Use Python conventions for variable names and Python code in your YAML files
 
-See [Python style guide](coding_style_python.md).
+See [Python style guide](python.md).
 
 ## Organize and name your files
 
@@ -85,12 +85,12 @@ adding additional files when:
 
 1. you want to use an interview like a module inside another interview
 1. your YAML file is thousands of lines long and you have clear functional
-   separation between each file. For example: code, style, questions; or 
+   separation between each file. For example: code, style, questions; or
    maybe "eviction", "appeals", "bad_housing_conditions".
 1. you need to split work between multiple developers and you are running into
    challenges with overwriting each others' work
 1. you need non-technical members of your team to be able to make changes with
-   confidence. You might choose to separate code from question language, in that 
+   confidence. You might choose to separate code from question language, in that
    case.
 
 ### Use clear filenames for modular interview files
