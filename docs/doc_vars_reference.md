@@ -15,6 +15,7 @@ that we list below for full compatibility.
 - [The DOCX version of the same motion](./assets/generic_motion_family_law.docx)
 
 ## The basics
+
 ### Fields, labels, and variables
 
 A blank space on a paper form is usually called a `form field`, or `field` for
@@ -33,7 +34,7 @@ rules below to add as many custom labels as you need.
 #### Labels should be valid Python variable names that start with a letter
 
 PDF and DOCX `labels` should also work as valid [Python variable
-names](coding_style_python.md). The basic rule is that Python variable names
+names](coding_style/python.md). The basic rule is that Python variable names
 need to start with a letter and can only contain letters, digits, and the `_`
 underscore character. Some variable names are
 [reserved](framework/reserved_keywords.md) and have a special meaning inside
