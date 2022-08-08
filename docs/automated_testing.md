@@ -454,6 +454,25 @@ Sometimes the characters in your code and the characters on screen aren't the sa
     Then I should NOT see the phrase "some phrase"
 ```
 
+---
+
+<span id="accessibility">You can also check a page for it's accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
+
+```
+    Then I check the page for accessibility issues
+```
+
+This will include a separate JSON file if there are any accessibility issues with the page.
+ 
+You can also check all pages past a certain point automatically:
+
+```
+    Then I check all pages for accessibility issues
+```
+
+This is equivalent to running `I check the page for accessibility issues` on every new page
+that the test runner sees.
+
 <!-- Then the "a" link leads to "a" -->
 <!-- Then the "a" link opens a working page -->
 <!-- Then the "a" link opens in a new window -->
