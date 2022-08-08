@@ -1,5 +1,5 @@
 ---
-id: coding_style_yaml_structure
+id: yaml_structure
 title: Structuring your interview
 sidebar_label: Structuring your interview
 slug: /coding_style_guide/yaml_structure

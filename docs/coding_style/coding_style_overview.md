@@ -1,5 +1,5 @@
 ---
-id: coding_style
+id: coding_style_overview
 title: Docassemble Coding Style Guide
 sidebar_label: Coding Style
 slug: /coding_style_guide
