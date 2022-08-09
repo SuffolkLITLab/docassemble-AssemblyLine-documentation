@@ -24,7 +24,7 @@ You can check that the colors you are using in your interview's branding have pr
 
 ## Use alt-text with images
 
-To describe images in webpages, screen readers read out author-provided descriptions called alt-text. Without alt-text, people visiting your page with screen readers won't get any of the benefits of the graphic. The W3 WAI group has [a good decision tree on how to write alt-text](https://www.w3.org/WAI/tutorials/images/decision-tree/).
+To describe images in webpages, screen readers read out author-provided descriptions called alternative text, or "alt-text". Without alt-text, people visiting your page with screen readers won't get any of the benefits of the graphic. The W3 WAI group has [a good decision tree on how to write alt-text](https://www.w3.org/WAI/tutorials/images/decision-tree/).
 
 In docassemble, you should [set the `alt_text` attribute of a DAFile](https://docassemble.org/docs/objects.html#DAFile), or use [the `set_alt_text()` function](https://docassemble.org/docs/objects.html#DAFile.set_alt_text). If you are writing HTML directly, you can add an `alt` property to any `img` tags you use (see below).
 
@@ -66,7 +66,7 @@ subquestion: |
 
 Comboboxes, as implemented in docassemble, have [several usability problems](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/issues/548), especially with screen readers. We recommend that you don't use comboboxes in new interviews, instead using one of the below alternatives:
 
-* split out the combo box into two fields: a dropdown with the same fields and an additional "other" option, and a field (that is hidden if the dropdown is not "other") where the user can type in their "other" input.
+* split out the combo box into two fields: a dropdown with the same fields and an additional "other" option, and a fill-in-the-blank text input hidden behind a `show if` when the dropdown is not "other". This only works if the list of predefined options is short and the user will expect to find an "other" option on the list.
 
   ```yaml
   fields:
@@ -75,10 +75,24 @@ Comboboxes, as implemented in docassemble, have [several usability problems](htt
         - employee
         - manager
         - other
-    - Please enter your role: role_other
+    - Enter your role: role_other
       show if:
         variable: role_name
         is: other
+  ```
+
+* split the combo box into three fields: a dropdown menu with options (like a list of courts inside the user's state), a checkbox that indicates the list doesn't apply, and a fill-in-the-blank text input hidden behind a `show if`. This is appropriate if the list of options represents the most common selections, and there is an obvious "mode" switch. For example, the checkbox might read "My court is outside of Massachusetts".
+
+  ```yaml
+  fields:
+    - What is your court name?: court_name
+      required: False
+      code: |
+        list_of_courts
+    - My court is outside of Massachusetts: outside_ma
+      datatype: yesno
+    - Enter your court's name: court_outside_ma_name
+      show if: outside_ma
   ```
 
 * if the combo box suggestions are validated by the interview, add some some of those suggestions into examples on the page (which makes them easier to discover for some users) and turn the field into a text input where the validation errors are descriptive.
