@@ -233,11 +233,21 @@ without a traditional home still stay in a city and state. **Note**: someone who
 is unhoused may be more likely to use a mailing address that is not in the same
 venue as their physical location.
 
+There may be special circumstances where more information is required for
+determining venue or eligibility. For example, Dana Chisnell of the United
+States Digital Service Agency
+[reports](https://twitter.com/danachis/status/1557180760410492929) that they
+allow people without a traditional address to mark a map indicating the
+intersection where they can normally be found.
+
 If the address is being used for official correspondence, decide how to handle
 the fact that some users just will not have a traditional address to receive
 correspondence.
 
 ### Ask for a city, state, and a written explanation
+
+<Tabs>
+  <TabItem value="Assembly Line Example" label="Assembly Line Example">
 
 ```yaml
 id: person's address
@@ -350,5 +360,11 @@ Your default address question should be more standardized.
 
 ## Further reading
 
+### Collecting international addresses
+
 * https://www.uxmatters.com/mt/archives/2008/06/international-address-fields-in-web-forms.php
 * https://ux.shopify.com/designing-address-forms-for-everyone-everywhere-f481f6baf513
+
+### Collecting address of an unhoused person
+
+* https://demo.getcalfresh.org/
