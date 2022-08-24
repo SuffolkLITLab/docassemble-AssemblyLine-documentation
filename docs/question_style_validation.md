@@ -1,13 +1,13 @@
 ---
 id: question_style_validation
-title: Using appropriate input validation
-sidebar_label: Using appropriate input validation
+title: Use input validation carefully
+sidebar_label: Use input validation carefully
 slug: /style_guide/question_style_validation
 ---
 
 ## When to use input validation
 
-Use validation to help ensure your user places information in the correct
+Use input validation to help ensure your user places information in the correct
 location on the form. Validation can be helpful to provide instant feedback
 to your user and avoid having a form rejected by a clerk.
 
@@ -50,7 +50,7 @@ Avoid validation when:
 * [UK's NHS guidance on writing error messages](https://service-manual.nhs.uk/design-system/components/error-message)
 * https://uxplanet.org/how-to-write-good-error-messages-858e4551cd4
 
-## How to use warnings
+## "Soft" validation: how to use warnings
 
 Sometimes you don’t want to stop the user, you just want to let the user know to double check their answer. Unfortunately, we still don’t have a good model for this and are looking for evidence-based research on it. Here are some unverified possibilities.
 
