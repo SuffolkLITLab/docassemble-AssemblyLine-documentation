@@ -35,13 +35,13 @@ module.exports = {
             label: 'How to write good questions',
             items: [
                 'question_style_overview',
-                'style_guide_readability',
-                'style_guide_formatting',
                 'style_guide_respect',
+                // 'question_style_sensitivities',
+                'style_guide_readability',
                 'question_style_structure',
-                'question_style_help_your_user',
                 'question_style_organize_fields',
-                'question_style_sensitivities',
+                'question_style_help_your_user',
+                'style_guide_formatting',
                 'question_style_validation'
             ]
         },
