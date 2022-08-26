@@ -74,7 +74,7 @@ example is often clearer and easier to read, with less punctuation.
 ## Convert types or use more abstract interfaces
 
 Does your function return a list, a set, or a tuple? Be careful when working
-with collections that you know which datastructure you are using.
+with collections that you know which data structure you are using.
 
 When you create a function that accepts a list, you may want to explicitly
 convert to a list before working with it in case a developer passes in a `set`.

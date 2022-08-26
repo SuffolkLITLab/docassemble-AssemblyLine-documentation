@@ -12,7 +12,7 @@ location on the form. Validation can be helpful to provide instant feedback
 to your user and avoid having a form rejected by a clerk.
 
 Consider whether it would be helpful or too much clutter for your user to see
-any validation rules, such as maxmimum length, before they start typing on the
+any validation rules, such as maximum length, before they start typing on the
 form.
 
 Examples of places validation can be helpful:

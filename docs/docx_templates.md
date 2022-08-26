@@ -46,7 +46,7 @@ For example:
 
 * wait to add `for` loops that print out each item in a list
 * avoid using custom methods in variable names, other than the ones listed on
-  the [Field lbels to use in template files](doc_vars_reference.md) page.
+  the [Field labels to use in template files](doc_vars_reference.md) page.
 
 You can add these refining details after you run the form through the Weaver.
 Use the first draft just to add placeholders where information will go. 

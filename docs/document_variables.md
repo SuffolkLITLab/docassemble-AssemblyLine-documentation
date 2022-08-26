@@ -89,7 +89,7 @@ either `tenant` or `defendant`. In any form that starts a new case, we can alway
 You may want to use other kinds of labels on the form for miscellaneous people who are
 associated with the form, but are not parties to the case. Using one of these labels below
 that we have pre-selected tells our tool that these are people, so we can handle things like addresses,
-birthdates, etc. correctly.
+birth dates, etc. correctly.
 
 We can freely add more labels to this list if you need them for your form. Ideally, talk to us about that
 before running your form through the weaver.
@@ -141,7 +141,7 @@ Label to use in the PDF | When to use it
 (deprecated) `plaintiff_address_street2` | Label for a field that asks for the plaintiff's apartment number. Use `plaintiff_address_unit` instead
 `plaintiff_address_city` | Label for a field that asks for the plaintiff's city address
 `plaintiff_address_state` | Label for a field that asks for the plaintiff's state
-`plaintiff_address_zip` | Label for a field that asks for the plaintiff's zipcode
+`plaintiff_address_zip` | Label for a field that asks for the plaintiff's zip code
 `plaintiff_email` |  Label for a field that asks for the plaintiff's email address
 `plaintiff_phone` |  Label for a field that asks for the plaintiff's phone number
 <strong>SIGNATURE</strong>

@@ -41,7 +41,7 @@ You should add alt-text to your organizations logo. This alt-text can be simple,
 
 If you use headers in your question markdown, make sure that you always increment your header levels by one. For examples, always go from header level 2 to 3, and not 2 to 4. Screen readers have special features that let users navigate between different headers in order to navigate quickly, and skipped header levels can disorient users.
 
-### Don't use `h1` in subquestions
+### Don't use `h1` in sub questions
 
 There should only ever be one `h1` header on a page, and in docassemble, that header is the `question` attribute. Because of that, you shouldn't use a `#` header (or if you use HTML, an `<h1>` tag) in a subquestion.
 

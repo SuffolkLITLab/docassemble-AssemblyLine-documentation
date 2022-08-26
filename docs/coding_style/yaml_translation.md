@@ -103,6 +103,6 @@ question: |
   % if client_is_overpaid_person:
   Do you agree that you got too much money from Social Security?
   % else:
-  Do you agree that ${recordee} got too much money from Social Security?
+  Do you agree that ${ recorded_person } got too much money from Social Security?
   % endif
 ```

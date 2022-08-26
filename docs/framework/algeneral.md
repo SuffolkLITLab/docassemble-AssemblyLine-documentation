@@ -58,7 +58,7 @@ The `address_fields()` method includes the following optional parameters:
   is displayed as well as the default country in the `country` drop down. In
   the Assembly Line question library, `country_code` typically defaults to the value of
   `AL_DEFAULT_COUNTRY`
-* `default_state`: default state, province, or sublocality. In the Assembly Line
+* `default_state`: default state, province, or sub locality. In the Assembly Line
   question library, `default_state` typically defaults to the value of
   `AL_DEFAULT_STATE`
 * `show_country`: defaults to `False`. If enabled, a country drop down menu will
@@ -87,7 +87,7 @@ The `previous_addresses` attribute of an `ALIndividual` is an `ALAddressList`.
 The `ALIndividual` is an extension of the Docassemble
 [`Individual`](https://docassemble.org/docs/objects.html#Individual) class. It
 should be used to represent both natural people and businesses or other
-entitities.
+entities.
 
 `ALIndividual` objects include the following methods that are not in the stock
 `Individual` class:

@@ -109,7 +109,7 @@ Unordered:
 
 ### 5.4 Variable Names {#5-4-variable-names}
 
-Moved to docusuarus:
+Moved to Docusaurus:
 
 
 #### 5.4.1 Code variable names {#5-4-1-code-variable-names}

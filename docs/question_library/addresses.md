@@ -200,7 +200,7 @@ fields:
 
 ## Getting the address of someone who is experiencing homelessness
 
-Some users may be unhomed. Getting the address of a user who does not have a
+Some users may be un-homed. Getting the address of a user who does not have a
 traditional home can be tricky. Consider fallback solutions that gracefully
 handle situations where an individual:
 
@@ -319,10 +319,10 @@ Make sure the user knows the character limit for this line on the form. Consider
 providing an addendum.
 
 If you use the Assembly Line framework, the following methods are all "aware" of the 
-variation on an address that handle unhomed individuals, and you do not need
+variation on an address that handle un-homed individuals, and you do not need
 any special logic in the template file or attachment block:
 
-- adddress.block()
+- address.block()
 - address_block()
 - address.on_one_line()
 - address.line_one()

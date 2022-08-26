@@ -58,7 +58,7 @@ Bryce Willey [curated a lot of this
 material](https://brycewilley.xyz/2022/01/readability-scores-reference) for our
 broader Assembly Line team to consider.
 
-We followed with a brainstorming session and a cardsorting exercise to put our
+We followed with a brainstorming session and a card sorting exercise to put our
 thoughts together, especially focusing on features that are unique to
 interactive interviews and paper forms.
 

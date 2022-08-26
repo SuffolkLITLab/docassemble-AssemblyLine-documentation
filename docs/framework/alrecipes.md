@@ -16,11 +16,11 @@ The introduction page also provides instructions for those who want to contribut
 
 ## Generic docassemble recipes
 
-These examples are created to handle sencarios that are currently unavailable in the docassemble recipes. For example, recipe **Multiuser signatures - require login** differs from the docassemble original recipe in that it lets one party preview a form filled with the other party’s input; recipe **Web Data Extraction** shows you how to extract a piece of data from an external web, then display it in your own interview. 
+These examples are created to handle scenarios that are currently unavailable in the docassemble recipes. For example, recipe **Multi-user signatures - require login** differs from the docassemble original recipe in that it lets one party preview a form filled with the other party’s input; recipe **Web Data Extraction** shows you how to extract a piece of data from an external web, then display it in your own interview. 
 
 ## AssemblyLine examples
 
-These recipes are ready to be inserted into your interview. You can access them either from the live demo page, or more convienently from your Playground's **Example blocks** area. 
+These recipes are ready to be inserted into your interview. You can access them either from the live demo page, or more conveniently from your Playground's **Example blocks** area. 
 
 ![Example blocks](../assets/alrecipes-examples.png)
 
