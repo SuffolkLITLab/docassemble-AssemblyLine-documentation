@@ -267,7 +267,7 @@ Radio or dropdown choices.
 
 Text field or textarea. Even if the answer has multiple lines, you can only use one line. When a new line is supposed to appear, instead use `\n`. See below:
 ```
-      | favorite_color | Blue.\nNo, green!\nAaah... | favorite_color |
+      | favorite_color | Blue.\nNo, green!\nAah... | favorite_color |
 ```
 
 A generic object with an index variable.
@@ -536,7 +536,7 @@ Avoid punctuation. We recommend you just use 2 names - the first name and last n
 - Firstname Middlename Lastname Suffix (where suffix is one of the dropdown suffix choices, like `II`)
 
 ```
-    When I set the name of "x[i]" to "Ulli User"
+    When I set the name of "x[i]" to "Sam User"
 ```
 
 ---
@@ -658,14 +658,15 @@ _Some of these are just good practices to follow when coding your interviews_
 In questions with choices, give each label a value. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
 
 Not great with just labels:
-```yml
+```yaml
 question: Tell me about yourself
 fields:
   - Favorite color
 ```
 
 Better with values as well:
-```ymlquestion: Tell me about yourself
+```yaml
+question: Tell me about yourself
 fields:
   - Favorite color: user_favorite_color
 ```
@@ -777,7 +778,7 @@ screen id: user-name
       | user.name.last | Plaintiff |  |
   Unused rows:
       | defendant.name.first | Sam |  |
-      | defendant.name.last | Defo |  |
+      | defendant.name.last | Defendant |  |
 ```
 
 Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id.
@@ -1140,6 +1141,6 @@ Even though this is built using [cucumberjs](https://cucumber.io/), this framewo
 
 ALKiln's repository is at https://github.com/SuffolkLITLab/ALKiln.
 
-The developer test setup interivew's repo is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
+The developer test setup interview's repo is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
 
 ALKiln also tests itself using some of the interviews at https://github.com/plocket/docassemble-ALAutomatedTestingTests.

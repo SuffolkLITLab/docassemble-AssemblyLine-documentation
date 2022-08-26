@@ -238,7 +238,7 @@ include:
   - docassemble.ALToolbox:phone-number-validation.yml
 ``` 
 
-## BirthDate and ThreePartsDate custom datatypes
+## BirthDate and ThreePartsDate custom data types
 
 Use the custom datatype `BirthDate` or `ThreePartsDate` to ask the user
 to enter a date that might be very far in the past or in the future,
@@ -298,7 +298,7 @@ Then in the DOCX template, you could write
 `{{ output_checkbox(user_lives_in_florida) }}` instead of the messier
 `{% if user_lives_in_florida %}[X]{% else %}[  ]{% endif %}`.
 
-`output_checkbox()` has two optional keyword paramters:
+`output_checkbox()` has two optional keyword parameters:
 
 - `checked_value (str)`: defaults to `[X]` but can be set to any string or even
   a `DAFile` or `DAStaticFile` with the image of a checkbox

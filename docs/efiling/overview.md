@@ -49,7 +49,7 @@ care of delivering the document the rest of the way to the court's docket.
 
 [![](https://mermaid.ink/img/pako:eNqFkD9vgzAQR7_KyVMrhaHtxlApAVpFylA1bIHhYh9g4T_I2K0i4LvXNO0WKTfd8N4bfhPjVhBLWetw6KDMKwPxtqf3IAUJkMaT-5L0XUOSvM6fxbGE7ccerANhOY4j6bMiGJD32NIMu4fDvoQDnh-vod2qQTaVF0UOSuKdscq2ksblCmS_3UIR984ayddsT36G_NRg2mCi0AiNrofMBufhqb7jFbe953ve223vpWYbpslplCLONK2VivmONFUsja-gBoPyFavMEtEwCPRUCOmtY7GnRtowDN4eL4az1LtA_1AuMa6u_6jlBzqehAQ)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqFkD9vgzAQR7_KyVMrhaHtxlApAVpFylA1bIHhYh9g4T_I2K0i4LvXNO0WKTfd8N4bfhPjVhBLWetw6KDMKwPxtqf3IAUJkMaT-5L0XUOSvM6fxbGE7ccerANhOY4j6bMiGJD32NIMu4fDvoQDnh-vod2qQTaVF0UOSuKdscq2ksblCmS_3UIR984ayddsT36G_NRg2mCi0AiNrofMBufhqb7jFbe953ve223vpWYbpslplCLONK2VivmONFUsja-gBoPyFavMEtEwCPRUCOmtY7GnRtowDN4eL4az1LtA_1AuMa6u_6jlBzqehAQ)
 
-If you think of the e-filing vendor as a corporate mailroom, then third-party
+If you think of the e-filing vendor as a corporate mail room, then third-party
 vendors like the Suffolk LIT Lab are the equivalent of UPS or FedEx. We just get
 the document to the building. The e-filing vendor handles getting it to the
 right desk. **From a court clerk's point of view, the filing looks just like a

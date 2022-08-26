@@ -109,7 +109,7 @@ separately.
 
 In a Docassemble interview, consider using the sections to allow the user to
 edit and review their answers as they use the interview. This requires
-additional work but may build the user's confience as they use your website.
+additional work but may build the user's confidence as they use your website.
 
 ## Use signposting on longer interviews
 

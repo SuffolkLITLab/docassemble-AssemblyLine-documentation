@@ -145,7 +145,7 @@ Methods:
   completed template and any addendum if the original is a DOCX template. `key`
   is normally `preview` or `final`. 
 * `as_list(key:str='final', refresh:bool=True)`: returns a 1 or 2 item list
-  which contains the templaate and its addendum, if any.
+  which contains the template and its addendum, if any.
 * `need_addendum()`: returns `True` if the addendum exists and there are
   overflow fields.
 * `has_overflow()`: returns `True` if there are fields that trigger the
@@ -267,7 +267,7 @@ download_list_html(self, key:str='final', format:str='pdf', view:bool=True,
 
 The default download table displays a row with a title, a "view" button which 
 allows opening a PDF in-browser, and a "download" button that allows downloading
-the PDF with one blick. A row with a "Download as zip" button is also added
+the PDF with one block. A row with a "Download as zip" button is also added
 by default if there is more than 1 document in the table.
 
 These defaults can be customized quite a bit. In addition to the parameters listed below,

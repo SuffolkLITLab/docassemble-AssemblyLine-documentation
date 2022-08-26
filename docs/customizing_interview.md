@@ -77,7 +77,7 @@ id: interview_order_Guardianship_Assistant
 code: |
   users[0].name.first
   users.gather()
-  if has_copetitioner:
+  if has_co_petitioner:
     users[1].address.address
   else:
     users[0].address.city
