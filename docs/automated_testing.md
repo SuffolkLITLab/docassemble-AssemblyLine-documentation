@@ -429,6 +429,10 @@ Then I arrive at the next page
 The `screenshot` Step will take a picture of the screen that will be put in the GitHub action's [artifacts](#your-screenshots-artifacts).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
 
+::: warning
+**AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
+:::
+
 ```
     Then I take a screenshot
 ```
