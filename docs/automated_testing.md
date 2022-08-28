@@ -513,17 +513,25 @@ Comparing this to [a story table](#story-tables), as described above, the first 
     When I set the variable "users[i].hair_color" to "blue"
 ```
 
-For example, you can use the special word `today` as a value to set dates.
+One special value you can include is `today`. That will insert the date on which the test is being run. You can also subtract from, or add days to, `today`. Examples:
+
+```
+    When I set the variable "signature_date" to "today"
+    When I set the variable "birthdate" to "today - 500"
+    When I set the variable "court_date" to "today + 12"
+```
+
+
 
 ---
 
 The `secret variables` Step can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
 
+You **must** use a GitHub "secret" to store the value. To learn how to create a GitHub secret see the GitHub documentation at https://docs.github.com/en/actions/security-guides/encrypted-secrets. 
+
 ```
     I set the variable "user_account_password" to the GitHub secret "USER_PASSWORD"
 ```
-
-To learn how to create a GitHub secret see the GitHub documentation at https://docs.github.com/en/actions/security-guides/encrypted-secrets
 
 ---
 
@@ -532,6 +540,11 @@ Sign on a signature page. All signatures are the same - one dot.
 ```
     When I sign
 ```
+
+:::warning
+**AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
+:::
+
 
 ---
 
