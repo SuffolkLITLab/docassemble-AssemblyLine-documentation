@@ -9,15 +9,19 @@ slug: /automated_integrated_testing
 
 🚧
 
-Reference for writing automated integrated tests with the Assembly Line testing framework. This is under very active development.
+Reference for testing your interview on GitHub.
+
+**Any docassemble package can use this.** It does have special features created especially for projects using AssemblyLine.
+
+This is under very active development.
 
 ## Intro
 
-The Kiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
+The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
 
 **Kiln works with any docassemble interview**, though it is being developed through the Document Assembly Line project.
 
-Docacon 2021, 10 minute intro presentation:
+Docacon 2021, 10 minute demo:
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YB-e-MGtLgI?start=3482&end=4115" title="10 minute intro of Assembly Line Kiln testing framework at Docacon 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
