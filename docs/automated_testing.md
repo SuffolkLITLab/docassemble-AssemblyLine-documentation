@@ -464,7 +464,7 @@ Sometimes the characters in your code and the characters on screen aren't the sa
 
 ---
 
-The 'text in JSON' Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
+The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
 
 ::: caution
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
@@ -473,7 +473,7 @@ This step is unable to check values of nested objects. For example, it can test 
 ```
     Then the text in the JSON variable "user_affidavit" should be
     """
-    Some affidavit description after three quotes.
+    Three quotes then some affidavit text.
 
     The text can be multi-line.
 
@@ -483,7 +483,7 @@ This step is unable to check values of nested objects. For example, it can test 
 
 ---
 
-The 'JSON variables' Step will add the page's JSON variables to the final test report. It's a bit messy, but you do get to see all the variables.
+The `JSON variables` Step will add the page's JSON variables to the final test report. It's a bit messy, but you do get to see all the variables.
 
 ```
     And I get the page's JSON variables and values
@@ -514,6 +514,16 @@ Comparing this to [a story table](#story-tables), as described above, the first 
 ```
 
 For example, you can use the special word `today` as a value to set dates.
+
+---
+
+The `secret variables` Step can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
+
+```
+    I set the variable "user_account_password" to the GitHub secret "USER_PASSWORD"
+```
+
+To learn how to create a GitHub secret see the GitHub documentation at https://docs.github.com/en/actions/security-guides/encrypted-secrets
 
 ---
 
