@@ -370,35 +370,9 @@ You can use the `log in` Step to sign into your docassemble server before going 
     When I start the interview at "yaml_file_name.yml"
 ```
 
-This is a complex Step to use. To make it work, you have to add GitHub secrets and edit the YAML file in your repository's `.github/workflows/` folder.
+This is a complex Step to use. You **must** use a GitHub "secret" to store each value as the information is sensitive. To learn how to create and add a secret for a test, see the [GitHub secrets section](#github-secrets).
 
-[GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) are a way to store sensitive information. If you don't encrypt the login information, others will be able to see it in your code.
-
-1. Follow the GitHub instructions in the link above to set two GitHub secrets - one for the email of the account you want to sign in with and one for the password of that account.
-
-`USER_EMAIL` and `USER_PASSWORD` are just placeholders in our example. You can name them whatever you want to. These are the words we'll use to refer to them in here. You can add these to one repository or you can add these to your organization, whichever is right for you.
-
-2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
-
-It should include lines that look like this:
-```yml
-         with:
-           SERVER_URL: "${{ secrets.SERVER_URL }}"
-           PLAYGROUND_EMAIL: "${{ secrets.PLAYGROUND_EMAIL }}"
-           PLAYGROUND_PASSWORD: "${{ secrets.PLAYGROUND_PASSWORD }}"
-           PLAYGROUND_ID: "${{ secrets.PLAYGROUND_ID }}"
-           EXTRA_LANGUAGES: "${{ secrets.EXTRA_LANGUAGES }}"
-```
-
-3. Add two more lines under those:
-
-```yml
-           USER_EMAIL: "${{ secrets.USER_EMAIL }}"
-           USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
-```
-
-4. Make sure you use the same words as the GitHub secrets you made.
-5. Write the `log in` Step and use the names of these secrets as the values.
+`"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of names. You can use any names you want.
 
 ### Observe things about the page
 
@@ -521,30 +495,31 @@ One special value you can include is `today`. That will insert the date on which
     When I set the variable "court_date" to "today + 12"
 ```
 
-
+If you want to use an environment variable to set a value, see the `secret variables` Step. You must use that even if the information is not sensitive.
 
 ---
 
 The `secret variables` Step can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
 
-You **must** use a GitHub "secret" to store the value. To learn how to create a GitHub secret see the GitHub documentation at https://docs.github.com/en/actions/security-guides/encrypted-secrets. 
+This is a complex Step to use. You **must** use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
 
 ```
-    I set the variable "user_account_password" to the GitHub secret "USER_PASSWORD"
+    I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
 ```
+
+You **MUST** use the `log in` Step if you want to sign into your docassemble server. This Step is unable to do that.
 
 ---
 
 Sign on a signature page. All signatures are the same - one dot.
 
-```
-    When I sign
-```
-
 :::warning
 **AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
 :::
 
+```
+    When I sign
+```
 
 ---
 
@@ -956,6 +931,32 @@ uses: suffolkLITLab/ALKiln@releases/v4
 4. Change `releases/v4` to the commit sha.
 
 When you want to update to a new version of the ALKiln, update that sha manually.
+
+### GitHub secrets
+
+Use GitHub secrets to set variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
+
+1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets.
+
+`USER_PASSWORD` is just a placeholder in our example. You can name your secrets whatever you want to. You can add these to one repository or you can add these to your organization, whichever is right for you.
+
+2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows` folder, then on the YAML file in there that runs the ALKiln tests.
+
+It should include lines that look like this:
+```yml
+         with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+```
+
+3. Add another line under those for each secret you want to add:
+
+```yml
+           USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
+```
+
+4. Make sure you use the same words as the GitHub secrets you made.
+5. Write your Step and use the names of these secrets as the values.
 
 
 ## Customizations
