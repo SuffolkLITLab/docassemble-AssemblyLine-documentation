@@ -429,7 +429,7 @@ Then I arrive at the next page
 The `screenshot` Step will take a picture of the screen that will be put in the GitHub action's [artifacts](#your-screenshots-artifacts).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
 
-::: warning
+:::warning
 **AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
 :::
 
@@ -460,6 +460,33 @@ Sometimes the characters in your code and the characters on screen aren't the sa
 ```
 ```
     Then I should NOT see the phrase "some phrase"
+```
+
+---
+
+The 'text in JSON' Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
+
+::: caution
+This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
+:::
+
+```
+    Then the text in the JSON variable "user_affidavit" should be
+    """
+    Some affidavit description after three quotes.
+
+    The text can be multi-line.
+
+    Then close with three quotes.
+    """
+```
+
+---
+
+The 'JSON variables' Step will add the page's JSON variables to the final test report. It's a bit messy, but you do get to see all the variables.
+
+```
+    And I get the page's JSON variables and values
 ```
 
 <!-- Then the "a" link leads to "a" -->
