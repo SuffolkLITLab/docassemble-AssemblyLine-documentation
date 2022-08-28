@@ -181,7 +181,7 @@ install the fonts on your Docassemble server.
 Make sure that you have a license for each font you want to install.
 
 1. Locate the .otf or .ttf file representing the font that you want to use
-   inside your Word template
+   inside your Word template (note that these are often in c:\windows\fonts\)
 1. Copy the font to your docassemble server
 1. Copy the font inside the docker container
 1. reset the font cache
@@ -195,7 +195,13 @@ docker exec mycontainer /bin/bash
 fc-cache -f -v
 supervisorctl restart uwsgi
 supervisorctl start reset
+supervisorctl -s http://localhost:9001 restart unoconv
 ```
 
-Finally, you may need to do a `docker stop -t 600 mycontainer` followed by a
-`docker start mycontainer` to help Docassemble see the new font.
+Instead of copying the fonts to /usr/share/fonts, you could likely copy
+them to `/var/www/.fonts`. This has the advantage of being writable by the
+web process from a Python module.
+
+If the font still does not appear to be installed (try generating a PDF with the 
+custom font),you may need to do a `docker stop -t 600 mycontainer` followed by a
+`docker start mycontainer`.
