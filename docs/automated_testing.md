@@ -426,15 +426,18 @@ The `link` Step can make sure a link appears on the page. For example, a link to
 The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
 ::: warning
-Sometimes the characters in your code and the characters on screen aren't the same. In our code, we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). It's best to copy the text straight from the screen.
+Getting the characters right can be tricky with docassemble. If you get told a phrase is missing, read about [a possible reason](#phrase-is-missing) in the errors section.
 :::
 
 ```
     Then I SHOULD see the phrase "some phrase"
 ```
+
 ```
     Then I should NOT see the phrase "some phrase"
 ```
+
+When trying to use double quotes inside a phrase, you can usually use `“` for opening quotes and `”` for closing quotes. It is impossible to use plain double quotes inside your phrase in a phrase Step.
 
 ---
 
@@ -875,6 +878,31 @@ If you see the text "invalid playground path" in the report, that means the `Giv
 ### UnhandledPromiseRejection error
 
 This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
+
+### Phrase is missing
+
+If you get an error message that an expected phrase is missing, make sure you copy and paste the text you're expecting directly from the running interview page.
+
+Sometimes the characters in your code and the characters on screen are not the same. For example, in our code we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). They look very similar, but are not the same. It's best to copy the text straight from the screen the user sees.
+
+Wrong:
+
+```
+    I should see the phrase "a document called a 'Certified docket sheet'"
+```
+
+
+Example error:
+
+```
+The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
+```
+
+Right:
+
+```
+    I should see the phrase "a document called a ‘Certified docket sheet’"
+```
 
 <!-- ### Access Denied -->
 
