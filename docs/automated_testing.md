@@ -441,7 +441,7 @@ When trying to use double quotes inside a phrase, you can usually use `“` for 
 
 ---
 
-The `accessibility` Step can <span id="accessibility">check a page for it's accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
+The `accessibility` Step can <span id="accessibility">check a page for its accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
 
 ```
     Then I check the page for accessibility issues
