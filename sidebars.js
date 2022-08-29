@@ -3,6 +3,7 @@ module.exports = {
         'intro',
         'bootcamp',
         'getting_started',
+        'getting_started_docassemble',
         {
             type: 'category',
             label: 'Assembly Line Process',
