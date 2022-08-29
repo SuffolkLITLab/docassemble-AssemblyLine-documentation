@@ -7,7 +7,7 @@ slug: /style_guide/question_help_your_user
 
 ## Provide help information in context
 
-Use the [help options](coding_style_yaml_interface.md#adding-help-in-context)
+Use the [help options](coding_style/yaml_interface.md#adding-help-in-context)
 that your interview platform offers. Not all users will need the same help.
 Too much information on screen can be confusing.
 
@@ -83,8 +83,26 @@ checkbox that allows the user to write in a longhand description of the date
 instead (e.g. 'last summer').
 
 When you give the user a list of options that requires them to make a choice,
-give an "I do not know" choice among the options if you can.. Make sure your
+give an "I do not know" choice among the options if you can. Make sure your
 form can deal with that uncertainty with an appropriate and safe default.
+
+This is important
+any time that the information must be gathered, either from the user's home
+or by contacting a third party. It may not be possible for the user to get the
+information.
+
+:::tip User can answer confidently
+Does the defendant own any weapons?
+- Yes
+- No
+- I don't know
+:::
+
+:::danger User may feel stuck
+Does the defendant own any weapons?
+- Yes
+- No
+:::
 
 ## Show your user all of the information that they need to make the correct choice
 
@@ -111,4 +129,4 @@ Instead, you may just want to provide help text that suggests
 how the user should fill the field.
 
 For example, allow space for the user to provide information like phone numbers
-and addreses that are from a different country.
+and addresses that are from a different country.

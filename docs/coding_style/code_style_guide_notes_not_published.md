@@ -10,20 +10,16 @@
 
 [We can probably find existing samples to start with?]
 
-
-
 *   [https://www.pullrequest.com/blog/create-a-programming-style-guide/](https://www.pullrequest.com/blog/create-a-programming-style-guide/)
 *   [https://medium.com/level-up-web/what-is-a-programming-style-guide-and-why-should-you-care-9019e51bb7ad](https://medium.com/level-up-web/what-is-a-programming-style-guide-and-why-should-you-care-9019e51bb7ad)
 
 Why do we want conventions and guidelines
 
 
-
 *   We want to make it easy for anyone to pick up someone else’s code and to keep working on it
 *   Help new coders who don’t have any way to code yet to choose a way. Reduce decision paralysis.
 
 Overall goals: 
-
 
 
 *   This is a document to help our team come to consensus so that we each teach people how to do things the same way.
@@ -113,7 +109,7 @@ Unordered:
 
 ### 5.4 Variable Names {#5-4-variable-names}
 
-Moved to docusuarus:
+Moved to Docusaurus:
 
 
 #### 5.4.1 Code variable names {#5-4-1-code-variable-names}
@@ -179,11 +175,8 @@ How much of this is being handled in Trello? What should be kept there and what 
 
 ### 5.9 TODO: Amend checklist {#5-9-todo-amend-checklist}
 
-
-
 *   A practice of creating a new Playground Project for each interview
 *   A practice of creating a decision log for each form
-
 
 
 ### 5.14 Proposal: process_action() and other one-use-per-interview functionalities {#5-14-proposal-process_action-and-other-one-use-per-interview-functionalities}
@@ -191,12 +184,11 @@ How much of this is being handled in Trello? What should be kept there and what 
 There is a list needed here, but some things should only be done once per interview. For those things we should implement a variable that is a flag for making sure they are only run once. Use would look like this:
 
 
-```
+```python
 if not did_this_thing:
   do_this_thing()
   did_this_thing = True
 ```
-
 
 Proposal: we use `did_` at the beginning of every one of these flags.
 
@@ -215,6 +207,3 @@ Proposal: we use `did_` at the beginning of every one of these flags.
    </td>
   </tr>
 </table>
-
-
-

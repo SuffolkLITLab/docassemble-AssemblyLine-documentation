@@ -35,13 +35,13 @@ module.exports = {
             label: 'How to write good questions',
             items: [
                 'question_style_overview',
-                'style_guide_readability',
-                'style_guide_formatting',
                 'style_guide_respect',
+                // 'question_style_sensitivities',
+                'style_guide_readability',
                 'question_style_structure',
-                'question_style_help_your_user',
                 'question_style_organize_fields',
-                'question_style_sensitivities',
+                'question_style_help_your_user',
+                'style_guide_formatting',
                 'question_style_validation'
             ]
         },
@@ -51,22 +51,31 @@ module.exports = {
             items: [
                 'question_library/ql_names',
                 'question_library/ql_addresses',
-                'question_library/ql_gender'
+                'question_library/ql_gender',
+                'question_library/ql_language',
             ]
         },
         {
             type: 'category',
             label: 'Coding Style Guide',
             items: [
-                'coding_style',
-                'coding_style_python',
-                'coding_style_yaml',
-                'coding_style_yaml_structure',
-                'coding_style_yaml_dynamic',
-                'coding_style_yaml_interface',
-                'coding_style_yaml_translation',
-                'coding_style_defense',
-                'docs_style_guide'
+                'coding_style/coding_style_overview',
+                'coding_style/python',
+                'coding_style/yaml',
+                'coding_style/yaml_structure',
+                'coding_style/yaml_dynamic',
+                'coding_style/yaml_interface',
+                'coding_style/yaml_translation',
+                'coding_style/defense',
+                'coding_style/accessibility',
+                'coding_style/docs_style_guide'
+            ]
+        },
+        {
+            type: 'category',
+            label: 'Measuring form complexity',
+            items: [
+                'complexity/complexity'
             ]
         },
         //'name_formats',
@@ -81,7 +90,23 @@ module.exports = {
                 'framework/altoolbox',
                 'framework/alrecipes',
                 'automated_testing',
-                'framework/efiling',
+                'framework/answer_sets',
+                'framework/reserved_keywords',
+            ]
+        },
+        {
+            type: 'category',
+            label: 'E-filing',
+            items: [
+                'efiling/overview',
+                'efiling/efiling_through_docassemble'
+            ]
+        },
+        {
+            type: 'category',
+            label: 'Analytics',
+            items: [
+                'analytics/tracking_usage'
             ]
         },
         'contributors',

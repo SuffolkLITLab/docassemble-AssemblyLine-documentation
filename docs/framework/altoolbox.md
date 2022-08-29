@@ -14,10 +14,11 @@ Line framework. Follow the instructions to include each component in your
 interview, which may involve including a single YAML file or a module, CSS, and
 JavaScript file.
 
+The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, see the "Live demos" section below if you want the latest and complete info.
+
 ## Live demos 
 
 To get a hands-on experience on any of these functions, you can go to [ALToolbox's overview page](https://apps-dev.suffolklitlab.org/start/ALToolbox/altoolbox_overview) to run the demo interview you are interested in.
-
 
 The overview page also provides instructions for those who want to contribute to ALToolbox.
 
@@ -237,7 +238,7 @@ include:
   - docassemble.ALToolbox:phone-number-validation.yml
 ``` 
 
-## BirthDate and ThreePartsDate custom datatypes
+## BirthDate and ThreePartsDate custom data types
 
 Use the custom datatype `BirthDate` or `ThreePartsDate` to ask the user
 to enter a date that might be very far in the past or in the future,
@@ -297,7 +298,7 @@ Then in the DOCX template, you could write
 `{{ output_checkbox(user_lives_in_florida) }}` instead of the messier
 `{% if user_lives_in_florida %}[X]{% else %}[  ]{% endif %}`.
 
-`output_checkbox()` has two optional keyword paramters:
+`output_checkbox()` has two optional keyword parameters:
 
 - `checked_value (str)`: defaults to `[X]` but can be set to any string or even
   a `DAFile` or `DAStaticFile` with the image of a checkbox

@@ -1,7 +1,7 @@
 ---
 id: question_style_structure
-title: Structuring your interview
-sidebar_label: Structuring your interview
+title: Group questions into screens
+sidebar_label: Group questions into screens
 slug: /style_guide/question_structure
 ---
 
@@ -37,11 +37,39 @@ Screening questions are questions that tell the user if they are using the right
 app. You want your user to answer as few questions as possible before you screen
 them out of the interview to avoid wasting their time.
 
-### Group similar questions together
+### Group similar questions together by topic
 
-Ask for similar information at a similar time and in a logical order in your
+Ask for related information at a similar time and in a logical order in your
 interview. Try to approximate the way you would ask those questions in a
 face-to-face interview.
+
+Do not jump around from topic to topic.
+
+### Ask expected questions before asking surprising ones
+
+Keep your user's trust by asking for questions they expect before asking for
+more surprising or unusual information.
+
+### Save the more sensitive questions for later in the interview
+
+Let your user see the value and pattern of the easiest to answer questions
+before asking them for sensitive information, like a social security number
+or an address.
+
+Sometimes there is a very good reason for asking for a sensitive question
+early in the interview. For example:
+
+1. You may want to ask an address to show the user a list of courts that serve
+their address.
+1. You may want to let the user tell their story in a protection from abuse
+order before asking for less urgent information, like child support orders
+and pet protection.
+
+But you may be able to ask a few simpler questions, like the user's name
+and family information, before diving right into questions that will be emotionally
+challenging.
+
+Do not ask for personal information if you do not need it.
 
 ## Placing your form in context to a larger process
 
@@ -81,7 +109,7 @@ separately.
 
 In a Docassemble interview, consider using the sections to allow the user to
 edit and review their answers as they use the interview. This requires
-additional work but may build the user's confience as they use your website.
+additional work but may build the user's confidence as they use your website.
 
 ## Use signposting on longer interviews
 

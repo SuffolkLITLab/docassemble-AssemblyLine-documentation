@@ -45,7 +45,7 @@ Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
 Combined emphasis with **asterisks and _underscores_**.
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+Strike through text uses two tildes. ~~Scratch this.~~
 
 ---
 
@@ -100,7 +100,7 @@ Reference-style: ![alt text][logo]
 
 Images from any folder can be used by providing path to file. Path should be relative to markdown file.
 
-![img](../static/img/logo.svg)
+![img](../../static/img/logo.svg)
 
 ---
 
@@ -148,9 +148,9 @@ There must be at least 3 dashes separating each header cell. The outer pipes (|)
 
 ---
 
-## Blockquotes
+## Block quotes
 
-> Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
+> Block quotes are very handy in email to emulate reply text. This line is part of the same quote.
 
 Quote break.
 

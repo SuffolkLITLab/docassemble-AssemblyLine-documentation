@@ -36,18 +36,23 @@
   text-align: center;
 }
 
-.announcementDark {
-  background-color: #20232a;
-  color: #fff;
-}
-
 .announcementInner {
   margin: 0 auto;
   max-width: 768px;
 }
 
+:root {
+  --main-bg-color: #e6ecfc;
+  --main-color: #000;
+}
+
+[data-theme='dark'] {
+  --main-bg-color: rgb(27, 27, 29);
+  --main-color: #fff;
+}
+
 .hero {
-  background-color: #2b3137;
+  background-color: var(--main-bg-color); 
   padding: 48px;
 }
 
@@ -58,7 +63,7 @@
 }
 
 .heroProjectTagline {
-  color: #fff;
+  color: var(--main-color);
   font-size: 60px;
   margin: 0;
 }
@@ -89,8 +94,8 @@
 }
 
 .heroLogo {
-  animation-duration: 2s;
-  animation-name: jackInTheBox;
+  /* animation-duration: 2s; */
+  /* animation-name: jackInTheBox; */
   float: right;
   margin-top: 20px;
   padding: 0 20px 20px;

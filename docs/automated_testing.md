@@ -271,7 +271,7 @@ Radio or dropdown choices.
 
 Text field or textarea. Even if the answer has multiple lines, you can only use one line. When a new line is supposed to appear, instead use `\n`. See below:
 ```
-      | favorite_color | Blue.\nNo, green!\nAaah... | favorite_color |
+      | favorite_color | Blue.\nNo, green!\nAah... | favorite_color |
 ```
 
 A generic object with an index variable.
@@ -441,6 +441,25 @@ When trying to use double quotes inside a phrase, you can usually use `“` for 
 
 ---
 
+The `accessibility` Step can <span id="accessibility">check a page for it's accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
+
+```
+    Then I check the page for accessibility issues
+```
+
+This will include a separate JSON file if there are any accessibility issues with the page.
+ 
+You can also check all pages past a certain point automatically:
+
+```
+    Then I check all pages for accessibility issues
+```
+
+This is equivalent to running `I check the page for accessibility issues` on every new page
+that the test runner sees.
+
+---
+
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
 
 ::: caution
@@ -472,7 +491,7 @@ The `JSON variables` Step will add the page's JSON variables to the final test r
 <!-- Then the "a" link opens in the same window -->
 
 
-### Set fields
+### Set fields / Interact with page
 
 The `continue` Step will tap the button to continue to the next page. The text on the button itself doesn't matter.
 
@@ -482,7 +501,7 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ---
 
-Use the `set value` Step to set the values of fields.
+Use the `set variable` Step to set the values of fields.
 
 Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
 
@@ -526,6 +545,32 @@ Sign on a signature page. All signatures are the same - one dot.
 
 ---
 
+You can also tap or click on specific elements, like buttons on a page.
+You can use any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
+to get an element on the page, and can add any additional wait time after tapping the element.
+
+```
+    When I tap the "#element-id" element
+    And I tap the "#other-element" element and wait for 5 seconds
+```
+
+If you are using the [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs), you can say that you're tapping the tab,
+and ALKiln will tap and wait until the tab is fully visible.
+
+```
+    When I tap the "TabGroup-specific_tab_name-tab" tab
+```
+
+---
+
+Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
+
+```
+    I get to the question id "some question block id" with this data:
+```
+
+---
+
 The `name` Step is specifically for the Document Assembly Line 4-part name questions.
 
 Avoid punctuation. We recommend you just use 2 names - the first name and last name - but you can have all these formats:
@@ -535,7 +580,7 @@ Avoid punctuation. We recommend you just use 2 names - the first name and last n
 - Firstname Middlename Lastname Suffix (where suffix is one of the dropdown suffix choices, like `II`)
 
 ```
-    When I set the name of "x[i]" to "Ulli User"
+    When I set the name of "x[i]" to "Sam User"
 ```
 
 ---
@@ -548,22 +593,7 @@ It allows a US address format, but can otherwise be any address you want that ma
     When I set the address of "users[0]" to "120 Tremont Street, Unit 1, Boston, MA 02108"
 ```
 
----
-
-Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
-
-```
-    I get to the question id "some question block id" with this data:
-```
-
 ### Other actions
-
-Use the `continue` Step to continue to the next page. The text on the button itself doesn't matter.
-```
-    When I tap to continue
-```
-
----
 
 Use the `download` Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](#your-downloaded-files-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
 ```
@@ -664,14 +694,15 @@ _Some of these are just good practices to follow when coding your interviews_
 In questions with choices, give each label a value. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
 
 Not great with just labels:
-```yml
+```yaml
 question: Tell me about yourself
 fields:
   - Favorite color
 ```
 
 Better with values as well:
-```ymlquestion: Tell me about yourself
+```yaml
+question: Tell me about yourself
 fields:
   - Favorite color: user_favorite_color
 ```
@@ -783,7 +814,7 @@ screen id: user-name
       | user.name.last | Plaintiff |  |
   Unused rows:
       | defendant.name.first | Sam |  |
-      | defendant.name.last | Defo |  |
+      | defendant.name.last | Defendant |  |
 ```
 
 Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id.
@@ -1201,6 +1232,6 @@ Even though this is built using [cucumberjs](https://cucumber.io/), this framewo
 
 ALKiln's repository is at https://github.com/SuffolkLITLab/ALKiln.
 
-The developer test setup interivew's repo is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
+The developer test setup interview's repo is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
 
 ALKiln also tests itself using some of the interviews at https://github.com/plocket/docassemble-ALAutomatedTestingTests.

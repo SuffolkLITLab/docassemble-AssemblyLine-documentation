@@ -115,7 +115,7 @@ code: |
 [`navigation`](https://docassemble.org/docs/initial.html#navigation%20bar) and [`sections`](https://docassemble.org/docs/initial.html#sections) work with [`nav.set_section()`](https://docassemble.org/docs/functions.html#DANav.show_sections) to show the column on the left that lets your users jump to a screen that lets them edit their information in your interview. 
 This helps users avoid using the 'Back' button which deletes their answers.
 
-By default, there is a single "Review" section, that covers the whole interview. In longer interviews, adding more sections can show the user a roadmap of what they will have to do and where they are now.
+By default, there is a single "Review" section, that covers the whole interview. In longer interviews, adding more sections can show the user a road map of what they will have to do and where they are now.
 
 ```yml
 sections:
@@ -269,7 +269,7 @@ need: a_258e_motion_for_impoundment
 Leave this block as it is if possible. Prepares to use this document in the `ALDocumentBundle`.
 
 Usually you need to make at least two different attachment blocks for a PDF: a preview without a signature and the final document with a signature. 
-The ALDocument class takes care of that for you. It also contains some nice features like adding addendums if
+The ALDocument class takes care of that for you. It also contains some nice features like adding addenda if
 an interviewee's answers are too long.
 
 ```yml

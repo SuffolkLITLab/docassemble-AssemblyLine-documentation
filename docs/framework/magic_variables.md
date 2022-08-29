@@ -6,6 +6,29 @@ sidebar_label: Special variables for Assembly Line interviews
 slug: /framework/magic_variables
 ---
 
+## Server-wide configuration options
+
+These are settings that can be configured by editing the global server
+configuration. They are not configurable on a per-interview basis.
+
+### Enable or disable answer sets
+
+Add the following entry in your global
+[config.yml](https://docassemble.org/docs/config.html#edit) to turn on the
+[Answer Set](answer_sets.md) feature that allows users to save answers for reuse in other
+interviews.
+
+```yaml
+assembly line:
+  enable answer sets: True
+  enable answer set imports: True
+```  
+
+The `enable answer set imports` feature separately controls whether users can
+import answers from a JSON file that is uploaded to the server. While this
+allows user control over their data and can be especially helpful for tests,
+this feature carries some risk and is disabled by default.
+
 ## Global configuration options
 
 These variables are recommended to be set in a package that all of your
@@ -188,16 +211,45 @@ Valid values:
 
 ### `github_repo_name`
 
-This can be set to the name of the github repository (without owner name)
-so that you can test the feedback form and `about` page links within the
-Docassemble playground.
+Set this value to the name of the interview's GitHub repository, without the
+owner name.
 
-Example:
+This variable is used to make the `about` page display the correct "last modified"
+date and to let the GithubFeedbackForm add an issue to the correct repository when
+someone wants to provide feedback.
+
+If you leave this value blank, AssemblyLine will guess the value from your
+installed package's name. However, it cannot guess the value when you run the
+package from the playground. It is best to define it explicitly.
+
+For example, if the URL to your package is
+https://github.com/suffolklitlab/docassemble-AssemblyLine, then the value of
+`github_repo_name` should be defined like this:
 
 ```yaml
 code: |
   github_repo_name = "docassemble-AssemblyLine"
 ```
+
+### `github_user`
+
+Set this value to the name of the GitHub organization or user that owns the
+interview's repository to make sure that feedback and the `about` page point to
+the right place.
+
+For example, if the URL to your package is
+https://github.com/suffolklitlab/docassemble-AssemblyLine, then the value of
+`github_user` should be defined like this:
+
+```yaml
+code: |
+  github_user = "suffolklitlab"
+```
+
+If all of your packages are kept in a single GitHub organization, you might
+choose to define this value on an organization-wide basis by placing it in a
+shared YAML file, such as the YAML that defines your theme or other branding
+elements.
 
 ## Run-time options
 
@@ -278,3 +330,7 @@ in the lawsuit. Not all forms contain a second party, so this variable is option
 
 The Assembly Line runtime packages will assign the value of `users` or `other_parties`
 to `plaintiffs`, `petitioners`,  `defendants`, and `respondents` dynamically.
+
+## See also
+
+- [List of reserved variable names](reserved_keywords.md)

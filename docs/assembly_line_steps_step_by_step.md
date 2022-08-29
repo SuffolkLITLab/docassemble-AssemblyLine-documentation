@@ -31,7 +31,7 @@ just one Trello board.
 
 First, run your form through the [Weaver](weaver_overview.md).
 
-### Refining in the Docasemble playground
+### Refining in the Docassemble playground
 
 Next, [customize your form](customizing_interview.md).
 
@@ -91,8 +91,7 @@ to provide a very concrete guidance as to which features should be prioritized.
 ## Testing
 
 Testing should be incorporated into multiple stages of development, but we
-provided some more specific guidance on our testing Trello
-board](https://trello.com/b/nT7yy2Wl/3-assemblyline-testing-template-board).
+provided some more specific guidance on our [testing Trello board](https://trello.com/b/nT7yy2Wl/3-assemblyline-testing-template-board).
 
 We found it effective to [test using this approach](https://suffolklitlab.org/legal-tech-class/docs/testing/testing-scenarios):
 

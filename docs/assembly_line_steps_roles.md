@@ -11,7 +11,7 @@ about finding people to play the following roles:
 
 * Project manager
 * Researcher and content author
-* Subject matter expert and liason to subject matter expert
+* Subject matter expert and liaison to subject matter expert
 * Template cleanup and adding labeled fields (in Adobe Acrobat or Microsoft Word)
 * Python coder
 * Frontend / HTML / CSS / JavaScript coders

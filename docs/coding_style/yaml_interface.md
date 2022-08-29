@@ -1,11 +1,11 @@
 ---
-id: coding_style_yaml_interface
+id: yaml_interface
 title: Choosing interface options
 sidebar_label: Choosing interface options
 slug: /coding_style_guide/yaml_interface
 ---
 
-### Use radio buttons for short lists of options
+## Use radio buttons for short lists of options
 
 When the user has only one valid choice among a relatively short list,
 use radio buttons. Use a dropdown menu in situations where:
@@ -13,7 +13,7 @@ use radio buttons. Use a dropdown menu in situations where:
 1. the list of choices is longer than about 7 options
 1. the choice is optional and not very common (such as a name suffix)
 
-### Have a "next" or "continue" button on most screens
+## Have a "next" or "continue" button on most screens
 
 Docassemble has a "yesno" question type that replaces the "Continue" button
 with buttons that immediately move to the next screen. This feature
@@ -43,7 +43,7 @@ included by default in the Assembly Line package.
 Use the `collapse_template()` function with a `template` block to add
 in-context explanatory text in the `subquestion` of your question block.
 
-Example: 
+Example:
 
 ```yaml
 ---
@@ -64,22 +64,25 @@ template: overpayment_waiver_help_template
 subject: |
   More information about an overpayment waiver
 content: |
-  When Social Security says that you have an overpayment they are saying that you got more SSI or SSDI than you should have gotten under their rules. The reason Social Security says you have an overpayment is in the Notice of Overpayment. 
+  When Social Security says that you have an overpayment they are saying that
+  you got more SSI or SSDI than you should have gotten under their rules. The
+  reason Social Security says you have an overpayment is in the Notice of 
+  Overpayment. 
 ```
 
 Docassemble has many features that allow you to add help
 in-context. They include:
 
-1. the question help button
-1. the glossary `terms` feature
+1. the [question help button](https://docassemble.org/docs/modifiers.html#help)
+1. the [glossary `terms` feature](https://docassemble.org/docs/modifiers.html#terms)
 1. the `under` area
-1. the field `hint` modifier that adds placeholder text
-1. the field `help` modifier
-1. the option `help` modifier
+1. the [field `hint` modifier](https://docassemble.org/docs/fields.html#hint) that adds placeholder text
+1. the [field `help` modifier](https://docassemble.org/docs/fields.html#help)
+1. the [option `help` modifier](https://docassemble.org/docs/fields.html#field%20with%20choices)
 
 Through expert feedback, we have determined that the question help button should
 never be used. The placement of the button and the use of a separate mode for
-help text can be confusing. Help may also come "too late" with this feature, 
+help text can be confusing. Help may also come "too late" with this feature,
 after a user has already completed answering the questions on screen.
 
 We also discourage use of the `hint` modifier that adds placeholder text to a
@@ -99,3 +102,5 @@ The `field` and `option` help modifiers are both relatively clear and simple to
 use for field-specific hints and to explain choices that may otherwise not be
 clear. Custom CSS may make these features slightly more polished than the
 stock Docassemble appearance.
+
+## 

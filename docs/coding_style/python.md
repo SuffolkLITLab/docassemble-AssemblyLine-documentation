@@ -1,5 +1,5 @@
 ---
-id: coding_style_python
+id: python
 title: Python
 sidebar_label: Python
 slug: /coding_style_guide/python

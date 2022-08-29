@@ -1,5 +1,5 @@
 ---
-id: coding_style_defense
+id: defense
 title: |
    "Safe" coding
 sidebar_label: |
@@ -10,12 +10,12 @@ slug: /coding_style_guide/defense
 ## Use Docassemble lists, dictionaries, and sets, or subclasses
 
 Docassemble relies heavily on exceptions for its declarative logic
-system. Those work better with the DAObject class and classes that 
+system. Those work better with the DAObject class and classes that
 inherit from it. Docassemble's DAObject class adds an `intrinsicName`
 attribute to every object that helps Docassemble track down a question
 that is able to define a variable.
 
-Where you make uses of lists, dictionaries, or sets, you should 
+Where you make uses of lists, dictionaries, or sets, you should
 default to using either a DAList, DADict, or DASet, or a class that
 inherits from one of those classes.
 
@@ -74,10 +74,11 @@ example is often clearer and easier to read, with less punctuation.
 ## Convert types or use more abstract interfaces
 
 Does your function return a list, a set, or a tuple? Be careful when working
-with collections that you know which datastructure you are using.
+with collections that you know which data structure you are using.
 
 When you create a function that accepts a list, you may want to explicitly
 convert to a list before working with it in case a developer passes in a `set`.
+
 ## Check for None
 
 It is common for Python functions to return `None` in certain error
@@ -91,6 +92,6 @@ Docassemble are for convenience and your user should be able to continue in some
 fashion. You should never drop down to a Docassemble error screen when an
 external dependency fails or is unavailable.
 
-# Further reading and sources
+## Further reading and sources
 
 * [Defensive Programming](https://en.wikipedia.org/wiki/Defensive_programming), Wikipedia

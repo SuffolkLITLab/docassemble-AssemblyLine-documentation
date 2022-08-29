@@ -58,7 +58,7 @@ The `address_fields()` method includes the following optional parameters:
   is displayed as well as the default country in the `country` drop down. In
   the Assembly Line question library, `country_code` typically defaults to the value of
   `AL_DEFAULT_COUNTRY`
-* `default_state`: default state, province, or sublocality. In the Assembly Line
+* `default_state`: default state, province, or sub locality. In the Assembly Line
   question library, `default_state` typically defaults to the value of
   `AL_DEFAULT_STATE`
 * `show_country`: defaults to `False`. If enabled, a country drop down menu will
@@ -87,7 +87,7 @@ The `previous_addresses` attribute of an `ALIndividual` is an `ALAddressList`.
 The `ALIndividual` is an extension of the Docassemble
 [`Individual`](https://docassemble.org/docs/objects.html#Individual) class. It
 should be used to represent both natural people and businesses or other
-entitities.
+entities.
 
 `ALIndividual` objects include the following methods that are not in the stock
 `Individual` class:
@@ -102,6 +102,7 @@ entitities.
   in the default question library "contact information" screen as a formatted
   string. Specifically, it will display `mobile_number`, `phone_number`,
   `email`, and `other_contact_method`. This may be helpful in a formatted letter.
+* `age_in_years()` returns the individual's age as an integer (whole number), calculated from the individual's `birthdate` attribute.
 * `formatted_age()` is like `age_in_years()` but returns a formatted string with
   `years`, `months`, `weeks`, and `days` included when relevant. The cutoff is 2
   weeks to display days, 2 years to display months, and anything over 2 years
@@ -116,6 +117,8 @@ entitities.
   [`gender`](/question_library/gender.md) questions.
 * `initials()` is used to return a string with the 1, 2, or 3 initial letters of
   a person's name. E.g., `QKS` for Quinten K Steenhuis.
+* `language_fields(choices=List[Dict[str, str]])` provides a language selector that sets the `.language` attribute of the user, together with an `other` fill-in. This should be the two-letter ISO language code. We recommend defining and passing a dictionary named `al_language_user_choices` which will also be used by built-in questions triggered from `ql_baseline.yml`.
+* `language_name()` will return the language name in English. If there is a system-wide translation `words.yml` translation file and the user's interface is in that language, the language name will be translated. If the user selected an `other` option, the `other` option will be returned.
 
 Read-only attributes:
 
@@ -128,6 +131,11 @@ They return `True` or `False` depending on the value of the `gender` attribute.
 * `gender_other` (True if and only if the `gender` attribute is not "female" or "male")
 * `gender_unknown`
 * `gender_self_described`
+
+##### Relation to the `Individual` class
+
+The `ALIndividual` class inherits from Docassemble's [`Individual`](https://docassemble.org/docs/objects.html#Individual) class, and all other methods of `Individual` work
+the same way as they do in the `Individual` class.
 
 #### ALPeopleList {#ALPeopleList}
 
@@ -155,6 +163,25 @@ Example:
 `users.short_list(2)` will display `John Smith and Jane Smith, et. al.` if the
 list contains John Smith, Jane Smith, and Jane Doe. `et al` is not used if the
 list is at or below the limit provided.
+
+##### Relation to the `DAList` class
+
+`ALPeopleList` inherits from Docassemble's
+[`DAList`](https://docassemble.org/docs/objects.html#DAList) class, and retains
+all methods and attributes of a `DAList`.
+
+Specifically, the language methods, including the `pronoun()` and related
+methods, can be used to display the correct pronoun depending on the number and
+gender of the members of an `ALPeopleList`. E.g., `users.pronoun_possessive()`
+will return `her` if there is a single user with the `gender` attribute value
+"female", and `their` if there are multiple members of the list.
+
+These methods can be helpful inside single-language pleading templates but
+usually should not be used inside the interview itself, as they can make
+translation challenging. While there are language-specific versions of these
+methods, they can lead to odd ungrammatical "fragments". As tedious as it may
+be, the best practice for translation inside the interview is to use conditional
+logic for full sentences matching each gender and number.
 
 ### Classes for specific kinds of people {#other-people}
 

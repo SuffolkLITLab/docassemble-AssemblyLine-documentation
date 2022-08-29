@@ -15,6 +15,7 @@ that we list below for full compatibility.
 - [The DOCX version of the same motion](./assets/generic_motion_family_law.docx)
 
 ## The basics
+
 ### Fields, labels, and variables
 
 A blank space on a paper form is usually called a `form field`, or `field` for
@@ -23,6 +24,79 @@ them.
 
 When you access the labeled field in your Docassemble code, it is usually called
 a `variable`.
+
+### General rules for labels
+
+You should always use the specific labels from this page when they match the
+concepts in your form. But if you cannot find a matching label, use the general
+rules below to add as many custom labels as you need.
+
+#### Labels should be valid Python variable names that start with a letter
+
+PDF and DOCX `labels` should also work as valid [Python variable
+names](coding_style/python.md). The basic rule is that Python variable names
+need to start with a letter and can only contain letters, digits, and the `_`
+underscore character. Some variable names are
+[reserved](framework/reserved_keywords.md) and have a special meaning inside
+AssemblyLine interviews. You should not use a variable name on the
+[reserved](framework/reserved_keywords.md) list. Doing so can lead to 
+hard to track bugs.
+
+#### Variable names are case sensitive - make them all lowercase
+
+Field names are case sensitive. The convention is to never re-use variable names
+with different capitalizations to store different things. Stick with all lower
+case names for fields when possible.
+
+#### Use the Python `snake_case` format for field labels
+
+In PDFs, labels should be all one word, lowercase, with multiple words separated
+by an underscore, the `_` character. This convention is called `snake_case`. Do
+not use a `.` symbol or `[]` inside a PDF field's `label`.
+
+In a DOCX file, you can use the `.` symbol as well as brackets `[]` but they
+have a special meaning. The `.` separates an `object` from its `attribute`, and
+the `[]` indicates that you are referencing a list of items. Beginners should
+avoid these symbols **except** when instructed to do so for one of the variable
+names below.
+
+#### Use short but descriptive labels
+
+Use variable names that are descriptive but also short. Avoid using
+abbreviations. A good rule of thumb is to spell out acronyms and initialisms for
+clarity, but to freely remove words other than nouns and verbs to keep the names
+short. Use a name you would still understand if you read it in a year.
+
+About 30 characters is a good limit to the length of a variable name. It's
+unusual to need more than that. If your variable name is shorter than 5 characters,
+it might not be descriptive enough.
+
+#### Some suggestions for coming up with custom labels
+
+There are no hard and fast rules other than the ones listed above, but here are
+some conventions that may help you:
+
+1. Drop words from the variable name that don't add specific meaning. Filler
+   words like "a", "the", etc. are almost never needed. Stick with nouns and
+   verbs.
+1. Yes/no variables (also called `boolean`) commonly start with a form of the
+   verb "to be" or "to have", paired with a noun. E.g., `is_attorney` or
+   `has_notice_to_quit`. You can also use other verbs--`writes_docassemble` or
+   `saved_status` or `wants_copies_returned`.
+1. Do not include the **type** of variable in the variable name itself. It is
+   usually redundant and is not a common Python style. Exception: you might add
+   something like `_list` or `_date` that is both a type and is descriptive of
+   the variable's real world contents.
+1. There are now a number of [samples of
+   interviews](https://github.com/search?q=%22docassemble.AssemblyLine%22&type=code)
+   built with the Assembly Line framework that you can find online. You can get
+   ideas for variable names to use in your interview that match if they apply to
+   the same concepts.
+
+When you're stuck, feel free to ask for help! It's a good idea to get a second
+opinion the first few times you label a document. A fellow programmer may have
+some good ideas to make your variable names shorter, clearer, or more closely
+follow programming conventions.
 
 ### How the Assembly Line labels work
 
@@ -191,7 +265,7 @@ Substitute any name for a person for `users` below.
 `users1_address_address`     | `users[0].address.address` | Street address
 `users1_address_unit`        | `users[0].address.unit`    | Apartment, unit, or suite
 `users1_address_city`        | `users[0].address.city`    | City or town
-`users1_address_state`       | `users[0].address.state`   | State, province, or sublocality (dependent on country)
+`users1_address_state`       | `users[0].address.state`   | State, province, or sub-locality (dependent on country)
 `users1_address_zip`         | `users[0].address.zip`     | Zip or postal code
 `users1_address_county`      | `users[0].address.county`  | County or parish
 `users1_address_country`     | `users[0].address.country` | Country
@@ -296,34 +370,15 @@ Docassemble does not do anything with the digit. Feel free to use `__1`, `__99` 
 other series of digits, in any order.
 :::
 
-## Adding custom field labels not listed above
-
-### Add as many field labels as you need
-
-The list above is a small sample of the fields that you will need for your form.
-Use as many custom names for fields as you need.
-### Stick with Docassemble conventions
-
-The most important convention is to use
-[`snake_case`](coding_style_python.md#use-snake_case-for-variable-names) for
-field or variable names. `snake_case` is the name for a style that uses all
-lower case letters and separates words with an underscore like this:
-`my_custom_variable`.
-
-## Keep field labels short but readable
-
-Spell out full words, but use names that are short enough to scan quickly. Labels
-that are too long (over 30 characters) may be difficult to use inside Docassemble.
-Try dropping connecting words to keep field labels short but explanatory.
-## You can always edit your template again
+## Remember, you will always have a chance to fix things later
 
 Do your best to get your template right before running it through the Weaver.
-However:
+Getting things right at the beginning can save you a lot of time and effort.
 
-* you can always edit your template later
-* keep your DOCX file logic simple at first to make it easier to run through the
-  Weaver
+However, you can always edit your template later. When you make changes to your
+template, you do not need to run it through the Weaver again. You can upload
+your edited template directly to the Docassemble playground's templates folder.
 
-When you make changes to your template, you do not need to run it through the
-Weaver again. You can upload your edited template directly to the Docassemble
-playground's templates folder.
+## See also
+
+- [List of reserved variable names](framework/reserved_keywords.md)

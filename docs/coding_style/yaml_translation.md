@@ -1,5 +1,5 @@
 ---
-id: coding_style_yaml_translation
+id: yaml_translation
 title: Planning for translation and flexible updates
 sidebar_label: Planning for translation
 slug: /coding_style_guide/yaml_translation
@@ -72,7 +72,7 @@ language: es
 sections:
   - Sección 1
   - Sección 2
-```    
+```
 
 ### Avoid using the language functions from `pattern.en` in your interview
 
@@ -103,6 +103,6 @@ question: |
   % if client_is_overpaid_person:
   Do you agree that you got too much money from Social Security?
   % else:
-  Do you agree that ${recordee} got too much money from Social Security?
+  Do you agree that ${ recorded_person } got too much money from Social Security?
   % endif
 ```

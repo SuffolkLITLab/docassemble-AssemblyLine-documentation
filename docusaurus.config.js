@@ -2,20 +2,20 @@ module.exports = {
   title: 'The Document Assembly Line Project',
   tagline: 'From paper to webform, made easier',
   url: 'https://suffolklitlab.org',
-  //baseUrl: '/',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'SuffolkLITLab', // Usually your GitHub org/user name.
-  projectName: 'docassemble-AssemblyLine-documentation', // Usually your repo name.
+  organizationName: 'SuffolkLITLab', // the GitHub org name.
+  projectName: 'docassemble-AssemblyLine-documentation', // the repo name.
   themeConfig: {
     navbar: {
       title: 'The Document Assembly Line Project',
-      // logo: {
-      //   alt: 'My Site Logo',
-      //   src: 'img/logo.svg',
-      // },
+      logo: {
+        alt: 'The Suffolk LIT Lab Logo',
+        src: 'img/LITLab_white_and_gold.svg',
+        srcDark: 'img/LITLab_white_and_gold.svg'
+      },
       items: [
         // { to: 'docs/', activeBasePath: 'docs', label: 'Docs', position: 'left', },
         // {to: 'blog', label: 'Blog', position: 'left'},
@@ -32,7 +32,7 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         // {
         //   title: 'Docs',
@@ -83,8 +83,25 @@ module.exports = {
   },
   plugins: [
     '@docusaurus/plugin-ideal-image',
-    require.resolve('@cmfcmf/docusaurus-search-local')
-  ],  
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/docs/framework/efiling',
+            to: '/docs/efiling/overview'
+          }
+        ]
+      }
+    ]
+  ],
+  themes: [
+	  [
+	  require.resolve("@easyops-cn/docusaurus-search-local"),
+	  {
+		  hashed: true,
+	  }],
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -102,10 +119,14 @@ module.exports = {
         //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         //},
         pages: {
-        },        
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        gtag: {
+          trackingID: 'G-622Z2D6Q3Q',
+          anonymizeIP: true
+        }
       },
     ],
   ],

@@ -368,7 +368,7 @@ Sometimes when you start to [make a pull request](#request-others-merge-your-cod
 These are unavoidable and a pain to deal with. Everyone runs into them now and again and they are tricky to resolve without introducing bugs.
 
 :::tip
-Ways to reduce the likelyhood of merge conflicts:
+Ways to reduce the likelihood of merge conflicts:
 
 1. If possible, make the goals of your branches small so that you only make a few changes on a branch before making a pull request with it.
 1. Merge pull requests in the order they were made.
