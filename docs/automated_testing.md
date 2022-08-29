@@ -506,7 +506,7 @@ This is a complex Step to use. You **must** use a GitHub "secret" to store the v
 ```
 
 :::caution
-You **MUST** use the `log in` Step if you want to sign into your docassemble server. This Step is unable to do that.
+You **MUST** use the `log in` Step if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
 :::
 
 ---
