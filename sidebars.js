@@ -1,6 +1,7 @@
 module.exports = {
     someSidebar: [
         'intro',
+        'getting_started_docassemble',
         {
             type: 'category',
             label: 'Setting up your own Assembly Line team',
