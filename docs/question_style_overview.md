@@ -24,6 +24,24 @@ more general guidance about good legal writing and good writing for forms.
 We have also thought deeply about how to **measure** the burden that completing
 a form places on a user. You might find our section on [form complexity](complexity/complexity.md) helpful to read along with this section.
 
+## There's no substitute for usability testing
+
+While the contents of this guide are expert guidance, gathered from 
+both our own experience and that of experts in usability, there's no 
+real substitute for observing the experiences of real users of your tool.
+
+The Legal Tech Class has a brief primer on conduction your own 
+[usability tests](https://suffolklitlab.org/legal-tech-class/docs/testing/testing#usability-tests).
+Usability testing can be simple, cheap, and easy!
+
+1. Plan to conduct just a few--you'll learn most of what you need after the 
+  third test, and gain almost nothing after a 5th test.
+1. Usability tests involve one user at a time, not a group.  
+1. You can follow a simple script to do a usability test!
+1. Honorariums help. Be ready to pay people for their time.
+
+[Read more](https://suffolklitlab.org/legal-tech-class/docs/testing/testing#usability-tests)
+
 ## Other content resources
 ### Quick reads
 * [Best practice in form design: round up](https://www.effortmark.co.uk/best-practice-forms-design-round/)

@@ -1,9 +1,35 @@
 ---
 id: customizing_interview
-title: Customizing your interview
-sidebar_label: Customizing your interview
+title: Editing your interview
+sidebar_label: Editing your interview
 slug: /customizing_interview
 ---
+
+## Edit your completed draft interview in the Docassemble playground
+
+While the Weaver is a menu-driven, step-by-step process, you'll make further
+edits in the Playground. In the playground, you can directly edit the
+[YAML](https://suffolklitlab.org/legal-tech-class/docs/yaml) text to:
+
+1. Change the wording of questions
+1. Change the datatype of questions and add show/hide logic
+1. Edit the order screens appear in
+1. Add conditional and branching logic
+1. Add new variables, such as variables calculated by code
+
+Save your work frequently, and don't be intimidated. For the most part,
+many changes can be understood by reading the text and then experimenting.
+
+This pages offers information about making some common, simple edits.
+You may also want to take this time to read through the materials in
+the [Legal Tech Class](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
+about the underlying Docassemble platform and how it works.
+
+## Work towards a readable, usable interview
+
+You should also take this chance to review our guidance about
+[writing good questions](/docs/question_style_overview.md). While you edit
+your interview, work steadily to make it better.
 
 ## Getting the draft into your playground
 
