@@ -9,15 +9,19 @@ slug: /automated_integrated_testing
 
 🚧
 
-Reference for writing automated integrated tests with the Assembly Line testing framework. This is under very active development.
+Reference for testing your interview on GitHub.
+
+**Any docassemble package can use this.** It does have special features created especially for projects using AssemblyLine.
+
+This is under very active development.
 
 ## Intro
 
-The Kiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
+The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
 
 **Kiln works with any docassemble interview**, though it is being developed through the Document Assembly Line project.
 
-Docacon 2021, 10 minute intro presentation:
+Docacon 2021, 10 minute demo:
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YB-e-MGtLgI?start=3482&end=4115" title="10 minute intro of Assembly Line Kiln testing framework at Docacon 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -366,35 +370,9 @@ You can use the `log in` Step to sign into your docassemble server before going 
     When I start the interview at "yaml_file_name.yml"
 ```
 
-This is a complex Step to use. To make it work, you have to add GitHub secrets and edit the YAML file in your repository's `.github/workflows/` folder.
+This is a complex Step to use. You **must** use a GitHub "secret" to store each value as the information is sensitive. To learn how to create and add a secret for a test, see the [GitHub secrets section](#github-secrets).
 
-[GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) are a way to store sensitive information. If you don't encrypt the login information, others will be able to see it in your code.
-
-1. Follow the GitHub instructions in the link above to set two GitHub secrets - one for the email of the account you want to sign in with and one for the password of that account.
-
-`USER_EMAIL` and `USER_PASSWORD` are just placeholders in our example. You can name them whatever you want to. These are the words we'll use to refer to them in here. You can add these to one repository or you can add these to your organization, whichever is right for you.
-
-2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
-
-It should include lines that look like this:
-```yml
-         with:
-           SERVER_URL: "${{ secrets.SERVER_URL }}"
-           PLAYGROUND_EMAIL: "${{ secrets.PLAYGROUND_EMAIL }}"
-           PLAYGROUND_PASSWORD: "${{ secrets.PLAYGROUND_PASSWORD }}"
-           PLAYGROUND_ID: "${{ secrets.PLAYGROUND_ID }}"
-           EXTRA_LANGUAGES: "${{ secrets.EXTRA_LANGUAGES }}"
-```
-
-3. Add two more lines under those:
-
-```yml
-           USER_EMAIL: "${{ secrets.USER_EMAIL }}"
-           USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
-```
-
-4. Make sure you use the same words as the GitHub secrets you made.
-5. Write the `log in` Step and use the names of these secrets as the values.
+`"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of names. You can use any names you want.
 
 ### Observe things about the page
 
@@ -425,6 +403,10 @@ Then I arrive at the next page
 The `screenshot` Step will take a picture of the screen that will be put in the GitHub action's [artifacts](#your-screenshots-artifacts).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
 
+:::warning
+**AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
+:::
+
 ```
     Then I take a screenshot
 ```
@@ -444,19 +426,22 @@ The `link` Step can make sure a link appears on the page. For example, a link to
 The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
 ::: warning
-Sometimes the characters in your code and the characters on screen aren't the same. In our code, we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). It's best to copy the text straight from the screen.
+Getting the characters right can be tricky with docassemble. If you get told a phrase is missing, read about [a possible reason](#phrase-is-missing) in the errors section.
 :::
 
 ```
     Then I SHOULD see the phrase "some phrase"
 ```
+
 ```
     Then I should NOT see the phrase "some phrase"
 ```
 
+When trying to use double quotes inside a phrase, you can usually use `“` for opening quotes and `”` for closing quotes. It is impossible to use plain double quotes inside your phrase in a phrase Step.
+
 ---
 
-<span id="accessibility">You can also check a page for it's accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
+The `accessibility` Step can <span id="accessibility">check a page for its accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
 
 ```
     Then I check the page for accessibility issues
@@ -473,6 +458,33 @@ You can also check all pages past a certain point automatically:
 This is equivalent to running `I check the page for accessibility issues` on every new page
 that the test runner sees.
 
+---
+
+The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
+
+::: caution
+This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
+:::
+
+```
+    Then the text in the JSON variable "user_affidavit" should be
+    """
+    Three quotes then some affidavit text.
+
+    The text can be multi-line.
+
+    Then close with three quotes.
+    """
+```
+
+---
+
+The `JSON variables` Step will add the page's JSON variables to the final test report. It's a bit messy, but you do get to see all the variables.
+
+```
+    And I get the page's JSON variables and values
+```
+
 <!-- Then the "a" link leads to "a" -->
 <!-- Then the "a" link opens a working page -->
 <!-- Then the "a" link opens in a new window -->
@@ -485,6 +497,50 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ```
     When I tap to continue
+```
+
+---
+
+Use the `set variable` Step to set the values of fields.
+
+Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
+
+```
+    When I set the variable "users[i].hair_color" to "blue"
+```
+
+One special value you can include is `today`. That will insert the date on which the test is being run. You can also subtract from, or add days to, `today`. Examples:
+
+```
+    When I set the variable "signature_date" to "today"
+    When I set the variable "birthdate" to "today - 500"
+    When I set the variable "court_date" to "today + 12"
+```
+
+---
+
+The `secret variables` Step can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
+
+This is a complex Step to use. You **must** use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
+
+```
+    I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
+```
+
+:::caution
+You **MUST** use the `log in` Step if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
+:::
+
+---
+
+Sign on a signature page. All signatures are the same - one dot.
+
+:::warning
+**AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
+:::
+
+```
+    When I sign
 ```
 
 ---
@@ -507,22 +563,10 @@ and ALKiln will tap and wait until the tab is fully visible.
 
 ---
 
-Use the `set variable` Step to set the values of fields.
-
-Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
+Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
 
 ```
-    When I set the variable "users[i].hair_color" to "blue"
-```
-
-For example, you can use the special word `today` as a value to set dates.
-
----
-
-Sign on a signature page. All signatures are the same - one dot.
-
-```
-    When I sign
+    I get to the question id "some question block id" with this data:
 ```
 
 ---
@@ -547,14 +591,6 @@ It allows a US address format, but can otherwise be any address you want that ma
 
 ```
     When I set the address of "users[0]" to "120 Tremont Street, Unit 1, Boston, MA 02108"
-```
-
----
-
-Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
-
-```
-    I get to the question id "some question block id" with this data:
 ```
 
 ### Other actions
@@ -874,6 +910,31 @@ If you see the text "invalid playground path" in the report, that means the `Giv
 
 This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
 
+### Phrase is missing
+
+If you get an error message that an expected phrase is missing, make sure you copy and paste the text you're expecting directly from the running interview page.
+
+Sometimes the characters in your code and the characters on screen are not the same. For example, in our code we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). They look very similar, but are not the same. It's best to copy the text straight from the screen the user sees.
+
+Wrong:
+
+```
+    I should see the phrase "a document called a 'Certified docket sheet'"
+```
+
+
+Example error:
+
+```
+The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
+```
+
+Right:
+
+```
+    I should see the phrase "a document called a ‘Certified docket sheet’"
+```
+
 <!-- ### Access Denied -->
 
 
@@ -929,6 +990,36 @@ uses: suffolkLITLab/ALKiln@releases/v4
 4. Change `releases/v4` to the commit sha.
 
 When you want to update to a new version of the ALKiln, update that sha manually.
+
+### GitHub secrets
+
+Use GitHub secrets to set variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
+
+1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository secrets or you can add these to your organization secrets, whichever is right for you.
+
+2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows` folder, then on the YAML file in there that runs the ALKiln tests.
+
+It should include a line that looks like this:
+```yml
+      - uses: actions/checkout@v2
+```
+
+3. If this is the first environment variable you're adding, add these lines:
+
+```yml
+      - name: Set env vars
+        run: |
+```
+
+4. Whenever you want to add a secret, add a new line under those in this format:
+
+```yml
+          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
+```
+
+`USER_PASSWORD` is just a placeholder in our example. You can name your secrets whatever you want to. Make sure you use the same words as the GitHub secret you made.
+
+5. Write your Step and use the names of these secrets as the values.
 
 
 ## Customizations
