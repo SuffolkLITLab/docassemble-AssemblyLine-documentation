@@ -29,6 +29,48 @@ import answers from a JSON file that is uploaded to the server. While this
 allows user control over their data and can be especially helpful for tests,
 this feature carries some risk and is disabled by default.
 
+### Use the AssemblyLine interview list replacement
+
+The AssemblyLine framework includes a replacement for Docassemble's "stock"
+list of in-progress interviews. It has the following improvements:
+
+1. It is significantly faster to load
+1. Results are sorted so the most recent interview is on top
+1. It displays answer sets on their own tab
+1. It hides the "tag" feature
+1. It includes a "start new form" button
+
+If the information is available, the replacement interview list feature can also show a percent
+complete for each interview in the list.
+
+If you would like to use the AssemblyLine interview list instead of Docassemble's
+stock list, edit your configuration to add the following line:
+
+```yaml
+session list interview: docassemble.AssemblyLine:data/questions/interview_list.yml
+```
+
+#### Enhance the custom interview list feature
+If you use the custom interview list feature and you would like to have
+all of your interviews:
+
+1. Save a descriptive name to the database, and
+1. Save their progress to the database
+
+So that both a name like "Smith v. Jones" and a progress like "50%" can
+be displayed on the interview list page, add the following entry to the
+global configuration:
+
+```yaml
+assembly line:
+  update session metadata: True
+```
+
+This option is disabled by default as it does add a few database queries
+to each interview page load. The feature is still new, but it looks
+like it does not have a significant performance impact despite the extra
+database queries.
+
 ## Global configuration options
 
 These variables are recommended to be set in a package that all of your

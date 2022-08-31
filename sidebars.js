@@ -1,21 +1,20 @@
 module.exports = {
     someSidebar: [
         'intro',
-        'bootcamp',
-        'getting_started',
         {
             type: 'category',
-            label: 'Assembly Line Process',
+            label: 'Setting up your own Assembly Line team',
             items: [
+                'bootcamp',
+                'getting_started',
                 'assembly_line_steps',
                 'assembly_line_steps_roles',
                 'assembly_line_steps_planning_time',
                 'assembly_line_steps_step_by_step',
+                'customization/customization_overview',
             ],
         },
         'installation',
-        'al_project_architecture',
-        'customization/customization_overview',
         {
             type: 'category',
             label: 'Authoring your interview',
@@ -83,6 +82,7 @@ module.exports = {
             type: 'category',
             label: 'Feature documentation',
             items: [
+                'al_project_architecture',                
                 'framework/framework_overview',
                 'framework/magic_variables',
                 'framework/algeneral',

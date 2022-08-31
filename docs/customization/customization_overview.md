@@ -1,9 +1,14 @@
 ---
 id: customization_overview
-title: Customization and theming
-sidebar_label: Customization and theming
+title: Applying a custom theme or brand
+sidebar_label: Applying a custom theme or brand
 slug: /customization/overview
 ---
+
+## Sharing a custom look and feel across multiple Assembly Line interviews
+
+The [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate)
+repository is a template for a "brand" package that you can use for your own organization.
 
 ## Visual customization
 
