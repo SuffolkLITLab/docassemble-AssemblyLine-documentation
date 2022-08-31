@@ -30,7 +30,7 @@ While the contents of this guide are expert guidance, gathered from
 both our own experience and that of experts in usability, there's no 
 real substitute for observing the experiences of real users of your tool.
 
-The Legal Tech Class has a brief primer on conduction your own 
+The Legal Tech Class has a brief primer on conducting your own 
 [usability tests](https://suffolklitlab.org/legal-tech-class/docs/testing/testing#usability-tests).
 Usability testing can be simple, cheap, and easy!
 
