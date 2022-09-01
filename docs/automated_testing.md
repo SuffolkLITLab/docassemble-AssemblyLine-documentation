@@ -460,7 +460,7 @@ that the test runner sees.
 
 ---
 
-The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
+The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
 ::: caution
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
