@@ -363,7 +363,7 @@ This Step can also be used anywhere else in your Scenario to give Steps more tim
 
 ---
 
-You can use the `log in` Step to sign into your docassemble server before going to the interview:
+You can use <span id="log-in-step">the `log in` Step<span> to sign into your docassemble server before going to the interview:
 
 ```
     Given I log in with the email "USER_EMAIL" and the password "USER_PASSWORD"
@@ -528,7 +528,7 @@ This is a complex Step to use. You **must** use a GitHub "secret" to store the v
 ```
 
 :::caution
-You **MUST** use the `log in` Step if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
+You **MUST** use [the `log in` Step](#log-in-step) if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
 :::
 
 ---
