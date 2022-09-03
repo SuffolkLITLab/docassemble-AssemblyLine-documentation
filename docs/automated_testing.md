@@ -363,7 +363,7 @@ This Step can also be used anywhere else in your Scenario to give Steps more tim
 
 ---
 
-You can use <span id="log-in-step">the `log in` Step<span> to sign into your docassemble server before going to the interview:
+You can use <span id="log-in-step">the `log in` Step</span> to sign into your docassemble server before going to the interview:
 
 ```
     Given I log in with the email "USER_EMAIL" and the password "USER_PASSWORD"
