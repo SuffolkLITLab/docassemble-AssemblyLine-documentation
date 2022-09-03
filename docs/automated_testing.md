@@ -1001,7 +1001,7 @@ You can use an exact npm version of ALKiln by using your workflow file's `ALKILN
 
 ### GitHub secrets
 
-<!-- Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
+<!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
 You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page and ALKiln will avoid taking an error screenshot.
 
@@ -1074,13 +1074,19 @@ You can also use the whole suite of GitHub's workflow and action functionality t
 
 ### Required inputs
 
-The setup interview should have helped you create these "inputs" and their values. They are in the `jobs:` section. They look something like this:
+The setup interview should have helped you create these required `inputs` and their values. They are in the `jobs:` section. They look something like this:
 
 ```yml
         with:
           SERVER_URL: "${{ secrets.SERVER_URL }}"
           DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
 ```
+
+`SERVER_URL` is the url of the docassemble server the tests should run on.
+
+`DOCASSEMBLE_DEVELOPER_API_KEY` is the API key that you created for the account on your server that will store the Project in the Playground while the tests are being run. You probably created this in the setup interview. Alternatively, your organization admin may have created it.
+
+We recommend keeping the API key a GitHub secret for security reasons, but the server url can be type in plainly. For example `SERVER_URL: "https://apps-test.suffolklitlab.com"`.
 
 ### Optional inputs
 
