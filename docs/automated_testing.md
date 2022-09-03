@@ -363,7 +363,7 @@ This Step can also be used anywhere else in your Scenario to give Steps more tim
 
 ---
 
-You can use the `log in` Step to sign into your docassemble server before going to the interview:
+You can use <span id="log-in-step">the `log in` Step</span> to sign into your docassemble server before going to the interview:
 
 ```
     Given I log in with the email "USER_EMAIL" and the password "USER_PASSWORD"
@@ -460,7 +460,7 @@ that the test runner sees.
 
 ---
 
-The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
+The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
 ::: caution
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
@@ -528,7 +528,7 @@ This is a complex Step to use. You **must** use a GitHub "secret" to store the v
 ```
 
 :::caution
-You **MUST** use the `log in` Step if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
+You **MUST** use [the `log in` Step](#log-in-step) if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
 :::
 
 ---
