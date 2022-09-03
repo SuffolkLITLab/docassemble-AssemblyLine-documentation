@@ -49,7 +49,7 @@ At the end, you can see a report and logs right in the [workflow's "job" page](h
 1. You will be able to download screenshots of pages that errored. They're in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports that you can download in the same place.
 
-Give us feedback and ideas by making issues at https://github.com/plocket/docassemble-cucumber/issues.
+Give us feedback and ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
 ### Example
 
@@ -425,7 +425,7 @@ The `link` Step can make sure a link appears on the page. For example, a link to
 
 The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
-::: warning
+:::warning
 Getting the characters right can be tricky with docassemble. If you get told a phrase is missing, read about [a possible reason](#phrase-is-missing) in the errors section.
 :::
 
@@ -462,7 +462,7 @@ that the test runner sees.
 
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id.
 
-::: caution
+:::caution
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
 :::
 
@@ -993,11 +993,21 @@ uses: suffolkLITLab/ALKiln@releases/v4
 
 When you want to update to a new version of the ALKiln, update that sha manually.
 
+### Set ALKiln's npm version
+
+This one requires prior technical knowledge. Feel free to ask us.
+
+You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use a specific version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
+
 ### GitHub secrets
 
-Use GitHub secrets to set variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
+<!-- Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-This is also useful if an organization wants to create a variable that all its repositories will be able to use.
+You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page and ALKiln will avoid taking an error screenshot.
+
+:::info
+This is also useful if an organization wants to create a variable that all of its repositories will be able to use.
+:::
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets, whichever is right for you.
 
@@ -1018,7 +1028,7 @@ env:
 4. Whenever you want to add a secret, add a new line under `env:` indented once as shown below:
 
 ```yml
-  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+  USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
 ```
 
 `USER_PASSWORD` is just a placeholder in our example. You can name your secrets whatever you want to. Make sure you use the same words as the GitHub secret you made.
@@ -1028,7 +1038,7 @@ env:
 If you're not worried about keeping the information secure, you don't have to use a GitHub secret - you can just put the value straight into your workflow file like this:
 
 ```yml
-  MAX_SECONDS_FOR_SERVER_RELOAD: 300
+  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
 ```
 
 ALKiln will still avoid printing this value and avoid taking screenshots when it is used. There is no way ALKiln can tell which environment variables have sensitive information and which ones are safe.
@@ -1037,14 +1047,102 @@ All together, this section can look similar to this:
 
 ```yml
 env:
-  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-  MAX_SECONDS_FOR_SERVER_RELOAD: 300
+  USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
+  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
 
 jobs:
 ```
 
 
-## Customizations
+## Your workflow file
+
+This whole section is very technical. Feel free to ask us questions.
+
+**Where is it?**
+
+Your ALKiln workflow file is in your repository. To find it, go to your `.github` folder, then open the `workflows` folder there. It was probably created when you ran the setup interview and it might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
+
+**What does it do?**
+
+Among other things, the workflow file:
+
+- Triggers the ALKiln tests when desired, like when you push new code to your package.
+- Gives ALKiln inputs that are needed to run your tests.
+- Optionally gives ALKiln other inputs and environment variables it can use.
+
+You can also use the whole suite of GitHub's workflow and action functionality to do other things, like creating issues when tests fail.
+
+### Required inputs
+
+The setup interview should have helped you create these "inputs" and their values. They are in the `jobs:` section. They look something like this:
+
+```yml
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+```
+
+### Optional inputs
+
+There are also optional inputs that can go under `with:`.
+
+`MAX_SECONDS_FOR_SETUP` lets you to set how long to allow ALKiln to try to pull your interview package's code into the docassemble Playground. The default is currently 120 seconds (2 minutes).
+
+`ALKILN_VERSION` gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" section](#set-alkiln-s-npm-version).
+
+If you're using a GitHub repository or organization secret, it will look very similar to the [required inputs described above](#required-inputs). Here the values are in context:
+
+```yml
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          MAX_SECONDS_FOR_SETUP: "${{ secrets.MAX_SECONDS_FOR_SETUP }}"
+          ALKILN_VERSION: "${{ secrets.ALKILN_VERSION }}"
+```
+
+This information can usually be public, though. If your organization wants to share the values with multiple repositories you can still use an organization GitHub secret. If not, you can set them right there in the workflow file.
+
+```yml
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          MAX_SECONDS_FOR_SETUP: "300"
+          ALKILN_VERSION: "4.3.0"
+```
+
+### ALKiln environment variables
+
+There are some environment variables that ALKiln uses internally that don't need to be "inputs". They go under the `env:` section instead of under `with:`.
+
+`MAX_SECONDS_FOR_SERVER_RELOAD` customizes how long to allow your tests to wait when the server is reloading. This helps avoid tests failing when they should otherwise be passing.
+
+If you want to use this value in multiple repositories, you can use a GitHub organization secret. It can look something like the below:
+
+```yml
+env:
+  MAX_SECONDS_FOR_SERVER_RELOAD: "${{ secrets.MAX_SECONDS_FOR_SERVER_RELOAD }}"
+```
+
+You can also set its value without a secret as this value is probably not sensitive information.
+
+```yml
+env:
+  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
+```
+
+You can read [the GitHub secrets section](#github-secrets) on setting arbitrary environment variables for more background information.
+
+:::info
+Your server can reload whenever someone saves a python file or whenever a developer or another test pulls a package that contains a python file into the Playground. If a test is running while that happens, the page the test is trying to open might take too long to load and the test will fail. This is unhelpful to you because the test stops part way and you cannot tell if it would have failed or passed on its own.
+
+The next test might then fail during the same reload. That becomes a problem when a chain of tests fail because of one reload.
+
+ALKiln cannot stop the first test from failing, but `MAX_SECONDS_FOR_SERVER_RELOAD` can help prevent the next tests from failing during the same reload.
+:::
+
+### Arbitrary environment variables
+
+See [the GitHub secrets section](#github-secrets) on setting arbitrary environment variables. The section describes using GitHub secrets and using plain values.
 
 ### Make a GitHub issue when tests fail
 
@@ -1079,7 +1177,9 @@ If you've run the Setup interview more recently, you will already have this code
 
 ### Schedule test runs
 
-You can decide to run these tests daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
+By default, the ALKiln setup interview makes sure that the tests are triggered when code gets pushed to the repository. Also is makes sure the tests can be triggered manually.
+
+You can decide to run these tests on a schedule, though - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
 
 1. Go to your GitHub repository.
 1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
