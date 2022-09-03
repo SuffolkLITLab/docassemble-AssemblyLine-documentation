@@ -517,9 +517,11 @@ One special value you can include is `today`. That will insert the date on which
     When I set the variable "court_date" to "today + 12"
 ```
 
+You can also use environment variables to set values with [the `secret variables` Step](#secret-variables-step), even if the value doesn't need to be secret.
+
 ---
 
-The `secret variables` Step can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
+<span id="secret-variables-step">The `secret variables` Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
 
 This is a complex Step to use. You **must** use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
 
@@ -620,7 +622,7 @@ In a story table, use the name of the variable as usual and use the name of the 
 
 ---
 
-Use the `custom timeout` Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
+Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
     Then the maximum seconds for each Step is 200
@@ -894,9 +896,9 @@ A "timeout" error can also happen when a page took too long to load at some poin
 
 1. The page was trying to load a big file.
 1. The server was busy for too long.
-1. The server is down.
+1. The server was down.
 
-If a page was taking to load a big files, use the "custom timeout" Step to give the page more time to load.
+If a page was taking too long to load a big file, use [the `custom timeout` Step](#custom-timeout-step) to give the page more time to load.
 
 If the server was busy, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow). As of 01/2022 you have to navigate to the newly running tests manually. For example, by going to the Actions page again.
 
@@ -995,31 +997,51 @@ When you want to update to a new version of the ALKiln, update that sha manually
 
 Use GitHub secrets to set variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
 
-1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository secrets or you can add these to your organization secrets, whichever is right for you.
+This is also useful if an organization wants to create a variable that all its repositories will be able to use.
+
+1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets, whichever is right for you.
 
 2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows` folder, then on the YAML file in there that runs the ALKiln tests.
 
-It should include a line that looks like this:
+3. It should include a line that looks like this:
+
 ```yml
-      - uses: actions/checkout@v2
+jobs:
 ```
 
-3. If this is the first environment variable you're adding, add these lines:
+If this is the first environment variable you're adding, right above that line add a new line like this:
 
 ```yml
-      - name: Set env vars
-        run: |
+env:
 ```
 
-4. Whenever you want to add a secret, add a new line under those in this format:
+4. Whenever you want to add a secret, add a new line under `env:` indented once as shown below:
 
 ```yml
-          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
+  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 ```
 
 `USER_PASSWORD` is just a placeholder in our example. You can name your secrets whatever you want to. Make sure you use the same words as the GitHub secret you made.
 
 5. Write your Step and use the names of these secrets as the values.
+
+If you're not worried about keeping the information secure, you don't have to use a GitHub secret - you can just put the value straight into your workflow file like this:
+
+```yml
+  MAX_SECONDS_FOR_SERVER_RELOAD: 300
+```
+
+ALKiln will still avoid printing this value and avoid taking screenshots when it is used. There is no way ALKiln can tell which environment variables have sensitive information and which ones are safe.
+
+All together, this section can look similar to this:
+
+```yml
+env:
+  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+  MAX_SECONDS_FOR_SERVER_RELOAD: 300
+
+jobs:
+```
 
 
 ## Customizations
