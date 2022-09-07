@@ -523,7 +523,7 @@ You can also use environment variables to set values with [the `secret variables
 
 <span id="secret-variables-step">The `secret variables` Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
 
-This is a complex Step to use. You **must** use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
+This is a complex Step to use. You can use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
 
 ```
     I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
@@ -997,7 +997,7 @@ When you want to update to a new version of the ALKiln, update that sha manually
 
 This one requires prior technical knowledge. Feel free to ask us.
 
-You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use a specific version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
+You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
 ### GitHub secrets
 
@@ -1086,7 +1086,7 @@ The setup interview should have helped you create these required `inputs` and th
 
 `DOCASSEMBLE_DEVELOPER_API_KEY` is the API key that you created for the account on your server that will store the Project in the Playground while the tests are being run. You probably created this in the setup interview. Alternatively, your organization admin may have created it.
 
-We recommend keeping the API key a GitHub secret for security reasons, but the server url can be type in plainly. For example `SERVER_URL: "https://apps-test.suffolklitlab.com"`.
+We recommend keeping the API key a GitHub secret for security reasons, but the server url can be type in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
 
 ### Optional inputs
 
@@ -1183,9 +1183,9 @@ If you've run the Setup interview more recently, you will already have this code
 
 ### Schedule test runs
 
-By default, the ALKiln setup interview makes sure that the tests are triggered when code gets pushed to the repository. Also is makes sure the tests can be triggered manually.
+By default, the ALKiln setup interview makes sure that the tests are triggered when code gets pushed to the repository. It also makes sure the tests can be triggered manually.
 
-You can decide to run these tests on a schedule, though - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
+You can also run these tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
 
 1. Go to your GitHub repository.
 1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
