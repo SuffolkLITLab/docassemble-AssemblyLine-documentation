@@ -995,7 +995,7 @@ When you want to update to a new version of the ALKiln, update that sha manually
 
 ### Set ALKiln's npm version
 
-This one requires prior technical knowledge. Feel free to ask us.
+This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) about any questions you might have.
 
 You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
