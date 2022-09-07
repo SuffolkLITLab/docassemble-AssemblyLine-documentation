@@ -995,7 +995,7 @@ When you want to update to a new version of the ALKiln, update that sha manually
 
 ### Set ALKiln's npm version
 
-This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) about any questions you might have.
+This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
 
 You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
@@ -1056,8 +1056,6 @@ jobs:
 
 ## Your workflow file
 
-This whole section is very technical. Feel free to ask us questions.
-
 **Where is it?**
 
 Your ALKiln workflow file is in your repository. To find it, go to your `.github` folder, then open the `workflows` folder there. It was probably created when you ran the setup interview and it might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
@@ -1071,6 +1069,8 @@ Among other things, the workflow file:
 - Optionally gives ALKiln other inputs and environment variables it can use.
 
 You can also use the whole suite of GitHub's workflow and action functionality to do other things, like creating issues when tests fail.
+
+These following sections probably require prior technical knowledge about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
 
 ### Required inputs
 
@@ -1094,7 +1094,7 @@ There are also optional inputs that can go under `with:`.
 
 `MAX_SECONDS_FOR_SETUP` lets you to set how long to allow ALKiln to try to pull your interview package's code into the docassemble Playground. The default is currently 120 seconds (2 minutes).
 
-`ALKILN_VERSION` gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" section](#set-alkiln-s-npm-version).
+`ALKILN_VERSION` can be useful for security. It gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" security section](#set-alkiln-s-npm-version).
 
 If you're using a GitHub repository or organization secret, it will look very similar to the [required inputs described above](#required-inputs). Here the values are in context:
 
@@ -1106,7 +1106,7 @@ If you're using a GitHub repository or organization secret, it will look very si
           ALKILN_VERSION: "${{ secrets.ALKILN_VERSION }}"
 ```
 
-This information can usually be public, though. If your organization wants to share the values with multiple repositories you can still use an organization GitHub secret. If not, you can set them right there in the workflow file.
+Other than `DOCASSEMBLE_DEVELOPER_API_KEY`, this information can usually be public. If your organization wants to share the values with multiple repositories you can still use an organization GitHub secret. If not, you can set them right there in the workflow file.
 
 ```yml
         with:
