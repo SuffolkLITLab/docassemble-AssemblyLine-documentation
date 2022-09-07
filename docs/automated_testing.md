@@ -49,7 +49,7 @@ At the end, you can see a report and logs right in the [workflow's "job" page](h
 1. You will be able to download screenshots of pages that errored. They're in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports that you can download in the same place.
 
-Give us feedback and ideas by making issues at https://github.com/plocket/docassemble-cucumber/issues.
+Give us feedback and ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
 ### Example
 
@@ -425,7 +425,7 @@ The `link` Step can make sure a link appears on the page. For example, a link to
 
 The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
-::: warning
+:::warning
 Getting the characters right can be tricky with docassemble. If you get told a phrase is missing, read about [a possible reason](#phrase-is-missing) in the errors section.
 :::
 
@@ -462,7 +462,7 @@ that the test runner sees.
 
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
-::: caution
+:::caution
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
 :::
 
@@ -517,11 +517,13 @@ One special value you can include is `today`. That will insert the date on which
     When I set the variable "court_date" to "today + 12"
 ```
 
+You can also use environment variables to set values with [the `secret variables` Step](#secret-variables-step), even if the value doesn't need to be secret.
+
 ---
 
-The `secret variables` Step can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
+<span id="secret-variables-step">The `secret variables` Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
 
-This is a complex Step to use. You **must** use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
+This is a complex Step to use. You can use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
 
 ```
     I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
@@ -620,7 +622,7 @@ In a story table, use the name of the variable as usual and use the name of the 
 
 ---
 
-Use the `custom timeout` Step to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
+Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
     Then the maximum seconds for each Step is 200
@@ -894,9 +896,9 @@ A "timeout" error can also happen when a page took too long to load at some poin
 
 1. The page was trying to load a big file.
 1. The server was busy for too long.
-1. The server is down.
+1. The server was down.
 
-If a page was taking to load a big files, use the "custom timeout" Step to give the page more time to load.
+If a page was taking too long to load a big file, use [the `custom timeout` Step](#custom-timeout-step) to give the page more time to load.
 
 If the server was busy, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow). As of 01/2022 you have to navigate to the newly running tests manually. For example, by going to the Actions page again.
 
@@ -991,38 +993,162 @@ uses: suffolkLITLab/ALKiln@releases/v4
 
 When you want to update to a new version of the ALKiln, update that sha manually.
 
+### Set ALKiln's npm version
+
+This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
+
+You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
+
 ### GitHub secrets
 
-Use GitHub secrets to set variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page.
+<!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository secrets or you can add these to your organization secrets, whichever is right for you.
+You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page and ALKiln will avoid taking an error screenshot.
+
+:::info
+This is also useful if an organization wants to create a variable that all of its repositories will be able to use.
+:::
+
+1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets, whichever is right for you.
 
 2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows` folder, then on the YAML file in there that runs the ALKiln tests.
 
-It should include a line that looks like this:
+3. It should include a line that looks like this:
+
 ```yml
-      - uses: actions/checkout@v2
+jobs:
 ```
 
-3. If this is the first environment variable you're adding, add these lines:
+If this is the first environment variable you're adding, right above that line add a new line like this:
 
 ```yml
-      - name: Set env vars
-        run: |
+env:
 ```
 
-4. Whenever you want to add a secret, add a new line under those in this format:
+4. Whenever you want to add a secret, add a new line under `env:` indented once as shown below:
 
 ```yml
-          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
+  USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
 ```
 
 `USER_PASSWORD` is just a placeholder in our example. You can name your secrets whatever you want to. Make sure you use the same words as the GitHub secret you made.
 
 5. Write your Step and use the names of these secrets as the values.
 
+If you're not worried about keeping the information secure, you don't have to use a GitHub secret - you can just put the value straight into your workflow file like this:
 
-## Customizations
+```yml
+  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
+```
+
+ALKiln will still avoid printing this value and avoid taking screenshots when it is used. There is no way ALKiln can tell which environment variables have sensitive information and which ones are safe.
+
+All together, this section can look similar to this:
+
+```yml
+env:
+  USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
+  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
+
+jobs:
+```
+
+
+## Your workflow file
+
+**Where is it?**
+
+Your ALKiln workflow file is in your repository. To find it, go to your `.github` folder, then open the `workflows` folder there. It was probably created when you ran the setup interview and it might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
+
+**What does it do?**
+
+Among other things, the workflow file:
+
+- Triggers the ALKiln tests when desired, like when you push new code to your package.
+- Gives ALKiln inputs that are needed to run your tests.
+- Optionally gives ALKiln other inputs and environment variables it can use.
+
+You can also use the whole suite of GitHub's workflow and action functionality to do other things, like creating issues when tests fail.
+
+These following sections probably require prior technical knowledge about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
+
+### Required inputs
+
+The setup interview should have helped you create these required `inputs` and their values. They are in the `jobs:` section. They look something like this:
+
+```yml
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+```
+
+`SERVER_URL` is the url of the docassemble server the tests should run on.
+
+`DOCASSEMBLE_DEVELOPER_API_KEY` is the API key that you created for the account on your server that will store the Project in the Playground while the tests are being run. You probably created this in the setup interview. Alternatively, your organization admin may have created it.
+
+We recommend keeping the API key a GitHub secret for security reasons, but the server url can be type in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
+
+### Optional inputs
+
+There are also optional inputs that can go under `with:`.
+
+`MAX_SECONDS_FOR_SETUP` lets you to set how long to allow ALKiln to try to pull your interview package's code into the docassemble Playground. The default is currently 120 seconds (2 minutes).
+
+`ALKILN_VERSION` can be useful for security. It gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" security section](#set-alkiln-s-npm-version).
+
+If you're using a GitHub repository or organization secret, it will look very similar to the [required inputs described above](#required-inputs). Here the values are in context:
+
+```yml
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          MAX_SECONDS_FOR_SETUP: "${{ secrets.MAX_SECONDS_FOR_SETUP }}"
+          ALKILN_VERSION: "${{ secrets.ALKILN_VERSION }}"
+```
+
+Other than `DOCASSEMBLE_DEVELOPER_API_KEY`, this information can usually be public. If your organization wants to share the values with multiple repositories you can still use an organization GitHub secret. If not, you can set them right there in the workflow file.
+
+```yml
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          MAX_SECONDS_FOR_SETUP: "300"
+          ALKILN_VERSION: "4.3.0"
+```
+
+### ALKiln environment variables
+
+There are some environment variables that ALKiln uses internally that don't need to be "inputs". They go under the `env:` section instead of under `with:`.
+
+`MAX_SECONDS_FOR_SERVER_RELOAD` customizes how long to allow your tests to wait when the server is reloading. This helps avoid tests failing when they should otherwise be passing.
+
+If you want to use this value in multiple repositories, you can use a GitHub organization secret. It can look something like the below:
+
+```yml
+env:
+  MAX_SECONDS_FOR_SERVER_RELOAD: "${{ secrets.MAX_SECONDS_FOR_SERVER_RELOAD }}"
+```
+
+You can also set its value without a secret as this value is probably not sensitive information.
+
+```yml
+env:
+  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
+```
+
+You can read [the GitHub secrets section](#github-secrets) on setting arbitrary environment variables for more background information.
+
+:::info
+Your server can reload whenever someone saves a python file or whenever a developer or another test pulls a package that contains a python file into the Playground. If a test is running while that happens, the page the test is trying to open might take too long to load and the test will fail. This is unhelpful to you because the test stops part way and you cannot tell if it would have failed or passed on its own.
+
+The next test might then fail during the same reload. That becomes a problem when a chain of tests fail because of one reload.
+
+ALKiln cannot stop the first test from failing, but `MAX_SECONDS_FOR_SERVER_RELOAD` can help prevent the next tests from failing during the same reload.
+:::
+
+### Arbitrary environment variables
+
+See [the GitHub secrets section](#github-secrets) on setting arbitrary environment variables. The section describes using GitHub secrets and using plain values.
 
 ### Make a GitHub issue when tests fail
 
@@ -1057,7 +1183,9 @@ If you've run the Setup interview more recently, you will already have this code
 
 ### Schedule test runs
 
-You can decide to run these tests daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
+By default, the ALKiln setup interview makes sure that the tests are triggered when code gets pushed to the repository. It also makes sure the tests can be triggered manually.
+
+You can also run these tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
 
 1. Go to your GitHub repository.
 1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
