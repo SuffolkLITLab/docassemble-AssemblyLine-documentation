@@ -59,19 +59,39 @@ all of your interviews:
 
 So that both a name like "Smith v. Jones" and a progress like "50%" can
 be displayed on the interview list page, add the following entry to the
-global configuration:
+global configuration's `assembly line` directive:
 
 ```yaml
 assembly line:
   update session metadata: True
 ```
 
-This option is disabled by default as it does add a few database queries
-to each interview page load. The feature is still new, but it looks
-like it does not have a significant performance impact despite the extra
-database queries.
+This option is disabled by default as it does add a few database queries to each
+interview page load. The feature is still new, but it looks like it does not
+have a significant performance impact despite the extra database queries.
 
-## Global configuration options
+#### Filter the sessions that appear in the session list
+
+If you want to exclude some interviews from ever appearing in the session list,
+you can add them to a list in the configuration's `assembly line` directive like
+this:
+
+```yaml
+assembly line:
+  exclude from interview list:
+    - docassemble.MyAdministrativeInterview:menu.yml
+```
+
+#### Change the link used by the "Start a new form" button on the session list page
+
+Edit the `assembly line` directive in the global configuration to look like this:
+
+```yaml
+assembly line:
+  new form url: https://courtformsonline.org
+```
+
+## Organization-level configuration options
 
 These variables are recommended to be set in a package that all of your
 interviews include. Usually, they are the same for all interviews created by one
@@ -236,6 +256,18 @@ court department. In other states, there may be a single court per county of
 general jurisdiction, with adhoc assignment of case types to different branches
 of the court in that county. Because of this, it's not likely that filtering
 courts this way makes sense in other states.
+
+### `al_form_requires_digital_signature`
+
+This variable controls whether a third, "Sign after I print" option appears when
+the user reaches a signature screen. If this variable is set to `True`, the only
+options the user will see are "Sign on a phone with my finger" and "Sign on this computer with my
+mouse".
+
+```yaml
+code: |
+  al_form_requires_digital_signature = False
+```
 
 ### `al_form_type`
 
