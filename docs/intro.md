@@ -5,6 +5,8 @@ sidebar_label: About
 slug: /
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y7Bwk9g8H7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 The Document Assembly Line project will help you produce **[beautiful web apps](https://courtformsonline.org)**
 that help users complete legal forms more quickly.
 
@@ -83,16 +85,6 @@ automators to help us:
 * Use and give us feedback on our [Assembly Line Weaver](plan_interview.md) tool
 * Expand our [e-filing](efiling/overview.md) capabilities
 
-## Our work
-
-The video below provides an overview of the project (0-10 min) and a detailed
-look at one of the forms (12-30 min). _Note: This video is a lecture from the
-course [Coding the
-Law](https://www.codingthelaw.org/Fall_2020/level/3/#intro_vid). So please
-disregard comments about "prior classes" and pending homework assignments at the
-end._
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AECHOvmaUv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Our tools
 
