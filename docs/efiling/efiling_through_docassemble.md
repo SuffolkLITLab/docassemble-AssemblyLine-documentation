@@ -164,7 +164,7 @@ code: |
 ## Interview Logic and Question Screens
 
 Now that all of the information is defined, we just need to specify the interview order logic. Notably, you can use the variable `can_check_efile` to
-ask the user if they want to efile their documents, or if they'd rather print them out themselves. You can then define the variables `ready_to_efile` and `efile` to trigger actual document to e-file.
+ask the user if they want to e-file their documents, or if they'd rather print them out themselves. You can then define the variables `ready_to_efile` and `efile` to trigger actual document to e-file.
 
 ```yaml
 mandatory: True
