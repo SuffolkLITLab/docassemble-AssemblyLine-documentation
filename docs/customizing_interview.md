@@ -107,12 +107,32 @@ code: |
     users[1].address.address
   else:
     users[0].address.city
-```    
+```
+
+The syntax inside your interview order block is written in Python. You
+can write more complex logic, including `elif` (for else if), use `and`, `or`
+and comparisons with `==`, `in` etc.
+
+`if` statements can also be nested, using additional levels of indentation.
+
+```python
+id: interview_order_Guardianship_Assistant
+code: |
+  users[0].name.first
+  users.gather()
+  if has_co_petitioner:
+    users[1].address.address
+    if users[1].has_separate_mailing_address:
+      users[1].mailing_address.address
+  else:
+    users[0].address.city
+```
 
 ## Adding conditional logic on an individual screen
 
-To make a single field show or disappear on a screen that asks for
-some optional information, use the `show if` modifier.
+To make a single field show or disappear on a screen that asks for some optional
+information, use the [`show
+if`](https://docassemble.org/docs/fields.html#show%20if) modifier.
 
 Example:
 
@@ -133,7 +153,42 @@ fields:
     show if:
       variable: primary_language
       is: Other
-```      
+```
+
+`show if` works with one variable at a time. If you need to check the value of
+multiple variables in one **if** statement, you need to use the more complex
+[`js show if`](https://docassemble.org/docs/fields.html#js%20show%20if).
+
+When you use `js show if`, you need to use a JavaScript expression that uses the
+function `val()` at least once. `val()` is a JavaScript function that returns
+the value of a variable name that is visible on screen. It takes the name of the
+Docassemble variable in quotes as its only parameter.
+
+Here is a simple example of a `js show if` expression:
+
+```yaml
+---
+id: Tell me more about Respondent
+question: |
+  Tell me more about the ${ other_parties[0] }.
+fields:
+  - Is ${ other_parties[0] } employed?: other_parties[0].is_employed
+    datatype: yesnoradio
+  - Is ${ other_parties[0] } a parent of your child?: other_parties[0].joint_parent
+    datatype: yesnoradio
+  - ${ other_parties[0] }'s monthly income: other_parties[0].income
+    datatype: currency
+    js show if: |
+      val("other_parties[0].is_employed") && val("other_parties[0].joint_parent")
+```
+
+Check the [`js show if`
+documentation](https://docassemble.org/docs/fields.html#js%20show%20if) to learn
+how to use different combinations of values in a `js show if` expression. The
+key is that you'll use ordinary JavaScript keywords to do any comparisons.
+JavaScript is its own language, and keywords such as "or", "and" and even "=="
+work slightly differently, as explained in the Docassemble documentation. You
+can also use a general resource that documents JavaScript to learn more.
 
 ## Questions that you will not see in the Playground
 
