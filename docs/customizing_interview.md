@@ -190,6 +190,29 @@ JavaScript is its own language, and keywords such as "or", "and" and even "=="
 work slightly differently, as explained in the Docassemble documentation. You
 can also use a general resource that documents JavaScript to learn more.
 
+## Adding conditional logic inside an attachment block
+
+If you would like to make the display of a variable in the attachment conditional,
+you can use a multi-line Mako statement right inside the attachment block:
+
+```yaml
+attachment:
+  variable name: my_document[i]
+  pdf template file: my_document.pdf
+  fields:
+    - "signature": |
+        % if i == "final":
+        ${ users.signature }
+        % endif
+```
+
+It is a good habit to use these multi-line blocks so that the logic is easy to
+read and understand later.
+
+You can use exactly the [same Mako
+syntax](https://docassemble.org/docs/markup.html#mako) in the attachment block
+that you would use inside a `question` or `subquestion` modifier.
+
 ## Questions that you will not see in the Playground
 
 You will not see any questions that come from our "question library". The
