@@ -40,7 +40,7 @@ In the configuration file, add the below section, replacing each value on the ri
 ```yaml
 efile proxy:
   api key: abcDEFghiJKL123456789
-  url: https://efile.serverurl.com:9000
+  url: https://efile-test.serverurl.com
   jeffnet api token: ABCDEF123  # only required if your interview operates is Louisiana
   global waiver: 123a4567-b89c-1234-abcd-123456789000
   global server admins:
@@ -83,14 +83,14 @@ We'll first need to find the right "codes" for our interview. Tyler's E-filing s
 parts of the filing process, include the over-arching category of the case, the more specific case type, and even things like whether or not
 the filed document should be confidential or not.
 
-To find the right codes, navigate through the URLs provided by visiting <https://efile.suffolklitlab.org:9000/jurisdictions/illinois/codes>.
+To find the right codes, navigate through the URLs provided by visiting <https://efile-test.suffolklitlab.org/jurisdictions/illinois/codes>.
 Firefox will display clickable links that you can use to browse the different codes.
 
 For example, say we want to write an Adoption interview. The codes in Illinois are split by courts, so to see the case categories available to
 one particular court, say Adams, we can go to
-<https://efile.suffolklitlab.org:9000/jurisdictions/illinois/codes/courts/adams/categories>, and scroll through the responses until we find the "Adoption" entry,
+<https://efile-test.suffolklitlab.org/jurisdictions/illinois/codes/courts/adams/categories>, and scroll through the responses until we find the "Adoption" entry,
 code 7306. We would then see the case types for Adoption cases in adams at
-<https://efile.suffolklitlab.org:9000/jurisdictions/illinois/codes/courts/adams/case_types?category_id=7306&timing=Initial>, which is 25361.
+<https://efile-test.suffolklitlab.org/jurisdictions/illinois/codes/courts/adams/case_types?category_id=7306&timing=Initial>, which is 25361.
 
 The endpoints should say when they need parameters, like we provided with `category_id=7306&timing=Initial` above.
 
