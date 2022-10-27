@@ -133,8 +133,9 @@ id: interview_order_a_258e_motion_for_impoundment
 code: |
   # Set the allowed courts for this interview
   allowed_courts = interview_metadata["a_258e_motion_for_impoundment"]["allowed courts"]
-  nav.set_section('review_a_258e_motion_for_impoundment')
-  user_role = 'plaintiff'
+  nav.set_section("review_a_258e_motion_for_impoundment")
+  user_role ="plaintiff"
+  user_ask_role = "plaintiff"
   one_of_your_custom_questions
   users[0].phone_number
   another_of_your_custom_questions
@@ -148,7 +149,7 @@ code: |
 
 1. `allowed_courts` allows the developer to limit which courts the person filling out the form can pick from, making it easier for them to pick the right court. By default, it's using the same values that are in the [metadata block](#assemblyline-metadata).
 1. `nav.set_section()` comes after `al_intro_screen` and `a_258e_motion_for_impoundment_intro` so that the user can't click to edit their answers before they've actually been asked any questions.
-1. `user_role` tells AssemblyLine which questions to ask about the main party listed on the form. This should be the same as the `typical role`. However, if `typical role` is `unknown`, then the `user_ask_role` variable will be here instead, and will ask the user what role they have in the case.
+1. `user_role` and `user_ask_role` tell AssemblyLine which questions to ask about the main party and opposing parties listed on the form. These should be the same as the `typical role`. However, if `typical role` is `unknown`, then the `user_ask_role` variable will be here instead, and will ask the user what role they have in the case.
 
 Code for your custom questions comes next. All your questions should be triggered in here. You will probably make major edits to the code here, changing the order and adding branching logic.
 

@@ -152,8 +152,9 @@ height, like this:
 
 Add this to a CSS file in your `data/static` folder that you then include in
 your interviews directly or via a shared YAML file.
+
 ### Localization and translation variables
-      
+
 * `AL_DEFAULT_COUNTRY`: [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) 2
   letter code representing the default country of the interview user for address
   questions. E.g., `US` for United States of America, `UK` for United Kingdom of
@@ -272,11 +273,11 @@ code: |
 ### `al_form_type`
 
 `al_form_type` is used to control some dynamic questions to give more specific
-help information and to give some variables, like `user_role`, a smart default.
+help information and to give some variables, like `user_started_case`, a smart default.
 
 Valid values:
 
-- Starts a new court case: `'starts_case'`
+- Starts a new court case: `'starts_case'`. This will set `user_started_case` to `True`.
 - Filed in or responding to an existing court case: `'existing_case'`
 - Part of an appeal of a court case: `'appeal'`
 - Form that is not filed in a court: `'other_form'`
@@ -365,22 +366,24 @@ code: |
 court that the user has chosen to file the case in. This may be used
 in some automatically gathered statistics as well as in e-filing code.
 
-### `user_role`
+### `user_ask_role`
 
-Several questions depend on the value of `user_role` directly to address the
+Several questions depend on the value of `user_ask_role` directly to address the
 `user` correctly as either the party initiating or responding to a case.
 
-`user_role` should be exactly one of "plaintiff" or "defendant". Use "plaintiff"
+`user_ask_role` should be exactly one of "plaintiff" or "defendant". Use "plaintiff"
 when you mean "petitioner", and use "defendant" even if you mean "respondent". This
 is just the internal shorthand for starting or responding to the case.
 
-This is commonly but not always set in a code block.
+The Weaver will set `user_ask_role` directly if it can be, otherwise,
+it will be asked to the user.
 
-### `user_ask_role`
+### `user_role`
 
-`user_ask_role` is used for the same purpose (and will define the value of)
-`user_role`. It can also contain exactly 1 of 2 values: "plaintiff" or "defendant".
-The difference is that `user_ask_role` is expected to be set by asking a question.
+`user_role` is set by set in a code block directly in interviews, or set by [`user_ask_role`](#user_ask_role).
+It serves the same purpose as `user_ask_role`. However to simplify interviews, we suggest you
+use `user_ask_role` instead.
+
 
 ### `user_started_case`
 
