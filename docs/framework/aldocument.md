@@ -408,6 +408,11 @@ Here is the basic process of using an addendum:
    (this is used in the default addendum file)
 1. optionally, specify the template file that you want to use for the addendum
 
+### Assumptions and changes to whitespace
+
+The addendum code does not preserve whitespace; both repeated spaces and
+new lines will always be condensed.
+
 ### Example
 
 Below is a complete example that demonstrates how to use a custom addendum.
@@ -461,6 +466,31 @@ examining the [generic
 addendum](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/templates/al_basic_addendum.docx)
 file included in the AssemblyLine repository. This example is very flexible, and may have more features
 than you need for your addendum.
+
+### Custom parameters for the addendum code
+
+The `safe_value()` method is used to control the options for putting text into the PDF.
+The mirror, `overflow_value()` method can be used to control the text that is sent to
+addendum. The options for both methods are the same. When you use `safe_value()`
+and `overflow_value()`, you must use the same choices for each parameter to get consistent
+results.
+
+* `input_width: int` should equal the approximate width, in characters, of the input box on the PDF.
+  We default to 80 characters, which is a typical of PDF field width. A full page-width PDF field at 12
+  points Helvetica is about 99 characters. `input_width` is used to calculate the total number of 
+  lines of text that fit in a multi-line input. It should be a whole divisor of the `overflow_trigger`.
+* `preserve_newlines: bool` defaults to `False`. When `False`, all whitespace will be condensed to
+  a single space. If `True`, repeated newlines will be replaced with a single newline. Repeated spaces 
+  will be condensed to a single space. When the limit is less than or equal to one line, whitespace
+  is always condensed.
+* `preserve_words: bool` defaults to `True`. When `True`, the addendum code will not cut off words
+  in the middle. Instead, the text will be shortened so the `safe_value()` ends with a complete word.
+  When `False`, text may be cut off in the middle of a word, but only for fields that are less than
+  one full line wide. Words will always be kept whole when the input exceeds one line in length.
+* `overflow_message` can be used to provide a custom message when text is sent to the addendum. The
+  AssemblyLine interviews default to an overflow message of `...`, but no default is provided in the
+  addendum code itself.
+
 
 ## Handling uploaded documents
 
