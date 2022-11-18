@@ -91,6 +91,15 @@ assembly line:
   new form url: https://courtformsonline.org
 ```
 
+#### Use a more performant OCR engine with ALExhibitDocuments
+
+Edit the `assembly line` directive in the global configuration to look like this:
+
+```yaml
+assembly line:
+  ocr engine: ocrmypdf
+```
+
 ## Organization-level configuration options
 
 These variables are recommended to be set in a package that all of your
