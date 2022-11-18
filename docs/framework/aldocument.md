@@ -732,6 +732,52 @@ Which would make the exhibit labels `1`, `2`, and so on. You need to ensure that
 your label override gets triggered, which is demonstrated above by adding the
 `mandatory: True` modifier to the block that defines it.
 
+### Using advanced OCR settings
+
+OCR, or Optical Character Recognition, adds a layer of searchable text. This may be useful
+if you expect users to take photographs of documents. Searchable text may also be a 
+requirement for electronically filed documents in your jurisdiction.
+
+By default, `ALExhibit` will be OCRed using Docassemble's native code, which converts
+images to grayscale and is somewhat slow.
+
+Optionally, you can tell AssemblyLine interviews to use an improved OCR system, OCRMyPDF.
+To turn on OCRMyPDF:
+
+1. Install OCRMyPDF as a Debian package inside your docker container.
+2. Update your global configuration.
+
+#### Installing OCRMyPDF
+
+Edit your global configuration and find an entry labeled `debian packages`. Edit
+or add it so that it includes `ocrmypdf`, like this:
+
+```yaml
+debian packages:
+- ocrmypdf
+```
+
+Next, you can **either** start and then stop your Docassemble docker container on the command
+line, or manually install the application as follows:
+
+```bash
+docker exec -ti [TAB] /bin/bash
+apt update
+apt install ocrmypdf
+```
+
+#### Setting OCRMyPDF as the default OCR engine in AssemblyLine interviews
+
+Find and edit the `assembly line` directive in your configuration so that it includes this line:
+
+```yaml
+assembly line:
+  ocr engine: ocrmypdf
+```
+
+If this setting is missing or the `ocr engine` is set to anything other than `ocrmypdf`, the
+default Docassemble OCR engine will be used instead.
+
 ## ALStaticDocument
 
 The `ALStaticDocument` class is provided to give you a simple method to include
