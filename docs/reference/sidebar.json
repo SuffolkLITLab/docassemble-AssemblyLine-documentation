@@ -1,9 +1,10 @@
 {
   "items": [
-    "reference/al_general",
     "reference/al_courts",
-    "reference/example_google",
-    "reference/al_document"
+    "reference/al_document",
+    "reference/al_general",
+    "reference/language",
+    "reference/sessions"
   ],
   "label": "API Reference",
   "type": "category"

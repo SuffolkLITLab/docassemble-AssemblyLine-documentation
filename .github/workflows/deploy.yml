@@ -13,6 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: docs
+      - uses: actions/checkout@v2
+        with:
+          repository: SuffolkLITLab/docassemble-AssemblyLine
+          path: docassemble-AssemblyLine
+      - name: Go to Docs directory
+        run: |
+          cd docs
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
