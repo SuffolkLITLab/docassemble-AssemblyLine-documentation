@@ -15,7 +15,8 @@ and on an interview-by-interview basis with the Assembly Line framework.
 
 ## Turning custom error pages on or off
 
-The default Assembly Line configuration turns on a custom error handling page.
+The default Assembly Line configuration turns on a custom error handling page as of version 
+`2.20.0`.
 
 If you would like to turn the custom error page off, you can disable it like
 this:
@@ -126,3 +127,12 @@ Here is your current progress on the “Fax cover sheet” documents you started
 As well as a link to download the draft version of each document in `al_user_bundle`,
 a "Leave" button which takes the user to `AL_ORGANIZATION_HOMEPAGE` and a "Start over"
 button which starts the interview from the beginning.
+
+#### Problem with earlier version of the Weaver
+
+Early versions of the Weaver that include user instructions may place the instructions attachment
+in the same attachment block as the primary documents of the interview. But the instructions
+do not have `skip undefined` turned on.
+
+You should ensure that the `skip undefined` option is turned on for all attachments in your
+interview if you want the full benefit of the custom error action page.
