@@ -92,6 +92,7 @@ module.exports = {
                 'framework/alrecipes',
                 'automated_testing',
                 'framework/answer_sets',
+                'framework/answer_set_intakes',
                 'framework/reserved_keywords',
             ]
         },
