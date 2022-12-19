@@ -3,6 +3,24 @@ sidebar_label: al_document
 title: al_document
 ---
 
+#### label
+
+```python
+def label(dictionary)
+```
+
+Given a dictionary like: {&quot;some_attribute&quot;:&quot;Some label&quot;}, return the `value` of the first dictionary item.
+Useful for working with the `columns` method of an ALAddendumField.
+
+#### key
+
+```python
+def key(dictionary)
+```
+
+Given a dictionary like: {&quot;some_attribute&quot;:&quot;Some label&quot;}, return the `key` of the first dictionary item.
+Useful for working with the `columns` method of an ALAddendumField.
+
 #### html\_safe\_str
 
 ```python
@@ -45,19 +63,27 @@ Optional/planned (not implemented yet):
 ```python
 def overflow_value(preserve_newlines: bool = False,
                    input_width: int = 80,
-                   overflow_message: str = "")
+                   overflow_message: str = "",
+                   preserve_words: bool = True)
 ```
 
 Try to return just the portion of the variable (list-like object or string)
 that is not contained in the safe_value().
 
+Whitespace will be altered. If preserve_newlines is true, the return value may have newlines,
+but double newlines and Windows style (\r\n) will be replaced with \n. Double spaces will replaced
+with a single space.
+
+If preserve_newlines is false, all whitespace, including newlines and tabs, will be replaced
+with a single space.
+
 #### max\_lines
 
 ```python
-def max_lines(input_width: int = 80, overflow_message_length=0) -> int
+def max_lines(input_width: int = 80) -> int
 ```
 
-Estimate the number of rows in the field in the output document.
+Calculate the number of lines of text that will fit in the specified input
 
 #### value
 
@@ -75,11 +101,23 @@ pages.
 def safe_value(overflow_message: str = "",
                input_width: int = 80,
                preserve_newlines: bool = False,
-               _original_value=None)
+               _original_value: Optional[str] = None,
+               preserve_words: bool = True) -> Union[str, List[Any]]
 ```
 
-Try to return just the portion of the variable
-that is _shorter than_ the overflow trigger. Otherwise, return empty string.
+Return just the portion of the variable that heuristics suggest will fit in the specified overflow_trigger
+limit. If the value is not defined, return empty string.
+
+When `preserve_newlines` is `True`, the output will be limited to a number of lines, not a number
+of characters. The max number of lines will be calculated as `floor(self.overflow_trigger/input_width)`.
+Therefore, it is important that `input_width` is a divisor of `overflow_trigger`.
+
+Whitespace will be altered. If preserve_newlines is true, the return value may have newlines,
+but double newlines and Windows style (\r\n) will be replaced with \n. Double spaces will replaced
+with a single space.
+
+If preserve_newlines is false, all whitespace, including newlines and tabs, will be replaced
+with a single space.
 
 **Arguments**:
 
@@ -319,7 +357,9 @@ on the final download screen.
   ---
 - `question` - |
   Do you want the extra document included?
-- `yesno` - include_extra_document
+  fields:
+  - no label: include_extra_document
+- `datatype` - yesnoradio
   ---
 - `code` - |
   extra_document.enabled = include_extra_document
@@ -356,7 +396,9 @@ on the final download screen.
 #### as\_docx
 
 ```python
-def as_docx(key: str = "final", refresh: bool = True) -> DAFile
+def as_docx(key: str = "final",
+            refresh: bool = True,
+            append_matching_suffix: bool = True) -> DAFile
 ```
 
 Returns the assembled document as a single DOCX file, if possible. Otherwise returns a PDF.
@@ -375,9 +417,10 @@ This behavior is the default.
 
 ```python
 def safe_value(field_name: str,
-               overflow_message: str = None,
+               overflow_message: Optional[str] = None,
                preserve_newlines: bool = False,
-               input_width: int = 80)
+               input_width: int = 80,
+               preserve_words: bool = True)
 ```
 
 Shortcut syntax for accessing the &quot;safe&quot; (shorter than overflow trigger)
@@ -387,15 +430,27 @@ value of a field that we have specified as needing an addendum.
 
 ```python
 def overflow_value(field_name: str,
-                   overflow_message: str = None,
+                   overflow_message: Optional[str] = None,
                    preserve_newlines: bool = False,
-                   input_width: int = 80)
+                   input_width: int = 80,
+                   preserve_words: bool = True)
 ```
 
 Shortcut syntax for accessing the &quot;overflow&quot; value (amount that exceeds overflow trigger)
 for the given field as a string.
 
 Should mirror the &quot;safe_value&quot; for the same field.
+
+#### is\_enabled
+
+```python
+def is_enabled(refresh=True)
+```
+
+A document can be considered &quot;enabled&quot; if:
+- the .always_enabled attribute is true (enabled at init)
+- the .enabled attribute is true (calculated fresh once per page load)
+- the cache.enabled attribute is true
 
 ## ALStaticDocument Objects
 
@@ -437,11 +492,15 @@ A class that allows one-line initialization of static documents to include in an
 #### as\_docx
 
 ```python
-def as_docx(key: str = "final",
-            refresh: bool = True) -> Union[DAStaticFile, DAFile]
+def as_docx(
+        key: str = "final",
+        refresh: bool = True,
+        append_matching_suffix: bool = False) -> Union[DAStaticFile, DAFile]
 ```
 
 Returns the assembled document as a single DOCX file, if possible. Otherwise returns a PDF.
+The &quot;append_matching_suffix&quot; parameter is not used for static documents. They are always
+left unchanged.
 
 ## ALDocumentBundle Objects
 
@@ -474,7 +533,10 @@ Use case: providing a list of documents in a specific order.
 #### as\_pdf
 
 ```python
-def as_pdf(key: str = "final", refresh: bool = True) -> Optional[DAFile]
+def as_pdf(key: str = "final",
+           refresh: bool = True,
+           pdfa: bool = False,
+           append_matching_suffix: bool = True) -> Optional[DAFile]
 ```
 
 Returns the Bundle as a single PDF DAFile, or None if none of the documents are enabled.
@@ -484,12 +546,22 @@ Returns the Bundle as a single PDF DAFile, or None if none of the documents are 
 ```python
 def as_zip(key: str = "final",
            refresh: bool = True,
+           pdfa: bool = False,
            title: str = "",
            format="pdf",
            include_pdf=True) -> DAFile
 ```
 
 Returns a zip file containing the whole bundle
+
+#### has\_enabled\_documents
+
+```python
+def has_enabled_documents(refresh=False) -> bool
+```
+
+Return True iff there is at least one enabled document
+in this bundle.
 
 #### enabled\_documents
 
@@ -523,7 +595,9 @@ Gets all of titles of the documents in a list
 #### as\_pdf\_list
 
 ```python
-def as_pdf_list(key: str = "final", refresh: bool = True) -> List[DAFile]
+def as_pdf_list(key: str = "final",
+                refresh: bool = True,
+                pdfa: bool = False) -> List[DAFile]
 ```
 
 Returns the nested bundles as a list of PDFs that is only one level deep.
@@ -552,13 +626,15 @@ def download_list_html(key: str = "final",
                        format: str = "pdf",
                        view: bool = True,
                        refresh: bool = True,
+                       pdfa: bool = False,
                        include_zip: bool = True,
                        view_label="View",
                        view_icon: str = "eye",
                        download_label: str = "Download",
                        download_icon: str = "download",
-                       zip_label: str = None,
-                       zip_icon: str = "file-archive") -> str
+                       zip_label: Optional[str] = None,
+                       zip_icon: str = "file-archive",
+                       append_matching_suffix: bool = True) -> str
 ```
 
 Returns string of a table to display a list
@@ -574,6 +650,7 @@ of pdfs with &#x27;view&#x27; and &#x27;download&#x27; buttons.
 ```python
 def download_html(key: str = "final",
                   format: str = "pdf",
+                  pdfa: bool = False,
                   view: bool = True,
                   refresh: bool = True,
                   view_label: str = "View",
@@ -599,4 +676,321 @@ Optionally, display a checkbox that allows someone to decide whether or not to
 include an editable (Word) copy of the file, iff it is available.
 
 #### send\_email
+
+```python
+def send_email(to: Any = None,
+               key: str = "final",
+               editable: bool = False,
+               template: Any = None,
+               **kwargs) -> bool
+```
+
+Send an email with the current bundle as a series of flat pdfs (one per bundle entry) or as editable documents.
+Can be used the same as https://docassemble.org/docs/functions.html#send_email with
+two optional additional params.
+
+keyword arguments:
+@param to {string} - Same as da send_email `to` - email address(es) or objects with such.
+@param [key] {string} - Optional. Which version of the doc. Default: &#x27;final&#x27;
+@param [editable] {bool} - Optional. User wants the editable docs. Default: False
+@param template {object} - Same as da `send_email` `template` variable.
+@param * {*} - Any other parameters you&#x27;d send to a da `send_email` function
+
+#### is\_enabled
+
+```python
+def is_enabled(refresh=True) -> bool
+```
+
+Returns true if the bundle itself is enabled, and it has at least one enabled child document
+
+## ALExhibit Objects
+
+```python
+class ALExhibit(DAObject)
+```
+
+Class to represent a single exhibit, with cover page, which may contain multiple documents representing pages.
+Atributes:
+pages (list): List of individual DAFiles representing uploaded images or documents.
+cover_page (DAFile | DAFileCollection): (optional) A DAFile or DAFileCollection object created by an `attachment:` block
+Will typically say something like &quot;Exhibit 1&quot;
+label (str): A label, like &quot;A&quot; or &quot;1&quot; for this exhibit in the cover page and table of contents
+starting_page (int): first page number to use in table of contents
+
+#### ocr\_ready
+
+```python
+def ocr_ready() -> bool
+```
+
+**Returns**:
+
+  True iff OCR process has finished on all pages. OCR is non-blocking, and assembly will work
+  even if OCR is not complete. Check this status if you want to wait to deliver a document until
+  OCR is complete.
+  
+  Will return true (but log a warning) if OCR was never started on the documents.
+  That situation is likely a developer error, as you shouldn&#x27;t wait for OCR if it never started
+
+#### ocr\_pages
+
+```python
+def ocr_pages()
+```
+
+Return the OCR version if it exists; otherwise the initial version of each doc in `pages`.
+
+#### as\_pdf
+
+```python
+def as_pdf(*,
+           refresh: bool = False,
+           prefix: str = "",
+           pdfa: bool = False,
+           add_page_numbers: bool = True,
+           add_cover_page: bool = True,
+           filename: Optional[str] = None,
+           append_matching_suffix: bool = True) -> DAFile
+```
+
+Params:
+prefix (str): the prefix for the bates numbering that is applied if
+add_page_numbers is true
+add_page_numbers (bool): adds bates numbering to the exhibit if true,
+starting at the number self.start_page
+add_cover_page (bool): adds a cover to this exhibit if true
+
+#### ocrmypdf\_task
+
+```python
+def ocrmypdf_task(from_file: Union[DAFile, DAFileList],
+                  to_pdf: DAFile) -> Optional[str]
+```
+
+A function that calls ocr my pdf in a subprocess.
+Built to be called from a background action (id: al exhibit ocr pages bg)
+
+## ALExhibitList Objects
+
+```python
+class ALExhibitList(DAList)
+```
+
+**Attributes**:
+
+- `maximum_size` _int_ - the maximum size in bytes that the whole document is allowed to be
+- `auto_label` _bool_ - Set to True if you want exhibits to be automatically numbered for purposes of cover page
+  and table of contents. Defaults to True.
+- `auto_labeler` _Callable_ - (optional) a function or lambda to transform the index for each exhibit to a label.
+  Defaults to labels like A..Z if unspecified.
+- `auto_ocr` _bool_ - Set to True if you would like exhibits to be OCR&#x27;ed in the background after they are uploaded.
+  Defaults to True.
+
+#### as\_pdf
+
+```python
+def as_pdf(filename="file.pdf",
+           pdfa: bool = False,
+           add_page_numbers: bool = False,
+           toc_pages: int = 0,
+           append_matching_suffix: bool = True) -> DAFile
+```
+
+Return a single PDF containing all exhibits.
+
+**Arguments**:
+
+- `filename` _str_ - the filename to be assigned to the generated PDF document.
+- `add_cover_pages` _bool_ - True if each exhibit should have a cover page, like &quot;Exhibit A&quot;.
+
+**Returns**:
+
+  A DAfile containing the rendered exhibit list as a single file.
+
+#### size\_in\_bytes
+
+```python
+def size_in_bytes()
+```
+
+Gets the total size in bytes of each of the exhibit documents.
+
+#### ocr\_ready
+
+```python
+def ocr_ready() -> bool
+```
+
+Returns `True` iff all individual exhibit pages have been OCRed, or if the OCR process hasn&#x27;t started.
+
+#### hook\_after\_gather
+
+```python
+def hook_after_gather()
+```
+
+Private method automatically triggered when the list is fully gathered.
+
+## ALExhibitDocument Objects
+
+```python
+class ALExhibitDocument(ALDocument)
+```
+
+Represents a collection of uploaded documents, formatted like a record appendix or exhibit list, with a table of contents and
+optional page numbering.
+
+**Attributes**:
+
+- `exhibits` _ALExhibitList_ - list of ALExhibit documents. Each item is a separate exhibit, which may be multiple pages.
+- `table_of_contents` - DAFile or DAFileCollection object created by an `attachment:` block
+- `_cache` _DAFile_ - a cached version of the list of exhibits. It may take
+  a long time to process.
+- `include_table_of_contents` _bool_ - flag to control whether a table of contents is generated for this form
+- `include_exhibit_cover_pages` _bool_ - flag to control whether cover pages are included with each separate exhibit
+- `add_page_numbers` _bool_ - Flag that controls whether the as_pdf() method
+  also will add Bates-stamp style page numbers and labels on each page.
+- `auto_labeler` _callable_ - a Lambda or Python function that will be used to label exhibits.
+  
+
+**Todo**:
+
+  * Method of making a safe link in place of the attachment (e.g., filesize limits on email)
+  
+
+**Examples**:
+
+```
+---
+objects:
+  - exhibit_attachment: ALExhibitDocument.using(title=&quot;Exhibits&quot;, filename=&quot;exhibits&quot; )
+---
+code: |
+  # This block is not needed, but you can provide and customize for your needs.
+  # This mirrors the fallback block in ql_baseline.yml
+  exhibit_attachment.enabled = exhibit_attachment.exhibits.has_exhibits
+---
+objects:
+  - al_user_bundle: ALDocumentBundle.using(elements=[my_instructions, my_main_attachment, exhibit_attachment], filename=&quot;user_bundle.pdf&quot;, title=&quot;All forms to download for your records&quot;)
+```
+  
+  Example of using a custom label function, https://docassemble.org/docs/functions.html#item_label:
+```
+---
+objects:
+  - exhibit_attachment: ALExhibitDocument.using(title=&quot;Exhibits&quot;, filename=&quot;exhibits&quot; , auto_labeler=item_label)
+```
+
+#### has\_overflow
+
+```python
+def has_overflow()
+```
+
+Provided for signature compatibility with ALDocument. Exhibits do not have overflow.
+
+#### ocr\_ready
+
+```python
+def ocr_ready() -> bool
+```
+
+Returns `True` iff each individual exhibit has been OCRed, or if the OCR process was not started.
+
+#### as\_pdf
+
+```python
+def as_pdf(key="final",
+           refresh: bool = True,
+           pdfa: bool = False,
+           append_matching_suffix: bool = True) -> DAFile
+```
+
+**Arguments**:
+
+- `key` _str_ - unused, for signature compatibility with ALDocument
+- `refresh` _bool_ - unused, for signature compatibility with ALDocument
+
+## ALTableDocument Objects
+
+```python
+class ALTableDocument(ALDocument)
+```
+
+#### has\_overflow
+
+```python
+def has_overflow()
+```
+
+Provided for signature compatibility with ALDocument.
+
+#### as\_pdf
+
+```python
+def as_pdf(key: str = "final",
+           refresh: bool = True,
+           pdfa: bool = False,
+           append_matching_suffix: bool = True,
+           **kwargs) -> DAFile
+```
+
+**Arguments**:
+
+- `key` _str_ - unused, for signature compatibility with ALDocument
+
+## ALUntransformedDocument Objects
+
+```python
+class ALUntransformedDocument(ALDocument)
+```
+
+#### has\_overflow
+
+```python
+def has_overflow()
+```
+
+Provided for signature compatibility with ALDocument.
+
+#### as\_pdf
+
+```python
+def as_pdf(key: str = "final",
+           refresh: bool = True,
+           pdfa: bool = False,
+           append_matching_suffix: bool = True,
+           **kwargs) -> DAFile
+```
+
+**Arguments**:
+
+- `key` _str_ - unused, for signature compatibility with ALDocument
+
+## ALDocumentUpload Objects
+
+```python
+class ALDocumentUpload(ALUntransformedDocument)
+```
+
+Simplified class to handle uploaded documents, without any of the complexity of the
+ALExhibitDocument class.
+
+#### unpack\_dafilelist
+
+```python
+def unpack_dafilelist(the_file: DAFileList) -> DAFile
+```
+
+Creates a plain DAFile out of the first item in a DAFileList
+
+**Arguments**:
+
+- `the_file` _DAFileList_ - an item representing an uploaded document in a Docassemble interview
+  
+
+**Returns**:
+
+  A DAFile representing the first item in the DAFileList, with a fixed instanceName attribute.
 

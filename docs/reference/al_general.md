@@ -9,6 +9,25 @@ title: al_general
 class ALAddress(Address)
 ```
 
+#### address\_fields
+
+```python
+def address_fields(country_code: Optional[str] = None,
+                   default_state: Optional[str] = None,
+                   show_country: bool = False,
+                   show_county: bool = False,
+                   show_if: Union[str, Dict[str, str], None] = None,
+                   allow_no_address: bool = False)
+```
+
+Return a YAML structure representing the list of fields for the object&#x27;s address.
+Optionally, allow the user to specify they do not have an address.
+NOTE: if you set allow_no_address to True, you must make sure to trigger
+the question with `users[0].address.has_no_address` rather than
+`users[0].address.address`.
+Optionally, add a `show if` modifier to each field. The `show if` modifier
+will not be used if the `allow_no_address` modifier is used.
+
 #### formatted\_unit
 
 ```python
@@ -45,6 +64,18 @@ def on_one_line(include_unit=True,
 ```
 
 Returns a one-line address.  Primarily used internally for geocoding.
+
+#### normalized\_address
+
+```python
+def normalized_address() -> Union[Address, "ALAddress"]
+```
+
+Try geocoding the address, and if it succeeds, return the &quot;long&quot; normalized version of
+the address. All methods are still available, such as my_address.normalized_address().block(), etc.,
+but note that this will be a standard Address object, not an ALAddress object.
+
+If geocoding fails, return the version of the address as entered by the user instead.
 
 ## ALAddressList Objects
 
@@ -126,19 +157,25 @@ If the Individual has a child_letters attribute, add the new letters to the exis
 #### name\_fields
 
 ```python
-def name_fields(person_or_business: str = "person",
-                show_suffix=True) -> List[Dict[str, str]]
+def name_fields(
+        person_or_business: str = "person",
+        show_suffix: bool = True,
+        show_if: Union[str, Dict[str, str],
+                       None] = None) -> List[Dict[str, str]]
 ```
 
-Return suitable field prompts for a name. If `uses_parts` is None, adds the
+Return suitable field prompts for a name. If `person_or_business` is None, adds the
 proper &quot;show ifs&quot; and uses both the parts and the single entry
 
 #### address\_fields
 
 ```python
 def address_fields(country_code: str = "US",
-                   default_state: str = None,
-                   show_country: bool = False) -> List[Dict[str, str]]
+                   default_state: Optional[str] = None,
+                   show_country: bool = False,
+                   show_county: bool = False,
+                   show_if: Union[str, Dict[str, str], None] = None,
+                   allow_no_address: bool = False) -> List[Dict[str, str]]
 ```
 
 Return field prompts for address.
@@ -146,10 +183,29 @@ Return field prompts for address.
 #### gender\_fields
 
 ```python
-def gender_fields(show_help=False)
+def gender_fields(show_help=False,
+                  show_if: Union[str, Dict[str, str], None] = None)
 ```
 
 Return a standard gender input with &quot;self described&quot; option.
+
+#### language\_fields
+
+```python
+def language_fields(choices: Optional[List[Dict[str, str]]] = None,
+                    style: str = "radio",
+                    show_if: Union[str, Dict[str, str], None] = None)
+```
+
+Return a standard language picker with an &quot;other&quot; input. Language should be specified as ISO 639-2 or -3 codes so it is compatible with the language_name() function.
+
+#### language\_name
+
+```python
+def language_name()
+```
+
+Return the human-readable version of the individual&#x27;s language, handling the &quot;other&quot; option.
 
 #### gender\_male
 
@@ -278,7 +334,7 @@ Used to take a list of letters like [&quot;A&quot;,&quot;ABC&quot;,&quot;AB&quot
 ```python
 def fa_icon(icon: str,
             color: str = "primary",
-            color_css: str = None,
+            color_css: Optional[str] = None,
             size: str = "sm")
 ```
 
@@ -322,4 +378,14 @@ type: basic
 
 If no valid auth information is in the configuration, it will fall back to anonymous authentication.
 The GitHub API is rate-limited to 60 anonymous API queries/hour.
+
+#### language\_name
+
+```python
+def language_name(language_code: str) -> str
+```
+
+Given a 2 digit language code abbreviation, returns the full
+name of the language. The language name will be passed through the `word()`
+function.
 

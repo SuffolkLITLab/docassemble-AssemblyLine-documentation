@@ -12,13 +12,29 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - run: pip install pydoc-markdown
       - uses: actions/checkout@v2
+        with:
+          path: docs
+      - uses: actions/checkout@v2
+        with:
+          repository: SuffolkLITLab/docassemble-AssemblyLine
+          path: docassemble-AssemblyLine
+      - name: Go to Docs directory
+        run: |
+          cd docs
+          pydoc-markdown
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
           cache: npm
+          cache-dependency-path: docs/package-lock.json
       - name: Build website
         run: |
+          cd docs
           npm ci
           npm run build
 
