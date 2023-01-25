@@ -7,22 +7,37 @@ sidebar_label: |
 slug: /alincome/expenses
 ---
 
-The `ALExpenseList` is a class that lets you ask a user about many different types of expenses in a simple way.
+The `ALExpenseList` is a class that lets you ask a user about their different expenses in a simple way.
 
 ## Guiding Philosophy
 
-Certain financial forms ask for a person's expenses, as a proof of hardship or burden.
-In designing these questions, we tried to balance the number of questions a user needs
-to answer with detailed enough descriptions of expenses, so the user isn't burdened, but also
-doesn't forget to list any significant expenses they would have that could prove financial burden.
+Certain court forms ask for a person's expenses as a proof of hardship or burden.
+In designing this feature, we tried to reduce the number of questions a user needs
+to answer while still asking for specific enough expenses. We don't want to burden the user, but also
+doesn't want the user forget to list any significant expenses they would have
+that could prove financial burden.
 
-What expenses you want to ask about by default will depend on your community's needs.
+What expenses you want to initially ask about will depend on your community's needs.
 For example, if your community lives in northern rural areas, they might have alternative
-heating needs, like wood or oil, and might not immediately associate those costs with just
+heating needs, like wood or oil, and might not immediately associate those costs with
 standard "utilities". If your community is in a flood plain, you might want to include flood
 insurance as an option.
 
-## Expenses Tutorial
+## ALExpense
+
+`ALExpense` is a class that represents an amount that re-occurs periodically, like a monthly
+utility bill, or weekly grocery expenses. It has a few attributes:
+
+* `expense.value` is the actual amount that is reoccurring. For example, someone's rental insurance
+  might always be $50 each month.
+* `expense.times_per_year` is the number of times each year that this amount occurs. If someone has to pay their landlord twice a month, `times_per_year` would be 24. This value can also be fractional if need be; an expense that only needs to be paid once every two years would have a `times_per_year` of 0.5.
+* `expense.source` is the source, or name, of the expense. Food expenses could have a source of `"food"`.
+  * `expense.display_name` is the name of the source that you want to display to the user. This helps with multi-lingual interviews, where you can show the user the name of the expense, but your interview logic can still refer to a single canonical language name. It also helps add or change additional context to the name that you don't want to write out in your interview logic. For example, `expense.source` could be `"medical insurance"`, but `expense.display_name` could be `"Medical Insurance (including health, dental, and vision)"`.
+
+You won't be using `ALExpense` by itself often though; you'll need a list of expenses from the user, which we'll discuss next.
+
+
+## ALExpenseList Tutorial
 
 Let's make a short interview that just asks for someone's expenses. These some pieces
 of code can be used in longer interviews as well.
@@ -31,10 +46,10 @@ of code can be used in longer interviews as well.
 
 Before you start, we'll assume that you:
 
-* have access to a [developer account on a docassemble server](TODO)
-* have the [`ALToolbox` package installed on your server](TODO)
-* know [what the playground is](TODO) and [how to use it to develop a docassemble interview](TODO)
-* know [what "blocks" are](TODO) in docassemble
+* have access to a [developer account on a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/classes/assembly-line/2020-assembly-line-assignment-1#before-you-get-started)
+* have the [`ALToolbox` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script)
+* know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
+* know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
 
 ### Writing the interview
 
@@ -54,7 +69,7 @@ objects:
 ```
 
 :::tip Other objects
-You can also associate these expenses with [another object](TODO), say the main user of a form, like `users[0]`.
+You can also associate these expenses with [another object](https://docassemble.org/docs/objects.html#how), say the main user of a form, like `users[0]`, depending on how you organize your interview.
 
 ```yml
 objects:
@@ -63,7 +78,7 @@ objects:
 
 :::
 
-Then to trigger gathering expenses, add the following line into your [interview order code block](TODO).
+Then to trigger gathering expenses, add the following [interview order code block](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#the-interview-order-block) into your tutorial interview.
 
 ```yml
 mandatory: True
@@ -73,9 +88,9 @@ code: |
 
 This will ask the user a few questions:
 
-* first will be what types of expenses the user has. You can customize the options shown to the user by including
+* First, they will be asked what types of expenses they have. You can customize the options shown to the user by including
   a definition of an `expense_terms` variable in your interview. Since the default list is pretty long, we'll make it
-  shorter in this example:
+  shorter in this tutorial by copying the below variable definition block:
 
   ```yml
   # "!!omap" makes these terms ordered: 
@@ -99,8 +114,15 @@ This will ask the user a few questions:
 
   ![A screenshot of a webpage. At the top, it asks "What kind of expenses do you have?" There is a checkbox next to each option, like "rent" and "food". There is a continue button at the bottom](../assets/alincome_expenses_checkboxes.jpg)
 
-* for each expense that the user confirmed they have, there will be one question screen,
-  asking for how often they pay for that expense, and how much they pay.
+  :::tip `display_name`
+
+  As mentioned in the previous section, `expense_terms` provides the `ALExpense` objects in your `ALExpenseList` with the values for `source` and for `display_name`; everything to the left of the colon on each line is `source` and everything to the right is the longer `display_name`.
+
+  :::
+
+* For each expense that the user said they have, there will be one question screen,
+  asking for how often they pay for that expense, and how much they pay. If they selected "other", they will also
+  be prompted to enter the name of that expense.
 
   If you want to change the options for how often they pay the amount, you can define a `times_per_year_list`,
   similarly to the `expense_terms` above. By default, the list contains "weekly", "once every two weeks", "twice per month",
@@ -117,7 +139,7 @@ This will ask the user a few questions:
     - [1, "Yearly"]
   ```
 
-Once you have the information, you can show let the user review the expenses they've entered
+You can show let the user review the expenses they've entered
 with the following question block:
 
 ```yml
@@ -135,7 +157,7 @@ field: review_expenses_screen
 ```
 
 :::tip Review screens
-You can also add the expense list to a [review screen](TODO) with the below code:
+You can also add the expense list to a [review screen](https://docassemble.org/docs/fields.html#review) with the below code:
 
 ```yml
 review:
@@ -151,14 +173,14 @@ review:
 :::
 
 That's all you need to gather the information, but the ALExpenseList class also
-gives you many ways to display the info. This is the same way of displaying the `ALIncomeList` class, so if you've used `ALIncomeList` before feel free to [skip past this section](TODO).
+gives you many ways to display the info. This is the same way of displaying the `ALIncomeList` class, so if you've used `ALIncomeList` before feel free to skim through this section.
 
 Let's add one last screen to display our information. We'll
 describe what each line of code is doing on the screen.
 
 ```yml
 event: final_screen
-question: Last screen!
+question: Summary of your expenses
 subquestion: |
   All of the types of expenses, which we call "sources": ${ expenses.sources() }
 
@@ -183,7 +205,6 @@ code: |
   final_screen
 ```
 
-And run through the interview!
+Now you can run through the interview!
 
-You'll likely want to display this information in a PDF or word template as well. See [this
-page for more information about using document templates](TODO).
+You'll likely want to display this information in a PDF or word template as well. [This section describing the Attachment block](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/generated_yaml#attachment-block) will help with displaying information in the PDF, and [this page about working with DOCX files](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/docx) will help DOCX users.
