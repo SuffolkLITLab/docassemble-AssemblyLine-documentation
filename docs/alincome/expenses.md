@@ -1,9 +1,9 @@
 ---
 id: expenses
 title: |
-    ALExpenseList
+    Expenses: ALExpense and ALExpenseList
 sidebar_label: |
-  ALExpenseList
+  Expenses
 slug: /alincome/expenses
 ---
 
