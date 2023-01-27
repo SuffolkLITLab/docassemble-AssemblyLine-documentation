@@ -351,7 +351,7 @@ Replace `expense_rent` or `house` with any valid keyword in the example below.
 Docassemble does not work with PDF forms that use the same label for a field
 twice.
 
-To work around this issue, simply annotate the second or third field with two
+To work around this issue, annotate the second or third field with two
 underscores and any digit, like this: `__1`.
 
 Replace `users1_name` with any other valid field name in the example below.

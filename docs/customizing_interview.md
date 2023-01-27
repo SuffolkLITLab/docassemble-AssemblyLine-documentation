@@ -76,7 +76,7 @@ You will likely start by clicking the "Save and Run" button to try running your
 interview through to the end. Note any awkward wording or changes you want to make.
 
 Use the `id` that is on the top of each screen to find the screen that you want to change.
-Then, simply change the text that you want to change, or change the order of fields.
+Then, change the text that you want to change, or change the order of fields.
 
 ![id: request a guardianship](./assets/playground_id.png)
 
@@ -164,7 +164,7 @@ function `val()` at least once. `val()` is a JavaScript function that returns
 the value of a variable name that is visible on screen. It takes the name of the
 Docassemble variable in quotes as its only parameter.
 
-Here is a simple example of a `js show if` expression:
+Here is a small example of a `js show if` expression:
 
 ```yaml
 ---
@@ -328,13 +328,13 @@ Avoid:
 ```
 
 :::note Tip
-To comment out many lines at once, hold the ALT key and click and drag a line 
+To comment out many lines at once, hold the ALT key and click and drag a line
 with your mouse. If you do it correctly you will see a long blinking cursor.
 Now you can type on multiple lines at once. Type a `#` and a space to comment out the lines
 with the blinking cursor.
 :::
 
-If you want to discard your changes and start over, simply upload the package .ZIP file
+If you want to discard your changes and start over, upload the package .ZIP file
 to your playground again. This will wipe out all of your changes.
 
 Use [GitHub](github.md) regularly to let you restore your work from a point in time.

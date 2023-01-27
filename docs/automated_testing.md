@@ -79,7 +79,7 @@ Feature: I have children
 
 ## First test
 
-You can write a really simple test right away that just makes sure your YAML file runs. Write a `Scenario` for each file you want to test.
+You can write a short test right away that just makes sure your YAML file runs. Write a `Scenario` for each file you want to test.
 
 ```
 Feature: Interviews load

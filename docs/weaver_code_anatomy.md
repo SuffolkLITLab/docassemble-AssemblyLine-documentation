@@ -82,7 +82,7 @@ code: |
 ```
 
 1. `title`, `short title`, and `description` allow your organization's site to show more information about your form and to organize your forms more easily.
-1. `original_form` is simply a link to the original, fillable PDF form that this interview is automating, if it exists.
+1. `original_form` is a link to the original, fillable PDF form that this interview is automating, if it exists.
 1. 🚧 `allowed courts` allows your code to decide which courts to let the user pick from when they need to pick their court, usually used in conjunction with [AL Generic Jurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction).
 1. `categories` is the [LIST taxonomy](https://taxonomy.legal/) code for this interview, which can be used by your organization to organize your interviews.
 1. `attachment block variable` used to be used in the code that sends documents to courts, but now the [ALDocument object block](#aldocument-object-block) is used instead.

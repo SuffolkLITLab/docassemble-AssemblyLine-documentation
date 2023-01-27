@@ -383,7 +383,7 @@ You can still make your pull request, but GitHub will prohibit merging. There ar
 
 Either way, the most reliable way to deal with this situation is, unfortunately, to redo your changes on top of the new code:
 
-1. Make the pull request as usual, but simply use it as a tool. The changes you made will be highlighted in the [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests).
+1. Make the pull request as usual, and use it as a tool. The changes you made will be highlighted in the [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests).
 1. In docassemble [create a new Project](https://docassemble.org/docs/playground.html#projects) and pull in the other branch (the one you want to merge with).
 1. Using the file comparison as a guide, manually add your changes back.
 1. Make sure functionality affected by your code changes still works the way it should.
@@ -652,7 +652,7 @@ Regular commit messages can also link to or close issues, just like [the commit 
 
 See the GitHub docs on [closing an issue with a PR](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue). The issue will only be closed when the PR is merged into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch) (usually the one called 'main'). Example: `Add all financial questions, fix #15`
 
-You can also just create a link to an issue with a PR or commit by simply omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue. Example: `Add question about assets, #15`
+You can also just create a link to an issue with a PR or commit by omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue. Example: `Add question about assets, #15`
 <!-- 
 **Adding a link to an issue in your commit or PR**
 

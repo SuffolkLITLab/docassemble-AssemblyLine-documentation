@@ -29,7 +29,7 @@ If you are a completely new Docassemble developer, we recommend getting familiar
 Give yourself 2-3 weeks to become familiar with Docassemble basics.
 
 The Weaver is a guided process, but it may still take a few weeks to familiarize yourself with its options. Start with
-a very simple, already labeled form for your first experience.
+a simple, already labeled form for your first experience.
 
 ## Getting your first prototype
 

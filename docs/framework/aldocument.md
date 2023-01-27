@@ -517,7 +517,7 @@ the interview.
 
 ### Using a simple file field
 
-In a Word document, you can simply use a [`datatype:
+In a Word document, you can use a [`datatype:
 file`](https://docassemble.org/docs/fields.html#file) field. Then,
 put the field representing the file upload in your document with ordinary
 `Jinja2` tags.
