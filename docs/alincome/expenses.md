@@ -7,14 +7,14 @@ sidebar_label: |
 slug: /alincome/expenses
 ---
 
-The `ALExpenseList` is a class that lets you ask a user about their different expenses in a simple way.
+The `ALExpenseList` is a class that helps you ask a user about their different expenses.
 
 ## Guiding Philosophy
 
 Certain court forms ask for a person's expenses as a proof of hardship or burden.
 In designing this feature, we tried to reduce the number of questions a user needs
 to answer while still asking for specific enough expenses. We don't want to burden the user, but also
-doesn't want the user forget to list any significant expenses they would have
+don't want the user forget to list any significant expenses they would have
 that could prove financial burden.
 
 What expenses you want to initially ask about will depend on your community's needs.
@@ -47,7 +47,7 @@ of code can be used in longer interviews as well.
 Before you start, we'll assume that you:
 
 * have access to a [developer account on a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/classes/assembly-line/2020-assembly-line-assignment-1#before-you-get-started)
-* have the [`ALToolbox` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script)
+* have the [`AssemblyLine` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script), or have installed the [`ALToolbox` package](https://github.com/SuffolkLITLab/docassemble-ALToolbox) separately.
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
 
@@ -188,7 +188,7 @@ subquestion: |
 
   Sum of all of the expenses over a month: ${ currency(expenses.total(times_per_year=12)) }
 
-  Value of just one expense: ${ currency(expenses.total(source="rent")) }
+  Value of expenses with the source "rent": ${ currency(expenses.total(source="rent")) }
 
   Sum of just some expenses: ${ currency(expenses.total(source=["rent", "food", "mortgage"])) }
 
