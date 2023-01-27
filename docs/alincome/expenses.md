@@ -207,4 +207,65 @@ code: |
 
 Now you can run through the interview!
 
+<details>
+<summary>Click this section to see the whole interview</summary>
+
+```yml
+include:
+  - docassemble.ALToolbox:al_income.yml
+---
+objects:
+  - expenses: ALExpenseList.using(auto_gather=False, complete_attribute="exists")
+---
+variable name: expense_terms
+data: !!omap
+  - rent: "Rent"
+  - mortgage: "Mortgage"
+  - food: "Food"
+  - utilities: "Utilities"
+  - clothing: "Clothing"
+  - credit cards: "Credit Card Payments"
+  - property tax: "Property Tax (State and Local)"
+  - other taxes: "Other taxes and fees related to your home"
+  - medical: "Medical costs (including insurance)"
+  - transportation: "Transportation costs"
+  - other: "Other"
+---
+mandatory: True
+code: |
+  expenses.gathered
+  review_expenses
+  final_screen
+---
+id: expenses review
+question: |
+  Review your expenses
+subquestion: |
+  Here is what you've told us about your monthly expenses. You can add more or continue
+  to the next question.
+
+  ${ expenses.table }
+
+  ${ expenses.add_action() }
+field: review_expenses
+---
+event: final_screen
+question: Last screen!
+subquestion: |
+  All of the types of expenses, which we call "sources": ${ expenses.sources() }
+
+  Get the sum of all of the expenses (by default, this is annually): ${ expenses.total() }
+
+  Get the sum of all of the expenses over a month: ${ expenses.total(times_per_year=12) }
+
+  Get just the value of one expense: ${ expenses.total(source="rent") }
+
+  Get the sum of all of the expenses, of just some sources: ${ expenses.total(source = ["rent", "food", "mortgage"]) }
+
+  Get the sum of all of the expenses, of everything but a specific source: ${ expenses.total(exclude_source="food") }
+```
+
+</details>
+
+
 You'll likely want to display this information in a PDF or word template as well. [This section describing the Attachment block](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/generated_yaml#attachment-block) will help with displaying information in the PDF, and [this page about working with DOCX files](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/docx) will help DOCX users.

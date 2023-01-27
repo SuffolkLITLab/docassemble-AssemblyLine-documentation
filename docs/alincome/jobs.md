@@ -31,6 +31,8 @@ Before you start, we'll assume that you:
 
 ### Writing the interview
 
+This interview will be simple; it will gather all of the information about someone's jobs, ask them to review it, and finally, will display the information.
+
 First, include the `al_income.yml` YAML file in your interview. This will
 let you use the al_income questions and python code.
 
@@ -41,3 +43,24 @@ include:
 
 Then, create an `ALJobList` using a `objects` block.
 
+```yml
+objects:
+  - jobs: ALJobList.using(complete_attribute='complete', ask_number=True)
+```
+
+:::tip Other objects
+By default, each ALJob will use `Individual` object for the employer. You can change.
+
+:::
+
+Then, you make a code block like:
+
+```yml
+mandatory: True
+code: |
+  jobs.gather()
+```
+
+The interview will ask the following questions:
+
+* about 

@@ -103,6 +103,8 @@ module.exports = {
             items: [
                 'alincome/overview',
                 'alincome/expenses',
+                'alincome/jobs',
+                'alincome/itemizedjobs',
             ]
         },
         {

@@ -25,7 +25,7 @@ Before you start, we'll assume that you
 * have the [`ALToolbox` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script)
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
-* have gone through [the `ALJob` tutorial]() and decided you need to handle more complicated information
+* have gone through [the `ALJob` tutorial](/jobs) and decided you need to handle more complicated information
 
 ### Writing the interview
 
