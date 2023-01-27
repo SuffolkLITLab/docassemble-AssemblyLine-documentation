@@ -184,15 +184,15 @@ question: Summary of your expenses
 subquestion: |
   All of the types of expenses, which we call "sources": ${ expenses.sources() }
 
-  Sum of all of the expenses (by default, this is annually): ${ expenses.total() }
+  Sum of all of the expenses (by default, this is annually): ${ currency(expenses.total()) }
 
-  Sum of all of the expenses over a month: ${ expenses.total(times_per_year=12) }
+  Sum of all of the expenses over a month: ${ currency(expenses.total(times_per_year=12)) }
 
-  Value of just one expense: ${ expenses.total(source="rent") }
+  Value of just one expense: ${ currency(expenses.total(source="rent")) }
 
-  Sum of just some expenses: ${ expenses.total(source=["rent", "food", "mortgage"]) }
+  Sum of just some expenses: ${ currency(expenses.total(source=["rent", "food", "mortgage"])) }
 
-  Sum of all expenses except a specific source: ${ expenses.total(exclude_source="food") }
+  Sum of all expenses except a specific source: ${ currency(expenses.total(exclude_source="food")) }
 ```
 
 With that last screen, we can change our mandatory code block above to now be:
@@ -254,15 +254,15 @@ question: Last screen!
 subquestion: |
   All of the types of expenses, which we call "sources": ${ expenses.sources() }
 
-  Get the sum of all of the expenses (by default, this is annually): ${ expenses.total() }
+  Get the sum of all of the expenses (by default, this is annually): ${ currency(expenses.total()) }
 
-  Get the sum of all of the expenses over a month: ${ expenses.total(times_per_year=12) }
+  Get the sum of all of the expenses over a month: ${ currency(expenses.total(times_per_year=12)) }
 
-  Get just the value of one expense: ${ expenses.total(source="rent") }
+  Get just the value of one expense: ${ currency(expenses.total(source="rent")) }
 
-  Get the sum of all of the expenses, of just some sources: ${ expenses.total(source = ["rent", "food", "mortgage"]) }
+  Get the sum of all of the expenses, of just some sources: ${ currency(expenses.total(source = ["rent", "food", "mortgage"])) }
 
-  Get the sum of all of the expenses, of everything but a specific source: ${ expenses.total(exclude_source="food") }
+  Get the sum of all of the expenses, of everything but a specific source: ${ currency(expenses.total(exclude_source="food")) }
 ```
 
 </details>
