@@ -66,7 +66,7 @@ The `address_fields()` method includes the following optional parameters:
 
 #### ALAddressList {#ALAddressList}
 
-The `ALAddressList` class is simply a collection of `ALAddress`es. It is used to
+The `ALAddressList` class is a collection of `ALAddress`es. It is used to
 allow you to collect multiple addresses in one go and otherwise works exactly
 like the built-in Docassemble [`DAList`
 object](https://docassemble.org/docs/objects.html#DAList).
@@ -195,7 +195,7 @@ to target questions to a specific type of person:
 * `Survivor`
 
 Each class subclasses `ALIndividual` and shares its methods and attributes.
-There are no special attributes or methods of these classes. They are simply
+There are no special attributes or methods of these classes. They are
 provided for you to customize questions.
 
 <!-- Note these are not really useful outside of stock questions

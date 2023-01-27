@@ -117,7 +117,7 @@ On longer interviews, it may not be enough to use the sections on the left
 to orient the user.
 
 One way to orient the user is to use "signposts". Signposts are screens
-that do not ask any questions but simply tell the user what questions are
+that do not ask any questions, but instead tell the user what questions are
 coming next.
 
 Consider adding signposts:

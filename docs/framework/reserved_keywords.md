@@ -8,7 +8,7 @@ slug: /framework/reserved_keywords
 
 ## What is a "reserved" name?
 
-A reserved variable name is simple a variable name that already has a
+A reserved variable name is a variable name that already has a
 predefined meaning. Using a reserved variable name can lead to unexpected
 results or a hard to understand error in your interview.
 
