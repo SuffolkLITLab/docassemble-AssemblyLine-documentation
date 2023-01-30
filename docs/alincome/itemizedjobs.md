@@ -1,9 +1,9 @@
 ---
 id: itemizedjobs
 title: |
-  Detailed Jobs: ALItemizedJob and ALItemizedJobList
+  Itemized Jobs: ALItemizedJob and ALItemizedJobList
 sidebar_label: |
-  Detailed Jobs
+  Itemized Jobs
 slug: /alincome/itemizedjobs
 ---
 
@@ -25,7 +25,7 @@ Before you start, we'll assume that you
 * have the [`ALToolbox` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script)
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
-* have gone through [the `ALJob` tutorial](/jobs) and decided you need to handle more complicated information
+* have looked at the [the `ALJob` tutorial](/jobs) and decided you need to handle more complicated information
 
 ### Writing the interview
 
@@ -40,5 +40,14 @@ Then, create an `ALItemizedJobList` using a `objects` block.
 
 ```yml
 objects:
-  - expenses: ALExpenseList.using(auto_gather=False, complete_attribute="exists")
+  - jobs: ALItemizedJobList.using(complete_attribute='complete', ask_number=True)
 ```
+
+Next, add a [interview order code block](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#the-interview-order-block):
+
+```yml
+mandatory: True
+code: |
+  jobs.gather()
+```
+
