@@ -10,10 +10,6 @@ slug: /alincome/jobs
 Asking people about their jobs is a common task when getting financial information. The `ALJob` class tries to be complete but simple to use and answer about, doing the
 math for the user.
 
-## ALJob
-
-`ALJob` is a class that holds information about a specific job that a person can have. It has a few attributes:
-
 ## ALJobList tutorial
 
 Let's make a short interview that asks about someone's jobs, lets
@@ -73,8 +69,7 @@ The interview will ask how many jobs the user has, and then for each job, will a
 
 * their job title. This is mostly for their benefit, and is the simplest way of asking for the information.
 * information about their employer. They can mark if they are self-employed, and the module will mark the employers name as
-  "self-employed". If you use the [rest of the AssemblyLine](framework/algeneral.md) and use the jobs as an attribute of a user, i.e. `users[0].jobs`,
-  AssemblyLine will automatically set the employer's information to the that user's.
+  "self-employed".
 * how much the user gets paid. This screen handles both hourly and salaried workers, and asks how often they receive their pay,
   and if they have any deductions from their paycheck.
   * if you need more detailed information about someone's pay, such as their
@@ -111,7 +106,7 @@ review:
 ```
 
 :::
-Once you have this information, you have use it in a variety of ways.
+Once you have this information, you can use it in a variety of ways.
 Let's add one last screen to display our information. We'll
 describe what each line of code is doing on the screen.
 
