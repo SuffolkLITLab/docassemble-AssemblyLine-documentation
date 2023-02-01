@@ -7,8 +7,7 @@ sidebar_label: |
 slug: /alincome/jobs
 ---
 
-Asking people about their jobs is a common task when getting financial information. The `ALJob` class tries to be complete but simple to use and answer about, doing the
-math for the user.
+Asking people about their jobs is a common task when getting financial information. The `ALJob` class tries to be complete but simple for your users to answer, doing the math for them, and straight-forward for you to use.
 
 ## ALJobList tutorial
 
@@ -27,7 +26,7 @@ Before you start, we'll assume that you:
 
 ### Writing the interview
 
-This interview will be simple; it will gather all of the information about someone's jobs, ask them to review it, and finally, will display the information.
+This interview will be minimum functionality; it will gather all of the information about someone's jobs, ask them to review it, and finally, will display the information.
 
 First, include the `al_income.yml` YAML file in your interview. This will
 let you use the al_income questions and python code.
