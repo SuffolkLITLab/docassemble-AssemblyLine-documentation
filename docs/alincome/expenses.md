@@ -25,6 +25,9 @@ insurance as an option.
 
 ## ALExpense
 
+If you want to jump right in, check out a [live demo of the ALExpense feature](https://apps-test.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALExpense).
+
+
 `ALExpense` is a class that represents an amount that re-occurs periodically, like a monthly
 utility bill, or weekly grocery expenses. It has a few attributes:
 
