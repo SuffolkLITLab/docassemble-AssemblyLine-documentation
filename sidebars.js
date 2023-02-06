@@ -83,7 +83,7 @@ module.exports = {
             type: 'category',
             label: 'Feature documentation',
             items: [
-                'al_project_architecture',                
+                'al_project_architecture',
                 'framework/framework_overview',
                 'framework/magic_variables',
                 'framework/algeneral',
@@ -95,6 +95,16 @@ module.exports = {
                 'framework/answer_set_intakes',
                 'framework/error_actions',
                 'framework/reserved_keywords',
+            ]
+        },
+        {
+            type: 'category',
+            label: 'AL Income Module',
+            items: [
+                'alincome/overview',
+                'alincome/expenses',
+                'alincome/jobs',
+                'alincome/itemizedjobs',
             ]
         },
         {
