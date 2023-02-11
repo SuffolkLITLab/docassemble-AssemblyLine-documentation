@@ -23,6 +23,10 @@ jobs:
         with:
           repository: SuffolkLITLab/docassemble-AssemblyLine
           path: docassemble-AssemblyLine
+      - uses: actions/checkout@v2
+        with:
+          repository: SuffolkLITLab/docassemble-AssemblyLine
+          path: FormFyxer
       - name: Go to Docs directory
         run: |
           cd docs

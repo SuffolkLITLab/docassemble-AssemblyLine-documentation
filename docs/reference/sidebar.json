@@ -1,5 +1,13 @@
 {
   "items": [
+    {
+      "items": [
+        "reference/formfyxer/lit_explorer",
+        "reference/formfyxer/pdf_wrangling"
+      ],
+      "label": "formfyxer",
+      "type": "category"
+    },
     "reference/al_courts",
     "reference/al_document",
     "reference/al_general",
