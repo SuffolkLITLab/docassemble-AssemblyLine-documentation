@@ -1,26 +1,21 @@
 ---
 id: complexity
 title: |
-    The LitStyler Completion Ease Score
+    Scoring form complexity with RateMyPDF
 sidebar_label: |
-  The LitStyler Completion Ease Score
+  Scoring form complexity with RateMyPDF
 slug: /complexity/complexity
 ---
 
-The Assembly Line Team is working on building a **completion ease**-based score
-that can evaluate the burden that completing a form places on a litigant. Our
-hope is to build a robust metric or set of metrics that can be used to highlight
-areas for improvement within a single form as well as to rank and compare forms
-across jurisdictions.
+[RateMyPDF](https://ratemypdf.com) is a tool built by Suffolk LIT Lab to help you
+measure and improve the usability of court forms.
 
-As much as possible, this measure will be broadly applicable to both paper court
-forms and digital guided interviews, such as those built using the Assembly Line
-Framework.
+## Why readability scores aren't good enough
 
-Tentatively, we are calling this metric the "LitStyler" score.
-
-[Readability](style_guide_readability.md) is just one small piece of what makes
-a **form** easy or hard for a litigant to complete.
+[Readability](style_guide_readability.md) has been one of the only available tools 
+to measure the ease of use of court forms. Forward thinking courts have readability
+targets of 6th grade. But readability isn't a very good measure of form complexity,
+at least not on its own.
 
 While readability scores focus on the content that appears on a page and the
 focus is often on words, sentences, and paragraphs, forms have very different
