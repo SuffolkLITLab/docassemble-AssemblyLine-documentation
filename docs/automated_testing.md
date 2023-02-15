@@ -303,8 +303,6 @@ The `value` for a row setting a signature doesn't matter. All signatures will be
       | user.signature |  | user.signature |
 ```
 
-Avoid taking a screenshot of a signature page. The screenshot will erase the signature.
-
 ### Other story table notes
 
 Don't worry about accidentally including variables that won't show up during the test. Extra rows will be ignored.
@@ -402,10 +400,6 @@ Then I arrive at the next page
 
 The `screenshot` Step will take a picture of the screen that will be put in the GitHub action's [artifacts](#your-screenshots-artifacts).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
-
-:::warning
-**AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
-:::
 
 ```
     Then I take a screenshot
