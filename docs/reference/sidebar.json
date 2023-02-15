@@ -2,6 +2,17 @@
   "items": [
     {
       "items": [
+        "reference/ALToolbox/al_income",
+        "reference/ALToolbox/business_days",
+        "reference/ALToolbox/copy_button",
+        "reference/ALToolbox/misc",
+        "reference/ALToolbox/save_input_data"
+      ],
+      "label": "ALToolbox",
+      "type": "category"
+    },
+    {
+      "items": [
         "reference/formfyxer/lit_explorer",
         "reference/formfyxer/pdf_wrangling"
       ],

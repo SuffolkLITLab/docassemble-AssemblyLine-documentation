@@ -27,6 +27,10 @@ jobs:
         with:
           repository: SuffolkLITLab/FormFyxer
           path: FormFyxer
+      - uses: actions/checkout@v2
+        with:
+          repository: SuffolkLITLab/docassemble-ALToolbox
+          path: docassemble-ALToolbox
       - name: Go to Docs directory
         run: |
           cd docs
