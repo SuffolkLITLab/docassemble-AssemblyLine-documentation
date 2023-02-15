@@ -1,6 +1,9 @@
 loaders:
   - type: python
-    search_path: [../docassemble-AssemblyLine/docassemble/AssemblyLine, ../FormFyxer]
+    search_path:
+      - "../docassemble-AssemblyLine/docassemble/AssemblyLine"
+      - "../FormFyxer"
+      - "../docassemble-ALToolbox/docassemble/"
 processors:
   - type: filter
     skip_empty_modules: true
