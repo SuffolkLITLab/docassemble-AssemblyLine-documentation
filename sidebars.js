@@ -90,6 +90,7 @@ module.exports = {
                 'framework/aldocument',
                 'framework/altoolbox',
                 'framework/alrecipes',
+                'framework/github_feedback',
                 'automated_testing',
                 'framework/answer_sets',
                 'framework/answer_set_intakes',
