@@ -931,6 +931,18 @@ Right:
     I should see the phrase "a document called a ‘Certified docket sheet’"
 ```
 
+### Inconsistent cell count
+
+This error prevents all of your tests being run. The message is telling you that one of your story tables could missing a pipe (`|`) or could have an extra pipe. Something about the syntax of the table is wrong.
+
+To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors. The editor will not show error next to lines that are commented out. Those are the ones that start with `#`.
+
+The error message will include text like this:
+
+```bash
+Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
+```
+
 <!-- ### Access Denied -->
 
 
