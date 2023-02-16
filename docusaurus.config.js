@@ -31,22 +31,23 @@ module.exports = {
         },
         {
           href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-          label: 'Introduction to Docassemble',
+          label: 'Intro to Docassemble',
           position: 'right',
         },
         {
           href: 'https://docassemble.org/docs.html',
-          label: 'Docassemble Documentation',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
-          label: 'GitHub',
+          label: 'Docassemble Docs',
           position: 'right',
         },
         {
           href: 'https://courtformsonline.org',
           label: 'CourtFormsOnline',
+          position: 'right',
+        },
+        {
+          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
           position: 'right',
         },
       ],
