@@ -13,17 +13,23 @@
     },
     {
       "items": [
+        "reference/AssemblyLine/al_courts",
+        "reference/AssemblyLine/al_document",
+        "reference/AssemblyLine/al_general",
+        "reference/AssemblyLine/language",
+        "reference/AssemblyLine/sessions"
+      ],
+      "label": "AssemblyLine",
+      "type": "category"
+    },
+    {
+      "items": [
         "reference/formfyxer/lit_explorer",
         "reference/formfyxer/pdf_wrangling"
       ],
       "label": "formfyxer",
       "type": "category"
-    },
-    "reference/al_courts",
-    "reference/al_document",
-    "reference/al_general",
-    "reference/language",
-    "reference/sessions"
+    }
   ],
   "label": "API Reference",
   "type": "category"

@@ -1,6 +1,6 @@
 ---
 sidebar_label: sessions
-title: sessions
+title: AssemblyLine.sessions
 ---
 
 #### set\_interview\_metadata

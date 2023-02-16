@@ -1,5 +1,5 @@
 module.exports = {
-    someSidebar: [
+    mainSidebar: [
         'intro',
         'getting_started_docassemble',
         {
@@ -124,6 +124,8 @@ module.exports = {
             ]
         },
         'contributors',
-        require('./docs/reference/sidebar.json')
     ],
+    api: [
+          require('./docs/reference/sidebar.json')["items"]
+    ]
 };

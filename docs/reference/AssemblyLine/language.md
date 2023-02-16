@@ -1,6 +1,6 @@
 ---
 sidebar_label: language
-title: language
+title: AssemblyLine.language
 ---
 
 #### get\_tuples

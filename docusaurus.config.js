@@ -20,6 +20,16 @@ module.exports = {
         // { to: 'docs/', activeBasePath: 'docs', label: 'Docs', position: 'left', },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
+          type: 'doc',
+          docId: 'intro',
+          label: 'Guides',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'api',
+          label: 'Code API'
+        },
+        {
           href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
           label: 'Introduction to Docassemble',
           position: 'right',
