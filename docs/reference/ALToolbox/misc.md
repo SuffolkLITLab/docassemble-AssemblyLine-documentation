@@ -13,7 +13,7 @@ Return a whole number formatted with thousands separator.
 Optionally, format with 2 decimal points (for a PDF form with the
 currency symbol already present in the form)
 
-If `trucate`, will call `int(num)`, truncating the decimals instead of
+If `show_decimals`, will call `int(num)`, truncating the decimals instead of
 rounding to the closest int.
 
 #### tel
@@ -28,10 +28,10 @@ Format a phone number so you can click on it to open in your phone dialer
 
 ```python
 def fa_icon(icon: str,
-            color: str = "primary",
-            color_css: str = None,
-            size: str = "sm",
-            fa_class: str = "fa-solid") -> str
+            color="primary",
+            color_css=None,
+            size="sm",
+            fa_class="fa-solid") -> str
 ```
 
 Display a fontawesome icon inline.
@@ -42,14 +42,14 @@ you more control over the icon that is inserted.
 
 **Arguments**:
 
-- `icon` - a string reperesenting a fontawesome icon. The icon needs to be in the
+- `icon` - a string representing a fontawesome icon. The icon needs to be in the
   [free library](https://fontawesome.com/search?o=r&amp;m=free).
 - `color` - can be any [Bootstrap color variable](https://getbootstrapc.mo/docs/4.0/utilities/colors).
   For example: `primary`, `secondary`, `warning`
 - `color_css` - allows you to use a CSS code to represent the color, e.g., `blue`, or ``fff`` for black
 - `size` - used to control the [fontawesome size](https://fontawesome.com/v6.0/docs/web/style/size)
   (without the `fa-` prefix). Valid values include `2xs`, `xs`, the default of `sm`,
-  `md`, `lg`, `xl`, and `2x1`.
+  `md`, `lg`, `xl`, `2x1`, and the python `None`, which defaults to `md`.
 - `fa_class` - let&#x27;s you specify the fontawesome class, needed for any icon that isn&#x27;t
   the default class of `fa-solid`, like `fa-brands`, or `fa-regular` and `fa-light`.
   
@@ -171,6 +171,12 @@ def output_checkbox(value_to_check: bool,
 ```
 
 Generate a conditional checkbox for docx templates
+
+**Arguments**:
+
+- `checked_value` - defaults to `[X]` but can be set to any string or even a `DAFile` or `DAStaticFile`
+  with the image of a checkbox
+- `unchecked_value` - opposite meaning of `checked_value` and defaults to `[  ]`
 
 #### nice\_county\_name
 
