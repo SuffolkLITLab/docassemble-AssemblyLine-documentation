@@ -14,9 +14,9 @@ Line framework. Follow the instructions to include each component in your
 interview, which may involve including a single YAML file or a module, CSS, and
 JavaScript file.
 
-The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, see the "Live demos" section below if you want the latest and complete info.
+The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, see [the "Live demos" section](#live-demos) below, and the [ALToolbox API reference](../reference/ALToolbox/misc.md) if you want the latest and complete info.
 
-## Live demos 
+## Live demos
 
 To get a hands-on experience on any of these functions, you can go to [ALToolbox's overview page](https://apps-dev.suffolklitlab.org/start/ALToolbox/altoolbox_overview) to run the demo interview you are interested in.
 
@@ -47,12 +47,9 @@ To include this in your interview:
 
 ```yaml
 ---
-modules:
-  - docassemble.ALToolbox.misc
----
-features:
-  css: docassemble.ALToolbox:collapse_template.css
-```  
+include:
+  - docassemble.ALToolbox:collapse_template.yml
+```
 
 Example usage:
 
@@ -71,14 +68,14 @@ content: |
   Context-specific help goes here.
 ```
 
-[Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
+[API for `collapse_template`](../reference/ALToolbox/misc#collapse_template), and [Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
 
 ## Display markdown template with a scroll bar
 
 `display_template()` displays a Docassemble
 [`template`](https://docassemble.org/docs/initial.html#template) with a scroll bar to save screen space if the content is long.
 
-It also displays the subject line along with the content, and allows you to add styles to the display. You can turn the scroll bar on and off. 
+It also displays the subject line along with the content, and allows you to add styles to the display. You can turn the scroll bar on and off.
 
 Example: `display_template(my_template, scrollable=True, class_name="my_color")`.
 
@@ -121,57 +118,6 @@ modules:
   - docassemble.ALToolbox.misc
 ```
 
-## Shorten a URL
-
-The `shorten_url` function lets you use your Docassemble server as a URL
-shortener.
-
-The function has one parameter: `original_url` and can be called like this:
-`shorten_url('https://www.example.com')`.
-
-Links expire in 7 days, and can be to either internal or external content.
-The URL will still display your server's domain name, and will look like this:
-
-`https://my.docassemble-server.com/goto?c=aRjzWcNZyJGWnMQghHamcndEnVKfhNwo`
-
-Include this in your interview:
-
-```yaml
----
-modules:
-  - docassemble.ALToolbox.misc
-```
-
-## Format numbers with a `thousands` separator
-
-Use the `thousands()` function to format a `currency` value without adding a
-currency symbol but with `,` separating the thousands positions. The decimal
-portion is also rounded down. For example, for a PDF form that already includes
-a `$` symbol. 
-
-Example: `thousands(1870.22)` will display as `1,870`.
-
-To use, include this in your interview:
-
-```yaml
----
-modules:
-  - docassemble.ALToolbox.misc
-```
-
-## Display a fontawesome icon inline
-
-Docassemble allows you to display an icon from [fontawesome](https://fontawesome.com/),
-but it does not provide control over the size or color of the icon. Use
-`fa_icon()` to gain more control over the icon that is inserted.
-
-Parameters:
-
-* `icon`: a string representing a fontawesome icon. The icon needs to be in the free library.
-* `color` can be any [Bootstrap color variable](https://getbootstrap.com/docs/4.0/utilities/colors/). For example: `primary`, `secondary`, `warning`
-* `color_css` allows you to use a CSS hex code to represent the color, e.g., `#fff` for black.
-* `size` is used to control the [fontawesome size](https://fontawesome.com/v6.0/docs/web/style/size) (without the `fa-` prefix). Valid values include `2xs`, the default of `sm` all the way to `2xl`.
-
 ## Total a list of values that may not be defined
 
 `sum_if_defined()` returns the total of a list of values that may or may not be
@@ -209,10 +155,10 @@ include:
   - docassemble.ALToolbox:copy_button.yml
 ```
 
-## Escape button 
+## Escape button
 
-The `escape_button.yml` file adds a red "Escape" button in the 
-top navigation area that takes you to https://google.com when you click
+The `escape_button.yml` file adds a red "Escape" button in the
+top navigation area that takes you to [https://google.com/](https://google.com) when you click
 on it.
 
 You may choose to use this if you have vulnerable clients, such as those living
@@ -226,9 +172,10 @@ include:
   - docassemble.ALToolbox:escape_button.yml
 ```  
 
-## International phone number input validation 
+## International phone number input validation
 
-Use a custom datatype `phone` field to define the phone number input, and it will validate the country code for you. Run the demo interview to see how it works and detailed implementation instruction.
+Use a custom datatype `phone` field to define the phone number input, and it will validate the country code for you. Run [the demo interview](https://apps-dev.suffolklitlab.org/start/ALToolbox/phone_number_validation_demo)
+to see how it works and detailed implementation instruction.
 
 To include in your interview:
 
@@ -236,7 +183,7 @@ To include in your interview:
 ---
 include:
   - docassemble.ALToolbox:phone-number-validation.yml
-``` 
+```
 
 ## BirthDate and ThreePartsDate custom data types
 
@@ -247,8 +194,6 @@ will display a separate month, day, and year input. The Month input will
 be a dropdown menu with a list of months.
 
 Example:
-
-
 
 <Tabs>
   <TabItem value="Preview" label="Preview" default>
@@ -287,28 +232,53 @@ By default, the "checkbox" will be the literal value `[  ]` or `[X]` rather than
 
 Example:
 
+<Tabs>
+  <TabItem value="DOCX Template" label="DOCX Template" default>
+
+![The following income and deductions are {{output_checkbox(is_monthly) }} monthly {{ output_checkbox(is_yearly) }} yearly FOR THE YEAR {{ today(format='YYYY') }}.](../assets/output_checkbox_example_pic.png)
+
+  </TabItem>
+  <TabItem value="Docassemble Code" label="Docassemble Code">
+
 ```yaml
 ---
-question: |
-  Do you live in Florida?
-yesno: user_lives_in_florida
+modules:
+  - docassemble.ALToolbox.misc
+---
+code: |
+  is_monthly = True
+  is_yearly = False
+---
+mandatory: True
+question: View Example DOCX
+subquestion: |
+  ${ example_doc }
+---
+attachment:
+  variable name: example_doc
+  filename: example_docx
+  docx template file: example_checkboxes.docx
 ```
 
-Then in the DOCX template, you could write
-`{{ output_checkbox(user_lives_in_florida) }}` instead of the messier
-`{% if user_lives_in_florida %}[X]{% else %}[  ]{% endif %}`.
+  </TabItem>
+  <TabItem value="Output DOCX" label="Output DOCX">
+
+![The following income and deductions are [X] monthly [  ] yearly FOR THE YEAR 2023.](../assets/output_checkbox_post_pic.png)
+
+  </TabItem>
+</Tabs>
 
 `output_checkbox()` has two optional keyword parameters:
 
-- `checked_value (str)`: defaults to `[X]` but can be set to any string or even
+* `checked_value (str)`: defaults to `[X]` but can be set to any string or even
   a `DAFile` or `DAStaticFile` with the image of a checkbox
-- `unchecked_value (str)`: opposite meaning of `checked_value` and defaults to `[  ]`.
+* `unchecked_value (str)`: opposite meaning of `checked_value` and defaults to `[  ]`.
 
 `output_checkbox()` is contained in `misc.py` which means it is already included
-if you use the AssemblyLine framework. If you do not use the AssemblyLine framework, you 
+if you use the AssemblyLine framework. If you do not use the AssemblyLine framework, you
 can include it as follows:
 
-```
+```yml
 modules:
   - docassemble.ALToolbox.misc
 ```

@@ -28,17 +28,35 @@ Format a phone number so you can click on it to open in your phone dialer
 
 ```python
 def fa_icon(icon: str,
-            color="primary",
-            color_css=None,
-            size="sm",
-            fa_class="fa-solid") -> str
+            color: str = "primary",
+            color_css: str = None,
+            size: str = "sm",
+            fa_class: str = "fa-solid") -> str
 ```
 
-Return HTML for a font-awesome icon of the specified size and color. You can reference
-a CSS variable (such as Bootstrap theme color) or a true CSS color reference, such as &#x27;blue&#x27; or
-&#x27;`DDDDDD`&#x27;. Defaults to Bootstrap theme color &quot;primary&quot;.
+Display a fontawesome icon inline.
 
-Sizes can be &#x27;2xs&#x27;, &#x27;xs&#x27;, &#x27;sm&#x27;, &#x27;md&#x27; (or None), &#x27;lg&#x27;, &#x27;xl&#x27;, &#x27;2xl&#x27;.
+Docassemble allows you to display an icon from [fontawesome](https://fontawesome.com),
+but it does not provide control over the size or color of the icon. This function gives
+you more control over the icon that is inserted.
+
+**Arguments**:
+
+- `icon` - a string reperesenting a fontawesome icon. The icon needs to be in the
+  [free library](https://fontawesome.com/search?o=r&amp;m=free).
+- `color` - can be any [Bootstrap color variable](https://getbootstrapc.mo/docs/4.0/utilities/colors).
+  For example: `primary`, `secondary`, `warning`
+- `color_css` - allows you to use a CSS code to represent the color, e.g., `blue`, or ``fff`` for black
+- `size` - used to control the [fontawesome size](https://fontawesome.com/v6.0/docs/web/style/size)
+  (without the `fa-` prefix). Valid values include `2xs`, `xs`, the default of `sm`,
+  `md`, `lg`, `xl`, and `2x1`.
+- `fa_class` - let&#x27;s you specify the fontawesome class, needed for any icon that isn&#x27;t
+  the default class of `fa-solid`, like `fa-brands`, or `fa-regular` and `fa-light`.
+  
+
+**Returns**:
+
+  HTML for a font-awesome icon of the specified size and color.
 
 #### space
 
