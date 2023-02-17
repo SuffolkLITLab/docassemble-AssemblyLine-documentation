@@ -4,6 +4,7 @@ loaders:
       - "../docassemble-AssemblyLine/docassemble/AssemblyLine"
       - "../FormFyxer"
       - "../docassemble-ALToolbox/docassemble/"
+      - "../docassemble-EFSPIntegration/docassemble"
 processors:
   - type: filter
     skip_empty_modules: true
