@@ -120,7 +120,7 @@ default screen parts:
 ```
 
 You can then start your interview, and select the Feedback link in the footer. Fill in the feedback interview, and submit the feedback. If
-you setup GitHub integration, there should be a link to the newly-created GitHub issue. Otherwise, you can view the feedback [using the feedback browsing interview](#how-to-browse-feedback-on-the-server).
+you setup [`github issues` in the config block above](#configuration), there should be a link to the newly-created GitHub issue. Otherwise, you can view the feedback [using the feedback browsing interview](#how-to-browse-feedback-on-the-server).
 
 
 ## How to get reviews in an interview
@@ -129,6 +129,8 @@ While having a feedback link in the footer is useful for users who are specifica
 give quick feedback with an in-interview review widget. The final product of this guide will look like the below screenshot:
 
 ![A screenshot of the review widget. The widget is outlined in a light gray box has the text "Did we help you?", with two buttons below, one with a thumbs up and one with a thumbs down.](../assets/github_feedback_review_widget.png)
+
+This review information is stored only on the docassemble server, and isn't sent out to GitHub.
 
 First, find an interview you'd like to add a feedback widget to. Where exactly you want to ask for feedback is up to you, but we'd recommend doing it where a user has reached an end point.
 
@@ -149,12 +151,10 @@ subquestion: |
 
 The key lines in the above are:
 
-* adding `docassembl.GithubFeedbackForm:embedded_review.yml` to the `include` block, and
+* adding `docassemble.GithubFeedbackForm:embedded_review.yml` to the `include` block. You will have to do this even if you are using `assembly_line.yml`.
 * `${ only_once_review_widget() }` in the `subquestion` attribute of a question block
 
-If you are adding the review widget to an existing interview, focus on just those two lines.
-
-The review widget will ask two questions, one is a simple "Did we help you?" with thumbs up and thumbs down options, and the second is an open text box for users to write more. If they answer the first question and refresh the screen or continue through the interview, the feedback widget won't be shown again, given that the user
+The `only_once_review_widget` will ask two questions, one is a simple "Did we help you?" with thumbs up and thumbs down options, and the second is an open text box for users to write more. If they answer the first question and refresh the screen or continue through the interview, the feedback widget won't be shown again, given that the user
 doesn't go back past the widget's screen in the interview.
 
 You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](../reference/ALToolbox/misc#review_widget). That is the function `only_once_review_widget` is using.
