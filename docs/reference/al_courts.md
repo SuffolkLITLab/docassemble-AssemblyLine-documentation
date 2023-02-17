@@ -67,15 +67,91 @@ Object to hold some methods surrounding loading/filtering courts.
 
 Built around Pandas dataframe.
 
+#### all\_courts
+
+```python
+def all_courts() -> list
+```
+
+Return all courts without any filtering
+
+#### unique\_column\_values
+
+```python
+def unique_column_values(column_name) -> Set[str]
+```
+
+get a list of all unique values in the given column
+
+#### county\_list
+
+```python
+def county_list(column_name: str = "address_county")
+```
+
+Get a list of all unique county names in the given spreadsheet
+
+#### county\_has\_one\_court
+
+```python
+def county_has_one_court(county_name: str,
+                         county_column: str = "address_county") -> bool
+```
+
+Returns True if there is only one court associated with the specified county
+
+#### county\_court
+
+```python
+def county_court(intrinsicName: str,
+                 county_name: str,
+                 county_column: str = "address_county") -> ALCourt
+```
+
+Return the first court matching the county name. Should only be used
+when you know there is exactly one match
+
+#### matching\_courts\_in\_county
+
+```python
+def matching_courts_in_county(
+        county_name: str,
+        county_column: str = "address_county",
+        display_column: str = "name",
+        search_string: Optional[str] = None,
+        search_columns: Optional[Union[List[str], str]] = None) -> List[dict]
+```
+
+Get a list of all courts in the provided county, suitable for displaying
+as a drop-down or radio button list in Docassemble. The results will be a
+dictionary where the key is the index in the dataframe, to be used to
+retrieve the court&#x27;s full details later with the as_court() method.
+
+:param county_name: str name of a county
+:param county_column: str column heading which contains county name. Defaults to &quot;address_county&quot;
+:param display_column: str column heading which will be used for display in drop down
+:param search_string: str, optional a keyword that will be checked in the filtered list of results
+:param search_columns: str or List[str], optional columns to aggregate and then do case-insensitive search across with the search_string
+
 #### filter\_courts
 
 ```python
-def filter_courts(court_types: Optional[List], column="department") -> list
+def filter_courts(
+        court_types: Optional[Union[List[str], str]],
+        column: str = "department",
+        display_column: str = "name",
+        search_string: Optional[str] = None,
+        search_columns: Optional[Union[List[str], str]] = None) -> List[dict]
 ```
 
-Return a subset of courts, only the name column and index.
+Return a subset of courts as a list of dictionaries, like:
+index: name
 
-If you do not want the list to be filtered, set court_types to None (or falsy value)
+:param court_types: List[str] or str, exact string match[es] you want to use to filter results (inclusive). E.g., &quot;District&quot; or [&quot;Municipal&quot;,&quot;Superior&quot;]
+:param column: str column heading which you want to search. Defaults to &quot;department&quot;
+:param display_column: str column heading which will be used for display in drop down
+:param search_string: str, optional a keyword that will be checked in the filtered list of results
+:param search_columns: str or List[str], optional columns to aggregate and then do case-insensitive search across with the search_string
 
 #### as\_court
 

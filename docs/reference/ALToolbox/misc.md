@@ -104,8 +104,7 @@ def review_widget(
         down_action: str,
         review_action: Optional[str] = None,
         thumbs_display: str = "Did we help you?",
-        review_display:
-    str = "Thank you for your feedback. Let us know what we could do better",
+        review_display: str = "Thanks! Let us know what we could do better",
         submit_review_button: str = "Add your review",
         post_review_display: str = "Thank you for your review!") -> str
 ```
@@ -117,22 +116,17 @@ If `review_action` is provided, once you press either of the thumbs, a text inpu
 a submit button appears, and once the text review is submitted (or after the thumbs, if no
 `review_action` was provided), a final &quot;thank you&quot; messsage is displayed.
 
-**Arguments**:
-
-- `up_action` - the variable name of an event to be executed on the server if the
-  thumbs up is pressed
-- `down_action` - the variable name of an event to be executed on the server if the
-  thumbs down is pressed
-- `review_action` - the variable name of an event to be execute on the
-  server when someone submits their text review
-- `thumbs_display` - text displayed to user describing the thumbs
-- `review_display` - text displayed to user describing the text input
-- `submit_review_button` - text on the button to submit their text review
-- `post_review_display` - text displayed to user after review is submitted
-
-**Returns**:
-
-  the HTML string of the widget
+@param up_action {string} - the variable name of an event to be executed on the server if the
+thumbs up is pressed
+@param down_action {string} - the variable name of an event to be executed on the server i
+the thumbs down is pressed
+@param (optional) review_action {string} - the variable name of an event to be execute on the
+server when someone submits their text review
+@param (optional) thumbs_display {string} - text displayed to user describing the thumbs
+@param (optional) review_display {string} - text displayed to user describing the text input
+@param (optional) submit_review_button {string} - text on the button to submit their text review
+@param (optional) post_review_display {string} - text displayed to user after review is
+submitted
 
 #### sum\_if\_defined
 

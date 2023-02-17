@@ -65,6 +65,7 @@ set_fields(&#x27;no_fields.pdf&#x27;, &#x27;four_fields_on_second_page.pdf&#x27;
     ]
   ]
 )
+```
 
 #### rename\_pdf\_fields
 

@@ -43,7 +43,7 @@ def get_saved_interview_list(
         filename_to_exclude: str = "",
         exclude_current_filename: bool = True,
         exclude_filenames: Optional[List[str]] = None,
-        exclude_newly_started_sessions: bool = False) -> List[Dict]
+        exclude_newly_started_sessions: bool = False) -> List[Dict[str, Any]]
 ```
 
 Get a list of saved sessions for the specified filename. If the save_interview_answers function was used

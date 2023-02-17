@@ -27,6 +27,15 @@ the question with `users[0].address.has_no_address` rather than
 `users[0].address.address`.
 Optionally, add a `show if` modifier to each field. The `show if` modifier
 will not be used if the `allow_no_address` modifier is used.
+`country_code` should be an ISO-3166-1 alpha-2 code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+
+NOTE: address_fields() is stateful if you:
+1. Use the `country_code` parameter and;
+1. Do not use the `show_country` parameter, and
+1. `country_code` has a different value than `get_country()`.
+
+Under these circumstances, address_fields() will set the `country` attribute of the Address
+to `country_code`.
 
 #### formatted\_unit
 
@@ -39,7 +48,11 @@ Returns the unit, formatted appropriately
 #### block
 
 ```python
-def block(language=None, international=False, show_country=None, bare=False)
+def block(language=None,
+          international=False,
+          show_country=None,
+          bare=False,
+          long_state=False)
 ```
 
 Returns the address formatted as a block, as in a mailing.
@@ -53,6 +66,15 @@ def line_one(language=None, bare=False)
 Returns the first line of the address, including the unit
 number if there is one.
 
+#### line\_two
+
+```python
+def line_two(language=None, long_state=False)
+```
+
+Returns the second line of the address, including the city,
+state and zip code.
+
 #### on\_one\_line
 
 ```python
@@ -60,7 +82,8 @@ def on_one_line(include_unit=True,
                 omit_default_country=True,
                 language=None,
                 show_country=None,
-                bare=False)
+                bare=False,
+                long_state=False)
 ```
 
 Returns a one-line address.  Primarily used internally for geocoding.
@@ -76,6 +99,23 @@ the address. All methods are still available, such as my_address.normalized_addr
 but note that this will be a standard Address object, not an ALAddress object.
 
 If geocoding fails, return the version of the address as entered by the user instead.
+
+#### state\_name
+
+```python
+def state_name(country_code=None)
+```
+
+Return the full state name associated with the Address object&#x27;s state abbreviation.
+
+If provided, the `country_code` parameter will override the country attribute of the
+Address object. If omitted, it will use in order:
+
+1. The country code associated with the Address object, and then
+2. The country set in the global config for the server
+
+`country_code` should be an ISO-3166-1 alpha-2 code
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
 
 ## ALAddressList Objects
 
@@ -388,4 +428,13 @@ def language_name(language_code: str) -> str
 Given a 2 digit language code abbreviation, returns the full
 name of the language. The language name will be passed through the `word()`
 function.
+
+#### safe\_states\_list
+
+```python
+def safe_states_list(country_code: str) -> List[Dict[str, str]]
+```
+
+Wrapper around states_list that doesn&#x27;t error if passed
+an invalid country_code (e.g., a country name spelled out)
 
