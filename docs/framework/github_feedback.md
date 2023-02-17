@@ -22,7 +22,7 @@ The Assembly Line has a [Feedback package](https://github.com/SuffolkLITLab/doca
 The standard feedback cycle for a software product is the following:
 
 1. Release product
-2. Users use product, and have feedback: bug reports, specific feature requests, or general emotions about using
+2. Users use product, and have feedback: bug reports, specific feature requests, or general emotions about using the product
 3. They submit this feedback to you, the owner of the software product.
 4. You triage the feedback, looking for common trends and deciding if the feedback is worth implementing.
 5. You implement the pieces of feedback that you decided to implement.
@@ -41,7 +41,7 @@ This how-to-guide will cover the simplest way to get feedback from an interview.
 
 * a link to give feedback in the footer of your interviews
 * a separate interview that will show either a tester feedback form or a general public feedback form
-* will save that feedback locally, and if desired, will make a GitHub issue with the information
+* will save that feedback locally and, if desired, will make a GitHub issue with the information
 
 It won't:
 
@@ -58,7 +58,9 @@ Before you start, we'll assume that you:
 
 ### Configuration
 
-In your docassemble Configuration, you'll add `github issues` attribute, like the below:
+Though this package, no longer needs GitHub to function, many of the configurations will contain "github" in their name. If you don't plan on using GitHub, we'll describe which of these Configuration options you can skip.
+
+In your docassemble Configuration, you'll add a `github issues` attribute, like the below:
 
 ```yml
 github issues:
@@ -84,15 +86,15 @@ have to setup a GitHub account to get feedback from users.
 
 * `default repository owner` should be your main GitHub organization or account that owns most of your interviews. For example, [SuffolkLITLab](https://github.com/SuffolkLITLab), which owns MassAccess's repositories, and [Illinois Legal Aid Online's GitHub account](https://github.com/IllinoisLegalAidOnline).
 * `allowed repository owners` is optional, but necessary if your `default repository owner` doesn't own all of the repositories that you need to provide feedback for. If you want to be able to make
-  issues on repositories from different organizations, you'll need to list each of them here. For example, Suffolk additionally hosts interviews made by [MassLegalHelp](https://github.com/MassLegalHelp). This is so users can't use your tool to spam issues on other organizations GitHub repos.
-* `feedback session linking` helps you as the server administrator debug tricky bugs. If this is set to `True` and if user agrees, the feedback interview will save the session ID of their current interview on the server and link it to their feedback issue on github. This means that you can see the state of their interview when the user ran into their problem, making it easier to reproduce and fix their bug. You can [browse the linked sessions in `browse_feedback_sessions.yml`](#how-to-browse-feedback-on-the-server).
+  issues on repositories from different organizations, you'll need to list each of them here. For example, Suffolk additionally hosts interviews made by [MassLegalHelp](https://github.com/MassLegalHelp). This is so users can't use your tool to spam issues on other organizations' GitHub repos.
+* `feedback session linking` helps you as the server administrator debug tricky bugs. If this is set to `True` and if the user agrees, the feedback interview will save the session ID of their current interview on the server and link it to their feedback issue on github. This means that you can see the state of their interview when the user ran into their problem, making it easier to reproduce and fix their bug. You can [browse the linked sessions in `browse_feedback_sessions.yml`](#how-to-browse-feedback-on-the-server).
 * `ask panel` will add a question to the feedback interview, asking users if they want to be in a panel for user testing. If the user wants to be in a panel, it will ask for their email and save it in the server. You can also [view these linked sessions in `browse_feedback_sessions.yml`](#how-to-browse-feedback-on-the-server).
 
 ### Footer feedback
 
 Next, open the interview that you want to add feedback to in docassemble's playground.
 
-If you include `assembly_line.yml` in your interview already, all you need to do is add the following block to set the `al_github_repo` variable, which `assembly_line.yml` uses to setup the feedback interview correctly.
+If you include `assembly_line.yml` in your interview already, all you need to do is add the following block to set the `github_repo_name` variable, which `assembly_line.yml` uses to setup the feedback interview correctly.
 
 ```yml
 code: |
@@ -105,7 +107,7 @@ Use [docassemble's playground search](https://docassemble.org/docs/playground.ht
 :::
 
 If you aren't using `assembly_line.yml`, you can
-add the below two blocks to add a footer to every page of your interview:
+add the two blocks below to add a footer to every page of your interview:
 
 ```yml
 ---
@@ -126,11 +128,11 @@ you setup GitHub integration, there should be a link to the newly-created GitHub
 While having a feedback link in the footer is useful for users who are specifically seeking to give feedback, you can take a more proactive approach and let users
 give quick feedback with an in-interview review widget. The final product of this guide will look like the below screenshot:
 
-![A screenshot of the review widget. The widget is outlined in a light gray box has the text "Did we help you?", with two buttons below, one with a thumbs up and one with a thumbs down](../assets/github_feedback_review_widget.png)
+![A screenshot of the review widget. The widget is outlined in a light gray box has the text "Did we help you?", with two buttons below, one with a thumbs up and one with a thumbs down.](../assets/github_feedback_review_widget.png)
 
-First, find an interview you'd like to add a feedback widget too. Where exactly you want to ask for feedback is up to you, but we'd recommend doing it at the end of the interview, when someone has reached an end point.
+First, find an interview you'd like to add a feedback widget to. Where exactly you want to ask for feedback is up to you, but we'd recommend doing it where a user has reached an end point.
 
-For this how-to, we'll make an short example interview from scratch. Then entire interview is below:
+For this how-to, we'll make a short example interview from scratch. The entire interview is below:
 
 ```yml
 include:
@@ -155,9 +157,9 @@ If you are adding the review widget to an existing interview, focus on just thos
 The review widget will ask two questions, one is a simple "Did we help you?" with thumbs up and thumbs down options, and the second is an open text box for users to write more. If they answer the first question and refresh the screen or continue through the interview, the feedback widget won't be shown again, given that the user
 doesn't go back past the widget's screen in the interview.
 
-You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](../reference/ALToolbox/misc#review_widget), which `only_once_review_widget` wraps around and passes all arguments to.
+You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](../reference/ALToolbox/misc#review_widget). That is the function `only_once_review_widget` is using.
 
-The review information is only stored on the docassemble server, and can be viewed [using the feedback browsing interview](#how-to-browse-feedback-on-the-server).
+The `only_once_review_widget` review information is only stored on the docassemble server, and can be viewed [using the feedback browsing interview](#how-to-browse-feedback-on-the-server).
 
 ## How to browse feedback on the server
 
@@ -165,7 +167,7 @@ You can view feedback for all interviews on a server if you are logged in as an 
 
 First, the interview will ask what type of feedback you want to view. If you set up GitHub integration, you can see a full list of feedback associated with some GitHub issue. If the user agreed to provide you access to their full answers, you'll be able to see the session id, and have a button that lets you enter a shared session of that user's interview.
 
-The other option is for reviews, which will show all of scores given to an interview, and all of the written feedback for an interview as well.
+The other option is for reviews, which will show all of the scores given to an interview, and all of the written feedback for an interview as well.
 
 
 :::note Under development
