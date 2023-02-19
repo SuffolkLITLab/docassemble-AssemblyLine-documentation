@@ -1,6 +1,6 @@
 ---
 sidebar_label: al_document
-title: al_document
+title: AssemblyLine.al_document
 ---
 
 #### label

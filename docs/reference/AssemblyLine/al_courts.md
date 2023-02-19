@@ -1,6 +1,6 @@
 ---
 sidebar_label: al_courts
-title: al_courts
+title: AssemblyLine.al_courts
 ---
 
 Package for a very simple / MVP list of courts that is mostly signature compatible w/ MACourts for now
