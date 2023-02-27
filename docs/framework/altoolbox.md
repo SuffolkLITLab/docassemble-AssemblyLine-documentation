@@ -14,7 +14,12 @@ Line framework. Follow the instructions to include each component in your
 interview, which may involve including a single YAML file or a module, CSS, and
 JavaScript file.
 
-The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, see [the "Live demos" section](#live-demos) below, and the [ALToolbox API reference](../reference/ALToolbox/misc.md) if you want the latest and complete info.
+The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, you can see more in [the "Live demos" section](#live-demos) below. You can also see more details about each individual function in the ALToolbox API reference for each module:
+
+* [`ALToolbox.business_days`](../reference/ALToolbox/business_days.md)
+* [`ALToolbox.copy_button`](../reference/ALToolbox/copy_button.md)
+* [`ALToolbox.misc`](../reference/ALToolbox/misc.md)
+* [`ALToolbox.save_input_data`](../reference/ALToolbox/save_input_data.md)
 
 ## Live demos
 
