@@ -151,7 +151,7 @@ server and then entering the docker container.
 
 Install a text editor and open the nginx configuration file as follows:
 
-```
+```bash
 apt update
 apt install nano
 nano /etc/nginx/nginx.conf
@@ -165,7 +165,7 @@ Type CTRL+O, Enter, and then CTRL+X to save and exit the configuration file.
 
 Type the following commands to restart the nginx process:
 
-```
+```bash
 supervisorctl restart nginx
 ```
 
@@ -189,20 +189,20 @@ First:
 
 Install a text editor:
 
-```
+```bash
 apt update
 apt install nano
 ```
 
 Create a directory to store your custom configuration files:
 
-```
+```bash
 mkdir /usr/share/nginx/html/errors
 ```
 
 Open a new nano editor:
 
-```
+```bash
 nano /usr/share/nginx/html/errors/custom_504.html
 ```
 
@@ -214,7 +214,7 @@ Type CTRL+O, Enter, and then CTRL+X to save and close the editor.
 
 Edit the `nginx` configuration file to point to your new custom error page:
 
-```
+```bash
 nano /etc/nginx/nginx.conf
 ```
 
@@ -225,6 +225,6 @@ Type CTRL+O, Enter, and then CTRL+X to save and close the editor.
 
 Restart the nginx process:
 
-```
+```bash
 supervisorctl restart nginx
 ```

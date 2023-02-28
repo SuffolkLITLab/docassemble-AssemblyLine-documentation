@@ -13,6 +13,7 @@ After your document is fully [labeled](doc_vars_reference.md), the next step is
 to automate a draft in the [Document Assembly Line
 Weaver](https://apps-dev.suffolklitlab.org/start/ALWeaver/assembly_line?new_session=1)
 (ALWeaver).
+
 ## Philosophy
 
 The Assembly Line Weaver is a tool that helps you create a draft of a guided
@@ -89,7 +90,7 @@ a folder on your PC.
 
 Before downloading the package, turn off that behavior:
 
-1. open Safari 
+1. open Safari
 1. click Preferences
 1. under the General tab, uncheck the option **Open 'safe' files after downloading**
 :::
