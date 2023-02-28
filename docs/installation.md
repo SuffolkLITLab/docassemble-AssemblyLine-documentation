@@ -14,7 +14,7 @@ Installing the Assembly Line covers the following basic steps:
 1. Install the docassemble.ALDashboard package
 2. Run the installation script
 3. Customize and install the
-   [ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction/)
+   [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate/)
    package with branding and question wording to match your needs.
 4. Use the Weaver tool to automate your labeled PDF or DOCX forms.
 
@@ -72,37 +72,71 @@ If you do not know the answer, you can return and manually edit your
 configuration later.
 
 
-## Customize the ALGenericJurisdiction repository
+## Customize the ALThemeTemplate repository
 
-[ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction/)
+[ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate/)
 is a docassemble package that includes an example of how to modify questions and customize
 them for your own jurisdiction or organization.
 
 To use this package, [pull it into your own Docassemble playground](https://docassemble.org/docs/playground.html#packages).
 
-Next, edit the YAML files to fit your own organization's needs. You may also choose to
-add a custom CSS theme.
+Next, [follow our guide](customization/customization_overview.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
 
 Now, create a new package from the [Playground packages menu](https://docassemble.org/docs/playground.html#packages).
-Select the files that you customized and push them to your own Github repository.
 Give the package a meaningful name, like LouisianaSharedBranding.
+Select the files that you customized and push them to your own Github repository.
 
 :::info Copy, do not fork
 It is important to copy and create a new package. Do not
-fork the ALGenericJurisdiction package as Docassemble makes it
+fork the ALThemeTemplate package as Docassemble makes it
 challenging to rename a package.
 :::
+
+### Using your ALThemeTemplate with the ALWeaver
+
+If you plan on using the [ALWeaver](weaver_overview.md) to create your
+interviews, you will want to include your branding package in your
+weaved interviews. You can do this by adding 2 files to your branding
+package:
+
+1. [In your modules folder](https://docassemble.org/docs/playground.html#modules), create a file named `advertise_weaver.py` and add the following contents:
+
+    ```python
+    # pre-load
+    import os
+    from docassemble.ALWeaver.custom_values import advertise_capabilities
+
+    if not os.environ.get('ISUNITTEST'):
+        advertise_capabilities(__name__, minimum_version="1.5")
+    ```
+
+2. [In your sources folder](https://docassemble.org/docs/playground.html#sources), create a file named `configuration_capabilities.yml` (needs to have that exact spelling), and add the following contents, customizing it to your branding package:
+
+    ```yaml
+    package name: My Package
+    organization_choices:
+      - description: MyPackage
+        dependency: "docassemble.MyPackage @ https://github.com/MyOrg/docassemble-MyPackage/archive/main.zip"
+        include_name: "docassemble.MyPackage:my_package.yml"
+        state: TX
+        country: US
+        default: false
+    ```
+
+    You should replace `MyOrg` and `MyPackage` with the name of your GitHub organization and
+    the name you gave your custom branding package. You should also change `my_package.yml`
+    to be the name of your main YAML file in your branding package.
 
 ## Docker-level server configuration changes we recommend
 
 ### Increase nginx timeouts to 5 minutes
 
-Sometimes, long-running Docassemble processes can "timeout." The default 
+Sometimes, long-running Docassemble processes can "timeout." The default
 experience in Docassemble is to show the server's built-in error page,
 which can be confusing for your end user.
 
 We recommend that you increase the nginx timeout for uwsgi from 60 seconds
-(default) to 5 minutes to reduce the frequency that users run into this 
+(default) to 5 minutes to reduce the frequency that users run into this
 ugly error screen.
 
 
@@ -116,7 +150,7 @@ server and then entering the docker container.
 
 Install a text editor and open the nginx configuration file as follows:
 
-```
+```bash
 apt update
 apt install nano
 nano /etc/nginx/nginx.conf
@@ -130,7 +164,7 @@ Type CTRL+O, Enter, and then CTRL+X to save and exit the configuration file.
 
 Type the following commands to restart the nginx process:
 
-```
+```bash
 supervisorctl restart nginx
 ```
 
@@ -154,20 +188,20 @@ First:
 
 Install a text editor:
 
-```
+```bash
 apt update
 apt install nano
 ```
 
 Create a directory to store your custom configuration files:
 
-```
+```bash
 mkdir /usr/share/nginx/html/errors
 ```
 
 Open a new nano editor:
 
-```
+```bash
 nano /usr/share/nginx/html/errors/custom_504.html
 ```
 
@@ -179,7 +213,7 @@ Type CTRL+O, Enter, and then CTRL+X to save and close the editor.
 
 Edit the `nginx` configuration file to point to your new custom error page:
 
-```
+```bash
 nano /etc/nginx/nginx.conf
 ```
 
@@ -190,6 +224,6 @@ Type CTRL+O, Enter, and then CTRL+X to save and close the editor.
 
 Restart the nginx process:
 
-```
+```bash
 supervisorctl restart nginx
 ```
