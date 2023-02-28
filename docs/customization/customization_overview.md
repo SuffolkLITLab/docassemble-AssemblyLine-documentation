@@ -40,7 +40,7 @@ Using bootstrap.build is the simplest option for most authors.
       `light` and `dark`
     * Under Typography, customize any fonts that you wish to use
     * Under forms, you may want to customize button size and rounded edges
-1. Click the "export theme" button (it may be hidden behind a banner at the top of the page) and choose the 
+1. Click the "export theme" button (it may be hidden behind a banner at the top of the page) and choose the
   "bootstrap.min.css" option. Rename this theme to be more specific. Optionally, download the `_variables.scss` file
   so that you can easily load and adjust your settings in future.
 
@@ -67,41 +67,24 @@ Copy and paste the code below into the `bootstrap.min.css` file (or your new fil
 
 ### Creating a custom theme from source instead of with a theme generator
 
-The Bootstrap documentation [covers the details of theming](https://getbootstrap.com/docs/5.1/getting-started/download/).
-
 While the above instructions to use bootstrap.build can work well in most
 circumstances, you may run into small interface bugs introduced by the theme
-generator. If you prefer more control over building the theme, first, 
-[download](https://getbootstrap.com/docs/5.1/getting-started/download/) the
-Bootstrap source. As of this writing, the latest version you should use is 5.1.3.
+generator. If you prefer more control over building the theme, you can create
+a custom theme from the bootstrap source code. The Bootstrap documentation
+[covers the details of theming](https://getbootstrap.com/docs/5.1/customize/overview)
+if you want to take this approach.
 
-Use a computer with a current version of Node. The instructions on this page
-assume you are using an Ubuntu Linux computer with Node installed, but they
-should be the same on any workstation. They were tested on a machine running
-Windows 11 with Ubuntu running under Windows Subsystem for Linux (WSL).
-
-It also assumes that you have VS Code installed, but you can use any text
-editor of your choice.
-
-```bash
-wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-dist.zip
-unzip bootstrap-5.1.3-dist.zip
-cd bootstrap-5.1.3
-npm install
-```
-
-Now, create a new `custom.scss` file inside the `scss` subfolder in the
-`bootstrap-5.1.3` folder. Detailed instructions on what this file can contain
-are in the [Bootstrap
+Create a new `custom.scss` file anywhere on your computer to contain the SASS/CSS styles for your branding.
+Detailed instructions on what this file can contain are in the [Bootstrap
 documentation](https://getbootstrap.com/docs/5.1/customize/sass/#importing).
 
 You can use a [color theme generator](https://huemint.com/bootstrap-basic/) like
 [Huemint.com](https://huemint.com/bootstrap-basic/) to make sure that you have a
 consistent set of all 9 Bootstrap variables. When you use the color theme
 generator, at the bottom of the page, you will see a small snippet of code that
-you can copy into the customs.scss file.
+you can copy into the `customs.scss` file.
 
-For example, your new custom.scss might look like this:
+For example, your new `custom.scss` might look like this:
 
 ```scss
 // Custom.scss
@@ -130,7 +113,48 @@ $theme-colors: (
 // Then add additional custom code here
 ```
 
-Now, use `npm` to compile the theme file.
+Once you have written your `custom.scss` file, you can use the
+[ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) (which you can [install on
+your docassemble server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#install-aldashboard))
+to compile a custom Bootstrap theme. If you are associated with the Suffolk LITLab and have an account on
+the Suffolk Development server, you can visit a [live version of the tool](https://apps-dev.suffolklitlab.org/start/ALDashboard/compile_bootstrap)
+to try it out.
+
+At the end of the tool, download the compiled file, and then add it
+a docassemble project, in the `static` folder. You can then reference your new file
+by adding a [bootstrap theme feature](https://docassemble.org/docs/initial.html#bootstrap%20theme) to your interview:
+
+```yaml
+features:
+  bootstrap theme: my_bootstrap_theme.css
+```
+
+#### Running node and npm to build a Bootstrap config (optional)
+
+If you don't have access to a docassemble server yourself, you can
+also compile a bootstrap theme from source using node and npm.
+
+Use a computer with a [current version of Node](https://nodejs.dev/en/).
+The instructions on this page
+assume you are using an Ubuntu Linux computer with Node installed, but they
+should be the same on any workstation. They were tested on a machine running
+Windows 11 with Ubuntu running under Windows Subsystem for Linux (WSL).
+
+It also assumes that you have VS Code installed, but you can use any text
+editor of your choice.
+
+First, [download the Bootstrap source](https://getbootstrap.com/docs/5.1/getting-started/download/),
+and install its dependencies. As of this writing, the latest version you should use is 5.1.3.
+
+```bash
+wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-dist.zip
+unzip bootstrap-5.1.3-dist.zip
+cd bootstrap-5.1.3
+npm install
+```
+
+Place the `custom.scss` file you wrote from [the above section](#creating-a-custom-theme-from-source-instead-of-with-a-theme-generator)
+in the unzipped bootstrap-5.1.3 folder, and use `npm` to compile the theme file.
 
 ```bash
 cd ~/bootstrap-5.1.3
@@ -138,7 +162,7 @@ npm run css-compile
 ```
 
 Your new `custom.css` file is in the
-~/bootstrap-5.1.3/dist/css` directory. Copy this file to your Docassemble
+`~/bootstrap-5.1.3/dist/css` directory. Copy this file to your Docassemble
 `static` folder and reference it as a `bootstrap theme`.
 
 ### Using custom fonts in the frontend
@@ -160,7 +184,7 @@ tool](https://www.fontsquirrel.com/tools/webfont-generator).
 reference in the `features` block of your interview)
 
 You cannot include Mako tags in your CSS file, so in order to use the new font face, you should
-add it to a Docassemble package and then install the package on your server. 
+add it to a Docassemble package and then install the package on your server.
 
 Example:
 
@@ -207,6 +231,6 @@ Instead of copying the fonts to /usr/share/fonts, you could likely copy
 them to `/var/www/.fonts`. This has the advantage of being writable by the
 web process from a Python module.
 
-If the font still does not appear to be installed (try generating a PDF with the 
+If the font still does not appear to be installed (try generating a PDF with the
 custom font),you may need to do a `docker stop -t 600 mycontainer` followed by a
 `docker start mycontainer`.
