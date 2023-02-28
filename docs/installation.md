@@ -14,7 +14,7 @@ Installing the Assembly Line covers the following basic steps:
 1. Install the docassemble.ALDashboard package
 2. Run the installation script
 3. Customize and install the
-   [ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction/)
+   [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate/)
    package with branding and question wording to match your needs.
 4. Use the Weaver tool to automate your labeled PDF or DOCX forms.
 
@@ -72,9 +72,9 @@ If you do not know the answer, you can return and manually edit your
 configuration later.
 
 
-## Customize the ALGenericJurisdiction repository
+## Customize the ALThemeTemplate repository
 
-[ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction/)
+[ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate/)
 is a docassemble package that includes an example of how to modify questions and customize
 them for your own jurisdiction or organization.
 

@@ -79,7 +79,7 @@ additional questions.
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VAzXYEacN78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * [Using Github in Docassemble](github.md)
-* Customizing basic branding with the [ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction) package.
+* Customizing basic branding with the [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate) package.
     * Logo
     * Intro screen
     * Pushing changes to Github
@@ -89,7 +89,7 @@ additional questions.
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-YtGtVI79dY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * Here's the [video on setting up your own docassemble server](https://www.youtube.com/watch?v=JXdOCLMFPHc) 
-* [docassemble-ALGenericJurisdiction](https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction) package
+* [docassemble-ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate) package
 * Introduction to the docassemble.Income class
 * Working with tables and repeated data
 * How to install the Assembly Line packages on your Docassemble server
@@ -110,4 +110,4 @@ Basic runtime | [docassemble.AssemblyLine](https://pypi.org/project/docassemble.
 Massachusetts-specific runtime code | [docassemble.MassAccess](https://pypi.org/project/docassemble.MassAccess/) | https://github.com/SuffolkLITLab/docassemble-MassAccess, https://github.com/SuffolkLITLab/docassemble-ALMassachusetts (must install separately if you install from Github)
 Optional "toolbox"/helper functions | [docassemble.ALToolbox](https://pypi.org/project/docassemble.ALToolbox/) | https://github.com/SuffolkLITLab/docassemble-ALToolbox
 Income gathering functionality | [docassemble.income](https://pypi.org/project/docassemble.income/) | https://github.com/GBLS/docassemble-income
-Customizable starting point for your jurisdiction | * | https://github.com/SuffolkLITLab/docassemble-ALGenericJurisdiction
+Customizable starting point for your jurisdiction | * | https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate
