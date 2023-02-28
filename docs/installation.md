@@ -80,8 +80,7 @@ them for your own jurisdiction or organization.
 
 To use this package, [pull it into your own Docassemble playground](https://docassemble.org/docs/playground.html#packages).
 
-Next, edit the YAML files to fit your own organization's needs. You may also choose to
-add a custom CSS theme.
+Next, [follow our guide](customization/customization_overview.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
 
 Now, create a new package from the [Playground packages menu](https://docassemble.org/docs/playground.html#packages).
 Give the package a meaningful name, like LouisianaSharedBranding.
@@ -111,7 +110,7 @@ package:
         advertise_capabilities(__name__, minimum_version="1.5")
     ```
 
-2. [In your sources folder](https://docassemble.org/docs/playground.html#sources), create a file named `configuration_capabilities.yml` (needs to be spelled the same), and add the following contents, customizing it to your branding package:
+2. [In your sources folder](https://docassemble.org/docs/playground.html#sources), create a file named `configuration_capabilities.yml` (needs to have that exact spelling), and add the following contents, customizing it to your branding package:
 
     ```yaml
     package name: My Package
