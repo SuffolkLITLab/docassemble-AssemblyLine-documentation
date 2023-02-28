@@ -110,22 +110,23 @@ package:
         advertise_capabilities(__name__, minimum_version="1.5")
     ```
 
-2. [In your sources folder](https://docassemble.org/docs/playground.html#sources), create a file named `configuration_capabilities.yml` (needs to have that exact spelling), and add the following contents, customizing it to your branding package:
+2. [In your sources folder](https://docassemble.org/docs/playground.html#sources), create a file named `configuration_capabilities.yml` (needs to have that exact spelling), and add the following contents:
 
     ```yaml
     package name: My Package
     organization_choices:
       - description: MyPackage
         dependency: "docassemble.MyPackage @ https://github.com/MyOrg/docassemble-MyPackage/archive/main.zip"
-        include_name: "docassemble.MyPackage:my_package.yml"
+        include_name: "docassemble.MyPackage:custom_organization.yml"
         state: TX
         country: US
         default: false
     ```
 
     You should replace `MyOrg` and `MyPackage` with the name of your GitHub organization and
-    the name you gave your custom branding package. You should also change `my_package.yml`
-    to be the name of your main YAML file in your branding package.
+    the name you gave your custom branding package. If you changed the name of `custom_organization.yml`,
+    the default name of the yaml in `ALThemeTemplate`, in your package,
+    you should also change `custom_organization.yml` above.
 
 ## Docker-level server configuration changes we recommend
 
