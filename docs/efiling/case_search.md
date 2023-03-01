@@ -33,7 +33,8 @@ Before staring this guide you should:
       will include an interest form here when we do.
   * second, you can follow the instructions in ["Server Setup"](efiling_through_docassemble.md#server-setup) to setup your server's
     configuration.
-* know about [Tyler e-filing codes](efiling_through_docassemble.md#get-the-information-needed-to-file) (Note: there is a tutorial to learn about e-filing codes coming soon)!
+* know about [Tyler e-filing codes](efiling_codes.md)
+  * Note: this tutorial is only partially written, but it will be completed soon!
 
 ## Steps
 
@@ -108,7 +109,7 @@ from the `case_search.found_case`, the variable for the found case. The `details
   specific case types, so even though you searched for cases in the "adams" court, you
   should use this value for the rest of the interview.
 * `participants`, an ALPeopleList object that has all of the participants in the case on both sides.
-  * each participant has a `party_type` and `party_type_name`, i.e. `participants[0].party_type_name` might be "Plaintiff/Petitioner". These values are Tyler e-filing codes that are set by the court.
+  * each participant has a `party_type` and `party_type_name`, i.e. `participants[0].party_type_name` might be "Plaintiff/Petitioner". These values are [Tyler e-filing codes](efiling_codes.md) that are set by the court.
 * `attorneys` is a dictionary that contains any attorneys that are a part of the case.
 * `efile_case_type` is the Tyler e-filing code for the type of case. This is useful if your interview
   is only relevant for certain case types. If users don't or can't fill out your form for their case, you can send users to a page that says they don't need this form and why.
@@ -154,5 +155,5 @@ court cases). Including the `add_existing_users` line triggers code in the EFSPI
 and then fills in `users` and `other_parties` based on that information.
 
 If your form generally deals with party types other than "defendant" and "plaintiff", you will likely want to look at the `is_defendant_filters` and `is_plaintiff_filters` variables in [`docassemble-EFSPIntegration:case_search.yml`](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/blob/main/docassemble/EFSPIntegration/data/questions/case_search.yml)
-which you can override to sort participants from a case into your typical
+which you can override to sort participants by their codes from a case into your typical
 ALPeopleLists in your form.
