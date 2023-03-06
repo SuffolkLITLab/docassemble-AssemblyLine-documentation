@@ -53,6 +53,7 @@ module.exports = {
                 'question_library/ql_addresses',
                 'question_library/ql_gender',
                 'question_library/ql_language',
+                'question_library/ql_terms_of_use',
             ]
         },
         {
