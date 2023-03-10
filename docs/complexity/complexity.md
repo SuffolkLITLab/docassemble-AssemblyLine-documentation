@@ -80,6 +80,38 @@ We have a draft paper in progress that explains everything in a lot more detail!
 Link will be available here "soon." Available now on request (delay due to journal
 submission policies).
 
+## Use and limitations
+
+### The measurement effect
+
+As soon as form authors are aware of the concrete score that our tool provides,
+we recognize that its value will decrease. A form specially tuned to score well
+on an automated assessment may do so by manipulating features of the form that
+were only proxies for the usability of the form itself.
+
+We think our measure will be helpful to provide an initial score for a form. But
+use the general principles contained on this website to improve your form
+thereafter, and don't focus too much on the specifics of your score after revision.
+
+### Inherent limitations in mechanical scores
+
+Automated scores like the RateMyPDF score have limitations in accuracy. Our score
+takes only attributes that are easily measurable and combines them into an overall
+score, but it misses nuance and specifics to the form and its context.
+
+The gold standard for improving forms is an individual usability test. You can run
+a usability test for as little as a few hundred dollars and half a dozen hours of
+time, and we think you should! We have written up a [short guide to usability testing here](https://suffolklitlab.org/legal-tech-class/docs/testing/testing/#usability-tests).
+
+But usability testing:
+
+* Can still be expensive or difficult to do at scale
+* Requires applying judgment to disaggregate the causes of poorly performing forms.
+
+We think mechanical scores can be very helpful to sort and classify large numbers of
+forms at once and to provide a basic direction for improving even individual forms
+when not applied dogmatically.
+
 ## Who built this
 
 * Bryce Willey
