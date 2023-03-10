@@ -102,8 +102,8 @@ Insert HTML for a Bootstrap &quot;collapse&quot; div.
 
 Optionally, you can specify a custom icon to override the defaults:
 
-The default icons are &quot;🞂&quot; which displays when the text is collapsed (`closed_icon`) and
-&quot;▼&quot; which displays when the text is open (`open_icon`).
+The default icons are "right caret" which displays when the text is collapsed (`closed_icon`) and
+"down caret" which displays when the text is open (`open_icon`).
 
 #### tabbed\_templates\_html
 
