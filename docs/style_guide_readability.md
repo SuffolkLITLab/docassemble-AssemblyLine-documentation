@@ -147,7 +147,7 @@ Be careful not to leave information out of your description.
 ## Put conditions (or choices) before actions
 
 Instructions that are written in the form of "If condition then do action" are
-easier to follow than the reverse order. See [Dixon, Peter (1987)](https://doi.org/10.1016/0749-596X(87)90060-X). (We learned about this study from [Jarret and Gaffney (2009)](https://www.amazon.com/Forms-that-Work-Interactive-Technologies/dp/1558607102).)
+easier to follow than the reverse order. See [Dixon, Peter (1987)](https://doi.org/10.1016/0749-596X(87)90060-X). (We learned about this study from [Jarrett and Gaffney (2009)](https://www.amazon.com/Forms-that-Work-Interactive-Technologies/dp/1558607102).)
 
 Why? The user can stop reading the sentence as soon as they see that the 
 condition does not apply to them.

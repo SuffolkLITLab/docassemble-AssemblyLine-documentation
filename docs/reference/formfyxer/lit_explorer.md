@@ -129,7 +129,7 @@ of the information.
 &quot;Created&quot; answers don&#x27;t exist before the user is presented with the question. They may include
 a choice, creating a narrative, or even applying legal reasoning. &quot;Affidavits&quot; are a special
 form of created answers.
-See Jarret and Gaffney, Forms That Work (2008)
+See Jarrett and Gaffney, Forms That Work (2008)
 
 #### classify\_field
 

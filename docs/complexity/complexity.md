@@ -66,7 +66,7 @@ We built the RateMyPDF score by combining feedback from:
 
 The tool leverages a custom ML model, GPT-3, and heuristics to do the hard work.
 
-A key feature of our score is that it leverages Caroline Jarret and Gerry
+A key feature of our score is that it leverages Caroline Jarrett and Gerry
 Gaffney's
 [framework](https://www.amazon.com/Forms-that-Work-Interactive-Technologies/dp/1558607102)
 that classifies form responses as either:
