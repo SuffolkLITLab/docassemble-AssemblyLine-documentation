@@ -34,10 +34,10 @@ This collection of classes has some other nice benefits:
 The primary classes that developers interact with are the `ALDocument` class,
 which represents a template that is filled in with the user's answers during the
 course of the interview, and the `ALDocumentBundle` class, which provides a way
-to group documents together to be emailed, downloaded, or delivered to a court 
+to group documents together to be emailed, downloaded, or delivered to a court
 or opposing party.
 
-`ALDocumentBundle` objects can be nested to allow you to group multiple individual 
+`ALDocumentBundle` objects can be nested to allow you to group multiple individual
 template files into one document that the user can download.
 
 Both `ALDocument` and `ALDocumentBundle` objects can be either `enabled` or not.
@@ -66,7 +66,8 @@ Here's how to use an ALDocument:
 
 1. Create `ALDocument` objects in an objects block.
 1. Set any required attributes, like `enabled`, in the object block or in a
-   separate code block.
+   separate code block. If you set `enabled=True` in the object block, your
+   document will always be enabled.
 1. Define the key of the `ALDocument` in an `attachment` block using the
    `variable name` modifier. Usually, use one attachment block and define the variable name
    like this: `variable name: some_al_document[i]`.
@@ -87,9 +88,10 @@ attachment:
       - "users1_signature": ${ users[0].signature_if_final(i) }
 ```
 
-Example:
+### Enabled Example
 
-It's common in longer interviews to have the `enabled` attribute be defined in a code block, like this:
+If other variables in your interview determine if your document is
+`enabled`, you should define the `enabled` attribute in a code block, like this:
 
 ```yaml
 ---
@@ -118,8 +120,8 @@ code: |
   # insurance_rider.enabled = total_cost > 1000
 ```
 
-In the example above, the `insurance_rider` document is only included in any bundles if the 
-total cost of the project is over $1,000. Note that the `enabled` value is global for the 
+In the example above, the `insurance_rider` document is only included in any bundles if the
+total cost of the project is over $1,000. Note that the `enabled` value is global for the
 interview session. If you want to use different logic in different bundles, you can easily
 create a separate `ALDocument` that references the same template file and attachment block.
 
@@ -133,7 +135,7 @@ Attributes:
   template that is flexible enough to work with many fields.
 * `overflow_fields`: an `ALAddendumFieldDict` with each representing a field
   that has potential to be sent to the addendum if exceeds a pre-set length.
-* `has_addendum `: set this to True or False to control whether the
+* `has_addendum`: set this to True or False to control whether the
   `overflow_fields` dictionary will be checked to decide whether or not to
   generate an addendum file. Optional; defaults to `False`.
 
@@ -143,7 +145,7 @@ Methods:
   completed template and any addendum. `key` is normally `preview` or `final`
 * `as_docx(key:str='final', refresh:bool=True)`: returns a DOCX version of the
   completed template and any addendum if the original is a DOCX template. `key`
-  is normally `preview` or `final`. 
+  is normally `preview` or `final`.
 * `as_list(key:str='final', refresh:bool=True)`: returns a 1 or 2 item list
   which contains the template and its addendum, if any.
 * `need_addendum()`: returns `True` if the addendum exists and there are
@@ -151,12 +153,12 @@ Methods:
 * `has_overflow()`: returns `True` if there are fields that trigger the
   addendum.
 * `overflow()`: returns a list of just the fields that triggered the addendum.
-* `safe_value(field_name:str, overflow_message:str=None, preserve_newlines:bool=False, input_width:int=80)`: 
+* `safe_value(field_name:str, overflow_message:str=None, preserve_newlines:bool=False, input_width:int=80)`:
   returns the "safe" value
   of `field_name` (the amount that is less than `overflow_trigger`) plus an
   overflow message. Used in an attachment block.
-* `overflow_value(field_name:str, overflow_message:str=None, preserve_newlines:bool=False, input_width:int=80)`: 
-  returns the "unsafe" value of `field_name`--the amount that exceeds the `overflow_trigger`. Potentially used 
+* `overflow_value(field_name:str, overflow_message:str=None, preserve_newlines:bool=False, input_width:int=80)`:
+  returns the "unsafe" value of `field_name`--the amount that exceeds the `overflow_trigger`. Potentially used
   inside an addendum document.
 
 ## ALDocumentBundle class
@@ -167,7 +169,7 @@ developers a way to conveniently group documents and treat them as a single set,
 even if the exact list of documents might change depending on the user's
 answers.
 
-Here's how to use an `ALDocumentBundle`: 
+Here's how to use an `ALDocumentBundle`:
 
 1. Create the `ALDocumentBundle` in an `objects` block.
 1. Add each `ALDocument` or nested `ALDocumentBundle` that your interview will
@@ -205,7 +207,7 @@ to be able to open and print as one file.
 
 Attributes:
 
-* `enabled` (optional): make sure to define this if the object is included inside another `ALDocumentBundle`
+* `enabled` (optional): define this if the bundle is included inside another `ALDocumentBundle`. If other variables in your interview determine if it's enabled, you should define the attribute in a code block, like in [this earlier example](#enabled-example)
 * `title`: this is displayed on the download screen
 * `filename`: used to construct the display filename for a `pdf` version of the bundle
 
@@ -739,7 +741,7 @@ if you expect users to take photographs of documents. Searchable text may also b
 requirement for electronically filed documents in your jurisdiction.
 
 By default, `ALExhibit` will be OCRed using Docassemble's native code, which converts
-images to grayscale and is somewhat slow.
+images to gray-scale and is somewhat slow.
 
 Optionally, you can tell AssemblyLine interviews to use an improved OCR system, OCRMyPDF.
 To turn on OCRMyPDF:
@@ -799,6 +801,16 @@ objects:
 
 ## Creating XLSX files with ALTableDocument
 
+:::note
 
+In progress!
+
+:::
 
 ## ALUntransformedDocument
+
+:::note
+
+In progress!
+
+:::
