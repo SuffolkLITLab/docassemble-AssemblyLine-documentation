@@ -22,6 +22,7 @@ RateMyPDF assigns your PDF a score that reflects 12 different dimensions, includ
 * Sentences per page
 * Percent of words written in all capital letters
 * Percent of "slot-in" fields
+* Percent of "third-party" fields
 * Percent of "gathered" fields
 * Percent of created fields
 

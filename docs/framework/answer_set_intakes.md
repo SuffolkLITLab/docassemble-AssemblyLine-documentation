@@ -116,7 +116,7 @@ fields:
   - Select one: selected_answers
     datatype: combobox
     code: |
-      [{idx: answer.title} for idx, answer in enumerate(all_answer_sets)]
+      [{idx: answer["title"]} for idx, answer in enumerate(all_answer_sets)]
     required: False      
 ---
 id: download template
@@ -135,7 +135,7 @@ code: |
     all_answer_sets = get_saved_interview_list(filename="docassemble.AssemblyLine:al_saved_sessions_store.yml", exclude_newly_started_sessions=False)
 ---
 code: |
-  load_interview_answers(all_answer_sets[int(selected_answers)].filename, all_answer_sets[int(selected_answers)].key) 
+  load_interview_answers(all_answer_sets[int(selected_answers)]["filename"], all_answer_sets[int(selected_answers)]["key"])
   load_existing_answers = True
 ---
 ###################### Catchall questions ###########################################
