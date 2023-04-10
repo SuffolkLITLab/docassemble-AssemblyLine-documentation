@@ -66,13 +66,13 @@ code: |
   show_all_info
 ```
 
-We're starting off by hard coding a few pieces of information:
+Start off by hard coding a few pieces of information:
 
-* we are using the `illinois' jurisdiction. Currently, the E-file proxy server is only running in production in Illinois, but we have access to the staging servers in Massachusetts and Texas.
-* we are filing in the "adams" county court in Illinois. Handling court
+* use the `illinois' jurisdiction. Currently, the E-file proxy server is only running in production in Illinois, but we have access to the staging servers in Massachusetts and Texas.
+* file in the "adams" county court in Illinois. Handling court
   hierarchies is a complicated task, and something that the AssemblyLine can't do for you. You'll need to make your own way to let users select what court they want to file in depending on your jurisdiction. See [our documentation for `al_courts`](../reference/AssemblyLine/al_courts.md) for some possible ideas.
 
-You should be able to start the interview. If this is the first time you're running the interview on the server, you will be asked to log in to the eFileIL. If you don't yet have an account, you should be able to make a new pro-se user account with eFileIL by following the links to make a new account on the page. Once you've logged in on the server, subsequent runs of the interview won't ask you to log in, until our eFileIL token expires and we have to log in again, in about 1-2 hours.
+You should be able to run the interview now. If this is the first time you're running the interview on the server, you will be asked to log in to eFileIL. If you don't yet have an account, you should be able to make a new pro-se user account with eFileIL by following the links to make a new account on the page. Once you've logged in on the server, subsequent runs of the interview won't ask you to log in, until the eFileIL token expires and you have to log in again, in about 1-2 hours.
 
 The next page will ask if you want to search by party name or by case number.
 
@@ -101,7 +101,7 @@ only gets information about the first 8, and let's you click the next button to 
 
 ![A screenshot of the "case search results" page. At the top it says "We found 25 cases. Here are 1 to 8:", with a "next" button below it. There is a bulleted list showing 8 cases involving John Smith and various other parties.](case_search_results.png)
 
-If you select the John Smith vs. Bob Doe case, you then see the last page we created; `show_all_info`. This page shows all of the information that you, the interview author, can use
+If you select the John Smith vs. Bob Doe case, you then see the last page in the interview YAML; `show_all_info`. This page shows all of the information that you, the interview author, can use
 from the `case_search.found_case`, the variable for the found case. The `details` and
 `case_details` attributes aren't stable APIs, but you might find the following attributes useful:
 
