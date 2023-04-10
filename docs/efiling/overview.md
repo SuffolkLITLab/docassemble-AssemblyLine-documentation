@@ -111,7 +111,7 @@ to connect with Tyler Technologies and JeffNet:
    Java server that speaks directly to Tyler and JeffNet
 1. A [Python
    package](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration) that
-   provides an object-oriented interface to the REST API
+   provides a python-native interface to the REST API
 1. A [Docassemble YAML
    file](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/blob/main/docassemble/EFSPIntegration/data/questions/efiling_integration.yml)
    that uses the Python code to provide an end-to-end filing solution.

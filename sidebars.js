@@ -114,7 +114,8 @@ module.exports = {
             label: 'E-filing',
             items: [
                 'efiling/overview',
-                'efiling/efiling_through_docassemble'
+                'efiling/efiling_through_docassemble',
+                'efiling/efiling_case_search',
             ]
         },
         {
