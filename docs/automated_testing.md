@@ -9,7 +9,7 @@ slug: /automated_integrated_testing
 
 🚧
 
-Reference for testing your interview on GitHub.
+Reference material for testing your interview on GitHub.
 
 **Any docassemble package can use this.** It does have special features created especially for projects using AssemblyLine.
 
@@ -21,9 +21,13 @@ The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble intervi
 
 **Kiln works with any docassemble interview**, though it is being developed through the Document Assembly Line project.
 
-Docacon 2021, 10 minute demo:
+Docacon 2023, demo and examples of ALKiln automated testing:
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YB-e-MGtLgI?start=3482&end=4115" title="10 minute intro of Assembly Line Kiln testing framework at Docacon 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="560" src="https://www.youtube-nocookie.com/embed/TcLFA9a1bHs?start=3413" title="Assembly Line Kiln testing framework at Docacon 2023" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
+
+You can [skip straight to writing tests](https://youtu.be/TcLFA9a1bHs?t=3712). A little earlier in the presentation, you can see a bit about [why we test, what we test, and why to automate testing](https://www.youtube.com/watch?v=TcLFA9a1bHs&t=2970s).
+
+You can also read the [presentation slides themselves](https://docs.google.com/presentation/d/165JJAj9w2YrXeifpyvHXTMUxr7u6UDvnCoYy1xvfdhU/edit) with all the speaker's notes.
 
 
 ## Start
