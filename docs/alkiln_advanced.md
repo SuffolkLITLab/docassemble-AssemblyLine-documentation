@@ -11,7 +11,7 @@ slug: /alkiln/advanced
 
 You don't have to choose between running ALKiln on GitHub or in the Playground. You can do both. Here are some differences to help you use each more effectively.
 
-### In the Playground
+### Playground pros
 
 _Advantages of testing on your server._
 
@@ -21,7 +21,7 @@ _Advantages of testing on your server._
 - You can more often avoid the red "x" that appears next to failing tests on GitHub. The red "x" is a useful piece of information, but it can be uncomfortable.
 
 
-### GitHub
+### GitHub pros
 
 _Advantages of testing in GitHub._
 
