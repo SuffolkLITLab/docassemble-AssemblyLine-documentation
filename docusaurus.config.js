@@ -111,6 +111,10 @@ module.exports = {
           {
             from: '/docs/framework/efiling',
             to: '/docs/efiling/overview'
+          },
+          {
+            from: '/docs/automated_integrated_testing',
+            to: '/docs/alkiln'
           }
         ]
       }

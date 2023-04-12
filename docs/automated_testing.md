@@ -1,29 +1,28 @@
 ---
-id: automated_testing
-title: Automated testing
-sidebar_label: Automated testing
-slug: /automated_integrated_testing
+id: alkiln_about
+title: ALKiln automated testing
+sidebar_label: Overview
+slug: /alkiln
 ---
+
+<!-- /automated_integrated_testing -->
 
 <!-- original: https://docs.google.com/document/d/1hkNr78mrU3Ha98tPUL4OKWi3eNnt-1Sba7L8470u06g/edit# -->
 
 🚧
 
-Reference material for testing your interview on GitHub.
+Reference material for testing your interview with ALKiln. This is under very active development.
 
-**Any docassemble package can use this.** It does have special features created especially for projects using AssemblyLine.
+**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine.
 
-This is under very active development.
 
 ## Intro
 
-The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview through GitHub, making sure your interviews are running the way you want.
-
-**Kiln works with any docassemble interview**, though it is being developed through the Document Assembly Line project.
+The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview either through the Playground or through GitHub, making sure your interviews are running correctly.
 
 Docacon 2023, demo and examples of ALKiln automated testing:
 
-<iframe width="560" height="560" src="https://www.youtube-nocookie.com/embed/TcLFA9a1bHs?start=3413" title="Assembly Line Kiln testing framework at Docacon 2023" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/TcLFA9a1bHs?start=3413" title="Assembly Line Kiln testing framework at Docacon 2023" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
 
 You can [skip straight to writing tests](https://youtu.be/TcLFA9a1bHs?t=3712). A little earlier in the presentation, you can see a bit about [why we test, what we test, and why to automate testing](https://www.youtube.com/watch?v=TcLFA9a1bHs&t=2970s).
 
@@ -32,26 +31,37 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 ## Start
 
-1. Prepare your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository.
-1. In Docassemble, make a new Project and pull in the updated code.
-1. Write tests in your Sources folder. You should already have an example test there to start with, created by the test setup interview.
+You can use ALKiln from your server, through GitHub, or both. You can read more about the [differences between running ALKiln in GitHub vs. the Playground here](alkiln/advanced#two-ways-to-run-alkiln).
 
+**For the Playground**
 
-## How does it work?
+1. On your "Package Management" page, install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
+1. Follow docassemble's instructions to add it to the [dispatch list](https://docassemble.org/docs/config.html#dispatch) to add it to the server's list of interviews.
+1. Make sure you have a Project that you want to test in your list of Projects.
+1. Make sure that Project has some tests. They should be in the Sources folder of the Project and end in the extension `.feature`.
+1. Run the interview and start by picking the the newest version of ALKiln. It should be at the top of the list of options. Tap to install it.
+1. Pick a Project to test.
+1. Run the tests and see [the output](#test-output).
 
-Whenever you push to GitHub, GitHub will run the tests automatically with a bot that goes to whatever interviews you named in the tests and fills in the fields. You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
+<!-- 
+1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-At the end, you can see a report and logs right in the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs) or [download the report artifact to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+**For GitHub**
 
+1. Prepare your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository. This can take over half an hour if you're unfamiliar with GitHub and docassemble API keys.
+1. In Docassemble, make a new Project and pull in the package's updated code.
+1. In the Project's Sources folder, add files with a `.feature` extention to write tests. You might already have an example test in that folder if you chose to create one during the ALKiln setup interview.
+1. Commit the new files to GitHub to trigger the tests to run.
+1. [See the results](#see-github-test-results).
 
 ## Quick reminders
 
 1. You write and edit `.feature` test files in your Sources folder.
 1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. Tests are run in GitHub when you commit.
+1. If you're using GitHub, tests are run when anyone commits to GitHub.
 1. Tests can download files, but humans have to review them to see if they've come out right.
-1. You will be able to download screenshots of pages that errored. They're in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
-1. ALKiln also creates test reports that you can download in the same place.
+1. You will be able to see pictures of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
 
 Give us feedback and ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
@@ -116,9 +126,11 @@ You can write a story table that goes all the way through your interview, or a s
 
 Very basically, you tell the story table Step what `question` you want to get to and the variables and values it will need to get there. Whenever the test gets to a page, it checks your story table for any variables that match a variable on the page. When it finds a match, it sets the value of the field. When it's done with a page, it continues to the next page until it reaches the terminal `question`.
 
-You can have multiple tables in one Scenario and you can put other steps between story table Steps.
+You can have multiple tables in one Scenario and you can put other steps between story table Steps. 
 
-:::warning
+Right now, Story Tables are unable to use GitHub secrets to set variables.
+
+:::caution
 A story table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
@@ -151,7 +163,7 @@ The Step that triggers a story table is
     And I get to the question id "some id!" with this data:
 ```
 
-**question id:** The story table needs to know the `id` of the page this story table should get to. You can find the `id` in the `question` block in the YAML, or using the `</>` button in the header of an open interview.
+**question id:** The story table needs to know the `id` of the page this story table should get to. You can find the `id` in the `question` block in the YAML in the Playground.
 
 
 ### Rows
@@ -322,7 +334,7 @@ Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all b
 
 _Establishing Steps that you might use as the first few lines of a "Scenario" - a test. They can also be used at any other time._ 
 
-:::warning
+:::caution
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
 :::
 
@@ -372,7 +384,7 @@ You can use <span id="log-in-step">the `log in` Step</span> to sign into your do
     When I start the interview at "yaml_file_name.yml"
 ```
 
-This is a complex Step to use. You **must** use a GitHub "secret" to store each value as the information is sensitive. To learn how to create and add a secret for a test, see the [GitHub secrets section](#github-secrets).
+This is a complex Step to use and right now only works in GitHub (though we are working on developing the feature for the Playground version). You **must** use a GitHub "secret" to store each value as the information is sensitive. To learn how to create and add a secret for a test, see the [GitHub secrets section](#github-secrets).
 
 `"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of names. You can use any names you want.
 
@@ -402,7 +414,7 @@ Then I arrive at the next page
 
 ---
 
-The `screenshot` Step will take a picture of the screen that will be put in the GitHub action's [artifacts](#your-screenshots-artifacts).
+The `screenshot` Step will take a picture of the screen. In GitHub tests, it will be put in the GitHub action's [artifacts](#see-github-test-results).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
 
 ```
@@ -423,7 +435,7 @@ The `link` Step can make sure a link appears on the page. For example, a link to
 
 The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
-:::warning
+:::danger
 Getting the characters right can be tricky with docassemble. If you get told a phrase is missing, read about [a possible reason](#phrase-is-missing) in the errors section.
 :::
 
@@ -435,7 +447,7 @@ Getting the characters right can be tricky with docassemble. If you get told a p
     Then I should NOT see the phrase "some phrase"
 ```
 
-When trying to use double quotes inside a phrase, you can usually use `“` for opening quotes and `”` for closing quotes. It is impossible to use plain double quotes inside your phrase in a phrase Step.
+The phrase should be inside double quotation marks and should NOT itself contain [regular double quotation marks](https://www.compart.com/en/unicode/U+0022) inside it. That usually isn't a problem with docassemble pages because docassemble transforms our code in ways we don't always expect. See the [missing phrase section](#phrase-is-missing) that talks about special characters.
 
 ---
 
@@ -461,7 +473,7 @@ that the test runner sees.
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
 :::caution
-This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not a nested variable like `user.affidavit`.
+This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not an attribute like `user.affidavit`.
 :::
 
 ```
@@ -488,8 +500,13 @@ The `JSON variables` Step will add the page's JSON variables to the final test r
 <!-- Then the "a" link opens in a new window -->
 <!-- Then the "a" link opens in the same window -->
 
+---
 
-### Set fields / Interact with page
+### Set values
+
+_Fill in fields with answers, set values, and interact with the page in other ways._
+
+---
 
 The `continue` Step will tap the button to continue to the next page. The text on the button itself doesn't matter.
 
@@ -499,7 +516,7 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ---
 
-Use the `set variable` Step to set the values of fields.
+Use the `set variable` Step to set the value of a field.
 
 Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
 
@@ -519,9 +536,10 @@ You can also use environment variables to set values with [the `secret variables
 
 ---
 
-<span id="secret-variables-step">The `secret variables` Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. Also, you will be unable to take a screenshot of the page.
+The <span id="secret-variables-step"><code>secret variables</code> Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. If there is an error on this page, ALKiln will still avoid taking a picture of the screen.
 
-This is a complex Step to use. You can use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
+
+This is a complex Step to use and currently only works with tests running in GitHub (though it's in development for the Playground version). You can use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
 
 ```
     I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
@@ -535,7 +553,7 @@ You **MUST** use [the `log in` Step](#log-in-step) if you want to sign into your
 
 Sign on a signature page. All signatures are the same - one dot.
 
-:::warning
+:::danger
 **AVOID** taking screenshots of signature pages. There's a bug that will erase the signature if you do that.
 :::
 
@@ -593,9 +611,14 @@ It allows a US address format, but can otherwise be any address you want that ma
     When I set the address of "users[0]" to "120 Tremont Street, Unit 1, Boston, MA 02108"
 ```
 
+---
+
 ### Other actions
 
-Use the `download` Step to download files so that humans can check that they are correct. The files will be in [the GitHub action's artifacts](#your-downloaded-files-artifacts). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step) to give the file more time to download.
+---
+
+Use the `download` Step to download files so that humans can check that they are correct. When the tests run in GitHub, the files will be in [the GitHub action's artifacts](#see-github-test-results). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step to give the file more time to download.
+
 ```
     Then I download "file-name.pdf"
 ```
@@ -689,7 +712,7 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 
 ## Tips
 
-_Some of these are just good practices to follow when coding your interviews_
+_Some of these are just good practices to follow when coding your interviews._
 
 In questions with choices, give each label a value. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
 
@@ -729,13 +752,23 @@ You can write tests that just go part-way through an interview. That way, you ca
 
 Use old Scenarios or story tables to help you make new ones. You don't have to make everything from scratch.
 
-## Test results
+---
 
-To see the list of past tests or running tests, go to your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
+## Test output
 
-One of the rows should have the text of the commit you just made. The test may have a yellow dot next to it. That means it's still running. When the dot has turned into a red 'x' or a green checkmark, tap on the name to go to the test's Summary page.
+ALKiln creates files and folders showing the output of the tests.
+In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that run of tests.
 
-To see the full output text of the test run, its logs, follow [these GitHub instructions](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
+The output ALKiln creates includes:
+
+- A report of the result from all the tests.
+- Pictures of screens where ALKiln ran into errors or unexpected behavior.
+- A folder for each test (or Scenario) named using your Scenario description.
+- A report for that specific Scenario, as well as pictures you took of screens, files you downloaded, and pictures of any errors it caused.
+
+### Error pictures
+
+ALKiln will try to take pictures of pages that run into errors. The names of those files use the id of the page where the error happened. There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined. ALKiln avoids taking pictures of erroring pages when the page used GitHub secrets in case they contain sensitive information.
 
 <!-- 
 **Your test's status:** If your test has a green circle with a checkmark, the test has passed. If it has a red circle with an 'x', something went wrong. If it has a yellow circle, the test is still running.
@@ -747,21 +780,11 @@ To see the full output text of the test run, its logs, follow [these GitHub inst
 To see more details about how the test steps ran on GitHub, go to the left column. Tap on the first item under "Jobs".
  -->
 
-### Summary page
-
-ALKiln automatically creates a report for each set of tests. If there are errors, it creates screenshots of those errors. You can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the Summary page.
-
-### Error screenshots' artifacts
-
-When a test fails on an interview page, ALKiln will take a screenshot of the page. ALKiln saves these files in the "errors" GitHub artifact. The screenshot's name will be made of the scenario description and a timestamp of when the screenshot was taken.
-
-There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined.
-
 ### Reports
 
 We're always trying to understand what people would find helpful in these reports. Tell us about your experiences at https://github.com/SuffolkLITLab/ALKiln/issues.
 
-ALKiln saves the report in the "report" GitHub artifact. A report might look something like this:
+A report might look something like this:
 
 ```
 Assembly Line Kiln Automated Testing Report - Wed, 29 Dec 2021 17:49:00 GMT
@@ -817,7 +840,7 @@ screen id: user-name
       | defendant.name.last | Defendant |  |
 ```
 
-Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id.
+Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id. You should check that section to make sure all your varibles got used.
 
 Rows are listed in alphabetical order. If you have thoughts on pros and cons, we'd love to hear from you.
 
@@ -842,22 +865,24 @@ ERROR: Failed to load "a-great-interview" after 3 tries. Each try gave the page 
 **-- Scenario Failed --**
 ```
 
-You will probably find a screenshot of the page in your [error artifacts](#error-screenshots-artifacts).
+ALKiln will also try to take a picture of the page where the error happened. There will be two copies of that picture - one in the main folder of the output and one in the folder of the specific test (the Scenario) that caused the error.
 
 Also watch the [errors and warnings](#errors-and-warnings) section for updates on similar information.
 
-### Your screenshots' artifacts
+## See GitHub test results
 
-You can choose to take a screenshot of a page with the `Then I take a screenshot` Step. ALKiln saves these files in the "screenshots" GitHub artifact.
+In GitHub, to see the list of previous tests or running tests, go to your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
-### Your downloaded files' artifacts
+One of the rows should have the text of the commit you just made. The test may have a yellow dot next to it. That means it's still running. When the dot has turned into a red 'x' or a green checkmark, tap on the name to go to the test's summary page.
 
-You can choose to download a file with the `Then I download "file-name.pdf"` Step. ALKiln saves these in the "downloads" GitHub artifact. You can read more about that Step in the [Other actions](#other-actions) section.
+To see the output text of the test run online, its logs, follow [these GitHub instructions](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
 
+ALKiln also creates files and folders showing the output of the tests.
+In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that run of tests.
 
 ## Errors and warnings
 
-This section will be filled out as we go.
+_This section is a constant work in progress._
 
 ### A missing trigger variable
 
@@ -883,24 +908,28 @@ If you want to see some very technical details about why we need it in the first
 
 ### Timeout or "took too long" error
 
-Different problems can cause the report to say that something "took too long" or cause a "timeout" error to show up in the logs of the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
+Different problems can cause the report to say that something "took too long" or caused a "timeout" error.
 
-This error can happen when the test is trying to go to the wrong url, usually because:
-
-1. The `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) has a typo or the server address is wrong. This secret is usually created by the [setup interview](#start). It is supposed to be the address of the docassemble server where the docassemble testing account is located. Find the right server name and edit the secret to contain that server name. Exclude an ending `/`.
-1. The `Given I start the interview at...` Step is naming an interview that doesn't exist. Check for a typo in the file name.
-
-A "timeout" error can also happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
+A "timeout" error can happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
 
 1. The page was trying to load a big file.
-1. The server was busy for too long.
-1. The server was down.
+1. ALKiln could not continue to the next page for some reason.
+1. A Story Table was unable to reach the page with the specified `id`.
+1. There's a typo in the name of the interview YAML file that the test should go to.
 
 If a page was taking too long to load a big file, use [the `custom timeout` Step](#custom-timeout-step) to give the page more time to load.
 
-If the server was busy, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow). As of 01/2022 you have to navigate to the newly running tests manually. For example, by going to the Actions page again.
+You might be able to look at the error page picture for more details. In GitHub, you can download the test [artifacts](#see-github-test-results) to look for it.
 
-You can download and look at your ["error" artifacts screenshots](http://localhost:3000/docassemble-AssemblyLine-documentation/docs/automated_integrated_testing#error-screenshots-artifacts) to check for more details.
+In GitHub, this error can also happen when:
+
+1. The server was busy for too long.
+1. The server was down.
+1. That url is stored in the `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) is wrong or out of date.
+
+If the server might have been busy or down, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow).
+
+You won't be able to tell if the `SERVER_URL` wrong - GitHub considers the value of the secret to be sensitive information, so it's impossible to see that value. You can still give it a new value, though, and that's worth trying. Find the address of the docassemble server where the docassemble testing account is located. Edit the secret to give it that url.
 
 ### Invalid playground path error
 
@@ -912,16 +941,17 @@ This is a misleading error. You need to read the text of the whole paragraph to 
 
 ### Phrase is missing
 
-If you get an error message that an expected phrase is missing, make sure you copy and paste the text you're expecting directly from the running interview page.
+If you get an error message that an expected phrase is missing, make sure you copy and paste the text you're expecting **directly from the running interview page**.
 
-Sometimes the characters in your code and the characters on screen are not the same. For example, in our code we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). They look very similar, but are not the same. It's best to copy the text straight from the screen the user sees.
+Sometimes the characters in your code and the characters on screen are not the same. For example, in our code we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). Same for double quotes. In our code editor, we use the unicode character [`"` (U+0022)](https://www.compart.com/en/unicode/U+0022) both for opening and closing quotes. On the running interview page, docassemble changes those into `“` - ["left double quotation mark" (U+201C)](https://www.compart.com/en/unicode/U+201C) - and `”` - ["right double quotation mark" (U+201D)](https://www.compart.com/en/unicode/U+201C)
+
+They look very similar, but are not the same. It's best to copy the text **straight from the screen the user sees.**
 
 Wrong:
 
 ```
     I should see the phrase "a document called a 'Certified docket sheet'"
 ```
-
 
 Example error:
 
@@ -937,11 +967,11 @@ Right:
 
 ### Inconsistent cell count
 
-This error prevents all of your tests being run. The message is telling you that one of your story tables could missing a pipe (`|`) or could have an extra pipe. Something about the syntax of the table is wrong.
+This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe (`|`) or could have an extra pipe, etc.
 
 To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors. The editor will not show error next to lines that are commented out. Those are the ones that start with `#`.
 
-The error message will include text like this:
+The error message will include text similar to this:
 
 ```bash
 Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
@@ -1013,11 +1043,13 @@ You can use an exact npm version of ALKiln by using your workflow file's `ALKILN
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. You also will be unable to take a screenshot of the page and ALKiln will avoid taking an error screenshot.
+You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. ALKiln will avoid taking error pictures of pages with sensitive information. The value of a secret variable will not appear anywhere in the report or in the console.
 
-:::info
-This is also useful if an organization wants to create a variable that all of its repositories will be able to use.
+:::danger
+Avoid taking pictures of pages with sensitive information. It is possible to trigger those pictures in Steps you write yourself, but we highly recommend against that for security reasons.
 :::
+
+GitHub secrets can be useful if an organization wants to create a variable that all of its repositories will be able to use, though right now Story Tables are unable to use GitHub secrets to set variables.
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets, whichever is right for you.
 
@@ -1181,7 +1213,7 @@ See [the GitHub secrets section](#github-secrets) on setting arbitrary environme
             bug
 ```
 
-:::warning
+:::danger
 Avoid changing the value `github_token` and avoid creating a new secret for it. The variable `secrets.github_token` is a value that your repository has by default.
 :::
 
@@ -1294,13 +1326,13 @@ ALKiln uses the `Scenario` description to label test results. Try to use somethi
 
 ### When do tests run?
 
-Tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
+GitHub tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
 If you know how to use GitHub [actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity), you can also run the tests manually from GitHub actions with some more options.
 
 ### Why should I write a Scenario description?
 
-Scenario descriptions affect the names of error screenshot files and report headings, so try to write something you will recognize later.
+Scenario descriptions affect the names of error screenshot files and report headings, so try to write something unique that you will recognize later.
 
 <!-- I think this info is useful, but I'm not sure where it should go.
 ## About writing tests
@@ -1368,8 +1400,6 @@ Even though this is built using [cucumberjs](https://cucumber.io/), this framewo
 
 ## Repositories
 
-ALKiln's repository is at https://github.com/SuffolkLITLab/ALKiln.
-
-The developer test setup interview's repo is at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
-
-ALKiln also tests itself using some of the interviews at https://github.com/plocket/docassemble-ALAutomatedTestingTests.
+- [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) is the package that will let you run tests directly on your server
+- [ALKiln's own repository](https://github.com/SuffolkLITLab/ALKiln)
+- The [developer test setup interview's repo](https://github.com/plocket/docassemble-ALAutomatedTestingTests)
