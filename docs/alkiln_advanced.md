@@ -32,10 +32,7 @@ _Advantages of testing in GitHub._
 - When your server reloads, tests in GitHub may fail, but they will recover better and be able to retry the tests that failed. That's because ALKiln is running on GitHub's servers. When running tests on your server, though, the ALKiln is affected directly by that reload. Your server reloads whenever anyone on the server saves a module, pulls a package that has a module, edits the server's config file, updates server packages, and so on.
 - You can configure your GitHub "action" to create GitHub issues whenever tests fail.
 
-
-### What's happening?
-
-**What's happening when you run the tests in the Playground?**
+## What's happening when you run the tests in the Playground?**
 
 - For each test (or Scenario), Alkiln pretends to be a human and goes to whatever interview you named in the test in the Project you chose.
 - It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
@@ -43,7 +40,7 @@ _Advantages of testing in GitHub._
 
 When the tests are done, the output page will show you all the generated reports, images, and files. It will also give you a link to download all of that in a `.zip` file.
 
-**What's happening in GitHub?**
+## What's happening in GitHub?**
 
 Whenever you push (or commit) to GitHub, GitHub will run the tests automatically.
 

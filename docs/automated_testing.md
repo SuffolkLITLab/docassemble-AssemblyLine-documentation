@@ -33,7 +33,7 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 You can use ALKiln from your server, through GitHub, or both. You can read more about the [differences between running ALKiln in GitHub vs. the Playground here](alkiln/advanced#two-ways-to-run-alkiln).
 
-**For the Playground**
+### Start in the Playground
 
 1. On your "Package Management" page, install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
 1. Follow docassemble's instructions to add it to the [dispatch list](https://docassemble.org/docs/config.html#dispatch) to add it to the server's list of interviews.
@@ -46,7 +46,7 @@ You can use ALKiln from your server, through GitHub, or both. You can read more 
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-**For GitHub**
+### Start in GitHub
 
 1. Prepare your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository. This can take over half an hour if you're unfamiliar with GitHub and docassemble API keys.
 1. In Docassemble, make a new Project and pull in the package's updated code.
