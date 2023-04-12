@@ -92,7 +92,14 @@ module.exports = {
                 'framework/altoolbox',
                 'framework/alrecipes',
                 'framework/github_feedback',
-                'automated_testing',
+                {
+                    type: 'category',
+                    label: 'ALKiln testing',
+                    items: [
+                        'alkiln_about',
+                        'alkiln_advanced',
+                    ]
+                },
                 'framework/answer_sets',
                 'framework/answer_set_intakes',
                 'framework/error_actions',
