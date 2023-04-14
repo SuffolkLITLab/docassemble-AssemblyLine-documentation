@@ -31,7 +31,7 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 ## Start
 
-You can use ALKiln from your server, through GitHub, or both. You can read more about the [differences between running ALKiln in GitHub vs. the Playground here](alkiln/advanced#two-ways-to-run-alkiln).
+You can use ALKiln from your server, through GitHub, or both. You can read more about the [differences between running ALKiln in GitHub vs. the Playground here](alkiln_advanced.md#two-ways-to-run-alkiln).
 
 ### Start in the Playground
 
