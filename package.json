@@ -12,12 +12,12 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.2.0",
-    "@docusaurus/mdx-loader": "^2.2.0",
-    "@docusaurus/plugin-client-redirects": "^2.2.0",
-    "@docusaurus/plugin-google-gtag": "^2.2.0",
-    "@docusaurus/plugin-ideal-image": "^2.2.0",
-    "@docusaurus/preset-classic": "^2.2.0",
+    "@docusaurus/core": "^2.4.0",
+    "@docusaurus/mdx-loader": "^2.4.0",
+    "@docusaurus/plugin-client-redirects": "^2.4.0",
+    "@docusaurus/plugin-google-gtag": "^2.4.0",
+    "@docusaurus/plugin-ideal-image": "^2.4.0",
+    "@docusaurus/preset-classic": "^2.4.0",
     "@easyops-cn/docusaurus-search-local": "^0.27.0",
     "@mdx-js/react": "^1.6.21",
     "clsx": "^1.1.1",
