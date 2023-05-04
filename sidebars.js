@@ -104,6 +104,7 @@ module.exports = {
                 'framework/answer_set_intakes',
                 'framework/error_actions',
                 'framework/reserved_keywords',
+                'framework/alreminders',
             ]
         },
         {
