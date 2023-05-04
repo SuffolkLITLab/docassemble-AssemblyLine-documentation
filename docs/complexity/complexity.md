@@ -10,24 +10,26 @@ slug: /complexity/complexity
 [RateMyPDF](https://ratemypdf.com) is a tool built by Suffolk LIT Lab to help you
 measure and improve the usability of court forms.
 
-RateMyPDF assigns your PDF a score that reflects 12 different dimensions, including:
+RateMyPDF assigns your PDF a score that reflects 14 different dimensions, including:
 
-* Reading grade level
-* Use of passive voice
-* Percent of difficult words (drawn from the Dale-Chall word list)
-* Use of calculations
-* Number of pages
-* Number of legal citations per field
-* Average number of fields per page
-* Sentences per page
-* Percent of words written in all capital letters
-* Percent of "slot-in" fields
-* Percent of "third-party" fields
-* Percent of "gathered" fields
-* Percent of created fields
+*	Reading grade level (a consensus score)
+*	Percent of difficult words (currently drawn from the Dale-Chall word list)
+*	Use of calculations
+*	Number of pages
+*	Number of legal citations per field
+*	Average number of fields per page
+*	Normalized answer length per field
+*	Sentences per page
+*	Percent of passive voice sentences
+*	Percent of words written in all capital letters
+*	Percent of "slot-in" fields
+*	Percent of "gathered" fields
+*	Percent of "third-party" fields
+*	Percent of "created" fields
+
 
 RateMyPDF compares your score to a benchmark that was created by gathering
-20,000 forms from 25 States in the USA. It also includes specific
+24,000 forms from 46 States and the District of Columbia in the USA. It also includes specific
 recommendations to improve several of the measurements.
 
 ## Why readability scores aren't good enough
@@ -77,9 +79,10 @@ that classifies form responses as either:
 * Third-party, or
 * Created
 
-We have a draft paper in progress that explains everything in a lot more detail!
-Link will be available here "soon." Available now on request (delay due to journal
-submission policies).
+You can download our paper, 
+
+<a target="\_blank" href={require('../assets/Beyond Readability with RateMyPDF.pdf').default}> Beyond Readability with RateMyPDF: a combined rule-based and machine learning approach to improving court forms </a> 
+which explains our methods in a lot more detail.
 
 ## Use and limitations
 
