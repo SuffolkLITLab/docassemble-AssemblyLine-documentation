@@ -179,7 +179,7 @@ include:
 
 ## International phone number input validation
 
-Use a custom datatype `phone` field to define the phone number input, and it will validate the country code for you. Run [the demo interview](https://apps-dev.suffolklitlab.org/start/ALToolbox/phone_number_validation_demo)
+Use the custom datatype `al_international_phone` field to define the phone number input, and it will validate the country code for you. Run [the demo interview](https://apps-dev.suffolklitlab.org/start/ALToolbox/phone_number_validation_demo)
 to see how it works and detailed implementation instruction.
 
 To include in your interview:
