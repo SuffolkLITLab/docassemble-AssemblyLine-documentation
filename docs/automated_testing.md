@@ -33,20 +33,28 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 You can use ALKiln from your server, through GitHub, or both. You can read more about the [differences between running ALKiln in GitHub vs. the Playground here](alkiln_advanced.md#two-ways-to-run-alkiln).
 
-### Start in the Playground
+### Set up for ALKilnInThePlayground
 
-1. On your "Package Management" page, install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
-1. Follow docassemble's instructions to add it to the [dispatch list](https://docassemble.org/docs/config.html#dispatch) to add it to the server's list of interviews.
-1. Make sure you have a Project that you want to test in your list of Projects.
+1. On your server's "Package Management" page, install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
+1. Follow docassemble's instructions to add it to the [dispatch list](https://docassemble.org/docs/config.html#dispatch). This will add it to the server's list of interviews. It may look something like this:
+
+```yml
+dispatch:
+  alkiln: docassemble.ALKilnInThePlayground:data/questions/run_alkiln_tests.yml
+  # Your other server interviews
+```
+
+3. Make sure you have a Project that you want to test in your list of Projects.
 1. Make sure that Project has some tests. They should be in the Sources folder of the Project and end in the extension `.feature`.
-1. Run the interview and start by picking the the newest version of ALKiln. It should be at the top of the list of options. Tap to install it.
+1. Go to your server's list of interviews and run the ALKilnInThePlayground interview.
+1. Start by picking the the newest version of ALKiln to install. It should be at the top of the list of options. Tap to install it.
 1. Pick a Project to test.
 1. Run the tests and see [the output](#test-output).
 
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-### Start in GitHub
+### Set up for GitHub
 
 1. Prepare your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository. This can take over half an hour if you're unfamiliar with GitHub and docassemble API keys.
 1. In Docassemble, make a new Project and pull in the package's updated code.
