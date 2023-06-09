@@ -65,8 +65,12 @@ and multiple sets of pronouns.
 
 The Assembly Line team also chose to add these additional options:
 
+* Something else (the self-described option)
 * Unknown
 * Prefer not to say
+
+We also choose to randomize the pronoun sets to avoid any pronoun hierarchy. We keep the
+"something else", "unknown" and "prefer not to say" options at the end.
 
 ### Adding gender fields in Docassemble
 <Tabs>
@@ -90,9 +94,9 @@ fields:
 ---
 id: pronouns
 question: |
-  What are your prounouns?
+  What are your pronouns?
 fields:
-  - Pronouns (optional): users[0].pronouns
+  - Choose one or more pronouns (optional): users[0].pronouns
     datatype: checkboxes
     code: |
       random.sample([
