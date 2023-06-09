@@ -115,6 +115,7 @@ entities.
 * `gender_fields(show_help=False)` is like the `address_fields()` method but
   displays a list of vetted gender options. Read more about
   [`gender`](/question_library/gender.md) questions.
+* `pronoun_fields()` displays a question that allows the user to provide their pronouns, with multiple choice and a fill-in-the-blank option. See [`pronouns`](/question_library/pronouns.md).
 * `initials()` is used to return a string with the 1, 2, or 3 initial letters of
   a person's name. E.g., `QKS` for Quinten K Steenhuis.
 * `language_fields(choices=List[Dict[str, str]])` provides a language selector that sets the `.language` attribute of the user, together with an `other` fill-in. This should be the two-letter ISO language code. We recommend defining and passing a dictionary named `al_language_user_choices` which will also be used by built-in questions triggered from `ql_baseline.yml`.
