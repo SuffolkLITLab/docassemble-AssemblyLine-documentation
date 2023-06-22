@@ -32,6 +32,34 @@ RateMyPDF compares your score to a benchmark that was created by gathering
 24,000 forms from 46 States and the District of Columbia in the USA. It also includes specific
 recommendations to improve several of the measurements.
 
+## View and cite our work
+
+### Live demo
+
+Visit [RateMyPDF](https://ratemypdf.com)
+
+### Our dataset
+
+[Download our dataset](https://courtformsonline.org/forms/form_data.csv) or 
+browse the forms we gathered on the [Form Explorer](https://suffolklitlab.org/form-explorer/).
+
+[View the code on GitHub](https://github.com/SuffolkLITLab/FormFyxer).
+
+### Download and cite our paper
+
+<p>
+<a target="\_blank" class="button button--primary" href={require('../assets/Beyond Readability with RateMyPDF.pdf').default}>Download our paper</a>
+</p>
+
+Please cite our paper, our dataset, and this website as follows:
+
+Quinten Steenhuis, Bryce Willey, and David Colarusso. 2023. Beyond Readability with RateMyPDF: A Combined Rule-based and Machine Learning Approach to Improving Court Forms. In _Proceedings of International Conference on Artificial Intelligence and Law (ICAIL 2023). ACM, New York, NY, USA, 10 pages_. https://doi.org/10.1145/3594536.3595146
+
+Bibtex format:
+```bibtex
+@article{Steenhuis_Willey_Colarusso_2023, title={Beyond Readability with RateMyPDF: A Combined Rule-based and Machine Learning Approach to Improving Court Forms}, DOI={https://doi.org/10.1145/3594536.3595146}, journal={Proceedings of International Conference on Artificial Intelligence and Law (ICAIL 2023)}, author={Steenhuis, Quinten and Willey, Bryce and Colarusso, David}, year={2023}, pages={287–296}}
+```
+
 ## Why readability scores aren't good enough
 
 [Readability](style_guide_readability.md) has been one of the only available
@@ -78,11 +106,6 @@ that classifies form responses as either:
 * Gathered
 * Third-party, or
 * Created
-
-You can download our paper, 
-
-<a target="\_blank" href={require('../assets/Beyond Readability with RateMyPDF.pdf').default}> Beyond Readability with RateMyPDF: a combined rule-based and machine learning approach to improving court forms </a> 
-which explains our methods in a lot more detail.
 
 ## Use and limitations
 
