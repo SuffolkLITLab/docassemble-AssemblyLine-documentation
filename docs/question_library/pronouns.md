@@ -53,7 +53,6 @@ field may be a more comfortable place for a litigant to share pronouns than in a
 * she/her/hers
 * he/him/his
 * they/them/theirs
-* ze/hir/hirs (pronounced zee / here / heres)
 * ze/zir/zirs (the "i" is a short "i" as in "sir")
 
 Remember, pronouns may be different from gender.
@@ -66,11 +65,11 @@ and multiple sets of pronouns.
 The Assembly Line team also chose to add these additional options:
 
 * Something else (the self-described option)
-* Unknown
+* Unknown (only when asking for the pronouns of someone other than the user)
 * Prefer not to say
 
-We also choose to randomize the pronoun sets to avoid any pronoun hierarchy. We keep the
-"something else", "unknown" and "prefer not to say" options at the end.
+We experimented with randomizing the order of pronouns. Ultimately, we decided
+to keep a familiar order.
 
 ### Adding gender fields in Docassemble
 <Tabs>
@@ -98,24 +97,18 @@ question: |
 fields:
   - Choose one or more pronouns (optional): users[0].pronouns
     datatype: checkboxes
-    code: |
-      random.sample([
-          {"she/her/hers": "She/her/hers" },
-          {"he/him/his": "He/him/his" },
-          {"they/them/theirs": "They/them/theirs" },
-          {"ze/hir/hirs": "Ze/hir/hirs" },
-          {"ze/zir/zirs": "Ze/zir/zirs"},
-      ], 5) + [
-        {"self-described": "Something else"},
-        {"unknown": "Unknown"}
-      ]
+    choices:
+      - She/her/hers: she/her/hers
+      - He/him/his: he/him/his
+      - They/them/theirs: they/them/theirs
+      - Ze/zir/zirs: ze/zir/zirs
+      - Something else: self-described
     none of the above: Prefer not to say
     required: False
     help: |
       A pronoun is a word that can be used in place of your name. For example: he, she, or they.
       Learn more at [pronouns.org](https://pronouns.org/).
   - Self-described pronouns: users[0].pronouns_self_described
-    datatype: area
     show if: users[0].pronouns["self-described"]
 ```
 
