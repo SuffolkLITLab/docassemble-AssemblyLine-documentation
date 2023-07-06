@@ -1410,4 +1410,4 @@ Even though this is built using [cucumberjs](https://cucumber.io/), this framewo
 
 - [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) is the package that will let you run tests directly on your server
 - [ALKiln's own repository](https://github.com/SuffolkLITLab/ALKiln)
-- The [developer test setup interview's repo](https://github.com/plocket/docassemble-ALAutomatedTestingTests)
+- The [developer test setup interview's repo](https://github.com/SuffolkLITLab/docassemble-ALKilnSetup)
