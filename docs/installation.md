@@ -146,8 +146,7 @@ server and then entering the docker container.
 
 
 1. SSH to the server running Docker.
-1. Type `docker exec -ti [TAB] /bin/bash` (literally tap the 'tab' key at the
-   indicated point) to get an interactive prompt inside your docker container.
+1. Type `docker exec -ti $(docker ps --filter "ancestor=jhpyle/docassemble" --format {{.ID}}) /bin/bash`
 
 Install a text editor and open the nginx configuration file as follows:
 
@@ -184,8 +183,7 @@ past the error string.
 First:
 
 1. SSH to the server running Docker.
-1. Type `docker exec -ti [TAB] /bin/bash` (literally tap the 'tab' key at the
-   indicated point) to get an interactive prompt inside your docker container.
+1. Type `docker exec -ti $(docker ps --filter "ancestor=jhpyle/docassemble" --format {{.ID}}) /bin/bash`
 
 Install a text editor:
 
