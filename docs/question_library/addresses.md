@@ -182,7 +182,7 @@ fields:
     none of the above: |
       Somewhere else
     disable others: True
-  - Street address: users[0].mailing_address.address
+  - Mailing address: users[0].mailing_address.address
     address autocomplete: True
   - Unit: users[0].mailing_address.unit
     required: False
