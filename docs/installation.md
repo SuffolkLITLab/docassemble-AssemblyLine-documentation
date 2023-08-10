@@ -226,3 +226,12 @@ Restart the nginx process:
 ```bash
 supervisorctl restart nginx
 ```
+
+## Monitor your server
+
+There is always the chance that something goes wrong with your server when you aren't looking and that it goes down.
+
+We suggest using a service that can attempt to access your server periodically and notifies you if it goes down. Some options include:
+
+* [UptimeRobot](https://uptimerobot.com/)
+* Using GitHub action's scheduled actions to attempt to access your server. The [SuffolkLITLab has an example of this type of GitHub action](https://github.com/SuffolkLITLab/ALActions/blob/main/.github/workflows/run_hall_monitor.yml), that you could copy and modify (we'd be happy to help your modify it for your needs).
