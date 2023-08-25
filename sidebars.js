@@ -125,6 +125,7 @@ module.exports = {
                 'efiling/overview',
                 'efiling/efiling_through_docassemble',
                 'efiling/efiling_case_search',
+                'efiling/monitoring',
             ]
         },
         {
