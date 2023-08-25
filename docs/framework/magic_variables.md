@@ -177,6 +177,13 @@ your interviews directly or via a shared YAML file.
   or both and is mentioned in a `language` block in your interview. Used to
   specify the default language of your interview.
 
+### Terms of use specific variables
+
+These appear only in the inline terms of use added in Assembly Line version `2.25.0`.
+
+* `AL_DEFAULT_CONTACT_INFORMATION`: Contact information for the terms of use. Defaults to the global config `server administrator email`, but can be any string (including a physical address).
+* `AL_PRODUCTION_SITE_HOSTING_PROVIDER`: Name of the organization that hosts your site. Defaults to `AL_ORGANIZATION_TITLE`.
+* `AL_TERMS_OF_USE_GOVERNING_JURISDICTION`: Governing jurisdiction for the terms of use of your site. Defaults to `AL_DEFAULT_STATE`.
 
 ## Interview-specific options
 
