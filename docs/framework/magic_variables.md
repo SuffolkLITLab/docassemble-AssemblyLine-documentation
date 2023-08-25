@@ -66,9 +66,8 @@ assembly line:
   update session metadata: True
 ```
 
-This option is disabled by default as it does add a few database queries to each
-interview page load. The feature is still new, but it looks like it does not
-have a significant performance impact despite the extra database queries.
+This option is enabled by default in Assembly Line 2.25.0 and higher, and
+disabled by default in older versions.
 
 #### Filter the sessions that appear in the session list
 
