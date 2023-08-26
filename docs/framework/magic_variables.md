@@ -181,9 +181,10 @@ your interviews directly or via a shared YAML file.
 
 These appear only in the inline terms of use added in Assembly Line version `2.25.0`.
 
-* `AL_DEFAULT_CONTACT_INFORMATION`: Contact information for the terms of use. Defaults to the global config `server administrator email`, but can be any string (including a physical address).
-* `AL_PRODUCTION_SITE_HOSTING_PROVIDER`: Name of the organization that hosts your site. Defaults to `AL_ORGANIZATION_TITLE`.
-* `AL_TERMS_OF_USE_GOVERNING_JURISDICTION`: Governing jurisdiction for the terms of use of your site. Defaults to `AL_DEFAULT_STATE`.
+
+* `server administrator contact address`: Contact information for the terms of use. Defaults to the global config `server administrator email` if not defined. It can be defined in the global configuration as a "top level" configuration option.
+* `default title`: Name of the organization that hosts your site. Defaults to `AL_ORGANIZATION_TITLE` if `default title` was not set to a custom value in the global configuration.
+* The governing jurisdiction for the terms of use of your site defaults to the name of `AL_DEFAULT_STATE` or the name of `AL_DEFAULT_COUNTRY` if `AL_DEFAULT_STATE` is not defined. There is no corresponding global configuration variable.
 
 ## Interview-specific options
 
