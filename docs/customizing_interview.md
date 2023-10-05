@@ -85,6 +85,23 @@ especially changes that interact with an Assembly Line convention.
 You can use any [Docassemble feature](https://docassemble.org/docs/fields.html)
 in your interview.
 
+## Marking a field as not required
+
+Add the `required: False` modifier to mark a field as optional.
+For usability purposes, you might want to also add the phrase (optional)
+to the label.
+
+```yaml
+---
+id: Tell me more about Respondent
+question: |
+  Tell me more about the ${ other_parties[0] }.
+fields:
+  - Name: user_name       
+  - Attorney bar number (optional): bar_number
+    required: False
+```
+
 ## Changing the order of screens
 
 Locate the `interview_order` block in your YAML file.
