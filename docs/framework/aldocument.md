@@ -310,17 +310,19 @@ content: |
 ### Using the `send_button_html()` method
 
 ```python
-  def send_button_html(self, key:str='final', show_editable_checkbox:bool = True)->str:
+  def send_button_html(self, key:str='final', show_editable_checkbox:bool = True, template_name: str = "")->str:
 ```
 
 `send_button_html()` is used to display an HTML input that the user can interact
 with to send themselves a copy of the contents of a bundle.
 
-`send_button_html()` has just one parameter: `show_editable_checkbox` which controls
-whether a checkbox will be displayed that allows the user to toggle including the DOCX
-version of templates in the email that they receive. 
+`send_button_html()` has two parameters:
+  * `show_editable_checkbox` controls whether a checkbox will be displayed that allows the user to toggle including the DOCX version of templates in the email that they receive.
+  * `template_name` controls the actual contens of the email sent to the user. By default,
+    the value of the `send_email_template` attribute of this ALDocumentBundle is used (see
+    below). This parameter is useful if you want to have two emails for the same bundle.
 
-However, all of the text can be customized. Copy each YAML block
+All of the text shown to the user, on the screen or in the email, can be customized. Copy each YAML block
 below into your own interview to edit and customize the text.
 It can be edited interview-wide (shown) or on a per-bundle basis.
 
