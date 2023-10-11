@@ -318,7 +318,7 @@ with to send themselves a copy of the contents of a bundle.
 
 `send_button_html()` has two parameters:
   * `show_editable_checkbox` controls whether a checkbox will be displayed that allows the user to toggle including the DOCX version of templates in the email that they receive.
-  * `template_name` controls the actual contens of the email sent to the user. By default,
+  * `template_name` controls the actual contents of the email sent to the user. By default,
     the value of the `send_email_template` attribute of this ALDocumentBundle is used (see
     below). This parameter is useful if you want to have two emails for the same bundle.
 
