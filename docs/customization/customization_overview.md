@@ -123,11 +123,16 @@ $theme-colors: (
 Once you have written your `custom.scss` file, you can use the
 [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) (which you can [install on
 your docassemble server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#install-aldashboard))
-to compile a custom Bootstrap theme. If you are associated with the Suffolk LITLab and have an account on
+to compile a custom Bootstrap theme. If you are associated with the Suffolk LIT Lab and have an account on
 the Suffolk Development server, you can visit a [live version of the tool](https://apps-dev.suffolklitlab.org/start/ALDashboard/compile_bootstrap)
 to try it out.
 
-At the end of the tool, download the compiled file, and then add it
+At the end of the tool, you can view what all of the different bootstrap components will look like with your theme.
+If you want to change any of the colors, you can go back and edit your "custom.scss" file and regenerate the bootstrap theme.
+
+![A screenshot that says "Your file is compiled! You can view and copy your file, or download it directly by right clicking the link to save it as a CSS file". Below are examples of Bootstrap components like buttons and nav bars.](../assets/dashboard-bootstrap-example.png)
+
+Once you like the colors you've chosen, download the compiled file, and then add it
 a docassemble project, in the `static` folder. You can then reference your new file
 by adding a [bootstrap theme feature](https://docassemble.org/docs/initial.html#bootstrap%20theme) to your interview:
 
