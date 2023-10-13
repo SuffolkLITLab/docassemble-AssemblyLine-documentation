@@ -770,8 +770,9 @@ In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/e
 The output ALKiln creates includes:
 
 - A report of the result from all the tests.
-- Pictures of screens where ALKiln ran into errors or unexpected behavior.
-  - The HTML of pages where ALKiln ran into errors or unexpected behavior.
+- Information about the screens where ALKiln ran into errors or unexpected behavior, including:
+    - Pictures when the error happened
+    - The HTML, slightly modified so CSS styles will load locally
 - A folder for each test (or Scenario) named using your Scenario description.
 - A report for that specific Scenario, as well as pictures you took of screens and the associated HTML of that page, files you downloaded, and pictures of any errors it caused with its HTML.
 
@@ -779,10 +780,10 @@ The output ALKiln creates includes:
 
 ALKiln will try to take pictures of pages that run into errors. The names of those files use the id of the page where the error happened. There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined. ALKiln avoids taking pictures of erroring pages when the page used GitHub secrets in case they contain sensitive information.
 
-Each time ALKiln takes a picture, it also saves the HTML of the page; this HTML file will have the same name of the picture, but will end with `.html`.
-You can open this HTML file in your browser to interact with page and inspect the page's HTML further.
+Each time ALKiln takes a picture, it also saves the HTML of the page; this HTML file will have the same name as the picture, but will end with `.html`.
+You can open this HTML file in your browser to interact with the page and inspect the page's HTML further.
 The page in your browser might not look like the picture, and you shouldn't expect it too.
-However, in the HTML, you can look at what particular options might have been available in a drop down, or if there were any accessibilty errors on the page.
+However, in the HTML, you can look at what particular options might have been available in a drop down, or examine any accessibility errors.
 
 <!-- 
 **Your test's status:** If your test has a green circle with a checkmark, the test has passed. If it has a red circle with an 'x', something went wrong. If it has a yellow circle, the test is still running.
@@ -1057,7 +1058,7 @@ You can use an exact npm version of ALKiln by using your workflow file's `ALKILN
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. ALKiln will avoid taking error pictures or download the HTML of pages with sensitive information. The value of a secret variable will not appear anywhere in the report or in the console.
+You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. ALKiln will avoid taking error pictures or downloading the HTML of pages with sensitive information. The value of a secret variable will not appear anywhere in the report or in the console.
 
 :::danger
 Avoid taking pictures of pages with sensitive information. It is possible to trigger those pictures in Steps you write yourself, but we highly recommend against that for security reasons.
