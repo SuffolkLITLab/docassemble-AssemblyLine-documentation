@@ -68,7 +68,7 @@ dispatch:
 1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
 1. If you're using GitHub, tests are run when anyone commits to GitHub.
 1. Tests can download files, but humans have to review them to see if they've come out right.
-1. You will be able to see pictures of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
 
 Give us feedback and ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
@@ -422,7 +422,7 @@ Then I arrive at the next page
 
 ---
 
-The `screenshot` Step will take a picture of the screen. In GitHub tests, it will be put in the GitHub action's [artifacts](#see-github-test-results).
+The `screenshot` Step will take a picture and download the HTML of the screen. In GitHub tests, it will be put in the GitHub action's [artifacts](#see-github-test-results).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
 
 ```
@@ -771,12 +771,18 @@ The output ALKiln creates includes:
 
 - A report of the result from all the tests.
 - Pictures of screens where ALKiln ran into errors or unexpected behavior.
+  - The HTML of pages where ALKiln ran into errors or unexpected behavior.
 - A folder for each test (or Scenario) named using your Scenario description.
-- A report for that specific Scenario, as well as pictures you took of screens, files you downloaded, and pictures of any errors it caused.
+- A report for that specific Scenario, as well as pictures you took of screens and the associated HTML of that page, files you downloaded, and pictures of any errors it caused with its HTML.
 
-### Error pictures
+### Error pictures and HTML files
 
 ALKiln will try to take pictures of pages that run into errors. The names of those files use the id of the page where the error happened. There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined. ALKiln avoids taking pictures of erroring pages when the page used GitHub secrets in case they contain sensitive information.
+
+Each time ALKiln takes a picture, it also saves the HTML of the page; this HTML file will have the same name of the picture, but will end with `.html`.
+You can open this HTML file in your browser to interact with page and inspect the page's HTML further.
+The page in your browser might not look like the picture, and you shouldn't expect it too.
+However, in the HTML, you can look at what particular options might have been available in a drop down, or if there were any accessibilty errors on the page.
 
 <!-- 
 **Your test's status:** If your test has a green circle with a checkmark, the test has passed. If it has a red circle with an 'x', something went wrong. If it has a yellow circle, the test is still running.
@@ -1051,7 +1057,7 @@ You can use an exact npm version of ALKiln by using your workflow file's `ALKILN
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. ALKiln will avoid taking error pictures of pages with sensitive information. The value of a secret variable will not appear anywhere in the report or in the console.
+You can use GitHub secrets to set environment variable values with sensitive information. For example, a password. ALKiln will avoid taking error pictures or download the HTML of pages with sensitive information. The value of a secret variable will not appear anywhere in the report or in the console.
 
 :::danger
 Avoid taking pictures of pages with sensitive information. It is possible to trigger those pictures in Steps you write yourself, but we highly recommend against that for security reasons.
