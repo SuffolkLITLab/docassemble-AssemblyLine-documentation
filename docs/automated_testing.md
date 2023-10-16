@@ -635,7 +635,18 @@ Leave out other parts of file's url.
 
 ---
 
-Use the `upload` step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#templates) along with your tests.
+You can compare downloaded PDF files with an example PDF (sometimes called a baseline) in your sources folder to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf`) earlier in the same scenario.
+
+```
+    Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
+```
+
+This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info to find out where to look at the baseline PDF and the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
+
+---
+
+
+Use the `upload` step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests.
 
 As you can see in the examples, if you want to upload more than one file you must separate their names with a comma.
 
