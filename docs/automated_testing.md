@@ -635,7 +635,7 @@ Leave out other parts of file's url.
 
 ---
 
-You can compare example PDFs (sometimes called a baseline) to download PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
+You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
 
 ```
     Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
