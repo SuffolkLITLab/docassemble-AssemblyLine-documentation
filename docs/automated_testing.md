@@ -635,13 +635,13 @@ Leave out other parts of file's url.
 
 ---
 
-You can compare downloaded PDF files with an example PDF (sometimes called a baseline) in your sources folder to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf`) earlier in the same scenario.
+You can compare example PDFs (sometimes called a baseline) to download PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
 
 ```
     Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
 ```
 
-This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info to find out where to look at the baseline PDF and the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
+This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info and search for the differing text in the baseline PDF and in the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
 
 ---
 
