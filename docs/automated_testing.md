@@ -635,7 +635,18 @@ Leave out other parts of file's url.
 
 ---
 
-Use the `upload` step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#templates) along with your tests.
+You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
+
+```
+    Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
+```
+
+This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info and search for the differing text in the baseline PDF and in the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
+
+---
+
+
+Use the `upload` step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests.
 
 As you can see in the examples, if you want to upload more than one file you must separate their names with a comma.
 
@@ -1143,7 +1154,7 @@ The setup interview should have helped you create these required `inputs` and th
 
 `DOCASSEMBLE_DEVELOPER_API_KEY` is the API key that you created for the account on your server that will store the Project in the Playground while the tests are being run. You probably created this in the setup interview. Alternatively, your organization admin may have created it.
 
-We recommend keeping the API key a GitHub secret for security reasons, but the server url can be type in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
+We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
 
 ### Optional inputs
 
