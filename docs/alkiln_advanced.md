@@ -7,46 +7,64 @@ slug: /alkiln/advanced
 
 🚧 This page is a stub and sections will be added as resources allow.
 
-## Two ways to run ALKiln
+## Multiple ways to run ALKiln
 
-You don't have to choose between running ALKiln on GitHub or in the Playground. You can do both. Here are some differences to help you use each more effectively.
+You don't have to choose just one way to run ALKiln, you can use all of them. Here are some differences to help you use each more effectively.
 
-### Playground pros
+### Testing your Playground Projects
 
-_Advantages of testing on your server._
+[ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) is a package you can install on your server. When you run its interview, you will be able to pick a Project from your Playground and run the tests in that Project.
 
+**Pros**
+
+- You don't need to put your package on GitHub to run the tests.
 - Running ALKiln on your server lets you loop through your development cycle faster - edit, test, edit, test. You don't have to go through committing your code to GitHub every time.
 - You can see the output online right away, including images and documents. In GitHub, to see _all_ of the output files, you have to download a zip file. The only thing you can see online in GitHub is the summary report.
 - You can more easily limit your tests to a specific set of tests using [tag expressions](https://www.cuketest.com/en/cucumber/tag-expressions). You can use tags on GitHub too, it just takes more steps.
 - You can more often avoid the red "x" that appears next to failing tests on GitHub. The red "x" is a useful piece of information, but it can be uncomfortable.
 
+**Cons**
 
-### GitHub pros
+- You'll miss catching some kinds of mistakes. Specifically, you may add a file to your Playground and forget to commit it to GitHub. Your tests will pass in your Playground, but your interview will break when you or others install it from GitHub.
+- If your server reloads while the tests are running, ALKiln may come to a complete stop and you'll have to start the tests all over again.
 
-_Advantages of testing in GitHub._
+**What ALKiln is doing**
+
+When you run Playground tests, they do the following:
+
+1. ALKiln navigates to the file your tests specifies in the Project you picked.
+1. For each test (or Scenario), ALKiln pretends to be a human and goes to whatever interview you named in the test in the Project you chose.
+1. It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
+1. If one of the Steps fails, ALKiln adds that to the test report and tries to take a picture of the page with the problem. It tries to avoid taking pictures of sensitive information.
+
+When the tests are done, the output page will show you all the generated reports, images, and files if it can. It will also give you a link to download some of that in a `.zip` file.
+
+
+### Triggering tests on your server from GitHub
+
+These tests run on GitHub, but they still interact with your server and basically do the same things the Playground tests do, you're just not there to see.
+
+**Pros**
 
 - ALKiln on GitHub will test any changes any team member commits. On your server, you only tests your changes.
 - On GitHub, there are ways to schedule tests to run regularly - every week, every day, or whatever schedule you prefer. If packages you depend on change and break your code, those tests will let you know.
 - If you've forgotten to add a file to the package that an interview depends on (like a missing template file), GitHub will catch that. It installs the file fresh in a new Project, so it only has the files that have been committed properly.
 - You can continue editing any files in your Playground while the GitHub tests run because GitHub creates a whole new Project of its own. When running tests on your server, you must avoid editing the Project that ALKiln is testing.
-- When your server reloads, tests in GitHub may fail, but they will recover better and be able to retry the tests that failed. That's because ALKiln is running on GitHub's servers. When running tests on your server, though, the ALKiln is affected directly by that reload. Your server reloads whenever anyone on the server saves a module, pulls a package that has a module, edits the server's config file, updates server packages, and so on.
-- You can configure your GitHub "action" to create GitHub issues whenever tests fail.
+- You can configure your GitHub "action" to do other things, like create GitHub issues whenever tests fail.
+- If your server reloads during the test run, a few individual tests may fail, but ALKiln will still be able to continue and keep trying to run the rest of the tests. That is because the test code is in running from GitHub, so your reload doesn't stop that process.
 
-## What's happening when you run the tests in the Playground?
+**Cons**
 
-- For each test (or Scenario), Alkiln pretends to be a human and goes to whatever interview you named in the test in the Project you chose.
-- It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
-- If one of the Steps fails, ALKiln adds that to the test report and tries to take a picture of the page with the problem. It tries to avoid taking pictures of sensitive information.
+- To get these set up, you need to create a docassemble API key, a GitHub token, and make GitHub secrets and you may have to update these in the future. [The ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) helps you do these things, but they can still be confusing.
+- Your tests might be more flaky. That means they may fail for reasons that don't have to do with the interviews. For example, if your tests are running while your server is reloading, ALKiln will keep running, so other tests will still have an opportunity to continue, but individual tests may fail even if your code is correct. Your server can reload for many reasons - updating your config, installing a new package, etc. When tests fail meaninglessly, it slows down your development cycle and sometimes people end up turning off the tests instead of dealing with the complexity.
 
-When the tests are done, the output page will show you all the generated reports, images, and files. It will also give you a link to download all of that in a `.zip` file.
+**What ALKiln is doing**
 
-## What's happening in GitHub?
+Whenever you push (or commit) to GitHub, GitHub will run the tests automatically. You can also [trigger them manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow).
 
-Whenever you push (or commit) to GitHub, GitHub will run the tests automatically.
-
-- ALKiln goes to the testing account on your server and creates a new Project.
+- ALKiln goes to the testing account you set up on your server and creates a new Project. If you log into that account, you'll be able to see the new Project in the list of projects.
 - It pulls the relevant branch of your package into the Project.
-- For each test (or Scenario), Alkiln pretends to be a human and goes to whatever interview you named in the test.
+- For each test (or Scenario), ALKiln pretends to be a human and goes to whatever interview you named in the test.
 - It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
 - If one of the Steps fails, ALKiln adds that to the test report and tries to take a picture of the page with the problem. It tries to avoid taking pictures of sensitive information.
 - When all the tests are done, ALKiln deletes the Project it created.
@@ -54,3 +72,43 @@ Whenever you push (or commit) to GitHub, GitHub will run the tests automatically
 You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
 At the end, you can see a report and logs right in the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs) or [download a `.zip` file containing the results of the tests to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts). That `.zip` file is what GitHub calls an "artifact".
+
+
+### Testing on a temporary isolated GitHub server
+
+These tests also run on GitHub, but they create a new docassemble server on GitHub itself and interact with that. They never touch your server.
+
+**Pros**
+
+- This is the most secure of all the methods. The tests don't interact with your server at all.
+- Since the other tests should be running on a test server, not a production server, this shouldn't be a big advantage, but still - the tests have less chance of accidentally exposing the information of other users on that server.
+- All
+- the
+- advantages
+- listed
+- above
+- for the other type of GitHub tests except this improvement: Your tests will generally be less flaky. When a test fails it's more likely to be a problem with your code instead of a problem with the server. That's because the server is isolated on GitHub and no one is going to make that isolated server reload in the middle of the tests.
+- You don't have to set up or update any docassemble API keys or GitHub tokens.
+
+**Cons**
+
+- Tests take about 5 minutes longer since they have to do things like create a docker container and start a server.
+- The GitHub server installs the latest version of docassemble, which might be a different version than the one you use on your server. Allowing authors to install specific versions would take longer to run. We're still considering if this is a feature we should create. We would appreciate feedback.
+- Regardless of that, whatever server GitHub generates probably won't have the exact same setup as your server, so some interviews may not have the same behavior.
+- You have to be more diligent about including all the "Dependencies" that your package needs on your interview's "Packages" page. If you don't, they won't be installed with your package on this fresh server.
+
+**What ALKiln is doing**
+
+Like the other GitHub test method, whenever you push (or commit) to GitHub, GitHub will run the tests automatically. You can [run these manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow) as well.
+
+- ALKiln creates a fresh docker container and docassemble server in GitHub itself. If you have given ALKiln a docassemble config, it uses that config.
+- It tries to get the log for that process and saves it as an artifact on your GitHub action's summary page.
+- It installs the interview as a package directly on the server.
+- ALKiln does the same things we described above, creating the same GitHub artifacts.
+- When all the tests are done, GitHub destroys the server that ALKiln created.
+
+:::tip
+If you do run both the GitHub-triggered tests and the GitHub isolated server tests, you'll get the fastest results possible. That is, if all goes well, the GitHub-triggered tests might end first and pass. If they don't and the problem is just with your server, the GitHub isolated server tests might complete sooner. If your server is fine, the GitHub-triggered tests will again finish faster. You'll get the fastest results possible.
+
+[GitHub quota limits](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration) probably won't be a problem, especially not for public repos.
+:::

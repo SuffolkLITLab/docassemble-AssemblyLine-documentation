@@ -5,15 +5,11 @@ sidebar_label: Overview
 slug: /alkiln
 ---
 
-<!-- /automated_integrated_testing -->
-
-<!-- original: https://docs.google.com/document/d/1hkNr78mrU3Ha98tPUL4OKWi3eNnt-1Sba7L8470u06g/edit# -->
-
 🚧
 
 Reference material for testing your interview with ALKiln. This is under very active development.
 
-**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine.
+**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
 
 ## Intro
@@ -31,7 +27,7 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 ## Start
 
-You can use ALKiln from your server, through GitHub, or both. You can read more about the [differences between running ALKiln in GitHub vs. the Playground here](alkiln_advanced.md#two-ways-to-run-alkiln).
+You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.md#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests.
 
 ### Set up for ALKilnInThePlayground
 
@@ -54,13 +50,42 @@ dispatch:
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-### Set up for GitHub
+### Set up for GitHub-triggered tests
 
-1. Prepare your repository or organization for testing using https://apps-dev.suffolklitlab.org/start/test-setup. Follow the instructions there to add new code to your repository. This can take over half an hour if you're unfamiliar with GitHub and docassemble API keys.
+You will need to have a GitHub account that has permissions to edit the GitHub repository that you want to test.
+
+1. Prepare your repository or organization for testing using [ALKiln's test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup). Follow the instructions there to add new code to your repository, including a new "workflow" file. This can take over 30 minutes if you're unfamiliar with GitHub and docassemble API keys.
 1. In Docassemble, make a new Project and pull in the package's updated code.
-1. In the Project's Sources folder, add files with a `.feature` extention to write tests. You might already have an example test in that folder if you chose to create one during the ALKiln setup interview.
+1. In the Project's Sources folder, add files with a `.feature` extension to write tests. You might already have an example test in that folder if you chose to create one during the ALKiln setup interview.
 1. Commit the new files to GitHub to trigger the tests to run.
 1. [See the results](#see-github-test-results).
+
+:::tip
+If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets or to [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repo the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repo and if one of the values changes, you'll have to update it in every repo.
+:::
+
+### Set up for isolated GitHub server tests
+
+This is an advanced method and we are happy to help you with it. It would help a lot to be familiar with GitHub and GitHub actions. You'll need a GitHub repository or organization admin to do one of these steps.
+
+1. Go through the same steps as for GitHub-triggered tests above.
+1. Make a new branch.
+1. A repo or org admin should [create a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) called `CONFIG_CONTENTS`. For its value, the admin should copy and paste your server's config. No one will be able to see these values after you leave the secret's page, not even the person who made it.
+1. Edit your workflow file (or make a new workflow file) so that it is similar to [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+1. Read the notes in that file to see what you need to change to adapt the file for your project. Each of the notes is marked with `#### Developer note`.
+1. Commit the changes.
+1. See that the tests pass.
+1. Make a pull request to your default branch (probably `main`) to review the code and merge it in.
+
+If you need to troubleshoot the docker setup because the step to start the GitHub server keeps failing, you can make the docker startup logs visible and allow ALKiln to create an artifact of the docker installation logs. Do this by passing the input `SHOW_DOCKER_OUTPUT` to ALKiln's GitHub server action, like our script (linked above) does for itself. The input arguments might look like the below:
+
+```yml
+        with:
+          CONFIG_CONTENTS: "${{ secrets.CONFIG_CONTENTS }}"
+          SHOW_DOCKER_OUTPUT: true
+```
+
+It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). There's a block in our workflow file for that as well.
 
 ## Quick reminders
 
@@ -70,8 +95,7 @@ dispatch:
 1. Tests can download files, but humans have to review them to see if they've come out right.
 1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
-
-Give us feedback and ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
+1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
 
 ### Example
 
@@ -391,6 +415,8 @@ You can use <span id="log-in-step">the `log in` Step</span> to sign into your do
     Given I log in with the email "USER_EMAIL" and the password "USER_PASSWORD"
     When I start the interview at "yaml_file_name.yml"
 ```
+
+It will start a new session of the interview.
 
 This is a complex Step to use and right now only works in GitHub (though we are working on developing the feature for the Playground version). You **must** use a GitHub "secret" to store each value as the information is sensitive. To learn how to create and add a secret for a test, see the [GitHub secrets section](#github-secrets).
 
@@ -1122,6 +1148,15 @@ jobs:
 ```
 
 
+### Things to worry about less
+
+There are some parts of testing that might look less secure than they are.
+
+When you run the tests in GitHub, you can see the logs of the test action's job and you can download the results of the test, or "artifacts". That may seem very exposed, but only people who have permissions on the repository, like administrators, collaborators, moderators, can see or download that information.
+
+If you are still worried about the logs and artifacts in GitHub, [you can delete the logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#deleting-logs) and [you can delete the artifacts](https://docs.github.com/en/actions/managing-workflow-runs/removing-workflow-artifacts).
+
+
 ## Your workflow file
 
 **Where is it?**
@@ -1417,6 +1452,10 @@ What kinds of tests can we provide?
 Who are the main users of the testing framework?
 
 -->
+
+## Feedback
+
+Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
 ## Built with
 
