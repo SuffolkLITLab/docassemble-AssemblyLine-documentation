@@ -1284,33 +1284,75 @@ You can edit the values of `title`, `body`, and `bug` to customize the issue.
 
 If you've run the Setup interview more recently, you will already have this code in your file, though it will be inactive. You just have to remove the comment symbols (`#`) from the lines of code.
 
-### Schedule test runs
+### Triggering GitHub tests
 
-By default, the ALKiln setup interview makes sure that the tests are triggered when code gets pushed to the repository. It also makes sure the tests can be triggered manually.
+By default, the ALKiln setup interview makes sure that the tests are triggered when someone pushes code the repository. For example, when they press the 'Commit' button in docassemble. It also makes sure the tests can be [triggered manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow).
 
-You can also run these tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add code to your workflow file.
+There is a file in your repository that GitHub uses to trigger this workflow. To see it:
 
 1. Go to your GitHub repository.
 1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
-1. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
-1. Near the top of the code, you will see something like this:
+1. You can [tap to edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files) if you want.
+
+The object in your workflow file that defines the triggers is named `on`. You can think of it in a sentence - "on `push`, run this workflow". It looks something like this:
 
 ```yml
-  on:
-    push:
+on:
+  push:
+  workflow dispatch:
+    inputs:
+      tags:
+        required: False
+        description: 'Optional. Use a "tag expression" specify which tagged tests to run (https://cucumber.io/docs/cucumber/api/#tag-expressions)'
 ```
 
-5. Between those two lines, add code, like this:
+The keys that trigger the workflow (e.g. `push` and `workflow_dispatch`) can be in any order.
+
+#### Scheduled tests
+
+You can also run these tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add `schedule` to the `on`  object in your workflow file and give it an "interval" value. For example:
 
 ```yml
-
-    schedule:
-      - cron: '0 1 * * TUE'
+on:
+  push:
+  schedule:
+    - cron: '0 1 * * TUE'
+  # other stuff
 ```
 
 The GitHub docs can tell you more about [triggering workflows on a schedule](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events). If you want to change the interval, [these examples of cron syntax](https://crontab.guru/examples.html) can help a lot.
 
 If you've run the Setup interview more recently, you will already have this code in your file, though it will be inactive. You just have to remove the comment symbols (`#`) from the lines of code.
+
+#### Pull requests
+
+You can also trigger tests to run when someone makes a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) in GitHub.
+
+In the `on` object in your workflow file, add the `pull_request` trigger key. For example:
+
+```yml
+on:
+  push:
+  pull_request:
+  # other stuff
+```
+
+#### All together
+
+After adding all those, your whole `on` section might look something like this:
+
+```yml
+on:
+  push:
+  workflow dispatch:
+    inputs:
+      tags:
+        required: False
+        description: 'Optional. Use a "tag expression" specify which tagged tests to run (https://cucumber.io/docs/cucumber/api/#tag-expressions)'
+  pull_request:
+  schedule:
+    - cron: '0 1 * * TUE'
+```
 
 ## FAQ
 
