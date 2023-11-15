@@ -31,7 +31,8 @@ You can run ALKiln in a variety of ways, each with their [pros and cons and othe
 
 ### Set up for ALKilnInThePlayground
 
-1. On your server's "Package Management" page, install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
+1. Leave the Playground and go to your server's "Package Management" page.
+1. Install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
 1. Follow docassemble's instructions to add it to the [dispatch list](https://docassemble.org/docs/config.html#dispatch). This will add it to the server's list of interviews. It may look something like this:
 
 ```yml
@@ -40,10 +41,11 @@ dispatch:
   # Your other server interviews
 ```
 
-3. Make sure you have a Project that you want to test in your list of Projects.
-1. Make sure that Project has some tests. They should be in the Sources folder of the Project and end in the extension `.feature`.
-1. Go to your server's list of interviews and run the ALKilnInThePlayground interview.
-1. Start by picking the the newest version of ALKiln to install. It should be at the top of the list of options. Tap to install it.
+4. Go to your server's list of interviews and run the first page of the newly installed interview.
+1. On that first page, install the latest version of ALKiln by picking the top item in the list. Tap to install it.
+1. Make sure you have a Project that you want to test in your list of Projects.
+1. Make sure that Project has some tests. If you don't have any, you can [start with your first test](#first-test)
+1. Refresh the ALKilnInThePlayground interview page or run the interview again.
 1. Pick a Project to test.
 1. Run the tests and see [the output](#test-output).
 
@@ -77,6 +79,10 @@ This is an advanced method and we are happy to help you with it. It would help a
 1. See that the tests pass.
 1. Make a pull request to your default branch (probably `main`) to review the code and merge it in.
 
+:::caution
+To use this method, avoid using hard-coded urls to go to a test interview. That is, avoid using `https://my-server.com` to navigate to interviews or other server pages. That will send the tests to your server.
+:::
+
 If you need to troubleshoot the docker setup because the step to start the GitHub server keeps failing, you can make the docker startup logs visible and allow ALKiln to create an artifact of the docker installation logs. Do this by passing the input `SHOW_DOCKER_OUTPUT` to ALKiln's GitHub server action, like our script (linked above) does for itself. The input arguments might look like the below:
 
 ```yml
@@ -85,10 +91,11 @@ If you need to troubleshoot the docker setup because the step to start the GitHu
           SHOW_DOCKER_OUTPUT: true
 ```
 
-It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). There's a block in our workflow file for that as well.
+It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
 
 ## Quick reminders
 
+1. ALKiln doesn't yet handle all fields. For example, fields created with objects. For example, `object multiselect`.
 1. You write and edit `.feature` test files in your Sources folder.
 1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
 1. If you're using GitHub, tests are run when anyone commits to GitHub.
@@ -125,7 +132,12 @@ Feature: I have children
 
 ## First test
 
-You can write a short test right away that just makes sure your YAML file runs. Write a `Scenario` for each file you want to test.
+You can write a short test right away that just makes sure your YAML file runs.
+
+1. In the Playground of your Project, go to the "Sources" folder.
+1. Add an file that ends in `.feature`. For example, `interviews_load.feature`.
+1. In that file, write `Feature:` at the top, with a description of the general category of tests that will be in that file. Each `.feature` file must start with `Feature:` (with some special exceptions).
+1. Add a `Scenario:` for each interview you want to test. The file should look similar to this:
 
 ```
 Feature: Interviews load
@@ -137,11 +149,21 @@ Feature: Interviews load
     Given I start the interview at "plaintiffs_motion_to_modify_209a.yml"
 ```
 
-You can wait to write more complex tests till your code is more stable.
+You can wait to write more complex tests till your code is more stable. For example, your variable names should be staying pretty much the same.
 
-## Story tables
+## Story Tables
 
-**Story table** Steps, in our opinion, are the most effective and flexible way to set the values of fields in ALKiln in most cases. Using them, it doesn't matter what order you use to list your fields or what order your pages come in. It also doesn't matter if you include extra fields accidentally. They are a snapshot of the user who's filling out the form for that test.
+In your Scenario, you will:
+
+1. Add a Step to go to the interview
+1. Add any other Steps you need
+1. Choose what page your Story Table should get you to
+1. Add the Story Table Step command that includes that page's id
+1. Add the Story Table header row
+1. Add a row for each variable
+1. Add whatever other Steps you need
+
+**Story Table** Steps, in our opinion, are the most effective and flexible way to fill in fields in most cases. The items in the table are a snapshot of the user who is filling out the form for that test.
 
 Example:
 
@@ -149,24 +171,28 @@ Example:
     And I get to the question id "has sink" with this data:
       | var | value | trigger |
       | last_haircut_date | today - 730 | last_haircut_date |
-      | wants_virtual_haircut | True | wants_virtual_haircut |
-      | scissors[i].length | 2 | scissors[0].length |
-      | scissors[i].length | 7 | scissors[1].length |
+      | wants_virtual_haircut | True | last_haircut_date |
+      | user_name | Beth | user_name |
+      | intro_screen_accepts_terms | True | intro_screen_accepts_terms |
 ```
 
-You can write a story table that goes all the way through your interview, or a story table that only goes part way.
+The row with `| var | value | trigger |` is required.
 
-Very basically, you tell the story table Step what `question` you want to get to and the variables and values it will need to get there. Whenever the test gets to a page, it checks your story table for any variables that match a variable on the page. When it finds a match, it sets the value of the field. When it's done with a page, it continues to the next page until it reaches the terminal `question`.
+How it works: You tell the Story Table Step what `question` you want to get to. You also make a table of the variables and values the test will need to fill in on its way to that page. Whenever the test gets to a page, it checks your Story Table for any variable names in the table that match a variable name on the page. When the test finds a match, it sets the field to the corresponding value. When the test is done filling in fields on a page, it continues to the next page and repeats until it reaches that `question` id you gave.
 
-You can have multiple tables in one Scenario and you can put other steps between story table Steps. 
+As you can see in the example, the order of the items doesn't matter. The test will fill in the fields no matter what order they come in. You will be able to make simple edits to the interview without needing to update your tests. For example, you can move pages around or even move fields to different pages.
+
+It also doesn't matter if you include extra items accidentally, though you might want to check the test reports to make sure no necessary fields went unused.
+
+You can write a Story Table that goes all the way through your interview, or a Story Table that only goes part way. You can have multiple Story Tables in one Scenario and you can put other Steps between tables. 
 
 Right now, Story Tables are unable to use GitHub secrets to set variables.
 
 :::caution
-A story table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
+A Story Table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
-### Generate a story table
+### Generate a Story Table
 
 You can use the [story table generator](https://plocket.github.io/al_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
 
@@ -187,7 +213,7 @@ Follow these instructions to use the generator:
 
 This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic).
 
-### Step description
+### Step command
 
 The Step that triggers a story table is
 
@@ -200,7 +226,7 @@ The Step that triggers a story table is
 
 ### Rows
 
-Indented under the description, put the header row of the table:
+Indented under the command, put the header row of the table:
 
 ```
       | var | value | trigger |
@@ -208,15 +234,13 @@ Indented under the description, put the header row of the table:
 
 * `var` lists the variable the field sets exactly as it appears in the code of the question.
 * `value` is the value you want the test to fill in.
-* `trigger` lists the variable that triggers that variable's page. We describe that more in a section below.
+* `trigger` lists the variable that triggers that variable's page.
 
 Under that, add a blank row for a field that you want the test to interact with during the interview:
 
 ```
       |  |  |  |
 ```
-
-You must include a row for every variable that need to be set in order to get to the page with the `id` you chose.
 
 ### var
 
@@ -251,9 +275,11 @@ The last example makes sure that the date is 10 years in the past, ensuring that
 
 ### trigger
 
-`trigger` is an optional value in most cases. It is mandatory for rows that list [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`). Your interview **must always** include [some special HTML](#trigger_variable_code) to let the trigger variable work properly. As you can see, you will get a warning in the report if you leave that out.
+`trigger` is an optional value in most cases. It is only mandatory for rows that use [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`).
 
-In the `trigger` column, write the name of the variable that triggers the page on which the field appears.
+Your interview **must always** include [some special HTML shown here](#trigger_variable_code) to let the trigger variable work properly. You will get an annoying warning in the report if you leave that out.
+
+In the `trigger` column, write the name of the variable that triggers the **page** on which the field appears. Note that especially - the variable that triggers the **page**. If you have 10 different variables on one page, they will all have the same text in their `trigger` column.
 
 For the below, the `trigger` is `users[0].hair.how_much`.
 
@@ -280,7 +306,9 @@ Your story table rows to set those values would look like this:
       | users[i].hair.color | Sea green | users[0].hair.how_much |
 ```
 
-Even though the `var` columns were different, both `trigger` columns listed `users[0].hair.how_much`. That's because when the docassemble asks for `users[0].hair.how_much`, both fields are on that page and both variables have to be set.
+Even though the `var` columns are different, both `trigger` columns have `users[0].hair.how_much`. That's because the trigger is for the **page**, not for the fields. Both fields are on that same page - a page triggered by `users[0].hair.how_much`.
+
+**Never** use docassemble's `x`, `[i]`, `[j]`, `[k]`, etc. in the trigger column.
 
 There are some rare cases where no `trigger` exists. For example, `question` blocks with the `mandatory` specifier:
 
@@ -293,7 +321,7 @@ yesno: likes_mandatory_questions
 
 In those cases, leave the `trigger` column empty.
 
-### Story table examples
+### Story Table examples
 
 _Simple field types with their values._
 
@@ -344,7 +372,7 @@ The `trigger` column should have the name of the page's trigger variable, as usu
       | x.target_number | 3 | users.there_is_another |
 ```
 
-### Story table signature
+### Story Table signature
 
 The `value` for a row setting a signature doesn't matter. All signatures will be a single dot.
 ```
@@ -550,21 +578,52 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ---
 
-Use the `set variable` Step to set the value of a field.
+Use the `set the variable` Step to fill in an answer on the page. This sets the value of that field's variable.
 
-Comparing this to [a story table](#story-tables), as described above, the first quotes contain the equivalent of the [`var`](#var) column and the second quotes contain the [`value`](#value) you want to set.
+The first set of quotes contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [story table](#story-tables)'s [`var` column](#var) and [`value` column](#value).
+
+Example of a text field:
 
 ```
-    When I set the variable "users[i].hair_color" to "blue"
+    When I set the variable "users[i].hair_color" to "Turqoise"
 ```
 
-One special value you can include is `today`. That will insert the date on which the test is being run. You can also subtract from, or add days to, `today`. Examples:
+Example of a checkbox field:
+
+```
+    When I set the variable "users[i].fruits['apple']" to "True"
+    And I set the variable "users[i].fruits['pear']" to "True"
+```
+
+Example of a radio button field:
+
+```
+    When I set the variable "users[i].favorite_bear" to "cuddly_bear"
+```
+
+Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for this YAML code the `value` would be "cuddly_bear", not "Teddy bear". "Teddy bear" is just the label.
+
+```
+question: Fav bear
+field:
+  - Pick one: users[i].favorite_bear
+    data type: radio
+    choices:
+      - Black bear: wild_bear
+      - Brown bear: also_wild_bear
+      - Teddy bear: cuddly_bear
+      - Jaime: maybe_not_a_bear
+```
+
+One special value you can use is `today`. That will insert the date on which the test is being run. You can subtract or add days using `today`. Examples:
 
 ```
     When I set the variable "signature_date" to "today"
     When I set the variable "birthdate" to "today - 500"
     When I set the variable "court_date" to "today + 12"
 ```
+
+Be careful with `today` math. If you're testing a "boundary" date, you want to pick a date that is well within a boundary to make the test more robust. For example, if you want to test a date that was 10 or fewer days ago, use `today - 9` instead of `today - 10`. At some point your tests might run over midnight. In that situation, if you used `10` the clock would tip into the next day - 11 days from the filled-in date. Your test would fail incorrectly. In fact, your users might have that experience, so design your interview with that in mind. For example, you can tell them the date of the deadline so they too will know about the boundary.
 
 You can also use environment variables to set values with [the `secret variables` Step](#secret-variables-step), even if the value doesn't need to be secret.
 
@@ -947,14 +1006,17 @@ If you are using a story table with index variables or generic objects, you need
 <!-- This has to be a bit farther up than the code. For some reason the header isn't taken into account when jumping here. -->
 <a name="trigger_variable_code"></a>
 
-Add this code to your `metadata` block to insert an invisible element in all your screens:
+Add exactly this code to your `metadata` block to insert an invisible element in all your screens:
 
 ```yml
+  # This HTML is for ALKiln automated tests
   post: |
     <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
 ```
 
-If you already have something in your `post:` metadata, just add that code anywhere inside there. There's a chance it can interfere with your css styles, so putting it at the end may be the best choice.
+Use that HTML exactly. No customizations.
+
+If you already have something in your `post:` metadata, just copy the `<div>` and paste it in after the other code. Putting it at the end can avoid messing up other HTML.
 
 If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
 
@@ -1057,7 +1119,7 @@ You can disable these tests, or any actions, for a whole organization. GitHub's 
 
 ### Use a separate server just for testing
 
-Keep the test server completely separate from production server so that no sensitive information can be revealed to potential malicious actors.
+Keep the test server completely separate from production server so that the tests never show sensitive information to potential malicious actors. To avoid running tests on your production server, use the testing server's address in the `SERVER_URL` GitHub secret. The test files themselves are secure as long as you don't put sensitive info in them. They don't do anything by themselves.
 
 In addition, some general good practices are:
 
@@ -1388,31 +1450,14 @@ Make sure that
 1. Each test starts with a `Scenario:` and its description.
 1. `Given I start the interview...` is the first line under `Scenario`.
 
-After that, you can add the story table or other Steps that will test your code. Add the file to the files you commit to GitHub. From then on, GitHub will run that tests whenever you commit, or push, to GitHub.
-
-An example for the start of two separate tests for a restraining order:
-
-```
-Feature: I have children
-
-Scenario: I need visits to be supervised
-  Given I start the interview at "restraining_order.yml"
-
-
-Scenario: I allow unsupervised visitation
-  Given I start the interview at "restraining_order.yml"
-```
-
-The Steps under each scenario will be a bit different because they each test a different path for the user.
-
-<!-- The `Scenario` descriptions will later be used in the test report and names of downloaded files, so make each one different. -->
+After that, you can add a Story Table or other Steps that will test your code. Save the new files in your Playground's Packages page and commit them to GitHub. From then on, GitHub will run that tests whenever you commit, or push, to GitHub.
 
 ### How do I add a new test to an existing test file?
 
 To add a new test to the existing file you need:
 
-1. The keyword `Scenario` with the `Scenario` description.
-1. The step that loads the interview's page: `Given I start the interview at`. You must use it before you fill out any fields: 
+1. The keyword `Scenario:` with a description.
+1. The step that loads the interview's page: `Given I start the interview at`. You must use it before you fill out any fields. 
 
 Example:
 
@@ -1421,21 +1466,19 @@ Scenario: I allow unsupervised visitation
   Given I start the interview at "restraining_order.yml"
 ```
 
-Make sure to leave the `Feature` line at the very top of the file.
+After that, you can add the story table or other Steps that will test your interview.
 
-After the `Given` step, you can add the story table or other Steps that will test your interview.
+Make sure to leave the `Feature:` line at the very top of the file. Avoid repeating the `Feature:` key anywhere else in the file.
 
-ALKiln uses the `Scenario` description to label test results. Try to use something you'll recognize later.
+### Why should I write a Scenario description?
+
+`Scenario` descriptions affect the names of error screenshot files and report headings, so try to write something unique that you will recognize later. It will help you identify what happened with each test.
 
 ### When do tests run?
 
 GitHub tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
 If you know how to use GitHub [actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity), you can also run the tests manually from GitHub actions with some more options.
-
-### Why should I write a Scenario description?
-
-Scenario descriptions affect the names of error screenshot files and report headings, so try to write something unique that you will recognize later.
 
 <!-- I think this info is useful, but I'm not sure where it should go.
 ## About writing tests
