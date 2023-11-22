@@ -38,6 +38,16 @@ you will not be able to add **any** logic in the Weaver process.
 This is by design. We want you to quickly get to the Docassemble playground
 to continue editing your code.
 
+## Before you use the Weaver
+
+* Make sure you got the [field labels](label_variables) (variable names) right:
+    * Use the Assembly Line variable names for things like `users` and `other_parties`.
+    * Double-check the order of word "suffixes" like `name_first` and `address_unit` (they go big to small).
+    * In PDFs, make sure you used `__1`, `__2` etc at the end of a variable name if you had to repeat it in the same document.
+* Rename the document to remove any extra "stuff", like -01, _final, _labeled, etc. The filename will get reused throughout your project.
+* Plan to finish using the Weaver in one sitting, most of the time. It is easier to customize in the playground, and harder to go
+  back to your older Weaver session.
+
 ## What the Weaver does
 
 The steps that the Weaver will walk you through are as follows:
