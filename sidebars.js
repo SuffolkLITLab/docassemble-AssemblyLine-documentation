@@ -26,6 +26,7 @@ module.exports = {
                 'document_variables_reference',
                 'alweaver_overview',
                 'customizing_interview',
+                'writing_review_screen',
                 'yaml_anatomy',
                 'github',
             ],
