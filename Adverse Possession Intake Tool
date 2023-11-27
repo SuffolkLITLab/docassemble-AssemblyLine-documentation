@@ -1,5 +1,11 @@
 ---
 metadata
-  title: Massachusetts Adverse Possesion Intake Tool
+  title: Massachusetts Adverse Possession Intake Tool
 
 ---
+question: Hello, ${user_name}
+mandatory: True
+---
+question: What is your name?
+fields:
+  Name: user_name
