@@ -1001,14 +1001,15 @@ _This section is a constant work in progress._
 
 That warning isn't a bug, but if the above doesn't apply to you, you can ignore it. A future goal of ours is to [remove the warning from Steps that don't need it](https://github.com/SuffolkLITLab/ALKiln/issues/452).
 
-If you are using a story table with index variables or generic objects, you need to add some code to the interview file where you set your [`metadata` block](https://docassemble.org/docs/initial.html#metadata). It controls items like `title` and `authors`.
+If you are using a story table with index variables or generic objects, you need to add some code to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts).
 
 <!-- This has to be a bit farther up than the code. For some reason the header isn't taken into account when jumping here. -->
 <a name="trigger_variable_code"></a>
 
-Add exactly this code to your `metadata` block to insert an invisible element in all your screens:
+Add exactly this code to your `default screen parts` block to insert an invisible element in all your screens:
 
 ```yml
+default screen parts:
   # This HTML is for ALKiln automated tests
   post: |
     <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
@@ -1016,7 +1017,7 @@ Add exactly this code to your `metadata` block to insert an invisible element in
 
 Use that HTML exactly. No customizations.
 
-If you already have something in your `post:` metadata, just copy the `<div>` and paste it in after the other code. Putting it at the end can avoid messing up other HTML.
+If you already have something in your `post:`, just copy the `<div>` and paste it in after the other code. Putting it at the end can avoid messing up other HTML.
 
 If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
 
