@@ -662,7 +662,7 @@ to get an element on the page, and can add any additional wait time after tappin
 
 ```
     When I tap the "#element-id" element
-    And I tap the "#other-element" element and wait for 5 seconds
+    And I tap the "#other-element" element and wait 5 seconds
 ```
 
 If you are using the [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs), you can say that you're tapping the tab,
@@ -755,7 +755,7 @@ Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your
 
 ---
 
-Use the `wait` Step to pause once a page has loaded. will let you wait for a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
+Use the `wait` Step to pause once a page has loaded. will let you wait a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
 
 ```
     When I wait 10 seconds
