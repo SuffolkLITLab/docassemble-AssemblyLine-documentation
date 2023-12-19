@@ -417,6 +417,10 @@ The `wait` Step can be a way to pause before the test tries to go to the intervi
 
 This Step can also be used anywhere in your scenario to wait between Steps.
 
+```
+    And I wait 1 second
+```
+
 <!-- Maybe put this in the errors/warnings section:
 
 You might need this if your tests repeatedly fail on one Step, especially if it only happens sometimes. This is because some situations can cause race conditions that make the tests believe the next page has loaded even though it hasn't. We haven't yet found a way to detect all of these and it might never be possible. -->
@@ -656,25 +660,39 @@ Sign on a signature page. All signatures are the same - one dot.
 
 ---
 
-You can also tap or click on specific elements, like buttons on a page.
+Use one of the `tap element` Steps to tap an item on the page. You need to know a bit about HTML to work with this Step.
+
+1. You can tap on specific HTML elements on the page, like buttons, to navigate to the next page or a new page.
 You can use any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-to get an element on the page, and can add any additional wait time after tapping the element.
+to get an element on the page. You can add any additional wait time after tapping the element.
 
 ```
-    When I tap the "#element-id" element
+    When I tap the "#element-id" element and go to a new page
+    # Or
     And I tap the "#other-element" element and wait for 5 seconds
 ```
 
-If you are using the [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs), you can say that you're tapping the tab,
-and ALKiln will tap and wait until the tab is fully visible.
+2. You can also tap on HTML elements without navigating. For example, you can tap on [collapsible content](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox#collapsible-help-text) to show the text inside.
+
+```
+    When I tap the "#an_id .al_toggle" element and stay on the same page
+```
+
+You might want to add a `wait` Step after that to let the contents become visible. For example `And I wait .7 seconds`.
+
+---
+
+Use the `tap tab` Step to interact with [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs). ALKiln will tap on the tab and then wait until the tab contents are fully visible.
 
 ```
     When I tap the "TabGroup-specific_tab_name-tab" tab
 ```
 
+Use the HTML id of the tab, but **leave out the `#` symbol** (like the example shows).
+
 ---
 
-Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See a better description in [sections above](#story-tables).
+Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See more details in [sections above](#story-tables).
 
 ```
     I get to the question id "some question block id" with this data:
