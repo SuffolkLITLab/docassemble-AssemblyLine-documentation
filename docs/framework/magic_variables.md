@@ -50,6 +50,39 @@ stock list, edit your configuration to add the following line:
 session list interview: docassemble.AssemblyLine:data/questions/interview_list.yml
 ```
 
+#### Customize the interface of the interview list replacement
+
+If you like, you can customize the appearance of the interview list page
+by editing your global configuration.
+
+Here is a complete list of the settings you can customize:
+
+```yaml
+  app homepage: https://courtformsonline.org # link you visit when you click on the logo
+  assembly line:
+    enable answer sets: True
+    interview list:
+      page title: In progress forms # Title of the tab in your browser
+      page question: In progress forms # Title in the "question" area of the page
+      page subquestion: null # custom text below the "question" area
+      new form label: Start a new form # button label to start a new interview
+      new form url: https://courtformsonline.org # link that button will visit
+      logo url: null # Defaults to `app homepage`
+      logo image url: https://app.yourserver.org/packagestatic/docassemble.AssemblyLine/ma_logo.png # needs to be the URL to an image, but it can be a relative one, like /packagestatic/...
+      logo image alt: Logo
+      answer sets title: Answer sets
+      logo title row 1: null # Defaults to same value as `page title`
+      logo title row 2: null # Defaults to same value as `page heading`
+      exclude from interview list:
+        - docassemble.AssemblyLine:data/questions/al_saved_sessions_store.yml
+        - docassemble.AssemblyLine:data/questions/interview_list.yml
+```
+
+To use this in your global configuration, you should skip anything you do not want to configure.
+
+If you would prefer, you can make a copy of the interview_list.yml file, override each
+of these variables as needed, and point to your custom copy instead.
+
 #### Enhance the custom interview list feature
 If you use the custom interview list feature and you would like to have
 all of your interviews:
@@ -77,8 +110,9 @@ this:
 
 ```yaml
 assembly line:
-  exclude from interview list:
-    - docassemble.MyAdministrativeInterview:menu.yml
+  interview list:
+    exclude from interview list:
+      - docassemble.MyAdministrativeInterview:menu.yml
 ```
 
 #### Change the link used by the "Start a new form" button on the session list page
@@ -87,7 +121,8 @@ Edit the `assembly line` directive in the global configuration to look like this
 
 ```yaml
 assembly line:
-  new form url: https://courtformsonline.org
+  interview list:
+    new form url: https://courtformsonline.org
 ```
 
 #### Use a more performant OCR engine with ALExhibitDocuments
@@ -98,6 +133,8 @@ Edit the `assembly line` directive in the global configuration to look like this
 assembly line:
   ocr engine: ocrmypdf
 ```
+
+You must have ocrmypdf installed on your server.
 
 ## Organization-level configuration options
 
