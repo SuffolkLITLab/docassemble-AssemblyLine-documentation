@@ -72,7 +72,7 @@ This is an advanced method and we are happy to help you with it. It would help a
 
 1. Go through the same steps as for GitHub-triggered tests above.
 1. Make a new branch on the same GitHub repo.
-1. A repo or org admin should [create a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) called `CONFIG_CONTENTS`. For its value, the admin should copy and paste your production server's config. No one will be able to see these values after you leave the secret's page, not even the person who made it. Note, whenever you change the server's config, you'll want to update `CONFIG_CONTENTS`.
+1. A repo or org admin should [create a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) called `CONFIG_CONTENTS`. For its value, the admin should copy and paste your **testing** server's config. Using your production server's config is a security risk. No one will be able to see these values after you leave the secret's page, not even the person who made it. Note, whenever you change the server's config, you'll want to update `CONFIG_CONTENTS`.
 1. Leave your other workflow secrets alone. Note, your `DOCASSEMBLE_DEVELOPER_API_KEY` and `SERVER_URL` do not need to be on the same server as your `CONFIG_CONTENTS`.
 1. Make a new workflow file so that it is similar to [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml). If you want to stop old tests from running, delete your old workflow file.
 1. Read the notes in that file to see what you need to change to adapt the file for your project. Each of the notes is marked with `#### Developer note`.
