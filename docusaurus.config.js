@@ -9,6 +9,14 @@ module.exports = {
   organizationName: 'SuffolkLITLab', // the GitHub org name.
   projectName: 'docassemble-AssemblyLine-documentation', // the repo name.
   themeConfig: {
+    announcementBar: {
+      id: 'lit_con',
+      content:
+        'Suffolk\'s annual 🔥LIT Conference is on April 8th, 2024! <a target="_blank" rel="noopener noreferrer" href="https://suffolklitlab.org/litcon/">Register now!🔥</a>',
+      backgroundColor: '#fafbfc',
+      textColor: '#091E42',
+      isCloseable: false,
+    },
     navbar: {
       title: 'The Document Assembly Line Project',
       logo: {
