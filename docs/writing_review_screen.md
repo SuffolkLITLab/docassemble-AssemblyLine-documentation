@@ -9,22 +9,47 @@ slug: /review_screen
 
 ## Overview
 
-In Docassemble, a review screen is the way that a user can make changes to their answers. A review screen is a screen that displays one or more of the user's existing answers along with buttons that let the user edit each choice.
+In Docassemble, a review screen is the way that a user can make changes to their answers. A review screen displays one or more of the user's existing answers along with buttons that let the user edit each choice.
 
-Writing a review screen is very important to docassemble interviews. As the "back" button undoes an interview's progress,
-it's critical that people can edit answers they made early in the interview, without having to re-enter things later.
-Review screens are also critical for interviews to be fully WCAG compliant; for legal applications like the AssemblyLine was born from,
+This page is a step-by-step tutorial on how to write a review screen, and covers:
+
+- [Overview](#overview)
+- [Why make a review screen?](#why-make-a-review-screen)
+- [Creating your review screen](#creating-your-review-screen)
+  - [Step 0: Complete the main port of your interview!](#step-0-complete-the-main-port-of-your-interview)
+  - [Step 1: AL Review Generator](#step-1-al-review-generator)
+  - [Step 2: Understanding and Editing the Generated Review Screen](#step-2-understanding-and-editing-the-generated-review-screen)
+    - [Edits to the Review Screen](#edits-to-the-review-screen)
+  - [Step 4: Things to add to the review screen](#step-4-things-to-add-to-the-review-screen)
+
+## Why make a review screen?
+
+Review screens let your user change their mind about their previous answers. Like the list of fields in a `question` screen, one `review` screen can let the user review many answers. This list of answers goes under the heading `review` instead of `fields`. Each answer you want to let your user change includes:
+
+* A button, with a label of your choice (we usually use "Edit")
+* Fields that you want the user to revisit when they click the edit button
+* Some preview of the user's current answer. It's common to repeat or paraphrase the question from the interview and show the answer next to the question.
+
+You can do more advanced things with review screens, too:
+
+* If you want the user to jump to another screen, perhaps they could edit multiple fields asked over several different screens in the interview, you can make the field name point to another question screen, labeled with an `event`. This is usually used to edit lists of people with a `revisit` block.
+* You can trigger follow-up code to run after the user makes a change. For example: you can trigger a code block to re-run, delete the value of another answer, or trigger another follow-up screen.
+
+Writing a review screen is important. Without one, the only way a user can change their answers is with the "back" button, but the "back" button will undo the user's progress in the interview so far.
+Review screens are necessary for interviews to be fully WCAG compliant; for legal applications,
 [WCAG 2.1 success criterion 3.3.4](https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data) requires that
 
 > a mechanism is available for reviewing, confirming, and correcting information before finalizing the submission
 
-in short, requiring a review screen to be present at the end of your interview, that allows the user to correct the information they entered.
+For docassemble applications, this means a review screen that allows the user to correct the information they entered needs to be present at the end of your interview. 
 
-### Step 0: Complete the rest of the interview!
+## Creating your review screen
+
+### Step 0: Complete the main port of your interview!
 
 Large changes to an interview's logic will require large changes to the review screen as well. Before starting to make the review screen, it's best to have completed your interview.
 
-### Step 1: ALDashboard Review Screen Generator
+### Step 1: AL Review Generator
 
 Download the primary YAML files of your interview. You can download the YAML file either:
 
@@ -44,12 +69,11 @@ include:
   - review.yml
 ```
 
-### Step 2: Understanding the Generated Review Screen
+### Step 2: Understanding and Editing the Generated Review Screen
 
 :::note About `|-`
 
-The generated YAML might look different than how you're used to writing YAML files. The generated YAML uses lots of `|-`,
-which keeps the full text after, but removes the last newline. In short, something like this:
+The generated YAML uses lots of `|-`. In short, something like this:
 
 ```yml
 event: |-
@@ -83,15 +107,12 @@ There are a few sections of the generated review screen YAML:
     event: review_prior_case
     code: |
       review_form
-    ---
-    ...
     ```
 
-    These blocks take each section from your interview and make it so that if a user clicks on them, they are brought to the review page. In our experience, this
-    works best, so that all of the information that is asked for in the interview can be edited in the same place, and the user doesn't have to remember
-    which section they entered it in.
+    These blocks take each [section](https://docassemble.org/docs/initial.html#sections) from your interview and make it so that if a user clicks on the section, they are brought to the review page.
+    In our experience, this works best, as all of the information that the interview asks can be edited in one place, and the user doesn't have to remember which section a piece of information belonged to.
 
-2. The main review block. The block looks like this:
+2. The main [review block](https://docassemble.org/docs/fields.html#review). The block looks like this:
 
     ```yml
     id: review screen
@@ -106,7 +127,6 @@ There are a few sections of the generated review screen YAML:
           % for item in users:
           - ${ item }
           % endfor
-      ...
       - Edit: has_existing_case
         button: |
           **Do you have an existing Michigan family court case?**
@@ -114,8 +134,8 @@ There are a few sections of the generated review screen YAML:
           Do you have an existing Michigan family court case?: ${ word(yesno(has_existing_case)) }
     ```
 
-    Most notably is that there is a `review` attribute instead of a `fields`. Each element under the `review` attribute
-    is a different section, generated from screens in the interview, with the subquestion and values of the fields shown.
+    This block looks like a normal question block, except there is a `review` attribute instead of `fields`.
+    Each list item under the `review` attribute is generated from question screens in the interview, and shows the text content and the fields from that question screen.
 
     Each element in the review can have the following dictionary attributes:
 
@@ -129,8 +149,15 @@ There are a few sections of the generated review screen YAML:
           - which_side_pays
         ```
 
-        You can also use `recompute` as an item in the list that contains a sub-list of fields to re-calculate using `code` blocks, without asking questions to the user again. You won't see `recompute` in your generated interview, but you should add it if necessary.
-    * `button` acts like the `subquestion` of this section of the review screen. It is where you should display the current value of the field or fields you want to let the user edit. You can use multiple lines and `Mako` tags in this area.
+        You can also use `recompute` as an item in the list that contains a sub-list of fields to re-calculate using `code` blocks, without asking questions to the user again. You won't see `recompute` in your generated interview, but you should add it if necessary. Here's an example:
+
+        ```yml
+        - Edit:
+          - county_choice
+          - recompute:
+            - trial_court
+        ```
+    * `button` acts like the `subquestion` of this section of the review screen. It is where you should display the current value of the field or fields you want to let the user edit. You can use multiple lines and Mako tags in this area.
 
 3. The revisit screens. These blocks look like this:
 
@@ -144,10 +171,17 @@ There are a few sections of the generated review screen YAML:
 
       ${ users.add_action() }
     ```
+    
+    Revisit screens are used to let people edit items in [`DALists`](https://docassemble.org/docs/objects.html#DAList).
+    For each of the other variables in the `review` block, clicking their "Edit" button brings users directly to the
+    question to let them edit their answers. That approach works well for simple variables like text, dates that the user enters, or yes no questions.
+    
+    But your interview might include [objects](https://docassemble.org/docs/objects.html#Individual) and lists of objects, like a list of plaintiffs and another list of defendants. Instead of re-asking every question that someone answered to fill the list, docassemble brings to the user to a `revisit` screen that shows each item in the list to the user, and lets them choose which to edit individually.
 
-    Each block has the table and lets people edit items in the lists.
+    If you used the [Weaver](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/label_variables#standard-roles) to make your interview, your interview might have a few different lists for people,
+    like `users`, `other_parties`, `children`, `debt_collectors`, and `guardians`.
 
-4. The generated tables for the lists.
+4. The `revisit` screens each show the `table` attribute of the `DAList`. If needed, blocks defining the table for the lists will appear at the end of the generated review file.
 
     ```yml
     table: children.table
@@ -159,42 +193,20 @@ There are a few sections of the generated review screen YAML:
       - birthdate
     ```
 
-### Step 3: Edits to the Review Screen Generator
+#### Edits to the Review Screen
 
 You'll want to change some aspects of the generated review screen. Note that if any errors happen in a specific edit element on the review screen, that element won't appear. It also won't appear if the attribute or variable to be edited doesn't exist. You should make sure that it does.
 
 Some common issues to the generated review screen that I personally have run into before:
 
-1. Add tables for people lists, like `users` or `other_parties`. The below block is a good start.
+1. Remove generated `revisit` and `table` blocks for attachments and other non-people objects, if any, as well as their entries in the `review` block. `revisit` is only needed for things the user enters themselves. Since the review screen generator can't determine which object types people have to enter information for, it generates them for all objects.
 
-   ```yml
-   generic object: ALPeopleList
-   table: x.table
-   rows: x
-   columns:
-     - Name: |
-         row_item.name if defined('row_item.name.first') else ''
-     - Address: |
-         row_item.address if defined('row_item.address.address') else ''
-     - Phone number: |
-         row_item.phone_numbers()
-   edit:
-     - name.first
-     - address.address
-     - phone_number
-   delete buttons: False
-   ```
-
-2. Remove tables for attachments and other non-people objects, if any were generated. Tables are only needed for information that the user enters themselves, which the review screen generator can't determine yet.
-
-3. Remove questions you don't want the user to edit. about kickout screens. Sometimes, you will have questions that do set a variable in the interview, but the variable isn't used in the interview logic after that. For example, a question that's only use is to kickout a user if their problem isn't covered by the form. Here's an example of one:
+2. Remove questions you don't want the user to edit. Sometimes, you will have questions that do set a variable in the interview, but the variable isn't used in the interview logic after that. For example, a question that's only use is to kickout a user if their problem isn't covered by the form. Here's an example of one:
 
    ```yml
    ---
    question: |
      Are you Filing in a Probate Case?
-   subquestion: |
-     Is the case a probate case? Examples of probate cases include cases to distribute property after someone dies, guardianships, and conservatorships. 
    fields:
      - Is your case a probate case?: probate_case
        datatype: yesnoradio
