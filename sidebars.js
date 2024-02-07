@@ -97,8 +97,8 @@ module.exports = {
                     type: 'category',
                     label: 'ALKiln testing',
                     items: [
-                        'alkiln_about',
-                        'alkiln_advanced',
+                        'alkiln/alkiln_about',
+                        'alkiln/alkiln_advanced',
                     ]
                 },
                 'framework/answer_sets',
