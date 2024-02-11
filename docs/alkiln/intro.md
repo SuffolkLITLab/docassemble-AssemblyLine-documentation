@@ -31,7 +31,8 @@ Welcome to the ALKiln testing framework! It helps you check that your docassembl
 
 Ready to start testing? Need to quickly refresh your memory on some imporant points? Start here.
 
-- [Install ALKiln for your package](alkiln/setup#recommended-setup)
+<!-- Change "install" to "setup"? -->
+- [Install ALKiln for your package and run tests](alkiln/setup#recommended-setup)
 - [Write your first test](alkiln/setup#first-test)
 
 :::warning TODO: add links
@@ -42,11 +43,10 @@ Ready to start testing? Need to quickly refresh your memory on some imporant poi
 
 ## What will you find in these documents? {#toc}
 
-<!-- Change "setup" to "install"? -->
-
 ALKiln topics you can explore.
 
 :::warning TODO: add links
+<!-- Change "setup" to "install"? -->
 - [Setting up](alkiln/setup): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
 - Writing tests: What you need to know to effecitvely write tests
 - Troubleshooting: Help with common errors and warnings <!-- (errors, maybe in FAQ?) -->
