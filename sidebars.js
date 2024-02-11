@@ -97,7 +97,7 @@ module.exports = {
                     type: 'category',
                     label: 'ALKiln testing',
                     items: [
-                        'alkiln/alkiln_intro',
+                        'alkiln/intro',
                         'alkiln/alkiln_advanced',
                     ]
                 },
