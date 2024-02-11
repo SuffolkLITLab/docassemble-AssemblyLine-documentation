@@ -97,6 +97,20 @@ These tests also run on GitHub, but they create a new docassemble server on GitH
 - Regardless of that, whatever server GitHub generates probably won't have the exact same setup as your server, so some interviews may not have the same behavior.
 - You have to be more diligent about including all the "Dependencies" that your package needs on your interview's "Packages" page. If you don't, they won't be installed with your package on this fresh server.
 
+:::caution
+To use this method, avoid using hard-coded urls to go to a test interview. That is, avoid using `https://my-server.com` to navigate to interviews or other server pages. That will send the tests to your server.
+:::
+
+If you need to troubleshoot the docker setup because the step to start the GitHub server keeps failing, you can make the docker startup logs visible and allow ALKiln to create an artifact of the docker installation logs. Do this by passing the input `SHOW_DOCKER_OUTPUT` to ALKiln's GitHub server action, like our script (linked above) does for itself. The input arguments might look like the below:
+
+```yml
+        with:
+          CONFIG_CONTENTS: "${{ secrets.CONFIG_CONTENTS }}"
+          SHOW_DOCKER_OUTPUT: true
+```
+
+It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
+
 **What ALKiln is doing**
 
 Like the other GitHub test method, whenever you push (or commit) to GitHub, GitHub will run the tests automatically. You can [run these manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow) as well.

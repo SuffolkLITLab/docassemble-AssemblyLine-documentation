@@ -31,11 +31,12 @@ Welcome to the ALKiln testing framework! It helps you check that your docassembl
 
 Ready to start testing? Need to quickly refresh your memory on some imporant points? Start here.
 
-:::warning TODO: add links
-- Install ALKiln for your package (alkiln/setup#recommended)
+- [Install ALKiln for your package](alkiln/setup#recommended-setup)
 - [Write your first test](alkiln/setup#first-test)
+
+:::warning TODO: add links
 - Generate more complicated tests (alkiln/docs#generator)
-- If you are coming back, refresh your memory about basic usage (alkiln/FAQ#reminders)
+- If you are coming back, refresh your memory about basic usage (alkiln/docs#reminders)
 :::
 
 
@@ -46,7 +47,7 @@ Ready to start testing? Need to quickly refresh your memory on some imporant poi
 ALKiln topics you can explore.
 
 :::warning TODO: add links
-- Setting up: Learn different ways to install ALKiln for your package or organization <!-- (setup and first test, maybe advanced pros and cons of setup) -->
+- [Setting up](alkiln/setup): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
 - Writing tests: What you need to know to effecitvely write tests
 - Troubleshooting: Help with common errors and warnings <!-- (errors, maybe in FAQ?) -->
 - Support for Old Versions: Guides for using older out-of-date features
@@ -129,4 +130,4 @@ If we want people to file different issues for different repos (which I think is
 
 ---
 
-[^1] There are some interview features ALKiln cannot yet handle. For example, [`object_multiselect` fields](https://docassemble.org/docs/fields.html#object_multiselect). ALKiln also may not understand complex [`CustomDatatype`](https://docassemble.org/docs/fields.html#custom%20datatype) fields if you make them. If you run into problems, [file a clear and descriptive issue on our repository](https://github.com/SuffolkLITLab/ALKiln/issues) and we will see if we can help.
+[^1]: There are some interview features ALKiln cannot yet handle. For example, [`object_multiselect` fields](https://docassemble.org/docs/fields.html#object_multiselect). ALKiln also may not understand complex [`CustomDatatype`](https://docassemble.org/docs/fields.html#custom%20datatype) fields if you make them. If you run into problems, [file a clear and descriptive issue on our repository](https://github.com/SuffolkLITLab/ALKiln/issues) and we will see if we can help.
