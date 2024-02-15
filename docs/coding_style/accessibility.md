@@ -11,7 +11,7 @@ Making your guided interviews accessible is first and foremost about making them
 
 Other parts of web accessibility involve writing the interview in a way that the user's browser and other accessibility tools (like screen readers) can understand. Docassemble [handles many of these things](https://docassemble.org/docs/accessibility.html) for you, but there are some parts that you'll have to address when writing your interview.
 
-To help you find accessibility problems in your interview you can use the [WAVE browser extension](https://wave.webaim.org/extension/), or if you want to check accessibility of your interview automatically, you can use the [ALKiln testing framework](../automated_testing.md#accessibility).
+To help you find accessibility problems in your interview you can use the [WAVE browser extension](https://wave.webaim.org/extension/), or if you want to check accessibility of your interview automatically, you can use the [ALKiln testing framework](../alkiln/automated_testing.md#accessibility).
 
 ## Use colors that contrast strongly with their backgrounds
 

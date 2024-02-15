@@ -37,12 +37,12 @@ Welcome to the ALKiln testing framework! It helps you check that your docassembl
 Ready to start testing? Need to quickly refresh your memory on some imporant points? Start here.
 
 <!-- Change "install" to "setup"? -->
-- [Install ALKiln for your package and run tests](alkiln/setup#recommended-setup)
-- [Write your first test](alkiln/setup#first-test)
-- [Generate more complicated tests](https://plocket.github.io/alkiln_story/) <!-- (alkiln/docs#generator) -->
+- [Install ALKiln for your package and run tests](setup#recommended-setup)
+- [Write your first test](setup#first-test)
+- [Generate more complicated tests](https://plocket.github.io/alkiln_story/) <!-- (docs#generator) -->
 
 :::warning TODO: add links
-- If you are coming back, refresh your memory about basic usage (alkiln/docs#reminders)
+- If you are coming back, refresh your memory about basic usage (docs#reminders)
 :::
 
 
@@ -52,7 +52,7 @@ ALKiln topics you can explore.
 
 :::warning TODO: add links
 <!-- Change "setup" to "install"? -->
-- [Setting up](alkiln/setup): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
+- [Setting up](setup): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
 - Writing tests: What you need to know to effecitvely write tests
 - Troubleshooting: Help with common errors and warnings <!-- (errors, maybe in FAQ?) -->
 - Support for Old Versions: Guides for using older out-of-date features
@@ -78,7 +78,7 @@ Tests can protect your users from bugs that can:
 - Stop them completely with an error
 - Lose their trust in you
 
-You can write your simple [first test](alkiln/setup#first-test) <!-- add link --> right away if you want. Wait to write more complex tests till your code is more stable. "More stable" means that the question variables for the section you are testing are staying the same.
+You can write your simple [first test](setup#first-test) <!-- add link --> right away if you want. Wait to write more complex tests till your code is more stable. "More stable" means that the question variables for the section you are testing are staying the same.
 
 When you add a new required field or change the variable name or values of a user's field, you will need to update those tests.
 
