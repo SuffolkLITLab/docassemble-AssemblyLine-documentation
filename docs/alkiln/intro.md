@@ -1,9 +1,14 @@
 ---
 id: alkiln_intro
 title: ALKiln automated testing
-sidebar_label: Intro
-slug: /alkiln
+sidebar_label: WIP Intro
+slug: /alkiln/intro
 ---
+
+
+:::warning
+WIP
+:::
 
 <!-- Move to /docs
 ## Refresher
@@ -34,9 +39,9 @@ Ready to start testing? Need to quickly refresh your memory on some imporant poi
 <!-- Change "install" to "setup"? -->
 - [Install ALKiln for your package and run tests](alkiln/setup#recommended-setup)
 - [Write your first test](alkiln/setup#first-test)
+- [Generate more complicated tests](https://plocket.github.io/alkiln_story/) <!-- (alkiln/docs#generator) -->
 
 :::warning TODO: add links
-- Generate more complicated tests (alkiln/docs#generator)
 - If you are coming back, refresh your memory about basic usage (alkiln/docs#reminders)
 :::
 

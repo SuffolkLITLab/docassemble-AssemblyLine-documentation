@@ -2,8 +2,11 @@
 id: alkiln_about
 title: ALKiln automated testing
 sidebar_label: Overview
-slug: /alkiln_old_overview
+slug: /alkiln
 ---
+
+<!-- slug: /alkiln_old_overview -->
+
 
 **Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 

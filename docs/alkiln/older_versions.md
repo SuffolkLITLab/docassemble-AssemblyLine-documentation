@@ -1,0 +1,278 @@
+---
+id: alkiln_deprecated
+title: Documentation for older versions of ALKiln
+sidebar_label: WIP Older versions
+slug: /alkiln/older_versions
+---
+
+
+:::warning
+WIP
+:::
+
+This page has documentation for old versions Steps and such.
+
+or
+
+This page links to old versions of the documentation.
+
+
+## Story Table Step before ALKiln v5.9.0
+
+After ALKiln v5.9.0, we're using a 2-column Story Table layout. This is documentation for the old 3-column format.
+
+### Trigger variable {#trigger_variable_code}
+
+First, if your package is not importing specifically `al_package.yml` from the styled Assembly Line package, make sure to add the trigger variable code to your interview. Add exactly this code to your `default screen parts` block to insert an invisible element in all your screens:
+
+```yml
+default screen parts:
+  # This HTML is for ALKiln automated tests
+  post: |
+    <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
+```
+
+Use that HTML exactly. No customizations.
+
+If you already have something in your `post:`, just copy the `<div>` and paste it in after the other code. Putting it at the end can avoid messing up other HTML.
+
+
+### Writing the Story Table Step
+
+In your Scenario, you will:
+
+1. Add a Step to go to the interview
+1. Add any other Steps you need
+1. Choose what page your Story Table should get you to
+1. Add the Story Table Step command that includes that page's id
+1. Add the Story Table header row
+1. Add a row for each variable
+1. Add whatever other Steps you need
+
+**Story Table** Steps, in our opinion, are the most effective and flexible way to fill in fields in most cases. The items in the table are a snapshot of the user who is filling out the form for that test.
+
+Example:
+
+```
+    And I get to the question id "has sink" with this data:
+      | var | value | trigger |
+      | last_haircut_date | today - 730 | last_haircut_date |
+      | wants_virtual_haircut | True | last_haircut_date |
+      | user_name | Beth | user_name |
+      | intro_screen_accepts_terms | True | intro_screen_accepts_terms |
+```
+
+The row with `| var | value | trigger |` is required.
+
+How it works: You tell the Story Table Step what `question` you want to get to. You also make a table of the variables and values the test will need to fill in on its way to that page. Whenever the test gets to a page, it checks your Story Table for any variable names in the table that match a variable name on the page. When the test finds a match, it sets the field to the corresponding value. When the test is done filling in fields on a page, it continues to the next page and repeats until it reaches that `question` id you gave.
+
+As you can see in the example, the order of the items doesn't matter. The test will fill in the fields no matter what order they come in. You will be able to make simple edits to the interview without needing to update your tests. For example, you can move pages around or even move fields to different pages.
+
+It also doesn't matter if you include extra items accidentally, though you might want to check the test reports to make sure no necessary fields went unused.
+
+You can write a Story Table that goes all the way through your interview, or a Story Table that only goes part way. You can have multiple Story Tables in one Scenario and you can put other Steps between tables.
+
+Right now, Story Tables are unable to use GitHub secrets to set variables.
+
+:::caution
+A Story Table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
+:::
+
+### Generate a Story Table
+
+You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
+
+Follow these instructions to use the generator:
+
+1. If you don't have one already, [add a new test file](#how-do-i-add-a-new-test-file). You can leave out the Scenario.
+1. Ensure your server config is set up to [show debug info](https://docassemble.org/docs/config.html#debug).
+1. Run your interview manually until you reach the page you want the story table to get to.
+1. Open the "source" display of the interview. Currently, that looks like angle brackets, `</>`, in the header of the page.
+1. Note the `id` of the page.
+1. Tap the "Show variables and values" button. It will open a new tab showing a big JSON object.
+1. Copy all the text on that page.
+1. Go to the [story table generator](https://plocket.github.io/alkiln_story/).
+1. Paste the JSON into the text area there, as instructed.
+1. Use the other input fields to help finalize your Scenario, including the page `id`.
+1. Copy the Scenario that has been generated for you.
+1. Paste that into the already prepared test file.
+
+This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic).
+
+### Step command
+
+The Step that triggers a story table is
+
+```
+    And I get to the question id "some id!" with this data:
+```
+
+**question id:** The story table needs to know the `id` of the page this story table should get to. You can find the `id` in the `question` block in the YAML in the Playground.
+
+
+### Rows
+
+Indented under the command, put the header row of the table:
+
+```
+      | var | value | trigger |
+```
+
+* `var` lists the variable the field sets exactly as it appears in the code of the question.
+* `value` is the value you want the test to fill in.
+* `trigger` lists the variable that triggers that variable's page.
+
+Under that, add a blank row for a field that you want the test to interact with during the interview:
+
+```
+      |  |  |  |
+```
+
+### var
+
+In the `var` column, write the name of the variable that a field sets **exactly as it appears in the `question` block**. Most times you can see that name in the YAML `question` block. If `code:` is used to create the field's variable name, you may have to talk to the developers who wrote that code to find out the name or names of the variable or variables it generates.
+
+Examples:
+
+```
+court_date
+users[0].name.first
+users[i].children[j].benefits['SSI']
+x.favorite_color
+```
+
+<!-- The Document Assembly Line library has built in questions that use such code.
+- `users[i].name_fields()` generates all the name fields with the right index number (NOT 'i'). E.g. `users[0].name.first`, `users[0].name.suffix`, `users[1].name.first`, `users[1].name.suffix`
+- `users[i].address_fields()` generates all the address fields with the right index number (NOT 'i'). E.g. `users[0].address.address`, `users[1].address.address` -->
+
+### value
+
+In the `value` column, write what you want the field to be set to. For checkboxes, `True` means 'checked' and `False` means 'unchecked'.
+
+One special value you can include is `today`. That will insert the date on which the test is being run. You can also subtract from, or add days to, `today`. Examples:
+
+```
+      | signature_date | today |  |
+      | court_date | today + 20 |  |
+      | minors_birth_date | today - 3650 |  |
+```
+
+The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
+
+### trigger
+
+`trigger` is an optional value in most cases. It is only mandatory for rows that use [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`).
+
+Your interview **must always** include [some special HTML shown here](#trigger_variable_code) to let the trigger variable work properly. You will get an annoying warning in the report if you leave that out.
+
+In the `trigger` column, write the name of the variable that triggers the **page** on which the field appears. Note that especially - the variable that triggers the **page**. If you have 10 different variables on one page, they will all have the same text in their `trigger` column.
+
+For the below, the `trigger` is `users[0].hair.how_much`.
+
+```
+---
+id: interview order
+mandatory: True
+code: |
+  users[0].hair.how_much
+---
+id: hair
+question: |
+  Tell us about your hair
+fields:
+  - How much hair do you have?: users[i].hair.how_much
+  - What color is your hair?: users[i].hair.color
+```
+
+Your story table rows to set those values would look like this:
+
+```
+      | var | value | trigger |
+      | users[i].hair.how_much | Enough | users[0].hair.how_much |
+      | users[i].hair.color | Sea green | users[0].hair.how_much |
+```
+
+Even though the `var` columns are different, both `trigger` columns have `users[0].hair.how_much`. That's because the trigger is for the **page**, not for the fields. Both fields are on that same page - a page triggered by `users[0].hair.how_much`.
+
+**Never** use docassemble's `x`, `[i]`, `[j]`, `[k]`, etc. in the trigger column.
+
+There are some rare cases where no `trigger` exists. For example, `question` blocks with the `mandatory` specifier:
+
+```
+mandatory: True
+question: |
+  Do you like mandatory questions?
+yesno: likes_mandatory_questions
+```
+
+In those cases, leave the `trigger` column empty.
+
+### Story Table examples
+
+_Simple field types with their values._
+
+The 'yes' choice of [`yesno` buttons](https://docassemble.org/docs/fields.html#yesno) or [`yesno` fields](https://docassemble.org/docs/fields.html#fields%20yesno) like `yesno` checkboxes and `yesnoradio`s.
+```
+      | has_hair | True | has_hair |
+```
+
+The 'maybe' choice in [yesnomaybe buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [datatype: yesnomaybe](https://docassemble.org/docs/fields.html#fields%20yesno) fields.
+```
+      | has_hair | None | has_hair |
+```
+
+Checkboxes with multiple choices. The value 'True' means to check the checkbox and 'False' means to uncheck it.
+```
+      | benefits['SSI'] | True | benefits |
+```
+
+Radio or dropdown choices.
+```
+      | favorite_color | green | favorite_color |
+```
+
+Text field or textarea. Even if the answer has multiple lines, you can only use one line. When a new line is supposed to appear, instead use `\n`. See below:
+```
+      | favorite_color | Blue.\nNo, green!\nAah... | favorite_color |
+```
+
+A generic object with an index variable.
+```
+      | x[i].name.first | Umi | users[1].name.first |
+```
+
+### `.there_is_another` loop
+
+The `.there_is_another` loop in a story table is more complicated than you might expect.
+
+The story table must handle setting the `.there_is_another` attribute automatically. You, as the developer, must pretend to use the `.target_number` attribute instead, whether you actually use it or not.
+
+In your `var` column, replace any `.there_is_another` rows for a particular variable with with one `.target_number` row. In the `value` column, put the number of items of the appropriate type.
+
+The `trigger` column should have the name of the page's trigger variable, as usual. Example:
+
+```
+      | x[i].name.first | Jose | users[0].name.first |
+      | x[i].name.first | Sam | users[1].name.first |
+      | x[i].name.first | Umi | users[2].name.first |
+      | x.target_number | 3 | users.there_is_another |
+```
+
+### Story Table signature
+
+The `value` for a row setting a signature doesn't matter. All signatures will be a single dot.
+```
+      | user.signature |  | user.signature |
+```
+
+### Other story table notes
+
+Don't worry about accidentally including variables that won't show up during the test. Extra rows will be ignored.
+
+### Error: missing trigger variable
+
+**This warning only matters for story tables that use index variables or generic objects.** That warning is deliberate, but if the above doesn't apply to you, you can ignore it.
+
+You can get rid of this warning by adding [some HTML code](#trigger_variable_code) to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts).
+
+If you want to see some very technical details about why we need this in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
