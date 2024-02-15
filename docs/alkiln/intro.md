@@ -1,0 +1,138 @@
+---
+id: alkiln_intro
+title: ALKiln automated testing
+sidebar_label: WIP Intro
+slug: /alkiln/intro
+---
+
+
+:::warning
+WIP
+:::
+
+<!-- Move to /docs
+## Refresher
+
+Some quick refreshers for those who need it.
+
+1. You write and edit `.feature` test files in your Sources folder.
+1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
+1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
+1. If you're using GitHub, tests are run when anyone commits to GitHub.
+1. Tests can download docx files, but humans have to review them to see if they've come out right.
+1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
+ -->
+
+
+Welcome to the ALKiln testing framework! It helps you check that your docassemble interviews work the way you want them to. ALKiln acts like a user, following your instructions to do things like fill in fields, upload files, sign in, and check your PDFs for accuracy.
+
+**Any basic docassemble package can use ALKiln**[^1]. ALKiln (Assembly Line Kiln) took its name from where it was born - the AssemblyLine project - but it can be used with any docassemble project.<!-- It does come with features that are especially useful for AssemblyLine users.-->
+
+🚧 ALKiln is under very active development. Give us feedback and suggest ideas by opening issues at https://github.com/SuffolkLITLab/ALKiln/issues.
+
+
+## Quick start {#quickstart}
+
+Ready to start testing? Need to quickly refresh your memory on some imporant points? Start here.
+
+<!-- Change "install" to "setup"? -->
+- [Install ALKiln for your package and run tests](setup#recommended-setup)
+- [Write your first test](setup#first-test)
+- [Generate more complicated tests](https://plocket.github.io/alkiln_story/) <!-- (docs#generator) -->
+
+:::warning TODO: add links
+- If you are coming back, refresh your memory about basic usage (docs#reminders)
+:::
+
+
+## What will you find in these documents? {#toc}
+
+ALKiln topics you can explore.
+
+:::warning TODO: add links
+<!-- Change "setup" to "install"? -->
+- [Setting up](setup): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
+- Writing tests: What you need to know to effecitvely write tests
+- Troubleshooting: Help with common errors and warnings <!-- (errors, maybe in FAQ?) -->
+- Support for Old Versions: Guides for using older out-of-date features
+- Frequently Asked Questions (FAQs): Find answers to common questions
+- Security: Stay safe by using best practices and find out how we protect you too <!-- if you're going to mess with more complex workflows, read this section about GitHub security for workflows -->
+:::
+
+
+## Why automate testing? {#why-test}
+
+This may not be a good sales pitch, but you don't always need automated tests. Automated tests need to be updated along with your code. That may not be worth your time for some projects or at some stages in a project.
+
+That said, the more complex your project gets the more useful automated tests can be.
+
+When you start creating a project, you test it by hand. You open the interview and run it yourself, clicking through every path your user might take. That does not scale as a project grows. Often, there is no time or energy to test all the paths accurately. You end up having to trust that the ones you skip still work. Automated tests make sure your interviews stay working as you keep editing your code.
+
+<!-- Automated tests make sure you know when you break something. -->
+
+Tests can protect your users from bugs that can:
+
+- Lead them down the wrong path
+- Give them the wrong output in their generated file
+- Stop them completely with an error
+- Lose their trust in you
+
+You can write your simple [first test](setup#first-test) <!-- add link --> right away if you want. Wait to write more complex tests till your code is more stable. "More stable" means that the question variables for the section you are testing are staying the same.
+
+When you add a new required field or change the variable name or values of a user's field, you will need to update those tests.
+
+To hear more about why and when to test, watch the first part of this Docacon 2023 presentation:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/TcLFA9a1bHs" title="Assembly Line Kiln testing framework at Docacon 2023 - Why test?" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
+
+<!-- Other tools that can help with problems managing running interviews: (maybe another section)
+- When there's an error, give your users their data so they haven't wasted their time
+- Get alerts when your server goes down
+- Check that specific interviews are still running
+ -->
+
+## What libraries does ALKiln use? {#dependencies}
+
+ALKiln uses [cucumberjs](https://cucumber.io/), [puppeteerjs](https://pptr.dev/, [cheerio](https://cheerio.js.org/), and runs the assertions using the [mocha](https://mochajs.org/) and [chai](https://www.chaijs.com/) libraries.
+
+Even though this is built using cucumberjs, this framework has a different, less lofty, purpose. cucumberjs focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
+
+
+## Where are our repositories? {#repos}
+
+- [ALKiln's repository](https://github.com/SuffolkLITLab/ALKiln) contains our core code
+- [GitHub setup interview](https://github.com/SuffolkLITLab/docassemble-ALKilnSetup) helps you install GitHub tests on your repository
+- [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) lets you run tests from your docassemble server
+
+- [The Story Table test generator](https://github.com/plocket/alkiln_story) uses an interview's JSON variables to create a file containing a Story Table test
+
+:::warning TODO: add links
+- ALKiln's documentation
+:::
+
+
+## How can you contribute? {#contribute}
+
+<!-- Keep it simple. Just 2 repos -->
+- Give us feedback and suggestions by creating issues at https://github.com/SuffolkLITLab/ALKiln/issues
+:::warning TODO: add link
+- Improve this documentation on GitHub
+:::
+- Join and participate in the [docassemble community](https://docassemble.org/docs/support.html#slack)
+- Contact us on the docassemble Slack and become a collaborator
+
+
+<!-- - [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository) [our repositories](#repos), edit them, and make pull requests -->
+
+<!--
+If we want people to file different issues for different repos (which I think is too complex):
+- ALKiln in general and GitHub-based tests/workflows
+- ALKiln in the Playground
+- Setup
+- Edit ALKiln documentation
+ -->
+
+---
+
+[^1]: There are some interview features ALKiln cannot yet handle. For example, [`object_multiselect` fields](https://docassemble.org/docs/fields.html#object_multiselect). ALKiln also may not understand complex [`CustomDatatype`](https://docassemble.org/docs/fields.html#custom%20datatype) fields if you make them. If you run into problems, [file a clear and descriptive issue on our repository](https://github.com/SuffolkLITLab/ALKiln/issues) and we will see if we can help.

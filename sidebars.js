@@ -98,8 +98,17 @@ module.exports = {
                     type: 'category',
                     label: 'ALKiln testing',
                     items: [
-                        'alkiln_about',
-                        'alkiln_advanced',
+                        // WIPs
+                        'alkiln/alkiln_intro',
+                        // Old
+                        'alkiln/alkiln_about',
+                        'alkiln/alkiln_advanced',
+                        // WIPs
+                        'alkiln/alkiln_setup',
+                        'alkiln/alkiln_writing',
+                        'alkiln/alkiln_troubleshooting',
+                        'alkiln/alkiln_security',
+                        'alkiln/alkiln_deprecated',
                     ]
                 },
                 'framework/answer_sets',

@@ -1,0 +1,303 @@
+---
+id: alkiln_setup
+title: Set up ALKiln tests
+sidebar_label: WIP Setup/Installation
+slug: /alkiln/setup
+---
+
+import GitHubSetup from './components/\_github_setup.md';
+
+:::warning
+WIP
+:::
+
+<!-- TODO: Add a GitHub admins section -->
+
+<!-- TODO: Should this include how to run the tests? Workflow files, trigger automatically, on a schedule, manually, tags, ALKiln versions, etc. Pros and cons are already kind of about running the tests. -->
+This page will tell you about the different ways to set up and run your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want. They each have their advantages and disadvantages.
+
+## Do _I_ need to do this? {#who}
+
+**Should I skip this page?**
+
+Maybe. People just writing tests can skip this page. Also, if your package's repository already has a `.github` folder with workflow files you can probably skip this page.
+
+**Should I read this page?**
+
+People managing GitHub repositories or organizations and people managing docassemble servers might find this page useful.
+
+<!--
+- People managing GitHub repositories can use this page to install tests in a repository for the first time
+- People managing GitHub organizations can simplify future ALKiln test setup for their organization's repositories
+- People managing a docassemble server can install ALKiln on that server to run tests in their Playground
+ -->
+
+<!--
+:::note Draft
+Put these in the setup interview too:
+
+- Who should set up tests?
+- When do you need to do the setup process?
+- When to set up secrets? (don't do secrets if your org already has secrets) <- I think this should just be in the set up interview, not here.
+
+Don't do setup:
+- Just writing tests, don't do setup
+- If your repo already did setup, you don't need to do setup
+:::
+-->
+
+<!--
+Installing tests can involve one or more of these things:
+
+1. Adding a GitHub workflow file
+1. Creating GitHub secrets
+1. Installing a package on your docassemble server
+ -->
+
+## Recommended setup: GitHub tests that run on your server {#recommended-setup}
+
+This is the way we recommend setting up ALKiln tests for a repository for the first time. You are least likely to run into setup problems with this method.
+
+The tests run whenever you commit any code to any branch on GitHub. You can read more details and the [pros and cons of GitHub tests](#github-details)[^1] below.
+
+**You need:**
+
+- A developer or admin account on your docassemble server.
+- A package with a repository on GitHub.
+- A collaborator or admin account on your package's GitHub repository[^2].
+
+**It could help to know about:**
+
+- Docassemble API keys
+- GitHub secrets
+- GitHub workflows
+- GitHub pull requests (PRs)<!-- **If you use the setup interview, it could help to know about:** -->
+- GitHub personal authorization tokens (PATs)
+
+The setup interview will try to walk you through these actions.
+
+<GitHubSetup/>
+
+1. Add GitHub secrets to your repository (or organization[^3])
+1. Make a new branch in your repository
+1. Add new code to that branch, including a new "workflow" file at the very least
+1. Make a pull request with that branch
+
+[^1]: You may have spotted this already, but two of these methods run tests on GitHub. They run the tests in different ways, though. We have not yet found good names for them that avoid this confusion.
+
+
+[^2]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
+
+[^3]: If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets. They can also [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repo the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repo and if one of the values changes, you'll have to update it in every repo.
+
+
+## First test {#first-test}
+
+You can add a short test right away that just makes sure your YAML file runs. If you run the setup interview you can choose to create this test at that time. We recommend you do that. If you do it manually instead:
+
+1. In the Playground of your Project, go to the "Sources" folder.
+1. Add an file that ends in `.feature`. For example, `interviews_load.feature`.
+1. In that file, write `Feature:` at the top, with a description of the general category of tests that will be in that file.
+1. Add a `Scenario:` for each interview you want to test. The file should look similar to this:
+
+```
+Feature: Interviews load
+
+  Scenario: The 209A loads
+    Given I start the interview at "ma_209a_package.yml"
+
+  Scenario: The Plaintiff's Motion to Modify loads
+    Given I start the interview at "plaintiffs_motion_to_modify_209a.yml"
+```
+
+You can wait to write more complex tests till your code is more stable. "Stable" means that your question block variable names and values should be staying pretty much the same.
+
+:::warning TODO: add link
+You can read more about test files in other documentation.
+:::
+
+To run the tests you can commit new code to your GitHub repository or you can [trigger your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). Authors usually [commit new code from their Playground](https://docassemble.org/docs/development.html#versioncontrol).
+
+
+## Test in your Playground {#playground-how-to}
+
+If you set up tests for the Playground, any developer can run tests on any of their Projects when they are logged into the docassemble server. You can read more details and the [pros and cons of Playground tests](#playground-details) below.
+
+**You need:**
+
+- A developer or admin account on your docassemble server.
+- A Project with at least one ALKiln test in it. It can just be that [first test](#first-test).
+
+:::warning TODO:
+Add a link to adding a test to a project
+:::
+
+**It helps to know about:**
+
+- Installing GitHub packages on your docassemble server
+- Adding interviews to your docassemble server's configuration's dispatch list
+
+1. Make sure you are logged into your docassemble server.
+1. Go to your server's ["Package Management" page](https://docassemble.org/docs/packages.html#installing).
+1. [Use GitHub to install](https://docassemble.org/docs/packages.html#github_install) the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
+1. Follow [docassemble's instructions](https://docassemble.org/docs/config.html#dispatch) to add it to the [dispatch list](https://docassemble.org/docs/config.html#dispatch). This will add it to the server's list of interviews. It may look something like this:
+
+```yml
+dispatch:
+  alkiln: docassemble.ALKilnInThePlayground:data/questions/run_alkiln_tests.yml
+  # Your other server interviews
+```
+
+4. Go to your server's list of ["Available interviews"](https://docassemble.org/docs/admin.html#available%20interviews). ALKiln's package should now be listed there.
+1. Run that interview.
+1. On the first page of that interview, choose to install the latest version of ALKiln by picking the top item in the list. You can choose to do this whenever we make a new version of ALKiln. Tap to continue.
+
+:::warning TODO
+Add images of picking new version
+Add section in reminders about updating docassemble server (InPlayground) to new version of ALKiln
+:::
+
+To run tests:
+
+1. Make sure you are logged into your docassemble server.
+1. Run the ALKiln interview from your server's list of available interviews.
+1. Skip the first page by just tapping to continue.
+1. From the list of projects, pick a Project that already has tests in its Sources folder. If it has no tests, read how to add tests in our documentation then start with step number 1 again.
+1. Run the tests and see the output.
+
+:::warning TODO:
+- Above, add link to how to make test files
+- Above, add link to info about test output
+- Figure out where to add details, like tags, etc.
+:::
+
+<!--
+1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
+
+
+## Isolated server tests (advanced) {#isolated-server-how-to}
+
+Isolated server tests actually also run on GitHub. They never interact with your server, though. This is an advanced method and may not work for everyone. We are happy to help you with it.
+
+The tests run whenever you commit any code to any branch on GitHub. You can read more details and the [pros and cons of isolated server tests](#isolated-server-details) below.
+
+**You need:**
+
+- A package with a repository on GitHub.
+- A collaborator or admin account on your package's GitHub repository[^2].
+
+**It helps to know about:**
+
+- GitHub personal authorization tokens (PATs)
+- GitHub workflows
+- GitHub pull requests (PRs)
+
+First follow the regular instructions to set up for GitHub. The difference here is that you can skip setting up repository or organization secrets. If you already have those secrets, leave them as they are. They have nothing to do with this.
+
+<GitHubSetup/>
+
+1. Make a new branch in your repository
+1. Add new code to that branch, including a new "workflow" file at the very least
+1. Make a pull request with that branch
+
+Then edit the new workflow to look like [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml). Read the notes in that file to see what you need to change. You should pay attention to the notes that start with `#### Developer note`.
+
+To run the tests you can commit new code to your GitHub repository or you can [trigger your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). Authors usually [commit new code from their Playground](https://docassemble.org/docs/development.html#versioncontrol).
+
+
+## GitHub test details {#github-details}
+
+These tests run on GitHub, but they still interact with your server.
+
+**What is ALKiln doing?**
+
+Whenever you push (or commit) to GitHub, GitHub will run the tests automatically. You can also [trigger them manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow).
+
+- ALKiln goes to the testing account you set up on your server and creates a new Project. If you log into that account, you'll be able to see the new Project in the list of projects.
+- It pulls the relevant branch of your package into the Project.
+- For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of that Project's interview (whatever interview you named in the test).
+- It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
+- When all the tests are done, ALKiln deletes the Project it created.
+
+You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
+
+At the end, you can see a report and logs right in the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs) or [download a `.zip` file containing the results of the tests to your computer](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts). That `.zip` file is what GitHub calls an "artifact".
+
+**Pros**
+
+- ALKiln on GitHub will test any changes any team member commits. On your server, you only tests your changes.
+- On GitHub, there are ways to schedule tests to run regularly - every week, every day, or whatever schedule you prefer. If packages you depend on change and break your code, those tests will let you know.
+- If you've forgotten to add a file to the package that an interview depends on (like a missing template file), GitHub will catch that. It installs the file fresh in a new Project, so it only has the files that have been committed properly.
+- You can continue editing any files in your Playground while the GitHub tests run because GitHub creates a whole new Project of its own. When running tests on your server, you must avoid editing the Project that ALKiln is testing.
+- You can configure your GitHub "action" to do other things, like create GitHub issues whenever tests fail.
+- If your server reloads during the test run, a few individual tests may fail, but ALKiln will still be able to continue and keep trying to run the rest of the tests. That is because the test code is in running from GitHub, so your reload doesn't stop that process.
+
+**Cons**
+
+- To get these set up, you need to create a docassemble API key, a GitHub token, and make GitHub secrets and you may have to update these in the future. [The ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) helps you do these things, but they can still be confusing.
+- Your tests might be more flaky. That means they may fail for reasons that don't have to do with the interviews. For example, if your tests are running while your server is reloading, ALKiln will keep running, so other tests will still have an opportunity to continue, but individual tests may fail even if your code is correct. Your server can reload for many reasons - updating your config, installing a new package, etc. When tests fail meaninglessly, it slows down your development cycle and sometimes people end up turning off the tests instead of dealing with the complexity.
+
+
+## Playground test details {#playground-details}
+
+You run these tests yourself from an interview in your docassemble server.
+
+**What ALKiln is doing**
+
+When you run Playground tests, they do the following:
+
+1. ALKiln navigates to the file your tests specifies in the Project you picked.
+1. For each test (or Scenario), ALKiln pretends to be a human and goes to whatever interview you named in the test in the Project you chose.
+1. It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
+1. If one of the Steps fails, ALKiln adds that to the test report and tries to take a picture of the page with the problem. It tries to avoid taking pictures of sensitive information.
+
+When the tests are done, the output page will show you all the generated reports, images, and files if it can. It will also give you a link to download some of that in a `.zip` file.
+
+### Pros {#playground-pros}
+
+- You don't need to put your package on GitHub to run the tests.
+- Running ALKiln on your server lets you loop through your development cycle faster - edit, test, edit, test. You don't have to go through committing your code to GitHub every time.
+- You can see the output online right away, including images and documents. In GitHub, to see _all_ of the output files, you have to download a zip file. The only thing you can see online in GitHub is the summary report.
+- You can more easily limit your tests to a specific set of tests using [tag expressions](https://www.cuketest.com/en/cucumber/tag-expressions). You can use tags on GitHub too, it just takes more steps.
+- You can more often avoid the red "x" that appears next to failing tests on GitHub. The red "x" is a useful piece of information, but it can be uncomfortable.
+
+### Cons {#playground-cons}
+
+For everyone:
+
+- You'll miss catching some kinds of mistakes. Specifically, you may add a file to your Playground and forget to commit it to GitHub. Your tests will pass in your Playground, but your interview will break when you or others install it from GitHub.
+- If your server reloads while the tests are running, the tests may get unexpected results. You may have to start the tests all over again.
+
+For some people:
+
+- If you are using a docassemble Docker image created before April 9th, 2023, you will have to do a ["system upgrade"](https://docassemble.org/docs/docker.html#upgrading) to update your server to a newer docassemble Docker image. Any version of https://github.com/jhpyle/docassemble-os that is older than 1.0.8 uses versions of `node` that are too old for ALKiln. As of February 11th, 2024, ALKiln is using node v18. A lot of people have upgraded already and it is a very good idea to do that, for security at the very least. If you do need to upgrade, though, you need to back up all your data, delete your old image and container, get the new image, create a new container, and restore your data. It may sound simple, but it is a tricky process.
+
+
+## Isolated server test details {#isolated-server-details}
+
+
+
+
+## Workflow file for GitHub tests {#github-workflow}
+
+<!-- Should this be in /docs? -->
+
+GitHub also calls these "actions". Their language around this is confusing. We use "workflow" to talk about your GitHub code and "action" to talk about ALKiln's GitHub files - the ones your workflows use.
+
+if you're going to mess with more complex workflows, read this section about GitHub security for workflows
+
+The setup interview adds files to your repository when you run it. The GitHub workflow file (TODO: add links to GitHub docs) is one of them. This section is about the workflow file specifically and how you can customize it.
+
+
+
+
+## Workflow file for isolated server tests {#isolated-server-workflow}
+
+<!-- Should this be in /docs? -->
+
+
+
+
+
+## Common installation problems
+

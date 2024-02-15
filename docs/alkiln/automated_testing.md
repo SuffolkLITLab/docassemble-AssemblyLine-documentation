@@ -5,11 +5,12 @@ sidebar_label: Overview
 slug: /alkiln
 ---
 
-🚧
+<!-- slug: /alkiln_old_overview -->
 
-Reference material for testing your interview with ALKiln. This is under very active development.
 
 **Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
+
+🚧 Reference material for testing your interview with ALKiln. This is under very active development.
 
 
 ## Intro
@@ -96,14 +97,13 @@ It's possible to do more docker troubleshooting using [the tmate action](https:/
 
 ## Quick reminders
 
-1. ALKiln doesn't yet handle all fields. For example, fields created with objects. For example, `object multiselect`.
 1. You write and edit `.feature` test files in your Sources folder.
+1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
 1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
 1. If you're using GitHub, tests are run when anyone commits to GitHub.
-1. Tests can download files, but humans have to review them to see if they've come out right.
+1. Tests can download docx files, but humans have to review them to see if they've come out right.
 1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
-1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
 
 ### Example
 
@@ -195,7 +195,7 @@ A Story Table Step **must not** be the first step in your Scenario. The [`interv
 
 ### Generate a Story Table
 
-You can use the [story table generator](https://plocket.github.io/al_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
+You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
 
 Follow these instructions to use the generator:
 
@@ -206,7 +206,7 @@ Follow these instructions to use the generator:
 1. Note the `id` of the page.
 1. Tap the "Show variables and values" button. It will open a new tab showing a big JSON object.
 1. Copy all the text on that page.
-1. Go to the [story table generator](https://plocket.github.io/al_story/).
+1. Go to the [story table generator](https://plocket.github.io/alkiln_story/).
 1. Paste the JSON into the text area there, as instructed.
 1. Use the other input fields to help finalize your Scenario, including the page `id`.
 1. Copy the Scenario that has been generated for you.
