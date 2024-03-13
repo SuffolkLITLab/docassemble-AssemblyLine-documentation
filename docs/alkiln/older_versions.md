@@ -32,7 +32,7 @@ default screen parts:
     <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
 ```
 
-Use that HTML exactly. No customizations.
+Use that HTML exactly. No customization.
 
 If you already have something in your `post:`, just copy the `<div>` and paste it in after the other code. Putting it at the end can avoid messing up other HTML.
 

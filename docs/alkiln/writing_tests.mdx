@@ -95,5 +95,31 @@ Gherkin instructions...
 
 ## Frequently asked questions (FAQ)
 
+### Checkboxes {#faq-checkbox-values}
 
+<!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
 
+- The only values a checkbox can have are `True` or `False`.
+- The variable name of the checkbox for ALKiln is just like its docassemble variable name. For example, `good_fruits['Apples']`.
+- `object_checkboxes` are a common problem. With checkbox choices created with objects, it can be hard to tell what variable name to use. For example, look at this field:
+
+```yml
+fields:
+  - Out of your friends, choose your best friends: best_friends
+    datatype: object_checkboxes
+    choices: friends
+```
+
+Setting an option for the above would look something like this:
+
+```
+      | best_friends['friends[0]'] | True |  |
+```
+
+These are incorrect things people have tried:
+
+```
+      | best_friends | friends[0] |  |
+      | best_friends | friends |  |
+      | best_friends[friends[0]] | True |  |
+```

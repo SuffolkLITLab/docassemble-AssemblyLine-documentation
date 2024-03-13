@@ -34,7 +34,7 @@ Welcome to the ALKiln testing framework! It helps you check that your docassembl
 
 ## Quick start {#quickstart}
 
-Ready to start testing? Need to quickly refresh your memory on some imporant points? Start here.
+Ready to start testing? Need to quickly refresh your memory on some important points? Start here.
 
 <!-- Change "install" to "setup"? -->
 - [Install ALKiln for your package and run tests](setup#recommended-setup)
@@ -78,7 +78,7 @@ Tests can protect your users from bugs that can:
 - Stop them completely with an error
 - Lose their trust in you
 
-You can write your simple [first test](setup#first-test) <!-- add link --> right away if you want. Wait to write more complex tests till your code is more stable. "More stable" means that the question variables for the section you are testing are staying the same.
+You can write your simple [first test](setup#first-test) right away if you want. Wait to write more complex tests till your code is more stable. "More stable" means that the question variables for the section you are testing are staying the same.
 
 When you add a new required field or change the variable name or values of a user's field, you will need to update those tests.
 
