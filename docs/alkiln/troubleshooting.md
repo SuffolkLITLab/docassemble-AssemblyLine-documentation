@@ -31,7 +31,13 @@ This might mean that you have a file in your Playground Project, but that you st
 
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
 
-If running the test manually seems to work fine, but running the automated tests gets a reference error, the test probably either has an incorrect variable name or an incorrect value for a variable. Check for:
+If running the test manually seems to work fine, but running the automated tests gets a reference error, the test probably either has an incorrect variable name or an incorrect value for a variable.
+
+If you have a typo, ALKiln will be unable to find the variable or value that you were trying to set. In a Story Table Step, ALKiln will just skip that field. If the user must give an answer, the test will not be able to continue to the next page. If an answer is optional, your test might just get unexpected results later on.
+
+<!-- Something about unused rows? -->
+
+Check for:
 
 - [Incorrectly setting checkbox values](writing_tests#faq-checkbox-values)
 - Typos in variable names
@@ -51,4 +57,3 @@ It is hard to do, but if you run it by hand carefully step by step and examine e
     1. If the field is a radio button field or something similar, copy the value's name and use your editor's search functionality to look for that exact variable name in your test file. Make sure it appears right next to the correct field name.
     1. Set the value exactly as the test would have set it.
 1. Go on to the next page till you reach the end of your interview.
-
