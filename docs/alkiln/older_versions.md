@@ -2,7 +2,7 @@
 id: alkiln_deprecated
 title: Documentation for older versions of ALKiln
 sidebar_label: WIP Older versions
-slug: /alkiln/older_versions
+slug: /alkiln/old
 ---
 
 

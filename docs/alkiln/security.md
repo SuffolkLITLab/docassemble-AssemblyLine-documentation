@@ -5,19 +5,6 @@ sidebar_label: Security
 slug: /alkiln/security
 ---
 
-<!-- TODO:
-- [ ] Other security advice we can think of
-
-Done:
-- [x] worry less: There is protection for PR workflows already
-- [x] worry less: ALKilnInThePlayground freezes versions
-- [x] Your production server is safe from ALKiln
-- [x] What ALKiln does to keep you secure
-- [x] Protect your default branch
-- [x] https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
-- This is condescending ~~Don't let creeps have access to your repo or your code~~
- -->
-
 This page will help you learn some steps you can take to protect yourself and your users as you develop tests with ALKiln. It will also talk about the security practices ALKiln uses.
 
 Using a third-party library or package is always a risk. That said, we take measures to help secure our code, such as protecting our release branches and requiring reviews before merging any new code.
@@ -301,7 +288,7 @@ This is different than the [ALKiln framework version](#freeze-framework). The fr
 
 **This is for any packages that:** have isolated server tests that run in GitHub
 
-[Isolated server tests](alkiln/setup#isolated-server-how) are useful for security if you use them correctly.
+[Isolated server tests](setup#isolated-server-how) are useful for security if you use them correctly.
 
 For example, you have to avoid using hard-coded urls that are on your server. That is, avoid using `https://my-server.com` and interviews or other pages there. That will send the tests to your server, which goes around all these precautions and makes them less secure again.
 
@@ -318,7 +305,7 @@ Sometimes authors do need to pass sensitive information to their tests. For exam
 
 You can also read about [how to use sensitive information in GitHub tests](#sensitive-info-github).
 
-To do this, [edit your docassemble server's configuration file](](https://docassemble.org/docs/config.html#edit)) to add these environment variables under the `alkiln` key. For example:
+To do this, [edit your docassemble server's configuration file](https://docassemble.org/docs/config.html#edit) to add your environment variables under the `alkiln` key. For example:
 
 ```yml
 # Other config values
