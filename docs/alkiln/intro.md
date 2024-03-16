@@ -53,11 +53,11 @@ ALKiln topics you can explore.
 :::warning TODO: add links
 <!-- Change "setup" to "install"? -->
 - [Setting up](setup): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
-- Writing tests: What you need to know to effecitvely write tests
+- Writing tests: What you need to know to effectively write tests
 - Troubleshooting: Help with common errors and warnings <!-- (errors, maybe in FAQ?) -->
 - Support for Old Versions: Guides for using older out-of-date features
 - Frequently Asked Questions (FAQs): Find answers to common questions
-- Security: Stay safe by using best practices and find out how we protect you too <!-- if you're going to mess with more complex workflows, read this section about GitHub security for workflows -->
+- [Security](security): Stay safe by using best practices and find out how we protect you too <!-- if you're going to mess with more complex workflows, read this section about GitHub security for workflows -->
 :::
 
 
