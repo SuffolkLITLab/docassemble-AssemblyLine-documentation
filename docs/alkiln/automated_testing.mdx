@@ -6,14 +6,14 @@ slug: /alkiln
 ---
 
 <!-- slug: /alkiln_old_overview -->
+<!-- Moved -->
+
+**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.  <!-- Moved -->
+
+🚧 Reference material for testing your interview with ALKiln. This is under very active development. <!-- Moved -->
 
 
-**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
-
-🚧 Reference material for testing your interview with ALKiln. This is under very active development.
-
-
-## Intro
+## Intro <!-- Moved -->
 
 The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview either through the Playground or through GitHub, making sure your interviews are running correctly.
 
@@ -28,9 +28,9 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 ## Start
 
-You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.mdx#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests.
+You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.mdx#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests. <!-- Moved -->
 
-### Set up for ALKilnInThePlayground
+### Set up for ALKilnInThePlayground <!-- Moved -->
 
 1. Leave the Playground and go to your server's "Package Management" page.
 1. Install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
@@ -53,7 +53,7 @@ dispatch:
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-### Set up for GitHub-triggered tests
+### Set up for GitHub-triggered tests <!-- Moved -->
 
 You will need to have a GitHub account that has permissions to edit the GitHub repository that you want to test.
 
@@ -67,7 +67,7 @@ You will need to have a GitHub account that has permissions to edit the GitHub r
 If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets or to [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repo the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repo and if one of the values changes, you'll have to update it in every repo.
 :::
 
-### Set up for isolated GitHub server tests
+### Set up for isolated GitHub server tests <!-- Moved -->
 
 This is an advanced method and we are happy to help you with it. It would help a lot to be familiar with GitHub and GitHub actions. You'll need a GitHub repository or organization admin to do one of these steps. You'll need to set this up for each repo running ALKiln tests.
 
@@ -95,7 +95,8 @@ If you need to troubleshoot the docker setup because the step to start the GitHu
 
 It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
 
-## Quick reminders
+
+## Quick reminders <!-- Moved -->
 
 1. You write and edit `.feature` test files in your Sources folder.
 1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
@@ -105,7 +106,7 @@ It's possible to do more docker troubleshooting using [the tmate action](https:/
 1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
 
-### Example
+### Example <!-- Moved -->
 
 The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for a quick refresher on some of our features:
 
@@ -131,7 +132,7 @@ Feature: I have children
 
 ```
 
-## First test
+## First test <!-- Moved -->
 
 You can write a short test right away that just makes sure your YAML file runs.
 

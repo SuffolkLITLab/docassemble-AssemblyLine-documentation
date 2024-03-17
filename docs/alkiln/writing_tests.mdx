@@ -11,69 +11,121 @@ WIP
 :::
 
 
-This page describes your tests files and how to write tests. It contains a lot of information. To see the table of contents on a narrow screen, tap on the dropdown menu at the top of the page. To see it on a desktop, see the column on the right-hand side of the screen.
+This page describes your tests files and how to write tests <!-- , run tests, -->  and other useful information. To see the table of contents on a small screen, tap on the dropdown menu at the top of the page. To see it on a wider screen, see the column on the right-hand side of the screen.
 
-## Quick refresher
 
-See a first test here...
+## Do _I_ need to read this? {#who}
 
-Generate a more complex test with [alkiln_story](https://github.com/plocket/alkiln_story)...
+If you are writing tests <!-- , running tests, --> or need to learn about test files, this page is for you.
 
-Example of a complex test:
+
+## Quick refresher {#refresh}
+
+1. You can see [what your first test might look like](setup.mdx#first-test)
+1. You can generate a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story)
+
+Here is an example of a more complex test for a quick refresher on some of our features:
 
 ```gherkin
-Feature: ...
+@children
+Feature: I have children
 
-Scenario: ...
+@fast @child_benefits
+Scenario: child has benefits
+  Given I start the interview at "some_file_name.yml"
+  And I get to the question id "benefits" with this data:
+    | var | value | trigger |
+    | children.there_are_any | True |
+    | children.target_number | 2 |
+    | children[0].name.first | Cashmere |
+    | children[0].name.last | Davis |
+    | children[1].name.first | Casey |
+    | children[1].name.last | Davis |
+  When I set the var "benefits['SSI']" to "True"
+  And I tap to continue
+  Then the question id should be "download"
+  And I download "some_motion.pdf"
 ```
 
-Other reminders:
+3. You write and edit `.feature` test files in your Sources folder.
+1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor)
+1. If you are using GitHub tests, those tests will run when anyone commits to GitHub.
+1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
+1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors In GitHub, they are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
 
-- ...
-- ...
-- ...
-
-
-## Writing test Steps overview
-
-Any Step can be used as many times as you want.
+<!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
 
 
-## Steps to start tests
+## Writing test Steps overview {#steps}
 
-...
+<!-- TODO: Link to what a Step is. Is that in a separate file? -->
 
+Most of [the code in test files](#files) is code for ALKiln Steps.
 
-### I go to interview at
+ALKiln Steps are how you give your instructions to the ALKiln robot. Steps are made of commands[^meh] that ALKiln has created for you. Those commands often need information from you. They are like fill-in-the-blank sentences. A sort of [madlibs](https://en.wikipedia.org/wiki/Mad_Libs#format) for your ALKiln robot. For example:
 
-...
+```gherkin
+  And I set the variable "likes_bears" to "True"
+```
 
+This Step is made of three parts.
 
-### The maximum time for a Step is
+1. `And` is one of the keywords that can start a Step
+1. `I set the variable "___" to "___"` is an ALKiln command with blanks that you need to fill in
+1. `likes_bears` and `True` are the information you put in the blanks so that the ALKiln robot knows what answer to give to a question
 
-...
+That command can also be written as `I set the variable "<variable name>" to "<value>"`. This tells you what information you should put in each of these blanks. In this case there are two blank spaces you should fill. In the first blank, you are supposed to put the name of the variable that the field will set. In the second blank, you are supposed to put the value that you want the variable to have.
 
-
-### I wait for
-
-...
-
-
-## The Story Table Step
-
-...
+Each of your tests - a `Scenario` or a `Scenario Outline` - usually contains many Steps. Any Step can be used as many times as you want and at any point in a test.
 
 
-## Interactive Steps
+[^meh] We are still working finding a more descriptive name than "command". Suggestions are welcome.
+
+
+## The Story Table Step {#story-table}
+
+The Story Table Step is an [interactive Step](#interact), but it is important enough to have its own section. It is the Step most authors work with the most.
+
+
+## Interactive Steps {#interactive}
+
+You can use some Steps to change what is on the page by filling in fields or pressing buttons or tabs.
+
 
 ### Upload
 
 ...
 
 
-## Observational Steps
+## Steps to start tests {#starter}
+
+There are some Steps that test authors tend to use at the very start of a test. They can still be used multiple times and at any point in the test.
 
 ...
+
+
+### `I start the interview at "<YAML file name>"` {#start-interview}
+
+Use this Step to start a new session of an interview.
+
+
+### `The maximum time for a Step is <number> seconds`
+
+...
+
+
+### `I wait for <number> seconds`
+
+...
+
+
+## Observational Steps {#observe}
+
+You can use some Steps to look at what is on the page or compare data. You can use these to make sure the interview has done what you want it to.
+
+
+### `I SHOULD see the phrase "<page text>"`
 
 
 ## Understanding test results
@@ -81,11 +133,111 @@ Any Step can be used as many times as you want.
 
 
 
-## Test file anatomy
+## Test file anatomy {#files}
 
-Gherkin instructions...
+Your tests files have the code that tells ALKiln how to answer questions in your interview and do other things. The code may look different than other code you have seen, but it is still code. It is still rigid and needs you to use the right syntax and spelling.
+
+You should save your test files in your package's ["Sources" folder](https://docassemble.org/docs/playground.html#sources). If you used the ALKiln setup interview, there will already be a test there that just loads the interview.
+
+In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and keywords[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
+
+[^keywords] Keywords are specific words that have a special meaning and purpose when you use them in specific places in your test code. They are similar to the words `else` and `not` in python.
+
+Here are some rules about test files:
+
+- You can have as many test files as you want.
+- Each file **must** end in `.feature`. For example, `user_has_children.feature`.
+- Each file **must** start with the keyword `Feature:` or a tag followed by a new line and the `Feature:` keyword.
+- Each file **must** contain only one `Feature:` keyword.
+- Each file can have one or more tests, called Scenarios or Scenario Outlines.
+- You **must** use **Gherkin** syntax for your tests. [Gherkin's own documentation](https://cucumber.io/docs/gherkin/reference/) is the best place to read about Gherkin syntax with some exceptions that you can read below. Ignore notes about "step definitions". Those are part of what ALKiln takes care of.
+
+To troubleshoot Gherkin synatx problems <!-- TODO: Add link to errors that indicate incorrect syntax. Wrong cell count, etc. --> in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, the editor should mark an extra `Feature:` keyword as incorrect.
+
+ALKiln only allows you to use some Gherkin keywords. Those are:
+
+- [`Feature:`](https://cucumber.io/docs/gherkin/reference/#feature) - each file can only use one `Feature:` keyword.
+- [`Scenario:`/`Example:`](https://cucumber.io/docs/gherkin/reference/#example) - We recommend you use `Scenario`. **Make the `Scenario` descriptions unique** because ALKiln will use them in the names of the reports it creates for you. This keyword is different from the plural `Examples`/`Scenarios`.
+- [`Scenario Outline:`](https://cucumber.io/docs/gherkin/reference/#scenario-outline)
+- [`Examples:/Scenarios:`](https://cucumber.io/docs/gherkin/reference/#examples) - We recommend you use `Examples`. This can help you test translations, as shown below. When a `Scenario Outline` has an `Examples` table, the test will run at least once for each row in the table. This keyword is different from the singular `Scenario`/`Example`.
+- Theses keywords that can start a Step - [`Given`](https://cucumber.io/docs/gherkin/reference/#given), [`When`](https://cucumber.io/docs/gherkin/reference/#when), [`Then`](https://cucumber.io/docs/gherkin/reference/#then), and [`And`](https://cucumber.io/docs/gherkin/reference/#and).
+
+ALKiln also lets you use:
+
+- `@` ([Tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags)). The specific sections of the tags documentation that apply to ALKiln are:
+  - A [general description of tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags).
+  - [Tag expressions](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions)
+  - Extra: [Tag inheritance](https://cucumber.io/docs/cucumber/api/?lang=java#tag-inheritance).
+- `#` (Comments). They are a tiny bit different than python comments. They always have to be on their own line. The line can begin with zero or more spaces. You can use comments anywhere in your test file.
+- `|` ([Data tables](https://cucumber.io/docs/gherkin/reference/#data-tables)).
+- `"""` ([Doc strings](https://cucumber.io/docs/gherkin/reference/#doc-strings)).
+
+We usually write test text as if it is from the perspective of the user. For example, "I wait" and "I start".
+
+Here is an example the contents of a file that uses most of these features. The name of this file is `with_children.feature`.
+
+``` gherkin
+@has_children
+Feature: I have children
+
+# This Scenario uses the Story Table Step. It lets you list the names of
+# the variables in any order you want.
+@disallow_visitation
+Scenario: I disallow visitation
+  Given I go to the interview at "protective_order.yml"
+  And I get to the question id "what kind of visitation?" with this data:
+    | var | value |
+    | needs_allow_visitation | False |
+    | user_name | Jordan |
+    | user_has_children | True |
+  Then I should see the phrase "Jordan"
+
+# This test will run once for each row in the `Examples` table. The text
+# between the "<" and ">" is the name of a column in the `Examples` table.
+@allow_visitation
+Scenario Outline: I allow visitation
+  Given I go to the interview at "<url>"
+  Then I should see the phrase "<name>"
+  When I set "user_name" to "Rea"
+  And I tap to continue
+  Then I should see the phrase "<greeting> Rea!"
+  And I set "user_has_children" to "True"
+  And I tap to continue
+  When I set "needs_allow_visitation" to "True"
+  Then I should see see the phrase "This form can help you with that"
+
+  Examples:
+    | url | name | greeting |
+    | protective_order.yml | Your name | Hello |
+    | protective_order.yml&lang=es | Tu nombre | Holá |
+```
 
 
+<!--
+Does this section need more details?
+
+Each file has
+...
+1. One or more `Scenario` or `Scenario Outline` keywords followed by a colon (`:`) and a space and then a short text description of the purpose of that specific test.
+
+Feature
+Each `Feature` keyword **must** be followed by a colon (`:`) and a space and then a short text description of the purpose of the tests in the file. For example, `Feature: The user has children`.
+Each `Feature` can have zero or more **tags** on the line above it.
+
+Scenario
+Each `Scenario` **must** have one or more **Steps**.
+Each `Scenario` can have zero or more **tags** on the line above it.
+
+Scenario Outline
+1. Can have zero or more `Examples` tables. (Can it really have multiple `Examples`? If so, we should warn that this will cause tons of tests because the number of tests is factorial or something like that.)
+
+Each **Step** **must** start with one of these keywords:
+1. `Given`
+1. `Then`
+1. `When`
+1. `And`
+You can use any of those. It does not matter what you pick.
+ -->
 
 
 ## Tips
