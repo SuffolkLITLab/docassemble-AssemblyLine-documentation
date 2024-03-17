@@ -12,6 +12,16 @@ WIP
 This page will try to help you figure out what is going wrong when you have errors or other problems with your ALKiln tests.
 
 <!--
+## Failing tests {#failure}
+
+Check report
+Check screenshots/pics
+Check HTML
+Check bottom of test output (for cucumber info)
+Go through the interview manually. Make sure to pull in a fresh new Project.
+ -->
+
+<!--
 ## The variable could not be looked up
 
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
@@ -29,31 +39,45 @@ This might mean that you have a file in your Playground Project, but that you st
 
 ### Reference error {#reference-not-found}
 
+**Problem:**
+
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
 
-If running the test manually seems to work fine, but running the automated tests gets a reference error, the test probably either has an incorrect variable name or an incorrect value for a variable.
+If running the test manually seems to work fine, but running the automated tests gets a reference error, the test probably either has an incorrect variable name or an incorrect value for a variable. It might even be a value from a page much farther back than you expect.
 
-If you have a typo, ALKiln will be unable to find the variable or value that you were trying to set. In a Story Table Step, ALKiln will just skip that field. If the user must give an answer, the test will not be able to continue to the next page. If an answer is optional, your test might just get unexpected results later on.
+If you have a typo, ALKiln will be unable to find the variable or value that you were trying to set. In some Steps, that will cause a test to fail immediately. In a [Story Table Step](#story-table), ALKiln will just skip optional fields.
 
-<!-- Something about unused rows? -->
+[Checkboxes](#checkboxes) are a common place where authors make mistakes.
+
+**Solution:**
 
 Check for:
 
-- [Incorrectly setting checkbox values](writing_tests.mdx#faq-checkbox-values)
+- [Incorrectly setting checkbox values](writing_tests.mdx#checkboxes)
 - Typos in variable names
 - Typos in the value for radio button options or similar fields
 
-It is hard to do, but if you run it by hand carefully step by step and examine each page's docassemble code and its HTML to check the values of everything and answer _exactly_ as the test would answer, you can usually track down the problem.
+You can check for incorrect variable or value names in a few different ways.
 
-1. For every single page (even if you think this page has nothing to do with the problem), go to that page.
-1. Click on the `<\/>` in the nav bar to see the source of the page.
-1. For every field in the page:
-    1. If a field is created with code, like an `object_checkbox` field or a `code:` field:
-        1. Open the browser development tools.
-        1. Examine the DOM of a field to find the encoded name of the variable.
-        1. Use `atob('the encoded name or id')` with the encoded name or id to fully decode every part of the variable name. You may have to decode multiple times. This is complex and I suggest asking for help.
-        1. Put together the variable name that you need to use.
-    1. Copy the variable name and use your editor's search functionality to look for that exact variable name in your test file.
-    1. If the field is a radio button field or something similar, copy the value's name and use your editor's search functionality to look for that exact variable name in your test file. Make sure it appears right next to the correct field name.
-    1. Set the value exactly as the test would have set it.
-1. Go on to the next page till you reach the end of your interview.
+1. If you give every question in your interview an id, the report can help show you where the test failed or where ALKiln skipped setting variables. For each test, the report often has a list of question ids. For each question id, the report has a list of variables that ALKiln set on the page. If the test failed, you can see what question id the test got to. You can also check previous questions to see what variables are missing from each of those pages - what fields ALKiln skipped.
+1. It is more annoying, but in most cases[^except] you can copy the variable name from your test and search for it in your interview code. You can do the same for values of multiple choice questions.
+1. Alternatively, in most cases[^except] you can go through the interview manually. For every single page  (even if you think this page has nothing to do with the problem), click on the `<\/>` in the nav bar to see the source of the page. Copy the name of the variable from your test and search for it on the page of the running interview. For multiple choice questions, do the same for the value. Then answer the questions _exactly_ as the test would answer them.
+1. If you are unable to find the name of the variable or value in any other way, our last suggestion is the hardest to do, but most reliable - run the interview manually and examine each page's HTML to find exact names. This is complex and we are happy to show you how to do this. Here is a refresher:
+    1. Go to a new page.
+    1. Click on the `<\/>` in the nav bar to see the source of the page.
+    1. For every field in the page:
+        1. If you cannot see the variable name or value, like for an `object_checkbox` field or a field created with `code`:
+            1. Open the browser development tools.
+            1. Examine the DOM of a field to find the encoded name of the variable.
+            1. Use `atob('the encoded name or id')` with the encoded name or id to fully decode every part of the variable name. You may have to decode multiple times.
+            1. From those decoded values, put together the variable name that you need to use. <!-- Something about nested double quotes and single quotes? -->
+        1. Copy the variable name and use your editor to search for that exact variable name in your test file. The variable name is the fully decoded and reconstructed variable name.
+        1. If the field is a multiple choice field, do the same for the value's name and use your editor to search for that exact value in your test file. Make sure it appears along with the correct variable name. For a checkbox field, the value is either `True` or `False`.
+        1. Set the value exactly as the test would have set it.
+    1. Go on to the next page till you reach the end of your interview or the error.
+
+<!-- Check new notes for getting decoding values and see if there are easier instructions for getting HTML values -->
+
+
+[^except] In some cases, you will be unable to find a variable or value name in your interview code. For example, `object`-type fields, like `object_multiselect` or for fields that use `code` might use values that are outside of your interview code. They might be in a module of your interview, in a module of an interview you `include`, in a database like S3, or somewhere else.
+

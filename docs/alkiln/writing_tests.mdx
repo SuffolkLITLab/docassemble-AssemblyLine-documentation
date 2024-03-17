@@ -21,8 +21,17 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 
 ## Quick refresher {#refresh}
 
-1. You can see [what your first test might look like](setup.mdx#first-test)
-1. You can generate a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story)
+1. You can see [what your first test might look like](setup.mdx#first-test).
+1. You can generate a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story).
+1. Every time you change or add a required variable, you must update the tests that need that variable.
+1. You write and edit `.feature` test files in your Sources folder.
+1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
+1. If you are using GitHub tests, those tests will run when anyone commits to GitHub.
+1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
+1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors In GitHub, they are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
+
+<!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
 
 Here is an example of a more complex test for a quick refresher on some of our features:
 
@@ -47,19 +56,8 @@ Scenario: child has benefits
   And I download "some_motion.pdf"
 ```
 
-3. You write and edit `.feature` test files in your Sources folder.
-1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor)
-1. If you are using GitHub tests, those tests will run when anyone commits to GitHub.
-1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors In GitHub, they are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
-1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
-
-<!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
-
 
 ## Writing test Steps overview {#steps}
-
-<!-- TODO: Link to what a Step is. Is that in a separate file? -->
 
 Most of [the code in test files](#files) is code for ALKiln Steps.
 
@@ -80,17 +78,69 @@ That command can also be written as `I set the variable "<variable name>" to "<v
 Each of your tests - a `Scenario` or a `Scenario Outline` - usually contains many Steps. Any Step can be used as many times as you want and at any point in a test.
 
 
-[^meh] We are still working finding a more descriptive name than "command". Suggestions are welcome.
+[^meh] We are still working finding a more descriptive name. Suggestions are welcome.
 
 
-## The Story Table Step {#story-table}
+## Interactive Steps {#interact}
 
-The Story Table Step is an [interactive Step](#interact), but it is important enough to have its own section. It is the Step most authors work with the most.
+You can use some Steps to change what is on the page by filling in fields, pressing buttons or tabs, or performing other actions.
 
 
-## Interactive Steps {#interactive}
+### The Story Table Step {#story-table}
 
-You can use some Steps to change what is on the page by filling in fields or pressing buttons or tabs.
+The Story Table Step fills in fields on interview pages. It is the Step many of our authors work with the most. In our opinion, in most cases it is the most effective and flexible way to fill in fields in your forms. This makes the test easier to maintain.
+
+The data in the table is a snapshot of the user who is filling out the form. It has this format:
+
+```gherkin
+  And I get to the question id "<target question id>" with this data:
+    | var | value |
+    | <variable name> | <value to set> |
+    | <variable name> | <value to set> |
+```
+
+This Step is made of a sentence followed by a table. The table **must** have two columns with the headings `var` and `value`. There are three types of blanks you need to fill in for this Step: `<target question id>`, `<variable name>`, `<value to set>`.
+
+Each row of the table is one variable in the interview. On each page, ALKiln:
+
+1. Checks if the page has the `<target question id>` you gave it at the start
+1. If the page does have the `<target question id>` it stops the Step
+1. Otherwise, it looks at each `<variable name>` in the `var` column to see if it can find that name in any fields
+1. For each `<variable name>` it finds, it tries to answer the field using the matching `<value to set>`
+1. It tries to continue to the next page
+1. If it is unable to continue it logs an error and stops
+1. Otherwise, it repeats the above
+
+An example table:
+
+```gherkin
+  And I get to the question id "brought scissors" with this data:
+    | var | value |
+    | last_haircut_date | today - 730 |
+    | wants_virtual_haircut | True |
+    | user_name | Jared |
+    | intro_screen_accepts_terms | True |
+```
+
+:::tip Docs
+Filling in checkboxes is tricky. Check our [documentation about setting checkbox values](#checkboxes).
+:::
+
+This Step is flexible, which makes the test easier to maintain. The order of the rows is unimportant. That means you can edit the order of your pages or move fields to different pages without worrying about breaking the test.
+
+ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears.
+
+You can use multiple Story Tables in a test.
+
+Right now, Story Tables are unable to [use environment variables to fill in answers](#env-vars).
+
+:::warning Unused rows
+The Story Table does not care about extra rows that never get used. This can make Story Tables easier to write, but it also means that the tests will technically "pass" even if variables that *should* get set are never filled in.
+
+That can be a sign that a question that the user *should* have seen got skipped or that there is a typo or mistake in the test.
+
+Because of this, the ALKiln report shows a list of unused rows for each table. You can check the report of passing tests to make sure none of the important rows got skipped.
+:::
 
 
 ### Upload
@@ -98,9 +148,14 @@ You can use some Steps to change what is on the page by filling in fields or pre
 ...
 
 
-## Steps to start tests {#starter}
+### Environment variables {#env-vars}
 
-There are some Steps that test authors tend to use at the very start of a test. They can still be used multiple times and at any point in the test.
+WIP
+
+
+## Steps to start tests {#start}
+
+There are some Steps that can be, and often are, the first Step in a test. They can still be used multiple times and at any point in the test. Your test **must** start with one of these Steps.
 
 ...
 
@@ -110,12 +165,12 @@ There are some Steps that test authors tend to use at the very start of a test. 
 Use this Step to start a new session of an interview.
 
 
-### `The maximum time for a Step is <number> seconds`
+### `The maximum time for a Step is <number> seconds` {#custom-timeout}
 
 ...
 
 
-### `I wait for <number> seconds`
+### `I wait for <number> seconds` {#wait}
 
 ...
 
@@ -125,12 +180,12 @@ Use this Step to start a new session of an interview.
 You can use some Steps to look at what is on the page or compare data. You can use these to make sure the interview has done what you want it to.
 
 
-### `I SHOULD see the phrase "<page text>"`
+### `I SHOULD see the phrase "<page text>"` {#phrase}
 
 
-## Understanding test results
+## Understanding test results {#output}
 
-
+...
 
 
 ## Test file anatomy {#files}
@@ -146,10 +201,10 @@ In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and k
 Here are some rules about test files:
 
 - You can have as many test files as you want.
-- Each file **must** end in `.feature`. For example, `user_has_children.feature`.
+- Each file can have one or more tests, called Scenarios or Scenario Outlines.
+- Each file's name **must** end in `.feature` because that is the extension of that type of file. For example, `user_has_children.feature`.
 - Each file **must** start with the keyword `Feature:` or a tag followed by a new line and the `Feature:` keyword.
 - Each file **must** contain only one `Feature:` keyword.
-- Each file can have one or more tests, called Scenarios or Scenario Outlines.
 - You **must** use **Gherkin** syntax for your tests. [Gherkin's own documentation](https://cucumber.io/docs/gherkin/reference/) is the best place to read about Gherkin syntax with some exceptions that you can read below. Ignore notes about "step definitions". Those are part of what ALKiln takes care of.
 
 To troubleshoot Gherkin synatx problems <!-- TODO: Add link to errors that indicate incorrect syntax. Wrong cell count, etc. --> in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, the editor should mark an extra `Feature:` keyword as incorrect.
@@ -174,7 +229,7 @@ ALKiln also lets you use:
 
 We usually write test text as if it is from the perspective of the user. For example, "I wait" and "I start".
 
-Here is an example the contents of a file that uses most of these features. The name of this file is `with_children.feature`.
+Here is an example of a file that uses most of these features. The name of this file is `children.feature`.
 
 ``` gherkin
 @has_children
@@ -240,7 +295,15 @@ You can use any of those. It does not matter what you pick.
  -->
 
 
-## Tips
+## Running tests {#run}
+
+<!--
+### Only run some tests.
+  Only run one test with tags. Here or in setup in the future section about running tests?
+-->
+
+
+## Tips {#tips}
 
 
 <!-- Something about unused rows? -->
@@ -249,33 +312,101 @@ You can use any of those. It does not matter what you pick.
 
 ## Frequently asked questions (FAQ) {#faq}
 
-### Checkboxes {#faq-checkbox-values}
+### Do I have to set every variable in the interview? {#every-var}
+
+No, only required variables.
+
+
+### Checkboxes {#checkboxes}
 
 <!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
 
-- The only values a checkbox can have are `True` or `False`.
-- The variable name of the checkbox for ALKiln is just like its docassemble variable name. For example, `good_fruits['Apples']`.
-- `object_checkboxes` are a common problem. With checkbox choices created with objects, it can be hard to tell what variable name to use. For example, look at this field:
+Many authors find setting checkboxes confusing and often use [an incorrect variable name or value](troubleshooting.mdx#reference-not-found).
+
+An example of a checkbox field:
 
 ```yml
 fields:
-  - Out of your friends, choose your best friends: best_friends
+  - Out of all your friends, choose your best friends: best_friends
+    datatype: checkboxes
+    choices:
+      - Emmet
+      - Maria
+      - Sam
+```
+
+Many authors make a mistake and try to set this field.
+
+<span class="negative">Wrong</span> ways to set the value:
+
+```gherkin
+    And I set the variable "best_friends" to "Emmet"
+```
+
+or, in a Story Table:
+
+```gherkin
+      | var | value |
+      | best_friends | Emmet |
+```
+
+<span class="positive">**Right**</span> ways:
+
+```gherkin
+    And I set the variable "best_friends['Emmet']" to "True"
+```
+
+or, in a Story Table:
+
+```gherkin
+      | var | value |
+      | best_friends['Emmet'] | True |
+```
+
+Note these facts:
+
+- The only values a checkbox can have are `True` or `False`.
+- The variable name of the checkbox for ALKiln is very similar, but not the same as, its docassemble variable name. For example, `good_fruits['Apples']`.
+- `object_checkboxes` are a common problem. With checkbox choices created with objects, it can be hard to tell what variable name to use. Their names are a bit different than their docassemble version. The variable name here needs extra quotes. For example, look at this field:
+
+```yml
+fields:
+  - Out of all your friends, choose your best friends: best_friends
     datatype: object_checkboxes
-    choices: friends
+    choices: all_friends
 ```
 
-Setting an option for the above would look something like this:
+<span class="negative">Wrong</span> ways to set the value:
 
-```
-      | best_friends['friends[0]'] | True |  |
-```
-
-These are incorrect things people have tried:
-
-```
-      | best_friends | friends[0] |  |
-      | best_friends | friends |  |
-      | best_friends[friends[0]] | True |  |
+```gherkin
+    And I set the variable "best_friends" to "all_friends"
+    And I set the variable "best_friends" to "all_friends[0]"
+    And I set the variable "best_friends[all_friends[0]]" to "True"
 ```
 
-<!-- ### Only run one test with tags. Here or in setup in the future section about running tests? -->
+or, in a Story Table:
+
+```gherkin
+      | var | value |
+      | best_friends | all_friends |
+      | best_friends | all_friends[0] |
+      | best_friends[all_friends[0]] | True |
+```
+
+<span class="positive">**Right**</span> ways:
+
+```gherkin
+    And I set the variable "best_friends['all_friends[0]']" to "True"
+```
+
+or, in a Story Table:
+
+```gherkin
+      | var | value |
+      | best_friends['all_friends[0]'] | True |
+```
+
+:::tip Eagle eye
+Especially notice the quotes just inside the first square brackets.
+:::
+

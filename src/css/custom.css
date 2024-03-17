@@ -92,3 +92,11 @@
 article .markdown p img {
   box-shadow: 5px 5px 20px gray;
 }
+
+.negative {
+  color: var(--ifm-color-danger-dark);
+}
+
+.positive {
+  color: var(--ifm-color-success-dark);;
+}
