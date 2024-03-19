@@ -117,8 +117,8 @@ to connect with Tyler Technologies and JeffNet:
    that uses the Python code to provide an end-to-end filing solution.
 
 Many states are also interested in the accessibility of guided interview that
-use an e-filing integration. We have produced a [test
-suite](../alkiln/automated_testing.md) that can provide automated
+use an e-filing integration. We have produced a
+[test suite](../alkiln/automated_testing.mdx) that can provide automated
 accessibility information to audit Docassemble interview compliance with WCAG 2.0 and 2.1's A and AA certification levels.
 
 ### For users of the Assembly Line framework
