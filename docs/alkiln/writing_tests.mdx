@@ -78,7 +78,7 @@ That command can also be written as `I set the variable "<variable name>" to "<v
 Each of your tests - a `Scenario` or a `Scenario Outline` - usually contains many Steps. Any Step can be used as many times as you want and at any point in a test.
 
 
-[^meh] We are still working finding a more descriptive name. Suggestions are welcome.
+[^meh]: We are still working finding a more descriptive name. Suggestions are welcome.
 
 
 ## Interactive Steps {#interact}
@@ -88,7 +88,7 @@ You can use some Steps to change what is on the page by filling in fields, press
 
 ### The Story Table Step {#story-table}
 
-The Story Table Step fills in fields on interview pages. It is the Step many of our authors work with the most. In our opinion, it is the most flexible way to fill in fields in your forms. This makes a test easier to maintain.
+The Story Table Step fills in fields on interview pages. It is the Step many of our authors work with the most. In our opinion, it is the most flexible way to fill in fields in your forms, unlike the linear ["I set" Step](#set). This makes a test easier to maintain.
 
 You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a first draft of a full test file that uses a Story Table based on an interview you have finished.
 
@@ -117,7 +117,7 @@ The Story Table Step is made of a sentence followed by a table. The data in the 
     | <variable name> | <value to set> |
 ```
 
-As you can see, there are three types of blanks you need to fill in for this Step: `<target question id>`, `<variable name>`, `<value to set>`.
+As you can see, there are three types of blanks you need to fill in for this Step: `<target question id>`, `<variable name>`, `<value to set>`. The way to use the names of variables and values to [set the values of fields](#field-values) is the same as the ["I set" Step](#set).
 
 - The starting sentence **must** include the question `id`[^id] of a page in the interview.
 - The table **must** include all the variables and values necessary to get a user from the current page to the page with the given question id.
@@ -165,12 +165,17 @@ Because of this, the ALKiln report shows a list of unused rows for each table. Y
 :::
 
 
-[^id] You can find the question `id` in your interview code in the `question` block of that page. It is a good idea for every `question` block in your interview to have an id.
+[^id]: You can find the question `id` in your interview YAML in the `question` block of that page. It is a good idea for every `question` block in your interview to have an id.
+
+
+### `I set the variable "<variable name>" to "<value to set>"` {#set}
+
+WIP
 
 
 ### Upload {#upload}
 
-...
+WIP
 
 
 ### Environment variables {#env-vars}
@@ -182,7 +187,7 @@ WIP
 
 There are some Steps that can be, and often are, the first Step in a test. They can still be used multiple times and at any point in the test. Your test **must** start with one of these Steps.
 
-...
+WIP
 
 
 ### `I start the interview at "<YAML file name>"` {#start-interview}
@@ -192,12 +197,133 @@ Use this Step to start a new session of an interview.
 
 ### `The maximum time for a Step is <number> seconds` {#custom-timeout}
 
-...
+WIP
 
 
 ### `I wait for <number> seconds` {#wait}
 
-...
+WIP
+
+
+## Setting values {#field-values}
+
+There are different ways to fill in fields. One is the [Story Table Step](#story-table) another is the ["I set" Step](#set). Each has different syntax, but they set values the same way.
+
+
+### Text {#text}
+
+Fields such as the default field or those with `input type: text`, as well as `datatype: textarea` accept text for their value.
+
+
+### yesno {#yesno}
+
+WIP
+
+
+### yesnomaybe {#yesnomaybe}
+
+WIP
+
+
+### radio {#radio}
+
+WIP
+
+
+### checkboxes {#checkboxes}
+
+<!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
+
+Many authors find setting checkboxes confusing and often accidentally use an incorrect variable name or value. When they do that, they can get a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just skip the field. Reading this section can help.
+
+:::tip Advanced summary
+- The only value a checkbox can have is `True` or `False`.
+- In ALKiln, the variable name of the checkbox is usually the same as its docassemble variable name. For example, `good_fruits['Apples']`.
+- The names of `object_checkboxes` variable names in ALKiln are similar to how docassemble uses them, but they have extra quotes inside the first square brackets. For example: `best_friends['all_friends[0]']`
+:::
+
+An example of a checkbox field:
+
+```yml
+fields:
+  - Out of all your friends, choose your best friends: best_friends
+    datatype: checkboxes
+    choices:
+      - Emmet
+      - Maria
+      - Sam
+```
+
+The variable name of the checkbox for ALKiln is usually the same as its docassemble variable name. For example, `good_fruits['Apples']`. The only value a checkbox can have is `True` or `False`.
+
+<span class="negative">Wrong</span> way to set the value of the check box:
+
+```gherkin
+    And I set the variable "best_friends" to "Emmet"
+```
+
+<span class="positive">**Right**</span> ways:
+
+```gherkin
+    And I set the variable "best_friends['Emmet']" to "True"
+```
+
+or, in a Story Table:
+
+```gherkin
+      | var | value |
+      | best_friends['Emmet'] | True |
+```
+
+One exception is field created with an `object` datatype, like `object_checkboxes`. Their ALKiln names are similar to their docassemble names, but they need extra quotes. For example, look at this field:
+
+```yml
+fields:
+  - Out of all your friends, choose your best friends: best_friends
+    datatype: object_checkboxes
+    choices: all_friends
+```
+
+<span class="negative">Wrong</span> ways to set the value of the checkbox:
+
+```gherkin
+    And I set the variable "best_friends" to "all_friends"
+    And I set the variable "best_friends" to "all_friends[0]"
+    And I set the variable "best_friends[all_friends[0]]" to "True"
+```
+
+<span class="positive">**Right**</span> ways:
+
+```gherkin
+    And I set the variable "best_friends['all_friends[0]']" to "True"
+```
+
+or, in a Story Table:
+
+```gherkin
+      | var | value |
+      | best_friends['all_friends[0]'] | True |
+```
+
+:::warning Eagle eye
+Especially notice the quotes just inside the first square brackets.
+:::
+
+
+### others {#other-values}
+
+WIP
+
+
+### Special values {#special-values}
+
+`today` is a special value in ALKiln. ALKiln will change that value into the date of the current day. Right now it uses the US format for the date. You can also add or subtract days from `today` to set a specific date in the past or in the future. These are the ways you can use `today`:
+
+```gherkin
+    | signature_date | today |
+    | court_date | today + 20 |
+    | minors_birth_date | today - 3650 |
+```
 
 
 ## Observational Steps {#observe}
@@ -207,10 +333,12 @@ You can use some Steps to look at what is on the page or compare data. You can u
 
 ### `I SHOULD see the phrase "<page text>"` {#phrase}
 
+WIP
+
 
 ## Understanding test results {#output}
 
-...
+WIP
 
 
 ## Test file anatomy {#files}
@@ -221,7 +349,7 @@ You should save your test files in your package's ["Sources" folder](https://doc
 
 In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and keywords[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
 
-[^keywords] Keywords are specific words that have a special meaning and purpose when you use them in specific places in your test code. They are similar to the words `else` and `not` in python.
+[^keywords]: Keywords are specific words that have a special meaning and purpose when you use them in specific places in your test code. They are similar to the words `else` and `not` in python.
 
 Here are some rules about test files:
 
@@ -327,111 +455,21 @@ You can use any of those. It does not matter what you pick.
   Only run one test with tags. Here or in setup in the future section about running tests?
 -->
 
+WIP
+
 
 ## Tips {#tips}
 
-
 <!-- Something about unused rows? -->
+
+WIP
 
 
 
 ## Frequently asked questions (FAQ) {#faq}
 
+
 ### Do I have to set every variable in the interview? {#every-var}
 
 No, only required variables.
-
-
-### Checkboxes {#checkboxes}
-
-<!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
-
-Many authors find setting checkboxes confusing and often use [an incorrect variable name or value](troubleshooting.mdx#reference-not-found).
-
-An example of a checkbox field:
-
-```yml
-fields:
-  - Out of all your friends, choose your best friends: best_friends
-    datatype: checkboxes
-    choices:
-      - Emmet
-      - Maria
-      - Sam
-```
-
-Many authors make a mistake and try to set this field.
-
-<span class="negative">Wrong</span> ways to set the value:
-
-```gherkin
-    And I set the variable "best_friends" to "Emmet"
-```
-
-or, in a Story Table:
-
-```gherkin
-      | var | value |
-      | best_friends | Emmet |
-```
-
-<span class="positive">**Right**</span> ways:
-
-```gherkin
-    And I set the variable "best_friends['Emmet']" to "True"
-```
-
-or, in a Story Table:
-
-```gherkin
-      | var | value |
-      | best_friends['Emmet'] | True |
-```
-
-Note these facts:
-
-- The only values a checkbox can have are `True` or `False`.
-- The variable name of the checkbox for ALKiln is very similar, but not the same as, its docassemble variable name. For example, `good_fruits['Apples']`.
-- `object_checkboxes` are a common problem. With checkbox choices created with objects, it can be hard to tell what variable name to use. Their names are a bit different than their docassemble version. The variable name here needs extra quotes. For example, look at this field:
-
-```yml
-fields:
-  - Out of all your friends, choose your best friends: best_friends
-    datatype: object_checkboxes
-    choices: all_friends
-```
-
-<span class="negative">Wrong</span> ways to set the value:
-
-```gherkin
-    And I set the variable "best_friends" to "all_friends"
-    And I set the variable "best_friends" to "all_friends[0]"
-    And I set the variable "best_friends[all_friends[0]]" to "True"
-```
-
-or, in a Story Table:
-
-```gherkin
-      | var | value |
-      | best_friends | all_friends |
-      | best_friends | all_friends[0] |
-      | best_friends[all_friends[0]] | True |
-```
-
-<span class="positive">**Right**</span> ways:
-
-```gherkin
-    And I set the variable "best_friends['all_friends[0]']" to "True"
-```
-
-or, in a Story Table:
-
-```gherkin
-      | var | value |
-      | best_friends['all_friends[0]'] | True |
-```
-
-:::tip Eagle eye
-Especially notice the quotes just inside the first square brackets.
-:::
 

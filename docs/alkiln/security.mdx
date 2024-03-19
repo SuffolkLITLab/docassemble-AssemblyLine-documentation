@@ -1,11 +1,15 @@
 ---
 id: alkiln_security
 title: Keeping ALKiln test secure
-sidebar_label: Security
+sidebar_label: WIP Security
 slug: /alkiln/security
 ---
 
 import SecureEnvVars from './components/\_secure_env_vars.md';
+
+:::warning
+WIP
+:::
 
 This page will help you learn some steps you can take to protect yourself and your users as you develop tests with ALKiln. It will also talk about the security practices ALKiln uses.
 
@@ -202,7 +206,7 @@ We recommend that you start your environment variable names with "ALKILN_". That
 
 Right now Story Tables are unable to use environment variables to set variables.
 
-[^org_secrets] [GitHub organization secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization) can be useful if an organization wants to create a variable that all of its repositories will be able to use and avoid creating that secret in every individual repository.
+[^org_secrets]: [GitHub organization secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization) can be useful if an organization wants to create a variable that all of its repositories will be able to use and avoid creating that secret in every individual repository.
 
 
 ## Freeze the ALKiln framework version {#freeze-framework}
@@ -242,7 +246,7 @@ When you want to update to a new version of the framework, you can check all the
 This is different than [the ALKiln action versions](#freeze-actions). The ALKiln actions let you start your tests on GitHub. You do usually need to make sure these match, though, as they work together. When you update one, you should also update the other.
 :::
 
-[^versions] ALKiln does its best to use [semantic versioning](https://semver.org/spec/v2.0.0.html).
+[^versions]: ALKiln does its best to use [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 
 ## Freeze an ALKiln action version {#freeze-actions}

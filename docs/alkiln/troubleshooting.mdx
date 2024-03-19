@@ -31,17 +31,21 @@ Go through the interview manually. Make sure to pull in a fresh new Project.
 
 Or "It works when I run the interview manually" or "The tests pass when I run them with ALKilnInThePlayground".
 
-### File not found {#file-not-found}
+### Error: File not found {#file-not-found}
 
 <!-- Find that error -->
 
 This might mean that you have a file in your Playground Project, but that you still have to save it on the Project's Packages page and commit that to GitHub. Your tests will pass for that Project in your Playground, but your interview will break when you or others install it from GitHub.
 
-### Reference error {#reference-not-found}
+### Error: Variable could not be looked up {#variable-not-found}
 
 **Problem:**
 
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
+
+This is a reference error. It means docassemble tried to get the definition for a variable, but couldn't find the variable anywhere in your code or in the code you included or imported.
+
+Sometime the easiest way to see what is wrong is to run the interview manually. Fill in the same values as the test fills in. You can then see what goes wrong when you reach the error.
 
 If running the test manually seems to work fine, but running the automated tests gets a reference error, the test probably either has an incorrect variable name or an incorrect value for a variable. It might even be a value from a page much farther back than you expect.
 
@@ -72,12 +76,18 @@ You can check for incorrect variable or value names in a few different ways.
             1. Use `atob('the encoded name or id')` with the encoded name or id to fully decode every part of the variable name. You may have to decode multiple times.
             1. From those decoded values, put together the variable name that you need to use. <!-- Something about nested double quotes and single quotes? -->
         1. Copy the variable name and use your editor to search for that exact variable name in your test file. The variable name is the fully decoded and reconstructed variable name.
-        1. If the field is a multiple choice field, do the same for the value's name and use your editor to search for that exact value in your test file. Make sure it appears along with the correct variable name. For a checkbox field, the value is either `True` or `False`.
+        1. In the final variable name, replace `x`, `i`, `j`, etc. with their actual values on that page.
+        1. If the field is a multiple choice field like radio buttons, do the same for the value and use your editor to search for that exact value in your test file. Make sure it appears along with the correct variable name. For a checkbox field, the value is either `True` or `False`.
         1. Set the value exactly as the test would have set it.
     1. Go on to the next page till you reach the end of your interview or the error.
 
 <!-- Check new notes for getting decoding values and see if there are easier instructions for getting HTML values -->
 
 
-[^except] In some cases, you will be unable to find a variable or value name in your interview code. For example, `object`-type fields, like `object_multiselect` or for fields that use `code` might use values that are outside of your interview code. They might be in a module of your interview, in a module of an interview you `include`, in a database like S3, or somewhere else.
+[^except]: In some cases, you will be unable to find a variable or value name in your interview code. For example, `object`-type fields, like `object_multiselect` or for fields that use `code` might use values that are outside of your interview code. They might be in a module of your interview, in a module of an interview you `include`, in a database like S3, or somewhere else.
+
+
+## Skipped variables {#skipped}
+
+If you look in a test report and see that ALKiln skipped setting a variable, you probably have a typo. See the [error for a missing variable reference](#variable-not-found)
 
