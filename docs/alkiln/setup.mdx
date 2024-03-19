@@ -8,9 +8,10 @@ slug: /alkiln/setup
 import GitHubSetup from './components/\_github_setup.md';
 
 :::warning
-WIP
+WIP (Work in progress)
 :::
 
+<!-- TODO: Add a GitHub admins section -->
 <!-- TODO: Add full instructions to manually create GitHub files and set secrets for the GitHub methods? I think the setup interview should do that. -->
 <!-- TODO:
 Should this file include how to run the tests? Workflow files, trigger automatically, on a schedule, manually, tags, ALKiln versions, etc.
@@ -63,7 +64,7 @@ Installing tests can involve one or more of these things:
 
 This is the way we recommend setting up ALKiln tests for a repository for the first time. You are least likely to run into setup problems with this method. Every repository that needs to use this kind of test must go through this setup process.
 
-The tests run whenever you commit any code to any branch on GitHub. You can read more [details and the pros and cons of GitHub tests](#github-details) below.[^names]
+The tests run whenever you commit any code to any branch on GitHub. You can read more [details and the pros and cons of GitHub tests](#github-details) below.
 
 **You need:**
 
@@ -78,8 +79,6 @@ The tests run whenever you commit any code to any branch on GitHub. You can read
 - GitHub workflows
 - GitHub pull requests (PRs)<!-- **If you use the setup interview, it could help to know about:** -->
 - GitHub personal authorization tokens (PATs)
-
-The setup interview will try to walk you through this.
 
 <GitHubSetup/>
 
@@ -102,7 +101,7 @@ Add link to going to GitHub "Actions" tab
 You can also run the tests by [triggering your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow).
 
 
-[^names]: You may have spotted this already, but two of these methods run tests on GitHub. They run the tests in different ways, though. We have not yet found good names for them that avoid this confusion.
+<!-- [^names]: You may have spotted this already, but two of these methods run tests on GitHub. They run the tests in different ways, though. We have not yet found good names for them that avoid this confusion. -->
 
 [^edit]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
 
@@ -134,6 +133,7 @@ You can wait to write more complex tests till your code is more stable. "Stable"
 You can read more about test files in other documentation.
 :::
 
+<!-- To run the tests you can commit new code to your GitHub repository or you can [trigger your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). Authors usually [commit new code from their Playground](https://docassemble.org/docs/development.html#versioncontrol). -->
 
 ## Test in your Playground {#playground-how-to}
 
@@ -193,7 +193,7 @@ To run the tests:
 
 ## Isolated server tests (advanced) {#isolated-server-how-to}
 
-Isolated server tests are the most secure because they never interact with your server. They run on GitHub too, we just have not yet found better names for these test types. ALKiln makes a server on GitHub itself and runs the tests there.
+Isolated server tests are the most secure because they never interact with your server. ALKiln makes a server on GitHub itself and runs the tests there.
 
 Every repository that needs to use this kind of test must go through this setup process.
 
@@ -251,7 +251,7 @@ To run tests:
 
 You can also run the tests by [triggering your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow).
 
-<!-- Read more about GitHub test options here. -->
+<!-- Read more about GitHub isolated server test options here. -->
 
 
 ## GitHub test details {#github-details}
@@ -271,7 +271,7 @@ When you run GitHub tests, ALKiln does the following:
 
 You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
-When the tests are done, you can see a report and logs right in the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs) or [download a `.zip` file](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) containing all the results of the tests to your computer.
+When the tests are done, you can see a report and logs right in the [workflow's "job" page on GitHub](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs). You can also [download a `.zip` file on GitHub](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) containing all the results of the tests to your computer.
 
 :::warning TODO
 Add link to section on test results
@@ -362,11 +362,12 @@ Link to description of results/output
 
 ### Pros {#playground-pros}
 
-- You can avoid putting your package on GitHub to run the tests.
+- You can skip putting your package on GitHub.
 - Running ALKiln on your server lets you loop through your development cycle faster - edit, test, edit, test. You don't have to go through committing your code to GitHub every time.
 - You can more easily limit your tests to a specific set of tests using [tag expressions](https://www.cuketest.com/en/cucumber/tag-expressions). You can use tags on GitHub too, it just takes more steps.
 - The full report output is easier to get right away.
-- You can more often avoid the red "x" that appears next to failing tests on GitHub. The red "x" is a useful piece of information, but it can be uncomfortable.
+- If you also have GitHub tests, these tests can often help you avoid the red "x" that appears next to failing tests on GitHub. The red "x" is a useful piece of information, but it can be uncomfortable.
+
 
 ### Cons {#playground-cons}
 
