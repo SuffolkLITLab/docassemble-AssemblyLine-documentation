@@ -24,5 +24,5 @@ This interview also includes a filter for filing review comments, which is usefu
 ### Keeping track of Court Codes
 
 When making your interview, the court codes used might change. You should
-continually run [automated testing](../alkiln/automated_testing.md) against your
+continually run [automated testing](../alkiln/automated_testing.mdx) against your
 interview to ensure that the codes still exist as your program expects them to.

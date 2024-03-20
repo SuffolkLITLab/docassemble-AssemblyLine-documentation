@@ -7,13 +7,12 @@ slug: /alkiln
 
 <!-- slug: /alkiln_old_overview -->
 
+**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.  <!-- Moved -->
 
-**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
-
-🚧 Reference material for testing your interview with ALKiln. This is under very active development.
+🚧 Reference material for testing your interview with ALKiln. This is under very active development. <!-- Moved -->
 
 
-## Intro
+## Intro <!-- Moved -->
 
 The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview either through the Playground or through GitHub, making sure your interviews are running correctly.
 
@@ -28,9 +27,9 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 ## Start
 
-You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.md#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests.
+You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.mdx#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests. <!-- Moved -->
 
-### Set up for ALKilnInThePlayground
+### Set up for ALKilnInThePlayground <!-- Moved -->
 
 1. Leave the Playground and go to your server's "Package Management" page.
 1. Install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
@@ -53,7 +52,7 @@ dispatch:
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-### Set up for GitHub-triggered tests
+### Set up for GitHub-triggered tests <!-- Moved -->
 
 You will need to have a GitHub account that has permissions to edit the GitHub repository that you want to test.
 
@@ -67,7 +66,7 @@ You will need to have a GitHub account that has permissions to edit the GitHub r
 If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets or to [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repo the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repo and if one of the values changes, you'll have to update it in every repo.
 :::
 
-### Set up for isolated GitHub server tests
+### Set up for isolated GitHub server tests <!-- Moved -->
 
 This is an advanced method and we are happy to help you with it. It would help a lot to be familiar with GitHub and GitHub actions. You'll need a GitHub repository or organization admin to do one of these steps. You'll need to set this up for each repo running ALKiln tests.
 
@@ -95,7 +94,8 @@ If you need to troubleshoot the docker setup because the step to start the GitHu
 
 It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
 
-## Quick reminders
+
+## Quick reminders <!-- Moved -->
 
 1. You write and edit `.feature` test files in your Sources folder.
 1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
@@ -105,7 +105,7 @@ It's possible to do more docker troubleshooting using [the tmate action](https:/
 1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
 
-### Example
+### Example <!-- Moved -->
 
 The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for a quick refresher on some of our features:
 
@@ -131,7 +131,7 @@ Feature: I have children
 
 ```
 
-## First test
+## First test <!-- Moved -->
 
 You can write a short test right away that just makes sure your YAML file runs.
 
@@ -152,7 +152,11 @@ Feature: Interviews load
 
 You can wait to write more complex tests till your code is more stable. For example, your variable names should be staying pretty much the same.
 
-## Story Tables
+## Story Tables <!-- Moved -->
+
+See our [**new and improved** Story Table section](writing_tests.mdx#story-table)!
+
+**Old**:
 
 In your Scenario, you will:
 
@@ -193,7 +197,7 @@ Right now, Story Tables are unable to use GitHub secrets to set variables.
 A Story Table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
-### Generate a Story Table
+### Generate a Story Table <!-- Removed -->
 
 You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
 
@@ -212,7 +216,8 @@ Follow these instructions to use the generator:
 1. Copy the Scenario that has been generated for you.
 1. Paste that into the already prepared test file.
 
-This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic).
+<!-- This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic). -->
+
 
 ### Step command
 
@@ -1114,26 +1119,31 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 <!-- ### Access Denied -->
 
 
-## Security
+## Security <!-- Moved -->
+
+See our [**new and improved** security section](security.mdx)!
+
+**Old** content:
 
 Using a third-party library or package is always a risk. That said, we take measures to help secure our code, such as protecting our release branches and requiring reviews before merging any new code.
 
 In addition, here are some actions you can take to manage the security of the tests, as well as general guidelines for server security.
 
-### Disable the tests
+### Disable the tests <!-- Moved -->
 
 If you become worried about the tests, there are different ways you can stop the tests from running.
 
 In order to run, the test setup interview added a "workflow" file to your repository. GitHub sometimes calls that an "action". That's what triggers the tests. You can manage that workflow, and your actions in general, in GitHub.
 
-#### Disabling tests in one repository
+#### Disabling tests in one repository <!-- Moved -->
+
 GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
 
 You can also delete the file from your repository completely. If you go to the front page of your repository, the file is in the `workflows` folder of the `.github` folder. It's called `run_form_tests.yml`. GitHub's instructions about how to delete a file are at https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository.
 
 Another option is to disable or limit all tests, all actions, in your repository. GitHub's documentation for managing repository actions is at https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository.
 
-#### Disabling tests for the whole organization
+#### Disabling tests for the whole organization <!-- Moved -->
 
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
@@ -1147,11 +1157,11 @@ In addition, some general good practices are:
 * Periodically clear out the test server and start a new docker container from scratch.
 * Occasionally check the test server to make sure it's not running resource stealing code (blockchain miners, etc.)
 
-### See GitHub's security docs
+### See GitHub's security docs <!-- Moved -->
 
 GitHub has documentation on some best practices as well: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions
 
-### Use ALKiln's commit sha
+### Use ALKiln's commit sha <!-- Moved -->
 
 This one requires prior technical knowledge. To summarize, you can freeze the version of the ALKiln code your repository's tests use by referencing a specific ALKiln commit sha in your workflow file.
 
@@ -1167,13 +1177,13 @@ uses: suffolkLITLab/ALKiln@releases/v4
 
 When you want to update to a new version of the ALKiln, update that sha manually.
 
-### Set ALKiln's npm version
+### Set ALKiln's npm version <!-- Moved -->
 
 This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
 
 You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
-### GitHub secrets
+### GitHub secrets <!-- Moved -->
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
@@ -1193,18 +1203,21 @@ GitHub secrets can be useful if an organization wants to create a variable that 
 
 ```yml
 jobs:
+  alkiln-tests:
+    runs-on: ubuntu-latest
+    name: Run ALKiln tests
 ```
 
-If this is the first environment variable you're adding, right above that line add a new line like this:
+If this is the first environment variable you're adding, below that line add a new line like this:
 
 ```yml
-env:
+    env:
 ```
 
 4. Whenever you want to add a secret, add a new line under `env:` indented once as shown below:
 
 ```yml
-  USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
+      USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
 ```
 
 `USER_PASSWORD` is just a placeholder in our example. You can name your secrets whatever you want to. Make sure you use the same words as the GitHub secret you made.
@@ -1214,7 +1227,7 @@ env:
 If you're not worried about keeping the information secure, you don't have to use a GitHub secret - you can just put the value straight into your workflow file like this:
 
 ```yml
-  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
+      MAX_SECONDS_FOR_SERVER_RELOAD: "300"
 ```
 
 ALKiln will still avoid printing this value and avoid taking screenshots when it is used. There is no way ALKiln can tell which environment variables have sensitive information and which ones are safe.
@@ -1222,15 +1235,17 @@ ALKiln will still avoid printing this value and avoid taking screenshots when it
 All together, this section can look similar to this:
 
 ```yml
-env:
-  USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
-  MAX_SECONDS_FOR_SERVER_RELOAD: "300"
-
 jobs:
+  alkiln-tests:
+    runs-on: ubuntu-latest
+    name: Run ALKiln tests
+    env:
+      USER_PASSWORD: "${{ secrets.USER_PASSWORD }}"
+      MAX_SECONDS_FOR_SERVER_RELOAD: "300"
 ```
 
 
-### Things to worry about less
+### Things to worry about less <!-- Moved -->
 
 There are some parts of testing that might look less secure than they are.
 
