@@ -177,6 +177,14 @@ Your new `custom.css` file is in the
 `~/bootstrap-5.1.3/dist/css` directory. Copy this file to your Docassemble
 `static` folder and reference it as a `bootstrap theme`.
 
+### Using dark mode
+
+Docassemble by default will show an alternate "dark mode" version of your interview to
+users who request it, usually with a browser or OS setting. You can set your browser
+or OS to use dark mode by following [these instructions](https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop#zippy=) to see what your interview looks like.
+
+
+
 ### Using custom fonts in the frontend
 
 You can use custom webfonts with Docassemble, just like you can with any other web
