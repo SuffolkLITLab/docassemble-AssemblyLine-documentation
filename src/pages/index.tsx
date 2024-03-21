@@ -35,7 +35,7 @@
            <div className={styles.heroInner}>
              <h1 className={styles.heroProjectTagline}>
                <img
-                 alt={translate({message: 'The Document Assembly Line project'})}
+                 alt={translate({message: 'The Document Assembly Line'})}
                  className={styles.heroLogo}
                  src={useBaseUrl('/img/undraw_work_together_re_5yhn.svg')}
                  width="50%"
@@ -119,7 +119,7 @@
                  </h2>
                  <p className="padding-horiz--md">
                    <Translate>
-                     The Assembly Line Project use the free and open
+                     The Document Assembly Line uses the free and open
                      source Docassemble as its engine. Build with confidence
                      knowing it will be free to use, forever.
                    </Translate>
