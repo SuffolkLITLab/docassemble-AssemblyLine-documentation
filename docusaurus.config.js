@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'The Document Assembly Line Project',
+  title: 'The Document Assembly Line',
   tagline: 'From paper to webform, made easier',
   url: 'https://suffolklitlab.org',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
@@ -18,7 +18,7 @@ module.exports = {
       isCloseable: false,
     },
     navbar: {
-      title: 'The Document Assembly Line Project',
+      title: 'The Document Assembly Line',
       logo: {
         alt: 'The Suffolk LIT Lab Logo',
         src: 'img/LITLab_white_and_gold.svg',
