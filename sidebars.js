@@ -1,10 +1,11 @@
 module.exports = {
     mainSidebar: [
+    ],
+    dal: [
         'intro',
-        'getting_started_docassemble',
         {
             type: 'category',
-            label: 'Setting up your own Assembly Line team',
+            label: 'Setting Up Your Team',
             items: [
                 'bootcamp',
                 'getting_started',
@@ -15,10 +16,10 @@ module.exports = {
                 'customization/customization_overview',
             ],
         },
-        'installation',
+        'getting_started_docassemble',
         {
             type: 'category',
-            label: 'Authoring your interview',
+            label: 'Authoring Your Interview',
             items: [
                 'plan_interview',
                 'pdf_templates',
@@ -33,7 +34,7 @@ module.exports = {
         },
         {
             type: 'category',
-            label: 'How to write good questions',
+            label: 'Writing Good Questions',
             items: [
                 'question_style_overview',
                 'style_guide_respect',
@@ -44,18 +45,6 @@ module.exports = {
                 'question_style_help_your_user',
                 'style_guide_formatting',
                 'question_style_validation'
-            ]
-        },
-        {
-            type: 'category',
-            label: 'Question library',
-            items: [
-                'question_library/ql_names',
-                'question_library/ql_addresses',
-                'question_library/ql_gender',
-                'question_library/ql_pronouns',
-                'question_library/ql_language',
-                'question_library/ql_terms_of_use',
             ]
         },
         {
@@ -74,53 +63,33 @@ module.exports = {
                 'coding_style/docs_style_guide'
             ]
         },
+        'complexity/complexity',
+        'contributors',
+    ],
+    docs: [
+        'installation',
+        'al_project_architecture',
+        'framework/magic_variables',
+        'framework/reserved_keywords',
         {
             type: 'category',
-            label: 'Measuring form complexity',
+            label: 'Question Library',
             items: [
-                'complexity/complexity'
+                'question_library/ql_names',
+                'question_library/ql_addresses',
+                'question_library/ql_gender',
+                'question_library/ql_pronouns',
+                'question_library/ql_language',
+                'question_library/ql_terms_of_use',
             ]
         },
-        //'name_formats',
+        'framework/alrecipes',
+        'framework/algeneral',
+        'framework/aldocument',
+        'framework/altoolbox',
         {
             type: 'category',
-            label: 'Feature documentation',
-            items: [
-                'al_project_architecture',
-                'framework/framework_overview',
-                'framework/magic_variables',
-                'framework/algeneral',
-                'framework/aldocument',
-                'framework/altoolbox',
-                'framework/alrecipes',
-                'framework/github_feedback',
-                {
-                    type: 'category',
-                    label: 'ALKiln testing',
-                    items: [
-                        // WIPs
-                        'alkiln/alkiln_intro',
-                        // Old
-                        'alkiln/alkiln_about',
-                        'alkiln/alkiln_advanced',
-                        // WIPs
-                        'alkiln/alkiln_setup',
-                        'alkiln/alkiln_writing',
-                        'alkiln/alkiln_troubleshooting',
-                        'alkiln/alkiln_security',
-                        'alkiln/alkiln_deprecated',
-                    ]
-                },
-                'framework/answer_sets',
-                'framework/answer_set_intakes',
-                'framework/error_actions',
-                'framework/reserved_keywords',
-                'framework/alreminders',
-            ]
-        },
-        {
-            type: 'category',
-            label: 'AL Income Module',
+            label: 'ALIncome',
             items: [
                 'alincome/overview',
                 'alincome/expenses',
@@ -140,14 +109,41 @@ module.exports = {
         },
         {
             type: 'category',
+            label: 'Answer Sets',
+            items: [
+                'framework/answer_sets',
+                'framework/answer_set_intakes',
+            ]
+        },
+        'framework/alreminders',
+        'framework/github_feedback',
+        'framework/error_actions',
+        {
+            type: 'category',
+            label: 'ALKiln',
+            items: [
+                // WIPs
+                'alkiln/alkiln_intro',
+                // Old
+                'alkiln/alkiln_about',
+                'alkiln/alkiln_advanced',
+                // WIPs
+                'alkiln/alkiln_setup',
+                'alkiln/alkiln_writing',
+                'alkiln/alkiln_troubleshooting',
+                'alkiln/alkiln_security',
+                'alkiln/alkiln_deprecated',
+            ]
+        },
+        {
+            type: 'category',
             label: 'Analytics',
             items: [
                 'analytics/tracking_usage'
             ]
         },
-        'contributors',
     ],
     api: [
-          require('./docs/reference/sidebar.json')["items"]
+        require('./docs/reference/sidebar.json')["items"]
     ]
 };

@@ -26,30 +26,39 @@ module.exports = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'intro',
-          label: 'Guides',
+          type: 'docSidebar',
+          sidebarId: 'dal',
+          label: 'Get Started',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'docs',
+          label: 'Components',
         },
         {
           type: 'docSidebar',
           sidebarId: 'api',
-          label: 'Code API'
+          label: 'API'
         },
         {
-          href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-          label: 'Intro to Docassemble',
-          position: 'right',
+          type: 'dropdown',
+          label: 'Docassemble',
+          items: [
+            {
+              href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
+              label: 'Intro to Docassemble',
+            },
+            {
+              href: 'https://docassemble.org/docs.html',
+              label: 'Docassemble Docs',
+            },
+          ]
         },
-        {
-          href: 'https://docassemble.org/docs.html',
-          label: 'Docassemble Docs',
-          position: 'right',
-        },
-        {
-          href: 'https://courtformsonline.org',
-          label: 'CourtFormsOnline',
-          position: 'right',
-        },
+        // {
+        //   href: 'https://courtformsonline.org',
+        //   label: 'CourtFormsOnline',
+        //   position: 'right',
+        // },
         {
           href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
           className: 'header-github-link',
@@ -64,10 +73,6 @@ module.exports = {
         {
           title: 'More',
           items: [
-            // {
-            //   label: 'Blog',
-            //   to: 'blog',
-            // },
             {
               label: 'GitHub',
               href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',

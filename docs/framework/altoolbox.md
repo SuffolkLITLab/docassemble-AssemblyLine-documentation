@@ -2,7 +2,7 @@
 id: altoolbox
 title: |
     ALToolbox functions and components
-sidebar_label: ALToolbox functions and components
+sidebar_label: ALToolbox
 slug: /framework/altoolbox
 ---
 

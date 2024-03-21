@@ -1,9 +1,7 @@
 ---
 id: error_actions
-title: |
-  Helping users recover from developer errors
-sidebar_label: |
-  Helping users recover from developer errors
+title: Helping users recover from developer errors
+sidebar_label: Error Pages
 slug: /framework/error_actions
 ---
 

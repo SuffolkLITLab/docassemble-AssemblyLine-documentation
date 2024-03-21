@@ -1,8 +1,8 @@
 ---
 id: intro
 title: The Document Assembly Line
-sidebar_label: About
-slug: /
+sidebar_label: About the Document Assembly Line
+slug: /intro
 ---
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y7Bwk9g8H7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

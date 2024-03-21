@@ -1,9 +1,7 @@
 ---
 id: aldocument
-title: |
-    ALDocument: Python Classes to simplify working with multiple templates
-sidebar_label: |
-  ALDocument: Python Classes to simplify working with multiple templates
+title: 'ALDocument: Python Classes to simplify working with multiple templates'
+sidebar_label: ALDocument
 slug: /framework/aldocument
 ---
 

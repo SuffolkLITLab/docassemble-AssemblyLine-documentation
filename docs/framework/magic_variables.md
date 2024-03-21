@@ -1,8 +1,7 @@
 ---
 id: magic_variables
-title: |
-    Special variables for Assembly Line interviews
-sidebar_label: Special variables for Assembly Line interviews
+title: Special variables for Assembly Line interviews
+sidebar_label: Special Variables
 slug: /framework/magic_variables
 ---
 

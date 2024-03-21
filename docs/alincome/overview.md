@@ -1,9 +1,7 @@
 ---
 id: overview
-title: |
-    ALIncome: Python Classes to gather financial information
-sidebar_label: |
-  ALIncome: Python Classes to gather financial information
+title: 'ALIncome: Python classes to gather financial information'
+sidebar_label: 'ALIncome: Python classes to gather financial information'
 slug: /alincome/overview
 ---
 
