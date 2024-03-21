@@ -219,7 +219,7 @@ Follow these instructions to use the generator:
 <!-- This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic). -->
 
 
-### Step command
+### Step command <!-- Moved -->
 
 The Step that triggers a story table is
 
@@ -230,7 +230,7 @@ The Step that triggers a story table is
 **question id:** The story table needs to know the `id` of the page this story table should get to. You can find the `id` in the `question` block in the YAML in the Playground.
 
 
-### Rows
+### Rows <!-- Moved -->
 
 Indented under the command, put the header row of the table:
 
@@ -248,7 +248,7 @@ Under that, add a blank row for a field that you want the test to interact with 
       |  |  |  |
 ```
 
-### var
+### var <!-- Moved -->
 
 In the `var` column, write the name of the variable that a field sets **exactly as it appears in the `question` block**. Most times you can see that name in the YAML `question` block. If `code:` is used to create the field's variable name, you may have to talk to the developers who wrote that code to find out the name or names of the variable or variables it generates.
 
@@ -265,7 +265,7 @@ x.favorite_color
 - `users[i].name_fields()` generates all the name fields with the right index number (NOT 'i'). E.g. `users[0].name.first`, `users[0].name.suffix`, `users[1].name.first`, `users[1].name.suffix`
 - `users[i].address_fields()` generates all the address fields with the right index number (NOT 'i'). E.g. `users[0].address.address`, `users[1].address.address` -->
 
-### value
+### value <!-- Moved -->
 
 In the `value` column, write what you want the field to be set to. For checkboxes, `True` means 'checked' and `False` means 'unchecked'.
 
@@ -588,10 +588,13 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ---
 
+<!-- Moved -->
+
 Use the `set the variable` Step to fill in an answer on the page. This sets the value of that field's variable.
 
 The first set of quotes contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [story table](#story-tables)'s [`var` column](#var) and [`value` column](#value).
 
+<!-- Moved -->
 Example of a text field:
 
 ```
@@ -605,6 +608,7 @@ Example of a checkbox field:
     And I set the variable "users[i].fruits['pear']" to "True"
 ```
 
+<!-- Moved -->
 Example of a radio button field:
 
 ```
@@ -625,6 +629,7 @@ field:
       - Jaime: maybe_not_a_bear
 ```
 
+<!-- Moved -->
 One special value you can use is `today`. That will insert the date on which the test is being run. You can subtract or add days using `today`. Examples:
 
 ```
@@ -633,6 +638,7 @@ One special value you can use is `today`. That will insert the date on which the
     When I set the variable "court_date" to "today + 12"
 ```
 
+<!-- Moved -->
 Be careful with `today` math. If you're testing a "boundary" date, you want to pick a date that is well within a boundary to make the test more robust. For example, if you want to test a date that was 10 or fewer days ago, use `today - 9` instead of `today - 10`. At some point your tests might run over midnight. In that situation, if you used `10` the clock would tip into the next day - 11 days from the filled-in date. Your test would fail incorrectly. In fact, your users might have that experience, so design your interview with that in mind. For example, you can tell them the date of the deadline so they too will know about the boundary.
 
 You can also use environment variables to set values with [the `secret variables` Step](#secret-variables-step), even if the value doesn't need to be secret.
