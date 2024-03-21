@@ -51,7 +51,7 @@ function Home() {
               />
             </h1>
             <div className={styles.indexCtas}>
-              <Link className="button button--primary" to="/docs">
+              <Link className="button button--primary" to="/docs/intro">
                 <Translate>Get Started</Translate>
               </Link>
             </div>
