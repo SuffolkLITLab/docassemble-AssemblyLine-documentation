@@ -54,10 +54,8 @@ function Home() {
               <Link className="button button--primary" to="/docs">
                 <Translate>Get Started</Translate>
               </Link>
-              <Link className="button button--secondary" to="https://courtformsonline.org">
-                <Translate>View our work</Translate>
-              </Link>
-              <span className={styles.indexCtasGitHubButtonWrapper}>
+            </div>
+            <div className={styles.indexCtasGitHubButtonWrapper}>
                 <iframe
                   className={styles.indexCtasGitHubButton}
                   src="https://ghbtns.com/github-btn.html?user=suffolklitlab&amp;repo=docassemble-AssemblyLine&amp;type=star&amp;count=true&amp;size=large"
@@ -65,8 +63,7 @@ function Home() {
                   height={30}
                   title="GitHub Stars"
                 />
-              </span>
-            </div>
+              </div>
           </div>
         </div>
         <div className={clsx(styles.announcement, styles.announcementDark)}>
