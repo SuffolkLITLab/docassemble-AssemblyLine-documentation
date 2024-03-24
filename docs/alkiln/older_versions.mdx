@@ -18,6 +18,8 @@ This page links to old versions of the documentation.
 
 ## Story Table Step before ALKiln v5.9.0
 
+See our [**new and improved** Story Table section](writing_tests.mdx#story-table) for 2-column tables.
+
 After ALKiln v5.9.0, we're using a 2-column Story Table layout. This is documentation for the old 3-column format.
 
 ### Trigger variable {#trigger_variable_code}
@@ -275,3 +277,12 @@ Don't worry about accidentally including variables that won't show up during the
 You can get rid of this warning by adding [some HTML code](#trigger_variable_code) to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts).
 
 If you want to see some very technical details about why we need this in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
+
+
+## Upload (Deprecated) {#upload}
+
+This Step has been replaced with the regular "I set" Step or the Story Table Step. See the [new documentation for how to upload a file with those Steps](writing_tests.mdx#upload).
+
+```gherkin
+  And I upload "irrefutable_evidence.jpg, refutable_evidence.pdf" to "evidence_files"
+```
