@@ -87,6 +87,25 @@ Each of your tests - [a `Scenario` or a `Scenario Outline`](#files) - usually co
 [^meh]: We are still working on finding a more descriptive name. Suggestions are welcome.
 
 
+
+## Starting steps {#start}
+
+Authors often use these Steps to start their tests, though these Steps can actually be used anytime in a test.
+
+
+### `I start the interview at "<filename or url>"` {#go-to-interview}
+
+
+## State steps
+
+These steps set the context or state of the current environment.
+
+
+## `the maximum seconds for each Step is <number>` {#custom-timeout}
+
+WIP
+
+
 ## Interactive Steps {#interact}
 
 You can use some Steps to change what is on the page by filling in fields, pressing buttons or tabs, or performing other actions.
@@ -323,14 +342,126 @@ The "address" Step is specifically for the Document Assembly Line 4-part address
 
 Remember the commas.
 
-### Tap element
 
-WIP
+### `I download "<file name>"` {#download}
+
+Use the "download" Step to download files so that humans can check that they are correct. In GitHub after the tests are all done, the files will be in the GitHub action's artifacts zip file.
+
+<!-- TODO: link to test results section -->
+
+```
+    Then I download "file-name.pdf"
+```
+
+Use just the name of the file.
+
+If the file is a PDF file, you can use the ["compare files" Step](#compare-files) to check that the PDF is correct.
+
+If you think this Step will take more than 30 seconds, use the ["max seconds" Step](#custom-timeout) to give the file more time to download.
 
 
-### Tap tab
+### `I tap the "<selector>" element and go to a new page` {#tap-nav-element}
 
-WIP
+**It could help to know about:**
+
+- How to inspect and understand the HTML of a web page
+- CSS selectors
+
+**The Step:**
+
+Use one of the "tap and navigate" Steps to tap an element on the page, like a button, to go to a new page. If you just want to tap the continue button use the ["continue" Step](#continue).
+
+The format for option 1:
+
+```gherkin
+  And I tap the "<selector>" element and go to a new page
+```
+
+The format for option 2:
+
+```gherkin
+  And I tap the "<selector>" element and wait <number> seconds
+```
+
+One blank to fill in for these commands is `<selector>`, a CSS selector of the element you need to tap. It can be any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+
+For option 2, the second blank to fill in is `<number>` - the number of seconds you want ALKiln to wait after tapping the element.
+
+Example of option 1:
+
+```gherkin
+  When I tap the "#awesome_page_link" element and go to a new page
+```
+
+Example of option 2:
+
+```gherkin
+  And I tap the ".link-container #even_better_page a" element and wait 45 seconds
+```
+
+This is the only way to explicitly wait after navigating to the new page. Some people try to use the ["wait" Step](#wait), but that will fail. Alternatively, you can use the ["max seconds" Step](#custom-timeout) to give your test more time to load new pages in general.
+
+
+### `I tap the "<selector>" element and stay on the same page` {#tap-stay-element}
+
+**It could help to know about:**
+
+- How to inspect and understand the HTML of a web page
+- CSS selectors
+
+**The Step:**
+
+Use the "tap and stay" Step to tap on HTML elements without navigating to a new page. For example, you can tap on [collapsible content](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox#collapsible-help-text) to show the text inside.
+
+The format:
+
+```gherkin
+  And I tap the "<selector>" element and stay on the same page
+```
+
+The blank to fill in for this command is `<selector>`, a CSS selector of the element you need to tap. It can be any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+
+Example:
+
+```gherkin
+  When I tap the "#an_id .al_toggle" element and stay on the same page
+```
+
+It is a good idea to add a [`wait` Step](#wait) after this Step to let the contents become visible before taking other actions, like pressing on other elements or checking for a phrase. For example:
+
+```gherkin
+  When I tap the "#an_id .al_toggle" element and stay on the same page
+  And I wait .7 seconds
+```
+
+
+### `I tap the "<tab id>" tab` {#tap-tab}
+
+**It could help to know about:**
+
+- How to inspect and understand the HTML of a web page
+
+**The Step:**
+
+Use the "tap tab" Step to interact with AssemblyLine's [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs). ALKiln will tap on the tab and then wait until the tab contents are fully visible.
+
+The format:
+
+```gherkin
+  When I tap the "<tab html id>" tab
+```
+
+The blank to fill in here is `<tab html id>` - the text of the HTML id attribute of the tab.
+
+:::caution Not a selector
+`<tab html id>` is **not a selector**. Unlike the other "tap" Steps, **leave out the `#` symbol** (like the example shows).
+:::
+
+Example:
+
+```gherkin
+  When I tap the "TabGroup-specific_tab_name-tab" tab
+```
 
 
 ### Environment variables {#env-vars}
@@ -821,6 +952,19 @@ WIP
 ### `I will be told an answer is invalid` {#invalid}
 
 WIP
+
+
+### Compare {#compare-files}
+
+WIP
+
+You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
+
+```
+  Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
+```
+
+This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info and search for the differing text in the baseline PDF and in the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
 
 
 ## Understanding test results {#output}
