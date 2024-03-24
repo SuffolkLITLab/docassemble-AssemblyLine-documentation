@@ -685,6 +685,8 @@ Sign on a signature page. All signatures are the same - one dot.
 
 ---
 
+<!-- Moved -->
+
 Use one of the `tap element` Steps to tap an item on the page. You need to know a bit about HTML to work with this Step.
 
 1. You can tap on specific HTML elements on the page, like buttons, to navigate to the next page or a new page.
@@ -707,6 +709,8 @@ You might want to add a `wait` Step after that to let the contents become visibl
 
 ---
 
+<!-- Moved -->
+
 Use the `tap tab` Step to interact with [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs). ALKiln will tap on the tab and then wait until the tab contents are fully visible.
 
 ```
@@ -718,6 +722,7 @@ Use the HTML id of the tab, but **leave out the `#` symbol** (like the example s
 ---
 
 <!-- Moved -->
+
 Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See more details in [sections above](#story-tables).
 
 ```
@@ -727,6 +732,7 @@ Use the `story table` Step to make sure the test reaches a particular screen giv
 ---
 
 <!-- Moved -->
+
 The `name` Step is specifically for the Document Assembly Line 4-part name questions.
 
 Avoid punctuation. We recommend you just use 2 names - the first name and last name - but you can have all these formats:
@@ -742,6 +748,7 @@ Avoid punctuation. We recommend you just use 2 names - the first name and last n
 ---
 
 <!-- Moved -->
+
 The `address` Step is specifically for the Document Assembly Line 4-part address questions.
 
 It allows a US address format, but can otherwise be any address you want that matches the format of the example below. Remember the commas.
@@ -756,6 +763,8 @@ It allows a US address format, but can otherwise be any address you want that ma
 
 ---
 
+<!-- Moved -->
+
 Use the `download` Step to download files so that humans can check that they are correct. When the tests run in GitHub, the files will be in [the GitHub action's artifacts](#see-github-test-results). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step to give the file more time to download.
 
 ```
@@ -765,6 +774,8 @@ Use the `download` Step to download files so that humans can check that they are
 Leave out other parts of file's url.
 
 ---
+
+<!-- Moved -->
 
 You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
 
