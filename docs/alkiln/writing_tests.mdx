@@ -5,7 +5,11 @@ sidebar_label: WIP Writing tests
 slug: /alkiln/writing
 ---
 
-:::warning
+import NeedProxyVars from './components/\_need_proxy_vars.md';
+import SecureEnvVars from './components/\_secure_env_vars.md';
+
+
+:::caution
 WIP (Work in progress)
 :::
 
@@ -22,7 +26,7 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 
 1. You can see [what your first test might look like](setup.mdx#first-test).
 1. You can generate a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story).
-1. If your interview is using generic objects or index variables, you **must** include special HTML <!-- TODO: Add link to setting special variables. Why is it that `trigger` is still needed? There is a reason, but I don't remember what it is --> in your interview.
+1. If your interview is using generic objects or index variables, you **must** include [special HTML](#special-html) in your interview.
 1. Every time you change or add a required variable, you must update the tests that need that variable.
 1. You write and edit `.feature` test files in your Sources folder.
 1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
@@ -73,12 +77,14 @@ This Step is made of three parts.
 1. `I set the variable "___" to "___"` is an ALKiln command with blanks that you need to fill in
 1. `likes_bears` and `True` are the information you put in the blanks so that the ALKiln robot knows what answer to give to a question
 
-That command can also be written as `I set the variable "<variable name>" to "<value>"`. This tells you what information you should put in each of these blanks. In this case there are two blank spaces you should fill. In the first blank, you are supposed to put the name of the variable that the field will set. In the second blank, you are supposed to put the value that you want the variable to have.
+That command description can also be written as `I set the variable "<variable name>" to "<value>"`. This tells you what information you should put in each of these blanks.
 
-Each of your tests - a `Scenario` or a `Scenario Outline` - usually contains many Steps. Any Step can be used as many times as you want and at any point in a test.
+In this case there are two blank spaces you should fill. In the first blank, you should put the name of the variable that the field will set. In the second blank, you should put the value that you want the variable to have.
+
+Each of your tests - [a `Scenario` or a `Scenario Outline`](#files) - usually contains many Steps. Any Step can be used as many times as you want anywhere in a test. If you follow [good code-writing practices](#choice-values), most Steps work in any language.
 
 
-[^meh]: We are still working finding a more descriptive name. Suggestions are welcome.
+[^meh]: We are still working on finding a more descriptive name. Suggestions are welcome.
 
 
 ## Interactive Steps {#interact}
@@ -89,6 +95,8 @@ You can use some Steps to change what is on the page by filling in fields, press
 ### The Story Table Step {#story-table}
 
 Use the "Story Table" Step to fill in multiple fields on multiple pages. It is the Step many of our authors work with the most. In our opinion, it is the most flexible way to fill in fields in your forms, unlike the linear ["I set" Step](#set). This makes a test easier to maintain.
+
+<NeedProxyVars/>
 
 You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a first draft of a full test file that uses a Story Table based on an interview you have finished.
 
@@ -148,20 +156,30 @@ An example table:
 Filling in checkboxes is tricky. Check our [documentation about setting checkbox values](#checkboxes).
 :::
 
-This Step is flexible, which makes the test easier to maintain. The order of the rows is unimportant. That means you can edit the order of your pages or move fields to different pages without worrying about breaking the test.
+This Step is flexible, which makes the test easier to maintain. The order of the rows is unimportant. That means you can edit the order of your pages or move fields to different pages without worrying about breaking the test. <!-- ALKiln is also fine with extra rows that don't get used (not the same as duplicate rows). If you have duplicate rows in your test, ALKiln will warn you. -->
 
-ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears.
+ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears in your interview.
+
+:::caution
+Avoid using `.there_is_another` in your Story Table. Read about [what to use instead](#there-is-another).
+:::
 
 You can use multiple Story Tables in a test.
 
-Right now, Story Tables are unable to [use environment variables to fill in answers](#env-vars).
+Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#set-env-var) like passwords.
 
-:::warning Unused rows
+<!-- TODO: Why are our warnings red instead of yellow -->
+
+:::caution Unused rows
 The Story Table does not care about extra rows that never get used. This can make Story Tables easier to write, but it also means that the tests will technically "pass" even if variables that *should* get set are never filled in.
 
 That can be a sign that a question that the user *should* have seen got skipped or that there is a typo or mistake in the test.
 
 Because of this, the ALKiln report shows a list of unused rows for each table. You can check the report of passing tests to make sure none of the important rows got skipped.
+:::
+
+:::info
+You can use this Step to [upload files](#upload).
 :::
 
 
@@ -172,7 +190,16 @@ Because of this, the ALKiln report shows a list of unused rows for each table. Y
 
 Use the "I set" Step to fill in one answer on one page. This [sets the value](#values) of that field's variable.
 
-The first set of quotes contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [Story Table's](#story-tables)'s `var` column and `value` column.
+<!-- TODO: help wanted: This is true if they don't literally use `x` or `i`. I'm not sure how to express that complexity -->
+<NeedProxyVars/>
+
+The format of the Step:
+
+```gherkin
+  And I set the variable "<variable name>" to "<value>"
+```
+
+There are two types of blanks you need to fill for this Step. The first set of quotes in this Step contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [Story Table's](#story-tables)'s `var` column and `value` column.
 
 This Step is "linear". That is, unlike Story Table rows, these "linear" variable-setting Steps have to be in the correct order and you **must** make sure your test has reached the exact page that has the field. Otherwise your test will fail.
 
@@ -209,8 +236,99 @@ Example linear "I set" Step:
   And I set the variable "users[0].favorite_bear.type" to "cuddly_bear"
 ```
 
+:::danger Avoid!
+Avoid using this Step with sensitive information, like passwords. Everyone will be able to see the information you put in this Step. Instead, [use an environment variable to set the value](#set-env-var).
+:::
 
-### Upload {#upload}
+:::info
+You can use this Step to [upload files](#upload).
+:::
+
+
+### `I set the variable "<variable name>" to the GitHub secret "<environment variable name>"` {#set-env-var}
+
+Use the "secret variable" Step similar to the regular "I set" Step to fill in one answer on one page with a value. This time the value is the value of an environment variable - [a GitHub secret or docassemble server config value](#env-vars). This [sets the value](#values) of that field's variable.
+
+You can use it to set values that have sensitive information. For example, a password. This is because ALKiln is extra careful with the security of these values.
+
+<SecureEnvVars/>
+
+The format of the Step:
+
+```gherkin
+  And I set the variable "<variable name>" to "<environment variable name>"
+```
+
+Here, `<variable name>` is the name of the variable you want to set and `<environment variable name>` is the name of the environment variable you want to use.
+
+Example:
+
+```gherkin
+  I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
+```
+
+The words of this Step assume you use GitHub for your tests and are using a GitHub secret to store the value, but this Step also works with config values you create for ALKilnInThePlayground. You can [read more about environment variables here](#env-vars).
+
+You can use this Step for more than just sensitive information. You can also use environment variables for values that might change sometimes so that you can use the value in multiple places and then only have to manage the value change in one place. For example, if you have a date you want to set in multiple tests or repositories that you will want to update in all the tests at once, you can use an environment variable instead of manually updating everywhere the date appears.
+
+<!-- To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets). -->
+
+:::caution
+This Step is unable to sign into your docassemble server. You **MUST** use [the "log in" Step](#sign-in) to sign in to your docassemble server.
+:::
+
+<!-- TODO: Maybe put env var stuff in here, but we do also need that info for other things, like workflows -->
+
+
+### I tap to continue {#continue}
+
+Use the "continue" Step to tap the button to continue to the next page. If the continue button sets a variable, this Step will set that variable to `True`. Story Table Steps handle continuing by themselves.
+
+Example:
+
+```gherkin
+  When I tap to continue
+```
+
+The test will still continue to the next Step if tapping the continue button fails to go to the next page. Because of this, you can then use the ["invalid" Step](#invalid) to write tests that check that your answer validation works correctly. However, if the continue button was supposed to work and the next Step tries to interact with the next page, the test will probably fail.
+
+<!-- If the fields are the same on both pages, the test will continue to run, though. In some cases, it might also repeat the page over and over. This is an [infinite loops](#infinite-loop). -->
+
+
+<!-- ### `I upload "<file or files>" to "<variable name>"` {#upload-step} not necessary anymore. deprecated -->
+
+
+### `I set the name of "<variable name>" to "<name>"` {#name}
+
+The "name" Step is specifically for the Document Assembly Line 4-part name questions.
+
+Avoid punctuation. We recommend you just use 2 names - the first name and last name - but you can have all these formats:
+
+- Firstname Lastname
+- Firstname Middlename Lastname
+- Firstname Middlename Lastname Suffix (where suffix is one of the dropdown suffix choices, like `II`)
+
+```gherkin
+  And I set the name of "users[0]" to "Devon Upton"
+```
+
+
+### `I set the address of "<variable name>" to "<US address>` {#address}
+
+The "address" Step is specifically for the Document Assembly Line 4-part address questions. Right now, **the "address" Step can only handle the format of a US address**.
+
+```gherkin
+    When I set the address of "users[0]" to "120 Tremont Street, Unit 1, Boston, MA 02108"
+```
+
+Remember the commas.
+
+### Tap element
+
+WIP
+
+
+### Tap tab
 
 WIP
 
@@ -231,6 +349,10 @@ WIP
 
 Use this Step to start a new session of an interview.
 
+### `I sign in with the email "<environment variable 1>" and the password "<environment variable 2>"` {#sign-in}
+
+WIP
+
 
 ### `The maximum time for a Step is <number> seconds` {#custom-timeout}
 
@@ -246,7 +368,9 @@ WIP
 
 There are different ways to fill in fields. One is the [Story Table Step](#story-table) another is the ["I set" Step](#set). Each has different syntax, but they set values the same way.
 
-Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for this YAML code the `value` would be "cuddly_bear", not "Teddy bear". "Teddy bear" is just the label.
+<NeedProxyVars/>
+
+Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for the first choice in this field the `value` would be "wild_bear", not "Black bear". "Black bear" is just the text the user sees - the label.
 
 ```yml
 question: Favorite bear type
@@ -261,9 +385,49 @@ field:
 ```
 
 
+### Special HTML {#special-html}
+
+**What?**
+
+Most authors add this extra HTML to the `post` section of their `default screen parts`. For example:
+
+```yml
+default screen parts:
+  # HTML for interviews using ALKiln tests
+  # If your interview includes AssemblyLine's al_package.yml you can skip this
+  post: |
+    <div id="alkiln_proxy_var_values"
+    data-generic_object="${ encode_name(str( x.instanceName if defined('x') else '' )) }"
+    % for letter in [ 'i', 'j', 'k', 'l', 'm', 'n' ]:
+    data-index_var_${ letter }="${ encode_name(str( value( letter ) if defined( letter ) else '' )) }"
+    % endfor
+    aria-hidden="true" style="display: none;"></div>
+
+    <div id="trigger" data-variable="${ encode_name(str( user_info().variable )) }" aria-hidden="true" style="display: none;"></div>
+```
+
+AssemblyLine's al_package.yml file, if you use it, already adds that HTML for you. Otherwise, we strongly recommend adding it yourself as the docs described.
+
+**Do I need this?**
+
+You probably need the "alkiln_proxy_var_values" HTML element if you use [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) or [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) in your interview.
+
+You probably need the "trigger" HTML element if you set `restrict input variables` to `True` in your [docassemble server configuration file](https://docassemble.org/docs/config.html#configfile).
+
+**Why `x` and `i`?**
+
+Without the help of the HTML, ALKiln has no way of knowing what the actual names are of variables that use [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) or [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc).
+
+**Why "trigger"?**
+
+If a docassemble server's config value of `restrict input variables` is set to True, ALKiln needs the help of the HTML to know what variable the signature is setting.
+
+That said, even the "trigger" HTML may not help if the question is triggered by `mandatory: True`.
+
+
 ### Text {#text}
 
-These are fields that a user needs to type in. The [default field type](https://docassemble.org/docs/fields.html#plaintext) is a text field. Other text fields include those with:
+Text-type fields are fields where the user needs to type text. The [default field type](https://docassemble.org/docs/fields.html#plaintext) is a text field. Other text fields include those with:
 
 - `datatype: date`
 - `datatype: time`
@@ -292,7 +456,7 @@ Example linear Steps:
 
 ```gherkin
   And I set the variable "users[0].favorite_bear.name.first" to "Ultraman"
-  And I set the variable "users[0].favorite_bear.why" to "Why not?"
+  And I set the variable "users[0].favorite_bear.why" to "Why not?\nSeems ok to like Ultraman."
 ```
 
 Example Story Table Step:
@@ -300,7 +464,7 @@ Example Story Table Step:
 ```gherkin
     | var | value |
     | users[0].favorite_bear.name.first | Ultraman |
-    | users[0].favorite_bear.why | Why not? |
+    | users[0].favorite_bear.why | Why not?\nSeems ok to like Ultraman. |
 ```
 
 
@@ -333,7 +497,7 @@ Example Story Table Step:
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
 
-:::warning Be careful
+:::caution Be careful
 Be careful with `today` math. If you are testing a "boundary" date, you want to pick a date that is well within a boundary to make the test more robust. For example, if you want to test a date that was 10 or fewer days ago, use `today - 9` instead of `today - 10`.
 
 At some point your tests might run over night and hit midnight right in the middle of the test - after ALKlin fills in the answer, but before the interview finishes. In that situation, if ALKiln answered the question with `today - 10` the clock would tip into the next day by the end of the interview - 11 days from the filled-in date. Your test would fail incorrectly.
@@ -344,12 +508,56 @@ The fact is, your users also might have that exact experience, so keep that in m
 
 ### yesno {#yesno}
 
-WIP
+There are a few different `yesno` fields - [`yesno` buttons](https://docassemble.org/docs/fields.html#yesno) or [`yesno` fields](https://docassemble.org/docs/fields.html#fields%20yesno) like `yesno` checkboxes and `yesnoradio`s.
+
+Example yesno checkbox field:
+
+```yml
+question: Bears
+field:
+  - Do you have any bears?: has_bear
+    datatype: yesno
+```
+
+Example of setting the yesno checkbox to "yes" in a linear Step:
+
+```gherkin
+  When I set the variable "has_bear" to "True"
+```
+
+Example of setting the yesno checkbox to "yes" in a Story Table Step:
+
+```gherkin
+    | var | value |
+    | has_bear | True |
+```
 
 
 ### yesnomaybe {#yesnomaybe}
 
-WIP
+There are a couple different `yesnomaybe` fields - [`yesnomaybe` buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [`datatype: yesnomaybe`](https://docassemble.org/docs/fields.html#fields%20yesno) fields.
+
+Example yesnomaybe field:
+
+```yml
+question: Bears
+field:
+  - Do you have any bears?: has_bear
+    datatype: yesnomaybe
+```
+
+Example of setting the yesnomaybe radio buttons to "maybe" in a linear Step:
+
+```gherkin
+  When I set the variable "has_bear" to "None"
+```
+
+Example of setting the yesnomaybe radio buttons to "maybe" in a Story Table Step:
+
+```gherkin
+    | var | value |
+    | has_bear | None |
+```
 
 
 ### radio {#radio}
@@ -367,6 +575,10 @@ field:
       - Teddy bear: cuddly_bear
       - Jaime: maybe_not_a_bear
 ```
+
+:::tip Good practice
+Always use options that have [both a label and a value](#choice-values).
+:::
 
 Example linear Step:
 
@@ -401,21 +613,24 @@ fields:
   - Out of all your friends, choose your best friends: best_friends
     datatype: checkboxes
     choices:
-      - Emmet
-      - Maria
-      - Sam
+      - Emmet: emmet
+      - Maria: maria
+      - Sam: sam
 ```
+
+:::tip Good practice
+Always use options that have [both a label and a value](#choice-values).
+:::
 
 The variable name of the checkbox for ALKiln is usually the same as its docassemble variable name. For example, `good_fruits['Apples']`. The only value a checkbox can have is `True` or `False`.
 
-<span class="negative">Wrong</span> way to set the value of the check box:
-
+:::danger Wrong
 ```gherkin
   And I set the variable "best_friends" to "Emmet"
 ```
+:::
 
-<span class="positive">**Right**</span> ways:
-
+:::tip Right
 ```gherkin
   And I set the variable "best_friends['Emmet']" to "True"
 ```
@@ -426,6 +641,7 @@ or, in a Story Table:
       | var | value |
       | best_friends['Emmet'] | True |
 ```
+:::
 
 One exception is field created with an `object` datatype, like `object_checkboxes`. Their ALKiln names are similar to their docassemble names, but they need extra quotes. For example, look at this field:
 
@@ -436,16 +652,15 @@ fields:
     choices: all_friends
 ```
 
-<span class="negative">Wrong</span> ways to set the value of the checkbox:
-
+:::danger Wrong
 ```gherkin
   And I set the variable "best_friends" to "all_friends"
   And I set the variable "best_friends" to "all_friends[0]"
   And I set the variable "best_friends[all_friends[0]]" to "True"
 ```
+:::
 
-<span class="positive">**Right**</span> ways:
-
+:::tip Right
 ```gherkin
   And I set the variable "best_friends['all_friends[0]']" to "True"
 ```
@@ -456,9 +671,121 @@ or, in a Story Table:
     | var | value |
     | best_friends['all_friends[0]'] | True |
 ```
+:::
 
-:::warning Eagle eye
+:::caution Eagle eye
 Especially notice the quotes just inside the first square brackets.
+:::
+
+
+### Upload {#upload}
+
+You can upload one or more files by setting a variable to a comma-separated list of file names to upload. You **must** store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests.
+
+The format for a linear Steps:
+
+```gherkin
+  And I set the variable "<variable name>" to "<comma separated list of a file or files>"
+```
+
+The format for a Story Table Step:
+
+```gherkin
+    | var | value |
+    | <variable name> | <comma separated list of a file or files> |
+```
+
+Example of a linear Step to upload 1 file:
+
+```gherkin
+  And I upload "refutable_evidence.jpg" to "evidence_files"
+```
+
+Example of a linear Step to upload multiple files:
+
+```gherkin
+  And I upload "irrefutable_evidence.jpg, refutable_evidence.pdf" to "evidence_files"
+```
+
+Example of a Story Table Step to upload 1 file:
+
+```gherkin
+    | var | value |
+    | evidence_files | refutable_evidence.jpg |
+```
+
+Example of a Story Table Step to upload multiple files:
+
+```gherkin
+    | var | value |
+    | evidence_files | irrefutable_evidence.jpg, refutable_evidence.pdf |
+```
+
+To upload more than one file you **must** separate their names with a comma.
+
+
+### signature {#signature}
+
+<!-- TODO: Move this to the appropriate Steps section when that's ready. Leave a link here? -->
+
+Signatures look a bit funny in ALKiln at the moment, but they work fine.
+
+Example of a docassemble [signature page](https://docassemble.org/docs/fields.html#signature):
+
+```yml
+question: Sign your name
+signature: user.signature
+under: ${ user }
+```
+
+Example of linear Steps:
+
+```gherkin
+  And I sign
+  # or
+  And I sign with the name "<signatory's name>"
+```
+
+The first version will show a single dot as the signature. The second version will show the name and also have a dot.
+
+In a Story Table, a signature variable has nothing in its `value` column. Example of a Story Table Step:
+
+```gherkin
+    | var | value |
+    | user.signature |  |
+```
+
+All Story Table signatures are a single dot.
+
+
+### `.there_is_another` loop {#there-is-another}
+
+In a Story Table, setting the value of `.there_is_another` for a docassemble loop is more complicated than you might expect. At first glance, to fill in the answers for two children some authors try to write the following:
+
+:::danger Wrong
+```gherkin
+    | var | value |
+    | kids.there_are_any | True |
+    | kids.there_is_another | True |
+```
+:::
+
+Instead of using `.there_are_any` and `.there_is_another`, always use `.target_number` in their place to set the number of items that you want to include in the test.
+
+:::tip Right
+For 3 children:
+
+```gherkin
+    | var | value |
+    | kids.target_number | 3 |
+```
+
+For no children:
+
+```gherkin
+    | var | value |
+    | kids.target_number | 0 |
+```
 :::
 
 
@@ -467,7 +794,7 @@ Especially notice the quotes just inside the first square brackets.
 WIP
 
 
-### Special values {#special-values}
+<!-- ### Special values {#special-values}
 
 `today` is a special value in ALKiln. ALKiln will change that value into the date of the current day. Right now it uses the US format for the date. You can also add or subtract days from `today` to set a specific date in the past or in the future. These are the ways you can use `today`:
 
@@ -478,6 +805,7 @@ WIP
 ```
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
+ -->
 
 
 ## Observational Steps {#observe}
@@ -486,6 +814,11 @@ You can use some Steps to look at what is on the page or compare data. You can u
 
 
 ### `I SHOULD see the phrase "<page text>"` {#phrase}
+
+WIP
+
+
+### `I will be told an answer is invalid` {#invalid}
 
 WIP
 
@@ -616,8 +949,41 @@ WIP
 
 <!-- Something about unused rows? -->
 
+### Values of choices {#choice-values}
+
 WIP
 
+<!-- Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for the first choice in this field the `value` would be "wild_bear", not "Black bear". "Black bear" is just the text the user sees - the label.
+
+```yml
+question: Favorite bear type
+field:
+  - Pick one: users[i].favorite_bear.type
+    datatype: radio
+    choices:
+      - Black bear: wild_bear
+      - Brown bear: also_wild_bear
+      - Teddy bear: cuddly_bear
+      - Jaime: maybe_not_a_bear
+``` -->
+
+```gherkin
+fields:
+  - Q1: var_1
+    datatype: radio
+    choices:
+      - Apples
+      - Oranges
+# vs
+fields:
+  - Q1: var_1
+    datatype: radio
+    choices:
+      - Apples: Apples
+      - Oranges: Oranges
+```
+
+Do the latter.
 
 
 ## Frequently asked questions (FAQ) {#faq}
