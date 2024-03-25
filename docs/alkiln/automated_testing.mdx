@@ -1205,7 +1205,7 @@ Another option is to disable or limit all tests, all actions, in your repository
 
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
-### Use a separate server just for testing
+### Use a separate server just for testing <!-- Moved -->
 
 Keep the test server completely separate from production server so that the tests never show sensitive information to potential malicious actors. To avoid running tests on your production server, use the testing server's address in the `SERVER_URL` GitHub secret. The test files themselves are secure as long as you don't put sensitive info in them. They don't do anything by themselves.
 
