@@ -114,3 +114,28 @@ A page that has no invalidation message and yet is unable to move on.
 1. Server reloading
 1. Something went wrong with the library ALKiln is using and it got disconnected somehow.
  -->
+
+<!--
+## Tests are taking too long
+
+Tests that fail take at least twice as long as tests that succeed because ALKiln repeats tests that failed. That's because some failures are caused by a server reload and ALKiln wants to give those type of failures an opportunity to try again. Unfortunately, ALKiln can't retry conditionally yet.
+
+TODO: Look into this. I don't think this is the reason. ALKiln Story Table would try to continue and get an "invalid answer" feedback and should be able to tell that it is an actual failure. Is this problem from something else?:
+Tests that end up on the wrong page take a default amount of 30 seconds to fail. Then those test are re-run, so they take at least 1 minute each. That's because there is no way for ALKiln to know whether the server is just taking a long time to load the correct page or if the test really ended up on the wrong page. This is especially a problem for the ALKiln Story Table (I think?).
+ -->
+
+<!--
+## Inconsistent failures {#inconsistent}
+
+If a test sometimes fails because it says it couldn't find a field or element on the page, and other times it passes, this Step can help. Use "wait" to pause for a moment before trying to interact. This is usually because some elements can take different amounts of time to fully load.
+
+Not all collapsed elements are being expanded - wait for each element to be expanded. When elements are moving on the page ALKiln has trouble interacting with them. Also, if it's helpful, you can instead use code to start with expanded elements when tests are running/when you are debugging. Or you can also go from bottom to top. When you go from top to bottom, elements below move around making it hard for ALKiln to interact. When you expand ones at the bottom first, the ones above stay in the same place.
+-->
+
+<!--
+## Some file names have the word null in them
+
+Maybe "Some JSON files aren't being saved with the "save variables" (writing#save-vars) or "compare json" (writing#compare-json) Steps" - check on JSON file names to make sure they have a timestamp
+
+Make sure every question block you create has an id
+ -->

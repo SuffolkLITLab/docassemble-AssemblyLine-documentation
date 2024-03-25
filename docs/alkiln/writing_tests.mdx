@@ -7,6 +7,7 @@ slug: /alkiln/writing
 
 import NeedProxyVars from './components/\_need_proxy_vars.md';
 import SecureEnvVars from './components/\_secure_env_vars.md';
+import A11y from './components/\_a11y.md';
 
 
 :::caution
@@ -87,23 +88,139 @@ Each of your tests - [a `Scenario` or a `Scenario Outline`](#files) - usually co
 [^meh]: We are still working on finding a more descriptive name. Suggestions are welcome.
 
 
-
-## Starting steps {#start}
+## Steps to start tests {#start}
 
 Authors often use these Steps to start their tests, though these Steps can actually be used anytime in a test.
 
 
-### `I start the interview at "<filename or url>"` {#go-to-interview}
+### `I start the interview at "<file name>"` {#start-interview}
+
+Use the "start interview" Step to start a new session of an interview.
+
+The Step format:
+
+```gherkin
+  Given I start the interview at "<YAML file name>"
+```
+
+The blank to fill in here is `<YAML file name>` - the name of the YAML file that starts the interview.
+
+Example with just the file name:
+
+```gherkin
+  Given I start the interview at "favorite_bears.yml"
+```
+
+Example with the file extension:
+
+```gherkin
+  Given I start the interview at "favorite_bears.yml"
+```
+
+Example with url arguments ([url_args](https://docassemble.org/docs/special.html#url_args)):
+
+```gherkin
+  Given I start the interview at "favorite_bears.yml&user_id=123&from=theinterwebs"
+```
+
+You can also instead use the full url of the interview, though we recommend you avoid that. For example, one advantage to using the file name instead of the full url is that you can then use the [isolated server tests method](setup.mdx#isolated-server-details) to run your tests on GitHub.
+
+You **must** include the `interview` Step in each Scenario **before setting any fields**.
+
+<!-- You can use url args with an `Examples` table to test multiple languages -->
 
 
-## State steps
+### `I sign in with the email "<environment variable 1>" and the password "<environment variable 2>"` {#sign-in}
 
-These steps set the context or state of the current environment.
+<!-- WIP old format -->
+
+Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start the interview" Step](#start-interview):
+
+```gherkin
+  Given I sign in with the email "USER_EMAIL" and the password "USER_PASSWORD"
+```
+
+You **must** use [environment variables](#env-var) for the values in this command to keep the user log in information secure. `"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of environment variable names. You can use any names you want.
+
+ALKiln will avoid taking a screenshot of this page or saving the HTML of the page. It also will avoid logging or printing these values. It is a bad security practice to take pictures of or print sensitive information like the information on login pages.
 
 
-## `the maximum seconds for each Step is <number>` {#custom-timeout}
+### `I go to "<url>"` #{go-anywhere}
 
-WIP
+Use the "go anywhere" Step to go to any arbitrary url.
+
+The Step format:
+
+```gherkin
+  Given I go to "<url>"
+```
+
+The blank to fill in here is `<url>` - any valid url.
+
+Example:
+
+```gherkin
+  Given I go to "https://retractionwatch.com"
+```
+
+
+## Settings Steps {#settings}
+
+These Steps can change your settings for your tests. For example, the maximum amount of time one Step or page can take to finish.
+
+
+### `the maximum seconds for each Step is <number>` {#custom-timeout}
+
+Use the "max seconds" Step to set the maximum amount of time one Step can take to finish before it will fail. This is also the maximum amount of time ALKiln will spend trying to fill out the fields on a page before the test fails.
+
+The default maximum time is 30 seconds.
+
+The Step format:
+
+```gherkin
+  Given the maximum seconds for each Step is <number>
+```
+
+The blank to fill in is `<number>` - the number of seconds to allow a Step to run, or a page to be filled, before the test fails.
+
+Example:
+
+```gherkin
+  Given the maximum seconds for each Step is 200
+```
+
+You can set the max seconds as your first Step to give a slow-loading interview more time to load. If you are worried about increasing the time too much, you can immediately decrease the time after the interview loads. For example:
+
+```gherkin
+  Given the maximum seconds for each Step is 200
+  And I start the interview at "favorite_bears.yml"
+  And the maximum seconds for each Step is 30
+```
+
+You can also increase this setting before you try to download a large file. ALKiln spends twice the value of this setting to download a file. You can read more about the timing in the ["download" Step](#download).
+
+You can use this Step to change the maximum seconds setting at any time in your test.
+
+Increasing the maximum time can have down-sides. Some kinds of failures take the maximum amount of time possible. Since [each failed test is re-run](#rerun), those failing tests will take twice the amount of time that you set for your maximum Step time.
+
+Sometimes authors set the maximum seconds to a shorter time for most of their Steps and only lengthen the time for Steps that need more time. This can speed up failing tests.
+
+
+### `I check all pages for accessibility issues` {#a11y-all}
+
+Use the "all accessible" Step to turn accessibility checking on.
+
+Example:
+
+```gherkin
+  Then I check all pages for accessibility issues
+```
+
+After this Step, ALKiln will check every following page for accessibility issues until the end of the test.
+
+<A11y />
+
+This is different than the ["accessibility" Step](#a11y), which only checks the current page.
 
 
 ## Interactive Steps {#interact}
@@ -357,10 +474,17 @@ Use just the name of the file.
 
 If the file is a PDF file, you can use the ["compare files" Step](#compare-files) to check that the PDF is correct.
 
-If you think this Step will take more than 30 seconds, use the ["max seconds" Step](#custom-timeout) to give the file more time to download.
+:::caution Not done downloading?
+Currently, ALKiln is unable to tell when a file has actually finished downloading, so it runs the download Step for about twice the [maximum seconds allowed for a Step](#custom-timeout) no matter what. If a download takes longer than the current maximum seconds value, the test will not fully download the file[^d-time].
+
+If you think downloading the file will take more than 60 seconds, use the ["max seconds" Step](#custom-timeout) to give the file more time to download. The "download" Step will use the the full amount of time that you give it.
+:::
 
 
-### `I tap the "<selector>" element and go to a new page` {#tap-nav-element}
+[^d-time]: Technically, the file will keep downloading until the test ends.
+
+
+### `I tap the "<selector>" element and go to a new page` {#tap-nav}
 
 **It could help to know about:**
 
@@ -371,13 +495,13 @@ If you think this Step will take more than 30 seconds, use the ["max seconds" St
 
 Use one of the "tap and navigate" Steps to tap an element on the page, like a button, to go to a new page. If you just want to tap the continue button use the ["continue" Step](#continue).
 
-The format for option 1:
+The format for variation 1:
 
 ```gherkin
   And I tap the "<selector>" element and go to a new page
 ```
 
-The format for option 2:
+The format for variation 2:
 
 ```gherkin
   And I tap the "<selector>" element and wait <number> seconds
@@ -385,15 +509,15 @@ The format for option 2:
 
 One blank to fill in for these commands is `<selector>`, a CSS selector of the element you need to tap. It can be any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
 
-For option 2, the second blank to fill in is `<number>` - the number of seconds you want ALKiln to wait after tapping the element.
+For variation 2, the second blank to fill in is `<number>` - the number of seconds you want ALKiln to wait after tapping the element.
 
-Example of option 1:
+Example of variation 1:
 
 ```gherkin
   When I tap the "#awesome_page_link" element and go to a new page
 ```
 
-Example of option 2:
+Example of variation 2:
 
 ```gherkin
   And I tap the ".link-container #even_better_page a" element and wait 45 seconds
@@ -402,7 +526,7 @@ Example of option 2:
 This is the only way to explicitly wait after navigating to the new page. Some people try to use the ["wait" Step](#wait), but that will fail. Alternatively, you can use the ["max seconds" Step](#custom-timeout) to give your test more time to load new pages in general.
 
 
-### `I tap the "<selector>" element and stay on the same page` {#tap-stay-element}
+### `I tap the "<selector>" element and stay on the same page` {#tap-stay}
 
 **It could help to know about:**
 
@@ -413,7 +537,7 @@ This is the only way to explicitly wait after navigating to the new page. Some p
 
 Use the "tap and stay" Step to tap on HTML elements without navigating to a new page. For example, you can tap on [collapsible content](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox#collapsible-help-text) to show the text inside.
 
-The format:
+The Step format:
 
 ```gherkin
   And I tap the "<selector>" element and stay on the same page
@@ -445,7 +569,7 @@ It is a good idea to add a [`wait` Step](#wait) after this Step to let the conte
 
 Use the "tap tab" Step to interact with AssemblyLine's [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs). ALKiln will tap on the tab and then wait until the tab contents are fully visible.
 
-The format:
+The Step format:
 
 ```gherkin
   When I tap the "<tab html id>" tab
@@ -464,35 +588,46 @@ Example:
 ```
 
 
-### Environment variables {#env-vars}
-
-WIP
-
-
-## Steps to start tests {#start}
-
-There are some Steps that can be, and often are, the first Step in a test. They can still be used multiple times and at any point in the test. Your test **must** start with one of these Steps.
-
-WIP
-
-
-### `I start the interview at "<YAML file name>"` {#start-interview}
-
-Use this Step to start a new session of an interview.
-
-### `I sign in with the email "<environment variable 1>" and the password "<environment variable 2>"` {#sign-in}
-
-WIP
-
-
-### `The maximum time for a Step is <number> seconds` {#custom-timeout}
-
-WIP
+<!-- Maybe: ### `I tap the defined text link {string}` -->
 
 
 ### `I wait for <number> seconds` {#wait}
 
-WIP
+You can use the "wait" Step after the previous Step has completely finished to tell ALKiln to wait before going to the next Step.
+
+:::caution Not for loading
+In most cases, this Step is unable to help the test wait longer for a page to finish loading. To give a page time to load, use the ["max seconds" Step](#custom-timeout).
+:::
+
+The Step format:
+
+```gherkin
+  When I wait <number> seconds
+```
+
+The blank to fill in here is `<number>` - the number of seconds to wait. If you want, the number can be less than a second.
+
+Examples:
+
+```gherkin
+  When I wait .6 seconds
+  When I wait 150 seconds
+```
+
+**When to use the "wait" Step:**
+
+If a test sometimes fails because ALKiln says it was unable find a field or element on the page, and other times the test passes, this Step can help. Use "wait" to pause for a moment before trying to interact. This is usually because some elements can take different amounts of time to fully appear.
+
+Use "wait" to let page elements finish moving around. For example, after you use the ["tap and stay" Step](#tap-stay) to expand content. When elements are moving on the page ALKiln has trouble interacting with them.
+
+Use "wait" to wait for a background process to finish - ALKiln is currently unable to detect a background process finishing.
+
+Use "wait" to give external data more time to load.
+
+<!-- Can this happen?: You can also wait at the beginning of a test before the test even goes to the interview page. This can be useful if you know that something on the server will be loading in between Steps. -->
+
+
+<!-- Maybe: ### `When I do nothing` as a narrative Step. People have not expressed a need for this. -->
 
 
 ## Setting values {#values}
@@ -855,7 +990,7 @@ Example of a Story Table Step to upload multiple files:
 To upload more than one file you **must** separate their names with a comma.
 
 
-### signature {#signature}
+### Signature {#sign}
 
 <!-- TODO: Move this to the appropriate Steps section when that's ready. Leave a link here? -->
 
@@ -944,17 +1079,22 @@ The last example makes sure that the date is 10 years in the past, ensuring that
 You can use some Steps to look at what is on the page or compare data. You can use these to make sure the interview has done what you want it to.
 
 
-### `I SHOULD see the phrase "<page text>"` {#phrase}
+### `I check the page for accessibility issues` {#a11y}
 
-WIP
+Use the "accessibility" Step to check the current page for problems with accessibility.
+
+Example:
+
+```gherkin
+  Then I check the page for accessibility issues
+```
+
+<A11y />
+
+This is different than the ["all accessible" Step](#a11y-all), which checks all the subsequent pages for accessibility issues.
 
 
-### `I will be told an answer is invalid` {#invalid}
-
-WIP
-
-
-### Compare {#compare-files}
+### Compare files {#compare-files}
 
 WIP
 
@@ -965,6 +1105,104 @@ You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to
 ```
 
 This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info and search for the differing text in the baseline PDF and in the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
+
+
+### `I SHOULD see the phrase "<page text>"` {#phrase}
+
+WIP
+
+
+### `the text in the JSON variable "<variable name>" should be` {#compare-json}
+
+Use the "compare JSON" Step to check that a variable on the page has a specific text value. **This is a multi-line step**. It is a little limited at the moment.
+
+The Step format:
+
+```
+  Then the text in the JSON variable "<variable name>" should be
+  """
+  <value>
+  """
+```
+
+The first blank to fill in for this Step is `<variable name>` which is the name of the variable that is in the JSON variables and values data of the page. The second blank to fill in is `<value>`, which is the value you want the variable to have. The value **must** be a string (text).
+
+:::caution
+This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not an attribute like `user.affidavit`.
+:::
+
+Example for one line of text:
+
+```
+  Then the text in the JSON variable "nickname" should be
+  """
+  Ursus
+  """
+```
+
+Example for text with multiple lines:
+
+```
+  Then the text in the JSON variable "user_affidavit" should be
+  """
+  Three quotes then some affidavit text.
+
+  The text can be multi-line.
+
+  Then close with three quotes.
+  """
+```
+
+This Step will save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the current question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
+
+
+### `I get the page's JSON variables and values` {#show-vars}
+
+Use the "get JSON" Step to add a page's JSON variables to the final test report.
+
+Example:
+
+```gherkin
+  And I get the page's JSON variables and values
+```
+
+The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1). It is a bit messy, but you do get to see all the variables.
+
+<!-- TODO: Does this save a file with the vars as well? -->
+
+
+### `I will be told an answer is invalid` {#invalid}
+
+Use the "invalid answers" Step to check that the user got feedback that one or more of their answers were invalid.
+
+<!-- TODO: Change to "I see an answer is invalid" -->
+
+Example:
+
+```gherkin
+  Then I will be told an answer is invalid
+```
+
+
+### `the question id should be "<id>"` {#id}
+
+Use the "question id" Step to make sure the test has gotten to the right page.
+
+The Step format:
+
+```gherkin
+  Then the question id should be "<question id>"
+```
+
+The blank to fill here is `<question id>` - the [id of the `question` block](https://docassemble.org/docs/modifiers.html#id) for this page. To get the right `<question id>`, copy the `id` value from that block and paste it into your test.
+
+Example:
+
+```gherkin
+  Then the question id should be "some YAML block id!"
+```
+
+This Step can help humans keep track of what page the tests are on. It will also show up in the test reports and can help you see where things went wrong.
 
 
 ## Understanding test results {#output}
@@ -1079,6 +1317,11 @@ You can use any of those. It does not matter what you pick.
  -->
 
 
+## Environment variables {#env-vars}
+
+WIP
+
+
 ## Running tests {#run}
 
 <!--
@@ -1111,6 +1354,10 @@ field:
       - Jaime: maybe_not_a_bear
 ``` -->
 
+https://docassemble.org/docs/fields.html#choices says
+
+> [A choices must be] a list of possible options. The list can be a list of plain text items (in which case the label and the variable value are the same) or a list of key/value pairs (in which the key is the label seen by the user and the value is the value to which the variable will be set). We want the latter.
+
 ```gherkin
 fields:
   - Q1: var_1
@@ -1136,3 +1383,9 @@ Do the latter.
 ### Do I have to set every variable in the interview? {#every-var}
 
 No, only required variables.
+
+
+## Failures get re-run once {#rerun}
+
+WIP
+
