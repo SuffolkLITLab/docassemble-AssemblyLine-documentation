@@ -279,7 +279,7 @@ One special value you can include is `today`. That will insert the date on which
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
 
-### trigger <!-- Moved -->
+### trigger <!-- Moved/Removed -->
 
 `trigger` is an optional value in most cases. It is only mandatory for rows that use [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`).
 
@@ -327,7 +327,7 @@ yesno: likes_mandatory_questions
 
 In those cases, leave the `trigger` column empty.
 
-### Story Table examples
+### Story Table examples <!-- Moved -->
 
 _Simple field types with their values._
 
@@ -361,6 +361,7 @@ Text field or textarea. Even if the answer has multiple lines, you can only use 
       | favorite_color | Blue.\nNo, green!\nAah... | favorite_color |
 ```
 
+<!-- Moved -->
 A generic object with an index variable.
 ```
       | x[i].name.first | Umi | users[1].name.first |
@@ -404,7 +405,11 @@ Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all b
 
 ### Starting Steps
 
-_Establishing Steps that you might use as the first few lines of a "Scenario" - a test. They can also be used at any other time._ 
+_Establishing Steps that you might use as the first few lines of a "Scenario" - a test. They can also be used at any other time._
+
+---
+
+<!-- Moved -->
 
 :::caution
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
@@ -420,6 +425,8 @@ This Step must **always** be included in **each** `Scenario` **before** setting 
 
 ---
 
+<!-- Moved -->
+
 The `wait` Step can be a way to pause before the test tries to go to the interview's first page.
 
 ```
@@ -433,7 +440,7 @@ This Step can also be used anywhere in your scenario to wait between Steps.
     And I wait 1 second
 ```
 
-<!-- Maybe put this in the errors/warnings section:
+<!-- Added and Moved: Maybe put this in the errors/warnings section:
 
 You might need this if your tests repeatedly fail on one Step, especially if it only happens sometimes. This is because some situations can cause race conditions that make the tests believe the next page has loaded even though it hasn't. We haven't yet found a way to detect all of these and it might never be possible. -->
 
@@ -441,6 +448,8 @@ You might need this if your tests repeatedly fail on one Step, especially if it 
 
 <!-- Given I start the interview at "filename" in lang "Español" -->
 <!-- And I am using a mobile -->
+
+<!-- Moved -->
 
 You can also start by making sure the test will give the interview's first page time to load once the test goes there. The default maximum time is 30 seconds. This Step can be useful if you know that your interview's first page takes longer to load.
 
@@ -452,6 +461,8 @@ You can also start by making sure the test will give the interview's first page 
 This Step can also be used anywhere else in your Scenario to give Steps more time to finish.
 
 ---
+
+<!-- Moved -->
 
 You can use <span id="log-in-step">the `log in` Step</span> to sign into your docassemble server before going to the interview:
 
@@ -468,6 +479,8 @@ This is a complex Step to use and right now only works in GitHub (though we are 
 
 ### Observe things about the page
 
+<!-- Moved -->
+
 The `question id` Step will make sure the page's question id is right. This Step can help humans keep track of what page the tests are on. It will also show up in the logs of the tests and can help you see where things went wrong.
 
 Copy the `id` value from the YAML `question` block of the screen you want to test.
@@ -478,13 +491,15 @@ Copy the `id` value from the YAML `question` block of the screen you want to tes
 
 ---
 
+<!-- Moved -->
+
 The `invalid answers` Step can check that the user was prevented from continuing.
 
 ```
     Then I will be told an answer is invalid
 ```
 
-<!--
+<!-- Removed
 I don't think these are trustworthy enough yet
 Then I can't continue
 Then I arrive at the next page
@@ -529,6 +544,8 @@ The phrase should be inside double quotation marks and should NOT itself contain
 
 ---
 
+<!-- Moved -->
+
 The `accessibility` Step can <span id="accessibility">check a page for its accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
 
 ```
@@ -547,6 +564,8 @@ This is equivalent to running `I check the page for accessibility issues` on eve
 that the test runner sees.
 
 ---
+
+<!-- Moved -->
 
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
@@ -567,6 +586,8 @@ This step is unable to check values of nested objects. For example, it can test 
 
 ---
 
+<!-- Moved -->
+
 The `JSON variables` Step will add the page's JSON variables to the final test report. It's a bit messy, but you do get to see all the variables.
 
 ```
@@ -580,7 +601,7 @@ The `JSON variables` Step will add the page's JSON variables to the final test r
 
 ---
 
-### Set values
+### Set values <!-- Moved -->
 
 _Fill in fields with answers, set values, and interact with the page in other ways._
 
@@ -804,6 +825,8 @@ In a story table, use the name of the variable as usual and use the name of the 
 
 ---
 
+<!-- Moved -->
+
 Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
@@ -811,6 +834,8 @@ Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your
 ```
 
 ---
+
+<!-- Moved -->
 
 Use the `wait` Step to pause once a page has loaded. will let you wait a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
 
