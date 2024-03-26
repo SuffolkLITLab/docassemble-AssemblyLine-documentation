@@ -11,6 +11,16 @@ WIP (Work in progress)
 
 This page will try to help you figure out what is going wrong when you have errors or other problems with your ALKiln tests.
 
+This page helps with:
+
+- Common mistakes
+- Errors from the third-party libraries that ALKiln uses
+- ALKiln errors and error and warning codes
+
+This document contains is still under development and contains only some of the possible errors. Every ALKiln error and warning should have a code, though, and giving us that code can help us narrow down your problem.
+
+We are keeping the errors from the third-party libraries until we can handle every case of the errors ourselves.
+
 <!--
 ## Failing tests {#failure}
 
@@ -139,3 +149,54 @@ Maybe "Some JSON files aren't being saved with the "save variables" (writing#sav
 
 Make sure every question block you create has an id
  -->
+
+## Phrase is missing {#missing-phrase}
+
+<!-- TODO: when there are error codes: Error code ALK0?? -->
+
+WIP
+
+Example error:
+
+```txt
+The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
+```
+
+### Typo
+
+WIP
+
+1. Regular typo
+
+### Quotes and other catastrophes {#da-converted-text}
+
+WIP
+
+**Problem**
+
+Even though the text might look correct, you might not have used exactly characters the user is seeing. Docassemble sometimes shows the user slightly different characters than the ones you typed in your code.
+
+**Solution**
+
+Run the interview[^faster] until the page that has the text. Use your cursor to select the text you want to test. Copy and paste that text into your test.
+
+**What is going on?**
+
+When you tell the test to look for a phrase on a page, you have to give it the exact characters that are on the page the user sees. That is, ignore the text that you wrote in your code.
+
+See a section in [tips about quotes](writing_tests.mdx#special-chars) for more detailed information. To sum up, it is best to copy/paste the text **straight from the screen the user sees**.
+
+:::danger Wrong
+```gherkin
+  I should see the phrase "a document called a 'Certified docket sheet'"
+```
+:::
+
+:::tip Right
+```gherkin
+  I should see the phrase "a document called a ‘Certified docket sheet’"
+```
+:::
+
+
+[^faster]: To speed things up, you might instead be able to use the HTML page that the report created for you. It is in the folder with the name of the Scenario for that test.

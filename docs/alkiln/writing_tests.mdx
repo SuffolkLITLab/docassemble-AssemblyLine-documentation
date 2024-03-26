@@ -64,7 +64,7 @@ Scenario: child has benefits
 
 ## Writing test Steps overview {#steps}
 
-Most of [the code in test files](#files) is code for ALKiln Steps.
+Most of [the code in test files](#test-files) is code for ALKiln Steps.
 
 ALKiln Steps are how you give your instructions to the ALKiln robot. Steps are made of commands[^meh] that ALKiln has created for you. Those commands often need information from you. They are like fill-in-the-blank sentences. A sort of [madlibs](https://en.wikipedia.org/wiki/Mad_Libs#format) for your ALKiln robot. For example:
 
@@ -82,7 +82,7 @@ That command description can also be written as `I set the variable "<variable n
 
 In this case there are two blank spaces you should fill. In the first blank, you should put the name of the variable that the field will set. In the second blank, you should put the value that you want the variable to have.
 
-Each of your tests - [a `Scenario` or a `Scenario Outline`](#files) - usually contains many Steps. Any Step can be used as many times as you want anywhere in a test. If you follow [good code-writing practices](#choice-values), most Steps work in any language.
+Each of your tests - [a `Scenario` or a `Scenario Outline`](#test-files) - usually contains many Steps. Any Step can be used as many times as you want anywhere in a test. If you follow [good code-writing practices](#choice-values), most Steps work in any language.
 
 
 [^meh]: We are still working on finding a more descriptive name. Suggestions are welcome.
@@ -358,7 +358,6 @@ field:
     datatype: radio
     choices:
       - Black bear: wild_bear
-      - Brown bear: also_wild_bear
       - Teddy bear: cuddly_bear
       - Jaime: maybe_not_a_bear
 ```
@@ -645,15 +644,12 @@ field:
     datatype: radio
     choices:
       - Black bear: wild_bear
-      - Brown bear: also_wild_bear
       - Teddy bear: cuddly_bear
       - Jaime: maybe_not_a_bear
 ```
 
 
 ### Special HTML {#special-html}
-
-**What?**
 
 Most authors add this extra HTML to the `post` section of their `default screen parts`. For example:
 
@@ -672,7 +668,7 @@ default screen parts:
     <div id="trigger" data-variable="${ encode_name(str( user_info().variable )) }" aria-hidden="true" style="display: none;"></div>
 ```
 
-AssemblyLine's al_package.yml file, if you use it, already adds that HTML for you. Otherwise, we strongly recommend adding it yourself as the docs described.
+AssemblyLine's al_package.yml file, if you include it, already adds that HTML for you. Otherwise, we strongly recommend adding it yourself as the docs described.
 
 **Do I need this?**
 
@@ -837,7 +833,6 @@ field:
     datatype: radio
     choices:
       - Black bear: wild_bear
-      - Brown bear: also_wild_bear
       - Teddy bear: cuddly_bear
       - Jaime: maybe_not_a_bear
 ```
@@ -1055,11 +1050,6 @@ For no children:
 :::
 
 
-### others {#other-values}
-
-WIP
-
-
 <!-- ### Special values {#special-values}
 
 `today` is a special value in ALKiln. ALKiln will change that value into the date of the current day. Right now it uses the US format for the date. You can also add or subtract days from `today` to set a specific date in the past or in the future. These are the ways you can use `today`:
@@ -1100,7 +1090,7 @@ WIP
 
 You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
 
-```
+```gherkin
   Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
 ```
 
@@ -1109,7 +1099,41 @@ This will compare all of the text in the baseline PDF with all of the text in th
 
 ### `I SHOULD see the phrase "<page text>"` {#phrase}
 
-WIP
+Use the "phrase" Step to check that specific text is visible on the page. You can also make sure that text that should NOT be visible is indeed absent.
+
+:::danger
+Getting some text characters right can be tricky with interview pages. If you get told ALKiln cannot find a phrase, read about [possible reasons for missing phrases](troubleshooting.mdx#missing-phrase) in the troubleshooting documentation.
+:::
+
+The Step format for variation 1 - the phrase **does exist** on the page:
+
+```gherkin
+  Then I SHOULD see the phrase "<page text>"
+```
+
+The Step format for variation 1 - the phrase is **absent** from the page:
+
+```gherkin
+  Then I should NOT see the phrase "<page text>"
+```
+
+The blank to fill in here is `<page text>` - the phrase to test.
+
+<!-- Do they need this explanation?: You might want to check that a phrase is absent to make sure some logic is working to hide incorrect text. -->
+
+Examples for variation 1 - the phrase **does exist** on the page:
+
+```gherkin
+  Then I SHOULD see the phrase "Yay! This page's text is great!"
+```
+
+```gherkin
+  Then I should NOT see the phrase "Boo! This page's text is bad!"
+```
+
+The `<page text>` should be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022) and **must never** itself contain double quotation marks inside it. Since docassemble interview text usually has special quotation marks, that is usually easy. See the [troubleshooting section on missing phrases](troubleshooting.mdx#missing-phrase) that talks about special characters.
+
+Unlike many other Steps, checking phrases is **language specific**. That is, if you want to test translations as well, you will have to use [extra code](#gherkin-examples) in your test.
 
 
 ### `the text in the JSON variable "<variable name>" should be` {#compare-json}
@@ -1118,7 +1142,7 @@ Use the "compare JSON" Step to check that a variable on the page has a specific 
 
 The Step format:
 
-```
+```gherkin
   Then the text in the JSON variable "<variable name>" should be
   """
   <value>
@@ -1133,7 +1157,7 @@ This step is unable to check values of nested objects. For example, it can test 
 
 Example for one line of text:
 
-```
+```gherkin
   Then the text in the JSON variable "nickname" should be
   """
   Ursus
@@ -1142,7 +1166,7 @@ Example for one line of text:
 
 Example for text with multiple lines:
 
-```
+```gherkin
   Then the text in the JSON variable "user_affidavit" should be
   """
   Three quotes then some affidavit text.
@@ -1154,6 +1178,19 @@ Example for text with multiple lines:
 ```
 
 This Step will save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the current question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
+
+
+### `I take a picture` {#pic}
+
+The "picture" Step will take a picture of the page and download the HTML of the page. ALKiln will save those files in the Scenario folder of the [test results](#results).
+
+Example:
+
+```gherkin
+  Then I take a picture
+```
+
+<!-- ```And I take a screenshot ?(?:named "([^"]+)")?``` -->
 
 
 ### `I get the page's JSON variables and values` {#show-vars}
@@ -1205,12 +1242,19 @@ Example:
 This Step can help humans keep track of what page the tests are on. It will also show up in the test reports and can help you see where things went wrong.
 
 
-## Understanding test results {#output}
+<!-- ### `Then an element should have the id "some_HTML_element_id"` -->
+
+
+## Understanding test results {#results}
 
 WIP
 
+2 parts to the console output. The ALKiln report and the third-party errors. We are keeping the errors from the third-party libraries until we can handle every case of the errors ourselves.
 
-## Test file anatomy {#files}
+You can also read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+
+
+## Test file anatomy {#test-files}
 
 Your tests files have the code that tells ALKiln how to answer questions in your interview and do other things. The code may look different than other code you have seen, but it is still code. It is still rigid and needs you to use the right syntax and spelling.
 
@@ -1218,7 +1262,18 @@ You should save your test files in your package's ["Sources" folder](https://doc
 
 In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and keywords[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
 
+
 [^keywords]: Keywords are specific words that have a special meaning and purpose when you use them in specific places in your test code. They are similar to the words `else` and `not` in python.
+
+
+### Add a new test file {#new-file}
+
+Go to the Playground of your Project. Tap the "Folders" dropdown menu. Tap on Sources. Add a new file that ends in the extension `.feature`. For example, `has_children.feature`.
+
+You can then add the code for your tests. Follow this link to see a [simple test](setup.mdx/#first-test) that any interview can run right from the start.
+
+
+### Some rules {#gherkin-rules}
 
 Here are some rules about test files:
 
@@ -1230,6 +1285,9 @@ Here are some rules about test files:
 - You **must** use **Gherkin** syntax for your tests. [Gherkin's own documentation](https://cucumber.io/docs/gherkin/reference/) is the best place to read about Gherkin syntax with some exceptions that you can read below. Ignore notes about "step definitions". Those are part of what ALKiln takes care of.
 
 To troubleshoot Gherkin synatx problems <!-- TODO: Add link to errors that indicate incorrect syntax. Wrong cell count, etc. --> in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, the editor should mark an extra `Feature:` keyword as incorrect.
+
+
+### Gherkin keywords {#gherkin-keywords}
 
 ALKiln only allows you to use some Gherkin keywords. Those are:
 
@@ -1249,7 +1307,14 @@ ALKiln also lets you use:
 - `|` ([Data tables](https://cucumber.io/docs/gherkin/reference/#data-tables)).
 - `"""` ([Doc strings](https://cucumber.io/docs/gherkin/reference/#doc-strings)).
 
+
+### Examples {#gherkin-examples}
+
 We usually write test text as if it is from the perspective of the user. For example, "I wait" and "I start".
+
+:::tip
+Some Steps, like the ["phrase" Step](#phrase), are language-specific. You can still test translations with those Steps, though, if you use `Examples` with `Scenario Outline`. See the example below.
+:::
 
 Here is an example of a file that uses most of these features. The name of this file is `children.feature`.
 
@@ -1290,6 +1355,16 @@ Scenario Outline: I allow visitation
 ```
 
 
+<!-- ### Translations
+
+(Maybe its own section in Tips or something)
+
+You can still test translations even when you use a language-specific Step, like the ["phrase" Step](#phrase). [Check Gherkin examples](#gherkin-examples)
+
+Add example here instead.
+-->
+
+
 <!--
 Does this section need more details?
 
@@ -1317,75 +1392,222 @@ You can use any of those. It does not matter what you pick.
  -->
 
 
-## Environment variables {#env-vars}
+## Running tests {#run}
 
 WIP
-
-
-## Running tests {#run}
 
 <!--
 ### Only run some tests.
   Only run one test with tags. Here or in setup in the future section about running tests?
 -->
 
+### When do GitHub tests run? {#github-triggers}
+
+**This is for:** packages that use GitHub tests.
+
+Your [workflow file](#workflows) controls when your GitHub tests run. You can configure your workflow file to run the tests whenever you want them to run.
+
+The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
+
+That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to pick specific tests to run. You can read more about giving tags to your tests in the section about [test files](#test-files).
+
+<!-- TODO: Add note about tags in FAQ? Or Tips? -->
+
+
+### Failures get re-run once {#rerun}
+
 WIP
+
+**This is for:** packages that use GitHub tests.
+
+
+## Your GitHub workflow file {#workflows}
+
+WIP
+
+**This is for:** packages that use GitHub tests.
+
+Your ALKiln workflow file is in your GitHub repository. To find it, go to your `.github` folder, then open the `workflows` folder there. It was probably created when you ran the setup interview and it might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
+
+
+## Environment variables {#env-vars}
+
+WIP
+
+Playground - config. GitHub - workflow file.
 
 
 ## Tips {#tips}
 
-<!-- Something about unused rows? -->
+Some of these are just good practices to follow when coding your interviews.
+
+
+### Question id {#id-tip}
+
+Add a [different id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. They helps make test output more clear. They also help your team communicate with each other about your code more easily.
+
+
+### Write unique Scenario descriptions {#scenario-descriptions}
+
+ALKiln uses Scenario descriptions in your [test files](#test-files) to make the names of test folders, error screenshot files, and report headings, so try to write something different for each one - something that you will recognize later. It will help you identify what happened with each test.
+
+
+### Extra HTML {#html-tip}
+
+If your package is leaving out the al_package.yml file from the Assembly Line package, make sure to add some [special ALKiln-specific HTML](#special-html) to your interview.
+
+
+### Testing unfinished code {#unstable}
+
+If you are still developing your interview, you can still write a [simple test](setup.mdx/#first-test) to make sure your interview at least loads without an error. You might want to wait till your code is more stable to write more tests.
+
+On the other hand, if there is a part of your interview that you think will stay pretty much the same, you can write tests that just go part-way through the interview to test just the stable part of the code. That way, you can work on adding more content and yet also be sure that the work you've already done stays working.
+
+
+### Recycle, reuse {#reuse}
+
+Copy old Scenarios or Story Tables to help you make new ones. You don't have to make everything from scratch.
 
 ### Values of choices {#choice-values}
 
 WIP
 
-<!-- Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for the first choice in this field the `value` would be "wild_bear", not "Black bear". "Black bear" is just the text the user sees - the label.
+In questions with choices, use both labels and values. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about those key-value pairs. The key is the label and the value is... the value! You can use this for other fields with choices, like radio buttons.
 
-```yml
-question: Favorite bear type
-field:
-  - Pick one: users[i].favorite_bear.type
+:::caution Hmm
+Just labels:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
     datatype: radio
     choices:
-      - Black bear: wild_bear
-      - Brown bear: also_wild_bear
-      - Teddy bear: cuddly_bear
-      - Jaime: maybe_not_a_bear
-``` -->
+      - Grape
+      - Lilac
+```
+:::
 
-https://docassemble.org/docs/fields.html#choices says
-
-> [A choices must be] a list of possible options. The list can be a list of plain text items (in which case the label and the variable value are the same) or a list of key/value pairs (in which the key is the label seen by the user and the value is the value to which the variable will be set). We want the latter.
+The test:
 
 ```gherkin
-fields:
-  - Q1: var_1
-    datatype: radio
-    choices:
-      - Apples
-      - Oranges
-# vs
-fields:
-  - Q1: var_1
-    datatype: radio
-    choices:
-      - Apples: Apples
-      - Oranges: Oranges
+  And I set the variable "favorite_color" to "Lilac"
 ```
 
-Do the latter.
+Every time you edit those labels to improve the text for your users, you will have to update the values in your tests:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape
+      - Dark lilac
+```
+
+The edited test:
+
+```gherkin
+  And I set the variable "favorite_color" to "Dark lilac"
+```
+
+:::tip Better
+Better with labels and values:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape: purple1
+      - Lilac: purple2
+```
+:::
+
+The test:
+
+```gherkin
+  And I set the variable "favorite_color" to "purple2"
+```
+
+When you have both labels and values you can edit what the user sees without worrying about your tests, so the tests are easier to maintain.
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - 🍇 Grape: purple1
+      - 🔮 Dark lilac: purple2
+```
+
+The test stays the same.
+
+<!-- The value can even be the same as the label:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape: Grape
+      - Lilac: Lilac
+``` -->
+
+As a bonus, this also makes your interview easier to translate.
+
+
+### Quotes {#quotes}
+
+Many blanks you need to fill in for Steps need to be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022). You **must avoid** ever using double quotation marks inside those.
+
+This is usually fine for test authors. Read about [special characters](#special-chars) to learn why.
+
+
+### Special page characters {#special-chars}
+
+The text that docassemble shows the user - the text our tests need most often - is different than the text we write in our interview YAML file. Docassemble converts those characters to more semantically correct characters for the user. For example, in our code we write:
+
+```yml
+subquestion: |
+  This is called "relief"
+```
+
+That subquestion text uses the character `"`. The official name for this character is ["Quotation mark" and its unicode value is U+0022](https://www.compart.com/en/unicode/U+0022).
+
+When docassemble shows that page to the user, it changes the first `"` to a ["left double quotation mark" with a unicode value of U+201C](https://www.compart.com/en/unicode/U+201C): `“`. It changes the second `"` to a ["right double quotation mark" with a unicode value of U+201D](https://www.compart.com/en/unicode/U+201D): `”`
+
+The final text comes out looking more like this on the page:
+
+```
+This is called “relief”
+```
+
+They look similar to us, but computers think they look quite different.
+
+Docassemble does this for many other characters including single quotes and ellipses. It is best to copy/paste text your tests need **straight from the screen the user sees**.
+
+
+<!-- ### Something about unused rows? -->
 
 
 ## Frequently asked questions (FAQ) {#faq}
 
+Always ask more questions!
+
+
+### I have a private GitHub repository. Can I use this testing framework? {#private-repo}
+
+Yes, you can use ALKiln with a private repository, though you have to do a bit of extra work.
+
+1. Pick a GitHub account that has permission to change the private repository.
+1. Make sure the account on your docassemble server that you linked to the tests is integrated with the GitHub account. See [docassemble's documentation on integrating a GitHub account](https://docassemble.org/docs/packages.html#github).
+
+As that documentation explains, no two accounts on a docassemble server can be connected to the same GitHub account.
+
+Also, there are some [limits on the amount of time private repositories can use to run workflows](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)
+
 
 ### Do I have to set every variable in the interview? {#every-var}
 
-No, only required variables.
-
-
-## Failures get re-run once {#rerun}
-
-WIP
+No, only the variables that users are required to set.
 
