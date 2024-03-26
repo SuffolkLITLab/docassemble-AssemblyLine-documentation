@@ -27,22 +27,18 @@ module.exports = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'dal',
+          sidebarId: 'get_started',
           label: 'Get Started',
         },
         {
           type: 'docSidebar',
           sidebarId: 'docs',
-          label: 'Components',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'api',
-          label: 'API'
+          label: 'Documentation',
         },
         {
           type: 'dropdown',
           label: 'Docassemble',
+          position: 'right',
           items: [
             {
               href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
@@ -54,11 +50,6 @@ module.exports = {
             },
           ]
         },
-        // {
-        //   href: 'https://courtformsonline.org',
-        //   label: 'CourtFormsOnline',
-        //   position: 'right',
-        // },
         {
           href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
           className: 'header-github-link',

@@ -1,6 +1,6 @@
 ---
-sidebar_label: al_income
 title: ALToolbox.al_income
+sidebar_label: al_income 01
 ---
 
 #### times\_per\_year

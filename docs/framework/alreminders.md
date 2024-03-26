@@ -1,8 +1,7 @@
 ---
 id: alreminders
-title: |
-    Scheduled reminders
-sidebar_label: Scheduled Reminders
+title: Scheduled reminders
+sidebar_label: Scheduled reminders
 slug: /framework/alreminders
 ---
 

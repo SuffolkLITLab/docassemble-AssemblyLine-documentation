@@ -1,6 +1,6 @@
 ---
-sidebar_label: al_general
 title: AssemblyLine.al_general
+sidebar_label: al_general 02
 ---
 
 ## ALAddress Objects

@@ -1,11 +1,13 @@
 module.exports = {
     mainSidebar: [
     ],
-    dal: [
+    get_started: [
         'intro',
+        'al_project_architecture',
+        'installation',
         {
             type: 'category',
-            label: 'Setting Up Your Team',
+            label: 'Setting up your team',
             items: [
                 'bootcamp',
                 'getting_started',
@@ -16,10 +18,13 @@ module.exports = {
                 'customization/customization_overview',
             ],
         },
+        'contributors',
+    ],
+    docs: [
         'getting_started_docassemble',
         {
             type: 'category',
-            label: 'Authoring Your Interview',
+            label: 'Authoring interviews',
             items: [
                 'plan_interview',
                 'pdf_templates',
@@ -34,7 +39,7 @@ module.exports = {
         },
         {
             type: 'category',
-            label: 'Writing Good Questions',
+            label: 'Writing good questions',
             items: [
                 'question_style_overview',
                 'style_guide_respect',
@@ -44,12 +49,25 @@ module.exports = {
                 'question_style_organize_fields',
                 'question_style_help_your_user',
                 'style_guide_formatting',
-                'question_style_validation'
+                'question_style_validation',
+                {
+                    type: 'category',
+                    label: 'Question library',
+                    items: [
+                        'question_library/ql_names',
+                        'question_library/ql_addresses',
+                        'question_library/ql_gender',
+                        'question_library/ql_pronouns',
+                        'question_library/ql_language',
+                        'question_library/ql_terms_of_use',
+                    ]
+                },
+                'framework/error_actions',
             ]
         },
         {
             type: 'category',
-            label: 'Coding Style Guide',
+            label: 'Coding style guide',
             items: [
                 'coding_style/coding_style_overview',
                 'coding_style/python',
@@ -63,38 +81,62 @@ module.exports = {
                 'coding_style/docs_style_guide'
             ]
         },
-        'complexity/complexity',
-        'contributors',
-    ],
-    docs: [
-        'installation',
-        'al_project_architecture',
         'framework/magic_variables',
         'framework/reserved_keywords',
         {
-            type: 'category',
-            label: 'Question Library',
-            items: [
-                'question_library/ql_names',
-                'question_library/ql_addresses',
-                'question_library/ql_gender',
-                'question_library/ql_pronouns',
-                'question_library/ql_language',
-                'question_library/ql_terms_of_use',
+            "type": "category",
+            "label": "AssemblyLine",
+            "items": [
+                'framework/algeneral',
+                "reference/AssemblyLine/al_general",
+                "reference/AssemblyLine/al_courts",
+                'framework/aldocument',
+                "reference/AssemblyLine/al_document",
+                "reference/AssemblyLine/language",
+                'framework/alreminders',
+                "reference/AssemblyLine/sessions",
+                {
+                    type: 'category',
+                    label: 'Answer sets',
+                    items: [
+                        'framework/answer_sets',
+                        'framework/answer_set_intakes',
+                    ]
+                },
             ]
         },
         'framework/alrecipes',
-        'framework/algeneral',
-        'framework/aldocument',
-        'framework/altoolbox',
         {
-            type: 'category',
-            label: 'ALIncome',
-            items: [
-                'alincome/overview',
-                'alincome/expenses',
-                'alincome/jobs',
-                'alincome/itemizedjobs',
+            "type": "category",
+            "label": "ALToolbox",
+            "items": [
+                'framework/altoolbox',
+                {
+                    type: 'category',
+                    label: 'ALIncome',
+                    items: [
+                        "reference/ALToolbox/al_income",
+                        'alincome/overview',
+                        'alincome/expenses',
+                        'alincome/jobs',
+                        'alincome/itemizedjobs',
+                    ]
+                },
+                "reference/ALToolbox/business_days",
+                "reference/ALToolbox/copy_button",
+                "reference/ALToolbox/misc",
+                "reference/ALToolbox/save_input_data"
+            ]
+        },
+        'complexity/complexity',
+        'framework/github_feedback',
+        'analytics/tracking_usage',
+        {
+            "label": "FormFyxer",
+            "type": "category",
+            "items": [
+                "reference/formfyxer/lit_explorer",
+                "reference/formfyxer/pdf_wrangling"
             ]
         },
         {
@@ -107,17 +149,6 @@ module.exports = {
                 'efiling/monitoring',
             ]
         },
-        {
-            type: 'category',
-            label: 'Answer Sets',
-            items: [
-                'framework/answer_sets',
-                'framework/answer_set_intakes',
-            ]
-        },
-        'framework/alreminders',
-        'framework/github_feedback',
-        'framework/error_actions',
         {
             type: 'category',
             label: 'ALKiln',
@@ -134,16 +165,6 @@ module.exports = {
                 'alkiln/alkiln_security',
                 'alkiln/alkiln_deprecated',
             ]
-        },
-        {
-            type: 'category',
-            label: 'Analytics',
-            items: [
-                'analytics/tracking_usage'
-            ]
-        },
-    ],
-    api: [
-        require('./docs/reference/sidebar.json')["items"]
+        }
     ]
 };

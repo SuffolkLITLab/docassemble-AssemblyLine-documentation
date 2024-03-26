@@ -1,7 +1,7 @@
 ---
 id: overview
-title: 'ALIncome: Python classes to gather financial information'
-sidebar_label: 'ALIncome: Python classes to gather financial information'
+title: 'al_income: Python classes to gather financial information'
+sidebar_label: 'al_income 02'
 slug: /alincome/overview
 ---
 

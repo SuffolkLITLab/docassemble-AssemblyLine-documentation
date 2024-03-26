@@ -1,9 +1,7 @@
 ---
 id: tracking_usage
-title: |
-    Tracking usage of Assembly Line interviews
-sidebar_label: |
-    Tracking usage of Assembly Line interviews
+title: 'InterviewStats: Tracking usage of Assembly Line interviews'
+sidebar_label: InterviewStats
 slug: /analytics/tracking_usage
 ---
 

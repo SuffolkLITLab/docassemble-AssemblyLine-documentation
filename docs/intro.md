@@ -1,7 +1,7 @@
 ---
 id: intro
 title: The Document Assembly Line
-sidebar_label: About the Document Assembly Line
+sidebar_label: Intro
 slug: /intro
 ---
 
