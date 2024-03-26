@@ -140,12 +140,12 @@ Use the "sign in" Step to sign into your docassemble server before going to the 
   Given I sign in with the email "USER_EMAIL" and the password "USER_PASSWORD"
 ```
 
-You **must** use [environment variables](#env-var) for the values in this command to keep the user log in information secure. `"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of environment variable names. You can use any names you want.
+You **must** use [environment variables](#env-vars) for the values in this command to keep the user log in information secure. `"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of environment variable names. You can use any names you want.
 
 ALKiln will avoid taking a screenshot of this page or saving the HTML of the page. It also will avoid logging or printing these values. It is a bad security practice to take pictures of or print sensitive information like the information on login pages.
 
 
-### `I go to "<url>"` #{go-anywhere}
+### `I go to "<url>"` {#go-anywhere}
 
 Use the "go anywhere" Step to go to any arbitrary url.
 
@@ -164,7 +164,9 @@ Example:
 ```
 
 
-## Settings Steps {#settings}
+## Configuration Steps {#config}
+
+<!-- Settings? Too much like "setting variables"? -->
 
 These Steps can change your settings for your tests. For example, the maximum amount of time one Step or page can take to finish.
 
@@ -284,7 +286,7 @@ An example table:
     | var | value |
     | last_haircut_date | today - 730 |
     | wants_virtual_haircut | True |
-    | user_name | Jared |
+    | user_name | Jaime |
     | intro_screen_accepts_terms | True |
 ```
 
@@ -415,7 +417,7 @@ This Step is unable to sign into your docassemble server. You **MUST** use [the 
 <!-- TODO: Maybe put env var stuff in here, but we do also need that info for other things, like workflows -->
 
 
-### I tap to continue {#continue}
+### `I tap to continue` {#continue}
 
 Use the "continue" Step to tap the button to continue to the next page. If the continue button sets a variable, this Step will set that variable to `True`. Story Table Steps handle continuing by themselves.
 
@@ -1299,7 +1301,7 @@ ALKiln only allows you to use some Gherkin keywords. Those are:
 
 ALKiln also lets you use:
 
-- `@` ([Tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags)). The specific sections of the tags documentation that apply to ALKiln are:
+- `@` ([Tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags)). You can use tags to limit which tests to run. The specific sections of the tags documentation that apply to ALKiln are:
   - A [general description of tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags).
   - [Tag expressions](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions)
   - Extra: [Tag inheritance](https://cucumber.io/docs/cucumber/api/?lang=java#tag-inheritance).
@@ -1409,7 +1411,7 @@ Your [workflow file](#workflows) controls when your GitHub tests run. You can co
 
 The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
-That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to pick specific tests to run. You can read more about giving tags to your tests in the section about [test files](#test-files).
+That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags to your tests in the section about [test files](#test-files).
 
 <!-- TODO: Add note about tags in FAQ? Or Tips? -->
 
@@ -1421,13 +1423,149 @@ WIP
 **This is for:** packages that use GitHub tests.
 
 
-## Your GitHub workflow file {#workflows}
+## Workflow files {#workflows}
 
 WIP
 
-**This is for:** packages that use GitHub tests.
+**This is for:** packages that run tests in GitHub.
 
-Your ALKiln workflow file is in your GitHub repository. To find it, go to your `.github` folder, then open the `workflows` folder there. It was probably created when you ran the setup interview and it might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
+<!-- use [the recommended GitHub test type](setup.mdx#recommended-setup). -->
+<!-- use [the isolated server test setup](setup.mdx#isolated-server-how-to). -->
+
+**It can help to know about:**
+
+- GitHub workflow files
+- [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+
+This section has a lot of challenging technical information about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows). We will do our best to help. We would love to hear how we can improve.
+
+
+### What is this file? {#workflows-what}
+
+Your GitHub workflow file is what starts and controls a package's tests on GitHub. Only [tests that run on GitHub](setup.mdx#types) need a workflow file. The file gives ALKiln some configuration information. You can use it to customize the ALKiln test runs and control when to trigger the GitHub tests.
+
+<!-- You can do a lot more with your workflow file if you study details about [GitHub workflows](https://docs.github.com/en/actions/using-workflows) and the [GitHub CLI](https://docs.github.com/en/actions/using-workflows/using-github-cli-in-workflows), like making issues when tests fail. ALKiln uses only a few features. -->
+
+
+### Where in GitHub is the file? {#workflows-where}
+
+Your ALKiln workflow file is in your package's GitHub repository. To find it, go to the repository to the `.github` folder, then open the `workflows` folder there. The workflow file there might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
+
+
+### Can I see an example file? {#workflows-examples}
+
+ALKiln's own workflow files are the most up-to-date, so using those as an example can be useful. You cannot just copy them. They have features that are unique to ALKiln. They do have notes for how to change them to what you need.
+
+You can see [ALKiln's own version of the GitHub test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/playground.yml).
+
+You can see [ALKiln's own version of the isolated server test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+
+<!-- TODO: deep dive or standup: We could potentially use this plugin to show the actual file in here: https://github.com/rdilweb/docusaurus-plugin-remote-content -->
+
+
+### What are the values I can customize in the file? {#workflows-values}
+
+You can use [workflow inputs](#workflow-inputs) to change global configuration settings for all your whole test run.
+
+You can use custom [environment variables](#env-vars) to set values in your tests.
+
+
+### Security {#workflows-security}
+
+See the [security documentation](security.mdx).
+
+
+## Workflow inputs {#workflow-inputs}
+
+Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
+
+
+### Required inputs for recommended GitHub tests {#auto-server-inputs}
+
+The [recommended GitHub test method](setup.mdx#recommended-setup) workflow file has a few absolutely **required** inputs. The [ALKiln setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) should create the secrets and workflow inputs for this type of test environment.
+
+You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
+
+- `SERVER_URL` is the url of the docassemble server the tests should run on.
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on your server. When you set up for this kind of test, we recommend you create a new developer account on your server just for testing. This account will store [the Project in the Playground while GitHub runs the tests](setup.mdx#github-how).
+
+If you do not already have these secrets, add them to your package's repository or GitHub organization[^secret].
+
+Use them the same way that the example workflow file uses them. They appear in 2 places.
+
+<!-- 1. Turn them into environment variables
+1. Give them to ALKiln as inputs. They are in the example file directly under the `with:` keyword.
+
+These are values you can put in your workflow file directly under the `with:` keyword.
+ -->
+
+
+[^secret]: If your server is part of a GitHub organization, we recommend creating some of these values as organization secrets. That way, if you need to change the value of an input or environment variable you can do it one place.
+
+
+### Required inputs for isolated server tests {#isolated-server-inputs}
+
+<!-- TODO: Add link to isolated server test info -->
+
+These are the only required inputs for isolated server tests. We are listing them here for the sake of completeness, but none of them need to be secrets and you can copy the correct values straight from [ALKiln's own isolated tests workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+
+You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
+
+- `SERVER_URL` is the url of the new docassemble server GitHub just created. Another step in the same file defined that value.
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on the new server. Another step in the same file defined that value.
+- `INSTALL_METHOD` is an internal value ALKiln needs from isolated server tests. The value in ALKiln's file is the correct value.
+
+
+### Optional inputs for all tests that run on GitHub {#optional-inputs}
+
+You can add some optional inputs to the workflow file of any tests that run on GitHub to control global ALKiln configuration values.
+
+The options are:
+
+- `ALKILN_VERSION` lets you use a specific version of the ALKiln framework for your tests. It can be useful for [security](security.mdx#freeze-framework) or for trying out experimental versions of the ALKiln framework. The default value is the latest version.
+- `ALKILN_TAG_EXPRESSION` is the "tag expression" to use to limit which tests to run. These docs describe tags in the [Gherkin keywords section](#gherkin-keywords). The default is no tag expression so that all the tests run.
+- (Extra Advanced) `DOCASSEMBLECLI_VERSION` is the version of docassemblecli to install. If this means nothing to you then you can probably ignore it. You can also ask us about this.
+
+None of these need to be secrets, but they can be if you want that[^secret]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
+
+Use them in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
+
+
+### Optional inputs for GitHub test inputs {#github-optional-inputs}
+
+WIP
+
+You can add some optional inputs to the workflow file of any tests that run with the [recommended GitHub test method](setup.mdx#recommended-setup) to control global ALKiln configuration values:
+
+- `MAX_SECONDS_FOR_SETUP` is the maximum amount of time to give the Project to upload your package's GitHub code. If your server is slow, increase this value.
+- `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload if it needs to. A server reload can make a test fail. Waiting the right amount of time for the reload can make it more likely the test will succeed when ALKiln retries it.
+
+<!--
+
+  TODO:
+None of these need to be secrets, but they can be if you want that[^secret]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
+
+Use them in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
+ -->
+
+### Optional inputs for isolated server inputs {#isolated-server-optional-inputs}
+
+You can add some optional inputs to the workflow file of any tests that run with the [isolated server method](setup.mdx#isolated-server-details) to control global ALKiln configuration values. We note when an option should also be a GitHub secret for security reasons:
+
+- `CONFIG_CONTENTS` is the contents of the [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. **For security, we strongly recommend you put this information into a GitHub secret** like `DOCASSEMBLE_DEVELOPER_API_KEY` above. If you have special configuration settings on your own server, you can use input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses.
+- `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output from the creation of the docker container and the installation of docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information it might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
+- `MAX_SECONDS_FOR_DOCKER` is the maximum amount of time to give the docassemble docker container to get properly started. If your tests keep failing because your docker container is taking a long time to start, maybe because of configuration options, then you can increase this time. The default time is 600 seconds (10 min).
+<!-- TODO: What is the error message when docker container setup stops too early -->
 
 
 ## Environment variables {#env-vars}
