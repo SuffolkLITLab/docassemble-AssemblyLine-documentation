@@ -14,48 +14,6 @@ This file is to keep track of the progress transferring content to the new docs
 
 ---
 
-The `screenshot` Step will take a picture and download the HTML of the screen. In GitHub tests, it will be put in the GitHub action's [artifacts](#see-github-test-results).
-<!-- And I take a screenshot ?(?:named "([^"]+)")? -->
-
-```
-    Then I take a screenshot
-```
-
----
-
-The `link` Step can make sure a link appears on the page. For example, a link to quickly leave the page for forms that deal with domestic abuse.
-
-```
-    Then I should see the link to "a-url.com"
-```
-
-<!-- Then an element should have the id "some_HTML_element_id" -->
-
----
-
-The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
-
-:::danger
-Getting the characters right can be tricky with docassemble. If you get told a phrase is missing, read about [a possible reason](#phrase-is-missing) in the errors section.
-:::
-
-```
-    Then I SHOULD see the phrase "some phrase"
-```
-
-```
-    Then I should NOT see the phrase "some phrase"
-```
-
-The phrase should be inside double quotation marks and should NOT itself contain [regular double quotation marks](https://www.compart.com/en/unicode/U+0022) inside it. That usually isn't a problem with docassemble pages because docassemble transforms our code in ways we don't always expect. See the [missing phrase section](#phrase-is-missing) that talks about special characters.
-
----
-
-### Other actions
-
-<!-- When I tap the defined text link {string} -->
-<!-- When I do nothing -->
-
 <!--
 ## Failing tests
 {#failing-tests}
@@ -96,45 +54,11 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 
 ## Tips
 
-_Some of these are just good practices to follow when coding your interviews._
-
-In questions with choices, give each label a value. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
-
-Not great with just labels:
-```yaml
-question: Tell me about yourself
-fields:
-  - Favorite color
-```
-
-Better with values as well:
-```yaml
-question: Tell me about yourself
-fields:
-  - Favorite color: user_favorite_color
-```
-
-It's always possible to use the labels alone, but giving a value as well ensures your tests will work for translated versions of your interview. It also helps your code be more translatable in general.
-
 ---
 
-Add a [unique id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. This also helps your team communicate with each other more easily.
-
----
+<!-- Is this actually a problem?  -->
 
 Avoid `noyes` type fields. For one thing, the [story table generator](#generate-a-story-table) code will need less editing. For another, we've found that humans tend to find those confusing too.
-
----
-
-If your package is not importing specifically al_package.yml from the styled Assembly Line package, make sure to add the [trigger variable code](#trigger_variable_code) to your interview.
-
----
-
-You can write tests that just go part-way through an interview. That way, you can work on adding more content and yet also be sure that the work you've already done isn't affected by the new changes.
-
----
-
-Use old Scenarios or story tables to help you make new ones. You don't have to make everything from scratch.
 
 ---
 
@@ -333,32 +257,6 @@ If you see the text "invalid playground path" in the report, that means the `Giv
 ### UnhandledPromiseRejection error
 
 This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
-
-### Phrase is missing
-
-If you get an error message that an expected phrase is missing, make sure you copy and paste the text you're expecting **directly from the running interview page**.
-
-Sometimes the characters in your code and the characters on screen are not the same. For example, in our code we often use apostrophes as quotes (`'`) and docassemble changes them to actual opening and closing quote characters (`‘` and `’`). Same for double quotes. In our code editor, we use the unicode character [`"` (U+0022)](https://www.compart.com/en/unicode/U+0022) both for opening and closing quotes. On the running interview page, docassemble changes those into `“` - ["left double quotation mark" (U+201C)](https://www.compart.com/en/unicode/U+201C) - and `”` - ["right double quotation mark" (U+201D)](https://www.compart.com/en/unicode/U+201C)
-
-They look very similar, but are not the same. It's best to copy the text **straight from the screen the user sees.**
-
-Wrong:
-
-```
-    I should see the phrase "a document called a 'Certified docket sheet'"
-```
-
-Example error:
-
-```
-The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
-```
-
-Right:
-
-```
-    I should see the phrase "a document called a ‘Certified docket sheet’"
-```
 
 ### Inconsistent cell count
 
@@ -574,17 +472,6 @@ on:
 
 ## FAQ
 
-### I have a private GitHub repository. Can I use this testing framework?
-
-Yes, you can use ALKiln with a private repository, though you have to do a bit of extra work.
-
-1. Pick a GitHub account that has permission to change the private repository.
-1. Make sure the account on your docassemble server that you linked to the tests is integrated with the GitHub account. See [docassemble's documentation on integrating a GitHub account](https://docassemble.org/docs/packages.html#github).
-
-As that documentation explains, no two accounts on a docassemble server can be connected to the same GitHub account.
-
-Also, there are some limits on the amount of time private repositories can run workflows: https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
-
 ### How do I add a new test file?
 
 Go to your Playground > the dropdown Folders menu > Sources.
@@ -625,10 +512,6 @@ Scenario: I allow unsupervised visitation
 After that, you can add the story table or other Steps that will test your interview.
 
 Make sure to leave the `Feature:` line at the very top of the file. Avoid repeating the `Feature:` key anywhere else in the file.
-
-### Why should I write a Scenario description?
-
-`Scenario` descriptions affect the names of error screenshot files and report headings, so try to write something unique that you will recognize later. It will help you identify what happened with each test.
 
 ### When do tests run?
 
@@ -693,19 +576,3 @@ What kinds of tests can we provide?
 Who are the main users of the testing framework?
 
 -->
-
-## Feedback
-
-Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
-
-## Built with
-
-Kiln uses cucumberjs, puppeteerjs, cheerio, and runs the assertions using mocha and chai libraries.
-
-Even though this is built using [cucumberjs](https://cucumber.io/), this framework has a different, less lofty, purpose. cucumber focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
-
-## Repositories
-
-- [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) is the package that will let you run tests directly on your server
-- [ALKiln's own repository](https://github.com/SuffolkLITLab/ALKiln)
-- The [developer test setup interview's repo](https://github.com/SuffolkLITLab/docassemble-ALKilnSetup)
