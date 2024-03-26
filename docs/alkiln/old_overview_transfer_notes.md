@@ -275,25 +275,9 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 
 ## Your workflow file
 
-**Where is it?**
-
-Your ALKiln workflow file is in your repository. To find it, go to your `.github` folder, then open the `workflows` folder there. It was probably created when you ran the setup interview and it might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
-
-**What does it do?**
-
-Among other things, the workflow file:
-
-- Triggers the ALKiln tests when desired, like when you push new code to your package.
-- Gives ALKiln inputs that are needed to run your tests.
-- Optionally gives ALKiln other inputs and environment variables it can use.
-
-You can also use the whole suite of GitHub's workflow and action functionality to do other things, like creating issues when tests fail.
-
-These following sections probably require prior technical knowledge about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
-
 ### Required inputs
 
-The setup interview should have helped you create these required `inputs` and their values. They are in the `jobs:` section. They look something like this:
+<!-- The setup interview should have helped you create these required `inputs` and their values. They are in the `jobs:` section. They look something like this:
 
 ```yml
         with:
@@ -305,7 +289,7 @@ The setup interview should have helped you create these required `inputs` and th
 
 `DOCASSEMBLE_DEVELOPER_API_KEY` is the API key that you created for the account on your server that will store the Project in the Playground while the tests are being run. You probably created this in the setup interview. Alternatively, your organization admin may have created it.
 
-We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
+We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`. -->
 
 ### Optional inputs
 
@@ -469,55 +453,6 @@ on:
   schedule:
     - cron: '0 1 * * TUE'
 ```
-
-## FAQ
-
-### How do I add a new test file?
-
-Go to your Playground > the dropdown Folders menu > Sources.
-
-Add a new file that ends in the extension `.feature`. Ex: `has_children.feature`
-
-Add this to the blank file:
-
-```
-Feature: A description of the category of the tests you'll write in this file
-
-Scenario: The specific situation that this test is written for
-  Given I start the interview at "name_of_the_interview_file_to_test.yml"
-```
-
-Make sure that
-
-1. `Feature:` and it's description is on the first line.
-1. Each test starts with a `Scenario:` and its description.
-1. `Given I start the interview...` is the first line under `Scenario`.
-
-After that, you can add a Story Table or other Steps that will test your code. Save the new files in your Playground's Packages page and commit them to GitHub. From then on, GitHub will run that tests whenever you commit, or push, to GitHub.
-
-### How do I add a new test to an existing test file?
-
-To add a new test to the existing file you need:
-
-1. The keyword `Scenario:` with a description.
-1. The step that loads the interview's page: `Given I start the interview at`. You must use it before you fill out any fields.
-
-Example:
-
-```
-Scenario: I allow unsupervised visitation
-  Given I start the interview at "restraining_order.yml"
-```
-
-After that, you can add the story table or other Steps that will test your interview.
-
-Make sure to leave the `Feature:` line at the very top of the file. Avoid repeating the `Feature:` key anywhere else in the file.
-
-### When do tests run?
-
-GitHub tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
-
-If you know how to use GitHub [actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity), you can also run the tests manually from GitHub actions with some more options.
 
 <!-- I think this info is useful, but I'm not sure where it should go.
 ## About writing tests

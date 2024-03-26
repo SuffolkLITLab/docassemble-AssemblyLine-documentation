@@ -24,7 +24,8 @@ That is, test-specific secrets might be separate from the SERVER_URL-type secret
 -->
 <!-- TODO: Workflow section about an action version vs. an alkiln version? -->
 
-This page will tell you about the different ways to set up and run your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want. They each have their advantages and disadvantages.
+This page will tell you about the different ways to set up and run your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want.
+
 
 ## Do _I_ need to read this? {#who}
 
@@ -59,6 +60,26 @@ Installing tests can involve one or more of these things:
 1. Creating GitHub secrets
 1. Installing a package on your docassemble server
  -->
+
+
+## Types of tests {#types}
+
+There are three kinds of tests:
+
+1. GitHub tests that create and test a Project on your docassemble server
+2. Playground tests that you run manually from an interview you install on your server
+3. Isolated server tests that create their own docassemble server on GitHub and run tests there
+
+Every type of test runs on a docassemble server. Option 1 and option 3 both run on GitHub. Sorry about the names. Each type of test has its advantages and disadvantages.
+
+<!--
+1. GitHub runs these automatically on your docassemble test server. These tests are triggered on GitHub. **(automatic test server tests/auto tests/auto server)**
+2. You run manually on your docassemble test server in your account. **(manual test server tests/manual tests/manual server)**
+3. GitHub runs these automatically on an isolated GitHub docassemble server. These tests are triggered on GitHub. **(automatic GitHub server tests/weird auto tests/auto remote/auto blackbox/auto isolated/auto fenced/auto sandbox/auto sequestered/~~temporary~~/enclosed/encapsulated/capsule/bounded/restricted/quarantined/restrained/secluded/closeted/lonesome/hermit/hermetic/private.../sealed/clean/blank)** (bounded or enclosed might be used in the text of its section to give it more context "within the bounds of a separate isolated GitHub server")
+
+## Hermes Trismegistus
+-->
+
 
 ## Recommended setup: GitHub tests that run on your server {#recommended-setup}
 
@@ -262,6 +283,7 @@ You can also run the tests by [triggering your workflow manually](https://docs.g
 
 ## GitHub test details {#github-details}
 
+<!-- TODO: "on your test server" with a link to security section -->
 These tests run on GitHub, but they still interact with a Project they create on your server. Whenever you push (or commit) to GitHub, GitHub will run the tests automatically. You can also [trigger them manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow).
 
 
@@ -398,7 +420,7 @@ Add links to docs about the trigger var
 
 ## Isolated server test details {#isolated-server-details}
 
-Isolated server tests are the most secure because they never interact with your server and they are temporary. Unfortunately, the also have more complications.
+Isolated server tests are the most secure because they never interact with your server and they are temporary. Unfortunately, they also have more complications.
 
 These tests actually run on GitHub too, we just have not yet found better names for the different test types.
 
