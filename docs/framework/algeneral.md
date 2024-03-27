@@ -1,9 +1,7 @@
 ---
 id: algeneral
-title: |
-    ALGeneral: Python Classes representing people
-sidebar_label: |
-  ALGeneral: Python Classes representing people
+title: 'al_general: Python Classes representing people'
+sidebar_label: al_general 01
 slug: /framework/algeneral
 ---
 

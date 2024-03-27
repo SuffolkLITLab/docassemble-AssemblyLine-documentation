@@ -1,8 +1,7 @@
 ---
 id: reserved_keywords
-title: |
-    Reserved variable names you cannot use in Assembly Line interviews
-sidebar_label: Reserved variable names that you cannot use
+title: Reserved variable names you cannot use in Document Assembly Line interviews
+sidebar_label: Reserved variables
 slug: /framework/reserved_keywords
 ---
 

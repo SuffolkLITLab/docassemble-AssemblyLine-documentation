@@ -1,7 +1,7 @@
 ---
 id: al_project_architecture
-title: AssemblyLine Project Architecture
-sidebar_label: AL Project Architecture
+title: The Document Assembly Line Architecture
+sidebar_label: Project Architecture
 slug: /al_project_architecture
 ---
 This page provides a bird's-eye view of how various repositories of the **Document AssemblyLine Project** work together. This information is intended for those who want to take full advantage of the Project for their interviews, and for those who potentially want to adopt our Project for their own state or country.  
@@ -11,29 +11,27 @@ Below is a snapshot of the Project's overall architecture as of **June 2022**. W
 ## Overall architecture
 ![AL Project architecture graph](./assets/al_project_architecture.png)
 
-## Component Repository links on Github 
-1. [ALWeaver](https://github.com/suffolkLITLab/docassemble-ALWeaver)
+## Components
 
-1. [AssemblyLine](https://github.com/suffolkLITLab/docassemble-AssemblyLine)
+| Component | Description | GitHub Repository |
+|:----------|:------------|:------------------|
+| [AssemblyLine](https://github.com/suffolkLITLab/docassemble-AssemblyLine) | Utility library that makes it easier to use certain Docassemble features in an interview. | [SuffolkLITLab/docassemble-AssemblyLine](https://github.com/SuffolkLITLab/docassemble-AssemblyLine) |
+| [ALWeaver](/docassemble-AssemblyLine-documentation/docs/generating_code) | Helps create a draft interviews from PDF and DOCX forms. | [suffolkLITLab/docassemble-ALWeaver](https://github.com/SuffolkLITLab/docassemble-ALWeaver) |
+| [ALToolbox](https://github.com/SuffolkLITLab/docassemble-ALToolbox) | Utility functions and components that are used in AssemblyLine but that can be easily used by Docassemble developers who use other platforms. | [SuffolkLITLab/docassemble-ALToolbox](https://github.com/SuffolkLITLab/docassemble-ALToolbox) |
+| [ALKiln](/docassemble-AssemblyLine-documentation/docs/alkiln/intro) | Automated testing framework that acts like a user, following your instructions to do things like fill in fields, upload files, sign in, and check your PDFs for accuracy. | [SuffolkLITLab/ALKiln](https://github.com/SuffolkLITLab/ALKiln) |
+| ALDashboard | A collection of tools to help administer a Docassemble server and debug interviews. | [SuffolkLITLab/docassemble-ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) |
+| [ALRecipes](/docassemble-AssemblyLine-documentation/docs/framework/alrecipes) | Examples for Document Assembly Line interviews, plus generic Docassemble examples addressing specific needs. | [SuffolkLITLab/docassemble-ALRecipes](https://github.com/SuffolkLITLab/docassemble-ALRecipes) |
+| [InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/) | A docassemble interview that lets you view statistics from other saved interview responses. | [SuffolkLITLab/InterviewStats/docassemble-InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/) |
+| Documentation | This website. | [SuffolkLITLab/docassemble-AssemblyLine-documentation](https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation) |
+| E-Filing Proxy Server |  | [SuffolkLITLab/EfileProxyServer](https://github.com/SuffolkLITLab/EfileProxyServer) |
+| E-Filing Integration |  | [SuffolkLITLab/docassemble-EFSPIntegration](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/) |
+
+## GitHub Repositories for Projects
+
+
+### Massachusetts
+Due to the LIT Lab's extensive work with the Massachusetts Appeals Court, these repositories help model court, venue, and jurisdiction information in Docassemble for Massachusetts and as a possible starting point in other jurisdictions.
+
 1. [ALMassachusetts](https://github.com/suffolkLITLab/docassemble-ALMassachusetts)
 1. [MassAccess](https://github.com/suffolkLITLab/docassemble-MassAccess)
-1. [ALToolbox](https://github.com/suffolkLITLab/docassemble-ALToolbox)
-
-1. [ALKiln](https://github.com/SuffolkLITLab/ALKiln)
-1. [ALDashboard](https://github.com/suffolkLITLab/docassemble-ALDashboard)
-
-1. [AssemblyLine-
-documentation](https://github.com/suffolkLITLab/docassemble-AssemblyLine-documentation)
-1. [ALRecipes](https://github.com/suffolkLITLab/docassemble-ALRecipes)
-
-1. [eFiling - EFSP Integration](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/)
-1. [eFiling - EFileProxyServer](https://github.com/SuffolkLITLab/EfileProxyServer)
-1. [InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/)
-
-## Component links within this site 
-1. [ALWeaver](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/generating_code)
-1. [AssemblyLine](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation)
-1. [ALToolbox](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox)
-1. [ALKiln](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/automated_integrated_testing)
-1. [ALRecipes](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/alrecipes)
-1. [eFiling](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/efiling/overview)
+1. [MACourts](https://github.com/GBLS/docassemble-MACourts)

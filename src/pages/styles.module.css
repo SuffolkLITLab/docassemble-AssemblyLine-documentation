@@ -105,12 +105,10 @@
   --ifm-button-size-multiplier: 1.6;
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
   margin-top: 24px;
-}
-
-.indexCtas a:last-of-type {
-  margin: 20px 36px;
+  margin-bottom: 24px;
 }
 
 .indexCtasGitHubButtonWrapper {

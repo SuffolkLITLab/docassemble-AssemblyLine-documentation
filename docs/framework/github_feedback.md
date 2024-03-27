@@ -172,6 +172,6 @@ The other option is for reviews, which will show all of the scores given to an i
 
 :::note Under development
 
-The browsing feature is actively under development. If you have suggestions for improvements, [let us know on Teams](../#get-involved).
+The browsing feature is actively under development. If you have suggestions for improvements, [let us know on Teams](/docassemble-AssemblyLine-documentation/docs/intro).
 
 :::

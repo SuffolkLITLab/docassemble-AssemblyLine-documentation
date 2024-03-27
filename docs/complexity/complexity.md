@@ -1,9 +1,7 @@
 ---
 id: complexity
-title: |
-    Scoring form complexity with RateMyPDF
-sidebar_label: |
-  Scoring form complexity with RateMyPDF
+title: Scoring form complexity with RateMyPDF
+sidebar_label: RateMyPDF
 slug: /complexity/complexity
 ---
 

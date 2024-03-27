@@ -1,9 +1,7 @@
 ---
 id: getting_started_docassemble
-title: |
-  Getting started developing in Docassemble
-sidebar_label: |
-  Getting started developing in Docassemble
+title: Getting started developing in Docassemble
+sidebar_label: Getting started
 slug: /getting_started_docassemble
 ---
 

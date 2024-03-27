@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'The Document Assembly Line Project',
+  title: 'The Document Assembly Line',
   tagline: 'From paper to webform, made easier',
   url: 'https://suffolklitlab.org',
   baseUrl: '/docassemble-AssemblyLine-documentation/',
@@ -18,39 +18,37 @@ module.exports = {
       isCloseable: false,
     },
     navbar: {
-      title: 'The Document Assembly Line Project',
+      title: 'The Document Assembly Line',
       logo: {
         alt: 'The Suffolk LIT Lab Logo',
         src: 'img/LITLab_white_and_gold.svg',
         srcDark: 'img/LITLab_white_and_gold.svg'
       },
       items: [
-        // { to: 'docs/', activeBasePath: 'docs', label: 'Docs', position: 'left', },
-        // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          type: 'doc',
-          docId: 'intro',
-          label: 'Guides',
+          type: 'docSidebar',
+          sidebarId: 'get_started',
+          label: 'Get Started',
         },
         {
           type: 'docSidebar',
-          sidebarId: 'api',
-          label: 'Code API'
+          sidebarId: 'docs',
+          label: 'Documentation',
         },
         {
-          href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-          label: 'Intro to Docassemble',
+          type: 'dropdown',
+          label: 'Docassemble',
           position: 'right',
-        },
-        {
-          href: 'https://docassemble.org/docs.html',
-          label: 'Docassemble Docs',
-          position: 'right',
-        },
-        {
-          href: 'https://courtformsonline.org',
-          label: 'CourtFormsOnline',
-          position: 'right',
+          items: [
+            {
+              href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
+              label: 'Intro to Docassemble',
+            },
+            {
+              href: 'https://docassemble.org/docs.html',
+              label: 'Docassemble Docs',
+            },
+          ]
         },
         {
           href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
@@ -63,43 +61,9 @@ module.exports = {
     footer: {
       style: 'light',
       links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Style Guide',
-        //       to: 'docs/',
-        //     },
-        //     {
-        //       label: 'Second Doc',
-        //       to: 'docs/doc2/',
-        //     },
-        //   ],
-        // },
-        // {
-        //   title: 'Community',
-        //   items: [
-        //     {
-        //       label: 'Stack Overflow',
-        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     },
-        //     {
-        //       label: 'Discord',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //     {
-        //       label: 'Twitter',
-        //       href: 'https://twitter.com/docusaurus',
-        //     },
-        //   ],
-        // },
         {
           title: 'More',
           items: [
-            // {
-            //   label: 'Blog',
-            //   to: 'blog',
-            // },
             {
               label: 'GitHub',
               href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
@@ -107,7 +71,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> - AssemblyLine Docs Built with Docusaurus.`,
+      copyright: `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.`,
     },
   },
   plugins: [
@@ -141,16 +105,10 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
             'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
         },
-        //blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
-        //},
+
         pages: {
         },
         theme: {

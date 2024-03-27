@@ -1,6 +1,6 @@
 ---
 id: installation
-title: Installing the Assembly Line
+title: Installing the Document Assembly Line
 sidebar_label: Installation
 slug: /installation
 ---
