@@ -9,17 +9,15 @@ slug: /alkiln/trouble
 WIP (Work in progress)
 :::
 
-This page will try to help you figure out what is going wrong when you have errors or other problems with your ALKiln tests.
+This page will try to help you figure out what is going wrong when you have errors, warnings, or other problems with your ALKiln tests.
 
 This page helps with:
 
 - Common mistakes
 - Errors from the third-party libraries that ALKiln uses
-- ALKiln errors and error and warning codes
+<!-- - ALKiln errors and error and warning codes -->
 
-This document contains is still under development and contains only some of the possible errors. Every ALKiln error and warning should have a code, though, and giving us that code can help us narrow down your problem.
-
-We are keeping the errors from the third-party libraries until we can handle every case of the errors ourselves.
+<!-- This document is still under development and contains only some of the possible errors. Every ALKiln error and warning should have a code, though, and giving us that code can help us narrow down your problem. -->
 
 <!--
 ## Failing tests {#failure}
@@ -200,3 +198,61 @@ See a section in [tips about quotes](writing_tests.mdx#special-chars) for more d
 
 
 [^faster]: To speed things up, you might instead be able to use the HTML page that the report created for you. It is in the folder with the name of the Scenario for that test.
+
+
+<!-- ## There are no artifacts, files, or folders
+
+The tests completely failed to run. For this, it is especially important to look at the console output and error messages. In GitHub, those might be above where the tests even run.
+
+There might be a typo in a test (link). For isolated server tests, the docker container might not have started up correctly. Maybe your server was down. Maybe the API key you gave ALKiln was wrong or got deleted with a server restart. That might be because of your own errors or because of GitHub.
+
+Also, other services like GitHub or node package manager (npm) might have been having various kinds of trouble.
+-->
+
+
+## Timeout or "it took too long to load the next page" error {#next-page-timeout}
+
+Different problems can cause the report to say that something "took too long" or caused a "timeout" error.
+
+A "timeout" error can happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
+
+1. The page was trying to load a big file.
+1. ALKiln could not continue to the next page for some reason.
+1. A Story Table was unable to reach the page with the specified `id`.
+1. There's a typo in the name of the interview YAML file that the test should go to.
+
+If a page was taking too long to load a big file, use [the `custom timeout` Step](#custom-timeout-step) to give the page more time to load.
+
+You might be able to look at the error page picture for more details. In GitHub, you can download the test [artifacts](#see-github-test-results) to look for it.
+
+In GitHub, this error can also happen when:
+
+1. The server was busy for too long.
+1. The server was down.
+1. That url is stored in the `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) is wrong or out of date.
+
+If the server might have been busy or down, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow).
+
+You won't be able to tell if the `SERVER_URL` is wrong - GitHub considers the value of the secret to be sensitive information, so it's impossible to see that value. You can still give it a new value, though, and that's worth trying. Find the address of the docassemble server where the docassemble testing account is located. Edit the secret to give it that url.
+
+## Invalid playground path error
+
+If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo.
+
+## UnhandledPromiseRejection error
+
+This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
+
+## Inconsistent cell count error
+
+This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe (`|`) or could have an extra pipe, etc.
+
+To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors. The editor will not show error next to lines that are commented out. Those are the ones that start with `#`.
+
+The error message will include text similar to this:
+
+```bash
+Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
+```
+
+<!-- ### Access Denied -->

@@ -770,7 +770,7 @@ The fact is, your users also might have that exact experience, so keep that in m
 :::
 
 
-### yesno {#yesno}
+### `yesno` {#yesno}
 
 There are a few different `yesno` fields - [`yesno` buttons](https://docassemble.org/docs/fields.html#yesno) or [`yesno` fields](https://docassemble.org/docs/fields.html#fields%20yesno) like `yesno` checkboxes and `yesnoradio`s.
 
@@ -797,7 +797,25 @@ Example of setting the yesno checkbox to "yes" in a Story Table Step:
 ```
 
 
-### yesnomaybe {#yesnomaybe}
+### `noyes`
+
+Avoid `noyes` type fields. For one thing, using `noyes` will make you edit the code you get from the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story) more. For another, we've found that humans tend to find those confusing too.
+
+That said, it can be better to use "checked" or "unchecked" as opposed to "True" or "False":
+
+```gherkin
+  And I set the variable "likes_bears" to "checked"
+```
+
+or, in a Story Table:
+
+```gherkin
+  | var | value |
+  | likes_bears | checked |
+```
+
+
+### `yesnomaybe` {#yesnomaybe}
 
 There are a couple different `yesnomaybe` fields - [`yesnomaybe` buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [`datatype: yesnomaybe`](https://docassemble.org/docs/fields.html#fields%20yesno) fields.
 
@@ -824,7 +842,7 @@ Example of setting the yesnomaybe radio buttons to "maybe" in a Story Table Step
 ```
 
 
-### radio {#radio}
+### `radio` {#radio}
 
 Example radio button field:
 
@@ -857,7 +875,7 @@ Example Story Table Step:
 ```
 
 
-### checkboxes {#checkboxes}
+### `checkboxes` {#checkboxes}
 
 <!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
 
@@ -941,7 +959,7 @@ Especially notice the quotes just inside the first square brackets.
 :::
 
 
-### Upload {#upload}
+### `file` {#upload}
 
 You can upload one or more files by setting a variable to a comma-separated list of file names to upload. You **must** store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests.
 
@@ -987,7 +1005,7 @@ Example of a Story Table Step to upload multiple files:
 To upload more than one file you **must** separate their names with a comma.
 
 
-### Signature {#sign}
+### `signature` {#sign}
 
 <!-- TODO: Move this to the appropriate Steps section when that's ready. Leave a link here? -->
 
@@ -1086,7 +1104,7 @@ Example:
 This is different than the ["all accessible" Step](#a11y-all), which checks all the subsequent pages for accessibility issues.
 
 
-### Compare files {#compare-files}
+### `I expect the baseline PDF "<baseline file>" and the new PDF "<new file>" to be the same` {#compare-files}
 
 WIP
 
@@ -1184,7 +1202,9 @@ This Step will save a copy of all of the page's JSON variables to a file that st
 
 ### `I take a picture` {#pic}
 
-The "picture" Step will take a picture of the page and download the HTML of the page. ALKiln will save those files in the Scenario folder of the [test results](#results).
+The "picture" Step will not only take a picture of the page, it will also download an HTML file of the page. ALKiln will save those files in the Scenario folder of the [test results](#results).
+
+The HTML file will look and act a bit strange because ALKiln is unable to get the full code that controls and styles the page, but you can look at it and examine its source code.
 
 Example:
 
@@ -1245,15 +1265,6 @@ This Step can help humans keep track of what page the tests are on. It will also
 
 
 <!-- ### `Then an element should have the id "some_HTML_element_id"` -->
-
-
-## Understanding test results {#results}
-
-WIP
-
-2 parts to the console output. The ALKiln report and the third-party errors. We are keeping the errors from the third-party libraries until we can handle every case of the errors ourselves.
-
-You can also read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
 
 
 ## Test file anatomy {#test-files}
@@ -1394,35 +1405,6 @@ You can use any of those. It does not matter what you pick.
  -->
 
 
-## Running tests {#run}
-
-WIP
-
-<!--
-### Only run some tests.
-  Only run one test with tags. Here or in setup in the future section about running tests?
--->
-
-### When do GitHub tests run? {#github-triggers}
-
-**This is for:** packages that use GitHub tests.
-
-Your [workflow file](#workflows) controls when your GitHub tests run. You can configure your workflow file to run the tests whenever you want them to run.
-
-The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
-
-That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags to your tests in the section about [test files](#test-files).
-
-<!-- TODO: Add note about tags in FAQ? Or Tips? -->
-
-
-### Failures get re-run once {#rerun}
-
-WIP
-
-**This is for:** packages that use GitHub tests.
-
-
 ## Workflow files {#workflows}
 
 WIP
@@ -1493,6 +1475,11 @@ If you do not already have these secrets, add them to your package's repository 
 
 Use them the same way that the example workflow file uses them. They appear in 2 places.
 
+<!-- We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
+
+Or: Only `DOCASSEMBLE_DEVELOPER_API_KEY` needs to be private. The secrets can just help with maintenance.
+-->
+
 <!-- 1. Turn them into environment variables
 1. Give them to ALKiln as inputs. They are in the example file directly under the `with:` keyword.
 
@@ -1528,7 +1515,7 @@ The options are:
 
 None of these need to be secrets, but they can be if you want that[^secret]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
 
-Use them in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
 
 ```yml
         with:
@@ -1542,21 +1529,15 @@ WIP
 
 You can add some optional inputs to the workflow file of any tests that run with the [recommended GitHub test method](setup.mdx#recommended-setup) to control global ALKiln configuration values:
 
-- `MAX_SECONDS_FOR_SETUP` is the maximum amount of time to give the Project to upload your package's GitHub code. If your server is slow, increase this value.
-- `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload if it needs to. A server reload can make a test fail. Waiting the right amount of time for the reload can make it more likely the test will succeed when ALKiln retries it.
+- `MAX_SECONDS_FOR_SETUP` is the maximum amount of time to give the Project to upload your package's GitHub code. If your server is slow, increase this value. The default is 120 seconds.
+- `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload if it needs to. A server reload can make a test fail. Waiting the right amount of time for the reload can make it more likely the test will succeed when ALKiln retries it. The default is 150 seconds.
 
-<!--
-
-  TODO:
-None of these need to be secrets, but they can be if you want that[^secret]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
-
-Use them in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
 
 ```yml
         with:
-          ALKILN_TAG_EXPRESSION: "@has_children"
+          MAX_SECONDS_FOR_SETUP: 500
 ```
- -->
 
 ### Optional inputs for isolated server inputs {#isolated-server-optional-inputs}
 
@@ -1565,7 +1546,7 @@ You can add some optional inputs to the workflow file of any tests that run with
 - `CONFIG_CONTENTS` is the contents of the [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. **For security, we strongly recommend you put this information into a GitHub secret** like `DOCASSEMBLE_DEVELOPER_API_KEY` above. If you have special configuration settings on your own server, you can use input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses.
 - `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output from the creation of the docker container and the installation of docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information it might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
 - `MAX_SECONDS_FOR_DOCKER` is the maximum amount of time to give the docassemble docker container to get properly started. If your tests keep failing because your docker container is taking a long time to start, maybe because of configuration options, then you can increase this time. The default time is 600 seconds (10 min).
-<!-- TODO: What is the error message when docker container setup stops too early -->
+<!-- TODO: What is the error message when docker container setup stops too early? -->
 
 
 ## Environment variables {#env-vars}
@@ -1573,6 +1554,116 @@ You can add some optional inputs to the workflow file of any tests that run with
 WIP
 
 Playground - config. GitHub - workflow file.
+
+
+## Running tests {#run}
+
+WIP
+
+<!--
+### Only run some tests.
+  Only run one test with tags. Here or in setup in the future section about running tests?
+-->
+
+### When do GitHub tests run? {#github-triggers}
+
+**This is for:** packages that use GitHub tests.
+
+Your [workflow file](#workflows) controls when your GitHub tests run. You can configure your workflow file to run the tests whenever you want them to run.
+
+The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
+
+That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags for tests in the section about [test files](#test-files).
+
+<!-- TODO: Add note about tags in FAQ? Or Tips? -->
+
+
+### Failures get re-run once {#rerun}
+
+WIP
+
+**This is for:** packages that use GitHub tests.
+
+
+## Test results {#results}
+
+WIP
+
+2 parts to the console output. The ALKiln report and the third-party errors. We are keeping the errors from the third-party libraries until we can handle every case of the errors ourselves.
+
+You can also read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+
+- GitHub test status
+- Console in GitHub
+- GitHub artifacts (folders)
+- ALKilnInThePlayground final page (and folders to download)
+  - Not much fancy formatting yet
+  - Zip file at top
+  - Summary files up at top
+  - List of Scenarios with report and other files
+  - Console output at bottom
+
+
+### GitHub test status {#github-status}
+
+WIP
+
+
+### Console output {#console}
+
+WIP
+
+The console has all the text that got printed while your test ran. It has things like logs from starting up the tests, a copy of the report, and at the bottom are messages from the third-party libraries ALKiln uses. We are keeping those messages, including any errors, until we are confident we can handle every error ourselves.
+
+In GitHub, you can see the console when you go to the ALKiln workflow job. In ALKilnInThePlayground, it's at the bottom of the page.
+
+<!-- In GitHub, if the tests are having trouble, you might want to look at early steps too (TODO: Put this in troubleshooting docs) -->
+
+
+### Output directory structure {#output-dirs}
+
+WIP
+
+- root
+  - report.txt
+  - debug_log.txt
+  - Screenshots and html files for errors to give a quick way to look at them
+  - Scenario folders
+    - Individual report.txt
+    - Error screenshots and html files
+    - [Pictures you took of screens along with their associated HTML files](#pic) (self explanatory?)
+    - [Files you downloaded](#download) (self explanatory?)
+    - [JSON variables you compared](#compare-json) (self explanatory?)
+    - [Accessibility failures](#a11y-all) (self explanatory?)
+
+
+### report.txt {#report}
+
+WIP
+
+- At root: Summary report containing all Scenario reports
+- In Scenario folders: Individual Scenario reports
+
+
+### debug_log.txt (#debug-log)
+
+WIP
+
+Collects report data during the test run in case something goes wrong and the report for a test gets left out.
+
+<!-- ### verbose_log.txt {#verbose-log} -->
+
+
+### Error pics and html {#errors}
+
+WIP
+
+Also see the [troubleshooting docs](troubleshooting.mdx).
+
+- In the root
+- In the individual Scenario folders
+
+They are like the [pictures you take of screens along with their associated HTML files](#pic).
 
 
 ## Tips {#tips}
@@ -1720,7 +1811,7 @@ The final text comes out looking more like this on the page:
 This is called “relief”
 ```
 
-They look similar to us, but computers think they look quite different.
+They look similar to most humans, but computers think they look quite different.
 
 Docassemble does this for many other characters including single quotes and ellipses. It is best to copy/paste text your tests need **straight from the screen the user sees**.
 

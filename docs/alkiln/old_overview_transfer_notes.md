@@ -1,18 +1,7 @@
 This file is to keep track of the progress transferring content to the new docs
 
 
-
-
-
-## Start
-
-
-
 ## Steps
-
-### Observe things about the page
-
----
 
 <!--
 ## Failing tests
@@ -48,7 +37,6 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 1. You can rerun the test
 2. Try to search for the text of the error online (don’t spend more than 20 min on this, though)
 3. Ask one of us. Remember that this framework is under development. Something might be wrong with our code.
-
 -->
 
 
@@ -61,6 +49,11 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 Avoid `noyes` type fields. For one thing, the [story table generator](#generate-a-story-table) code will need less editing. For another, we've found that humans tend to find those confusing too.
 
 ---
+
+
+
+
+
 
 ## Test output
 
@@ -161,28 +154,11 @@ Rows are listed in alphabetical order. If you have thoughts on pros and cons, we
 
 If everything looks right to you there, you can copy and paste the text under "Rows that got set" into your test to get rid of the extra rows you've got hanging around.
 
----
 
-If a screen loaded with an error message, ALKiln will try to reload a few times, and will try to log the error message that it saw:
 
-```
----------------
-Scenario: I opened the interview
----------------
 
-ERROR: On final attempt to load interview, got "Reference to invalid playground path"
 
-ERROR: On final attempt to load interview, got "Reference to invalid playground path"
 
-ERROR: On final attempt to load interview, got "Reference to invalid playground path"
-
-ERROR: Failed to load "a-great-interview" after 3 tries. Each try gave the page 30 seconds to load.
-**-- Scenario Failed --**
-```
-
-ALKiln will also try to take a picture of the page where the error happened. There will be two copies of that picture - one in the main folder of the output and one in the folder of the specific test (the Scenario) that caused the error.
-
-Also watch the [errors and warnings](#errors-and-warnings) section for updates on similar information.
 
 ## See GitHub test results
 
@@ -195,129 +171,13 @@ To see the output text of the test run online, its logs, follow [these GitHub in
 ALKiln also creates files and folders showing the output of the tests.
 In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that run of tests.
 
-## Errors and warnings
 
-_This section is a constant work in progress._
 
-### A missing trigger variable
 
-**This warning only matters for story tables that use index variables or generic objects.**
 
-That warning isn't a bug, but if the above doesn't apply to you, you can ignore it. A future goal of ours is to [remove the warning from Steps that don't need it](https://github.com/SuffolkLITLab/ALKiln/issues/452).
-
-If you are using a story table with index variables or generic objects, you need to add some code to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts).
-
-<!-- This has to be a bit farther up than the code. For some reason the header isn't taken into account when jumping here. -->
-<a name="trigger_variable_code"></a>
-
-Add exactly this code to your `default screen parts` block to insert an invisible element in all your screens:
-
-```yml
-default screen parts:
-  # This HTML is for ALKiln automated tests
-  post: |
-    <div data-variable="${ encode_name(str( user_info().variable )) }" id="trigger" aria-hidden="true" style="display: none;"></div>
-```
-
-Use that HTML exactly. No customizations.
-
-If you already have something in your `post:`, just copy the `<div>` and paste it in after the other code. Putting it at the end can avoid messing up other HTML.
-
-If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
-
-### Timeout or "took too long" error
-
-Different problems can cause the report to say that something "took too long" or caused a "timeout" error.
-
-A "timeout" error can happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
-
-1. The page was trying to load a big file.
-1. ALKiln could not continue to the next page for some reason.
-1. A Story Table was unable to reach the page with the specified `id`.
-1. There's a typo in the name of the interview YAML file that the test should go to.
-
-If a page was taking too long to load a big file, use [the `custom timeout` Step](#custom-timeout-step) to give the page more time to load.
-
-You might be able to look at the error page picture for more details. In GitHub, you can download the test [artifacts](#see-github-test-results) to look for it.
-
-In GitHub, this error can also happen when:
-
-1. The server was busy for too long.
-1. The server was down.
-1. That url is stored in the `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) is wrong or out of date.
-
-If the server might have been busy or down, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow).
-
-You won't be able to tell if the `SERVER_URL` is wrong - GitHub considers the value of the secret to be sensitive information, so it's impossible to see that value. You can still give it a new value, though, and that's worth trying. Find the address of the docassemble server where the docassemble testing account is located. Edit the secret to give it that url.
-
-### Invalid playground path error
-
-If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo.
-
-### UnhandledPromiseRejection error
-
-This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
-
-### Inconsistent cell count
-
-This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe (`|`) or could have an extra pipe, etc.
-
-To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors. The editor will not show error next to lines that are commented out. Those are the ones that start with `#`.
-
-The error message will include text similar to this:
-
-```bash
-Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
-```
-
-<!-- ### Access Denied -->
 
 
 ## Your workflow file
-
-### Required inputs
-
-<!-- The setup interview should have helped you create these required `inputs` and their values. They are in the `jobs:` section. They look something like this:
-
-```yml
-        with:
-          SERVER_URL: "${{ secrets.SERVER_URL }}"
-          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
-```
-
-`SERVER_URL` is the url of the docassemble server the tests should run on.
-
-`DOCASSEMBLE_DEVELOPER_API_KEY` is the API key that you created for the account on your server that will store the Project in the Playground while the tests are being run. You probably created this in the setup interview. Alternatively, your organization admin may have created it.
-
-We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`. -->
-
-### Optional inputs
-
-There are also optional inputs that can go under `with:`.
-
-`MAX_SECONDS_FOR_SETUP` lets you to set how long to allow ALKiln to try to pull your interview package's code into the docassemble Playground. The default is currently 120 seconds (2 minutes).
-
-`ALKILN_VERSION` can be useful for security. It gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" security section](#set-alkiln-s-npm-version).
-
-If you're using a GitHub repository or organization secret, it will look very similar to the [required inputs described above](#required-inputs). Here the values are in context:
-
-```yml
-        with:
-          SERVER_URL: "${{ secrets.SERVER_URL }}"
-          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
-          MAX_SECONDS_FOR_SETUP: "${{ secrets.MAX_SECONDS_FOR_SETUP }}"
-          ALKILN_VERSION: "${{ secrets.ALKILN_VERSION }}"
-```
-
-Other than `DOCASSEMBLE_DEVELOPER_API_KEY`, this information can usually be public. If your organization wants to share the values with multiple repositories you can still use an organization GitHub secret. If not, you can set them right there in the workflow file.
-
-```yml
-        with:
-          SERVER_URL: "${{ secrets.SERVER_URL }}"
-          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
-          MAX_SECONDS_FOR_SETUP: "300"
-          ALKILN_VERSION: "4.3.0"
-```
 
 ### ALKiln environment variables
 
