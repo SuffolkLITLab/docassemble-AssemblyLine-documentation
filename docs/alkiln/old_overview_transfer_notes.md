@@ -40,19 +40,6 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 -->
 
 
-## Tips
-
----
-
-<!-- Is this actually a problem?  -->
-
-Avoid `noyes` type fields. For one thing, the [story table generator](#generate-a-story-table) code will need less editing. For another, we've found that humans tend to find those confusing too.
-
----
-
-
-
-
 
 
 ## Test output

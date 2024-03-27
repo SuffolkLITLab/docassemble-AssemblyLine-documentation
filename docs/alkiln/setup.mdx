@@ -62,6 +62,35 @@ Installing tests can involve one or more of these things:
  -->
 
 
+<!--
+1. Automated trigger (automated your server AYS) (GitHub & You tests) (GDY - github does you. GitHub/Your server. GitHub & you tests. GDI GitHub does it. GitHub Tests on Your Server - what an acronym.)(find and replace GTOYS with the full name, component for this <GTOYS/>)(Your-server)(test account tests)
+2. Manual trigger (manual your server MYS) (You tests) (DIY do it yourself. DIY auto-tests.) (manually triggered tests.) (Manual Tests on Your Server - think about it)(<MTOYS/>)(Person account tests)
+3. Automated trigger (automated sandbox/GitHub server AGS) (GitHub & GitHub tests GDG - github does github. GDIFY github does it for you GitHub DIFY. GitHub sandboxed. Sandboxed. Kitty litter.) (STOG - Sandbox tests on GitHub)
+ -->
+
+<!--
+- auto server
+- manual server
+- sandbox server
+English language interferes
+
+- GitHub/your server
+- Manual/your server
+- GitHub sandbox (understand meaning?)
+
+- GitHub-&-you tm. GitHub-x-you. GitHub+you
+- Auto DIY
+- GitHub sandbox
+-->
+
+<!--
+GitHub+You
+
+GitHub+you
+
+GitHub+U
+ -->
+
 ## Types of tests {#types}
 
 There are three kinds of tests:
@@ -78,7 +107,7 @@ Every type of test runs on a docassemble server. Option 1 and option 3 both run 
 3. GitHub runs these automatically on an isolated GitHub docassemble server. These tests are triggered on GitHub. **(automatic GitHub server tests/weird auto tests/auto remote/auto blackbox/auto isolated/auto fenced/auto sandbox/auto sequestered/~~temporary~~/enclosed/encapsulated/capsule/bounded/restricted/quarantined/restrained/secluded/closeted/lonesome/hermit/hermetic/private.../sealed/clean/blank)** (bounded or enclosed might be used in the text of its section to give it more context "within the bounds of a separate isolated GitHub server")
 
 ## Hermes Trismegistus
--->
+ -->
 
 
 ## Recommended setup: GitHub tests that run on your server {#recommended-setup}
@@ -121,7 +150,7 @@ The tests run whenever you commit any code to any branch on GitHub. You can read
 Add link to going to GitHub "Actions" tab
 :::
 
-You can also run the tests by [triggering your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow).
+You can read about [running tests](writing_tests.mdx#github-triggers) in other documentation.
 
 
 <!-- [^names]: You may have spotted this already, but two of these methods run tests on GitHub. They run the tests in different ways, though. We have not yet found good names for them that avoid this confusion. -->
@@ -152,9 +181,7 @@ Feature: Interviews load
 
 You can wait to write more complex tests till your code is more stable. "Stable" means that your question block variable names and values should be staying pretty much the same.
 
-:::warning TODO: add link
-You can read more about test files in other documentation.
-:::
+You can read more about [the different parts of test files in other documentation](writing_tests.mdx#test-files).
 
 <!-- To run the tests you can commit new code to your GitHub repository or you can [trigger your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). Authors usually [commit new code from their Playground](https://docassemble.org/docs/development.html#versioncontrol). -->
 
@@ -284,7 +311,8 @@ You can also run the tests by [triggering your workflow manually](https://docs.g
 ## GitHub test details {#github-details}
 
 <!-- TODO: "on your test server" with a link to security section -->
-These tests run on GitHub, but they still interact with a Project they create on your server. Whenever you push (or commit) to GitHub, GitHub will run the tests automatically. You can also [trigger them manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow).
+These tests run on GitHub, but they still interact with a Project they create on your server.
+You can read about [running tests](writing_tests.mdx#github-triggers) in other documentation.
 
 
 ### What is ALKiln doing? {#github-how}
@@ -420,9 +448,9 @@ Add links to docs about the trigger var
 
 ## Isolated server test details {#isolated-server-details}
 
-Isolated server tests are the most secure because they never interact with your server and they are temporary. Unfortunately, they also have more complications.
+Isolated server tests are the most secure because they never interact with your server and they are temporary. Unfortunately, they also sometimes have more setup complications.
 
-These tests actually run on GitHub too, we just have not yet found better names for the different test types.
+These tests actually run on GitHub too, we just have not yet found better names for the different test types. You can read about [running tests](writing_tests.mdx#github-triggers) in other documentation.
 
 ### What is ALKiln doing? {#isolated-server-how}
 

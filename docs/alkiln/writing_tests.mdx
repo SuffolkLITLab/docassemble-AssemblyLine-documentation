@@ -1567,7 +1567,7 @@ WIP
 
 ### When do GitHub tests run? {#github-triggers}
 
-**This is for:** packages that use GitHub tests.
+**This is for:** tests that run on GitHub.
 
 Your [workflow file](#workflows) controls when your GitHub tests run. You can configure your workflow file to run the tests whenever you want them to run.
 
@@ -1589,9 +1589,21 @@ WIP
 
 WIP
 
-2 parts to the console output. The ALKiln report and the third-party errors. We are keeping the errors from the third-party libraries until we can handle every case of the errors ourselves.
+There are different ways to look at the results of a test run. GitHub shows a log of the tests while they run and ALKiln creates files and folders showing the output of the finished tests.
 
-You can also read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+### GitHub outputs {#github-results}
+
+In GitHub, you can see the workflow/test run status...
+
+ test run's [workflow job logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#viewing-logs-to-diagnose-failures) while the tests are still running or after they're done. Those logs show:
+
+- Test run start up messages. Errors can happen here too.
+- Scenario names as each test runs.
+- The final ALKiln report.
+- If there are any, errors from [the third-party libraries ALKiln uses](#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
+
+Once the tests are finished, ALKiln also creates more detailed files for you. You can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that workflow run.
+
 
 - GitHub test status
 - Console in GitHub
@@ -1602,6 +1614,8 @@ You can also read more about [errors and troubleshooting in other documentation]
   - Summary files up at top
   - List of Scenarios with report and other files
   - Console output at bottom
+
+You can also read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
 
 
 ### GitHub test status {#github-status}
