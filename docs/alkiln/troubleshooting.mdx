@@ -41,6 +41,26 @@ Go through the interview manually. Make sure to pull in a fresh new Project.
 
 Or "It works when I run the interview manually" or "The tests pass when I run them with ALKilnInThePlayground".
 
+### Undefined step {#step-undefined}
+
+**Symptom:**
+
+At the very bottom of your [console output](writing_tests.mdx#console) you see the message "Undefined" and "You can implement missing steps with the snippets below".
+
+**Problem:**
+
+You have a typo in the Step that failed. The error message should contain the text of the Step.
+
+**Solution:**
+
+1. Check the documentation for the Step again.
+1. Copy/paste the Step from the documentation, then copy/paste just the parts you need to customize.
+1. To double-check that there is a difference between the old version of the Step and the new one, use a diff checker like [https://www.diffchecker.com/text-compare/](https://www.diffchecker.com/text-compare/).
+1. If the diff checker shows that the text is the same, contact us. Maybe we have a typo in our documentation.
+1. If the text is different, try the test again.
+1. If the test has the same problem, contact us. Maybe we have a typo in our documentation.
+
+
 ### Error: File not found {#file-not-found}
 
 <!-- Find that error -->
@@ -49,9 +69,13 @@ This might mean that you have a file in your Playground Project, but that you st
 
 ### Error: Variable could not be looked up {#variable-not-found}
 
-**Problem:**
+**Symptom:**
+
+On the error screenshot of the page, you see the error message you see this error:
 
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
+
+**Problem:**
 
 This is a reference error. It means docassemble tried to get the definition for a variable, but couldn't find the variable anywhere in your code or in the code you included or imported.
 
@@ -258,3 +282,11 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 ```
 
 <!-- ### Access Denied -->
+
+<!--
+    required file was missing
+    ALKiln was unable to continue to the next page,
+    missing phrase
+-->
+
+<!-- writing_tests.mdx#errors, writing_tests.mdx#reports -->

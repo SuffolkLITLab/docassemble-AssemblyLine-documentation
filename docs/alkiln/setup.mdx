@@ -63,30 +63,6 @@ Installing tests can involve one or more of these things:
  -->
 
 
-<!--
-1. Automated trigger (automated your server AYS) (GitHub & You tests) (GDY - github does you. GitHub/Your server. GitHub & you tests. GDI GitHub does it. GitHub Tests on Your Server - what an acronym.)(find and replace GTOYS with the full name, component for this <GTOYS/>)(Your-server)(test account tests)
-2. Manual trigger (manual your server MYS) (You tests) (DIY do it yourself. DIY auto-tests.) (manually triggered tests.) (Manual Tests on Your Server - think about it)(<MTOYS/>)(Person account tests)
-3. Automated trigger (automated sandbox/GitHub server AGS) (GitHub & GitHub tests GDG - github does github. GDIFY github does it for you GitHub DIFY. GitHub sandboxed. Sandboxed. Kitty litter.) (STOG - Sandbox tests on GitHub)
- -->
-
-<!--
-- auto server
-- manual server
-- sandbox server
-English language interferes
-
-- GitHub/your server
-- Manual/your server
-- GitHub sandbox (understand meaning?)
-
-- GitHub-&-you tm. GitHub-x-you. GitHub+You
-- Auto DIY
-- GitHub sandbox
--->
-
-<!-- <GTOYS/> -->
-
-
 ## Types of tests {#types}
 
 There are three kinds of tests:
@@ -97,17 +73,6 @@ There are three kinds of tests:
 
 Each type of test has its advantages and disadvantages.
 
-<!--
-Every type of test runs on a docassemble server. Option 1 and option 3 both run on GitHub. Sorry about the names. Each type of test has its advantages and disadvantages.
-
-
-1. GitHub runs these automatically on your docassemble test server. These tests are triggered on GitHub. **(automatic test server tests/auto tests/auto server)**
-2. You run manually on your docassemble test server in your account. **(manual test server tests/manual tests/manual server)**
-3. GitHub runs these automatically on an isolated GitHub server with docassemble installed. These tests are triggered on GitHub. **(automatic GitHub server tests/weird auto tests/auto remote/auto blackbox/auto isolated/auto fenced/auto sandbox/auto sequestered/~~temporary~~/enclosed/encapsulated/capsule/bounded/restricted/quarantined/restrained/secluded/closeted/lonesome/hermit/hermetic/private.../sealed/clean/blank)** (bounded or enclosed might be used in the text of its section to give it more context "within the bounds of a separate isolated GitHub server")
-
-## Hermes Trismegistus
--->
-
 
 [^sand]: "The isolation metaphor is taken from the idea of children who do not play well together, so each is given [their] own sandbox to play in alone." - [Wikipedia](https://en.wikipedia.org/wiki/Sandbox_(computer_security))
 
@@ -116,7 +81,7 @@ Every type of test runs on a docassemble server. Option 1 and option 3 both run 
 
 This is the way we recommend setting up ALKiln tests for a repository for the first time. You are least likely to run into setup problems with this method. Every repository that needs to use this kind of test must go through this setup process.
 
-The tests run whenever you commit any code to any branch on GitHub. You can read more [details and the pros and cons of <GTOYS/> tests](#githubNyou-details) below.
+The tests run whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
 
 **You need:**
 
@@ -189,7 +154,11 @@ You can read more about [the different parts of test files in other documentatio
 
 ## <AutoDIY/> tests {#diy-how-to}
 
-If you set up <AutoDIY/> tests, any developer can run tests on any of their Projects when they are logged into your docassemble test server. You can read more details and the [pros and cons of <AutoDIY/> tests](#diy-details) below.
+If you set up <AutoDIY/> tests, any developer can run tests on any of their Projects when they are logged into your docassemble test server. You can read more details and the pros and cons of <AutoDIY/> tests below.
+
+<!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
+
+The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server. For [security reasons](security.mdx#testing-server), avoid installing these tests on your production server.
 
 **You need:**
 
@@ -227,23 +196,6 @@ Add images of picking new version
 Add section in reminders about updating docassemble server (InPlayground) to new version of ALKiln
 :::
 
-**To run the tests:**
-
-1. Make sure you are logged into your docassemble server.
-1. Run the ALKiln interview from your server's list of available interviews.
-1. Skip the first page by just tapping to continue.
-1. From the list of projects, pick a Project that already has tests in its Sources folder. If it has no tests, read how to add tests in our documentation then start with step number 1 again.
-1. Run the tests and see the output.
-
-:::warning TODO:
-- Above, add link to how to make test files
-- Above, add link to info about test output
-- Figure out where to add details, like tags, etc.
-:::
-
-<!--
-1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
-
 
 ## <KittyLitter/> tests (advanced) {#sandbox-how-to}
 
@@ -253,7 +205,7 @@ Every repository that needs to use this kind of test must go through this setup 
 
 This is an advanced method and may not work for everyone. We are happy to help you with it.
 
-The tests run whenever you commit any code to any branch on GitHub. You can read more details and the [pros and cons of <KittyLitter/> tests](#sandbox-details) below.
+The tests run whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <KittyLitter/> tests below.
 
 **You need:**
 
@@ -315,8 +267,7 @@ You can also run the tests by [triggering your workflow manually](https://docs.g
 ## <GTOYS/> test details {#githubNyou-details}
 
 <!-- TODO: "on your test server" with a link to security section -->
-These tests run on GitHub, but they still interact with a Project they create on your server.
-You can read about [running tests](writing_tests.mdx#github-triggers) in other documentation.
+<GTOYS/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They then create and test a Project on your docassemble testing server.
 
 
 ### What is ALKiln doing? {#githubNyou-how}
@@ -396,7 +347,12 @@ Add links to docs about the trigger var
 
 ## <AutoDIY/> test details {#diy-details}
 
-You run these tests yourself from an ALKiln interview you install on your own docassemble development server or test server.
+
+These are tests that you trigger manually from an interview you install on your docassemble testing server. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#diy-triggers) in other documentation.
+
+<!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
+
+The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server. For [security reasons](security.mdx#testing-server), avoid using these tests on your production server.
 
 :::warning TODO
 Add link to security section about not testing on production.
@@ -452,9 +408,9 @@ Add links to docs about the trigger var
 
 ## <KittyLitter/> test details {#sandbox-details}
 
-<KittyLitter/> tests are the most secure because they never interact with your server and the isolated server they each create is temporary. Unfortunately, these tests also sometimes have more setup complications.
+<KittyLitter/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They create their own docassemble server on GitHub and run tests there.
 
-You can read about [running tests](writing_tests.mdx#github-triggers) in other documentation.
+<KittyLitter/> tests are the most secure because they never interact with your server and the isolated server they each create is temporary. Unfortunately, these tests also sometimes have more setup complications.
 
 ### What is ALKiln doing? {#sandbox-how}
 

@@ -25,6 +25,10 @@ In addition, here are some actions you can take to manage the security of the te
 
 Keep the testing server completely separate from production server so that the tests never show sensitive information to potential malicious actors.
 
+<!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
+
+Avoid installing <AutoDIY/> tests on your production server. The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server. It is best to avoid installing third-party code on your production server when possible.
+
 You should:
 
 - Avoid running tests on your production server. To avoid this, use the testing server's address in the value of the `SERVER_URL` environment variable. <!-- TODO: Add link to GitHub secrets for `SERVER_URL` -->

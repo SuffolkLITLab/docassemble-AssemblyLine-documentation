@@ -1205,9 +1205,9 @@ This Step will save a copy of all of the page's JSON variables to a file that st
 
 ### `I take a picture` {#pic}
 
-The "picture" Step will not only take a picture of the page, it will also download an HTML file of the page. ALKiln will save those files in the Scenario folder of the [test results](#results).
+The "picture" Step will not only take a picture of the page, it will also download an HTML file of the page. The associated HTML file will have the same name as the picture, but will end with `.html`. ALKiln will save those files in the Scenario folder of the [test results](#results).
 
-The HTML file will look and act a bit strange because ALKiln is unable to get the full code that controls and styles the page, but you can look at it and examine its source code.
+You can open the HTML file in your browser to interact with the page and inspect the page's HTML further. You should expect this page to look and act different than the original page - ALKiln is unable to get the full code that controls the behavior and styles of the original page. However, in the HTML, you can look at what options were in a drop down, examine some accessibility errors, or edit the HTML to expand some collapsed content. In fact, some pages are too long for the picture to show all the content. In the HTML, you can see that content.
 
 Example:
 
@@ -1289,7 +1289,7 @@ Go to the Playground of your Project. Tap the "Folders" dropdown menu. Tap on So
 You can then add the code for your tests. Follow this link to see a [simple test](setup.mdx/#first-test) that any interview can run right from the start.
 
 
-### Some rules {#gherkin-rules}
+### Some rules {#file-rules}
 
 Here are some rules about test files:
 
@@ -1418,6 +1418,9 @@ WIP
 <!-- use [the <KittyLitter/> test setup](setup.mdx#sandbox-how-to). -->
 
 **It can help to know about:**
+
+<!-- https://docs.github.com/en/actions/using-workflows/about-workflows -->
+<!-- seeing workflow job logs: https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs -->
 
 - [GitHub workflow files](https://docs.github.com/en/actions/using-workflows)
 - [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
@@ -1572,13 +1575,44 @@ WIP
 
 **This is for:** all tests that run on GitHub.
 
-Your [workflow file](#workflows) controls when your GitHub tests run. You can configure your workflow file to run the tests whenever you want them to run.
+Your [workflow file](#workflows) controls when your GitHub tests run. You can [configure your workflow file to run the tests whenever you want them to run](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
 
 The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
 That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags for tests in the section about [test files](#test-files).
 
-<!-- TODO: Add note about tags in FAQ? Or Tips? -->
+<!-- TODO: Add note about tags in FAQ? Or Tips? Or here? Or workflow files? -->
+
+### When do <AutoDIY/> tests run? {#diy-triggers}
+
+You run them manually when you want to.
+
+1. Make sure you are logged into your docassemble server.
+1. Run the ALKiln interview from your server's list of available interviews.
+1. Skip the first page by just tapping to continue.
+1. From the list of projects, pick a Project that already has tests in its Sources folder. If it has no tests, read how to add tests in our documentation then start with step number 1 again.
+1. Run the tests and see the output.
+
+<!-- TODO:
+- Above, add link to how to make test files
+- Above, add link to info about test output
+- Figure out where to add details, like tags, etc.
+-->
+
+<!--
+1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
+
+<!-- TODO:
+Where to put how to update to a new version of ALKiln? It's already in setup, but buried.
+-->
+
+
+### What can I see while tests are running? {#running-output}
+
+<!-- TODO: Link to workflow status on Actions page -->
+In GitHub, while the tests are running, GitHub can show you the status of the workflow/test run on the Actions page or at the bottom of a PR, among other places - you can see a yellow dot while tests are still running and then, when the test run is done, a green check mark for successful tests or red "x" when something went wrong. You can see how long a test has been running. You can also see the current [console log](#console) of the workflow job as GitHub writes in it.
+
+Unfortunately, <AutoDIY/> tests just show how long the tests have been running.
 
 
 ### Failures get re-run once {#rerun}
@@ -1588,76 +1622,95 @@ WIP
 **This is for:** all tests that run on GitHub.
 
 
-## Test results {#results}
+## Test results overview {#results}
 
-WIP
+**This is for:** all tests.
 
-There are different ways to look at the results of a test run. GitHub shows a log of the tests while they run and ALKiln creates files and folders showing the output of the finished tests.
+After your tests are done, there are different ways to look at the results of those tests. You can see:
 
+- Console logs: The raw output of the whole test run process in the [console](#console)
+- Artifacts: The reports and other files ALKiln creates to give you more information about the tests, including errors
 
-### GitHub outputs {#github-results}
-
-In GitHub, you can see the workflow/test run status ...
-
- test run's [workflow job logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#viewing-logs-to-diagnose-failures) while the tests are still running or after they're done. Those logs show:
-
-- Test run start up messages. Errors can happen here too.
-- Scenario names as each test runs.
-- The final ALKiln report.
-- If there are any, errors from [the third-party libraries ALKiln uses](#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
-
-Once the tests are finished, ALKiln also creates more detailed files for you. You can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that workflow run.
+You can read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
 
 
-- GitHub test status
-- Console in GitHub
-- GitHub artifacts (folders)
-- ALKilnInThePlayground final page (and folders to download)
-  - Not much fancy formatting yet
-  - Zip file at top
-  - Summary files up at top
-  - List of Scenarios with report and other files
-  - Console output at bottom
+## Test console logs {#console}
 
-You can also read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+The console shows the full raw output of the logs of the processes that ran before, during, and after the tests.
 
+In GitHub, you can see the test run's console at the [workflow's job logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs). You can see these messages appear as each process happens as well as after the tests finish running.
 
-### GitHub test status {#github-status}
+In <AutoDIY/> tests, you can only see the console output after tests are done. They should be at the bottom of the final page.
 
-WIP
+The console output should include, from top to bottom:
 
+1. Data from the start up processes, where errors can happen too.
+2. Each Scenario (test) description next to symbols that show what happened in that test:
 
-### Console output {#console}
+- `.` is for a Step that just got run or the automatic start or end of a test
+- `*` is for a Story table row that set a page variable
+- `v` is for a Story table row that pressed a continue button to set a variable
+- `>` is for a Story table row that automatically continued
+- `U` usually shows up when you have a [typo in a Step you wrote](troubleshooting.mdx#step-undefined)
+- `F` appears if a test fails and stops
 
-WIP
-
-The console has all the text that got printed while your test ran. It has things like logs from starting up the tests, a copy of the report, and at the bottom are messages from the third-party libraries ALKiln uses. We are keeping those messages, including any errors, until we are confident we can handle every error ourselves.
-
-In GitHub, you can see the console when you go to the ALKiln workflow job. In ALKilnInThePlayground, it's at the bottom of the page.
+3. The [ALKiln report](#report).
+1. Any errors from [the third-party libraries ALKiln uses](#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
+1. How many tests pass or failed.
+1. In GitHub, data from the takedown processes as ALKiln and GitHub cleans up.
 
 <!-- In GitHub, if the tests are having trouble, you might want to look at early steps too (TODO: Put this in troubleshooting docs) -->
 
 
-### Output directory structure {#output-dirs}
+## Test artifacts {#artifacts}
 
-WIP
+**This is for**: any tests.
 
-- root
-  - report.txt
-  - debug_log.txt
-  - Screenshots and html files for errors to give a quick way to look at them
-  - Scenario folders
-    - Individual report.txt
-    - Error screenshots and html files
-    - [Pictures you took of screens along with their associated HTML files](#pic) (self explanatory?)
-    - [Files you downloaded](#download) (self explanatory?)
-    - [JSON variables you compared](#compare-json) (self explanatory?)
-    - [Accessibility failures](#a11y-all) (self explanatory?)
+Once the tests are finished, ALKiln creates the test run "artifacts" - folders and files you can examine, like an archeologist, to understand what happened.
+
+<!-- TODO: insert archeology meme -->
+
+In GitHub, you can [download a zip of these artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+
+For <AutoDIY/> tests, you can see and download the artifacts on the final page. The page is very plain at the moment. We hope to add more useful styles and indicators in the future. The page includes:
+
+- The name of the Project you tested.
+- The version of ALKiln the tests used. This is the version that is installed on your docassemble server.
+- How long it took the tests to run.
+- A link to download the zip file with all the artifacts.
+- The [report file](#report).
+- The [debug log file](#debug-log).
+- Any pictures of error screens, along with that screen's HTML file.
+- A list of Scenarios with the [contents of their Scenario folders](#senario-artifacts).
+- The test console logs. <!-- Why can't people download this as a file? I guess it will be in the verbose log eventually? -->
+<!-- - A list of Scenarios with their the contents of their Scenario folders including individual report, error screenshots and HTML pages, files you downloaded or created with Steps  -->
+
+On that page, when you click on the link to a file, you will see that file in a new browser window and can download it there.
+
+The main artifact folder contains all the other artifacts. Its name includes the time the tests started in UTC format.
+
+In GitHub, GitHub wraps folder up in a zip file. The zip file's name includes the UTC time that the GitHub run started.
+
+The ALKiln folder contains this structure of files and folders:
+
+- [report.txt](#report)
+- [debug_log.txt](#debug-log)
+- Copies of all [screenshots and HTML files](#errors) of pages all that caused errors
+- Scenario folders:
+  - Individual report.txt
+  - Another copy of error screenshots and html files
+  - [Pictures you took of screens along with their associated HTML files](#pic) (self explanatory?)
+  - [Files you downloaded](#download) (self explanatory?)
+  - [JSON variables you compared](#compare-json) (self explanatory?)
+  - [Accessibility failures](#a11y-all) (self explanatory?)
+  - <!-- random input test screen pics -->
 
 
 ### report.txt {#report}
 
 WIP
+
+This is the first place to look for what went wrong.
 
 - At root: Summary report containing all Scenario reports
 - In Scenario folders: Individual Scenario reports
@@ -1672,16 +1725,31 @@ Collects report data during the test run in case something goes wrong and the re
 <!-- ### verbose_log.txt {#verbose-log} -->
 
 
-### Error pics and html {#errors}
+### Scenario artifacts {#senario-artifacts}
+
+### Scenario folder {#scenario-dir}
+
+Use scenario description
 
 WIP
 
-Also see the [troubleshooting docs](troubleshooting.mdx).
 
-- In the root
-- In the individual Scenario folders
+### Error pics and HTML {#errors}
 
-They are like the [pictures you take of screens along with their associated HTML files](#pic).
+ALKiln will try to take pictures of pages that run into errors. They are like the pictures you take with the ["picture" Step](#pic). As you can read there, each time ALKiln takes a picture, it also saves the HTML of the page.
+
+ALKiln avoids making these files for pages that use [environment variables](#env-vars), even when they error because environment variables can contain sensitive information.
+
+These error files are one of the first places to look for clues about what might have gone wrong.
+
+The files appear in 2 places:
+
+- Directly in the main folder. This is so you can have a quick look without digging through all the Scenario folders. There the file names use the Scenario description and the id of the page where the error happened.
+- In the [Scenario folder](#senario-artifacts). There the file names use just the id of the page where the error happened.
+
+In those pictures you might see that a required file was missing, see why ALKiln was unable to continue to the next page, notice a missing phrase, or many other details. You can read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+
+You can read more about these files in the section about the ["picture" Step](#pic).
 
 
 ## Tips {#tips}
@@ -1701,7 +1769,7 @@ ALKiln uses Scenario descriptions in your [test files](#test-files) to make the 
 
 ### Extra HTML {#html-tip}
 
-If your package is leaving out the al_package.yml file from the Assembly Line package, make sure to add some [special ALKiln-specific HTML](#special-html) to your interview.
+If your package is leaving out the al_package.yml file from the Assembly Line package, make sure to add some [special ALKiln-specific HTML](#special-html) to your interview to let ALKiln work right.
 
 
 ### Testing unfinished code {#unstable}
@@ -1714,6 +1782,7 @@ On the other hand, if there is a part of your interview that you think will stay
 ### Recycle, reuse {#reuse}
 
 Copy old Scenarios or Story Tables to help you make new ones. You don't have to make everything from scratch.
+
 
 ### Values of choices {#choice-values}
 
