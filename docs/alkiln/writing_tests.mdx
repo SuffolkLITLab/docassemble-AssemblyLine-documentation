@@ -8,6 +8,7 @@ slug: /alkiln/writing
 import NeedProxyVars from './components/\_need_proxy_vars.md';
 import SecureEnvVars from './components/\_secure_env_vars.md';
 import A11y from './components/\_a11y.md';
+import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 
 
 :::caution
@@ -31,9 +32,9 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 1. Every time you change or add a required variable, you must update the tests that need that variable.
 1. You write and edit `.feature` test files in your Sources folder.
 1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
-1. If you are using GitHub tests, those tests will run when anyone commits to GitHub.
+1. If you are using <GTOYS/> or <KittyLitter/> tests, those tests will run when anyone commits to GitHub.
 1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors In GitHub, they are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors. In GitHub, those files are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
 
 <!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
@@ -123,7 +124,7 @@ Example with url arguments ([url_args](https://docassemble.org/docs/special.html
   Given I start the interview at "favorite_bears.yml&user_id=123&from=theinterwebs"
 ```
 
-You can also instead use the full url of the interview, though we recommend you avoid that. For example, one advantage to using the file name instead of the full url is that you can then use the [isolated server tests method](setup.mdx#isolated-server-details) to run your tests on GitHub.
+You can also instead use the full url of the interview, though we recommend you avoid that. For example, one advantage to using the file name instead of the full url is that you can then still use the <KittyLitter/> test method to run those tests on GitHub.
 
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
 
@@ -384,11 +385,15 @@ You can use this Step to [upload files](#upload).
 
 ### `I set the variable "<variable name>" to the GitHub secret "<environment variable name>"` {#set-env-var}
 
+**This is for:** any test
+
 Use the "secret variable" Step similar to the regular "I set" Step to fill in one answer on one page with a value. This time the value is the value of an environment variable - [a GitHub secret or docassemble server config value](#env-vars). This [sets the value](#values) of that field's variable.
 
 You can use it to set values that have sensitive information. For example, a password. This is because ALKiln is extra careful with the security of these values.
 
 <SecureEnvVars/>
+
+The words of this Step currently assume you use GitHub for your tests and are using a GitHub secret to store the value, but this Step also works with config values you create for <KittyLitter/> tests. You can [read more about environment variables here](#env-vars).
 
 The format of the Step:
 
@@ -403,8 +408,6 @@ Example:
 ```gherkin
   I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
 ```
-
-The words of this Step assume you use GitHub for your tests and are using a GitHub secret to store the value, but this Step also works with config values you create for ALKilnInThePlayground. You can [read more about environment variables here](#env-vars).
 
 You can use this Step for more than just sensitive information. You can also use environment variables for values that might change sometimes so that you can use the value in multiple places and then only have to manage the value change in one place. For example, if you have a date you want to set in multiple tests or repositories that you will want to update in all the tests at once, you can use an environment variable instead of manually updating everywhere the date appears.
 
@@ -1114,7 +1117,7 @@ You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to
   Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
 ```
 
-This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info and search for the differing text in the baseline PDF and in the download PDF in [the artifacts](#see-github-test-results) to see how they differ.
+This will compare all of the text in the baseline PDF with all of the text in the newly downloaded PDF, and then it'll compare the fillable fields of each. If anything is different, it will print out what differed in the report. You can use that info and search for the differing text in the baseline PDF and in the download PDF in the artifacts <!-- TODO: add link to artifacts section --> to see how they differ.
 
 
 ### `I SHOULD see the phrase "<page text>"` {#phrase}
@@ -1409,17 +1412,17 @@ You can use any of those. It does not matter what you pick.
 
 WIP
 
-**This is for:** packages that run tests in GitHub.
+**This is for:** any packages that run GitHub tests. That is, <GTOYS/> or <KittyLitter/> tests.
 
-<!-- use [the recommended GitHub test type](setup.mdx#recommended-setup). -->
-<!-- use [the isolated server test setup](setup.mdx#isolated-server-how-to). -->
+<!-- use [the <GTOYS/> test type](setup.mdx#recommended). -->
+<!-- use [the <KittyLitter/> test setup](setup.mdx#sandbox-how-to). -->
 
 **It can help to know about:**
 
-- GitHub workflow files
+- [GitHub workflow files](https://docs.github.com/en/actions/using-workflows)
 - [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
-This section has a lot of challenging technical information about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows). We will do our best to help. We would love to hear how we can improve.
+This section has a lot of challenging technical information about GitHub workflow files. We will do our best to help. We would love to hear how we can improve.
 
 
 ### What is this file? {#workflows-what}
@@ -1438,9 +1441,9 @@ Your ALKiln workflow file is in your package's GitHub repository. To find it, go
 
 ALKiln's own workflow files are the most up-to-date, so using those as an example can be useful. You cannot just copy them. They have features that are unique to ALKiln. They do have notes for how to change them to what you need.
 
-You can see [ALKiln's own version of the GitHub test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/playground.yml).
+You can see [ALKiln's own version of the <GTOYS plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/playground.yml).
 
-You can see [ALKiln's own version of the isolated server test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
 
 <!-- TODO: deep dive or standup: We could potentially use this plugin to show the actual file in here: https://github.com/rdilweb/docusaurus-plugin-remote-content -->
 
@@ -1462,16 +1465,16 @@ See the [security documentation](security.mdx).
 Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
 
 
-### Required inputs for recommended GitHub tests {#auto-server-inputs}
+### Required inputs for <GTOYS/> tests {#auto-server-inputs}
 
-The [recommended GitHub test method](setup.mdx#recommended-setup) workflow file has a few absolutely **required** inputs. The [ALKiln setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) should create the secrets and workflow inputs for this type of test environment.
+The [<GTOYS plain={true}/> test method](setup.mdx#recommended) workflow file has a few absolutely **required** inputs. The [ALKiln setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) should create the secrets and workflow inputs for this type of test environment.
 
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
 - `SERVER_URL` is the url of the docassemble server the tests should run on.
-- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on your server. When you set up for this kind of test, we recommend you create a new developer account on your server just for testing. This account will store [the Project in the Playground while GitHub runs the tests](setup.mdx#github-how).
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on your server. When you set up for this kind of test, we recommend you create a new developer account on your server just for testing. This developer account will [store the Project in its Playground while GitHub runs the tests](setup.mdx#github-how).
 
-If you do not already have these secrets, add them to your package's repository or GitHub organization[^secret].
+If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
 
 Use them the same way that the example workflow file uses them. They appear in 2 places.
 
@@ -1487,23 +1490,23 @@ These are values you can put in your workflow file directly under the `with:` ke
  -->
 
 
-[^secret]: If your server is part of a GitHub organization, we recommend creating some of these values as organization secrets. That way, if you need to change the value of an input or environment variable you can do it one place.
+[^org]: If your server is part of a GitHub organization, we recommend creating some of these values as organization secrets. That way, if you need to change the value of an input or environment variable you can do it one place.
 
 
-### Required inputs for isolated server tests {#isolated-server-inputs}
+### Required inputs for <KittyLitter/> tests {#sandbox-inputs}
 
-<!-- TODO: Add link to isolated server test info -->
+<!-- TODO: Add link to Sandbox test info -->
 
-These are the only required inputs for isolated server tests. We are listing them here for the sake of completeness, but none of them need to be secrets and you can copy the correct values straight from [ALKiln's own isolated tests workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+These are the only required inputs for <KittyLitter/> tests. We are listing them here for the sake of completeness, but none of them need to be secrets and you can copy the correct values straight from [ALKiln's own <KittyLitter plain={true}/> tests workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
 
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
 - `SERVER_URL` is the url of the new docassemble server GitHub just created. Another step in the same file defined that value.
 - `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on the new server. Another step in the same file defined that value.
-- `INSTALL_METHOD` is an internal value ALKiln needs from isolated server tests. The value in ALKiln's file is the correct value.
+- `INSTALL_METHOD` is an internal value ALKiln needs from <KittyLitter/> tests. The value in ALKiln's file is the correct value.
 
 
-### Optional inputs for all tests that run on GitHub {#optional-inputs}
+### Optional inputs for all GitHub tests {#optional-inputs}
 
 You can add some optional inputs to the workflow file of any tests that run on GitHub to control global ALKiln configuration values.
 
@@ -1513,7 +1516,7 @@ The options are:
 - `ALKILN_TAG_EXPRESSION` is the "tag expression" to use to limit which tests to run. These docs describe tags in the [Gherkin keywords section](#gherkin-keywords). The default is no tag expression so that all the tests run.
 - (Extra Advanced) `DOCASSEMBLECLI_VERSION` is the version of docassemblecli to install. If this means nothing to you then you can probably ignore it. You can also ask us about this.
 
-None of these need to be secrets, but they can be if you want that[^secret]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
+None of these need to be secrets, but they can be if you want that[^org]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
 
 Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
 
@@ -1523,11 +1526,11 @@ Use these inputs in the same way and in the same places as the required inputs. 
 ```
 
 
-### Optional inputs for GitHub test inputs {#github-optional-inputs}
+### Optional inputs for <GTOYS/> tests {#github-optional-inputs}
 
 WIP
 
-You can add some optional inputs to the workflow file of any tests that run with the [recommended GitHub test method](setup.mdx#recommended-setup) to control global ALKiln configuration values:
+You can add some optional inputs to the workflow file of any tests that run with the [<GTOYS plain={true}/> test method](setup.mdx#recommended) to control global ALKiln configuration values:
 
 - `MAX_SECONDS_FOR_SETUP` is the maximum amount of time to give the Project to upload your package's GitHub code. If your server is slow, increase this value. The default is 120 seconds.
 - `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload if it needs to. A server reload can make a test fail. Waiting the right amount of time for the reload can make it more likely the test will succeed when ALKiln retries it. The default is 150 seconds.
@@ -1539,9 +1542,9 @@ Use these inputs in the same way and in the same places as the required inputs. 
           MAX_SECONDS_FOR_SETUP: 500
 ```
 
-### Optional inputs for isolated server inputs {#isolated-server-optional-inputs}
+### Optional inputs for <KittyLitter/> tests {#sandbox-optional-inputs}
 
-You can add some optional inputs to the workflow file of any tests that run with the [isolated server method](setup.mdx#isolated-server-details) to control global ALKiln configuration values. We note when an option should also be a GitHub secret for security reasons:
+You can add some optional inputs to the workflow file of any <KittyLitter/> tests to control global ALKiln configuration values. We note when an option should also be a GitHub secret for security reasons:
 
 - `CONFIG_CONTENTS` is the contents of the [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. **For security, we strongly recommend you put this information into a GitHub secret** like `DOCASSEMBLE_DEVELOPER_API_KEY` above. If you have special configuration settings on your own server, you can use input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses.
 - `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output from the creation of the docker container and the installation of docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information it might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
@@ -1567,7 +1570,7 @@ WIP
 
 ### When do GitHub tests run? {#github-triggers}
 
-**This is for:** tests that run on GitHub.
+**This is for:** all tests that run on GitHub.
 
 Your [workflow file](#workflows) controls when your GitHub tests run. You can configure your workflow file to run the tests whenever you want them to run.
 
@@ -1582,7 +1585,7 @@ That workflow file also lets you [run your tests manually](https://docs.github.c
 
 WIP
 
-**This is for:** packages that use GitHub tests.
+**This is for:** all tests that run on GitHub.
 
 
 ## Test results {#results}
@@ -1591,9 +1594,10 @@ WIP
 
 There are different ways to look at the results of a test run. GitHub shows a log of the tests while they run and ALKiln creates files and folders showing the output of the finished tests.
 
+
 ### GitHub outputs {#github-results}
 
-In GitHub, you can see the workflow/test run status...
+In GitHub, you can see the workflow/test run status ...
 
  test run's [workflow job logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#viewing-logs-to-diagnose-failures) while the tests are still running or after they're done. Those logs show:
 

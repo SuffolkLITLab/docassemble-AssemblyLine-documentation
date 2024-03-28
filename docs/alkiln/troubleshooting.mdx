@@ -5,6 +5,8 @@ sidebar_label: WIP Troubleshooting & errors
 slug: /alkiln/trouble
 ---
 
+import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
+
 :::warning
 WIP (Work in progress)
 :::
@@ -204,7 +206,7 @@ See a section in [tips about quotes](writing_tests.mdx#special-chars) for more d
 
 The tests completely failed to run. For this, it is especially important to look at the console output and error messages. In GitHub, those might be above where the tests even run.
 
-There might be a typo in a test (link). For isolated server tests, the docker container might not have started up correctly. Maybe your server was down. Maybe the API key you gave ALKiln was wrong or got deleted with a server restart. That might be because of your own errors or because of GitHub.
+There might be a typo in a test (link). For <KittyLitter> tests, the docker container might not have started up correctly. Maybe your server was down. Maybe the API key you gave ALKiln was wrong or got deleted with a server restart. That might be because of your own errors or because of GitHub.
 
 Also, other services like GitHub or node package manager (npm) might have been having various kinds of trouble.
 -->
@@ -221,9 +223,9 @@ A "timeout" error can happen when a page took too long to load at some point in 
 1. A Story Table was unable to reach the page with the specified `id`.
 1. There's a typo in the name of the interview YAML file that the test should go to.
 
-If a page was taking too long to load a big file, use [the `custom timeout` Step](#custom-timeout-step) to give the page more time to load.
+If a page was taking too long to load a big file, use [the `max seconds` Step](writing_tests.mdx#custom-timeout) to give the page more time to load.
 
-You might be able to look at the error page picture for more details. In GitHub, you can download the test [artifacts](#see-github-test-results) to look for it.
+You might be able to look at the error page picture for more details. In GitHub, you can download the test artifacts <!-- TODO: Add link to section on GitHub artifacts --> to look for it.
 
 In GitHub, this error can also happen when:
 

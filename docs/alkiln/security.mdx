@@ -6,6 +6,7 @@ slug: /alkiln/security
 ---
 
 import SecureEnvVars from './components/\_secure_env_vars.md';
+import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 
 :::warning
 WIP (Work in progress)
@@ -26,9 +27,9 @@ Keep the testing server completely separate from production server so that the t
 
 You should:
 
-- Avoid running tests on your production server, use the testing server's address in the `SERVER_URL` GitHub secret <!-- TODO: Add link to GitHub secrets for `SERVER_URL` -->
-- Avoid installing ALKiln on your production server, avoid installing the ALKilnInThePlayground package on your production server
-- Avoid using a link to a page on your production server in any of your tests
+- Avoid running tests on your production server. To avoid this, use the testing server's address in the value of the `SERVER_URL` environment variable. <!-- TODO: Add link to GitHub secrets for `SERVER_URL` -->
+- Avoid installing ALKiln on your production server.
+- Avoid using a link to a page on your production server in any of your tests.
 
 In addition, some general good practices for a testing server are:
 
@@ -56,7 +57,7 @@ Alternatively, you can [delete a test file from your repository completely](http
 
 ## Disable repository tests {#disable-repo}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 If you become worried about the tests, there are different ways you can stop the tests from running.
 
@@ -71,7 +72,7 @@ You can also [delete the workflow file from your repository completely](https://
 
 ## Disabling tests for the whole organization {#disable-org}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 You can disable ALKiln tests, or any workflows (actions), for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
@@ -118,12 +119,12 @@ If you have a repository on GitHub, avoid putting sensitive information in any o
 If you need to use sensitive information in your tests:
 
 - For tests running in GitHub, [add a GitHub secret](#sensitive-info-github)
-- For ALKilnInThePlayground tests, [add a variable in your docassemble configuration file](#sensitive-info-playground)
+- For <AutoDIY/> tests, [add a variable in your docassemble configuration file](#sensitive-info-playground)
 
 
 ## Use sensitive information in GitHub tests {#sensitive-info-github}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 **To do this you MUST be:**
 
@@ -140,7 +141,7 @@ These are the only people that can create GitHub secrets
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-Sometimes authors do need to pass sensitive information to their tests. For example, some tests require the "user" to log in, so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with ALKilnInThePlayground tests](#sensitive-info-playground).
+Sometimes authors do need to pass sensitive information to their tests. For example, some tests require the "user" to log in, so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-playground).
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets[^org_secrets], whichever is right for you.
 
@@ -200,18 +201,22 @@ jobs:
 # Other workflow code
 ```
 
+<!-- TODO: Move this to #env-vars bookmark -->
+
 We recommend that you start your environment variable names with "ALKILN_". That will help avoid conflicting with the environment variables of your operating system.
 
 <SecureEnvVars/>
 
 Right now Story Tables are unable to use environment variables to set variables.
 
+
+<!-- TODO: Move this to writing_tests.mdx #env-vars bookmark -->
 [^org_secrets]: [GitHub organization secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization) can be useful if an organization wants to create a variable that all of its repositories will be able to use and avoid creating that secret in every individual repository.
 
 
 ## Freeze the ALKiln framework version {#freeze-framework}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 **To do this it helps to know about:**
 
@@ -251,7 +256,7 @@ This is different than [the ALKiln action versions](#freeze-actions). The ALKiln
 
 ## Freeze an ALKiln action version {#freeze-actions}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 **To do this it helps to know about:**
 
@@ -286,16 +291,18 @@ This is different than the [ALKiln framework version](#freeze-framework). The fr
 :::
 
 
-## Isolated server tests {#isolated-server}
+## <KittyLitter/> tests {#sandbox}
 
-**This is for any packages that:** have isolated server tests that run in GitHub
+**This is for any packages that:** have <KittyLitter/> tests
 
-[Isolated server tests](setup.mdx#isolated-server-how) are useful for security if you use them correctly.
+<KittyLitter/> are very secure if you use them correctly. You still have to be careful.
 
-For example, you have to avoid using hard-coded urls that are on your server. That is, avoid using `https://my-server.com` and interviews or other pages there. That will send the tests to your server, which goes around all these precautions and makes them less secure again.
+You have to avoid using hard-coded urls that are on your server. That is, avoid using `https://my-server.com` and interviews or other pages there. That will send the tests to your server, which goes around all these precautions and makes the tests less secure again.
+
+You also still have to avoid saving sensitive information in public files and follow other security precautions.
 
 
-## Use sensitive information in Playground tests {#sensitive-info-playground}
+## Use sensitive information in <AutoDIY/> tests {#sensitive-info-playground}
 
 **This is for any packages that:** you test with ALKilnInThePlayground
 
@@ -303,7 +310,7 @@ For example, you have to avoid using hard-coded urls that are on your server. Th
 
 - Edit your server's config file
 
-Sometimes authors do need to pass sensitive information to their tests. For example, some tests require the "user" to log in, so the tests need to know the email and password for that user. You can do this securely in your ALKilnInThePlayground tests by adding this information to your docassemble server configuration file. ALKiln will use these as environment variables for your tests.
+Sometimes authors do need to pass sensitive information to their tests. For example, some tests require the "user" to log in, so the tests need to know the email and password for that user. You can do this securely in your <AutoDIY/> tests by adding this information to your docassemble server configuration file. ALKiln will use these as environment variables for your tests.
 
 You can also read about [how to use sensitive information in GitHub tests](#sensitive-info-github).
 
@@ -345,11 +352,11 @@ As long as you ensure you [only test on your testing server](#testing-server), A
 
 ### Worry less: GitHub logs and artifacts {#github-output}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 There are some parts of testing that might look less secure than they are.
 
-When you run the tests in GitHub, you can see the logs of the test action's job and you can download the results of the test, or "artifacts". That may seem very exposed, but only people who have permissions on the repository, like administrators, collaborators, or moderators, can see or download that information.
+When you run the tests in GitHub, you can see the logs of the test workflow job and you can download the results of the test, or "artifacts". That may seem very exposed, but only people who have permissions on the repository, like administrators, collaborators, or moderators, can see or download that information.
 
 If you are still worried about the logs and artifacts in GitHub, [you can delete the logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#deleting-logs) and [you can delete the artifacts](https://docs.github.com/en/actions/managing-workflow-runs/removing-workflow-artifacts).
 
@@ -358,7 +365,7 @@ If you are still worried about the logs and artifacts in GitHub, [you can delete
 
 ### Worry less: Pull request triggers {#pull-requests}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 By default, the ALKiln setup interview writes your GitHub workflow file so that your tests will get triggered when you commit to GitHub. You can also add code <!-- Add link to description of that code --> to trigger tests when someone makes a pull request on GitHub.
 
@@ -367,7 +374,7 @@ Some people worry that strangers will then be able to trigger workflows that hav
 
 ### Worry less: GitHub redacts secrets {#github-redacts-secrets}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 In your GitHub [workflow run console](https://docs.github.com/en/actions/using-workflows/about-workflows?learn=getting_started#viewing-the-activity-for-a-workflow-run), GitHub redacts any text that matches the values of any of your GitHub secrets. It replaces that text with "\*\*\*". It must be an exact match. GitHub is unable to recognize partial matches.
 
@@ -378,7 +385,7 @@ In your GitHub [workflow run console](https://docs.github.com/en/actions/using-w
 
 The ALKiln framework lets you control the robot that goes through your interview answering questions. This documentation has already discussed how [you can freeze your ALKiln framework version on GitHub](#freeze-framework).
 
-[ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). If you want to take extra precautions, though, freezing the version you are using with ALKilnInThePlayground tests does give you more control over what code you are installing on your server and using to run your tests.
+[ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). If you want to take extra precautions, though, freezing the version you are using with <AutoDIY/> tests does give you more control over what code you are installing on your server and using to run your tests.
 
 The first page of the ALKilnInThePlayground lets you choose <!-- link to description of that --> the exact version of ALKiln that runs your tests. You can upgrade or downgrade at any time.
 
@@ -428,6 +435,6 @@ Our administrators can get past these restrictions. We keep tight control of who
 
 ### ALKiln uses good action file practices {#alkiln-action-files}
 
-**This is for any packages that:** have GitHub tests
+**This is for any packages that:** run tests in GitHub
 
 ALKiln's action files are very similar to workflow files, like yours. As such, they use the same [GitHub-recommended practices](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) that your workflows can use.
