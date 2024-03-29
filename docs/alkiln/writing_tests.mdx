@@ -5,15 +5,20 @@ sidebar_label: WIP Writing tests
 slug: /alkiln/writing
 ---
 
+import styles from "../../src/css/images.module.css"
+
 import NeedProxyVars from './components/\_need_proxy_vars.md';
 import SecureEnvVars from './components/\_secure_env_vars.md';
 import A11y from './components/\_a11y.md';
 import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
+import { ScenarioDir } from './components/\_scenario_folder_contents.js';
 
 
 :::caution
 WIP (Work in progress)
 :::
+
+<!-- TODO: Note that interviews will not be deleted for the docassemble server testing account -->
 
 
 This page describes your tests files and how to write tests <!-- , run tests, -->  and other useful information. To see the table of contents on a small screen, tap on the dropdown menu at the top of the page. To see it on a wider screen, see the column on the right-hand side of the screen.
@@ -1218,7 +1223,7 @@ Example:
 <!-- ```And I take a screenshot ?(?:named "([^"]+)")?``` -->
 
 
-### `I get the page's JSON variables and values` {#show-vars}
+### `I get the page's JSON variables and values` {#get-json}
 
 Use the "get JSON" Step to add a page's JSON variables to the final test report.
 
@@ -1575,11 +1580,11 @@ WIP
 
 **This is for:** all tests that run on GitHub.
 
-Your [workflow file](#workflows) controls when your GitHub tests run. You can [configure your workflow file to run the tests whenever you want them to run](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
-
 The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
 That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags for tests in the section about [test files](#test-files).
+
+That said, your [workflow file](#workflows) controls when your GitHub tests run. You can [configure your workflow file to run the tests whenever you want them to run](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
 
 <!-- TODO: Add note about tags in FAQ? Or Tips? Or here? Or workflow files? -->
 
@@ -1609,17 +1614,29 @@ Where to put how to update to a new version of ALKiln? It's already in setup, bu
 
 ### What can I see while tests are running? {#running-output}
 
-<!-- TODO: Link to workflow status on Actions page -->
-In GitHub, while the tests are running, GitHub can show you the status of the workflow/test run on the Actions page or at the bottom of a PR, among other places - you can see a yellow dot while tests are still running and then, when the test run is done, a green check mark for successful tests or red "x" when something went wrong. You can see how long a test has been running. You can also see the current [console log](#console) of the workflow job as GitHub writes in it.
+<!-- Note to self: BEST instructions for getting to github workflows and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
 
-Unfortunately, <AutoDIY/> tests just show how long the tests have been running.
+In GitHub, on [the actions page and related pages](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results) of your repository, you can see a few different things while the tests are running:
+
+- On the GitHub actions page, you can also see how long a test has been running.
+- A yellow dot next to the current workflow.
+- You can see [information about the running processes](#console) in the job's log (or console) as GitHub writes it.
+
+<AutoDIY/> tests show a waiting screen with how long the tests have been running, though we can add a yellow dot if enough users request it.
+
+
+### What can I see when the tests end? {#end-status}
+
+In GitHub, when the test run is done the yellow dot will change into a green circle with a check mark if the tests passed or a red circle with an "x" if something went wrong.
+
+In GitHub and with <AutoDIY/> tests, you will see the [results](#results).
 
 
 ### Failures get re-run once {#rerun}
 
-WIP
-
 **This is for:** all tests that run on GitHub.
+
+WIP
 
 
 ## Test results overview {#results}
@@ -1628,15 +1645,17 @@ WIP
 
 After your tests are done, there are different ways to look at the results of those tests. You can see:
 
-- Console logs: The raw output of the whole test run process in the [console](#console)
-- Artifacts: The reports and other files ALKiln creates to give you more information about the tests, including errors
+- [Job/console logs](#console): All the information about the processes that ran before, during, and after the tests
+- [Artifacts](#artifacts): The reports and other files ALKiln creates to give you more information about successes and failures
 
 You can read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
 
 
-## Test console logs {#console}
+## Test logs {#console}
 
-The console shows the full raw output of the logs of the processes that ran before, during, and after the tests.
+**This is for**: all tests.
+
+The console, or GitHub job log, shows the full raw output of the logs of the processes that ran before, during, and after the tests.
 
 In GitHub, you can see the test run's console at the [workflow's job logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs). You can see these messages appear as each process happens as well as after the tests finish running.
 
@@ -1645,34 +1664,40 @@ In <AutoDIY/> tests, you can only see the console output after tests are done. T
 The console output should include, from top to bottom:
 
 1. Data from the start up processes, where errors can happen too.
-2. Each Scenario (test) description next to symbols that show what happened in that test:
+2. A list of each Scenario (test) description next to symbols that show what happened in that test:
 
-- `.` is for a Step that just got run or the automatic start or end of a test
-- `*` is for a Story table row that set a page variable
-- `v` is for a Story table row that pressed a continue button to set a variable
-- `>` is for a Story table row that automatically continued
-- `U` usually shows up when you have a [typo in a Step you wrote](troubleshooting.mdx#step-undefined)
-- `F` appears if a test fails and stops
+- `.` - a Step ran. Also, the test started or finished.
+- `*` - the test set a page variable.
+- `v` - the test pressed a continue button to set a variable.
+- `>` - a Story table row automatically continued.
+- `U` - an "undefined" Step tried to run. This usually shows up when you have a [typo in a Step you wrote](troubleshooting.mdx#step-undefined).
+- `F` - a test failed.
 
 3. The [ALKiln report](#report).
 1. Any errors from [the third-party libraries ALKiln uses](#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
 1. How many tests pass or failed.
-1. In GitHub, data from the takedown processes as ALKiln and GitHub cleans up.
+1. In GitHub, data from the take-down processes as ALKiln and GitHub clean up.
 
-<!-- In GitHub, if the tests are having trouble, you might want to look at early steps too (TODO: Put this in troubleshooting docs) -->
+<!-- TODO: put in troubleshooting: In GitHub, if the tests are having trouble, you might want to look at early steps too -->
 
 
 ## Test artifacts {#artifacts}
 
-**This is for**: any tests.
+**This is for**: all tests.
 
-Once the tests are finished, ALKiln creates the test run "artifacts" - folders and files you can examine, like an archeologist, to understand what happened.
+Once the tests are finished, ALKiln creates the test run "artifacts" - files and folders you can examine, like an archeologist, to understand what happened.
 
-<!-- TODO: insert archeology meme -->
+If the test start up process failed, ALKiln will be [unable to create artifacts](troubleshooting.mdx#no-artifacts).
+
+import Dig from '../assets/archaeology.png';
+
+<p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a vase."/></p>
+
+\- [@Thinkwert](https://twitter.com/Thinkwert/status/1428488345357856777)[^aha]
 
 In GitHub, you can [download a zip of these artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 
-For <AutoDIY/> tests, you can see and download the artifacts on the final page. The page is very plain at the moment. We hope to add more useful styles and indicators in the future. The page includes:
+For <AutoDIY/> tests, you can see and download the artifacts on the final page. The page is very plain at the moment and we hope to add more useful styles and indicators in the future. The page includes:
 
 - The name of the Project you tested.
 - The version of ALKiln the tests used. This is the version that is installed on your docassemble server.
@@ -1681,60 +1706,152 @@ For <AutoDIY/> tests, you can see and download the artifacts on the final page. 
 - The [report file](#report).
 - The [debug log file](#debug-log).
 - Any pictures of error screens, along with that screen's HTML file.
-- A list of Scenarios with the [contents of their Scenario folders](#senario-artifacts).
-- The test console logs. <!-- Why can't people download this as a file? I guess it will be in the verbose log eventually? -->
+- A list of Scenarios with the [contents of their Scenario folders](#scenario-artifacts).
+- The test console logs. <!-- TODO: Why can't people download this as a file? I guess it will be in the verbose log eventually? -->
+
 <!-- - A list of Scenarios with their the contents of their Scenario folders including individual report, error screenshots and HTML pages, files you downloaded or created with Steps  -->
 
 On that page, when you click on the link to a file, you will see that file in a new browser window and can download it there.
 
-The main artifact folder contains all the other artifacts. Its name includes the time the tests started in UTC format.
+The main artifact folder contains all the other artifacts. Its name includes the time the tests started in UTC format. When in GitHub, GitHub wraps folder up in a zip file. The zip file's name includes the UTC time that the GitHub run started.
 
-In GitHub, GitHub wraps folder up in a zip file. The zip file's name includes the UTC time that the GitHub run started.
-
-The ALKiln folder contains this structure of files and folders:
+The ALKiln folder contains these files and folders:
 
 - [report.txt](#report)
 - [debug_log.txt](#debug-log)
-- Copies of all [screenshots and HTML files](#errors) of pages all that caused errors
-- Scenario folders:
-  - Individual report.txt
-  - Another copy of error screenshots and html files
-  - [Pictures you took of screens along with their associated HTML files](#pic) (self explanatory?)
-  - [Files you downloaded](#download) (self explanatory?)
-  - [JSON variables you compared](#compare-json) (self explanatory?)
-  - [Accessibility failures](#a11y-all) (self explanatory?)
-  - <!-- random input test screen pics -->
+- Copies of all [screenshots and HTML files](#error-pics) of pages all that caused errors
+- Scenario folders which have:
+<ScenarioDir/>
+
+
+[^aha]: Name unknown [@Thinkwert]. (2021, Aug 19). *When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed.* [Tweet]. Twitter. https://twitter.com/Thinkwert/status/1428488345357856777
 
 
 ### report.txt {#report}
 
-WIP
+The report is the first place to look when a test fails. There are two places to find reports.
 
-This is the first place to look for what went wrong.
+1. Inside the main folder is the summary report containing all Scenario logs and results in one file
+1. In each Scenario folder is a report that only shows the logs and results for that test
 
-- At root: Summary report containing all Scenario reports
-- In Scenario folders: Individual Scenario reports
+<!-- TODO: Scenario reports should also contain the report heading with the date and, in future, the version of ALKiln. -->
+
+The summary report is made up of multiple parts
+
+- The heading that includes the date of the test run
+- The "failed" Scenarios section that has the logs and results for each failed Scenario
+- The "passed" Scenarios section that has the logs and results for each passed Scenario
+
+A report might look something like this:
+
+<!-- TODO: Test failure in the middle of a Story Table Step -->
+
+```
+Assembly Line Kiln Automated Testing Report - Wed, 29 Dec 2021 17:49:00 GMT
+
+
+===============================
+===============================
+Failed scenarios:
+
+---------------
+Scenario: I dislike bears
+---------------
+Trying to load the interview at "https://server.org/interview?new_session=1&i=docassemble.playgroundplayground25BearNecessitiesmain1707019219591%3Abears_and_you.yml"
+screen id: bear_opinion
+      | likes_bears | False |
+
+ERROR: The question id was supposed to be "all done", but it's actually "favorite_bear_types".
+**-- Scenario Failed --**
+
+
+===============================
+===============================
+Passed scenarios:
+
+---------------
+Scenario: I like wild bears
+---------------
+Trying to load the interview at "https://server.org/interview?new_session=1&i=docassemble.playgroundplayground25BearNecessitiesmain1707019219591%3Abears_and_you.yml"
+screen id: bear_opinion
+Accessibility on direct-standard-fields passed!
+      | likes_bears | True |
+screen id: favorite_bear_types
+Accessibility on direct-standard-fields passed!
+      | favorite_bears | wild_bear |
+
+  Rows that got set:
+    And I get to the question id "screen features" with this data:
+      | var | value |
+      | likes_bears | True |
+      | favorite_bears | wild_bear |
+  Unused rows:
+      | user_climbing_speed | very fast |
+```
+
+ALKiln currently only shows logs for some Steps, including:
+
+- [Accessibility checks](#a11y)
+- The [Story Table](#story-table) and ["I set"](#set) Steps
+- The ["get JSON" Step](#get-json)
+
+When you set variables, ALKiln will try to log the question ids for each page it comes to. Under each `screen id` will be the names of the variables whose fields ALKiln set and the values ALKiln set them to.
+
+<!-- TODO: In each Step section, say if it logs anything and, if so, show what that looks like -->
+
+We're always trying to understand what people would find helpful in these reports. Tell us about your experiences at https://github.com/SuffolkLITLab/ALKiln/issues.
+
+<!--
+TODO: put in Story Tables:
+
+If you used a [story table](#story-tables) Step, a Scenario might look more like this:
+
+```
+---------------
+Scenario: I fill in my name
+---------------
+screen id: user-name
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+
+  Rows that got set:
+    And I get to the question id "child information" with this data:
+      | var | value | trigger |
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+  Unused rows:
+      | defendant.name.first | Sam |  |
+      | defendant.name.last | Defendant |  |
+```
+
+Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id. You should check that section to make sure all your varibles got used.
+
+Rows are listed in alphabetical order. If you have thoughts on pros and cons, we'd love to hear from you.
+
+If everything looks right to you there, you can copy and paste the text under "Rows that got set" into your test to get rid of the extra rows you've got hanging around.
+-->
 
 
 ### debug_log.txt (#debug-log)
 
-WIP
+The debug_log.txt has the same content as [report.txt](#report), but a bit messier. It is messy because it writes the information right away, while the tests are actually running, instead of waiting to make them pretty at the end like the report does. This is so it can store the data immediately. If something goes wrong in the middle the tests, those logs will still be there. For example, you might stop the tests early. This way you should still get some data from whatever tests did run.
 
-Collects report data during the test run in case something goes wrong and the report for a test gets left out.
+<!-- TODO: Add link to stopping the test early in the playground into the #run section -->
+
 
 <!-- ### verbose_log.txt {#verbose-log} -->
 
 
-### Scenario artifacts {#senario-artifacts}
+### Scenario folder {#scenario-artifacts}
 
-### Scenario folder {#scenario-dir}
+Each Scenario (test) has its own folder. A Scenario's folder contains its report, its errors, and the files you downloaded or created in that Scenario.
 
-Use scenario description
+The folder's name uses its Scenario description. That is one reason you should [make each Scenario description different](#scenario-descriptions). The folder contains:
 
-WIP
+<ScenarioDir/>
 
 
-### Error pics and HTML {#errors}
+### Error pics and HTML {#error-pics}
 
 ALKiln will try to take pictures of pages that run into errors. They are like the pictures you take with the ["picture" Step](#pic). As you can read there, each time ALKiln takes a picture, it also saves the HTML of the page.
 
@@ -1744,8 +1861,8 @@ These error files are one of the first places to look for clues about what might
 
 The files appear in 2 places:
 
-- Directly in the main folder. This is so you can have a quick look without digging through all the Scenario folders. There the file names use the Scenario description and the id of the page where the error happened.
-- In the [Scenario folder](#senario-artifacts). There the file names use just the id of the page where the error happened.
+- Directly in the main folder. This is so you can have a quick look without digging through all the Scenario folders. Here the file names use the Scenario description and the id of the page where the error happened.
+- In the [Scenario folder](#scenario-artifacts). Here the file names use just the id of the page where the error happened.
 
 In those pictures you might see that a required file was missing, see why ALKiln was unable to continue to the next page, notice a missing phrase, or many other details. You can read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
 
@@ -1764,7 +1881,7 @@ Add a [different id](https://docassemble.org/docs/modifiers.html#id) to each `qu
 
 ### Write unique Scenario descriptions {#scenario-descriptions}
 
-ALKiln uses Scenario descriptions in your [test files](#test-files) to make the names of test folders, error screenshot files, and report headings, so try to write something different for each one - something that you will recognize later. It will help you identify what happened with each test.
+You write each Scenario's description in your [test files](#test-files). ALKiln includes those descriptions in the names of [test output folders](#scenario-artifacts), [error screenshot files](#error-pics), and [report](#report) headings, so try to write something different for each one - something that will help you later. It will help you identify what happened with each test.
 
 
 ### Extra HTML {#html-tip}

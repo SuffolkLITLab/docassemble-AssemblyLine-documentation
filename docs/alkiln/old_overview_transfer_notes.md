@@ -44,27 +44,6 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 
 ## Test output
 
-ALKiln creates files and folders showing the output of the tests.
-In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that run of tests.
-
-The output ALKiln creates includes:
-
-- A report of the result from all the tests.
-- Information about the screens where ALKiln ran into errors or unexpected behavior, including:
-    - Pictures when the error happened
-    - The HTML, slightly modified so CSS styles will load locally
-- A folder for each test (or Scenario) named using your Scenario description.
-- A report for that specific Scenario, as well as pictures you took of screens and the associated HTML of that page, files you downloaded, and pictures of any errors it caused with its HTML.
-
-### Error pictures and HTML files
-
-ALKiln will try to take pictures of pages that run into errors. The names of those files use the id of the page where the error happened. There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined. ALKiln avoids taking pictures of erroring pages when the page used GitHub secrets in case they contain sensitive information.
-
-Each time ALKiln takes a picture, it also saves the HTML of the page; this HTML file will have the same name as the picture, but will end with `.html`.
-You can open this HTML file in your browser to interact with the page and inspect the page's HTML further.
-The page in your browser might not look like the picture, and you shouldn't expect it too.
-However, in the HTML, you can look at what particular options might have been available in a drop down, or examine any accessibility errors.
-
 <!--
 **Your test's status:** If your test has a green circle with a checkmark, the test has passed. If it has a red circle with an 'x', something went wrong. If it has a yellow circle, the test is still running.
 
@@ -73,77 +52,7 @@ However, in the HTML, you can look at what particular options might have been av
 **Jobs page:** GitHub also has a page where you can more details about what happened during the test.
 
 To see more details about how the test steps ran on GitHub, go to the left column. Tap on the first item under "Jobs".
- -->
-
-### Reports
-
-We're always trying to understand what people would find helpful in these reports. Tell us about your experiences at https://github.com/SuffolkLITLab/ALKiln/issues.
-
-A report might look something like this:
-
-```
-Assembly Line Kiln Automated Testing Report - Wed, 29 Dec 2021 17:49:00 GMT
-
-
-===============================
-===============================
-Failed scenarios:
-
----------------
-Scenario: I get to the download page
----------------
-
-ERROR: The question id was supposed to be "download", but it's actually "agree-to-terms".
-**-- Scenario Failed --**
-
-
-===============================
-===============================
-Passed scenarios:
-
----------------
-Scenario: I fill in my name
----------------
-screen id: user-name
-      | user.name.first | Maru |  |
-      | user.name.last | Plaintiff |  |
-```
-
-A report has a title with the date and time. It also has two main sections - the failed Scenarios and the Scenarios that passed.
-
-Within each of those, every Scenario will have its own section. In the Scenario's section, ALKiln will list the id of each screen where fields were set in the order in which they appeared. Under each `screen id` will be the names of the variables whose fields were set and the values they were set to. We're still working out some issues here.
-
----
-
-If you used a [story table](#story-tables) Step, a Scenario might look more like this:
-
-```
----------------
-Scenario: I fill in my name
----------------
-screen id: user-name
-      | user.name.first | Maru |  |
-      | user.name.last | Plaintiff |  |
-
-  Rows that got set:
-    And I get to the question id "child information" with this data:
-      | var | value | trigger |
-      | user.name.first | Maru |  |
-      | user.name.last | Plaintiff |  |
-  Unused rows:
-      | defendant.name.first | Sam |  |
-      | defendant.name.last | Defendant |  |
-```
-
-Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id. You should check that section to make sure all your varibles got used.
-
-Rows are listed in alphabetical order. If you have thoughts on pros and cons, we'd love to hear from you.
-
-If everything looks right to you there, you can copy and paste the text under "Rows that got set" into your test to get rid of the extra rows you've got hanging around.
-
-
-
-
+-->
 
 
 

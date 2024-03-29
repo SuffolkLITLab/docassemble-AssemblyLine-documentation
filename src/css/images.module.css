@@ -5,3 +5,12 @@
   border-radius: 3px;
   max-width: 75%;
 }
+
+.w-75p {
+  width: 75%;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}

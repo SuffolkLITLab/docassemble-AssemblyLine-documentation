@@ -11,15 +11,18 @@ import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 WIP (Work in progress)
 :::
 
-This page will try to help you figure out what is going wrong when you have errors, warnings, or other problems with your ALKiln tests.
+This page will try to help you figure out what is going wrong when you have errors, warnings, or other problems with your ALKiln tests. This document is still under development and contains only some of the possible errors.
 
 This page helps with:
 
 - Common mistakes
+- ALKiln errors and warnings
 - Errors from the third-party libraries that ALKiln uses
 <!-- - ALKiln errors and error and warning codes -->
 
-<!-- This document is still under development and contains only some of the possible errors. Every ALKiln error and warning should have a code, though, and giving us that code can help us narrow down your problem. -->
+
+
+<!-- Every ALKiln error and warning should have a code, though, and giving us that code can help us narrow down your problem. -->
 
 <!--
 ## Failing tests {#failure}
@@ -37,9 +40,11 @@ Go through the interview manually. Make sure to pull in a fresh new Project.
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
  -->
 
+
 ## Everything works fine when I run the test manually {#manual-works}
 
 Or "It works when I run the interview manually" or "The tests pass when I run them with ALKilnInThePlayground".
+
 
 ### Undefined step {#step-undefined}
 
@@ -66,6 +71,7 @@ You have a typo in the Step that failed. The error message should contain the te
 <!-- Find that error -->
 
 This might mean that you have a file in your Playground Project, but that you still have to save it on the Project's Packages page and commit that to GitHub. Your tests will pass for that Project in your Playground, but your interview will break when you or others install it from GitHub.
+
 
 ### Error: Variable could not be looked up {#variable-not-found}
 
@@ -172,7 +178,8 @@ Not all collapsed elements are being expanded - wait for each element to be expa
 Maybe "Some JSON files aren't being saved with the "save variables" (writing#save-vars) or "compare json" (writing#compare-json) Steps" - check on JSON file names to make sure they have a timestamp
 
 Make sure every question block you create has an id
- -->
+-->
+
 
 ## Phrase is missing {#missing-phrase}
 
@@ -186,11 +193,13 @@ Example error:
 The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
 ```
 
+
 ### Typo
 
 WIP
 
 1. Regular typo
+
 
 ### Quotes and other catastrophes {#da-converted-text}
 
@@ -261,13 +270,16 @@ If the server might have been busy or down, try [re-running the tests](https://d
 
 You won't be able to tell if the `SERVER_URL` is wrong - GitHub considers the value of the secret to be sensitive information, so it's impossible to see that value. You can still give it a new value, though, and that's worth trying. Find the address of the docassemble server where the docassemble testing account is located. Edit the secret to give it that url.
 
+
 ## Invalid playground path error
 
 If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo.
 
+
 ## UnhandledPromiseRejection error
 
-This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
+This is a misleading error from a third-party library that is hiding our error message inside it. You need to read the text of the whole paragraph to see what the actual error is.
+
 
 ## Inconsistent cell count error
 
@@ -281,7 +293,7 @@ The error message will include text similar to this:
 Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
 ```
 
-<!-- ### Access Denied -->
+<!-- ## Access Denied -->
 
 <!--
     required file was missing
@@ -289,4 +301,21 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
     missing phrase
 -->
 
-<!-- writing_tests.mdx#errors, writing_tests.mdx#reports -->
+<!-- writing_tests.mdx#error-pics, writing_tests.mdx#reports -->
+
+## No artifacts {#no-artifacts}
+
+WIP
+
+For all tests, maybe:
+
+- ALKiln's third-party libraries were unavailable
+- Your server reloaded
+
+For GitHub tests:
+
+<!-- TODO: Link to "developer account" account for testing description -->
+- Your docassemble developer account credentials were invalid. Maybe they got deleted in an update. Maybe someone else changed them. You need a new API key for that developer account.
+- Your test server was unavailable
+- GitHub itself had a problem
+
