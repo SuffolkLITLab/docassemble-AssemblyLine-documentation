@@ -12,7 +12,8 @@ slug: /alkiln
 🚧 Reference material for testing your interview with ALKiln. This is under very active development. <!-- Moved -->
 
 
-## Intro <!-- Moved -->
+<!-- Moved -->
+## Intro
 
 The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview either through the Playground or through GitHub, making sure your interviews are running correctly.
 
@@ -29,7 +30,8 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.mdx#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests. <!-- Moved -->
 
-### Set up for ALKilnInThePlayground <!-- Moved -->
+<!-- Moved -->
+### Set up for ALKilnInThePlayground
 
 1. Leave the Playground and go to your server's "Package Management" page.
 1. Install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
@@ -52,7 +54,8 @@ dispatch:
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-### Set up for GitHub-triggered tests <!-- Moved -->
+<!-- Moved -->
+### Set up for GitHub-triggered tests
 
 You will need to have a GitHub account that has permissions to edit the GitHub repository that you want to test.
 
@@ -66,7 +69,8 @@ You will need to have a GitHub account that has permissions to edit the GitHub r
 If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets or to [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repo the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repo and if one of the values changes, you'll have to update it in every repo.
 :::
 
-### Set up for isolated GitHub server tests <!-- Moved -->
+<!-- Moved -->
+### Set up for isolated GitHub server tests
 
 This is an advanced method and we are happy to help you with it. It would help a lot to be familiar with GitHub and GitHub actions. You'll need a GitHub repository or organization admin to do one of these steps. You'll need to set this up for each repo running ALKiln tests.
 
@@ -95,7 +99,8 @@ If you need to troubleshoot the docker setup because the step to start the GitHu
 It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
 
 
-## Quick reminders <!-- Moved -->
+<!-- Moved -->
+## Quick reminders
 
 1. You write and edit `.feature` test files in your Sources folder.
 1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
@@ -105,7 +110,8 @@ It's possible to do more docker troubleshooting using [the tmate action](https:/
 1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
 
-### Example <!-- Moved -->
+<!-- Moved -->
+### Example
 
 The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for a quick refresher on some of our features:
 
@@ -131,7 +137,8 @@ Feature: I have children
 
 ```
 
-## First test <!-- Moved -->
+<!-- Moved -->
+## First test
 
 You can write a short test right away that just makes sure your YAML file runs.
 
@@ -152,7 +159,8 @@ Feature: Interviews load
 
 You can wait to write more complex tests till your code is more stable. For example, your variable names should be staying pretty much the same.
 
-## Story Tables <!-- Moved -->
+<!-- Moved -->
+## Story Tables
 
 See our [**new and improved** Story Table section](writing_tests.mdx#story-table) for 2-column tables!
 
@@ -197,7 +205,8 @@ Right now, Story Tables are unable to use GitHub secrets to set variables.
 A Story Table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
-### Generate a Story Table <!-- Removed -->
+<!-- Removed -->
+### Generate a Story Table
 
 You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
 
@@ -219,7 +228,8 @@ Follow these instructions to use the generator:
 <!-- This works best with interviews that don't need [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic). -->
 
 
-### Step command <!-- Moved -->
+<!-- Moved -->
+### Step command
 
 The Step that triggers a story table is
 
@@ -230,7 +240,8 @@ The Step that triggers a story table is
 **question id:** The story table needs to know the `id` of the page this story table should get to. You can find the `id` in the `question` block in the YAML in the Playground.
 
 
-### Rows <!-- Moved -->
+<!-- Moved -->
+### Rows
 
 Indented under the command, put the header row of the table:
 
@@ -248,7 +259,8 @@ Under that, add a blank row for a field that you want the test to interact with 
       |  |  |  |
 ```
 
-### var <!-- Moved -->
+<!-- Moved -->
+### var
 
 In the `var` column, write the name of the variable that a field sets **exactly as it appears in the `question` block**. Most times you can see that name in the YAML `question` block. If `code:` is used to create the field's variable name, you may have to talk to the developers who wrote that code to find out the name or names of the variable or variables it generates.
 
@@ -265,7 +277,8 @@ x.favorite_color
 - `users[i].name_fields()` generates all the name fields with the right index number (NOT 'i'). E.g. `users[0].name.first`, `users[0].name.suffix`, `users[1].name.first`, `users[1].name.suffix`
 - `users[i].address_fields()` generates all the address fields with the right index number (NOT 'i'). E.g. `users[0].address.address`, `users[1].address.address` -->
 
-### value <!-- Moved -->
+<!-- Moved -->
+### value
 
 In the `value` column, write what you want the field to be set to. For checkboxes, `True` means 'checked' and `False` means 'unchecked'.
 
@@ -279,7 +292,8 @@ One special value you can include is `today`. That will insert the date on which
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
 
-### trigger <!-- Moved/Removed -->
+<!-- Moved/Removed -->
+### trigger
 
 `trigger` is an optional value in most cases. It is only mandatory for rows that use [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`).
 
@@ -327,7 +341,8 @@ yesno: likes_mandatory_questions
 
 In those cases, leave the `trigger` column empty.
 
-### Story Table examples <!-- Moved -->
+<!-- Moved -->
+### Story Table examples
 
 _Simple field types with their values._
 
@@ -367,7 +382,8 @@ A generic object with an index variable.
       | x[i].name.first | Umi | users[1].name.first |
 ```
 
-### `.there_is_another` loop <!-- Moved -->
+<!-- Moved -->
+### `.there_is_another` loop
 
 The `.there_is_another` loop in a story table is more complicated than you might expect.
 
@@ -384,14 +400,16 @@ The `trigger` column should have the name of the page's trigger variable, as usu
       | x.target_number | 3 | users.there_is_another |
 ```
 
-### Story Table signature <!-- Moved -->
+<!-- Moved -->
+### Story Table signature
 
 The `value` for a row setting a signature doesn't matter. All signatures will be a single dot.
 ```
       | user.signature |  | user.signature |
 ```
 
-### Other story table notes <!-- Moved -->
+<!-- Moved -->
+### Other story table notes
 
 Don't worry about accidentally including variables that won't show up during the test. Extra rows will be ignored.
 
@@ -601,7 +619,8 @@ The `JSON variables` Step will add the page's JSON variables to the final test r
 
 ---
 
-### Set values <!-- Moved -->
+<!-- Moved -->
+### Set values
 
 _Fill in fields with answers, set values, and interact with the page in other ways._
 
@@ -1179,7 +1198,8 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 <!-- ### Access Denied -->
 
 
-## Security <!-- Moved -->
+<!-- Moved -->
+## Security
 
 See our [**new and improved** security section](security.mdx)!
 
@@ -1189,13 +1209,15 @@ Using a third-party library or package is always a risk. That said, we take meas
 
 In addition, here are some actions you can take to manage the security of the tests, as well as general guidelines for server security.
 
-### Disable the tests <!-- Moved -->
+<!-- Moved -->
+### Disable the tests
 
 If you become worried about the tests, there are different ways you can stop the tests from running.
 
 In order to run, the test setup interview added a "workflow" file to your repository. GitHub sometimes calls that an "action". That's what triggers the tests. You can manage that workflow, and your actions in general, in GitHub.
 
-#### Disabling tests in one repository <!-- Moved -->
+<!-- Moved -->
+#### Disabling tests in one repository
 
 GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
 
@@ -1203,11 +1225,13 @@ You can also delete the file from your repository completely. If you go to the f
 
 Another option is to disable or limit all tests, all actions, in your repository. GitHub's documentation for managing repository actions is at https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository.
 
-#### Disabling tests for the whole organization <!-- Moved -->
+<!-- Moved -->
+#### Disabling tests for the whole organization
 
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
-### Use a separate server just for testing <!-- Moved -->
+<!-- Moved -->
+### Use a separate server just for testing
 
 Keep the test server completely separate from production server so that the tests never show sensitive information to potential malicious actors. To avoid running tests on your production server, use the testing server's address in the `SERVER_URL` GitHub secret. The test files themselves are secure as long as you don't put sensitive info in them. They don't do anything by themselves.
 
@@ -1217,11 +1241,13 @@ In addition, some general good practices are:
 * Periodically clear out the test server and start a new docker container from scratch.
 * Occasionally check the test server to make sure it's not running resource stealing code (blockchain miners, etc.)
 
-### See GitHub's security docs <!-- Moved -->
+<!-- Moved -->
+### See GitHub's security docs
 
 GitHub has documentation on some best practices as well: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions
 
-### Use ALKiln's commit sha <!-- Moved -->
+<!-- Moved -->
+### Use ALKiln's commit sha
 
 This one requires prior technical knowledge. To summarize, you can freeze the version of the ALKiln code your repository's tests use by referencing a specific ALKiln commit sha in your workflow file.
 
@@ -1237,13 +1263,15 @@ uses: suffolkLITLab/ALKiln@releases/v4
 
 When you want to update to a new version of the ALKiln, update that sha manually.
 
-### Set ALKiln's npm version <!-- Moved -->
+<!-- Moved -->
+### Set ALKiln's npm version
 
 This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
 
 You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
-### GitHub secrets <!-- Moved -->
+<!-- Moved -->
+### GitHub secrets
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
@@ -1305,7 +1333,8 @@ jobs:
 ```
 
 
-### Things to worry about less <!-- Moved -->
+<!-- Moved -->
+### Things to worry about less
 
 There are some parts of testing that might look less secure than they are.
 
