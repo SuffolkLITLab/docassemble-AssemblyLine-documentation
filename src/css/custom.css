@@ -100,3 +100,18 @@ article .markdown p img {
 .positive {
   color: var(--ifm-color-success-dark);;
 }
+
+/* Use :has() with rules here so that if one fails the other fails too
+(the :has() selector is unsupported in >2% browsers/browser versions) */
+html[class*="docs-doc-id-alkiln"] .table-of-contents a:has(code) code {
+  border: none;
+  padding: 0;
+}
+
+html[class*="docs-doc-id-alkiln"] .table-of-contents li:has(> a > code) {
+  line-height: 1.5em;
+  background-color: var(--ifm-code-background);
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--ifm-code-border-radius);
+  padding: var(--ifm-toc-padding-vertical) var(--ifm-toc-padding-horizontal);
+}
