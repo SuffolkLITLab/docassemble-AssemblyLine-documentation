@@ -56,19 +56,6 @@ To see more details about how the test steps ran on GitHub, go to the left colum
 
 
 
-## See GitHub test results
-
-In GitHub, to see the list of previous tests or running tests, go to your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
-
-One of the rows should have the text of the commit you just made. The test may have a yellow dot next to it. That means it's still running. When the dot has turned into a red 'x' or a green checkmark, tap on the name to go to the test's summary page.
-
-To see the output text of the test run online, its logs, follow [these GitHub instructions](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs).
-
-ALKiln also creates files and folders showing the output of the tests.
-In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that run of tests.
-
-
-
 
 
 

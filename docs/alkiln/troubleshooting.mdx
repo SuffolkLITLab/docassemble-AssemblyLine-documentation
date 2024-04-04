@@ -40,6 +40,18 @@ Go through the interview manually. Make sure to pull in a fresh new Project.
 > There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
  -->
 
+## Debugging syntax errors {#gherkin}
+
+WIP
+
+TODO: Link to Gherkin section.
+
+To troubleshoot syntax typos, you can use an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
+
+Example syntax typo errors:
+
+- [Inconsistent cell count](#table-cells)
+
 
 ## Everything works fine when I run the test manually {#manual-works}
 
@@ -74,6 +86,21 @@ This might mean that you have a file in your Playground Project, but that you st
 
 
 ### Error: Variable could not be looked up {#variable-not-found}
+
+<!-- TODO: Actually, usually shows up as ALKiln couldn't find a field -->
+
+<!--
+TODO:
+sets:
+  - x.gender
+id: gender
+generic object: ALIndividual
+question: |
+  What is ${x.possessive('gender')}?
+fields:
+  - code: |
+      x.gender_fields(show_help=True)
+-->
 
 **Symptom:**
 
@@ -281,11 +308,11 @@ If you see the text "invalid playground path" in the report, that means the `Giv
 This is a misleading error from a third-party library that is hiding our error message inside it. You need to read the text of the whole paragraph to see what the actual error is.
 
 
-## Inconsistent cell count error
+## Inconsistent cell count error {#table-cells}
 
 This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe (`|`) or could have an extra pipe, etc.
 
-To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors. The editor will not show error next to lines that are commented out. Those are the ones that start with `#`.
+To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
 
 The error message will include text similar to this:
 
@@ -319,3 +346,44 @@ For GitHub tests:
 - Your test server was unavailable
 - GitHub itself had a problem
 
+
+<!--
+TODO: ?
+## Immediate error {#no-load}
+
+Anything that could prevent your interview running in any environment
+
+- Dependency package missing on server ("contact the server administrator")
+    For isolated servers, make sure to include as dependency
+    For your own server, make sure you've installed the right package
+- File missing in package? (not sure if it's the same error)
+- Interview missing? (not sure if it's the same error)
+- Syntax error
+-
+
+-->
+
+<!--
+TODO: internal docs
+
+On sandbox server, installing on server instead of in Playground because that means dependencies will be pulled in automatically.
+Why aren't internal tests checking for specific server errors in the output? Because the text of those can change.
+-->
+
+<!--
+Same test, different error
+
+TODO: note when tests properly starting
+-->
+
+<!--
+Behaves differently in Sandbox than in G+Y and AutoD
+
+Flaky
+Different packages or package versions on different servers
+Diff v of da
+Not required all dependencies
+Cached info. For example DAGlobal, Redis, DAStore, db data, etc. Your server retains the info. Sandbox has all fresh info.
+Different versions of ALKiln framework (check ALKILN_TAG_EXPRESSion)
+Different versions of ALKiln actions (check `uses`)
+-->

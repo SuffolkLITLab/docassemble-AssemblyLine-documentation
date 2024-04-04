@@ -170,7 +170,7 @@ Example:
 ```
 
 
-## Configuration Steps {#config}
+## Test configuration Steps {#test-config}
 
 <!-- Settings? Too much like "setting variables"? -->
 
@@ -379,9 +379,13 @@ Example linear "I set" Step:
   And I set the variable "users[0].favorite_bear.type" to "cuddly_bear"
 ```
 
+<!--
+This is already discussed in security docs
+
 :::danger Avoid!
 Avoid using this Step with sensitive information, like passwords. Everyone will be able to see the information you put in this Step. Instead, [use an environment variable to set the value](#set-env-var).
 :::
+ -->
 
 :::info
 You can use this Step to [upload files](#upload).
@@ -573,6 +577,7 @@ It is a good idea to add a [`wait` Step](#wait) after this Step to let the conte
 **It could help to know about:**
 
 - How to inspect and understand the HTML of a web page
+- CSS selectors
 
 **The Step:**
 
@@ -1161,7 +1166,7 @@ Examples for variation 1 - the phrase **does exist** on the page:
 
 The `<page text>` should be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022) and **must never** itself contain double quotation marks inside it. Since docassemble interview text usually has special quotation marks, that is usually easy. See the [troubleshooting section on missing phrases](troubleshooting.mdx#missing-phrase) that talks about special characters.
 
-Unlike many other Steps, checking phrases is **language specific**. That is, if you want to test translations as well, you will have to use [extra code](#gherkin-examples) in your test.
+Unlike many other Steps, checking phrases is **language specific**. That is, if you want to test translations as well, you will have to use [extra code](#gherkin-sampler) in your test.
 
 
 ### `the text in the JSON variable "<variable name>" should be` {#compare-json}
@@ -1207,6 +1212,14 @@ Example for text with multiple lines:
 
 This Step will save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the current question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
+:::danger Security
+[Avoid JSON Steps](security.mdx#json-vars) when you have added sensitive information to your interview.
+:::
+
+:::tip Next page
+Variable values only show up in the JSON on the next page - the one after the page where you fill in the answers.
+:::
+
 
 ### `I take a picture` {#pic}
 
@@ -1220,7 +1233,10 @@ Example:
   Then I take a picture
 ```
 
-<!-- ```And I take a screenshot ?(?:named "([^"]+)")?``` -->
+<SecureEnvVars/>
+
+
+<!-- ### `And I take a screenshot ?(?:named "([^"]+)")?` -->
 
 
 ### `I get the page's JSON variables and values` {#get-json}
@@ -1235,7 +1251,15 @@ Example:
 
 The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1). It is a bit messy, but you do get to see all the variables.
 
-<!-- TODO: Does this save a file with the vars as well? -->
+:::danger Security
+[Avoid JSON Steps](security.mdx#json-vars) when you have added sensitive information to your interview.
+:::
+
+:::tip Next page
+Variable values only show up in the JSON on the next page - the one after the page where you fill in the answers.
+:::
+
+<!-- This doesn't actually save a file with the vars in it other than the report file -->
 
 
 ### `I will be told an answer is invalid` {#invalid}
@@ -1320,16 +1344,13 @@ ALKiln only allows you to use some Gherkin keywords. Those are:
 
 ALKiln also lets you use:
 
-- `@` ([Tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags)). You can use tags to limit which tests to run. The specific sections of the tags documentation that apply to ALKiln are:
-  - A [general description of tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags).
-  - [Tag expressions](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions)
-  - Extra: [Tag inheritance](https://cucumber.io/docs/cucumber/api/?lang=java#tag-inheritance).
-- `#` (Comments). They are a tiny bit different than python comments. They always have to be on their own line. The line can begin with zero or more spaces. You can use comments anywhere in your test file.
-- `|` ([Data tables](https://cucumber.io/docs/gherkin/reference/#data-tables)).
-- `"""` ([Doc strings](https://cucumber.io/docs/gherkin/reference/#doc-strings)).
+- `@` - [Tags](#tags)
+- `#` - Comments. They are a tiny bit different than python comments. They always have to be on their own line. The line can begin with zero or more spaces. You can use comments anywhere in your test file.
+- `|` - [Data tables](https://cucumber.io/docs/gherkin/reference/#data-tables).
+- `"""` - [Doc strings](https://cucumber.io/docs/gherkin/reference/#doc-strings).
 
 
-### Examples {#gherkin-examples}
+### Sample test file {#gherkin-sampler}
 
 We usually write test text as if it is from the perspective of the user. For example, "I wait" and "I start".
 
@@ -1376,11 +1397,53 @@ Scenario Outline: I allow visitation
 ```
 
 
+### Tags {#tags}
+
+You can use [Gherkin tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags) to choose to run only specific tests or files.
+
+To use a tag expression for GitHub tests you can [trigger your tests](#github-triggers) manually. When you do that, GitHub will offer you a drop down where you can give some inputs for your test run. One of the optional fields there will let you write a tag expression if you want.
+
+The <AutoDIY/> test interview has a field where you can add a tag expression if you want.
+
+To use tags, you must first add them to your [test files](#test-files). You can add them above the `Feature` keyword, or above `Scenario` keywords, or both.
+
+```gherkin
+@likes_bears
+Feature: I like bears
+
+@wild_bear @climbs_fast
+Scenario: I like wild bears
+  # Test 1 Steps
+
+@cuddly_bear @climbs_fast
+Scenario: I like cuddly bears
+  # Test 2 Steps...
+
+@maybe_not_a_bear
+Scenario: I like Jaime
+  # Test 3 Steps...
+```
+
+A [tag expression](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions) is the magic formula an author can use to tell ALKiln which tests to run.
+
+This documentation will only show some basics about tags. Based on the example test file above, these are some examples of tag expressions and which tests they will run:
+
+| Tag expression | What tests run? |
+| - | - |
+| @likes_bears | All tests in the file |
+| @cuddly_bear | Test 2 |
+| @climbs_fast | Tests 1 and 2 |
+| @cuddly_bear or @maybe_not_a_bear | Tests 2 and 3 |
+| not @wild_bear | All tests in all test files in your package except test 1 |
+
+Tests (Scenarios) can [inherit tags](https://cucumber.io/docs/cucumber/api/?lang=java#tag-inheritance).
+
+
 <!-- ### Translations
 
 (Maybe its own section in Tips or something)
 
-You can still test translations even when you use a language-specific Step, like the ["phrase" Step](#phrase). [Check Gherkin examples](#gherkin-examples)
+You can still test translations even when you use a language-specific Step, like the ["phrase" Step](#phrase). [Check Gherkin examples](#gherkin-sampler)
 
 Add example here instead.
 -->
@@ -1410,7 +1473,7 @@ Each **Step** **must** start with one of these keywords:
 1. `When`
 1. `And`
 You can use any of those. It does not matter what you pick.
- -->
+-->
 
 
 ## Workflow files {#workflows}
@@ -1473,13 +1536,13 @@ See the [security documentation](security.mdx).
 Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
 
 
-### Required inputs for <GTOYS/> tests {#auto-server-inputs}
+### Required inputs for <GTOYS/> tests {#githubNyou-inputs}
 
 The [<GTOYS plain={true}/> test method](setup.mdx#recommended) workflow file has a few absolutely **required** inputs. The [ALKiln setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) should create the secrets and workflow inputs for this type of test environment.
 
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
-- `SERVER_URL` is the url of the docassemble server the tests should run on.
+- `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on.
 - `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on your server. When you set up for this kind of test, we recommend you create a new developer account on your server just for testing. This developer account will [store the Project in its Playground while GitHub runs the tests](setup.mdx#github-how).
 
 If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
@@ -1534,9 +1597,7 @@ Use these inputs in the same way and in the same places as the required inputs. 
 ```
 
 
-### Optional inputs for <GTOYS/> tests {#github-optional-inputs}
-
-WIP
+### Optional inputs for <GTOYS/> tests {#githubNyou-optional-inputs}
 
 You can add some optional inputs to the workflow file of any tests that run with the [<GTOYS plain={true}/> test method](setup.mdx#recommended) to control global ALKiln configuration values:
 
@@ -1571,16 +1632,40 @@ Playground - config. GitHub - workflow file.
 
 WIP
 
-<!--
-### Only run some tests.
-  Only run one test with tags. Here or in setup in the future section about running tests?
--->
+You can decide to only run some tests by using [tags](#tags).
 
-### When do GitHub tests run? {#github-triggers}
+Links to test setup explanation of what tests are doing.
+
+GitHub
+
+  Setup
+
+  Tests
+
+  Takedown
+
+Playground
+
+  Tests
+
+Logs
+
+Results
+
+Re-runs
+
+
+### Run GitHub tests {#github-triggers}
 
 **This is for:** all tests that run on GitHub.
 
-The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
+By default, you can trigger tests on GitHub by committing your edits to your repository. You can also trigger them manually.
+
+The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself. Most authors go through this process:
+
+1. Edit the package's files in a Project on the docassemble server
+1. On your Project's "Packages" page, [commit the changes to GitHub](https://docassemble.org/docs/development.html#versioncontrol)
+1. Go to the repository in GitHub and tap on the "Actions" tab to [see the tests running](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results)
 
 That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags for tests in the section about [test files](#test-files).
 
@@ -1588,14 +1673,21 @@ That said, your [workflow file](#workflows) controls when your GitHub tests run.
 
 <!-- TODO: Add note about tags in FAQ? Or Tips? Or here? Or workflow files? -->
 
-### When do <AutoDIY/> tests run? {#diy-triggers}
+<!-- TODO: Maybe here define jobs, workflows, workflow runs, test runs, etc. -->
 
-You run them manually when you want to.
 
-1. Make sure you are logged into your docassemble server.
-1. Run the ALKiln interview from your server's list of available interviews.
-1. Skip the first page by just tapping to continue.
-1. From the list of projects, pick a Project that already has tests in its Sources folder. If it has no tests, read how to add tests in our documentation then start with step number 1 again.
+### Run <AutoDIY/> tests {#diy-triggers}
+
+**This is for:** <AutoDIY/> tests.
+
+You run <AutoDIY/> tests manually when you want to.
+
+1. Make sure you are logged into your docassemble testing server.
+1. Go to your server's list of available interviews.
+1. Run the ALKiln interview that you or someone else [installed on your server](setup.mdx#diy-how-to).
+1. On the first page, make sure you have the right version of ALKiln installed (usually the latest version) or install a different version.
+1. On the next page, pick a Project that already has tests in its Sources folder. If it has no tests, [add a new test](#new-file).
+1. If you want to limit which tests to run, use a tag expression. bookmark
 1. Run the tests and see the output.
 
 <!-- TODO:
@@ -1612,13 +1704,13 @@ Where to put how to update to a new version of ALKiln? It's already in setup, bu
 -->
 
 
-### What can I see while tests are running? {#running-output}
+### What can I see while tests are running? {#running-data}
 
-<!-- Note to self: BEST instructions for getting to github workflows and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
+<!-- Note: BEST instructions for getting to github workflows and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
 
-In GitHub, on [the actions page and related pages](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results) of your repository, you can see a few different things while the tests are running:
+In GitHub, on [the actions page and related pages](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results) of your repository, you can see your workflow status ("check") and logs about the current test processes. On the actions page itself, under "All workflows", your current workflow should have the message/description you wrote for that last commit next to the name of the branch you worked on. On those various pages you can see:
 
-- On the GitHub actions page, you can also see how long a test has been running.
+- How long a workflow has been running.
 - A yellow dot next to the current workflow.
 - You can see [information about the running processes](#console) in the job's log (or console) as GitHub writes it.
 
@@ -1685,7 +1777,7 @@ The console output should include, from top to bottom:
 
 **This is for**: all tests.
 
-Once the tests are finished, ALKiln creates the test run "artifacts" - files and folders you can examine, like an archeologist, to understand what happened.
+Once the tests are finished, ALKiln creates the test run "artifacts" - files and folders you can examine, like an archaeologist, to understand what happened.
 
 If the test start up process failed, ALKiln will be [unable to create artifacts](troubleshooting.mdx#no-artifacts).
 
@@ -1693,7 +1785,8 @@ import Dig from '../assets/archaeology.png';
 
 <p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a vase."/></p>
 
-\- [@Thinkwert](https://twitter.com/Thinkwert/status/1428488345357856777)[^aha]
+\- Text by [@Thinkwert](https://twitter.com/Thinkwert/status/1428488345357856777)[^text]
+\- Image by [PerspectiveFriendly](https://old.reddit.com/user/PerspectiveFriendly)[^img]
 
 In GitHub, you can [download a zip of these artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 
@@ -1724,7 +1817,8 @@ The ALKiln folder contains these files and folders:
 <ScenarioDir/>
 
 
-[^aha]: Name unknown [@Thinkwert]. (2021, Aug 19). *When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed.* [Tweet]. Twitter. https://twitter.com/Thinkwert/status/1428488345357856777
+[^text]: Name unknown [@Thinkwert]. (2021, Aug 19). *When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed.* [Tweet]. Twitter. https://twitter.com/Thinkwert/status/1428488345357856777
+[^img]: PerspectiveFriendly. "I'm waiting to bloom." Reddit, 08/29/2020, https://old.reddit.com/r/aww/comments/iit3ze/im_waiting_to_bloom/.
 
 
 ### report.txt {#report}
@@ -1855,7 +1949,7 @@ The folder's name uses its Scenario description. That is one reason you should [
 
 ALKiln will try to take pictures of pages that run into errors. They are like the pictures you take with the ["picture" Step](#pic). As you can read there, each time ALKiln takes a picture, it also saves the HTML of the page.
 
-ALKiln avoids making these files for pages that use [environment variables](#env-vars), even when they error because environment variables can contain sensitive information.
+ALKiln avoids making these files for pages that use [environment variables](#env-vars), even when they error, because environment variables can contain sensitive information.
 
 These error files are one of the first places to look for clues about what might have gone wrong.
 
@@ -2020,6 +2114,11 @@ They look similar to most humans, but computers think they look quite different.
 Docassemble does this for many other characters including single quotes and ellipses. It is best to copy/paste text your tests need **straight from the screen the user sees**.
 
 
+### Add a tag to each test {#add-tags}
+
+Add a [tag](#tags) to each of your tests so later you can pick specific tests to run. That way, if just one test is failing, you can avoid having to run all the tests just to find out what is going on in that one test.
+
+
 <!-- ### Something about unused rows? -->
 
 
@@ -2043,4 +2142,28 @@ Also, there are some [limits on the amount of time private repositories can use 
 ### Do I have to set every variable in the interview? {#every-var}
 
 No, only the variables that users are required to set.
+
+
+### Will GitHub charge me? {#quota}
+
+It is unlikely you will run enough tests for GitHub to charge you. [GitHub's quota limits](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration) are very big, especially for public repositories.
+
+
+### Will ALKiln tests affect my analytics? {#analytics}
+
+No, none of the tests types can affect your analytics. <GTOYS/> and <AutoDIY/> tests both use interviews that are in the developer's Playground, not ones that are installed on your server. <KittyLitter/> tests run on their own isolated server, not your server, so your analytics software knows nothing about them.
+
+
+<!--
+## Definitions
+
+(with links)
+
+test run: In the case of ALKiln, a workflow run that runs ALKiln tests.
+workflow run: A complete start, middle, and end of an automated GitHub process whose behavior was defined in a workflow file. In the case of ALKiln, a test run.
+workflow: A process that triggers and runs automatic GitHub behavior. In this case, triggers and runs ALKiln tests. Each workflow can have multiple jobs.
+workflow file: A file with code that defines what a workflow does.
+job: A job performs a set of actions in a workflow. Some kinds of data persist during that job. For example, a job can define some environment variables. Another job in that same file does not have access to those environment variables. A workflow can have multiple jobs. The jobs happen one after the other. The default ALKiln workflow file has only one job.
+
+-->
 

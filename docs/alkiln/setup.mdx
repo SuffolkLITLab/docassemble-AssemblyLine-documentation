@@ -5,7 +5,6 @@ sidebar_label: WIP Setup/Installation
 slug: /alkiln/setup
 ---
 
-import GitHubSetup from './components/\_github_setup.md';
 import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 
 :::warning
@@ -13,6 +12,7 @@ WIP (Work in progress)
 :::
 
 <!-- TODO: Add a GitHub admins section -->
+<!-- TODO: Add links to changing workflow files -->
 <!-- TODO: Add full instructions to manually create GitHub files and set secrets for the GitHub methods? I think the setup interview should do that. -->
 <!-- TODO:
 Should this file include how to run the tests? Workflow files, trigger automatically, on a schedule, manually, tags, ALKiln versions, etc.
@@ -25,7 +25,7 @@ That is, test-specific secrets might be separate from the SERVER_URL-type secret
 -->
 <!-- TODO: Workflow section about an action version vs. an alkiln version? -->
 
-This page will tell you about the different ways to set up and run your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want.
+This page will tell you about the different ways to set up your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want.
 
 
 ## Do _I_ need to read this? {#who}
@@ -71,17 +71,19 @@ There are three kinds of tests:
 2. **<AutoDIY/>** - Tests that you trigger manually from an interview you install on your docassemble server
 3. **<KittyLitter/>**[^sand] - GitHub-triggered tests that create their own docassemble server on GitHub and run tests there
 
-Each type of test has its advantages and disadvantages.
+Each type of test has its advantages and disadvantages. This documentation explains some of those. First, here are the different ways to set up for the different types of tests.
 
 
 [^sand]: "The isolation metaphor is taken from the idea of children who do not play well together, so each is given [their] own sandbox to play in alone." - [Wikipedia](https://en.wikipedia.org/wiki/Sandbox_(computer_security))
 
 
-## Recommended: <GTOYS/> {#recommended}
+## Recommended setup: <GTOYS/> {#recommended}
 
 This is the way we recommend setting up ALKiln tests for a repository for the first time. You are least likely to run into setup problems with this method. Every repository that needs to use this kind of test must go through this setup process.
 
-The tests run whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
+Remember to use a [separate server for testing](security.mdx#testing-server).
+
+The tests [run](writing_tests.mdx#github-triggers) whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
 
 **You need:**
 
@@ -99,28 +101,22 @@ The tests run whenever you commit any code to any branch on GitHub. You can read
 
 **What to do:**
 
-<GitHubSetup/>
+Use [ALKiln's test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) to add ALKiln to your repository. You must run this setup interview for every package you want to test on GitHub.
+
+When you set up, you can choose to create your [first test](#first-test). We recommend that you do this. Either way, you can [add more tests](writing_tests.mdx#new-file) later.
+
+This setup interview can take over 30 minutes, especially if you're unfamiliar with GitHub or with docassemble API keys. To summarize, the instructions in the interview might help you:
 
 1. Add GitHub secrets to your repository (or organization[^org])
 1. Make a new branch in your repository
-1. Add new code to that branch, including a new "workflow" file at the very least
+1. Add new code to that branch, including a new [workflow file](writing_tests.mdx#workflows)
+1. Add a new test file, like our [example test](#first-test), in your Project's "sources" folder
 1. Make a pull request with that branch
 
-**To run tests:**
+Once you accept the pull request and merge the code into your repository's main branch, make sure to update your docassemble Projects to use that new code.
 
-1. Pull the new code to your Playground
-1. Make a change in one of your files
-1. On your Project's "Packages" page, write a commit message and tap to [commit the changes to GitHub](https://docassemble.org/docs/development.html#versioncontrol)
-1. Go to the repository in GitHub and tap on the "Actions" tab to see the tests running
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <GTOYS plain={true}/> tests in GitHub](writing_tests.mdx#github-triggers).
 
-:::warning TODO
-Add link to going to GitHub "Actions" tab
-:::
-
-You can read about [running tests](writing_tests.mdx#github-triggers) in other documentation.
-
-
-<!-- [^names]: You may have spotted this already, but two of these methods run tests on GitHub. They run the tests in different ways, though. We have not yet found good names for them that avoid this confusion. -->
 
 [^edit]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
 
@@ -148,13 +144,14 @@ Feature: Interviews load
 
 You can wait to write more complex tests till your code is more stable. "Stable" means that your question block variable names and values should be staying pretty much the same.
 
-You can read more about [the different parts of test files in other documentation](writing_tests.mdx#test-files).
+To learn how to do more with tests, you can read more about [writing tests](writing_tests.mdx) and more about [test files](writing_tests.mdx#test-files).
 
-<!-- To run the tests you can commit new code to your GitHub repository or you can [trigger your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). Authors usually [commit new code from their Playground](https://docassemble.org/docs/development.html#versioncontrol). -->
 
 ## <AutoDIY/> tests {#diy-how-to}
 
 If you set up <AutoDIY/> tests, any developer can run tests on any of their Projects when they are logged into your docassemble test server. You can read more details and the pros and cons of <AutoDIY/> tests below.
+
+Remember to use a [separate server for testing](security.mdx#testing-server).
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
@@ -163,11 +160,8 @@ The ALKilnInThePlayground package installs the ALKiln testing framework directly
 **You need:**
 
 - A developer or admin account on your docassemble server.
-- A Project with at least one ALKiln test in it. It can just be that [first test](#first-test).
 
-:::warning TODO:
-Add a link to adding a test to a project
-:::
+It also helps to have a Project with at least one ALKiln test in it, but you can add that later instead.
 
 **It helps to know about:**
 
@@ -178,7 +172,7 @@ Add a link to adding a test to a project
 
 1. Make sure you are logged into your docassemble server.
 1. Go to your server's ["Package Management" page](https://docassemble.org/docs/packages.html#installing).
-1. [Use GitHub to install](https://docassemble.org/docs/packages.html#github_install) the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
+1. Using the [GitHub install method](https://docassemble.org/docs/packages.html#github_install), install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
 1. Follow [docassemble's instructions](https://docassemble.org/docs/config.html#dispatch) to add it to the dispatch list. This will add it to the server's list of interviews. It may look something like this:
 
 ```yml
@@ -187,13 +181,15 @@ dispatch:
   # Your other server interviews
 ```
 
-4. Go to your server's list of ["Available interviews"](https://docassemble.org/docs/admin.html#available%20interviews). ALKiln's package should now be listed there.
+5. Go to your server's list of ["Available interviews"](https://docassemble.org/docs/admin.html#available%20interviews). ALKiln's package should now be listed there.
 1. Run that interview.
-1. On the first page of that interview, choose to install the latest version of ALKiln by picking the top item in the list. You can choose to do this whenever we make a new version of ALKiln. Tap to continue.
+1. On the first page of that interview, choose to install the latest version of ALKiln by picking the top item in the list. You can choose to do this whenever we make a new version of ALKiln.
+
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or continue the above interview to [run your tests](writing_tests.mdx#run).
 
 :::warning TODO
 Add images of picking new version
-Add section in reminders about updating docassemble server (InPlayground) to new version of ALKiln
+Add section in reminders about updating docassemble server (InPlayground) to new version of ALKiln?
 :::
 
 
@@ -205,7 +201,7 @@ Every repository that needs to use this kind of test must go through this setup 
 
 This is an advanced method and may not work for everyone. We are happy to help you with it.
 
-The tests run whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <KittyLitter/> tests below.
+The tests [run](writing_tests.mdx#github-triggers) whenever you commit any code to any branch on GitHub. Below, see details and the pros and cons of <KittyLitter/> tests.
 
 **You need:**
 
@@ -221,9 +217,9 @@ The tests run whenever you commit any code to any branch on GitHub. You can read
 **What to do:**
 
 1. Sign in to the package's GitHub repository.
-1. Make a new branch. The name doesn't matter. We often call it `alkiln_tests`.
-1. Tap the choice to add a new file to the repository. You can do this on GitHub or on your own computer.
-1. In the field for the file's name, enter this text: `.github/workflows/some_name.yml`. You can give the file whatever name you want as long as it is in those folders and ends with `.yml`.
+1. Make a new branch. The name is unimportant. We often call it `alkiln_tests`.
+1. [Add a new file](https://docs.github.com/en/repositories/working-with-files/managing-files/creating-new-files) to the repository. You can do this on GitHub or on your own computer.
+1. In the field for the file's name, enter this text: `.github/workflows/a_filename.yml`. You can replace "a_filename" with whatever name you want as long as it ends with `.yml`.
 1. This is your workflow file. Copy [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml). Read the notes in that file to see what you need to change. You should pay attention to the notes that start with `#### Developer note` and follow those instructions.
 1. Commit this file to GitHub.
 1. In the same branch, navigate to your package's "sources" folder. These are the folders to get there: `docassemble/<YourPackageName>/data/sources`.
@@ -234,7 +230,6 @@ The tests run whenever you commit any code to any branch on GitHub. You can read
 1. If the tests pass, make a pull request with that branch. If not, troubleshoot the tests.
 
 :::warning TODO
-Add link for creating new files and folders in a repo on GitHub
 Add pic of GitHub path to example "sources" folder
 Add link to troubleshooting page
 :::
@@ -250,45 +245,31 @@ First follow the regular instructions to set up for GitHub. The difference here 
 
 Then edit the new workflow to look like  -->
 
-**To run tests:**
-
-1. Pull the repository's new code to your Playground
-1. Make a change in one of your files
-1. On your Project's "Packages" page, write a commit message and tap to [commit the changes to GitHub](https://docassemble.org/docs/development.html#versioncontrol)
-1. Go to that package's repository in GitHub and [go to the "Actions" page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity) to see the tests running
-
-You can also run the tests by [triggering your workflow manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow).
-
-<!-- TODO: Add link to running tests in writing_tests.mdx -->
-
-<!-- Read more about GitHub <KittyLitter/> test options here. -->
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <KittyLitter plain={true}/> tests in GitHub](writing_tests.mdx#github-triggers).
 
 
 ## <GTOYS/> test details {#githubNyou-details}
 
 <!-- TODO: "on your test server" with a link to security section -->
-<GTOYS/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They then create and test a Project on your docassemble testing server.
+<GTOYS/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They then create and test a Project on your docassemble testing server. They are our recommended test method because they are the easiest to set up.
+
+Remember to use a [separate server for testing](security.mdx#testing-server).
 
 
 ### What is ALKiln doing? {#githubNyou-how}
 
-When you run <GTOYS/> tests, ALKiln does the following:
+When <GTOYS/> tests get triggered, ALKiln does the following:
 
 1. ALKiln goes to the testing account you set up on your server and creates a new Project. If you log into that account, you'll be able to see the new Project in the list of projects.
-1. It uploads the relevant branch of your package into the Project.
+1. It uploads the relevant GitHub branch of your package into the Project.
 1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of that Project's interview (whatever interview you named in the test).
-1. It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
+1. It tries to fill out the fields and take the actions the tests describe.
 1. When all the tests are done, ALKiln deletes the Project it created.
 
-You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
+Because <GTOYS/> tests need to create a Project and pull code into it, you need to create a [developer account](security.mdx#alkiln-account) for these types of tests.
 
-When the tests are done, you can see a report and logs right in the [workflow's "job" page on GitHub](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs). You can also [download a `.zip` file on GitHub](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) containing all the results of the tests to your computer.
+GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 
-:::warning TODO
-Add link to section on test results
-:::
-
-[GitHub quota limits](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration) probably will not be a problem, especially not for public repositories.
 
 <!-- ## Workflow file for <GTOYS/> tests {#githubNyou-workflow-file} -->
 
@@ -332,49 +313,38 @@ Tags
 
 For everyone:
 
-- Setting this test up in more reliable, but also more complex than the other methods. Setting them up on your own requires admin access to the repository and the docassemble server and an understanding of the correct files and of GitHub secrets. The [ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) tries to help with that and even people with developer access can do it, but it is complex in its own ways.
+- The setup for <GTOYS/> tests is more reliable, but also more complex than the other methods. Setting them up on your own requires admin access to the repository and the docassemble server and an understanding of the correct files and of GitHub secrets. The [ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) tries to help with that and even people with developer access can do it, but it is complex in its own ways.
+- When <GTOYS/> tests start up, they pull your package code into your docassemble server, just like any other developer. This means that if you test a package with a python module your docassemble server will reload, slowing down access for other people.
 - Your tests might be more flaky. That means they may fail for reasons that don't have to do with the interviews. For example, if your tests are running while your server is reloading, ALKiln will keep running, so other tests will still have an opportunity to continue, but individual tests may fail even if your code is correct. Your server can reload for many reasons - updating your config, installing a new package, etc. When tests fail meaninglessly, it slows down your development cycle and sometimes people end up turning off the tests instead of dealing with the complexity.
 
 For some people:
 
-- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the trigger variable HTML in your interview for signatures.
-<!-- - TODO: package size? From experiments, it seems to not be a problem -->
-
-:::warning
-Add links to docs about the trigger var
-:::
+- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](#special-html) in your interview for signatures.
+<!-- - TODO: package size? From experiments, it seems to not be a problem when they're installed on a Playground -->
 
 
 ## <AutoDIY/> test details {#diy-details}
 
+<!-- Confusion about "Auto" and "manual" -->
 
 These are tests that you trigger manually from an interview you install on your docassemble testing server. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#diy-triggers) in other documentation.
+
+Remember to use a [separate server for testing](security.mdx#testing-server).
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
 The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server. For [security reasons](security.mdx#testing-server), avoid using these tests on your production server.
 
-:::warning TODO
-Add link to security section about not testing on production.
-:::
-
 
 ### What is ALKiln doing? {#diy-how}
 
-When you log into your docassemble server account and run <AutoDIY/> tests, ALKiln does the following:
-
-:::warning TODO
-Add link to running the tests
-:::
+When you [manually run](writing_tests.mdx#diy-triggers) the <AutoDIY/> tests while on your docassemble testing server, ALKiln does the following:
 
 1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of the Project and interview you specified.
-1. It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
+1. It tries to fill out the fields and take the actions the tests describe.
 
-When the tests are done, you will see a page with the output of the tests which you will also be able to download.
+When the tests are done, you the interview will go to the next page where you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 
-:::warning TODO
-Link to description of results/output
-:::
 
 ### Pros {#diy-pros}
 
@@ -396,14 +366,7 @@ For everyone:
 For some people:
 
 - If you are using a docassemble Docker image created before April 9th, 2023, you will have to do a ["system upgrade"](https://docassemble.org/docs/docker.html#upgrading) to update your server to a newer docassemble Docker image. Any version of https://github.com/jhpyle/docassemble-os that is older than 1.0.8 uses versions of `node` that are too old for ALKiln. As of February 11th, 2024, ALKiln is using node version 18. A lot of people have upgraded already and it is a very good idea to do that, for security at the very least. If you do need to upgrade, though, you need to back up all your data, delete your old image and container, get the new image, create a new container, and restore your data. It may sound simple, but it is a tricky process.
-- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the trigger variable HTML in your interview for signatures.
-
-:::warning
-Add links to docs about the trigger var
-:::
-
-<!--
-1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
+- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](#special-html) in your interview for signatures.
 
 
 ## <KittyLitter/> test details {#sandbox-details}
@@ -419,18 +382,10 @@ When you run <KittyLitter/> tests, ALKiln does the following:
 1. ALKiln creates a server on GitHub itself.
 1. It installs the relevant branch of your package on that server.
 1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of the interview named in the test.
-1. It tries to fill out the fields as the test has instructed, and to take the actions described in the test.
+1. It tries to fill out the fields and take the actions the tests describe.
 1. When all the tests are done, the GitHub server gets deleted.
 
-You can see the tests running on your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
-
-When the tests are done, you can see a report and logs right in the [workflow's "job" page](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs) or [download a `.zip` file](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) containing all the results of the tests to your computer.
-
-:::warning TODO
-Add link to section on test results
-:::
-
-[GitHub quota limits](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration) probably will not be a problem, especially not for public repos.
+GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 
 
 ### Pros {#sandbox-pros}
@@ -458,7 +413,52 @@ For some people:
 - At this time, <KittyLitter/> tests are unable to handle data stored externally. For example, data stored in an S3 bucket.<!--  If you still want this type of test, it is more work. You are welcome to use [our GitHub action code](https://github.com/SuffolkLITLab/ALKiln/blob/v5/action_for_github_server/action.yml) as a starting point, of course, to write your own GitHub action to create a server on GitHub with the right Docker build environment variables, S3 credentials, and config details from your dev server. -->
 - You **must** make sure you have properly required all your "Dependencies" on your Packages page. That is the only way the isolated/sandboxed[^sand] server can know to download them.
 - All your package's dependencies **must** be published on pypi. That is the only place that the sandboxed server can get them.
-<!-- - TODO: Package size because of `dainstall`? -->
+<!-- - TODO: Package size because of `dainstall`? These are installed differently - on the actual server instead of in a Playground - so maybe they have that limitation -->
+
+
+## Disabling {#disable}
+
+If you ever become uncomfortable or concerned about your ALKiln tests, there are multiple ways you can disable them.
+
+<!-- TODO: Explain why you might want to disable tests - seeing sensitive info in tests (in which case link to deleting logs and artifacts and tests) -->
+
+<!-- TODO: This should be in the tags section (when it exists) and we can put a link in here: If you want to avoid running one test, you can use tags (include link when ready) and a tag expression with "not" in it. For example: `not @test5`. You can do this in <AutoDIY/> or by running your tests manually in GitHub. You can also create a TAGS (TAG_EXPRESSION?) environment variable in your workflow file. -->
+
+
+### Disable a test or test file {#disable-test}
+
+**This is for:** Everyone
+
+You can disable one or more tests in a [test file](writing_tests.mdx#test-files).
+
+You can fully disable any test by commenting out its code. Put a `#` at the start of every line of the test. You can do this to every line in a file if you want. You can do this by editing the file in your Playground or [editing it in GitHub](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
+
+If you comment out a test, commenting out all its lines is better than just commenting out some. That will avoid messing up other tests.
+
+If you are more comfortable completely deleting a test, that also works. You can also delete the whole file. If your package has a GitHub repository, you must [delete the file in GitHub itself](https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository).
+
+The old tests will still be in the version history of your repository if you ever want to get them back, but the tests will no longer run or affect your package.
+
+
+### Disable repository tests {#disable-repo}
+
+**This is for:** any packages that run tests in GitHub
+
+<!-- TODO: put the workflow part in a footnote or put it in the workflow section and put link here. -->
+
+GitHub lets you disable or limit all tests, or all actions, in your repository. You can read [GitHub's documentation for managing repository actions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository) for more information.
+
+Another option is to [disable an individual workflow](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow). Your package's GitHub [workflow file](#workflows) is what triggers ALKiln tests on GitHub.
+
+You can also [delete the workflow file from your repository completely](https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository). If you go to the front page of your repository in GitHub, the file is in the `workflows` folder of the `.github` folder. It is often called `run_form_tests.yml`.
+
+
+### Disabling tests for the whole organization {#disable-org}
+
+**This is for:** any packages that run tests in GitHub
+
+In GitHub, [you can disable any workflows (actions) for a whole organization](https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization). That includes ALKiln tests.
+
 
 
 <!-- ## Workflow file for <KittyLitter/> tests {#sandbox-workflow-file} -->
