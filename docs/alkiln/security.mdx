@@ -106,12 +106,11 @@ Categories:
 [Not sure of this either. When you choose to use a tool, that gives you some software you are using. Additional packages are additional risk] Unnecessary: Everything is unnecessary. It is different. Unnecessary code is harder to know what that is. [Unnecessary = stuff that production doesn’t need to function]
 - [x] None of them can disrupt analytics. Ones on your server work in the playground. Ones that are server installed are in the sandbox. ~~Can disrupt analytics.~~
 - [] [Don't remember where this was from] “Critical” is not clear. No real info.
-- [] Databases. Give example, Like google spreadsheets that have real info. Including old databases. (Databases or a copy of real data)
+- [x] Databases. Give example, Like google spreadsheets that have real info. Including old databases. (Databases or a copy of real data)
+- [] [Not sure where this was supposed to go] “To actual user info” or old user info.
+- [] [Not found any links so far] Maybe link to good external reference describing dangers of using old user info. No suggestions
 
-- [] “To actual user info” or old user info.
-- [] Maybe link to good external reference describing dangers of using old user info. No suggestions
-
-- [] Principle of least privilege link would be good. No suggestions.
+- [x] Principle of least privilege link would be good. No suggestions.
 
 Exposing:
 - [] We said don’t run stuff on production, but still don’t want to show test server config keys and passwords. Maybe title to name “passwords, api keys, and similar” (maybe only need first 2) (maybe talk about example of showing config on screen)
@@ -133,7 +132,7 @@ This page will help you learn some steps you can take to protect yourself and yo
 Read at least the first section on this page - [using a separate server for testing](#privilege).
 :::
 
-In software development, security can be an intimidating topic. By design, ALKiln tests are unable to do very much, but all software comes with risk. No one can eliminate all risks, but we can mitigate them with robust security measures. Over time, we can all build up our security tool chests to:
+In software development, security can be an intimidating topic. By design, ALKiln tests are unable to do very much, but all software comes with risks. We can mitigate those risks with robust security measures. Over time, we can all build up our security tool chests to:
 
 - Protect our users' information
 - Protect our security-critical information
@@ -167,7 +166,7 @@ Using a separate testing server and separate testing data are some of the most e
 There are some kinds of tests that projects run on their production server, but ALKiln is in a different category of tests. Limiting ALKiln's access means it:
 
 - Never has access to actual user information
-- Never has access to server configuration tokens
+- Never has access to your production server's security-critical data like configuration tokens
 - Never has access to your current or old production databases
 - Can never affect the files on your production server
 
@@ -180,68 +179,69 @@ A separate server is only one part of separating production and testing sever ac
 - Never share real data or databases between servers, whether it is current or old.
 
 
-[^bonus]: Using a different server for testing is better in other ways, too. When developers pull packages that have python files onto your docassemble server, it reloads for a while. This can cause your clients' interviews to time out. <GTOYS/> tests do the same and can make for a slower user experience.
+[^bonus]: Using a different server for testing is better in other ways, too. When developers pull packages that have python files onto your docassemble server, it reloads for a while. This can cause your clients' interviews to time out. <GTOYS/> tests do the same and can make for a slower user experience if they are used on a production server.
+
+
+### Use fake data in tests {#mock data}
+
+**This is for**: Everyone
+
+Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data.
+
+For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server. If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
+
+Some projects instead use old data for testing. Avoid that as well. Even if it seems so outdated as to be useless, it can still expose you and your users.
 
 
 ### Make an account just for ALKiln {#alkiln-account}
 
-**This is for any packages:** that have ever used <GTOYS/> tests
+**This is for any packages:** Everyone
 
 <!-- TODO: add a section for setup about making an account. take it away from the setup interview like other stuff. Then link to in here and visa versa. -->
 
-As you will see in [ALKiln's test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) for <GTOYS/> tests, <GTOYS/> tests need access to an account on your docassemble server. If you are using or ever have used <GTOYS/> tests, ALKiln has access to an account.
+Avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own account. This also lets you see its activity in the logs more clearly. There are non-security related reasons to make a separate account too[^perks].
 
-That account should be just for ALKiln. If you are using an actual user's or developer's account, make a new account. Make sure ALKiln's account only has a [developer role](#alkiln_role) with no extra privileges. That can put a few limits on what the tests have access to. Also, avoid giving other personal or security-critical data to that account, like a real name or GitHub account integration.
-
-We usually call the user "automated_tests" and give the email "automated_tests@example.com" with a secure password.
-
-<!-- #githubNyou-inputs -->
+<GTOYS/> tests need to be connected to a docassemble account to work properly. Even if you are using other types of tests, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
 
 <!-- TODO: Move to creating an account section when it exists: If you use <GTOYS/> tests, you need to put those values in your GitHub secrets. If you lose the sign in information for that account, delete it, create a new one, and update the secrets. -->
 
-Even if you are using other types of tests, you may want an account for ALKiln. For example, if you want a test to sign into an account, you may want that account to have more limited access. If so, give that account a role that is as limited as possible. If the account just needs to be a user, give it a user role. If the role only needs to be a maintainer, give it a maintainer role.
+Only give ALKiln an account if necessary. Make sure no one else uses the account. Give that account [a role with only the privileges it needs](#alkiln_role) and no more. Also avoid giving it other real data or access. For example, avoid giving it a real person's name and avoid giving it GitHub integration.
 
-If you are no longer using the account, delete it.
+We usually call the user "automated_tests" and give the email "automated_tests@example.com" with a secure password.
 
-<!-- TODO: (FAQ) IDs for all blocks are good for caching issues -->
+If you stop needing the account, delete it.
 
-
-<!-- Docs, docs, the magical task - the more you write, the more they lack -->
-
-bookmark
-
-WIP
-
-<!-- If only using InThePlayground, you don't even need to give it a user account. -->
-
-It makes life easier in other ways too. <!-- TODO: Link -->
-
-<!-- TODO:
-Easier because:
-- won't make projects on a users account or interviews in their available interviews.
-- won't have the developer's API key, so can't do stuff with that
-- If the account does something, you can tell that it was the testing account that did that thing
--->
+<!-- #githubNyou-inputs -->
 
 <!-- TODO: add link to GitHub secrets? -->
 
 <!--
 TODO: The ALKiln user needs to have a developer account. Add that to setup interview and docs we write here about it.
 
-User permissions needed:
+User permissions <GTOYS/> tests need:
 - Go to an interview
-- Log in
 - Have API keys
 - Get own id with API
 - Create Project on own Playground (for GitHub+You)
 - Pull a repo into a Project on own Playground (for GitHub+You) https://docassemble.org/docs/admin.html#playground
 - Delete project from Playground (for GitHub+You)
+
+These come with the "developer" role. Avoid giving its API key any extra permissions.
 -->
+
+
+[^perks]: There are other good reasons to avoid using an existing developer's account that are not related to security. For one thing, the tests create Projects and run interviews. It may be confusing for an existing developer to find those in their account. For another thing, if you do use a real developer's account and that developer leaves your organization, tests will start failing. It may take you a while to track down the problem and fix it.
 
 
 ### ALKiln account role {#alkiln_role}
 
-Give the ALKiln docassemble account the [role](https://docassemble.org/docs/users.html) of developer and no [extra permissions](https://docassemble.org/docs/config.html#permissions). That is the most limited role ALKiln can use to do what it needs to do. It still has a lot of access, but that is unavoidable right now. That said, ALKiln is very limited in what it can do.
+ALKiln strongly limits what tests can do. Even so, you should give the ALKiln account the fewest permissions possible.
+
+For <GTOYS/> tests, give the ALKiln docassemble account the [role](https://docassemble.org/docs/users.html) of "developer". That is the most limited role ALKiln can use to do what it needs to do. Avoid giving that account's API key any [extra permissions](https://docassemble.org/docs/config.html#permissions).
+
+If your <AutoDIY/> tests need an account on your server, give them the least privileges possible. In those cases, most authors only need to give ALKiln the "user" role.
+
+<KittyLitter/> tests run on their own server, create their own account, and manage their own permissions.
 
 
 <!--
@@ -258,9 +258,11 @@ Here are a couple general good tips for keeping your testing server healthy:
 
 ## Still protect sensitive data {#sensitive-data}
 
-Even after keeping personal and security-critical data away from [the account that runs ALKiln tests](#alkiln-account), there are still ways you can expose some sensitive data in tests. For example, it is possible to deliberately show a server config value on an interview page.
+Even after keeping personal and security-critical data away from [the account that runs ALKiln tests](#alkiln-account), there are still ways you can expose some sensitive data in tests. For example, it is possible to deliberately show a server config value on an interview page. Even if you are using a testing server, that server still has credentials, like API keys and passwords, and you should protect those.
 
-It is possible to use sensitive information to fill in fields in your tests if you do it correctly using environment variables. ALKiln is careful to [protect against showing information you put in environment variables](#alkiln-env-vars).
+<!-- TODO: Link to env vars? -->
+
+It is possible to use sensitive information to fill in fields in your tests, though, if you do it correctly using environment variables. ALKiln is careful to [protect against showing information you put in environment variables](#alkiln-env-vars).
 
 
 ### Avoid sensitive data in package files {#sensitive-info-files}
@@ -273,17 +275,6 @@ If you need to use sensitive information in your tests:
 
 - For tests running in GitHub, [add a GitHub secret](#sensitive-info-github)
 - For <AutoDIY/> tests, [add a variable in your docassemble configuration file](#sensitive-info-playground)
-
-
-### Always use mock data in tests {#mock data}
-
-**This is for**: Everyone
-
-Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data.
-
-For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server. If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
-
-Some projects instead use old data for testing. Avoid that as well. Even if it seems so outdated as to be useless, it can still expose you and your users.
 
 
 ### Avoid showing sensitive data on screen {#no-show}
@@ -487,7 +478,7 @@ This is different than [the ALKiln action versions](#freeze-actions). The ALKiln
 - GitHub workflow files
 - [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit sha[^sha] or hash)
 
-<!-- TODO: Get to the point, explain after -->
+<!-- TODO: Get to the point, explain after WIP -->
 
 ALKiln's actions let your workflow file <!-- TODO: add link --> trigger GitHub to start your tests. This is different from the actual ALKiln framework, which lets you control the robot that goes through your interview answering questions.
 
@@ -499,10 +490,13 @@ This means that your ALKiln action has all the latest bug fixes and new features
 
 To "freeze" your ALKiln action version in this way, you can reference a specific ALKiln git commit id (or sha[^sha]) in your workflow file:
 
-<!-- TODO: Show what a commit sha looks like -->
-
 1. Go to [ALKiln's repository](https://github.com/SuffolkLITLab/ALKiln).
-2. Find the id of a commit you need. You need the full commit id which, in our case, is 40 random characters. To do that, go to the main page of [ALKiln's GitHub repo](https://github.com/SuffolkLITLab/ALKiln). Pick the branch of ALKiln that is relevant to you. Near the top, click on “commits". Find the commit that you want. On the right-hand side of that row will be the shortened version of the commit id. To the right of that is the “copy” button. Click that to copy the full commit id.
+2. Find the id of a commit you need. You need the full commit id which is 40 random characters. For example, a29519914ffc235802be9b9b143d78ffc3a06028.
+   1. To find the commit id, go to the main page of [ALKiln's GitHub repo](https://github.com/SuffolkLITLab/ALKiln).
+   1. Pick the branch of ALKiln that is relevant to you.
+   1. Near the top, click on “commits".
+   1. Find the commit that you want. On the right-hand side of that row will be the shortened version of the commit id. To the right of that is the “copy” button.
+   1. Click that to copy the full commit id.
 3. In your repository's directory, go to .github/workflows and find the file that starts the tests. There's a line in there that look's something like this:
 
 ```yml

@@ -1970,7 +1970,9 @@ Some of these are just good practices to follow when coding your interviews.
 
 ### Question id {#id-tip}
 
-Add a [different id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. They helps make test output more clear. They also help your team communicate with each other about your code more easily.
+Add a [different id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. Those help make [some kinds of test output](#report) more clear.
+
+They have other uses too. [Block ids are helpful for docassemble features and caching issues](https://docassemble.org/docs/modifiers.html#id). They can also help your team communicate with each other about your code more easily.
 
 
 ### Write unique Scenario descriptions {#scenario-descriptions}
@@ -2152,6 +2154,9 @@ It is unlikely you will run enough tests for GitHub to charge you. [GitHub's quo
 ### Will ALKiln tests affect my analytics? {#analytics}
 
 No, none of the tests types can affect your analytics. <GTOYS/> and <AutoDIY/> tests both use interviews that are in the developer's Playground, not ones that are installed on your server. <KittyLitter/> tests run on their own isolated server, not your server, so your analytics software knows nothing about them.
+
+
+
 
 
 <!--
