@@ -102,8 +102,8 @@ article .markdown p img {
 }
 
 /* The :has() selector is unsupported in browser versions with  >6% use) */
-@supports selector(:has(> foo > bar)) {
-  html[class*="docs-doc-id-alkiln"] .table-of-contents a code {
+@supports selector(:has(> foo)) {
+  html[class*="docs-doc-id-alkiln"] .table-of-contents a:has(> code) code {
     border: none;
     padding: 0;
   }
@@ -115,4 +115,10 @@ article .markdown p img {
     border-radius: var(--ifm-code-border-radius);
     padding: var(--ifm-toc-padding-vertical) var(--ifm-toc-padding-horizontal);
   }
+}
+
+/* Demo what more accessible menu selection can look like */
+html[class*="docs-doc-id-alkiln"] a.table-of-contents__link--active {
+  text-decoration: underline;
+  text-underline-offset: .4em;
 }
