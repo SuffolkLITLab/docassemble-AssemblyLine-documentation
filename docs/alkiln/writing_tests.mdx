@@ -39,7 +39,7 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
 1. If you are using <GTOYS/> or <KittyLitter/> tests, those tests will run when anyone commits to GitHub.
 1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors. In GitHub, those files are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors. In GitHub, those files are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts). bookmark
 1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
 
 <!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
@@ -1052,7 +1052,7 @@ In a Story Table, a signature variable has nothing in its `value` column. Exampl
 All Story Table signatures are a single dot.
 
 
-### `.there_is_another` loop {#there-is-another}
+### `.there_is_another` {#there-is-another}
 
 In a Story Table, setting the value of `.there_is_another` for a docassemble loop is more complicated than you might expect. At first glance, to fill in the answers for two children some authors try to write the following:
 
@@ -1476,7 +1476,7 @@ You can use any of those. It does not matter what you pick.
 -->
 
 
-## Workflow files {#workflows}
+## GitHub workflow files {#workflows}
 
 WIP
 
@@ -1487,10 +1487,14 @@ WIP
 
 **It can help to know about:**
 
-<!-- https://docs.github.com/en/actions/using-workflows/about-workflows -->
-<!-- seeing workflow job logs: https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs -->
+<!--
+https://docs.github.com/en/actions/using-workflows/about-workflows
+seeing workflow job logs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results
+-->
 
-- [GitHub workflow files](https://docs.github.com/en/actions/using-workflows)
+<!-- Is this the workflow bookmark we want to use here? Probably, for general workflow information -->
+
+- [GitHub workflows](https://docs.github.com/en/actions/using-workflows)
 - [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
 This section has a lot of challenging technical information about GitHub workflow files. We will do our best to help. We would love to hear how we can improve.
@@ -1500,7 +1504,7 @@ This section has a lot of challenging technical information about GitHub workflo
 
 Your GitHub workflow file is what starts and controls a package's tests on GitHub. Only [tests that run on GitHub](setup.mdx#types) need a workflow file. The file gives ALKiln some configuration information. You can use it to customize the ALKiln test runs and control when to trigger the GitHub tests.
 
-<!-- You can do a lot more with your workflow file if you study details about [GitHub workflows](https://docs.github.com/en/actions/using-workflows) and the [GitHub CLI](https://docs.github.com/en/actions/using-workflows/using-github-cli-in-workflows), like making issues when tests fail. ALKiln uses only a few features. -->
+<!-- You can do a lot more with your workflow file if you study details about [GitHub workflows](https://docs.github.com/en/actions/using-workflows) bookmark and the [GitHub CLI](https://docs.github.com/en/actions/using-workflows/using-github-cli-in-workflows), like making issues when tests fail. ALKiln uses only a few features. -->
 
 
 ### Where in GitHub is the file? {#workflows-where}
@@ -1512,16 +1516,16 @@ Your ALKiln workflow file is in your package's GitHub repository. To find it, go
 
 ALKiln's own workflow files are the most up-to-date, so using those as an example can be useful. You cannot just copy them. They have features that are unique to ALKiln. They do have notes for how to change them to what you need.
 
-You can see [ALKiln's own version of the <GTOYS plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/playground.yml).
+You can see [ALKiln's own version of the <GTOYS plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/playground.yml).
 
-You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/github_server.yml).
 
 <!-- TODO: deep dive or standup: We could potentially use this plugin to show the actual file in here: https://github.com/rdilweb/docusaurus-plugin-remote-content -->
 
 
 ### What are the values I can customize in the file? {#workflows-values}
 
-You can use [workflow inputs](#workflow-inputs) to change global configuration settings for all your whole test run.
+You can use [workflow inputs](#workflow-inputs) to change global configuration settings for your ALKiln test runs.
 
 You can use custom [environment variables](#env-vars) to set values in your tests.
 
@@ -1531,7 +1535,9 @@ You can use custom [environment variables](#env-vars) to set values in your test
 See the [security documentation](security.mdx).
 
 
-## Workflow inputs {#workflow-inputs}
+## GitHub workflow inputs {#workflow-inputs}
+
+**This is for:** any packages that run GitHub tests. That is, <GTOYS/> or <KittyLitter/> tests.
 
 Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
 
@@ -1568,7 +1574,7 @@ These are values you can put in your workflow file directly under the `with:` ke
 
 <!-- TODO: Add link to Sandbox test info -->
 
-These are the only required inputs for <KittyLitter/> tests. We are listing them here for the sake of completeness, but none of them need to be secrets and you can copy the correct values straight from [ALKiln's own <KittyLitter plain={true}/> tests workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml).
+These are the only required inputs for <KittyLitter/> tests. We are listing them here for the sake of completeness, but none of them need to be secrets and you can copy the correct values straight from [ALKiln's own <KittyLitter plain={true}/> tests workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/github_server.yml).
 
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
@@ -1621,6 +1627,72 @@ You can add some optional inputs to the workflow file of any <KittyLitter/> test
 <!-- TODO: What is the error message when docker container setup stops too early? -->
 
 
+## GitHub workflow extras {#workflow-extras}
+
+You can customize your GitHub workflows to run on a schedule, make GitHub issues when tests fail, and much more. We will give some examples other developers have found useful. To edit your workflow file:
+
+1. Go to your GitHub repository
+1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests
+1. Tap to [start editing the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
+1. Follow instructions below to change your file
+
+
+### Schedule tests {#schedule-trigger}
+
+You can run GitHub tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add `schedule` to the `on`  object in your workflow file and give it an "interval" value. For example, these tests will get triggered by both a push (commit) and on a schedule every Tuesday:
+
+```yml
+on:
+  schedule:
+    - cron: "0 1 * * TUE"
+  push:
+```
+
+The GitHub docs can tell you more about [triggering workflows on a schedule](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule). The special syntax defining the interval uses cron syntax. If you want to change the interval, [these examples of cron syntax](https://crontab.guru/examples.html) can help a lot.
+
+
+### Pull request tests {#pr-trigger}
+
+You can trigger tests when someone makes a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) in GitHub.
+
+To do this, add the `pull_request` trigger key to the `on` object in your workflow file. Give it no values at all. For example, these tests will get triggered by both a pull request and on a schedule:
+
+```yml
+on:
+  pull_request:
+  schedule:
+    - cron: "0 1 * * TUE"
+```
+
+The [pull request trigger can have various values](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request), but leaving it empty uses the default values. We have only ever needed the defaults and pull request values can be confusing to customize.
+
+
+### Make a GitHub issue when tests fail
+
+To make a GitHub issue when tests fail, you can add the below code under the last line of text in the file. It might look like you need to create a GitHub secret for this, but you should avoid that. GitHub already has all these values.
+
+```yml
+      - name: "If tests failed create an issue"
+        if: ${{ failure() }}
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: "ALKiln tests failed"
+          body: |
+            An ALKiln test failed. See the action at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}.
+          labels: |
+            bug
+```
+
+:::danger Avoid new secrets
+Avoid changing the value `github_token` and avoid creating a new secret for it. The variable `secrets.github_token` is a value that your repository already has by default and it needs that value.
+:::
+
+If you use the code above, the [GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) will automatically contain a link to the workflow with these failing tests.
+
+You can edit the values of `title`, `body`, and `labels` to customize the issue.
+
+
 ## Environment variables {#env-vars}
 
 WIP
@@ -1666,6 +1738,8 @@ The default workflow file the ALKiln setup interview gives you triggers GitHub t
 1. Edit the package's files in a Project on the docassemble server
 1. On your Project's "Packages" page, [commit the changes to GitHub](https://docassemble.org/docs/development.html#versioncontrol)
 1. Go to the repository in GitHub and tap on the "Actions" tab to [see the tests running](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results)
+
+<!-- Best instructions for seeing workflow, action, and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results bookmark -->
 
 That workflow file also lets you [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. There, you can use tags to limit which tests to run. You can read more about giving tags for tests in the section about [test files](#test-files).
 
@@ -1749,7 +1823,7 @@ You can read more about [errors and troubleshooting in other documentation](trou
 
 The console, or GitHub job log, shows the full raw output of the logs of the processes that ran before, during, and after the tests.
 
-In GitHub, you can see the test run's console at the [workflow's job logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs). You can see these messages appear as each process happens as well as after the tests finish running.
+In GitHub, you can see the test run's console at the [workflow's job logs](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results). You can see these messages appear as each process happens as well as after the tests finish running.
 
 In <AutoDIY/> tests, you can only see the console output after tests are done. They should be at the bottom of the final page.
 

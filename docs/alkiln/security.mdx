@@ -13,92 +13,64 @@ WIP (Work in progress)
 :::
 
 <!-- TODO:
-Components in headings don't show up in the sidebar
--->
-
-<!-- Feedback: Likes detail, but very overwhelmed
-
-What is a security risk in this context?
-What can people do?
-How can people access the server?
-What is the surface area?
+- [x] Make issue: Components in headings don't show up in the sidebar. https://github.com/facebook/docusaurus/issues/10017
 -->
 
 <!--
-- Sensitive information
-  - Tokens, like AWS tokens
-  - User names or passwords
-- Code to mess up your server
-
-It's natural to be unsettled by this.
+- [x] Feedback: Likes detail, but very overwhelmed
+      What is a security risk in this context?
+      What can people do?
+      How can people access the server?
+      What is the surface area?
 -->
-
-<!--
-ALKiln related:
-  Least privilege
-  Tests
-  Workflows regarding ALKiln
-GitHub
-  Workflows in general
-  Collaborators
-    Branch protection
-    PR workflow access
--->
-
-<!-- Protect security-critical data  -->
 
 <!-- TODO:
 Tell folks to update their test server, run tests, and only then update production?
 -->
 
 <!--
-https://sdtimes.com/agile/testing-in-production-risk-vs-reward/
+https://sdtimes.com/agile/testing-in-production-risk-vs-reward/ relevant points:
 • Exposing potential vulnerabilities to the public
 • Loss of data
-• Poor user experience that damages the reputation of the organization
-- other unrelated stuff
+• Poor user experience that damages the reputation of the organization (not security, but still a good point)
 -->
 
 <!-- Quinten
 https://www.globalapptesting.com/blog/testing-in-production#:~:text=Directly%20testing%20in%20production%20risks,off%20your%20software%20as%20buggy
 
-
 ~~There's the danger of deploying flawed code.~~
 Sensitive data might be inadvertently exposed.
-System capacity could be overwhelmed, leading to performance issues.
+System capacity could be overwhelmed, leading to performance issues. (not security, but still a good point)
 ~~Tracking and analytics data could become corrupted.~~
 ~~Introducing poorly designed products or features to your users is risky.~~
 
-
-principle of least privilege / privilege separation
-
 From Q:
-Remove “third-party”
+- [x] [Not sure if I did it in the way desired, but it doesn't need to be defined anymore] Remove “third-party”
 
 Questions this doc is answering:
-- [] Should I trust the authors of kiln
-- [] How to use kiln properly
-- [] How can I use kiln to give it least permissions and why
-- [] How to write tests safely
-- [] Why to trust us
+- [x] Should I trust the authors of kiln
+- [x] How to use kiln properly
+- [x] How can I use kiln to give it least permissions and why
+- [x] How to write tests safely
+- [x] Why to trust us
 
 - [x] Not sure about purpose - title is confusing. “Security”.
 
-- [] Not tell people about 3rd party packages at all. Part of the problem - these docs don’t explain what third party is. Maybe move to appendix. Maybe say why they should trust is there in appendix.
-- [] Everything is 3rd party.
+- [x] [Removed the term] Not tell people about 3rd party packages at all. Part of the problem - these docs don’t explain what third party is. Maybe move to appendix. Maybe say why they should trust is there in appendix.
+- [x] [Not sure I solved this problem] Everything is 3rd party.
 
-- [] The list items at the very top are not related to each other.
+- [] [I'm not sure in what way, so not sure what to do about it. It's different now, so maybe it's better] The list items at the very top are not related to each other.
 
 - [x] Disabling is unrelated. Maybe in setup. Maybe mention it in security.
 
 Categories:
-- [] Keeping your stuff safe
-- [] Keeping your users' stuff safe
+- [x] Keeping your stuff safe
+- [x] Keeping your users' stuff safe
 
 - [x] Remove general practices "resource stealing".
 - [] [Where should this go? Maybe other docs?] New server, check your disaster recovery. When they will update both. Need to keep production server and test server aligned. But better to update test server more often than production maybe. (And then run ALKiln tests before updating production)
 
-- [x] [Means mention authors should use a separate server for testing] Mention separate server in GTOYS
+- [x] [Means to mention that authors should use a separate server for testing] Mention separate server in GTOYS
 
 - [] Use "ALKilnInThePlayground" instead of "AutoDIY" for now until an official name change.
 
@@ -113,13 +85,13 @@ Categories:
 - [x] Principle of least privilege link would be good. No suggestions.
 
 Exposing:
-- [] We said don’t run stuff on production, but still don’t want to show test server config keys and passwords. Maybe title to name “passwords, api keys, and similar” (maybe only need first 2) (maybe talk about example of showing config on screen)
-- [] “Sensitive info” sounds like user info. Secrets is unclear, though.
+- [x] [Changes were similar] We said don’t run stuff on production, but still don’t want to show test server config keys and passwords. Maybe title to name “passwords, api keys, and similar” (maybe only need first 2) (maybe talk about example of showing config on screen)
+- [x] “Sensitive info” sounds like user info. Secrets is unclear, though.
 [Confidential info, sensitive data, protected information, security-critical data, access data, authentication data]
 
 - [x] [Will leave this as is as instructions are very particular to ALKiln] Freezing to go under GitHub practices? Maybe Make new section for GitHub stuff. Though GitHub is tied into a lot of stuff. Maybe not a big deal.
 
-- [] Maybe worry less to FAQ instead? Or addenda? Small thing
+- [x] [Keeping as is] Maybe worry less to FAQ instead? Or addenda? Small thing
 
 - [x] [Logs and artifacts are public for public repos. Move section.] ~~Logs and artifacts: People who you have added to the repository or who are admins/owner of repo or org. Maybe link to GitHub docs about those permissions.~~
 - [x] First-contributors section. It is worrying. Pull req triggers: worry more. change fist-time collaborators to all outside collaborators. Any time you have contributors , first-time they might make a nice commit and then later will be bad. Always require approval from external contributors.
@@ -138,9 +110,9 @@ In software development, security can be an intimidating topic. By design, ALKil
 - Protect our security-critical information
 - Protect our servers
 
-One of our strongest tools is the [principle of least privilege](#privilege).
+We want to protect against anything that might expose or modify any important or sensitive data.
 
-<!-- To start, it is useful to understand what we are protecting against. For this community, some of the concerns about a tool like ALKiln can sound alarming. That is what these documents are for. Some concerns might be, in order of how alarming they sound: -->
+One of our strongest tools to increase security is the [principle of least privilege](#privilege).
 
 <!--
 - Unintentionally showing your users' personally identifying information (PII).
@@ -148,8 +120,6 @@ One of our strongest tools is the [principle of least privilege](#privilege).
 - Giving access to editing admin and developer files, like the configuration file.
 - Giving access to editing the underlying server files.
 -->
-
-<!-- Those are real concerns, but there are ways to deal with them. We will discuss ways to protect against these and other challenges. -->
 
 
 ## Principle of least privilege {#privilege}
@@ -170,13 +140,15 @@ There are some kinds of tests that projects run on their production server, but 
 - Never has access to your current or old production databases
 - Can never affect the files on your production server
 
-First and foremost, avoid running tests on your production server[^bonus]. That means <GTOYS/> and <AutoDIY/> tests. Have a separate server for testing. If you are [able to use <KittyLitter plain={true}/> tests](setup.mdx#sandbox-cons), they already make their own server.
+First and foremost, avoid installing or running <GTOYS/> and <AutoDIY/> tests on your production server[^bonus]. Have a separate server for those testing methods. <KittyLitter plain={true}/> tests already make their own server and can be the most secure if you [use them properly](#sandbox). Use those if you are [able to use them](setup.mdx#sandbox-cons).
 
 A separate server is only one part of separating production and testing sever access, though. You also need to:
 
 - Keep the production server's urls out of ALKiln test files, [workflow files](writing_tests.mdx#workflows), and [environment variables](#writing_tests.mdx#env-vars).
 - Never share API keys or passwords between servers.
-- Never share real data or databases between servers, whether it is current or old.
+- Never share real data or databases between servers, whether the data is current or old.
+
+<!-- TODO: Link to old credit card numbers predicting new credit card numbers -->
 
 
 [^bonus]: Using a different server for testing is better in other ways, too. When developers pull packages that have python files onto your docassemble server, it reloads for a while. This can cause your clients' interviews to time out. <GTOYS/> tests do the same and can make for a slower user experience if they are used on a production server.
@@ -186,7 +158,7 @@ A separate server is only one part of separating production and testing sever ac
 
 **This is for**: Everyone
 
-Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data.
+Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is old data.
 
 For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server. If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
 
@@ -199,35 +171,19 @@ Some projects instead use old data for testing. Avoid that as well. Even if it s
 
 <!-- TODO: add a section for setup about making an account. take it away from the setup interview like other stuff. Then link to in here and visa versa. -->
 
-Avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own account. This also lets you see its activity in the logs more clearly. There are non-security related reasons to make a separate account too[^perks].
+Avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own account. This also lets you see its activity in the logs more clearly and delete the account easily if you need to. There are non-security related reasons to make a separate account too[^perks].
 
 <GTOYS/> tests need to be connected to a docassemble account to work properly. Even if you are using other types of tests, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
 
-<!-- TODO: Move to creating an account section when it exists: If you use <GTOYS/> tests, you need to put those values in your GitHub secrets. If you lose the sign in information for that account, delete it, create a new one, and update the secrets. -->
+<!-- TODO: Move to creating an account section when it exists: If you use <GTOYS/> tests, you need to put those values in your GitHub secrets. If you lose the sign-in information for that account, delete it, create a new one, and update the secrets. -->
 
-Only give ALKiln an account if necessary. Make sure no one else uses the account. Give that account [a role with only the privileges it needs](#alkiln_role) and no more. Also avoid giving it other real data or access. For example, avoid giving it a real person's name and avoid giving it GitHub integration.
+Only give ALKiln an account if necessary. Make sure no one else uses the account. Give that account [a role with only the privileges it needs](#alkiln_role) and no more. Also avoid giving it other real data or access. For example, avoid giving it any real person's name and avoid giving it GitHub integration.
 
-We usually call the user "automated_tests" and give the email "automated_tests@example.com" with a secure password.
+We usually call the ALKiln user "automated_tests" and give it the email "automated_tests@example.com" with a secure password.
 
 If you stop needing the account, delete it.
 
-<!-- #githubNyou-inputs -->
-
 <!-- TODO: add link to GitHub secrets? -->
-
-<!--
-TODO: The ALKiln user needs to have a developer account. Add that to setup interview and docs we write here about it.
-
-User permissions <GTOYS/> tests need:
-- Go to an interview
-- Have API keys
-- Get own id with API
-- Create Project on own Playground (for GitHub+You)
-- Pull a repo into a Project on own Playground (for GitHub+You) https://docassemble.org/docs/admin.html#playground
-- Delete project from Playground (for GitHub+You)
-
-These come with the "developer" role. Avoid giving its API key any extra permissions.
--->
 
 
 [^perks]: There are other good reasons to avoid using an existing developer's account that are not related to security. For one thing, the tests create Projects and run interviews. It may be confusing for an existing developer to find those in their account. For another thing, if you do use a real developer's account and that developer leaves your organization, tests will start failing. It may take you a while to track down the problem and fix it.
@@ -423,7 +379,7 @@ Right now Story Tables are unable to use environment variables to fill in fields
 
 Avoid using hard-coded urls that lead to your server. That is, avoid using `https://my-testing-server.com` and interviews or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that is useful about the <KittyLitter/> method and makes the tests less secure again.
 
-You also still have to avoid saving personal or security-critical information in public files and follow other security precautions.
+You also still have to avoid saving personal or security-critical information in public files and follow other security precautions, like the ones described in this documentation.
 
 
 ## Freeze the ALKiln framework version {#freeze-framework}
@@ -437,9 +393,9 @@ You also still have to avoid saving personal or security-critical information in
 - GitHub action inputs
 - [Semantic versioning](https://docs.npmjs.com/about-semantic-versioning)
 
-<!-- TODO: Get to the point, explain after -->
+Freezing your version of ALKiln's framework code gives you more control over the ALKiln framework code you use. You can examine new code before deciding whether to update to a newer version.
 
-The ALKiln framework lets you control the robot that goes through your interview answering questions. This is different from the ALKiln actions, which trigger GitHub to start your tests.
+The ALKiln framework is the part of ALKiln that lets you control the robot that goes through your interview answering questions. This is different from the ALKiln actions, which trigger GitHub to start your tests.
 
 The workflow file we first create for you in the ALKiln setup interview always uses the latest major version[^v] of the ALKiln framework. That major version is based on when you used the setup interview. As of March 2024, ALKiln is on major version 5. Tests that authors set up now will use the latest version 5 code. For example, version `5.10.1` as of March 12, 2024.
 
@@ -475,20 +431,20 @@ This is different than [the ALKiln action versions](#freeze-actions). The ALKiln
 **To do this it helps to know about:**
 
 - [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
-- GitHub workflow files
-- [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit sha[^sha] or hash)
+- [GitHub workflows](https://docs.github.com/en/actions/using-workflows)
+- [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit SHA[^SHA] or hash)
 
-<!-- TODO: Get to the point, explain after WIP -->
+Freezing your version of ALKiln's actions gives you more control over the ALKiln action code you use. You can examine new code before deciding whether to update to a newer version.
 
-ALKiln's actions let your workflow file <!-- TODO: add link --> trigger GitHub to start your tests. This is different from the actual ALKiln framework, which lets you control the robot that goes through your interview answering questions.
+You use ALKiln's actions in your workflow file <!-- TODO: add link --> to trigger GitHub tests. This is different from the actual ALKiln framework, which lets you control the robot that goes through your interview answering questions.
 
-The workflow file we first create for you in the ALKiln setup interview always uses the latest ALKiln action code. As of March 2024, the setup interview uses the latest code of a branch on ALKiln called "v5" for its actions.
+The workflow file we first create for you in the ALKiln setup interview always uses the latest ALKiln action code. As of March 2024, the setup interview used the latest code of a branch on ALKiln called "v5" for its actions.
 
 This means that your ALKiln action has all the latest bug fixes and new features to the actions. That can be a good thing, but it also means you might not be sure of exactly what code starts your tests.
 
 [ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). There is a way to make sure to always use an exact version of ALKiln's actions, though, if you want. You can use a version that has code and behavior that you are familiar with and feel comfortable with.
 
-To "freeze" your ALKiln action version in this way, you can reference a specific ALKiln git commit id (or sha[^sha]) in your workflow file:
+To "freeze" your ALKiln action version in this way, you can reference a specific ALKiln git commit id (or SHA[^SHA]) in your workflow file:
 
 1. Go to [ALKiln's repository](https://github.com/SuffolkLITLab/ALKiln).
 2. Find the id of a commit you need. You need the full commit id which is 40 random characters. For example, a29519914ffc235802be9b9b143d78ffc3a06028.
@@ -516,7 +472,20 @@ This is different than the [ALKiln framework version](#freeze-framework). The fr
 :::
 
 
-[^sha]: "sha" stands for "secure hash algorithm". Git has a secure hash algorithm of its own to make an "id" for each commit. Very broadly, for each commit a repository makes, git uses math to reliably turn the whole history of the package and all its versions, including the newest commit, into 40 letters and numbers. Unlike a branch name, a commit sha is unable to be changed or edited because it is created from that history (though it can be deleted). Because of this, you can pretty much rely on a commit sha to always go to either the same code or no code at all. That is, no one can hide sneaky new code there.
+[^SHA]: SHA stands for "secure hash algorithm". Git has a secure hash algorithm of its own to make an "id" for each commit. Very broadly, for each commit a repository makes, git uses math to reliably turn the whole history of the package and all its versions, including the newest commit, into 40 letters and numbers. Unlike a branch name, a commit SHA is unable to be changed or edited because it is created from that history (though it can be deleted). Because of this, you can pretty much rely on a commit SHA to always go to either the same code or no code at all. That is, no one can hide sneaky new code there.
+
+<!-- [^♪]: You can hear your SHA at [SHAlala](https://garrett-bodley.github.io/SHAlala/). -->
+
+
+## Update your ALKiln and other tools when needed {#update}
+
+Update your tools, especially when that update includes a security fix. Check the [changelog of ALKiln](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md) and your other tools for security updates.
+
+Choosing when to update to the latest version of software can be tricky. New features and bug fixes can interfere with your working system. That said, when there is a security update you might have to go ahead with the update.
+
+Your tools should keep a record of their changes, often called a "changelog". Those records should clearly label security updates. Keep an eye out for those updates.
+
+For example, [this is one of ALKiln's security updates](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md#security-1).
 
 
 ## General GitHub practices {#github}
@@ -526,7 +495,7 @@ This is different than the [ALKiln framework version](#freeze-framework). The fr
 
 **This is for any packages that:** run tests in GitHub
 
-It is possible for you to add code <!-- TODO: Add link to description of that code --> to your workflow file <!-- TODO: Add link workflow file -->to trigger tests when someone makes a pull request on GitHub. If you decide to do that, take extra steps to make sure malicious coders are unable to trigger your workflows.
+It is possible for you to add code <!-- TODO: Add link to description of that code --> to your workflow file <!-- TODO: Add link workflow file --> to trigger tests when someone makes a pull request on GitHub. If you decide to do that, take extra steps to make sure malicious coders are unable to trigger your workflows.
 
 If you configure your workflows to be triggered by a pull request, someone can change the code of the tests, workflows, or other package code to do something malicious, then trigger that code by just making a pull request.
 
@@ -551,7 +520,7 @@ That might be fine. Part of being transparent is letting the public understand h
 
 <SecureEnvVars/>
 
-<!-- TODO: Allow disabling action logs and artifacts, or sending them to an email instead.
+<!-- TODO: ALKiln: Allow disabling action logs and artifacts, or sending them to an email instead.
 
 https://www.phind.com/search?cache=lfsxvqrwegn9hl34gip0uv5a
 
@@ -661,7 +630,14 @@ If you ever become uncomfortable or concerned about your ALKiln tests, there are
 
 ## ALKiln protects you too {#alkilns-precautions}
 
-Out team takes special precautions with ALKiln's code to ensure you are as safe as we can make you. We are always looking for more ways to increase our security.
+Trust is part of how we decide what tools to use. How do you know who to trust? You can ask some questions.
+
+- Who is making and providing the tool?
+- What are their economic incentives?
+- What are their personal incentives?
+- What are their security practices?
+
+Out team takes special precautions with ALKiln's code to ensure you are as safe as we can make you. We are always looking for more ways to improve our security practices.
 
 
 ### ALKlin is limited {#limited}
@@ -693,11 +669,25 @@ You do need to [take care when you use JSON Steps](#json-vars).
 :::
 
 
+### ALKiln reports its security updates {#alkiln-logs}
+
+When ALKiln as a security update, we announce it on [docassemble's Slack channel](https://docassemble.org/docs/support.html#slack) and post it in [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). The Slack channel is called "#alkiln-automated-testing".
+
+Security updates have the heading "Security". For example, [this is one of ALKiln's security updates](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md#security-1).
+
+
 ### ALKiln freezes the versions of its dependencies {#alkiln-freezes-dependencies}
 
 **This is for:** Everyone
 
 Just like you can freeze the versions of the [ALKiln framework](#freeze-framework) and [ALKiln actions](#freeze-actions), ALKiln freezes the versions of its own dependencies - the libraries it uses. When we update our dependencies to their latest versions, we check the updates and do our best to make sure that we are comfortable with the changes.
+
+
+### ALKiln updates its dependencies {#alkiln-deps}
+
+**This is for:** Everyone
+
+The ALKiln team checks on the security of ALKiln's dependencies. When a dependency reports a new security improvement, we update ALKiln so it uses that new improvement. Not all dependency fixes are relevant to ALKiln, but it is still good to keep up to date.
 
 
 ### ALKiln protects its major branches {#alkiln-branches}
@@ -710,7 +700,7 @@ As our documentation described, [you can protect your default branch from change
 
 - Require contributors to make new branches when they edit code
 - Require contributors to make a pull request before new code can be added to the main branch
-- Require administrators to approve a pull request before that code can be merged so that we have a chance to review it.
+- Require administrators to approve a pull request before that code can be merged so that we have a chance to review it
 
 Our administrators can get past these restrictions. We keep tight control of who our administrators are.
 

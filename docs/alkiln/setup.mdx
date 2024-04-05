@@ -83,7 +83,7 @@ Each type of test has its advantages and disadvantages. This documentation expla
 
 This is the way we recommend setting up ALKiln tests for a repository for the first time. You are least likely to run into setup problems with this method. Every repository that needs to use this kind of test must go through this setup process.
 
-Remember to use a [separate server for testing](security.mdx#testing-server).
+Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
 The tests [run](writing_tests.mdx#github-triggers) whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
 
@@ -153,11 +153,11 @@ To learn how to do more with tests, you can read more about [writing tests](writ
 
 If you set up <AutoDIY/> tests, any developer can run tests on any of their Projects when they are logged into your docassemble test server. You can read more details and the pros and cons of <AutoDIY/> tests below.
 
-Remember to use a [separate server for testing](security.mdx#testing-server).
+Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
-The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server. For [security reasons](security.mdx#testing-server), avoid installing these tests on your production server.
+The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server so you can run <AutoDIY/> tests. For [security reasons](security.mdx#testing-server), avoid installing these tests on your production server.
 
 **You need:**
 
@@ -222,7 +222,7 @@ The tests [run](writing_tests.mdx#github-triggers) whenever you commit any code 
 1. Make a new branch. The name is unimportant. We often call it `alkiln_tests`.
 1. [Add a new file](https://docs.github.com/en/repositories/working-with-files/managing-files/creating-new-files) to the repository. You can do this on GitHub or on your own computer.
 1. In the field for the file's name, enter this text: `.github/workflows/a_filename.yml`. You can replace "a_filename" with whatever name you want as long as it ends with `.yml`.
-1. This is your workflow file. Copy [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml). Read the notes in that file to see what you need to change. You should pay attention to the notes that start with `#### Developer note` and follow those instructions.
+1. This is your workflow file. Copy [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/github_server.yml). Read the notes in that file to see what you need to change. You should pay attention to the notes that start with `#### Developer note` and follow those instructions.
 1. Commit this file to GitHub.
 1. In the same branch, navigate to your package's "sources" folder. These are the folders to get there: `docassemble/<YourPackageName>/data/sources`.
 1. Add a new file here too. This will be your first test. You might call it `interviews_load.feature`, but it can be anything that ends in `.feature`.
@@ -255,7 +255,7 @@ If you are ready to start running tests, you can read about how to [add our exam
 <!-- TODO: "on your test server" with a link to security section -->
 <GTOYS/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They then create and test a Project on your docassemble testing server. They are our recommended test method because they are the easiest to set up.
 
-Remember to use a [separate server for testing](security.mdx#testing-server).
+Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
 
 ### What is ALKiln doing? {#githubNyou-how}
@@ -331,7 +331,7 @@ For some people:
 
 These are tests that you trigger manually from an interview you install on your docassemble testing server. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#diy-triggers) in other documentation.
 
-Remember to use a [separate server for testing](security.mdx#testing-server).
+Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
@@ -412,7 +412,7 @@ For everyone:
 
 For some people:
 
-- At this time, <KittyLitter/> tests are unable to handle data stored externally. For example, data stored in an S3 bucket.<!--  If you still want this type of test, it is more work. You are welcome to use [our GitHub action code](https://github.com/SuffolkLITLab/ALKiln/blob/v5/action_for_github_server/action.yml) as a starting point, of course, to write your own GitHub action to create a server on GitHub with the right Docker build environment variables, S3 credentials, and config details from your dev server. -->
+- At this time, <KittyLitter/> tests are unable to handle data stored externally. For example, data stored in an S3 bucket.<!--  If you still want this type of test, it is more work. You are welcome to use [our GitHub action code](https://github.com/SuffolkLITLab/ALKiln/blob/-/action_for_github_server/action.yml) as a starting point, of course, to write your own GitHub action to create a server on GitHub with the right Docker build environment variables, S3 credentials, and config details from your dev server. -->
 - You **must** make sure you have properly required all your "Dependencies" on your Packages page. That is the only way the isolated/sandboxed[^sand] server can know to download them.
 - All your package's dependencies **must** be published on pypi. That is the only place that the sandboxed server can get them.
 <!-- - TODO: Package size because of `dainstall`? These are installed differently - on the actual server instead of in a Playground - so maybe they have that limitation -->
@@ -488,7 +488,7 @@ Custom inputs
 Tags
 
 1. Leave your other workflow secrets alone. Note, your `DOCASSEMBLE_DEVELOPER_API_KEY` and `SERVER_URL` do not need to be on the same server as your `CONFIG_CONTENTS`.
-1. Make a new workflow file so that it is similar to [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/v5/.github/workflows/github_server.yml). If you want to stop old tests from running, delete your old workflow file.
+1. Make a new workflow file so that it is similar to [ALKiln's own workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/github_server.yml). If you want to stop old tests from running, delete your old workflow file.
 1. Read the notes in that file to see what you need to change to adapt the file for your project. Each of the notes is marked with `#### Developer note`.
 1. Commit the changes.
 

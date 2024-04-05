@@ -96,36 +96,6 @@ ALKiln cannot stop the first test from failing, but `MAX_SECONDS_FOR_SERVER_RELO
 
 See [the GitHub secrets section](#github-secrets) on setting arbitrary environment variables. The section describes using GitHub secrets and using plain values.
 
-### Make a GitHub issue when tests fail
-
-1. Go to your GitHub repository.
-1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
-1. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
-1. Add the below code under the last line of text in the file.
-1. Avoid adding any new GitHub secrets to your repository for this.
-
-```yml
-      - name: If tests failed create an issue
-        if: ${{ failure() }}
-        uses: actions-ecosystem/action-create-issue@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          title: ALKiln tests failed
-          body: |
-            An ALKiln test failed. See the action at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}.
-          labels: |
-            bug
-```
-
-:::danger
-Avoid changing the value `github_token` and avoid creating a new secret for it. The variable `secrets.github_token` is a value that your repository has by default.
-:::
-
-If you use the code above, the [GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) will contain a link to the workflow's action page itself.
-
-You can edit the values of `title`, `body`, and `bug` to customize the issue.
-
-If you've run the Setup interview more recently, you will already have this code in your file, though it will be inactive. You just have to remove the comment symbols (`#`) from the lines of code.
 
 ### Triggering GitHub tests
 
@@ -151,34 +121,6 @@ on:
 
 The keys that trigger the workflow (e.g. `push` and `workflow_dispatch`) can be in any order.
 
-#### Scheduled tests
-
-You can also run these tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add `schedule` to the `on`  object in your workflow file and give it an "interval" value. For example:
-
-```yml
-on:
-  push:
-  schedule:
-    - cron: '0 1 * * TUE'
-  # other stuff
-```
-
-The GitHub docs can tell you more about [triggering workflows on a schedule](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events). If you want to change the interval, [these examples of cron syntax](https://crontab.guru/examples.html) can help a lot.
-
-If you've run the Setup interview more recently, you will already have this code in your file, though it will be inactive. You just have to remove the comment symbols (`#`) from the lines of code.
-
-#### Pull requests
-
-You can also trigger tests to run when someone makes a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) in GitHub.
-
-In the `on` object in your workflow file, add the `pull_request` trigger key. For example:
-
-```yml
-on:
-  push:
-  pull_request:
-  # other stuff
-```
 
 #### All together
 
