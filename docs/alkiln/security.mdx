@@ -146,9 +146,7 @@ A separate server is only one part of separating production and testing sever ac
 
 - Keep the production server's urls out of ALKiln test files, [workflow files](writing_tests.mdx#workflows), and [environment variables](#writing_tests.mdx#env-vars).
 - Never share API keys or passwords between servers.
-- Never share real data or databases between servers, whether the data is current or old.
-
-<!-- TODO: Link to old credit card numbers predicting new credit card numbers -->
+- Never share real data or databases between servers, whether the data is current or [old](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
 
 [^bonus]: Using a different server for testing is better in other ways, too. When developers pull packages that have python files onto your docassemble server, it reloads for a while. This can cause your clients' interviews to time out. <GTOYS/> tests do the same and can make for a slower user experience if they are used on a production server.
@@ -158,11 +156,11 @@ A separate server is only one part of separating production and testing sever ac
 
 **This is for**: Everyone
 
-Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is old data.
+Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is [old data](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
 For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server. If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
 
-Some projects instead use old data for testing. Avoid that as well. Even if it seems so outdated as to be useless, it can still expose you and your users.
+Some projects instead use old data for testing. Avoid that as well. Even if it seems so outdated as to be useless, it can still [expose you and your users](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
 
 ### Make an account just for ALKiln {#alkiln-account}
@@ -207,7 +205,7 @@ If your <AutoDIY/> tests need an account on your server, give them the least pri
 
 Here are a couple general good tips for keeping your testing server healthy:
 
-- Periodically clear out the testing server and start a new docker container from scratch
+- Periodically clear out the testing server and start a new docker container from scratch. check your disaster recovery. When they will update both. Need to keep production server and test server aligned. But better to update test server more often than production maybe. (And then run ALKiln tests before updating production)
 - Occasionally check the testing server to make sure it's not running resource-stealing code (blockchain miners, etc.)
 -->
 
@@ -256,7 +254,7 @@ The ["get JSON"](writing_tests.mdx#get-json) and ["compare JSON"](writing_tests.
 
 These are the only people that can create GitHub secrets
 
-**To do this it helps to know about:**
+**It can help to know about:**
 
 - GitHub secrets
 - Workflow environment variables
@@ -381,17 +379,101 @@ Avoid using hard-coded urls that lead to your server. That is, avoid using `http
 
 You also still have to avoid saving personal or security-critical information in public files and follow other security precautions, like the ones described in this documentation.
 
+<!--
+TODO: Freezing should be one combined section. They are very connected - you need the same version of both, in their own way of specifying their versions.
 
+You have to specify the same version for both, but each in their own way. Or ...same version in the action, in a different way. Footnote in action, say technically this doesn't need to be the same exact version. There's no point, but you can. Use that with care.
+
+TODO: Add a publishing action for us that references the correct (frozen) version of ALKiln in the action.
+
+TODO: Make a look up table. Maybe easier.
+
+If someone is specifying the version they wan to use, do they already know how to use the terminal
+
+TODO: Make a website that will look up this version table.
+
+Is it possible to use string substitution in GitHub workflow `uses`? [Answer: Looks unlikely]
+
+1. Automate how to get sha from the version # so user just specifies single variable (probably not possible because we'd need to dynamically set the `uses` value (which I think is impossible) or create and use a workflow file, which is not secure: https://www.phind.com/search?cache=qhx0cf31a541n85oofzkwrz5)
+1b. Use a new publish/merge workflow that edits our action file to reference the correct version of ALKiln for this new commit # and maybe adds that to a table somewhere. Remember to avoid infinite loops. Allow the user to override this? Probably not - they can just use a specific sha for the action. That will be annoying. Every time we push we'll have to pull again. Maybe just do this for our default branch.
+2. Provide instructions on how to get the right values (maybe manually make a table or an automated site)
+3. Talk to us
+4. We don't support this
+-->
+
+
+## Freeze your ALKiln version (advanced) {#freeze}
+
+**This is for any packages that:** run tests in GitHub
+
+**It can help to know about:**
+
+- [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
+- [GitHub workflow job inputs](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-of-jobsjob_idstepswith)
+- [Semantic versioning](https://semver.org/spec/v2.0.0.html)
+- [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit SHA[^SHA] or hash)
+
+To control which version of ALKiln is running your tests, you can manually set the exact version you want. That is called "freezing" the version. Then, when you are ready, you can look at what has changed and decide which version you want to update to.
+
+By default ALKiln runs your tests with its latest version. This means you have all the latest bug fixes and new features. Some organizations choose to use a version that has code and behavior that is familiar and comfortable to them.
+
+ALKiln is actually made of 2 parts. One part is the ALKiln framework, which lets you control the robot that goes to your interview and fills in answers. Another part of ALKiln is its GitHub actions, which manage setting up, starting, and cleaning up the tests.
+
+Because of factors out of our control, each of these parts has a different way to set the version. To freeze the framework, you need to use the semantic version number. For example, "5.8.0". To freeze the actions, you need to use the 40-character git commit id. Both of those need to point to the same[^ish] code. For example, the [semantic version "5.8.0"](https://www.npmjs.com/package/@suffolklitlab/alkiln/v/5.8.0) of the ALKiln framework should be paired with the [git commit with the id e79eb61cb97603d41375134d505e4fe60de7780d](https://github.com/SuffolkLITLab/ALKiln/commit/e79eb61cb97603d41375134d505e4fe60de7780d) that controls the actions. To freeze your version:
+
+1. Find the semantic version that you want.
+   1. Look at the ["git blame" for our package.json](https://github.com/SuffolkLITLab/ALKiln/blame/-/package.json).
+   1. Find the 3rd line down. It should be the line that shows ALKiln's version.
+   1. To [see the previous version](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#viewing-the-line-by-line-revision-history-for-a-file), you can tap on this symbol: <svg ariaHidden="true" focusable="false" role="img" className="octicon octicon-versions" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style={{display: "inline-block", "user-select": "none", "vertical-align": "text-bottom", overflow: "visible",}}><path d="M7.75 14A1.75 1.75 0 0 1 6 12.25v-8.5C6 2.784 6.784 2 7.75 2h6.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14Zm-.25-1.75c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25h-6.5a.25.25 0 0 0-.25.25ZM4.9 3.508a.75.75 0 0 1-.274 1.025.249.249 0 0 0-.126.217v6.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.75 1.75 0 0 1 3 11.25v-6.5c0-.649.353-1.214.874-1.516a.75.75 0 0 1 1.025.274ZM1.625 5.533h.001a.249.249 0 0 0-.126.217v4.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.748 1.748 0 0 1 0 10.25v-4.5a1.748 1.748 0 0 1 .873-1.516.75.75 0 1 1 .752 1.299Z"></path></svg>
+   1. Go back in history by tapping on that symbol until you find the version you are looking for. For example, `5.8.0`.
+1. Find the matching commit id.
+   1. Tap on the commit message for that line.
+   1. In the [address bar](https://en.wikipedia.org/wiki/Address_bar) of your web browser, look for a 40-character long set of random letters and numbers. The whole address might look something like this: https://github.com/SuffolkLITLab/ALKiln/commit/e79eb61cb97603d41375134d505e4fe60de7780d. In that example url, the commit id (or SHA[^SHA]) is `e79eb61cb97603d41375134d505e4fe60de7780d`.
+1. Set both versions.
+   1. Go back to the home page of your repository. Open your workflow file. It is in the "workflow" folder in the  ".github" folder.
+   2. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/ editing-files).
+   3. Go to the lines that look similar to the below.
+
+```yml
+        uses: SuffolkLITLab/ALKiln@v5
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+```
+
+   4. Replace `v5` with the commit id you found. For example `a29519914ffc235802be9b9b143d78ffc3a06028`.
+   1. Add a line below `DOCASSEMBLE_DEVELOPER_API_KEY`. The indentation level should be the same as ` DOCASSEMBLE_DEVELOPER_API_KEY`.
+   1. Add the text `ALKILN_VERSION: ""`
+   1. Between the quotes, put the semantic version that matches the commit id. For example, `5.8.0`.
+   1. Save the file.
+
+Using the example above, the final code should look something like this:
+
+```yml
+        uses: SuffolkLITLab/ALKiln@a29519914ffc235802be9b9b143d78ffc3a06028
+        with:
+          SERVER_URL: "${{ secrets.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          ALKILN_VERSION: "5.8.0"
+```
+
+
+[^ish]: Technically, the same exact version is usually overkill. As long as the action code and the framework code are aligned, they can point to different versions. This simplification is a lot easier to explain, though.
+
+
+<!--
 ## Freeze the ALKiln framework version {#freeze-framework}
 
 **This is for any packages that:** run tests in GitHub
 
-**To do this it helps to know about:**
+**It can help to know about:**
 
 - [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 - GitHub workflow files
 - GitHub action inputs
 - [Semantic versioning](https://docs.npmjs.com/about-semantic-versioning)
+
+Attempted edit: You can select a specific version of ALKiln to use during testing, if you don't want to automatically use the most recent version. If you do this, you must also separately specify the version of ALKiln to use for triggering tests via GitHub action, which works differently [link].
 
 Freezing your version of ALKiln's framework code gives you more control over the ALKiln framework code you use. You can examine new code before deciding whether to update to a newer version.
 
@@ -403,7 +485,7 @@ This means that the ALKiln framework you are using has all the latest bug fixes 
 
 [ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). There is a way to make sure to always use an exact version of the ALKiln framework, though, if you want. You can use a version that has code and behavior that you are familiar with and feel comfortable with.
 
-To "freeze" your ALKiln framework version in this way, you can reference a [specific ALKiln package version](https://www.npmjs.com/package/@suffolklitlab/alkiln?activeTab=versions) in your workflow <!-- TODO: add link --> file. Go to the code in your workflow file that looks similar to the below and add the `ALKILN_VERSION` input variable that you see here:
+To "freeze" your ALKiln framework version in this way, you can reference a [specific ALKiln package version](https://www.npmjs.com/package/@suffolklitlab/alkiln?activeTab=versions) in your workflow (TODO: add link) file. Go to the code in your workflow file that looks similar to the below and add the `ALKILN_VERSION` input variable that you see here:
 
 ```yml
         uses: SuffolkLITLab/ALKiln@v5
@@ -428,7 +510,7 @@ This is different than [the ALKiln action versions](#freeze-actions). The ALKiln
 
 **This is for any packages that:** run tests in GitHub
 
-**To do this it helps to know about:**
+**It can help to know about:**
 
 - [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 - [GitHub workflows](https://docs.github.com/en/actions/using-workflows)
@@ -436,7 +518,7 @@ This is different than [the ALKiln action versions](#freeze-actions). The ALKiln
 
 Freezing your version of ALKiln's actions gives you more control over the ALKiln action code you use. You can examine new code before deciding whether to update to a newer version.
 
-You use ALKiln's actions in your workflow file <!-- TODO: add link --> to trigger GitHub tests. This is different from the actual ALKiln framework, which lets you control the robot that goes through your interview answering questions.
+You use ALKiln's actions in your workflow file (TODO: add link) to trigger GitHub tests. This is different from the actual ALKiln framework, which lets you control the robot that goes through your interview answering questions.
 
 The workflow file we first create for you in the ALKiln setup interview always uses the latest ALKiln action code. As of March 2024, the setup interview used the latest code of a branch on ALKiln called "v5" for its actions.
 
@@ -470,25 +552,66 @@ When you want to update to a new version of the ALKiln action code, you can chec
 :::tip
 This is different than the [ALKiln framework version](#freeze-framework). The framework does more than just start your tests. It is the code that lets you control the robot that goes through your interview answering questions. You do usually need to make sure these match, though, as they work together. When you update one, you should also update the other.
 :::
+-->
+
+<!--
+[^♪]: You can hear your SHA at [SHAlala](https://garrett-bodley.github.io/SHAlala/).
+-->
+
+[^SHA]: SHA stands for "secure hash algorithm". Git has a secure hash algorithm of its own to make an "id" for each commit that is 40 characters long. Very broadly, for each commit a repository makes, git uses math to reliably turn the whole history of the package and all its versions, including the newest commit, into 40 letters and numbers. Unlike a branch name, no one can edit a commit SHA because it would break the math. A developer can only delete the commit. Because of this, you can pretty much rely on a commit SHA to always go to either the same code or no code at all. That is, no one can hide sneaky new code there.
 
 
-[^SHA]: SHA stands for "secure hash algorithm". Git has a secure hash algorithm of its own to make an "id" for each commit. Very broadly, for each commit a repository makes, git uses math to reliably turn the whole history of the package and all its versions, including the newest commit, into 40 letters and numbers. Unlike a branch name, a commit SHA is unable to be changed or edited because it is created from that history (though it can be deleted). Because of this, you can pretty much rely on a commit SHA to always go to either the same code or no code at all. That is, no one can hide sneaky new code there.
+## Update your software {#upgrade}
 
-<!-- [^♪]: You can hear your SHA at [SHAlala](https://garrett-bodley.github.io/SHAlala/). -->
+**This is for:** Everyone
+
+Update your tools, especially when that update includes a security fix. Security updates are meant to protect you from newly discovered risks.
+
+Choosing when to update to the latest version of software can be tricky. New features and bug fixes can interfere with your working system. That said, when there is a security update you should seriously think about upgrading quickly.
+
+Your tools should keep a record of their changes, often called a "changelog". This is [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). This is [docassemble's changelog](https://docassemble.org/docs/changelog.html). However your software tracks changes, those records should clearly label security updates. Keep an eye out for those updates.
 
 
-## Update your ALKiln and other tools when needed {#update}
+### Update your ALKiln and other tools when needed {#upgrade-ALKiln}
 
-Update your tools, especially when that update includes a security fix. Check the [changelog of ALKiln](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md) and your other tools for security updates.
+**This is for:** Everyone
 
-Choosing when to update to the latest version of software can be tricky. New features and bug fixes can interfere with your working system. That said, when there is a security update you might have to go ahead with the update.
+Check the [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md) for updates and update regularly, especially when there is a security update.
 
-Your tools should keep a record of their changes, often called a "changelog". Those records should clearly label security updates. Keep an eye out for those updates.
+Security updates will have the heading "Security". For example, [this is one of ALKiln's security updates](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md#security-1).
 
-For example, [this is one of ALKiln's security updates](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md#security-1).
+
+### Update docassemble {#upgrade-da}
+
+**This is for:** Everyone
+
+[Upgrade your testing server's docassemble version](https://docassemble.org/docs/admin.html#upgrade) quickly when there is a security update. Then run all your tests before upgrading your production server too.
+
+With most updates, you can usually wait a little while to see if there are any bugs that come up and get fixed. You should deal with a security fix more quickly. You then want to make sure your testing server and your production server are using the same version so that your tests are more accurate.
+
+<!-- If you feel you cannot update your production server, you can still update your testing server more often to keep an eye on recent changes. -->
+
+
+### Start a new Docker container regularly {#upgrade-docker}
+
+**This is for:** Everyone
+
+[Clear out the testing server and start a new docker container from scratch](https://docassemble.org/docs/docker.html#upgrading) when there are security upgrades. Then run all your tests before upgrading your production server too.
+
+Docassemble's Docker image gets updated occasionally. You can wait a little while to see if there are any bugs that come up, but generally keep up to date with those as much as you can, especially when there are security fixes.
+
+Even if there is not a security-related update, it is good to stress test your server setup. Since you might have to suddenly start a new Docker container at unexpected times because of system failures, it is a good idea to do this every now and then anyway to make sure your system can handle recovering from that kind of event and see if complications come up.
+
+You then want to make sure your testing server and your production server are using the same version so that your tests are more accurate.
+
+<!-- If you feel you cannot update your production server, you can still update your testing server more often to keep an eye on recent changes. -->
 
 
 ## General GitHub practices {#github}
+
+**This is for any packages that:** run tests in GitHub
+
+There are some ways to make your GitHub repository itself more secure that have nothing to do with ALKiln.
 
 
 ### Protect pull requests {#prs}
