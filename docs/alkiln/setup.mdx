@@ -32,7 +32,7 @@ This page will tell you about the different ways to set up your ALKiln tests. Yo
 
 ## Do _I_ need to read this? {#who}
 
-Maybe not. People just writing tests can skip this page. Also, if your package's repository already has a `.github` folder with workflow files you can probably skip this page.
+Maybe not. People just writing tests can skip this page. Also, if your package's repository already has a [`.github` folder with a workflow file](writing_tests.mdx#workflows-where) you can probably skip this page.
 
 On the other hand, people helping manage GitHub repositories or organizations and people helping manage docassemble servers might find this page useful.
 
@@ -275,6 +275,8 @@ GitHub can show you [information about your running tests](writing_tests.mdx#run
 
 <!-- ## Workflow file for <GTOYS/> tests {#githubNyou-workflow-file} -->
 
+<!-- [](writing_tests.mdx#workflows-where) -->
+
 <!-- Should the below be just in the setup interview? It seems like it should be here too, but that doubles up on information location. I _would_ really like to avoid duplication if possible, especially about the specific contents of the workflow files, which already has to be in the setup interview. -->
 
 <!-- Each package should have its own workflow file. It should be in your package's `.github` folder in your GitHub repository. That file triggers the tests to run and uses ALKiln to run them.
@@ -316,8 +318,8 @@ Tags
 For everyone:
 
 - The setup for <GTOYS/> tests is more reliable, but also more complex than the other methods. Setting them up on your own requires admin access to the repository and the docassemble server and an understanding of the correct files and of GitHub secrets. The [ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) tries to help with that and even people with developer access can do it, but it is complex in its own ways.
-- When <GTOYS/> tests start up, they pull your package code into your docassemble server, just like any other developer. This means that if you test a package with a python module your docassemble server will reload, slowing down access for other people.
-- Your tests might be more flaky. That means they may fail for reasons that don't have to do with the interviews. For example, if your tests are running while your server is reloading, ALKiln will keep running, so other tests will still have an opportunity to continue, but individual tests may fail even if your code is correct. Your server can reload for many reasons - updating your config, installing a new package, etc. When tests fail meaninglessly, it slows down your development cycle and sometimes people end up turning off the tests instead of dealing with the complexity.
+- When <GTOYS/> tests start up, they pull your package code into your docassemble server, just like any other developer. This means that if you test a package with a python module your docassemble server will reload, slowing down access for other people who are using the server.
+- Your tests might be more flaky. That means they may fail for reasons that don't have to do with the interviews. For example, if your tests are running while your server is reloading, ALKiln will keep running, so other tests will still have an opportunity to continue, but individual tests may fail even if your code is correct. Your server can reload for many reasons - updating your config, installing a new package, another <GTOYS/> test pulling in a module when it is setting up, etc. When tests fail meaninglessly, it slows down your development cycle and sometimes people end up turning off the tests instead of dealing with the complexity.
 
 For some people:
 
@@ -452,7 +454,7 @@ GitHub lets you disable or limit all tests, or all actions, in your repository. 
 
 Another option is to [disable an individual workflow](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow). Your package's GitHub [workflow file](#workflows) is what triggers ALKiln tests on GitHub.
 
-You can also [delete the workflow file from your repository completely](https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository). If you go to the front page of your repository in GitHub, the file is in the `workflows` folder of the `.github` folder. It is often called `run_form_tests.yml`.
+You can also [delete](https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository) the [workflow file](writing_tests.mdx#workflows-where) from your repository completely.
 
 
 ### Disabling tests for the whole organization {#disable-org}
@@ -464,6 +466,8 @@ In GitHub, [you can disable any workflows (actions) for a whole organization](ht
 
 
 <!-- ## Workflow file for <KittyLitter/> tests {#sandbox-workflow-file} -->
+
+<!-- []](writing_tests.mdx#workflows-where) -->
 
 <!-- Should the below be just in the setup interview? It seems like it should be here too, but that doubles up on information location. I _would_ really like to avoid duplication if possible, especially about the specific contents of the workflow files, which already has to be in the setup interview. -->
 

@@ -265,9 +265,7 @@ These are the only people that can create GitHub secrets
 Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-playground).
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets[^org_secrets], whichever is right for you.
-
-2. Go to the home page of your repository. Tap on the `.github` folder, then on `workflows` folder, then on the YAML file in there that runs the ALKiln tests.
-
+2. [Find your workflow file](writing_tests.mdx#workflows-where).
 3. It should include a line that looks similar to this:
 
 ```yml
@@ -380,7 +378,7 @@ Avoid using hard-coded urls that lead to your server. That is, avoid using `http
 You also still have to avoid saving personal or security-critical information in public files and follow other security precautions, like the ones described in this documentation.
 
 <!--
-TODO: Freezing should be one combined section. They are very connected - you need the same version of both, in their own way of specifying their versions.
+TODO: Freezing should be one combined section. They are very connected - you need the same version from both, in their own way of specifying their versions.
 
 You have to specify the same version for both, but each in their own way. Or ...same version in the action, in a different way. Footnote in action, say technically this doesn't need to be the same exact version. There's no point, but you can. Use that with care.
 
@@ -395,7 +393,7 @@ TODO: Make a website that will look up this version table.
 Is it possible to use string substitution in GitHub workflow `uses`? [Answer: Looks unlikely]
 
 1. Automate how to get sha from the version # so user just specifies single variable (probably not possible because we'd need to dynamically set the `uses` value (which I think is impossible) or create and use a workflow file, which is not secure: https://www.phind.com/search?cache=qhx0cf31a541n85oofzkwrz5)
-1b. Use a new publish/merge workflow that edits our action file to reference the correct version of ALKiln for this new commit # and maybe adds that to a table somewhere. Remember to avoid infinite loops. Allow the user to override this? Probably not - they can just use a specific sha for the action. That will be annoying. Every time we push we'll have to pull again. Maybe just do this for our default branch.
+1b. Use a new publish/merge workflow that edits our action file to reference the correct version of ALKiln for this new commit # and maybe adds that to a table somewhere. Remember to avoid infinite loops. Allow the user to override this? Probably not - they can just use a specific sha for the action. That will be annoying. Every time we push we'll have to pull again. Maybe just do this for our default branch. https://stackoverflow.com/questions/45989860/how-can-i-get-the-commit-hash-for-a-package-installed-via-npm-from-a-git-repo. https://www.phind.com/search?cache=jxprurgg0wr3b2ai5lqolmdb.
 2. Provide instructions on how to get the right values (maybe manually make a table or an automated site)
 3. Talk to us
 4. We don't support this
@@ -430,8 +428,8 @@ Because of factors out of our control, each of these parts has a different way t
    1. Tap on the commit message for that line.
    1. In the [address bar](https://en.wikipedia.org/wiki/Address_bar) of your web browser, look for a 40-character long set of random letters and numbers. The whole address might look something like this: https://github.com/SuffolkLITLab/ALKiln/commit/e79eb61cb97603d41375134d505e4fe60de7780d. In that example url, the commit id (or SHA[^SHA]) is `e79eb61cb97603d41375134d505e4fe60de7780d`.
 1. Set both versions.
-   1. Go back to the home page of your repository. Open your workflow file. It is in the "workflow" folder in the  ".github" folder.
-   2. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/ editing-files).
+   1. [Find your workflow file](writing_tests.mdx#workflows-where).
+   2. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
    3. Go to the lines that look similar to the below.
 
 ```yml
@@ -460,105 +458,11 @@ Using the example above, the final code should look something like this:
 
 [^ish]: Technically, the same exact version is usually overkill. As long as the action code and the framework code are aligned, they can point to different versions. This simplification is a lot easier to explain, though.
 
-
-<!--
-## Freeze the ALKiln framework version {#freeze-framework}
-
-**This is for any packages that:** run tests in GitHub
-
-**It can help to know about:**
-
-- [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
-- GitHub workflow files
-- GitHub action inputs
-- [Semantic versioning](https://docs.npmjs.com/about-semantic-versioning)
-
-Attempted edit: You can select a specific version of ALKiln to use during testing, if you don't want to automatically use the most recent version. If you do this, you must also separately specify the version of ALKiln to use for triggering tests via GitHub action, which works differently [link].
-
-Freezing your version of ALKiln's framework code gives you more control over the ALKiln framework code you use. You can examine new code before deciding whether to update to a newer version.
-
-The ALKiln framework is the part of ALKiln that lets you control the robot that goes through your interview answering questions. This is different from the ALKiln actions, which trigger GitHub to start your tests.
-
-The workflow file we first create for you in the ALKiln setup interview always uses the latest major version[^v] of the ALKiln framework. That major version is based on when you used the setup interview. As of March 2024, ALKiln is on major version 5. Tests that authors set up now will use the latest version 5 code. For example, version `5.10.1` as of March 12, 2024.
-
-This means that the ALKiln framework you are using has all the latest bug fixes and new features. That can be a good thing, but it also means you might not be sure of exactly what code runs your tests.
-
-[ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). There is a way to make sure to always use an exact version of the ALKiln framework, though, if you want. You can use a version that has code and behavior that you are familiar with and feel comfortable with.
-
-To "freeze" your ALKiln framework version in this way, you can reference a [specific ALKiln package version](https://www.npmjs.com/package/@suffolklitlab/alkiln?activeTab=versions) in your workflow (TODO: add link) file. Go to the code in your workflow file that looks similar to the below and add the `ALKILN_VERSION` input variable that you see here:
-
-```yml
-        uses: SuffolkLITLab/ALKiln@v5
-        with:
-          SERVER_URL: "${{ secrets.SERVER_URL }}"
-          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
-          ALKILN_VERSION: "5.9.0"
-```
-
-Instead of "5.9.0", write the version you want to use.
-
-When you want to update to a new version of the framework, you can check all the new changes to the code to make sure you feel comfortable with them before updating to a new node version.
-
-:::tip
-This is different than [the ALKiln action versions](#freeze-actions). The ALKiln actions let you start your tests on GitHub. You do usually need to make sure these match, though, as they work together. When you update one, you should also update the other.
-:::
-
-[^v]: ALKiln does its best to use [semantic versioning](https://semver.org/spec/v2.0.0.html).
-
-
-## Freeze an ALKiln action version {#freeze-actions}
-
-**This is for any packages that:** run tests in GitHub
-
-**It can help to know about:**
-
-- [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
-- [GitHub workflows](https://docs.github.com/en/actions/using-workflows)
-- [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit SHA[^SHA] or hash)
-
-Freezing your version of ALKiln's actions gives you more control over the ALKiln action code you use. You can examine new code before deciding whether to update to a newer version.
-
-You use ALKiln's actions in your workflow file (TODO: add link) to trigger GitHub tests. This is different from the actual ALKiln framework, which lets you control the robot that goes through your interview answering questions.
-
-The workflow file we first create for you in the ALKiln setup interview always uses the latest ALKiln action code. As of March 2024, the setup interview used the latest code of a branch on ALKiln called "v5" for its actions.
-
-This means that your ALKiln action has all the latest bug fixes and new features to the actions. That can be a good thing, but it also means you might not be sure of exactly what code starts your tests.
-
-[ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). There is a way to make sure to always use an exact version of ALKiln's actions, though, if you want. You can use a version that has code and behavior that you are familiar with and feel comfortable with.
-
-To "freeze" your ALKiln action version in this way, you can reference a specific ALKiln git commit id (or SHA[^SHA]) in your workflow file:
-
-1. Go to [ALKiln's repository](https://github.com/SuffolkLITLab/ALKiln).
-2. Find the id of a commit you need. You need the full commit id which is 40 random characters. For example, a29519914ffc235802be9b9b143d78ffc3a06028.
-   1. To find the commit id, go to the main page of [ALKiln's GitHub repo](https://github.com/SuffolkLITLab/ALKiln).
-   1. Pick the branch of ALKiln that is relevant to you.
-   1. Near the top, click on “commits".
-   1. Find the commit that you want. On the right-hand side of that row will be the shortened version of the commit id. To the right of that is the “copy” button.
-   1. Click that to copy the full commit id.
-3. In your repository's directory, go to .github/workflows and find the file that starts the tests. There's a line in there that look's something like this:
-
-```yml
-uses: suffolkLITLab/ALKiln@v5
-```
-
-4. Change the text "v5" to the commit id. For example:
-
-```yml
-uses: suffolkLITLab/ALKiln@a29519914ffc235802be9b9b143d78ffc3a06028
-```
-
-When you want to update to a new version of the ALKiln action code, you can check all the new changes to the code to make sure you feel comfortable with them before updating to a new commit id.
-
-:::tip
-This is different than the [ALKiln framework version](#freeze-framework). The framework does more than just start your tests. It is the code that lets you control the robot that goes through your interview answering questions. You do usually need to make sure these match, though, as they work together. When you update one, you should also update the other.
-:::
--->
+[^SHA]: SHA stands for "secure hash algorithm". Git has a secure hash algorithm of its own to make an "id" for each commit that is 40 characters long. Very broadly, for each commit a repository makes, git uses math to reliably turn the whole history of the package and all its versions, including the newest commit, into 40 letters and numbers. Unlike a branch name, no one can edit a commit SHA because it would break the math. A developer can only delete the commit. Because of this, you can pretty much rely on a commit SHA to always go to either the same code or no code at all. That is, no one can hide sneaky new code there.
 
 <!--
 [^♪]: You can hear your SHA at [SHAlala](https://garrett-bodley.github.io/SHAlala/).
 -->
-
-[^SHA]: SHA stands for "secure hash algorithm". Git has a secure hash algorithm of its own to make an "id" for each commit that is 40 characters long. Very broadly, for each commit a repository makes, git uses math to reliably turn the whole history of the package and all its versions, including the newest commit, into 40 letters and numbers. Unlike a branch name, no one can edit a commit SHA because it would break the math. A developer can only delete the commit. Because of this, you can pretty much rely on a commit SHA to always go to either the same code or no code at all. That is, no one can hide sneaky new code there.
 
 
 ## Update your software {#upgrade}
