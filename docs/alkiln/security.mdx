@@ -12,6 +12,8 @@ import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 WIP (Work in progress)
 :::
 
+<!-- WIP TODO: write who each section is for -->
+
 <!-- TODO:
 - [x] Make issue: Components in headings don't show up in the sidebar. https://github.com/facebook/docusaurus/issues/10017
 -->
@@ -100,10 +102,6 @@ Exposing:
 
 This page will help you learn some steps you can take to protect yourself and your users as you develop your code with ALKiln tests. It will also talk about the [security practices ALKiln itself uses](#alkilns-precautions).
 
-:::caution Critical reading
-Read at least the first section on this page - [using a separate server for testing](#privilege).
-:::
-
 In software development, security can be an intimidating topic. By design, ALKiln tests are unable to do very much, but all software comes with risks. We can mitigate those risks with robust security measures. Over time, we can all build up our security tool chests to:
 
 - Protect our users' information
@@ -122,14 +120,35 @@ One of our strongest tools to increase security is the [principle of least privi
 -->
 
 
+<!--
+## Trust {#trust}
+
+Trust is part of how we decide what tools to use. How do you know who to trust? You can ask some questions.
+
+- Who is making and providing the tool?
+- What are their economic incentives?
+- What are their security practices?
+
+Our answers:
+
+- Who: We are community members and staff with SuffolkLITLab working on access to justice who volunteer our time to developing this tool.
+- Economics: The ALKiln team hopes this tool will continue to be free and open source software. We hope to never accept venture capital funding. ALKiln uses an MIT license (todo: link). Free does come at a cost, though - we do have less time and fewer resources, so development is steady, but slow.
+- Security: Read about [how ALKiln protects you](#alkilns-precautions).
+
+Personal incentives are also a factor, but words on a page will not capture them. Come join the community and get to know us!
+ -->
+
+
 ## Principle of least privilege {#privilege}
 
-Follow the [principle of least privilege](https://www.cyberark.com/what-is/least-privilege/). It is one of the most effective ways to protect yourself and your users. Only give ALKiln, or any software, access to the data it needs and no more.
+Follow the [principle of least privilege](https://www.cyberark.com/what-is/least-privilege/). That means give software (or people) the least access possible to your server and data that still lets them do what they need to do. For example, if someone just needs to fill out an interview, give them the role of "user", not "developer".
+
+It is one of the most effective ways to protect yourself and your users. Only give ALKiln, or anyone, the access it needs and no more.
 
 
 ### Separate production and testing {#testing-server}
 
-**This is for:** Everyone
+**This is for:** server admins
 
 Using a separate testing server and separate testing data are some of the most effective ways to limit ALKiln's access to personal and security-critical data.
 
@@ -140,7 +159,7 @@ There are some kinds of tests that projects run on their production server, but 
 - Never has access to your current or old production databases
 - Can never affect the files on your production server
 
-First and foremost, avoid installing or running <GTOYS/> and <AutoDIY/> tests on your production server[^bonus]. Have a separate server for those testing methods. <KittyLitter plain={true}/> tests already make their own server and can be the most secure if you [use them properly](#sandbox). Use those if you are [able to use them](setup.mdx#sandbox-cons).
+First and foremost, avoid installing or running <GTOYS/> and <AutoDIY/> tests on your production server[^bonus]. Have a separate server for those testing methods. <KittyLitter/> tests already make their own server and can be the most secure if you [use them properly](#sandbox). Use those if you are [able to use them](setup.mdx#sandbox-cons).
 
 A separate server is only one part of separating production and testing sever access, though. You also need to:
 
@@ -152,24 +171,29 @@ A separate server is only one part of separating production and testing sever ac
 [^bonus]: Using a different server for testing is better in other ways, too. When developers pull packages that have python files onto your docassemble server, it reloads for a while. This can cause your clients' interviews to time out. <GTOYS/> tests do the same and can make for a slower user experience if they are used on a production server.
 
 
-### Use fake data in tests {#mock data}
+### Use fake data in tests {#mock-data}
 
 **This is for**: Everyone
 
-Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is [old data](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
+Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is [old data](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/). If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
 
-For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server. If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
+If your test needs a logged-in user, avoid using a real person's account. Instead, use [ALKiln's account](#alkiln-account) or a completely separate fake account.
 
-Some projects instead use old data for testing. Avoid that as well. Even if it seems so outdated as to be useless, it can still [expose you and your users](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
+Never use a database with real information with your tests, even old information. For example:
+
+- Never share data between your production server and your testing server. For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server.
+- Never use old databases. Some projects realize that they should avoid using their current user database for testing. Instead, they decide use an old database. Avoid that as well. Even if the data seems so old that it is useless, it can still [expose you and your users](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
 
 ### Make an account just for ALKiln {#alkiln-account}
 
-**This is for any packages:** Everyone
+<!-- WIP TODO: write who each section is for -->
+
+**This is for:** Everyone
 
 <!-- TODO: add a section for setup about making an account. take it away from the setup interview like other stuff. Then link to in here and visa versa. -->
 
-Avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own account. This also lets you see its activity in the logs more clearly and delete the account easily if you need to. There are non-security related reasons to make a separate account too[^perks].
+Even though you are using a [testing server](#testing-server), avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own account. This also lets you see its activity in the logs more clearly and lets you delete the account easily if you need to. There are non-security related reasons to make a separate account too[^perks].
 
 <GTOYS/> tests need to be connected to a docassemble account to work properly. Even if you are using other types of tests, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
 
@@ -189,9 +213,11 @@ If you stop needing the account, delete it.
 
 ### ALKiln account role {#alkiln_role}
 
-ALKiln strongly limits what tests can do. Even so, you should give the ALKiln account the fewest permissions possible.
+**This is for:** Everyone
 
-For <GTOYS/> tests, give the ALKiln docassemble account the [role](https://docassemble.org/docs/users.html) of "developer". That is the most limited role ALKiln can use to do what it needs to do. Avoid giving that account's API key any [extra permissions](https://docassemble.org/docs/config.html#permissions).
+ALKiln strongly limits what tests can do. Even so, you should limit ALKiln too by giving it the fewest permissions possible.
+
+For <GTOYS/> tests, give the ALKiln docassemble account the "developer" [role](https://docassemble.org/docs/users.html). "Developer" is the most limited role ALKiln can use with <GTOYS/> tests to do what it needs to do. When you make an API key for the account, ignore the [extra permissions](https://docassemble.org/docs/config.html#permissions) options.
 
 If your <AutoDIY/> tests need an account on your server, give them the least privileges possible. In those cases, most authors only need to give ALKiln the "user" role.
 
@@ -212,33 +238,37 @@ Here are a couple general good tips for keeping your testing server healthy:
 
 ## Still protect sensitive data {#sensitive-data}
 
-Even after keeping personal and security-critical data away from [the account that runs ALKiln tests](#alkiln-account), there are still ways you can expose some sensitive data in tests. For example, it is possible to deliberately show a server config value on an interview page. Even if you are using a testing server, that server still has credentials, like API keys and passwords, and you should protect those.
+**This is for:** Everyone
 
-<!-- TODO: Link to env vars? -->
-
-It is possible to use sensitive information to fill in fields in your tests, though, if you do it correctly using environment variables. ALKiln is careful to [protect against showing information you put in environment variables](#alkiln-env-vars).
+Even after keeping personal and security-critical data away from [the account that runs ALKiln tests](#alkiln-account), there are still ways you can expose your test server's sensitive data in tests. Even if you are using a testing server, that server still has credentials, like API keys and passwords, and you should avoid exposing those to the ALKiln tests.
 
 
 ### Avoid sensitive data in package files {#sensitive-info-files}
 
-**This is for any packages that:** have files that can be seen by the public
+**This is for:** Everyone
 
 Avoid putting personal or security-critical information in your package's files. It is possible that someone will see those files. For example, if you have a pubic repository on GitHub, anyone can see your package's files.
 
 If you need to use sensitive information in your tests:
 
 - For tests running in GitHub, [add a GitHub secret](#sensitive-info-github)
-- For <AutoDIY/> tests, [add a variable in your docassemble configuration file](#sensitive-info-playground)
+- For <AutoDIY/> tests, [add a variable in your docassemble configuration file](#sensitive-info-diy)
 
 
 ### Avoid showing sensitive data on screen {#no-show}
 
-Avoid visually showing personal or security-critical data on an interview page. For example, it is possible to deliberately show a server config value on an interview page. Even though you yourself can try to avoid [taking pictures of pages](writing_tests.mdx#pics) with personal or security-critical data, an error can happen on that page. ALKiln takes pictures of pages that error and there is no way that ALKiln can know that the contents of that page are sensitive.
+**This is for:** Everyone
 
-<!-- TODO: ALKiln: allow users to prevent all error pics and html pages. -->
+Avoid visually showing personal or security-critical data on an interview page. For example, you can show a server config value on an interview page in the text of a `subquestion`. Even though you yourself can try to avoid [taking pictures](writing_tests.mdx#pics) of those pages, an error can happen on that page. ALKiln takes pictures of pages that error and there is no way that ALKiln can know what text you are choosing to show to the user.
+
+Using ALKiln to fill in answers in the interview is different. You can safely use sensitive information to fill in fields by using the ["secret value" Step](#secret-val).
+
+<SecureEnvVars/>
 
 
 ### Avoid JSON Steps with sensitive data {#json-vars}
+
+**This is for:** Everyone
 
 The ["get JSON"](writing_tests.mdx#get-json) and ["compare JSON"](writing_tests.mdx#compare-json) Steps show a page's JSON variables by logging them, saving them in a file, or both. ALKiln is currently unable to filter out sensitive values - personal or security-critical data - in that JSON. Only use those Steps when you are sure the JSON will be safe to show.
 
@@ -262,7 +292,7 @@ These are the only people that can create GitHub secrets
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-playground).
+Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-diy).
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets[^org_secrets], whichever is right for you.
 2. [Find your workflow file](writing_tests.mdx#workflows-where).
@@ -292,7 +322,7 @@ If this is the first environment variable you're adding, right below that last l
 5. Write your Step and use the names of these secrets as the values. For example:
 
 ```gherkin
-    And I set the variable "very_secure_password" to "ALKILN_USER_PASSWORD"
+  And I set the variable "very_secure_password" to "ALKILN_USER_PASSWORD"
 ```
 
 <!-- TODO: put this in an appropriate place
@@ -334,7 +364,7 @@ Right now Story Tables are unable to use environment variables to set variables.
 [^org_secrets]: [GitHub organization secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization) can be useful if an organization wants to create a variable that all of its repositories will be able to use and avoid creating that secret in every individual repository.
 
 
-### How to use sensitive information in <AutoDIY/> tests {#sensitive-info-playground}
+### How to use sensitive information in <AutoDIY/> tests {#sensitive-info-diy}
 
 **This is for:** <AutoDIY/> tests
 
@@ -357,7 +387,7 @@ alkiln:
 The use that environment variable name in your test. For example:
 
 ```gherkin
-    And I set the variable "very_secure_password" to "ALKILN_USER_PASSWORD"
+  And I set the variable "very_secure_password" to "ALKILN_USER_PASSWORD"
 ```
 
 We recommend that you start your environment variable names with "ALKILN_". That will help avoid conflicting with the environment variables of your operating system.
@@ -411,7 +441,7 @@ Is it possible to use string substitution in GitHub workflow `uses`? [Answer: Lo
 - [Semantic versioning](https://semver.org/spec/v2.0.0.html)
 - [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit SHA[^SHA] or hash)
 
-To control which version of ALKiln is running your tests, you can manually set the exact version you want. That is called "freezing" the version. Then, when you are ready, you can look at what has changed and decide which version you want to update to.
+To control which version of ALKiln is running your tests on GitHub, you can manually set the exact version you want. That is called "freezing" the version. Then, when you are ready, you can look at what has changed and decide which version you want to update to.
 
 By default ALKiln runs your tests with its latest version. This means you have all the latest bug fixes and new features. Some organizations choose to use a version that has code and behavior that is familiar and comfortable to them.
 
@@ -465,7 +495,7 @@ Using the example above, the final code should look something like this:
 -->
 
 
-## Update your software {#upgrade}
+## Update your tools {#upgrade}
 
 **This is for:** Everyone
 
@@ -476,7 +506,7 @@ Choosing when to update to the latest version of software can be tricky. New fea
 Your tools should keep a record of their changes, often called a "changelog". This is [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). This is [docassemble's changelog](https://docassemble.org/docs/changelog.html). However your software tracks changes, those records should clearly label security updates. Keep an eye out for those updates.
 
 
-### Update your ALKiln and other tools when needed {#upgrade-ALKiln}
+### Update ALKiln when needed {#upgrade-ALKiln}
 
 **This is for:** Everyone
 
@@ -487,7 +517,7 @@ Security updates will have the heading "Security". For example, [this is one of 
 
 ### Update docassemble {#upgrade-da}
 
-**This is for:** Everyone
+**This is for:** server admins
 
 [Upgrade your testing server's docassemble version](https://docassemble.org/docs/admin.html#upgrade) quickly when there is a security update. Then run all your tests before upgrading your production server too.
 
@@ -498,7 +528,7 @@ With most updates, you can usually wait a little while to see if there are any b
 
 ### Start a new Docker container regularly {#upgrade-docker}
 
-**This is for:** Everyone
+**This is for:** server admins
 
 [Clear out the testing server and start a new docker container from scratch](https://docassemble.org/docs/docker.html#upgrading) when there are security upgrades. Then run all your tests before upgrading your production server too.
 
@@ -539,7 +569,7 @@ Private repositories can ignore this since they would first have to share their 
 
 On GitHub, workflow job logs and artifacts of public repositories are visible to the public, just like the code. Also, any logged in user can download those workflow artifacts.
 
-That might be fine. Part of being transparent is letting the public understand how your packages are working. Also, there are [some ways](#set-env-var) ALKiln lets you set variables that you want to keep secret. That said, if you are concerned about your logs and artifacts there are some things you can do to make these less available:
+That might be fine. Part of being transparent is letting the public understand how your packages are working. Also, there are [some ways](#secret-val) ALKiln lets you set variables that you want to keep secret. That said, if you are concerned about your logs and artifacts there are some things you can do to make these less available:
 
 - Make your repository private
 - [Delete the logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#deleting-logs) and [delete the artifacts](https://docs.github.com/en/actions/managing-workflow-runs/removing-workflow-artifacts).
@@ -619,7 +649,7 @@ You can specifically look at [GitHub's recommendations for using third-party act
 
 ## Things to worry about less
 
-There are some security protections that you have automatically.
+There are some security protections that you have by default.
 
 
 ### Worry less: Your production server {#production}
@@ -652,19 +682,14 @@ The first page of the <AutoDIY/> interview lets you choose <!-- link to descript
 
 ## Worry less: You can disable tests {#disable}
 
+**This is for any packages that:** run tests in GitHub
+
 If you ever become uncomfortable or concerned about your ALKiln tests, there are [multiple ways you can disable them](setup.mdx#disable).
 
 
 ## ALKiln protects you too {#alkilns-precautions}
 
-Trust is part of how we decide what tools to use. How do you know who to trust? You can ask some questions.
-
-- Who is making and providing the tool?
-- What are their economic incentives?
-- What are their personal incentives?
-- What are their security practices?
-
-Out team takes special precautions with ALKiln's code to ensure you are as safe as we can make you. We are always looking for more ways to improve our security practices.
+Our team takes special precautions with ALKiln's code to ensure you are as safe as we can make you. We are always looking for more ways to improve our security practices.
 
 
 ### ALKlin is limited {#limited}
@@ -685,7 +710,7 @@ With <GTOYS/> tests, ALKiln must have [developer privileges](#alkiln_role) to se
 
 **This is for:** Everyone
 
-[Environment variables might contain sensitive information](#sensitive-info-playground). Because of this ALKiln takes extra care with them.
+[Environment variables might contain sensitive information](#sensitive-info-diy). Because of this ALKiln takes extra care with them.
 
 <SecureEnvVars/>
 

@@ -10,8 +10,10 @@ import styles from "../../src/css/images.module.css"
 import NeedProxyVars from './components/\_need_proxy_vars.md';
 import SecureEnvVars from './components/\_secure_env_vars.md';
 import A11y from './components/\_a11y.md';
+import WithSecretsForOrgs from './components/\_with_secrets.md';
 import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 import { ScenarioDir } from './components/\_scenario_folder_contents.js';
+import { RobotStage } from './components/\_robot_stage.js';
 
 
 :::caution
@@ -39,10 +41,10 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
 1. If you are using <GTOYS/> or <KittyLitter/> tests, those tests will run when anyone commits to GitHub.
 1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors. In GitHub, those files are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts). bookmark
+1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors. In GitHub, those files are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
 
-<!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
+<!-- TODO: The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
 
 Here is an example of a more complex test for a quick refresher on some of our features:
 
@@ -136,19 +138,43 @@ You **must** include the `interview` Step in each Scenario **before setting any 
 <!-- You can use url args with an `Examples` table to test multiple languages -->
 
 
-### `I sign in with the email "<environment variable 1>" and the password "<environment variable 2>"` {#sign-in}
+### `I sign in with the email "<username env var>" and the password "<password env var>"` {#sign-in}
 
-<!-- WIP old format -->
+Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start interview" Step](#start-interview).
 
-Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start the interview" Step](#start-interview):
+The Step format:
 
 ```gherkin
-  Given I sign in with the email "USER_EMAIL" and the password "USER_PASSWORD"
+  Given I sign in with the email "<username env var>" and the password "<password env var>"
 ```
 
-You **must** use [environment variables](#env-vars) for the values in this command to keep the user log in information secure. `"USER_EMAIL"` and `"USER_PASSWORD"` are just examples of environment variable names. You can use any names you want.
+The two blanks to fill in are `<username env var>` and `<password env var>`. Each of them must be the name of an [environment variable](#env-vars) that you have already added to your [workflow file](#workflows).
 
-ALKiln will avoid taking a screenshot of this page or saving the HTML of the page. It also will avoid logging or printing these values. It is a bad security practice to take pictures of or print sensitive information like the information on login pages.
+<!-- TODO: Add link to GitHub secrets -->
+
+:::danger Use GitHub secrets
+You **must** use GitHub secrets to set the [environment variables](#env-vars) in order to keep the information secure.
+:::
+
+The `<username env var>` variable should contain the username of an account on your docassemble server. The `<password env var>` variable should contain the password of that account. [Never use a real person's account or information](security.mdx#mock-data).
+
+Example Step:
+
+```gherkin
+  Given I sign in with the email "ALKILN_USER_EMAIL" and the password "ALKILN_USER_PASSWORD"
+```
+
+`"ALKILN_USER_EMAIL"` and `"ALKILN_USER_PASSWORD"` are just examples of environment variable names. You can use any names you want.
+
+The relevant section of your workflow file would look like this:
+
+```yml
+    env:
+      ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
+      ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
+```
+
+ALKiln avoids taking pictures or downloading the HTML for this Step, even when the test has an error on that page. ALKiln avoids printing the value of these variables anywhere in the report or in the console.
 
 
 ### `I go to "<url>"` {#go-anywhere}
@@ -310,7 +336,7 @@ Avoid using `.there_is_another` in your Story Table. Read about [what to use ins
 
 You can use multiple Story Tables in a test.
 
-Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#set-env-var) like passwords.
+Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.
 
 <!-- TODO: Why are our warnings red instead of yellow -->
 
@@ -332,9 +358,8 @@ You can use this Step to [upload files](#upload).
 
 ### `I set the variable "<variable name>" to "<value to set>"` {#set}
 
-Use the "I set" Step to fill in one answer on one page. This [sets the value](#values) of that field's variable.
+Use the "I set" Step to fill in one [value](#values) on one page.
 
-<!-- TODO: help wanted: This is true if they don't literally use `x` or `i`. I'm not sure how to express that complexity -->
 <NeedProxyVars/>
 
 The format of the Step:
@@ -383,7 +408,7 @@ Example linear "I set" Step:
 This is already discussed in security docs
 
 :::danger Avoid!
-Avoid using this Step with sensitive information, like passwords. Everyone will be able to see the information you put in this Step. Instead, [use an environment variable to set the value](#set-env-var).
+Avoid using this Step with sensitive information, like passwords. Everyone will be able to see the information you put in this Step. Instead, [use an environment variable to set the value](#secret-val).
 :::
  -->
 
@@ -392,41 +417,61 @@ You can use this Step to [upload files](#upload).
 :::
 
 
-### `I set the variable "<variable name>" to the GitHub secret "<environment variable name>"` {#set-env-var}
+### `I set the variable "<variable name>" to the GitHub secret "<environment variable name>"` {#secret-val}
 
-**This is for:** all test that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
- run
-Use the "secret variable" Step similar to the regular "I set" Step to fill in one answer on one page with a value. This time the value is the value of an environment variable - [a GitHub secret or docassemble server config value](#env-vars). This [sets the value](#values) of that field's variable.
+<!-- TODO: Should we just call this the "environment variable" Step? People don't have to use it with sensitive information. Though ALKiln will keep the information secret. -->
 
-You can use it to set values that have sensitive information. For example, a password. This is because ALKiln is extra careful with the security of these values.
+Use the "secret value" Step to use an [environment variable](#env-vars) to fill in one [value](#values) on one page.
 
-<SecureEnvVars/>
-
-The words of this Step currently assume you use GitHub for your tests and are using a GitHub secret to store the value, but this Step also works with config values you create for <KittyLitter/> tests. You can [read more about environment variables here](#env-vars).
+<NeedProxyVars/>
 
 The format of the Step:
 
 ```gherkin
-  And I set the variable "<variable name>" to "<environment variable name>"
+  And I set the variable "<variable name>" to the GitHub secret "<environment variable name>"
 ```
 
-Here, `<variable name>` is the name of the variable you want to set and `<environment variable name>` is the name of the environment variable you want to use.
+Here, `<variable name>` is the name of the variable you want to set and `<environment variable name>` is the name of the environment variable that has the value.
 
 Example:
 
 ```gherkin
-  I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
+  I set the variable "user1_account_password" to the GitHub secret "ALKILN_USER1_PASSWORD"
 ```
 
-You can use this Step for more than just sensitive information. You can also use environment variables for values that might change sometimes so that you can use the value in multiple places and then only have to manage the value change in one place. For example, if you have a date you want to set in multiple tests or repositories that you will want to update in all the tests at once, you can use an environment variable instead of manually updating everywhere the date appears.
+:::info
+The words of this Step currently assume you use GitHub for your tests and are using a GitHub secret to store the value, but this Step also works with config values you create for <KittyLitter/> tests. They are all [environment variables](#env-vars).
+:::
 
-<!-- To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets). -->
+A lot of authors use this Step to set answers with sensitive information, like an account number. This is because ALKiln is extra careful with the security of these values.
+
+<SecureEnvVars/>
+
+<!-- TODO: move to a section of #env-vars maybe -->
+
+You can use this Step for more than just sensitive information, though. Suppose Mo'nique has a GitHub organization named PolarisLaw. That organization has several repositories. Every test in every repository uses the value "Small bear" as an answer to a question. Next month, though, the firm may need to change that value to "Large bear". Mo'nique would have to edit that value in every test in every repository. Instead, she makes an environment variable in the PolarisLaw account called `ALKILN_BEAR_SIZE`:
+
+```yml
+env:
+  ALKILN_BEAR_SIZE: "Small bear"
+```
+
+She can then use that environment variable in her tests:
+
+```gherkin
+  I set the variable "bear_size" to the GitHub secret "ALKILN_BEAR_SIZE"
+```
+
+Next month, if PolarisLaw needs to change that value, Mo'nique can just edit the value of that environment variable and all the tests will use the new value:
+
+```yml
+env:
+  ALKILN_BEAR_SIZE: "Large bear"
+```
 
 :::caution
 This Step is unable to sign into your docassemble server. You **MUST** use [the "log in" Step](#sign-in) to sign in to your docassemble server.
 :::
-
-<!-- TODO: Maybe put env var stuff in here, but we do also need that info for other things, like workflows -->
 
 
 ### `I tap to continue` {#continue}
@@ -1405,7 +1450,7 @@ Scenario Outline: I allow visitation
 
 You can use [Gherkin tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags) to choose to run only specific tests or files.
 
-To use a tag expression for GitHub tests you can [trigger your tests](#github-triggers) manually. When you do that, GitHub will offer you a drop down where you can give some inputs for your test run. One of the optional fields there will let you write a tag expression if you want.
+To use a tag expression for GitHub tests you can [trigger your tests](#trigger-github) manually. When you do that, GitHub will offer you a drop down where you can give some inputs for your test run. One of the optional fields there will let you write a tag expression if you want. You can also add a tag expression to your workflow file as an [input](#optional-inputs).
 
 The <AutoDIY/> test interview has a field where you can add a tag expression if you want.
 
@@ -1485,9 +1530,7 @@ You can use any of those. It does not matter what you pick.
 
 ## GitHub workflow files {#workflows}
 
-WIP
-
-**This is for:** all test that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
+**This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
 
 **It can help to know about:**
 
@@ -1496,19 +1539,22 @@ https://docs.github.com/en/actions/using-workflows/about-workflows
 seeing workflow job logs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results
 -->
 
-<!-- Is this the workflow bookmark we want to use here? Probably, for general workflow information -->
+<!-- TODO: Is "using-workflows" the workflow link we want to use here? Probably, for general workflow information. -->
 
 - [GitHub workflows](https://docs.github.com/en/actions/using-workflows)
 - [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
-This section has a lot of challenging technical information about GitHub workflow files. We will do our best to help. We would love to hear how we can improve.
-
-
-### What is this file? {#workflows-what}
-
 Your GitHub workflow file is what starts and controls a package's tests on GitHub. Only [tests that run on GitHub](setup.mdx#types) need a workflow file. The file gives ALKiln some configuration information. You can use it to customize the ALKiln test runs and control when to trigger the GitHub tests.
 
-<!-- You can do a lot more with your workflow file if you study details about [GitHub workflows](https://docs.github.com/en/actions/using-workflows) bookmark and the [GitHub CLI](https://docs.github.com/en/actions/using-workflows/using-github-cli-in-workflows), like making issues when tests fail. ALKiln uses only a few features. -->
+This section has a lot of challenging technical information about GitHub workflow files. We will do our best to help. We would love to hear how we can improve.
+
+You can use [workflow inputs](#workflow-inputs) to change global configuration settings for your ALKiln test runs.
+
+You can use custom [environment variables](#env-vars) to set values in your tests. Those are especially useful for answers that need to use sensitive information.
+
+For workflow security, see various sections in the [security documentation](security.mdx).
+
+GitHub's documentation can tell you many more [technical details about workflows](https://docs.github.com/en/actions/using-workflows).
 
 
 ### Where in GitHub is the file? {#workflows-where}
@@ -1516,9 +1562,9 @@ Your GitHub workflow file is what starts and controls a package's tests on GitHu
 Your ALKiln workflow file is in your package's GitHub repository. To find it, go to the repository to the `.github` folder, then open the `workflows` folder there. The workflow file there might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
 
 
-### Can I see an example file? {#workflows-examples}
+### Example files {#workflows-examples}
 
-ALKiln's own workflow files are the most up-to-date, so using those as an example can be useful. You cannot just copy them. They have features that are unique to ALKiln. They do have notes for how to change them to what you need.
+ALKiln's own workflow files are the most up-to-date, so using those as an example can be useful. Read carefully, though - those files have features that are unique to ALKiln, but they also have notes on how you can change them to what you need.
 
 You can see [ALKiln's own version of the <GTOYS plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/playground.yml).
 
@@ -1527,21 +1573,9 @@ You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workfl
 <!-- TODO: deep dive or standup: We could potentially use this plugin to show the actual file in here: https://github.com/rdilweb/docusaurus-plugin-remote-content -->
 
 
-### What are the values I can customize in the file? {#workflows-values}
-
-You can use [workflow inputs](#workflow-inputs) to change global configuration settings for your ALKiln test runs.
-
-You can use custom [environment variables](#env-vars) to set values in your tests.
-
-
-### Security {#workflows-security}
-
-See the [security documentation](security.mdx).
-
-
 ## GitHub workflow inputs {#workflow-inputs}
 
-**This is for:** all test that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
+**This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
 
 Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
 
@@ -1593,7 +1627,7 @@ You can see examples of these inputs in the correct [ALKiln file](#workflows-exa
 
 ### Optional inputs for all GitHub tests {#optional-inputs}
 
-**This is for:** all test that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
+**This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
 
 You can add some optional inputs to the workflow file of any tests that run on GitHub to control global ALKiln configuration values.
 
@@ -1603,13 +1637,22 @@ The options are:
 - `ALKILN_TAG_EXPRESSION` is the "tag expression" to use to limit which tests to run. These docs describe tags in the [Gherkin keywords section](#gherkin-keywords). The default is no tag expression so that all the tests run.
 - (Extra Advanced) `DOCASSEMBLECLI_VERSION` is the version of docassemblecli to install. If this means nothing to you then you can probably ignore it. You can also ask us about this.
 
-None of these need to be secrets, but they can be if you want that[^org]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason.
+<!-- None of these need to be secrets, but they can be if you want[^org]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason. -->
 
 Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
 
 ```yml
         with:
           ALKILN_TAG_EXPRESSION: "@has_children"
+```
+
+<WithSecretsForOrgs/>
+
+<!-- Would need @theme/CodeBlock to abstract this kind of block and allow it to be part of the previous component -->
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "${{ secrets.ALKILN_TAG_EXPRESSION }}"
 ```
 
 
@@ -1620,14 +1663,27 @@ Use these inputs in the same way and in the same places as the required inputs. 
 You can add some optional inputs to the workflow file of any tests that run with the [<GTOYS plain={true}/> test method](setup.mdx#recommended) to control global ALKiln configuration values:
 
 - `MAX_SECONDS_FOR_SETUP` is the maximum amount of time to give the Project to upload your package's GitHub code. If your server is slow, increase this value. The default is 120 seconds.
-- `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload if it needs to. A server reload can make a test fail. Waiting the right amount of time for the reload can make it more likely the test will succeed when ALKiln retries it. The default is 150 seconds.
+- `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload while these tests are running. A server can reload for many reasons. A reload can make a test fail part-way through. If ALKiln waits long enough for the server to finish reloading, the next tests will get a chance to finish properly. The default maximum time is 150 seconds. If your server reloads more slowly, increase this value[^slow].
 
 Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
 
 ```yml
         with:
-          MAX_SECONDS_FOR_SETUP: 500
+          SERVER_RELOAD_TIMEOUT_SECONDS: 500
 ```
+
+<WithSecretsForOrgs/>
+
+```yml
+        with:
+          SERVER_RELOAD_TIMEOUT_SECONDS: "${{ secrets.MAX_SECONDS_FOR_SETUP }}"
+```
+
+<!-- TODO: ALKiln: create example rows in the different workflow files -->
+
+<!-- TODO: ALKiln: Look into detecting server requests and responses (for background tasks and... non-continuing page?) -->
+
+[^slow]: This also sometimes affects tests that fail due to genuine errors. Sadly, these types of failures look the same to ALKiln as a server reloading. That means that increasing the maximum server reload time will make some kinds of tests take an extra long time to fail.
 
 
 ### Optional inputs for <KittyLitter/> tests {#sandbox-optional-inputs}
@@ -1637,58 +1693,24 @@ Use these inputs in the same way and in the same places as the required inputs. 
 You can add some optional inputs to the workflow file of any <KittyLitter/> tests to control global ALKiln configuration values. We note when an option should also be a GitHub secret for security reasons:
 
 - `CONFIG_CONTENTS` is the contents of the [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. **For security, we strongly recommend you put this information into a GitHub secret** like `DOCASSEMBLE_DEVELOPER_API_KEY` above. If you have special configuration settings on your own server, you can use input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses.
-- `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output from the creation of the docker container and the installation of docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information it might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
+- `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output when ALKiln creates the docker container and installs docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information it might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
 - `MAX_SECONDS_FOR_DOCKER` is the maximum amount of time to give the docassemble docker container to get properly started. If your tests keep failing because your docker container is taking a long time to start, maybe because of configuration options, then you can increase this time. The default time is 600 seconds (10 min).
+
 <!-- TODO: What is the error message when docker container setup stops too early? -->
 
-
-### `MAX_SECONDS_FOR_SERVER_RELOAD` environment variable {#temp-server-reload}
-
-**This is for:** <GTOYS/> tests
-
-<!-- TODO: Add link to env vars -->
-
-`MAX_SECONDS_FOR_SERVER_RELOAD` is an environment variable that ALKiln has a specific use for. This is a mistake and we plan to make it an input in the future.
-
-<!-- Unlike the [inputs](#workflow-inputs), it goes under the `env:` section in your workflow file. -->
-
-<!--
-If you want to use this value in multiple repositories, you can use a GitHub organization secret. It can look something like the below:
+Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
 
 ```yml
-    env:
-      MAX_SECONDS_FOR_SERVER_RELOAD: "${{ secrets.MAX_SECONDS_FOR_SERVER_RELOAD }}"
+        with:
+          SHOW_DOCKER_OUTPUT: true
 ```
 
-You can also set its value without a secret as this value is probably not sensitive information.
--->
-
-<!-- TODO: ALKiln: create example rows in the different workflow files -->
+<WithSecretsForOrgs/>
 
 ```yml
-    env:
-      MAX_SECONDS_FOR_SERVER_RELOAD: "300"
+        with:
+          SHOW_DOCKER_OUTPUT: "${{ secrets.SHOW_DOCKER_OUTPUT }}"
 ```
-
-`MAX_SECONDS_FOR_SERVER_RELOAD` customizes how long to allow your tests to wait when your server has stopped responding. When the server stops responding, ALKiln assumes it is because the server is reloading. A server reload stops a test part-way through and and causes a failure. You then are unable to tell whether the test would have passed or failed on its own.
-
-The server can reload for many reasons. For example, when someone saves the server config file. In fact, in some cases [when a different test run starts up, it can cause your server to reload](setup.mdx#githubNyou-cons). Increasing `MAX_SECONDS_FOR_SERVER_RELOAD` can help tests recover better, giving an affected test a second chance to run properly.
-
-<!-- You can read the environment variables section on setting arbitrary environment variables for more background information. -->
-
-<!--
-:::info
-One downside
-
-Your server can reload whenever someone saves a python file or whenever a developer or another test pulls a package that contains a python file into the Playground. If a test is running while that happens, the page the test is trying to open might take too long to load and the test will fail. This is unhelpful to you because the test stops part-way through and you cannot tell if it would have failed or passed on its own.
-
-The next test might then fail during the same reload. That becomes a problem when a chain of tests fail because of one reload.
-
-ALKiln cannot stop the first test from failing, but `MAX_SECONDS_FOR_SERVER_RELOAD` can help prevent the next tests from failing during the same reload.
-:::
- -->
-
-<!-- You can also add custom environment variables. -->
 
 
 ## GitHub workflow extras {#workflow-extras}
@@ -1702,7 +1724,7 @@ You can customize your GitHub workflows to run on a schedule, make GitHub issues
 1. Tap to [start editing the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 1. Follow instructions below to change your file
 
-If you want to dig deeper into this, [GitHub's documentation can tell you much more about workflow files](https://docs.github.com/en/actions/using-workflows).
+[GitHub's documentation can tell you much more about workflows](https://docs.github.com/en/actions/using-workflows).
 
 
 ### Schedule tests {#schedule-trigger}
@@ -1717,6 +1739,8 @@ on:
 ```
 
 The GitHub docs can tell you more about [triggering workflows on a schedule](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule). The special syntax defining the interval uses cron syntax. If you want to change the interval, [these examples of cron syntax](https://crontab.guru/examples.html) can help a lot.
+
+You can read [GitHub's documentation about many other ways to trigger workflows](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
 
 
 ### Pull request tests {#pr-trigger}
@@ -1747,6 +1771,8 @@ jobs:
 
 See [an example](https://github.com/IHaskell/IHaskell/blob/60a750f5b038a17717609d8a40be0fafd69e1c35/.github/workflows/stack.yml#L37).
 :::
+
+You can read [GitHub's documentation about many other ways to trigger workflows](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
 
 
 ### Make a GitHub issue when tests fail
@@ -1781,58 +1807,185 @@ WIP
 
 Playground - config. GitHub - workflow file.
 
+env var with regular value
+
+env var with secret
+
+GitHub secret or server config are the only places to store info that are not visible to public people. GitHub secret is encrypted. Server config is inaccessible. Sensitive info example: password.
+
+Unlike the [inputs](#workflow-inputs), it goes under the [`env:` section](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) in your workflow file.
+
+
+
+
 
 ## Running tests {#run}
 
+<!--
 WIP
 
 You can decide to only run some tests by using [tags](#tags).
 
 Links to test setup explanation of what tests are doing.
 
-GitHub
-
-  Setup
-
-  Tests
-
-  Takedown
-
-Playground
-
-  Tests
-
-Logs
-
-Results
-
-Re-runs
+- [ ] GitHub
+- [ ]   Setup
+- [ ]   Tests
+- [ ]   Takedown
+- [ ] Playground
+- [ ]   Tests
+- [ ] Logs
+- [ ] Results
+- [ ] Re-runs
+-->
 
 
-### Run GitHub tests {#github-triggers}
+### Triggering tests {#trigger-tests}
 
-**This is for:** all tests that run on GitHub.
+<!-- TODO: Triggering -> Starting? -->
+
+**This is for:** Everyone
+
+You control when your tests run and which tests run. How you do that depends on the [type of test](setup.mdx#types) you are using.<span id="trigger-github"></span>
+
+**<GTOYS/> and <KittyLitter/> tests:**
 
 By default, you can trigger tests on GitHub by committing your edits to your repository or by running the tests manually.
 
-The default workflow file the ALKiln setup interview gives you triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself. Most authors go through this process:
+The ALKiln setup interview gives you a default [workflow file](#workflows) that triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself. Most authors go through this process:
 
 1. Edit the package's files in a Project on the docassemble server
 1. On your Project's "Packages" page, [commit the changes to GitHub](https://docassemble.org/docs/development.html#versioncontrol)
 1. Go to the repository in GitHub and tap on the "Actions" tab to [see the tests running](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results)
 
-<!-- Best instructions for seeing workflow, action, and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results bookmark -->
+You can use your [workflow file](#workflows) to customize some ALKiln test run settings.
 
-You can also [run your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow) whenever you want. When you run your tests manually, you can use [tags](#tags) to limit which tests to run.
+<!-- Best instructions for seeing workflow, action, and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
 
-You can also configure your [workflow file](#workflows) to run your tests whenever you want. [GitHub's documentation for workflow triggers](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow) is more thorough than our documentation.
+You can also [trigger your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). When you run your tests manually, you can use [tags](#tags) to limit which tests to run. You can also [use tags in your workflow file](#optional-inputs).
 
-<!-- TODO: Add note about tags in FAQ? Or Tips? Or here? Or workflow files? -->
+You can also edit your workflow file to [trigger your GitHub tests other ways](#workflow-extras).<span id="trigger-autodiy"></span>
 
-<!-- TODO: Maybe here define jobs, workflows, workflow runs, test runs, etc. -->
+**<AutoDIY/> tests:**
+
+You can run <AutoDIY/> tests manually whenever you want to.
+
+1. Make sure you are logged into your docassemble [testing server](security.mdx#testing-server).
+1. Go to your server's list of available interviews.
+1. Run the ALKiln interview that you or someone else [installed on your server](setup.mdx#diy-how-to).
+1. On the first page, make sure you have the right version of ALKiln installed (usually the latest version) or install a different version.
+1. On the next page, pick a Project that already has tests in its Sources folder. If it has no tests, [add a new test](#new-file). It can be like the [example first test](setup.mdx#first-test).
+1. If you want to limit which tests to run, use a [tag expression](#tags) in the tag expression field.
+1. Run the tests and wait for the [output](#artifacts).
 
 
-### Run <AutoDIY/> tests {#diy-triggers}
+### <GTOYS/> test stages {#gNy-stages}
+
+**This is for:** <GTOYS/> tests
+
+<!-- TODO: Maybe here define jobs, workflows, workflow runs, test runs, etc. Maybe better in #workflows -->
+
+<GTOYS/> tests are made of three stages: the setup, the robot, and the take down.
+
+**Setup:**
+
+1. ALKiln goes to [its account](security.mdx#alkiln-account) and creates a new Project.
+1. It uploads the relevant GitHub branch of your package into the Project.
+
+**Robot:**
+
+<RobotStage base_url={"the url of ALKiln's Project in its account's Playground"}/>
+
+**Take down:**
+
+When all the tests finish, ALKiln cleans up the tests.
+
+1. ALKiln deletes the Project it created from [ALKiln's account](security.mdx#alkiln-account).
+1. It makes the [test output](#artifacts), like the report and Scenario folders.
+
+
+### <AutoDIY/> test stages {#diy-stages}
+
+**This is for:** <AutoDIY/> tests
+
+When <AutoDIY/> tests run, they have two stages: the robot and the output.
+
+**Robot:**
+
+<RobotStage base_url={"the url of your Project in your Playground"}/>
+
+**Output:**
+
+When all the tests finish, ALKiln cleans up the tests. It creates the [test output](#results) to show on the final page.
+
+<!-- TODO: 1. ALKiln deletes those files from your server. (Check on this before adding it. This might actually be in setup) -->
+
+
+### <KittyLitter/> test stages {#sandbox-stages}
+
+**This is for:** <KittyLitter/> tests
+
+<KittyLitter/> tests are made of three stages: the setup, the robot, and the take down.
+
+**Setup:**
+
+1. ALKiln creates a new docker container on GitHub.
+1. It installs docassemble on that new docker container. If the [input `CONFIG_CONTENTS`](#sandbox-optional-inputs) is defined, ALKiln uses that value for the config. Otherwise, it installs docassemble with the default config.
+1. ALKiln waits for docassemble to finish enough that it can load up the new server's website properly.
+1. ALKiln installs your package as a server package on that new server.
+
+**Robot:**
+
+<RobotStage base_url={"the new isolated server's url on GitHub"}/>
+
+**Take down:**
+
+When all the tests finish, ALKiln cleans up the tests.
+
+1. The digital space where GitHub was running the server gets deleted, taking the new server and container with it.
+1. ALKiln makes the [test output](#artifacts), like the report and Scenario folders.
+
+
+<!--
+### GitHub test stages {#github-run}
+
+**This is for:** all tests that run on GitHub.
+
+GitHub tests are made of three stages: the setup, the test run, and the take down.
+
+ALKiln sets up <GTOYS/> tests like this:
+
+1. ALKiln goes to the testing account you set up on your server and creates a new Project. If you log into that account, you'll be able to see the new Project in the list of projects.
+1. It uploads the relevant GitHub branch of your package into the Project.
+
+ALKiln sets up <KittyLitter/> tests like this:
+
+1. ALKiln creates a new docker container on GitHub.
+1. It installs docassemble on that new docker container. If the [input `CONFIG_CONTENTS`](#sandbox-optional-inputs) is defined, ALKiln uses that value for the config. Otherwise, it installs docassemble with the default config.
+1. ALKiln waits for docassemble to finish enough that it can load up the new server's website properly.
+1. ALKiln installs your package as a server package on that new server.
+
+ALKiln runs both <GTOYS/> and <KittyLitter/> tests like this:
+
+1. For each test, ALKiln follows the instructions in your test.
+1. Your first Steps could be any of a number of Steps, like waiting, signing into the server, or going to the interview.
+1. Usually you name an interview that should go to ALKiln. In <GTOYS/> tests ALKiln uses a Playground url. In <KittyLitter/> tests ALKiln goes to a server url.
+1. ALKiln pretends to be a human and tries to fill out the fields and take the actions the tests describe.
+
+When all the tests finish, ALKiln runs the take down to clean up the tests.
+
+For <GTOYS/> tests, ALKiln deletes the Project in the testing account on your testing server.
+
+When <GTOYS/> tests finish, ALKiln runs the take down to clean up the tests. It deletes the Project in the testing account on your testing server.
+
+When <KittyLitter/> tests finish, the space where GitHub was running the server gets deleted, taking the new server and container with it.
+
+Either way, ALKiln makes the [artifacts](#artifacts) for the tests, like the report and Scenario folders.
+-->
+
+
+<!--
+### Running <AutoDIY/> tests {#diy-run}
 
 **This is for:** <AutoDIY/> tests.
 
@@ -1843,21 +1996,9 @@ You run <AutoDIY/> tests manually when you want to.
 1. Run the ALKiln interview that you or someone else [installed on your server](setup.mdx#diy-how-to).
 1. On the first page, make sure you have the right version of ALKiln installed (usually the latest version) or install a different version.
 1. On the next page, pick a Project that already has tests in its Sources folder. If it has no tests, [add a new test](#new-file).
-1. If you want to limit which tests to run, use a tag expression. bookmark
-1. Run the tests and see the output.
-
-<!-- TODO:
-- Above, add link to how to make test files
-- Above, add link to info about test output
-- Figure out where to add details, like tags, etc.
--->
-
-<!--
-1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
-
-<!-- TODO:
-Where to put how to update to a new version of ALKiln? It's already in setup, but buried.
--->
+1. If you want to limit which tests to run, use a [tag expression](#tags) in the tag expression field.
+1. Run the tests and wait for the output.
+ -->
 
 
 ### What can I see while tests are running? {#running-data}
@@ -2310,7 +2451,28 @@ It is unlikely you will run enough tests for GitHub to charge you. [GitHub's quo
 No, none of the tests types can affect your analytics. <GTOYS/> and <AutoDIY/> tests both use interviews that are in the developer's Playground, not ones that are installed on your server. <KittyLitter/> tests run on their own isolated server, not your server, so your analytics software knows nothing about them.
 
 
+### Does ALKiln collect my data? {#no-data-collection}
 
+No, there is no way in which ALKiln collects your data or data from your tests. There are other services out of our control that do track your use of ALKiln. For example, GitHub keeps track of what repositories use ALKiln's code and [npm](https://www.npmjs.com/) keeps track of how many (unnamed) packages download ALKiln.
+
+On that note, who is still using ALKiln version 4.11.2?! Update!
+
+
+### You have a lot of open issues {#open-issues}
+
+That is very true.
+
+Some projects use issues just for bugs. We use ours for everything - ideas for enhancements, research, internal testing, documentation, discussions, and the list goes on. We have a lot of those with more coming in all the time, and not much time to work on them, so they do build up.
+
+Also bugs, of course. We take care of [security bugs](security.mdx#report) as soon as we find them. We take care of bugs that are having a big impact on our users as quickly as we can. We take care of smaller bugs when we have time, but sometimes spend that time on improving other parts of the project instead.
+
+<!-- Some projects close issues that are old, even when they are still relevant and actionable. That can keep things more tidy. If and when we have a project manager and they find that to be a  -->
+
+<!-- Some projects close issues that they are not planning to address immediately. We are currently making a different choice. -->
+
+<!-- This works for our current team. Having just one place to look saves us a lot of time and energy. Since we have limited resources, this is an important part of our workflow. -->
+
+We do wish it looked prettier, though.
 
 
 <!--

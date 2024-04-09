@@ -27,7 +27,7 @@ That is, test-specific secrets might be separate from the SERVER_URL-type secret
 -->
 <!-- TODO: Workflow section about an action version vs. an alkiln version? -->
 
-This page will tell you about the different ways to set up your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want.
+This page will tell you about the different ways to set up your ALKiln tests. You can install and run ALKiln in different ways and in different environments. You can use as many of these methods as you want. You can also [disable tests](#disable) tests if you need to.
 
 
 ## Do _I_ need to read this? {#who}
@@ -85,7 +85,7 @@ This is the way we recommend setting up ALKiln tests for a repository for the fi
 
 Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
-The tests [run](writing_tests.mdx#github-triggers) whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
+The tests [run](writing_tests.mdx#trigger-tests) whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
 
 **You need:**
 
@@ -117,7 +117,7 @@ This setup interview can take over 30 minutes, especially if you're unfamiliar w
 
 Once you accept the pull request and merge the code into your repository's main branch, make sure to update your docassemble Projects to use that new code.
 
-If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <GTOYS plain={true}/> tests in GitHub](writing_tests.mdx#github-triggers).
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <GTOYS plain={true}/> tests in GitHub](writing_tests.mdx#trigger-tests).
 
 
 [^edit]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
@@ -187,7 +187,7 @@ dispatch:
 1. Run that interview.
 1. On the first page of that interview, choose to install the latest version of ALKiln by picking the top item in the list. You can choose to do this whenever we make a new version of ALKiln.
 
-If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or continue the above interview to [run your tests](writing_tests.mdx#run).
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or continue the above interview to [run your tests](writing_tests.mdx#trigger-autodiy).
 
 :::warning TODO
 Add images of picking new version
@@ -203,7 +203,7 @@ Every repository that needs to use this kind of test must go through this setup 
 
 This is an advanced method and may not work for everyone. We are happy to help you with it.
 
-The tests [run](writing_tests.mdx#github-triggers) whenever you commit any code to any branch on GitHub. Below, see details and the pros and cons of <KittyLitter/> tests.
+The tests [run](writing_tests.mdx#trigger-tests) whenever you commit any code to any branch on GitHub. Below, see details and the pros and cons of <KittyLitter/> tests.
 
 **You need:**
 
@@ -247,13 +247,14 @@ First follow the regular instructions to set up for GitHub. The difference here 
 
 Then edit the new workflow to look like  -->
 
-If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <KittyLitter plain={true}/> tests in GitHub](writing_tests.mdx#github-triggers).
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <KittyLitter plain={true}/> tests in GitHub](writing_tests.mdx#trigger-tests).
 
 
 ## <GTOYS/> test details {#githubNyou-details}
 
 <!-- TODO: "on your test server" with a link to security section -->
-<GTOYS/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They then create and test a Project on your docassemble testing server. They are our recommended test method because they are the easiest to set up.
+
+<GTOYS/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#trigger-tests). They then create and test a Project on your docassemble testing server. They are our recommended test method because they are the easiest to set up.
 
 Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
@@ -268,7 +269,7 @@ When <GTOYS/> tests get triggered, ALKiln does the following:
 1. It tries to fill out the fields and take the actions the tests describe.
 1. When all the tests are done, ALKiln deletes the Project it created.
 
-Because <GTOYS/> tests need to create a Project and pull code into it, you need to create a [developer account](security.mdx#alkiln-account) for these types of tests.
+Because <GTOYS/> tests need to create a Project on your testing server and pull code into it, you need to create a [developer account](security.mdx#alkiln-account) for these types of tests.
 
 GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 
@@ -331,9 +332,9 @@ For some people:
 
 <!-- Confusion about "Auto" and "manual" -->
 
-These are tests that you trigger manually from an interview you install on your docassemble testing server. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#diy-triggers) in other documentation.
+<AutoDIY/> tests are automated tests that you trigger manually from an interview you install on your docassemble [testing server](security.mdx#testing-server). The tests then run right on that server.
 
-Remember to use a [separate server for these types of tests](security.mdx#testing-server).
+ You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#trigger-autodiy) in other documentation.
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
@@ -342,7 +343,7 @@ The ALKilnInThePlayground package installs the ALKiln testing framework directly
 
 ### What is ALKiln doing? {#diy-how}
 
-When you [manually run](writing_tests.mdx#diy-triggers) the <AutoDIY/> tests while on your docassemble testing server, ALKiln does the following:
+When you [run](writing_tests.mdx#trigger-autodiy) the <AutoDIY/> tests while on your docassemble [testing server](security.mdx#testing-server), ALKiln does the following:
 
 1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of the Project and interview you specified.
 1. It tries to fill out the fields and take the actions the tests describe.
@@ -375,7 +376,7 @@ For some people:
 
 ## <KittyLitter/> test details {#sandbox-details}
 
-<KittyLitter/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#github-triggers). They create their own docassemble server on GitHub and run tests there.
+<KittyLitter/> tests are [triggered when you commit code to GitHub](writing_tests.mdx#trigger-tests). They create their own docassemble server on GitHub and run tests there.
 
 <KittyLitter/> tests are the most secure because they never interact with your server and the isolated server they each create is temporary. Unfortunately, these tests also sometimes have more setup complications.
 
@@ -383,11 +384,11 @@ For some people:
 
 When you run <KittyLitter/> tests, ALKiln does the following:
 
-1. ALKiln creates a server on GitHub itself.
-1. It installs the relevant branch of your package on that server.
-1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of the interview named in the test.
-1. It tries to fill out the fields and take the actions the tests describe.
-1. When all the tests are done, the GitHub server gets deleted.
+1. ALKiln creates a server on GitHub itself
+1. It installs the relevant branch of your package on that server
+1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of the interview named in the test
+1. It tries to fill out the fields and take the actions the tests describe
+1. When all the tests are done, GitHub deletes the server
 
 GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 

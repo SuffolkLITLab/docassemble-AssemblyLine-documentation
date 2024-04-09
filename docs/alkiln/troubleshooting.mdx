@@ -387,3 +387,27 @@ Cached info. For example DAGlobal, Redis, DAStore, db data, etc. Your server ret
 Different versions of ALKiln framework (check ALKILN_TAG_EXPRESSion)
 Different versions of ALKiln actions (check `uses`)
 -->
+
+<!--
+Slow tests
+
+Slow failing tests
+
+Trouble with server reloading for <GTOYS/> tests
+
+Option 1:
+`SERVER_RELOAD_TIMEOUT_SECONDS` customizes how long to allow your tests to wait when your server has stopped responding. When the server stops responding, ALKiln assumes it is because the server is reloading. A server reload stops a test part-way through and and causes a failure. You then are unable to tell whether the test would have passed or failed on its own. Because servers usually take a while to reload, this can cause multiple tests to fail. If you know your server tends to be slow to reload, you can increase `SERVER_RELOAD_TIMEOUT_SECONDS` to help tests recover better.
+
+The server can reload for many reasons. For example, when someone saves the server config file. In fact, in some cases [a different test run starting up can cause a reload](setup.mdx#githubNyou-cons) too.
+
+Unfortunately, there are some real errors that make ALKiln think the server might be reloading. Those tests will also slow down when they fail. That can mean failing tests can take a lot longer. There is currently no way for ALKiln to tell the difference.
+
+Option 2:
+The SERVER_RELOAD_TIMEOUT_SECONDS environment variable allows developers to specify the wait time for ALKiln tests when the server stops responding, typically due to a reload. This setting helps manage test failures caused by server reloads, which can occur for various reasons, such as configuration changes or new test runs. However, it also affects tests that fail due to genuine errors, leading to longer test durations. Currently, ALKiln cannot distinguish between these scenarios.
+
+More:
+ALKiln waits till it detects that the server has reloaded. It can't wait forever or a broken server will cause infinite tests. So it picks a maximum time to wait.
+
+That first test will fail for unhelpful reasons. ALKiln will wait a while to try to let the server reload. That first failing test will be retried. If the server has finished reloading, the test will be able to finish properly. Even if that isn't long enough, maybe the next tests will be able to run properly once the reload is finished.
+-->
+
