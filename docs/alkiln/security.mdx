@@ -177,7 +177,7 @@ A separate server is only one part of separating production and testing sever ac
 
 Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is [old data](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/). If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
 
-If your test needs a logged-in user, avoid using a real person's account. Instead, use [ALKiln's account](#alkiln-account) or a completely separate fake account.
+If your test needs a logged-in user, avoid using a real person's account. Instead, use [ALKiln's account](#test-accounts) or a completely separate fake account.
 
 Never use a database with real information with your tests, even old information. For example:
 
@@ -185,7 +185,7 @@ Never use a database with real information with your tests, even old information
 - Never use old databases. Some projects realize that they should avoid using their current user database for testing. Instead, they decide use an old database. Avoid that as well. Even if the data seems so old that it is useless, it can still [expose you and your users](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
 
-### Make an account just for ALKiln {#alkiln-account}
+### Make accounts just for tests {#test-accounts}
 
 <!-- WIP TODO: write who each section is for -->
 
@@ -193,9 +193,7 @@ Never use a database with real information with your tests, even old information
 
 <!-- TODO: add a section for setup about making an account. take it away from the setup interview like other stuff. Then link to in here and visa versa. -->
 
-Even though you are using a [testing server](#testing-server), avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own account. This also lets you see its activity in the logs more clearly and lets you delete the account easily if you need to. There are non-security related reasons to make a separate account too[^perks].
-
-<GTOYS/> tests need to be connected to a docassemble account to work properly. Even if you are using other types of tests, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
+Even though you are using a [testing server](#testing-server), avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own accounts. This also lets you see its activity in the logs more clearly and lets you delete the account easily if you need to. There are non-security related reasons to make a separate account too[^perks].
 
 <!-- TODO: Move to creating an account section when it exists: If you use <GTOYS/> tests, you need to put those values in your GitHub secrets. If you lose the sign-in information for that account, delete it, create a new one, and update the secrets. -->
 
@@ -203,7 +201,11 @@ Only give ALKiln an account if necessary. Make sure no one else uses the account
 
 We usually call the ALKiln user "automated_tests" and give it the email "automated_tests@example.com" with a secure password.
 
-If you stop needing the account, delete it.
+<GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
+
+If you do need an account to sign in before a test, think of that account as a separate account because you might be able to give that account even less access. If the sign-in account can just be a user, make a new account just for signing in that just has a "user" role.
+
+If you stop needing an account, delete it.
 
 <!-- TODO: add link to GitHub secrets? -->
 
@@ -240,7 +242,7 @@ Here are a couple general good tips for keeping your testing server healthy:
 
 **This is for:** Everyone
 
-Even after keeping personal and security-critical data away from [the account that runs ALKiln tests](#alkiln-account), there are still ways you can expose your test server's sensitive data in tests. Even if you are using a testing server, that server still has credentials, like API keys and passwords, and you should avoid exposing those to the ALKiln tests.
+Even after keeping personal and security-critical data away from [the account that runs ALKiln tests](#test-accounts), there are still ways you can expose your test server's sensitive data in tests. Even if you are using a testing server, that server still has credentials, like API keys and passwords, and you should avoid exposing those to the ALKiln tests.
 
 
 ### Avoid sensitive data in package files {#sensitive-info-files}

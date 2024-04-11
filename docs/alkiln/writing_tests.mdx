@@ -140,7 +140,7 @@ You **must** include the `interview` Step in each Scenario **before setting any 
 
 ### `I sign in with the email "<username env var>" and the password "<password env var>"` {#sign-in}
 
-Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start interview" Step](#start-interview).
+Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start interview" Step](#start-interview). You can use [GitHub secrets](#secrets) in combination with [environment variables](#env-vars) to store and use this sensitive sign in information.
 
 The Step format:
 
@@ -150,13 +150,7 @@ The Step format:
 
 The two blanks to fill in are `<username env var>` and `<password env var>`. Each of them must be the name of an [environment variable](#env-vars) that you have already added to your [workflow file](#workflows).
 
-<!-- TODO: Add link to GitHub secrets -->
-
-:::danger Use GitHub secrets
-You **must** use GitHub secrets to set the [environment variables](#env-vars) in order to keep the information secure.
-:::
-
-The `<username env var>` variable should contain the username of an account on your docassemble server. The `<password env var>` variable should contain the password of that account. [Never use a real person's account or information](security.mdx#mock-data).
+The `<username env var>` variable should contain the username of a [dedicated account](security.mdx#test_accounts) on your docassemble server. The `<password env var>` variable should contain the password of that account.
 
 Example Step:
 
@@ -169,12 +163,18 @@ Example Step:
 The relevant section of your workflow file would look like this:
 
 ```yml
-    env:
-      ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
-      ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
+env:
+  ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
+  ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
 ```
 
-ALKiln avoids taking pictures or downloading the HTML for this Step, even when the test has an error on that page. ALKiln avoids printing the value of these variables anywhere in the report or in the console.
+You can have as many of these accounts as you want.
+
+:::danger Sensitive information
+You **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
+:::
+
+ALKiln does avoid taking pictures or downloading the HTML for this Step, even when the test has an error on that page, so that information is still protected. ALKiln also avoids printing the value of these variables anywhere in the report or in the console. Even so, it is possible for you to [expose this information](security.mdx#no-show).
 
 
 ### `I go to "<url>"` {#go-anywhere}
@@ -412,7 +412,7 @@ Avoid using this Step with sensitive information, like passwords. Everyone will 
 :::
  -->
 
-:::info
+:::tip
 You can use this Step to [upload files](#upload).
 :::
 
@@ -422,6 +422,8 @@ You can use this Step to [upload files](#upload).
 <!-- TODO: Should we just call this the "environment variable" Step? People don't have to use it with sensitive information. Though ALKiln will keep the information secret. -->
 
 Use the "secret value" Step to use an [environment variable](#env-vars) to fill in one [value](#values) on one page.
+
+Even though the name has "GitHub" and "secret" in it, it can also use environment variables. It is still the only way to use sensitive information in your tests. To do that, you can use environment variables with [GitHub secrets](#secrets).
 
 <NeedProxyVars/>
 
@@ -439,38 +441,12 @@ Example:
   I set the variable "user1_account_password" to the GitHub secret "ALKILN_USER1_PASSWORD"
 ```
 
-:::info
-The words of this Step currently assume you use GitHub for your tests and are using a GitHub secret to store the value, but this Step also works with config values you create for <KittyLitter/> tests. They are all [environment variables](#env-vars).
-:::
-
 A lot of authors use this Step to set answers with sensitive information, like an account number. This is because ALKiln is extra careful with the security of these values.
 
 <SecureEnvVars/>
 
-<!-- TODO: move to a section of #env-vars maybe -->
-
-You can use this Step for more than just sensitive information, though. Suppose Mo'nique has a GitHub organization named PolarisLaw. That organization has several repositories. Every test in every repository uses the value "Small bear" as an answer to a question. Next month, though, the firm may need to change that value to "Large bear". Mo'nique would have to edit that value in every test in every repository. Instead, she makes an environment variable in the PolarisLaw account called `ALKILN_BEAR_SIZE`:
-
-```yml
-env:
-  ALKILN_BEAR_SIZE: "Small bear"
-```
-
-She can then use that environment variable in her tests:
-
-```gherkin
-  I set the variable "bear_size" to the GitHub secret "ALKILN_BEAR_SIZE"
-```
-
-Next month, if PolarisLaw needs to change that value, Mo'nique can just edit the value of that environment variable and all the tests will use the new value:
-
-```yml
-env:
-  ALKILN_BEAR_SIZE: "Large bear"
-```
-
 :::caution
-This Step is unable to sign into your docassemble server. You **MUST** use [the "log in" Step](#sign-in) to sign in to your docassemble server.
+This Step is unable to sign into your docassemble server. You **must** use [the "sign in" Step](#sign-in) to sign in to your docassemble server.
 :::
 
 
@@ -1579,6 +1555,8 @@ You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workfl
 
 Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
 
+<!-- TODO: Are autodiy tests able to use max server reload? -->
+
 
 ### Required inputs for <GTOYS/> tests {#githubNyou-inputs}
 
@@ -1803,10 +1781,197 @@ You can edit the values of `title`, `body`, and `labels` to customize the issue.
 
 ## Environment variables {#env-vars}
 
-WIP
+**This is for:** Everyone
 
+<!-- TODO: Inputs are configuration. -->
+<!-- TODO: differentiate between test _run_/suite configuration and individual test configuration. -->
+
+What is a variable?
+
+A "variable" is a name with a value. That name, a "variable name", lets the rest of the program ask for that value when needed.[^name] Like calling a kid in for dinner. That is close enough for what we need right now.[^vars]
+
+[^name]: You might notice people also using the word "variable" to mean "variable name".
+
+[^vars]: A variable name is only sort of a label for a value. It is actually more like a label for a box and in that box is the value. You can change the value that's in the box and as long as the box and name stay the same, the program is happy. It will use whatever is in that box. Even that is a little bit untrue because in some languages, it is impossible to change the value in the box. Those variables are called "immutable".
+
+<!-- A flexible way to hold a value that you can change when you need to change it and so everything else in the program can use it, even if it changes. -->
+
+<!-- Variables in code are like boxes where you can put things you want to remember or use later. https://www.phind.com/agent?cache=cluroe4dp001ojl0bwystqj9g -->
+
+What are environment variables?
+
+Environment variables are variables that are available to the whole system - the whole environment the programs are working in. Like the town where that kid lives and where their house is. That means every test in your test suite can use that variable. You can call that kid in for dinner no matter where in the city they are.
+
+Because environment variables are so global, we recommend you start all your environment variable names with "ALKILN_" so they have less chance to interfere with your system's other environment variables. If you are going to broadcast your message across the town, every kid should have a unique name so everyone knows who you are yelling at.
+
+Environment variables are one of the few ways for you to get information from GitHub or your server to ALKiln. <!-- TODO: Link to inputs? -->
+
+In <AutoDIY/> tests on your server, you put these values in your config file under a key you can add called `alkiln`. For example:
+
+```yml
+alkiln:
+  ALKILN_BEAR_SIZE: "small_bear"
+```
+
+`ALKILN_BEAR_SIZE` is the name of the environment variable. `"small_bear"` is the value of the environment variable. All the interviews on your server can see these config values, including the interview that runs your <AutoDIY/> tests, so you are actually setting these values for all the tests that you run on your server with <AutoDIY/> tests.
+
+In GitHub, you can make environment variables by putting them in the `env` key in your [workflow file](#workflows):
+
+```yml
+# other code
+
+env:
+  ALKILN_BEAR_SIZE: "small_bear"
+
+job:
+  # other code
+```
+
+`ALKILN_BEAR_SIZE` is the name of the environment variable. `"small_bear"` is the value of the environment variable. In GitHub, there are different places to put `env`, so don't worry if you see them in other places in other people's files.
+
+<!-- TODO: maybe move this to secrets -->
+
+You can combine environment variables with [GitHub secrets](#secrets) to set sensitive information in your tests. Also, a GitHub organization can combine environment variables with [GitHub secrets](#secrets) to get a value to all the test suites in all the organization's repositories.
+
+<SecureEnvVars/>
+
+<!--
+What is so special about env vars?
+
+They are one of the only ways to get information from GitHub/your server to ALKiln.
+They are sent to a whole test run, so they can affect multiple tests.
+-->
+
+<!--
+How can you make env vars?
+
+GitHub: Variable names + values you put under `env`. There are different places to put `env`, so don't worry if you see them in other places in other people's files.
+
+```yml
+# other code
+
+env:
+  ALKILN_USER_EMAIL: tests@example.com
+
+job:
+  # other code
+```
+
+Playground: Variable names + values in your config under `alkiln`
+
+```yml
+alkiln:
+  ALKILN_USER_EMAIL: tests@example.com
+```
+
+If you do use sensitive information like that in GitHub, you should put it in a [GitHub "secret"](#secrets).
+ -->
+
+<!-- What do GitHub secrets have to do with it? Secrets let GitHub organizations share these values between all repositories, not just between all tests. Just like a repository can have secrets, (TODO: Link to GitHub docs on repo secrets) an organization can have secrets. (TODO: Link to GitHub docs on org secrets) All the repositories of that organization can use those secrets in their workflow files. -->
+
+
+## GitHub secrets {#secrets}
+
+**This is for:** owners of GitHub repositories or organizations
+
+<!--
+Is the confusion worth this particular detail?
+
+**This is for:** all tests that run on GitHub
+
+On GitHub only repository owners or organization owners can make a GitHub secret for a repository. Repository collaborators can use the ALKiln setup interview to make GitHub secrets for a repository.
+-->
+
+Shhh, don't tell anyone else - a secret is a value GitHub encrypts for you. Not even you can see a secret in GitHub after you create it. In fact, [GitHub redacts those values from your workflow logs](security.mdx#github-redacts-secrets).
+
+
+<!-- The only way to see a secret after creating it is to do something like use a tmate session in the middle of your workflow, though I think you need to have authorization. So it would be someone that can already edit your repository. -->
+
+<!-- in our club house/between just the two of us/?, "secret" describes... -->
+
+You can [make secrets for individual GitHub repositories](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) or you can [make secrets for your whole GitHub organization](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Once you have made the secrets, you can use them in combination with GitHub [environment variables](#env-vars) for multiple reasons:
+
+1. Secrets are useful for creating values with sensitive information since no one can see those values. For example, with the ["sign in" Step](#sign-in). Here is one example of using a secret in a workflow file:
+
+```yml
+# other code
+
+env:
+  ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
+  ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
+
+job:
+  # other code
+```
+
+Remember to create a [separate account](security.mdx#test_accounts) for that "user".
+
+2. GitHub secrets are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.
+
+For example, suppose Mo'nique has a GitHub organization named PolarisLaw. That organization has several repositories. Every test in every repository uses the value "small\_bear" as an answer to a question. Next month, though, the firm might need to change that value to "large\_bear". Mo'nique would have to edit that value in every test in every repository. Instead, she makes a GitHub secret in the PolarisLaw account called `ALKILN_BEAR_SIZE` and sets it to `small_bear`. Then she uses it in an environment variable she puts in all the workflow files in all the repositories.
+
+```yml
+env:
+  ALKILN_BEAR_SIZE: "${{ secrets.ALKILN_BEAR_SIZE }}"
+```
+
+She can then use that environment variable in her tests:
+
+```gherkin
+  I set the variable "bear_size" to the GitHub secret "ALKILN_BEAR_SIZE"
+```
+
+Next month, if PolarisLaw needs to change that value, Mo'nique can just edit the value of that secret and change it to `large_bear`. All the tests will use the new value without her changing anything else.
+
+Why not create secrets on your server for <AutoDIY/> tests? On your server all config values are already secret because only authorized people can see them, so they are just like any other [environment variable](#env-vars). And all of your server's interviews can see and share those config values already. I know, not quite as exciting.
+
+<!--
+TODO: [Is this unnecessary now that inputs and env vars are so separate?] FAQ: How are GitHub inputs different than env vars?
+-->
+
+<!-- Environment variables are can be a way to give sensitive information to ALKiln tests, a way to re-use a value in multiple tests, a way to re-use a value in multiple repositories, or all of those. -->
+
+<!--
+Some of us have found the term "environment variables" hard to memorize. It is a bit abstract.
+
+We know what variables are in our code: `court_name = "Massachusetts Court of Appeals"`
+
+We can use those in our ALKiln tests too:
+
+```gherkin
+  And I set the variable "favorite_bear" to "cuddly_bear"
+```
+
+Sometimes, though, our tests need ALKiln to use sensitive information answer a question. For example, to sign into the server before taking the interview.
+
+Think about an outdoor environment, somewhere grassy and green. A park. In the park are people (our programs) that run around in the park. They use variables like softballs and baseballs.
+
+When you want to play with ALKiln, you need to let it know
+-->
+
+<!--
+https://www.phind.com/agent?cache=cluroe4dp001ojl0bwystqj9g
+
+Code abstraction is like having a universal remote that can control multiple devices, ensuring you only need to change the channel once to affect all your TVs, reducing repetition and making it easier to manage.
+-->
+
+<!--
 Playground - config. GitHub - workflow file.
 
+Config values aren't env vars. ALKiln just turns them into env vars to match up behavior with GitHub? Could we pass them in another way?
+
+Env vars are one of the bridges that can connect GitHub/your server to ALKiln.
+
+Inputs vs. env vars metaphor:
+
+imagine a forest and a river running through it.
+
+Inputs: Each workflow input is a bridge the forest service (ALKiln) has built. It is infrastructure that ALKiln has built. ALKiln knows its bridges and knows to look for people (variables) crossing those bridges. Each bridge has a name that you must use when giving directions to your values about which bridge to cross.
+
+Using custom env vars: A custom env var is a plank that you brought from home and laid across the river to help one of your values cross. ALKiln doesn't know where those are or what the names of those bridges are. That's why you have to use special Steps. You have to tell ALKiln what the names (bridges) of your variables are so ALKiln will know where to find them.
+-->
+
+<!--
 env var with regular value
 
 env var with secret
@@ -1814,35 +1979,17 @@ env var with secret
 GitHub secret or server config are the only places to store info that are not visible to public people. GitHub secret is encrypted. Server config is inaccessible. Sensitive info example: password.
 
 Unlike the [inputs](#workflow-inputs), it goes under the [`env:` section](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) in your workflow file.
-
-
-
+ -->
 
 
 ## Running tests {#run}
 
-<!--
-WIP
+**This is for:** Everyone
 
-You can decide to only run some tests by using [tags](#tags).
-
-Links to test setup explanation of what tests are doing.
-
-- [ ] GitHub
-- [ ]   Setup
-- [ ]   Tests
-- [ ]   Takedown
-- [ ] Playground
-- [ ]   Tests
-- [ ] Logs
-- [ ] Results
-- [ ] Re-runs
--->
+This section will talk about ways to start (trigger) [different types of tests](setup.mdx#types) and will describe the journey of an ALKiln test run, from starting up to cleaning up.
 
 
 ### Triggering tests {#trigger-tests}
-
-<!-- TODO: Triggering -> Starting? -->
 
 **This is for:** Everyone
 
@@ -2025,7 +2172,7 @@ In GitHub and with <AutoDIY/> tests, you will see the [results](#results).
 
 **This is for:** all tests that run on GitHub.
 
-All tests that fail will get run a second time. This can make tests take longer, but it can also help tests be more accurate.
+All tests that fail will get run a second time. These retries can make tests take longer, but it can also help with flaky failing tests caused by [server reloads](troubleshooting.mdx#slow).
 
 
 ## Test results overview {#results}
@@ -2080,7 +2227,7 @@ If the test start up process failed, ALKiln will be [unable to create artifacts]
 
 import Dig from '../assets/archaeology.png';
 
-<p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a vase."/></p>
+<p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a terracota vase."/></p>
 
 \- Text by [@Thinkwert](https://twitter.com/Thinkwert/status/1428488345357856777)[^text]
 \- Image by [PerspectiveFriendly](https://old.reddit.com/user/PerspectiveFriendly)[^img]
@@ -2137,7 +2284,7 @@ A report might look something like this:
 
 <!-- TODO: Test failure in the middle of a Story Table Step -->
 
-```
+```txt
 Assembly Line Kiln Automated Testing Report - Wed, 29 Dec 2021 17:49:00 GMT
 
 
