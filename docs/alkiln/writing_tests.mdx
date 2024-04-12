@@ -330,11 +330,11 @@ This Step is flexible, which makes the test easier to maintain. The order of the
 
 ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears in your interview.
 
-:::caution
+:::caution .there_is_another
 Avoid using `.there_is_another` in your Story Table. Read about [what to use instead](#there-is-another).
 :::
 
-You can use multiple Story Tables in a test.
+You can use multiple Story Tables in a test.<span id="unused-rows"></span><span id="skipped-variable"></span>
 
 Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.
 
@@ -445,7 +445,7 @@ A lot of authors use this Step to set answers with sensitive information, like a
 
 <SecureEnvVars/>
 
-:::caution
+:::caution Not for sign in
 This Step is unable to sign into your docassemble server. You **must** use [the "sign in" Step](#sign-in) to sign in to your docassemble server.
 :::
 
@@ -510,7 +510,7 @@ If the file is a PDF file, you can use the ["compare files" Step](#compare-files
 
 <!-- TODO: Add "not done downloading" to troubleshooting.mdx -->
 
-:::caution Not done downloading?
+:::caution Unfinished downloads
 Currently, ALKiln is unable to tell when a file has actually finished downloading, so it runs the download Step for about twice the [maximum seconds allowed for a Step](#custom-timeout) no matter what. If a download takes longer than the current maximum seconds value, the test will not fully download the file[^d-time].
 
 If you think downloading the file will take more than 60 seconds, use the ["max seconds" Step](#custom-timeout) to give the file more time to download. The "download" Step will use the the full amount of time that you give it.
@@ -797,7 +797,7 @@ Example Story Table Step:
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
 
-:::caution Be careful
+:::caution Avoid boundary dates
 Be careful with `today` math. If you are testing a "boundary" date, you want to pick a date that is well within a boundary to make the test more robust. For example, if you want to test a date that was 10 or fewer days ago, use `today - 9` instead of `today - 10`.
 
 At some point your tests might run over night and hit midnight right in the middle of the test - after ALKlin fills in the answer, but before the interview finishes. In that situation, if ALKiln answered the question with `today - 10` the clock would tip into the next day by the end of the interview - 11 days from the filled-in date. Your test would fail incorrectly.
@@ -915,7 +915,7 @@ Example Story Table Step:
 
 <!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
 
-Many authors find setting checkboxes confusing and often accidentally use an incorrect variable name or value. When they do that, they can get a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just skip the field. Reading this section can help.
+Checkboxes are one of the most challenging variables to set. This might lead to a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just [skip the field](#unused-rows) causing problems later on.
 
 :::tip Advanced summary
 - The only value a checkbox can have is `True` or `False`.
@@ -1155,7 +1155,7 @@ First ALKiln will compare all of the text in the PDFs. Then ALKiln will compare 
 
 Use the "phrase" Step to check that specific text is visible on the page. You can also make sure that text that should NOT be visible is indeed absent.
 
-:::danger
+:::caution Missing phrases
 Getting some text characters right can be tricky with interview pages. If you get told ALKiln cannot find a phrase, read about [possible reasons for missing phrases](troubleshooting.mdx#missing-phrase) in the troubleshooting documentation.
 :::
 
@@ -1205,7 +1205,7 @@ The Step format:
 
 The first blank to fill in for this Step is `<variable name>` which is the name of the variable that is in the JSON variables and values data of the page. The second blank to fill in is `<value>`, which is the value you want the variable to have. The value **must** be a string (text).
 
-:::caution
+:::caution Only flat values
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not an attribute like `user.affidavit`.
 :::
 
@@ -1326,7 +1326,7 @@ Your tests files have the code that tells ALKiln how to answer questions in your
 
 You should save your test files in your package's ["Sources" folder](https://docassemble.org/docs/playground.html#sources). If you used the ALKiln setup interview, there will already be a test there that just loads the interview.
 
-In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and keywords[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
+In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and [keywords](#gherkin-keywords)[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
 
 
 [^keywords]: Keywords are specific words that have a special meaning and purpose when you use them in specific places in your test code. They are similar to the words `else` and `not` in python.
@@ -1350,7 +1350,7 @@ Here are some rules about test files:
 - Each file **must** contain only one `Feature:` keyword.
 - You **must** use **Gherkin** syntax for your tests. [Gherkin's own documentation](https://cucumber.io/docs/gherkin/reference/) is the best place to read about Gherkin syntax with some exceptions that you can read below. Ignore notes about "step definitions". Those are part of what ALKiln takes care of.
 
-To troubleshoot Gherkin synatx problems <!-- TODO: Add link to errors that indicate incorrect syntax. Wrong cell count, etc. --> in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, the editor should mark an extra `Feature:` keyword as incorrect.
+To troubleshoot [Gherkin synatx problems](troubleshooting.mdx#gherkin) in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, if you have multiple `Feature` keywords in your file, the editor should mark the second one as incorrect.
 
 
 ### Gherkin keywords {#gherkin-keywords}
@@ -1553,9 +1553,26 @@ You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workfl
 
 **This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
 
-Workflow input values let you customize global ALKiln configuration settings. This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
-
 <!-- TODO: Are autodiy tests able to use max server reload? -->
+
+Workflow input values let you customize global ALKiln configuration settings.
+
+This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
+
+For any input, you put the input's value under the `with` in your workflow file:
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
+
+For the items that have values with sensitive information, you first create a [GitHub secret](#secrets) that stores the value. You then use that secret under the `with` in your workflow file:
+
+```yml
+        with:
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
 
 
 ### Required inputs for <GTOYS/> tests {#githubNyou-inputs}
@@ -1566,8 +1583,8 @@ The [<GTOYS plain={true}/> test method](setup.mdx#recommended) workflow file has
 
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
-- `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on.
-- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on your server. When you set up for this kind of test, we recommend you create a new developer account on your server just for testing. This developer account will [store the Project in its Playground while GitHub runs the tests](setup.mdx#github-how).
+- `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on. You should store the value for this input in a [GitHub secret](#secrets).
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for the ALKiln [testing account](security.mdx#test_accounts) on your server. You should store the value for this input in a [GitHub secret](#secrets).
 
 If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
 
@@ -2189,15 +2206,15 @@ You can read more about [errors and troubleshooting in other documentation](trou
 
 ## Test logs {#console}
 
-**This is for**: all tests.
+**This is for**: all tests
 
-The console, or GitHub job log, shows the full raw output of the logs of the processes that ran before, during, and after the tests.
+The console (in GitHub called the job log) shows the full raw output of the logs of the processes that ran before, during, and after the tests.
 
 In GitHub, you can see the test run's console at the [workflow's job logs](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results). You can see these messages appear as each process happens as well as after the tests finish running.
 
 In <AutoDIY/> tests, you can only see the console output after tests are done. They should be at the bottom of the final page.
 
-The console output should include, from top to bottom:
+The console output should include at least one of these items, from top to bottom:
 
 1. Data from the start up processes, where errors can happen too.
 2. A list of each Scenario (test) description next to symbols that show what happened in that test:
@@ -2327,6 +2344,10 @@ Accessibility on direct-standard-fields passed!
       | user_climbing_speed | very fast |
 ```
 
+:::caution Unused rows
+Even Scenarios that **pass** might have a section called "Unused rows" at the bottom of its part of the report, as you see above. [A Story Table will skip rows](#unused-rows) if it is unable to find any matching fields. That might mean that something actually did go wrong with the test.
+:::
+
 ALKiln currently only shows logs for some Steps, including:
 
 - [Accessibility checks](#a11y)
@@ -2445,7 +2466,7 @@ Copy old Scenarios or Story Tables to help you make new ones. You don't have to 
 
 In questions with choices, use both labels and values. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about those key-value pairs. The key is the label and the value is... the value! You can use this for other fields with choices, like radio buttons.
 
-:::caution Hmm
+:::caution Unhelpful
 Just labels:
 
 ```yaml
