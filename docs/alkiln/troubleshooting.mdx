@@ -18,10 +18,11 @@ Maybe you made a mistake, maybe there is a bug in our code, in docassemble, or i
 
 This document is just starting out and would love contributions!
 
-This page helps with:
+This page helps with some:
 
-- General debugging techniques
-- Common developer mistakes
+<!-- - General debugging suggestions (I think this would need an actual section for it if it's going to be listed here) -->
+<!-- - Common developer mistakes (I need to check the existing contents. It may need an actual section if it's going to be listed here) -->
+
 - ALKiln errors and warnings
 - Docassemble errors and warnings
 - Errors and warnings from the third-party libraries that ALKiln uses
@@ -61,7 +62,7 @@ To fix this you can find the syntax typos by using an editor like the [editor at
 
 The error message will include text similar to this:
 
-```bash
+```
 Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
 ```
 
@@ -86,15 +87,6 @@ You have a typo in the Step that failed. The error message should contain the te
 1. If you want to be helpful to us, you can check if there really was a typo. If the text of the two lines look the same visually, use a diff checker like [https://www.diffchecker.com/text-compare/](https://www.diffchecker.com/text-compare/) to compare your original Step text with the new Step text. If the diff checker shows that the text is the same, contact us. Maybe we have a typo in our documentation.
 1. Delete your original Step text and try the test again.
 1. If the test has the same problem, contact us. Maybe we have a typo in our documentation.
-
-
-<!-- ## Access Denied -->
-
-<!--
-## ALKiln was unable to continue to the next page
--->
-
-<!-- writing_tests.mdx#error-pics, writing_tests.mdx#reports -->
 
 
 ## UnhandledPromiseRejection error
@@ -122,7 +114,7 @@ Leaving this out can lead to problems like a [file not being found](#file-not-fo
 
 ### File not found {#file-not-found}
 
-<!-- Find that error -->
+<!-- TODO: Find the test of that error? But we can't rely on that. It would only be the default docssemble text. -->
 
 This might mean that you have a file in your Playground Project, but that you still have to save it on the Project's Packages page and commit that to GitHub. Your tests will pass for that Project in your Playground, but your interview will break when you or others install it from GitHub.
 
@@ -134,44 +126,7 @@ If you see the text "invalid playground path" in the report, that means the `Giv
 See [uncommitted files](#uncommitted).
 
 
-<!--
-### Package dependency missing {#missing-dependency}
-
-TODO: Check docker error when dependency is not installed in sandbox tests
--->
-
-
-## ALKiln could not find a field or value {#missing}
-
-Some possible causes:
-
-1. You have changed your code to remove a variable or value and have not yet updated your tests.
-
-Look at the error message closely. Look at the [picture and HTML of the error page](#writing_tests.mdx#error-pics). Try to find the variable or value in your interview code or in the code of included or imported files. See if that variable or value is also in your test file.
-
-2. The field is hidden behind a `show if` of some kind.
-
-Follow the above steps first. Then check if the field is hidden. If it is hidden, try to see what can make that field visible. Whatever variable and value reveals that answer, check for those in your interview file and in your test code.
-
-3. There might be a typo in your test. Reading the [section about test typos](#var-val) might help.
-
-
 ## Docassemble: Variable could not be looked up {#variable-not-found}
-
-<!-- TODO: Actually, usually shows up as ALKiln couldn't find a field -->
-
-<!--
-TODO:
-sets:
-  - x.gender
-id: gender
-generic object: ALIndividual
-question: |
-  What is ${x.possessive('gender')}?
-fields:
-  - code: |
-      x.gender_fields(show_help=True)
--->
 
 **Symptom:**
 
@@ -201,58 +156,33 @@ If the mistake is in your interview code, you can fix that bug. If your intervie
 <TypoShameIsReal/>
 
 
+## ALKiln could not find a field or value {#missing}
+
+Some possible causes:
+
+<!-- 1. The field is in a `question` block that has `mandatory: True` (only signature page? I think others too). -->
+
+<!-- TODO: ALKiln: Can ALKiln check for a page triggered by `mandatory: True`? -->
+
+<!-- 1. [Special HTML](writing_tests.mdx#special-html) needed? -->
+
+1. You have changed your code to remove a variable or value and have not yet updated your tests.
+
+  Look at the error message closely. Look at the [picture and HTML of the error page](#writing_tests.mdx#error-pics). Try to find the variable or value in your interview code or in the code of included or imported files. See if that variable or value is also in your test file.
+
+1. The field is hidden behind a `show if` of some kind.
+
+  Follow the above steps first. Then check if the field is hidden. If it is hidden, try to see what can make that field visible. Whatever variable and value reveals that answer, check for those in your interview file and in your test code.
+
+1. There might be a typo in your test. Reading the [section about test typos](#var-val) might help.
+
+
 ## Skipped rows or variables {#skipped}
 
-If you look in a [test suite report](writing_tests.mdx#report) and see that ALKiln [skipped setting a variable](writing_tests.mdx#unused-rows), your test might have a [missing field or value](#missing).
+If you look in a [test suite report](writing_tests.mdx#report) and see that ALKiln [skipped setting a variable](writing_tests.mdx#unused-rows), your test code might be [missing a field or value](#missing) that it needs in order to fill out that field.
 
-<!--
-## Not setting variables
+If the test still passed, the variable probably belongs to a field that was optional.
 
-`mandatory: True` questions
- -->
-
-<!--
- ## Infinite loop {#infinite-loop}
-
-WIP
-
-Same var or vars set over and over again and never stop.
-
-A page that has no invalidation message and yet is unable to move on.
--->
-
-<!--
-## Timing out
-
-1. Could need more time for Steps to run, pages to load, documents to upload or download, etc. Increase the time you give those to happen by using the ["max seconds"](writing_tests.mdx#custom-timeout) Step.
-1. Server reloading
-1. Something went wrong with the library ALKiln is using and it got disconnected somehow.
- -->
-
-<!--
-## Tests are taking too long
-
-Tests that fail take at least twice as long as tests that succeed because ALKiln repeats tests that failed. That's because some failures are caused by a server reload and ALKiln wants to give those type of failures an opportunity to try again. Unfortunately, ALKiln can't retry conditionally yet.
-
-TODO: Look into this. I don't think this is the reason. ALKiln Story Table would try to continue and get an "invalid answer" feedback and should be able to tell that it is an actual failure. Is this problem from something else?:
-Tests that end up on the wrong page take a default amount of 30 seconds to fail. Then those test are re-run, so they take at least 1 minute each. That's because there is no way for ALKiln to know whether the server is just taking a long time to load the correct page or if the test really ended up on the wrong page. This is especially a problem for the ALKiln Story Table (I think?).
- -->
-
-<!--
-## Inconsistent failures {#inconsistent}
-
-If a test sometimes fails because it says it couldn't find a field or element on the page, and other times it passes, this Step can help. Use "wait" to pause for a moment before trying to interact. This is usually because some elements can take different amounts of time to fully load.
-
-Not all collapsed elements are being expanded - wait for each element to be expanded. When elements are moving on the page ALKiln has trouble interacting with them. Also, if it's helpful, you can instead use code to start with expanded elements when tests are running/when you are debugging. Or you can also go from bottom to top. When you go from top to bottom, elements below move around making it hard for ALKiln to interact. When you expand ones at the bottom first, the ones above stay in the same place.
--->
-
-<!--
-## Some test file names have the word null in them
-
-Maybe "Some JSON files aren't being saved with the "save variables" (writing#save-vars) or "compare json" (writing#compare-json) Steps" - check on JSON file names to make sure they have a timestamp.
-
-Make sure every question block you create has an id (link to FAQ)
--->
 
 ## Wrong variable or value {#var-val}
 
@@ -300,8 +230,6 @@ Example error:
 ```txt
 The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
 ```
-
-**Problem**
 
 **Debugging**
 
@@ -356,7 +284,7 @@ You won't be able to tell if the `SERVER_URL` is wrong - GitHub considers the va
 
 ## No artifacts {#no-artifacts}
 
-If ALKiln is missing all [artifacts](writing_tests.mdx#artifacts) by the end of the test run, it means none of the tests ran. There are possible several reasons for this.
+If ALKiln is missing all [artifacts](writing_tests.mdx#artifacts) by the end of the test run, it means none of the tests ran. There are several possible reasons for this. For this type of error, it can be especially useful to look at the [console logs](writing_tests.mdx#console) and error messages.
 
 Possible reasons for missing artifacts for any test:
 
@@ -373,87 +301,62 @@ Possible reasons for missing artifacts for <GTOYS/> tests:
 
 Possible reasons for missing artifacts for <KittyLitter/> tests:
 
-- The Docker container is having trouble starting up.  If this was the case, your [GitHub job logs](writing_tests.mdx#console) should show that the docker build step failed.
+- The Docker container or the docassemble server installation is having trouble starting up. If this is the case, your [GitHub job logs](writing_tests.mdx#console) should show that the docker build step failed. This is a complex problem and takes experience with creating docassemble servers and maybe Docker. You can set the ALKiln [`SHOW_DOCKER_OUTPUT` configuration input](writing_tests.mdx#sandbox-optional-inputs) to "true" to show you more information about what is going on during that setup process. If you have experience with actions and the command line, you might also be able to use the [tmate action](https://github.com/mxschmitt/action-tmate) to explore more about what is going on in your Docker container.
 
 Possible reasons for missing artifacts for <GTOYS/> and <KittyLitter/> tests:
+
+<!-- TODO: Add this for the ALKiln version installation instructions for <AutoDIY/> tests -->
 
 - The package manager that installs ALKiln had a problem. This does happen every now and then. If this was the case, your [GitHub job logs](writing_tests.mdx#console) should show test setup failure. You can [check its status](https://status.npmjs.org/), but the problem would have to be happening for a lot of people at once for it to show up.
 - GitHub itself had a problem. This is pretty rare. It can cause a failure at any point in the test. You can [check GitHub's status](https://www.githubstatus.com/). Again, the problem would have to be happening to a lot of people at once for it to show up on that site.
 
 
-<!-- ## There are no artifacts, files, or folders
-
-The tests completely failed to run. For this, it is especially important to look at the console output and error messages. In GitHub, those might be above where the tests even run.
-
-There might be a typo in a test (link). For <KittyLitter> tests, the docker container might not have started up correctly. Maybe your server was down. Maybe the API key you gave ALKiln was wrong or got deleted with a server restart. That might be because of your own errors or because of GitHub.
-
-Also, other services like GitHub or node package manager (npm) might have been having various kinds of trouble.
--->
-
-
-<!--
-TODO: ?
-## Immediate error {#no-load}
-
-Anything that could prevent your interview running in any environment
-
-- Dependency package missing on server ("contact the server administrator")
-    For isolated servers, make sure to include as dependency
-    For your own server, make sure you've installed the right package
-- File missing in package? (not sure if it's the same error)
-- Interview missing? (not sure if it's the same error)
-- Syntax error
--
-
--->
-
-<!--
-TODO: internal docs
-
-On sandbox server, installing on server instead of in Playground because that means dependencies will be pulled in automatically.
-Why aren't internal tests checking for specific server errors in the output? Because the text of those can change.
--->
-
-<!--
-Same test, different error
-
-TODO: note when tests properly starting
--->
-
-<!--
-Behaves differently in Sandbox than in G+Y and AutoD
-
-Flaky
-Different packages or package versions on different servers
-Diff v of da
-Not required all dependencies
-Cached info. For example DAGlobal, Redis, DAStore, db data, etc. Your server retains the info. Sandbox has all fresh info.
-Different versions of ALKiln framework (check ALKILN_TAG_EXPRESSion)
-Different versions of ALKiln actions (check `uses`)
--->
-
 ## Slow tests {#slow}
-
-WIP
-
-<!-- This is different than a never-ending test/infinite loop where there was no validation error, but the test can't move past the page. -->
 
 **This is for:** Everyone
 
-There are a few different reasons your tests could be slow.
+<!-- TODO: This is different than a [never-ending test/infinite loop](#infinite) where there was no validation error, but the test can't move past the page. -->
 
-1. Failing tests can make your tests slower. Each failing test gets re-run once, so that can double the amount of time that tests take.
-2. If your server reloads a lot during <GTOYS/> tests, it will take longer for tests to finish because the tests try to wait for the server to be available to avoid ["flaky"](#flake) tests. Your server can reload for many reasons. For example, saving your config file, saving a python module, or pulling a package that uses a python module can all cause your server to reload.
-3. Some types of failing tests take an even longer time to fail. That is because some kinds of failures look the same to ALKiln as a docassemble server reloading. This is true even for <KittyLitter/> tests where the server is very unlikely to reload - ALKiln still treats those failures the same way.
+There are a various reasons your tests could be slow.
 
+First, there are reasons even passing tests can be slow, including:
+
+1. Your pages may just be taking a long time to load. This might happen if you are building a large document, uploading a large document, or for other reasons. That can even cause the tests to fail if it takes too long. You can use the ["max seconds" Step](writing_tests.mdx#custom-timeout) to give them more time. There are some things you can do to speed up some kinds of processes on your server, but that is out of scope for this document.
+1. [Downloading a lot of documents](writing_tests.mdx#download) can take a while. Right now, ALKiln is unable to tell when a document is done downloading, so it gives every document the maximum time possible. By default, that is a full 60 seconds. You can decrease that time with the ["max seconds" Step](writing_tests.mdx#custom-timeout), but that time might be too short for the documents to download. You can experiment a bit. You can also be tricky with the "max seconds" Step, though, and increase and decrease the value at appropriate times to improve both speed and downloading. <!-- (#missing-downloads) -->
+1. If your server reloads a lot during <GTOYS/> tests, it will take longer for tests to finish because the tests try to wait for the server to be available to avoid ["flaky"](#flake) tests. Your server can reload for many reasons. For example, saving your config file, saving a python module, or pulling a package that uses a python module can all cause your server to reload. This might even cause your tests to fail.
+
+There are also some different reasons that tests get slower when they fail, including:<span id="server-reload"></span>
+
+<!-- TODO: make a section just for about reloading? So that other places can link to that specifically. -->
+
+1. Each failing test gets re-run once, so that can double the amount of time that tests take. Currently, there is no way to choose whether to re-run tests or not.
+1. When a Story Table is trying to reach a target page and gets stuck somewhere, it will wait the maximum seconds allowed for a page load (which you can [change](writing_tests.mdx#custom-timeout)) to let the interview continue to the next page. By default, that is 30 seconds. Since those tests re-run, that can make a test take more than 1 minute.
+
+<!-- TODO: make sure we've covered this somewhere
 Like a normal user, an ALKiln test can get a server timeout error when the server reloads, which will cause the test to fail part-way through. This is a useless failure because it is just a ["flaky"](#flake) test and tells you, the developer, nothing about your actual code. ALKiln wants to wait so that the test retry and next tests will have a better chance of finishing properly.
+By default, ALKiln gives the server 150 seconds to reload.
+-->
 
-By default, ALKiln gives the server 150 seconds to reload. When ALKiln is wrong about a reload, ALKiln ends up waiting the full 150 seconds before moving on to the next test.
+<!-- TODO: ALKiln: can some of these long timeouts be taken care of by detecting errors on the page? Can we try to detect an AL error page? Is that the problem? Maybe other types of pages too that have no continue button? -->
 
-You can speed this up by decreasing the [`SERVER_RELOAD_TIMEOUT_SECONDS` input](writing_tests.mdx#githubNyou-optional-inputs) value. With <KittyLitter/> tests, that might be worth it. With other types of tests, it means that your server will get less time to reload if it really *does* need to, leading to flakier tests. You must make the decision based on what you know about your server.
+<!--
+TODO: Look into this:
+Tests that end up on the wrong page take a default amount of 30 seconds to fail. Then those test are re-run, so they take at least 1 minute each. That's because there is no way for ALKiln to know whether the server is just taking a long time to load the correct page or if the test really ended up on the wrong page. This is especially a problem for the ALKiln Story Table (I think?).
 
-4. Your pages may just be taking a long time to load. This might happen if you are building a large document, uploading a large document, or for other reasons. There is no way to speed this up with ALKiln. There are some things you can do to speed up some kinds of processes on your server, but that is out of scope for this document.
-5. [Downloading a lot of documents](writing_tests.mdx#download) can take a while. Right now, ALKiln is unable to tell when a document is done downloading, so it gives every document the maximum time possible. By default, that is a full 60 seconds. You can decrease that time with the ["max seconds" Step](writing_tests.mdx#custom-timeout), but that time might be too short for the documents to download. You can experiment a bit. You can also be tricky with the "max seconds" Step, though, and increase and decrease the value at appropriate times to improve both speed and downloading.
+I don't think this is the reason. ALKiln Story Table would try to continue and get an "invalid answer" feedback and should be able to tell that it is an actual failure. Is this problem from something else? Is this a problem from the AL error page?
+-->
+
+<!--
+I actually think this is false. These days we independently check whether the server is actually responding.
+
+1. Some types of failing tests take an even longer time to fail. That is because some kinds of failures look the same to ALKiln as a docassemble server reloading. This is true even for <KittyLitter/> tests where the server is very unlikely to reload - ALKiln still treats those failures the same way.
+
+  Like a normal user, an ALKiln test can get a server timeout error when the server reloads, which will cause the test to fail part-way through. This is a useless failure because it is just a ["flaky"](#flake) test and tells you, the developer, nothing about your actual code. ALKiln wants to wait so that the test retry and next tests will have a better chance of finishing properly.
+
+  By default, ALKiln gives the server 150 seconds to reload. When ALKiln is wrong about a reload, ALKiln ends up waiting the full 150 seconds before moving on to the next test.
+
+  You can speed this up by decreasing the [`SERVER_RELOAD_TIMEOUT_SECONDS` input](writing_tests.mdx#githubNyou-optional-inputs) value. With <KittyLitter/> tests, that might be worth it. With other types of tests, it means that your server will get less time to reload if it really *does* need to, leading to flakier tests. You must make the decision based on what you know about your server.
+-->
 
 
 ## Flaky tests {#flake}
@@ -472,25 +375,105 @@ You can speed this up by decreasing the [`SERVER_RELOAD_TIMEOUT_SECONDS` input](
 
 
 <!--
-Slow tests
+TODO: ?
+## Immediate error in running tests {#no-load}
 
-Slow failing tests
+Anything that could prevent your interview running in any environment
 
-Trouble with server reloading for <GTOYS/> tests
-
-Option 1:
-`SERVER_RELOAD_TIMEOUT_SECONDS` customizes how long to allow your tests to wait when your server has stopped responding. When the server stops responding, ALKiln assumes it is because the server is reloading. A server reload stops a test part-way through and and causes a failure. You then are unable to tell whether the test would have passed or failed on its own. Because servers usually take a while to reload, this can cause multiple tests to fail. If you know your server tends to be slow to reload, you can increase `SERVER_RELOAD_TIMEOUT_SECONDS` to help tests recover better.
-
-The server can reload for many reasons. For example, when someone saves the server config file. In fact, in some cases [a different test run starting up can cause a reload](setup.mdx#githubNyou-cons) too.
-
-Unfortunately, there are some real errors that make ALKiln think the server might be reloading. Those tests will also slow down when they fail. That can mean failing tests can take a lot longer. There is currently no way for ALKiln to tell the difference.
-
-Option 2:
-The SERVER_RELOAD_TIMEOUT_SECONDS environment variable allows developers to specify the wait time for ALKiln tests when the server stops responding, typically due to a reload. This setting helps manage test failures caused by server reloads, which can occur for various reasons, such as configuration changes or new test runs. However, it also affects tests that fail due to genuine errors, leading to longer test durations. Currently, ALKiln cannot distinguish between these scenarios.
-
-More:
-ALKiln waits till it detects that the server has reloaded. It can't wait forever or a broken server will cause infinite tests. So it picks a maximum time to wait.
-
-That first test will fail for unhelpful reasons. ALKiln will wait a while to try to let the server reload. That first failing test will be retried. If the server has finished reloading, the test will be able to finish properly. Even if that isn't long enough, maybe the next tests will be able to run properly once the reload is finished.
+- Dependency package missing on server ("contact the server administrator")
+    For isolated servers, make sure to include as dependency
+    For your own server, make sure you've installed the right dependency packages
+- File missing in package, like template? (not sure if it's the same error)
+- Interview missing? (not sure if it's the same error)
+- Gherkin syntax error
 -->
 
+<!--
+## Tests that behave differently in Sandbox than in G+Y and AutoD
+
+Flaky
+Different packages or package versions on different servers
+Diff v of da
+Not required all dependencies
+Cached info. For example DAGlobal, Redis, DAStore, db data, etc. Your server retains the info. Sandbox has all fresh info.
+Different versions of ALKiln framework (check ALKILN_TAG_EXPRESSion)
+Different versions of ALKiln actions (check `uses`)
+
+## Tests that behave differently in Sandbox and in G+Y than AutoD
+
+A file was left out. It wasn't saved before committing.
+-->
+
+<!--
+TODO: internal docs
+
+On sandbox server, installing on server instead of in Playground because that means dependencies will be pulled in automatically.
+Why aren't internal tests checking for specific server errors in the output? Because the text of those can change.
+-->
+
+<!--
+## Downloaded files missing {#missing-downloads}
+-->
+
+<!--
+ ## Infinite loop {#infinite-loop}
+
+Same var or vars set over and over again and never stop.
+
+A page that has no invalidation message and yet is unable to move on.
+-->
+
+<!--
+## Timing out
+
+1. Could need more time for Steps to run, pages to load, documents to upload or download, etc. Increase the time you give those to happen by using the ["max seconds"](writing_tests.mdx#custom-timeout) Step.
+1. Server reloading
+1. Something went wrong with the library ALKiln is using and it got disconnected somehow.
+ -->
+
+<!--
+## Inconsistent failures {#inconsistent}
+
+If a test sometimes fails because it says it couldn't find a field or element on the page, and other times it passes, this Step can help. Use "wait" to pause for a moment before trying to interact. This is usually because some elements can take different amounts of time to fully load.
+
+Not all collapsed elements are being expanded - wait for each element to be expanded. When elements are moving on the page ALKiln has trouble interacting with them. Also, if it's helpful, you can instead use code to start with expanded elements when tests are running/when you are debugging. Or you can also go from bottom to top. When you go from top to bottom, elements below move around making it hard for ALKiln to interact. When you expand ones at the bottom first, the ones above stay in the same place.
+-->
+
+<!--
+## Some test file names have the word null in them
+
+Maybe "Some JSON files aren't being saved with the "save variables" (writing#save-vars) or "compare json" (writing#compare-json) Steps" - check on JSON file names to make sure they have a timestamp.
+
+Make sure every question block you create has an id (link to FAQ)
+-->
+
+
+<!--
+### Package dependency missing {#missing-dependency}
+
+TODO: Check docker error when dependency is not installed in sandbox tests
+-->
+
+
+<!--
+TODO: (I think this was meant to be an example of `code` for when it's confusing to figure out the variable names for setting values)
+
+sets:
+  - x.gender
+id: gender
+generic object: ALIndividual
+question: |
+  What is ${x.possessive('gender')}?
+fields:
+  - code: |
+      x.gender_fields(show_help=True)
+-->
+
+
+<!-- ## Access Denied -->
+
+<!--
+## ALKiln was unable to continue to the next page
+
+Is this for when ALKiln gets invalid answer feedback that prevents continuing?
+-->
