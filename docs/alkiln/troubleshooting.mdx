@@ -94,7 +94,7 @@ You have a typo in the Step that failed, so cucumber thinks that you are trying 
 
 ## UnhandledPromiseRejection error
 
-This is a misleading error from a library ALKiln uses that is hiding the real error message inside it. You need to read the text of the whole paragraph to see what the actual error is.
+This is a misleading error from a library ALKiln uses that is hiding the real error message inside it. You need to read the text of the whole paragraph to see what the actual error is. You might see more useful information in the [report](writing_tests.mdx#report) above those messages or in your [artifacts](writing_tests.mdx#artifacts).
 
 
 ## Everything works fine when I run the test manually {#works-manually}
@@ -485,4 +485,38 @@ Is this for when ALKiln gets invalid answer feedback that prevents continuing?
 ## GitHub tests are passing, but <AutoDIY/> tests are failing
 
 Check if your GitHub workflow file is using the [`ALKILN_TAG_EXPRESSION` input](writing_tests.mdx#optional-inputs). Tags limit which tests you are running. You might be only running a test that happens to be passing.
+-->
+
+<!--
+From old docs (might already be incorporated here):
+
+### The tests fail at the very first Step
+{#the-tests-fail-at-the-very-first-step}
+
+1. Check the ‘Run npm run setup’ line right above the failed tests. Click to expand it and make sure that setting up the interview didn’t fail. If it did, try running it again.
+2. Manually [make a new Project](https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit#heading=h.8yw6hi5hgw1d) on the server and [pull the code](https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit#heading=h.yve8jwod1owz) from the exact same branch into that Project. Manually run the file that is named in your test and double check that it is working the way you expect it to.
+3. Make sure that the file you named in your `Given` **Step** is the right file.
+4. Have you changed the server where you were running your code? Check your repository’s code in the .github/workflows/run_form_tests.yml file. Make sure the `BASE_URL` in there is the correct one for your server. [Edit it](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) if it is the wrong one.
+5. Contact someone who might know more.
+
+### The test failed on or after ‘upload error artifacts’
+{#the-test-failed-on-or-after-‘upload-error-artifacts’}
+
+Something probably went wrong with Github. Or maybe they have a maximum amount that they can download that we haven’t yet dug up in their documentation. Try rerunning the tests and, if it fails the same way a second time, get in touch with us.
+
+
+### The error says it “timed out“
+{#the-error-says-it-“timed-out“}
+
+We might handle this now:
+
+That’s a stock system error. Some **Step** took too long to finish in a way for which we have not yet created a custom error message or cannot detect. It is often a page that took too long to load. It sometimes happens when the Project got deleted in the middle of the test, or when the [`Run npm run setup` phase doesn’t work correctly](#bookmark=id.y1ibk27fo4jy).
+
+
+### Some other mysterious error
+{#some-other-mysterious-error}
+
+1. You can rerun the test
+2. Try to search for the text of the error online (don’t spend more than 20 min on this, though)
+3. Ask one of us. Remember that this framework is under development. Something might be wrong with our code.
 -->
