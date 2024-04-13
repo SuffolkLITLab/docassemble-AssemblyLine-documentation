@@ -38,9 +38,12 @@ This page helps with some:
 
 There are some general troubleshooting steps that you can take when tests fail. If any of these steps help you find more specific problems, look for those on this page too because they may help you get to your solution faster.
 
+For <AutoDIY/> tests, you can start by updating your version of [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) and [updating your version of ALKiln](writing_tests.mdx#trigger-autodiy).
+
 - Check the [console logs](writing_tests.mdx#console) of the test run. Remember that sometimes the errors will be near the top of the logs or near the bottom.
 - Check the [test run report](writing_tests.mdx#report).
 - Check [error screenshots/pictures and HTML pages](writing_tests.mdx#error-pics).
+- Check for [syntax errors in your test files](#gherkin).
 
 If you are unsure if the test is acting correctly, go to your docassemble server, create a new Project, pull the code of your package into the Project, and go through the interview manually. Use the failing test as a guide and follow its Steps exactly.
 
@@ -49,7 +52,7 @@ If you are unsure if the test is acting correctly, go to your docassemble server
 
 There are some errors that come up because of various issues in your [test files](writing_tests.mdx#test-files).
 
-To troubleshoot syntax typos, you can use an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
+A syntax error in any of your test files will stop your tests from running at all. To troubleshoot syntax typos, you can use an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
 
 You also might have a [typo in a Step itself](#step-undefined).
 
@@ -73,11 +76,11 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 
 At the very bottom of your [console output](writing_tests.mdx#console) you see the message "Undefined" and "You can implement missing steps with the snippets below".
 
-This is an error message from a library ALKiln uses called cucumber.
+This is an error message from a library ALKiln uses called [cucumber](https://cucumber.io/).
 
 **Problem:**
 
-You have a typo in the Step that failed. The error message should contain the text of the Step.
+You have a typo in the Step that failed, so cucumber thinks that you are trying to create a new Step. The error message should contain the text of the Step that you wrote.
 
 **Solution:**
 
@@ -262,14 +265,14 @@ Different problems can cause the report to say that something "took too long" or
 
 A "timeout" error can happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
 
-1. The page was trying to load a big file.
-1. ALKiln could not continue to the next page for some reason.
-1. A Story Table was unable to reach the page with the specified `id`.
-1. There's a typo in the name of the interview YAML file that the test should go to.
+1. The page was trying to load a big file
+1. ALKiln could not continue to the next page for some reason
+1. A Story Table was unable to reach the page with the specified `id`
+1. There's a typo in the name of the interview YAML file that the test should go to
 
 If a page was taking too long to load a big file, use [the `max seconds` Step](writing_tests.mdx#custom-timeout) to give the page more time to load.
 
-You might be able to look at the error page picture for more details. In GitHub, you can download the test artifacts <!-- TODO: Add link to section on GitHub artifacts --> to look for it.
+You might be able to look at the [error page picture and HTML](writing_tests.mdx#error-pics) for more details. In GitHub, you can download the [test artifacts](writing_tests.mdx#artifacts) to look for it.
 
 In GitHub, this error can also happen when:
 
@@ -444,7 +447,7 @@ Not all collapsed elements are being expanded - wait for each element to be expa
 
 Maybe "Some JSON files aren't being saved with the "save variables" (writing#save-vars) or "compare json" (writing#compare-json) Steps" - check on JSON file names to make sure they have a timestamp.
 
-Make sure every question block you create has an id (link to FAQ)
+Make sure every question block you create [has a unique id](writing_tests.mdx#id-tip)
 -->
 
 
@@ -476,4 +479,10 @@ fields:
 ## ALKiln was unable to continue to the next page
 
 Is this for when ALKiln gets invalid answer feedback that prevents continuing?
+-->
+
+<!--
+## GitHub tests are passing, but <AutoDIY/> tests are failing
+
+Check if your GitHub workflow file is using the [`ALKILN_TAG_EXPRESSION` input](writing_tests.mdx#optional-inputs). Tags limit which tests you are running. You might be only running a test that happens to be passing.
 -->

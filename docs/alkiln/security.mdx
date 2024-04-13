@@ -12,7 +12,7 @@ import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 WIP (Work in progress)
 :::
 
-<!-- WIP TODO: write who each section is for -->
+<!-- [x] WIP TODO: write who each section is for -->
 
 <!-- TODO:
 - [x] Make issue: Components in headings don't show up in the sidebar. https://github.com/facebook/docusaurus/issues/10017
@@ -31,6 +31,7 @@ Tell folks to update their test server, run tests, and only then update producti
 -->
 
 <!--
+Risks of tests on production
 https://sdtimes.com/agile/testing-in-production-risk-vs-reward/ relevant points:
 • Exposing potential vulnerabilities to the public
 • Loss of data
@@ -38,6 +39,7 @@ https://sdtimes.com/agile/testing-in-production-risk-vs-reward/ relevant points:
 -->
 
 <!-- Quinten
+Risks of tests on production
 https://www.globalapptesting.com/blog/testing-in-production#:~:text=Directly%20testing%20in%20production%20risks,off%20your%20software%20as%20buggy
 
 ~~There's the danger of deploying flawed code.~~
@@ -79,10 +81,10 @@ Categories:
 [I'm not sure of this. Lots of other code is automated] 3rd-party code. Poorly defined. Also, tests are more dangerous than other code on production because automated is more dangerous.
 [Not sure of this either. When you choose to use a tool, that gives you some software you are using. Additional packages are additional risk] Unnecessary: Everything is unnecessary. It is different. Unnecessary code is harder to know what that is. [Unnecessary = stuff that production doesn’t need to function]
 - [x] None of them can disrupt analytics. Ones on your server work in the playground. Ones that are server installed are in the sandbox. ~~Can disrupt analytics.~~
-- [] [Don't remember where this was from] “Critical” is not clear. No real info.
+- [x] [Don't remember where this was from] “Critical” is not clear. No real info.
 - [x] Databases. Give example, Like google spreadsheets that have real info. Including old databases. (Databases or a copy of real data)
-- [] [Not sure where this was supposed to go] “To actual user info” or old user info.
-- [] [Not found any links so far] Maybe link to good external reference describing dangers of using old user info. No suggestions
+- [x] [Not sure where this was supposed to go] “To actual user info” or old user info.
+- [x] ~~[Not found any links so far]~~ Maybe link to good external reference describing dangers of using old user info. No suggestions
 
 - [x] Principle of least privilege link would be good. No suggestions.
 
@@ -132,7 +134,7 @@ Trust is part of how we decide what tools to use. How do you know who to trust? 
 Our answers:
 
 - Who: We are community members and staff with SuffolkLITLab working on access to justice who volunteer our time to developing this tool.
-- Economics: The ALKiln team hopes this tool will continue to be free and open source software. We hope to never accept venture capital funding. ALKiln uses an MIT license (todo: link). Free does come at a cost, though - we do have less time and fewer resources, so development is steady, but slow.
+- Economics: The ALKiln team hopes this tool will continue to be free and open source software. We hope to never accept venture capital funding. ALKiln uses an [MIT license](https://en.wikipedia.org/wiki/MIT_License). Free does come at a cost, though - we do have less time and fewer resources, so development is steady, but slow.
 - Security: Read about [how ALKiln protects you](#alkilns-precautions).
 
 Personal incentives are also a factor, but words on a page will not capture them. Come join the community and get to know us!
@@ -141,9 +143,13 @@ Personal incentives are also a factor, but words on a page will not capture them
 
 ## Principle of least privilege {#privilege}
 
-Follow the [principle of least privilege](https://www.cyberark.com/what-is/least-privilege/). That means give software (or people) the least access possible to your server and data that still lets them do what they need to do. For example, if someone just needs to fill out an interview, give them the role of "user", not "developer".
+Follow the [principle of least privilege](https://www.cyberark.com/what-is/least-privilege/). That means give software (or people) the least access possible to your server and data while still letting them do what they need to do. For example, if someone just needs to fill out an interview, give them the [role](https://docassemble.org/docs/users.html) of "user", not "developer". If someone needs to develop interviews, give them the role of "developer", not "admin".
 
-It is one of the most effective ways to protect yourself and your users. Only give ALKiln, or anyone, the access it needs and no more.
+It is one of the most effective ways to protect yourself and your users. Only give ALKiln the access it needs and no more.
+
+Personal data is information about real people, whether that is [old information or new information](#mock-data). Security-critical data includes passwords, usernames, [API keys](https://docassemble.org/docs/api.html#manage_api), and other credentials.
+
+If you are worried you have already shown sensitive information in your GitHub tests, you can delete your [logs and artifacts](#github-output).
 
 
 ### Separate production and testing {#testing-server}
@@ -163,7 +169,7 @@ First and foremost, avoid installing or running <GTOYS/> and <AutoDIY/> tests on
 
 A separate server is only one part of separating production and testing sever access, though. You also need to:
 
-- Keep the production server's urls out of ALKiln test files, [workflow files](writing_tests.mdx#workflows), and [environment variables](writing_tests.mdx#env-vars).
+- Keep the production server's urls out of ALKiln test files, [workflow files](writing_tests.mdx#workflows), and [workflow environment variables](writing_tests.mdx#env-vars).
 - Never share API keys or passwords between servers.
 - Never share real data or databases between servers, whether the data is current or [old](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
@@ -191,8 +197,6 @@ Never use a database with real information with your tests, even old information
 
 **This is for:** Everyone
 
-<!-- TODO: add a section for setup about making an account. take it away from the setup interview like other stuff. Then link to in here and visa versa. -->
-
 Even though you are using a [testing server](#testing-server), avoid giving ALKiln access to an actual developer's name, username, password, API keys, and other sensitive information by giving ALKiln its own accounts. This also lets you see its activity in the logs more clearly and lets you delete the account easily if you need to. There are non-security related reasons to make a separate account too[^perks].
 
 <!-- TODO: Move to creating an account section when it exists: If you use <GTOYS/> tests, you need to put those values in your GitHub secrets. If you lose the sign-in information for that account, delete it, create a new one, and update the secrets. -->
@@ -201,13 +205,11 @@ Only give ALKiln an account if necessary. Make sure no one else uses the account
 
 We usually call the ALKiln user "automated_tests" and give it the email "automated_tests@example.com" with a secure password.
 
-<GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
+<GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. That is the "developer" role. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
 
 If you do need an account to sign in before a test, think of that account as a separate account because you might be able to give that account even less access. If the sign-in account can just be a user, make a new account just for signing in that just has a "user" role.
 
 If you stop needing an account, delete it.
-
-<!-- TODO: add link to GitHub secrets? -->
 
 
 [^perks]: There are other good reasons to avoid using an existing developer's account that are not related to security. For one thing, the tests create Projects and run interviews. It may be confusing for an existing developer to find those in their account. For another thing, if you do use a real developer's account and that developer leaves your organization, tests will start failing. It may take you a while to track down the problem and fix it.
@@ -284,17 +286,17 @@ The ["get JSON"](writing_tests.mdx#get-json) and ["compare JSON"](writing_tests.
 - Either the GitHub repository admin or
 - the GitHub organization admin
 
-These are the only people that can create GitHub secrets
+These are the only people that can create [GitHub secrets](writing_tests.mdx#secrets)
 
 **It can help to know about:**
 
-- GitHub secrets
-- Workflow environment variables
+- [GitHub secrets](writing_tests.mdx#secrets)
+- [Workflow environment variables](writing_tests.mdx#env-vars)
 - [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-diy).
+Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](writing_tests.mdx#secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-diy).
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets[^org_secrets], whichever is right for you.
 2. [Find your workflow file](writing_tests.mdx#workflows-where).
@@ -358,7 +360,7 @@ We recommend that you start your environment variable names with "ALKILN_". That
 
 <SecureEnvVars/>
 
-Right now Story Tables are unable to use environment variables to fill in fields.
+Right now Story Tables are unable to use [workflow environment variables](writing_tests.mdx#env-vars) to fill in fields.
 
 
 <!-- TODO: Move this to writing_tests.mdx #env-vars -->
@@ -374,11 +376,11 @@ Right now Story Tables are unable to use environment variables to fill in fields
 
 - Edit your docassemble server's config file
 
-Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to log in, so the tests need to know the email and password for that user. You can do this securely in your <AutoDIY/> tests by adding this information to your docassemble server configuration file. ALKiln will use these as environment variables for your tests.
+Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to log in, so the tests need to know the email and password for that user. You can do this securely in your <AutoDIY/> tests by adding this information to your docassemble server configuration file. ALKiln will use these as [environment variables](writing_tests.mdx#env-vars) for your tests.
 
 You can also read about [how to use sensitive information in GitHub tests](#sensitive-info-github).
 
-To do this, [edit your docassemble server's configuration file](https://docassemble.org/docs/config.html#edit) to add your environment variables under the `alkiln` key. For example:
+To do this, [edit your docassemble server's configuration file](https://docassemble.org/docs/config.html#edit) to add your [environment variables](writing_tests.mdx#env-vars) under the `alkiln` key. For example:
 
 ```yml
 # Other config values
@@ -396,7 +398,7 @@ We recommend that you start your environment variable names with "ALKILN_". That
 
 <SecureEnvVars/>
 
-Right now Story Tables are unable to use environment variables to fill in fields.
+Right now Story Tables are unable to use [workflow environment variables](writing_tests.mdx#env-vars) to fill in fields.
 
 
 ### <KittyLitter/> tests {#sandbox}
@@ -439,7 +441,7 @@ Is it possible to use string substitution in GitHub workflow `uses`? [Answer: Lo
 **It can help to know about:**
 
 - [Editing GitHub files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
-- [GitHub workflow job inputs](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-of-jobsjob_idstepswith)
+- [GitHub workflow job inputs](writing_tests.mdx#workflow-inputs)
 - [Semantic versioning](https://semver.org/spec/v2.0.0.html)
 - [Git commit ids](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits#about-commits) (usually called the commit SHA[^SHA] or hash)
 
@@ -554,7 +556,7 @@ There are some ways to make your GitHub repository itself more secure that have 
 
 **This is for any packages that:** run tests in GitHub
 
-It is possible for you to add code <!-- TODO: Add link to description of that code --> to your workflow file <!-- TODO: Add link workflow file --> to trigger tests when someone makes a pull request on GitHub. If you decide to do that, take extra steps to make sure malicious coders are unable to trigger your workflows.
+It is possible for you to add code to your [workflow file](writing_tests.mdx#workflows) to [trigger tests when someone makes a pull request](writing_tests.mdx#pr-trigger) on GitHub. If you decide to do that, take extra steps to make sure malicious coders are unable to trigger your workflows.
 
 If you configure your workflows to be triggered by a pull request, someone can change the code of the tests, workflows, or other package code to do something malicious, then trigger that code by just making a pull request.
 
@@ -668,7 +670,7 @@ As long as you ensure you [only test on your testing server](#testing-server), A
 
 **This is for any packages that:** run tests in GitHub
 
-In your GitHub [workflow run console](https://docs.github.com/en/actions/using-workflows/about-workflows?learn=getting_started#viewing-the-activity-for-a-workflow-run), GitHub redacts any text that matches the values of any of your GitHub secrets. It replaces that text with "\*\*\*". Note that the text must be an exact match. GitHub is unable to recognize partial matches.
+In your GitHub [workflow run console](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results), GitHub redacts any text that matches the values of any of your [GitHub secrets](writing_tests.mdx#secrets). It replaces that text with "\*\*\*". Note that the text must be an exact match. GitHub is unable to recognize partial matches.
 
 
 ### Worry less: <AutoDIY/> tests already freeze your ALKiln version {#playground-version}
@@ -712,11 +714,9 @@ With <GTOYS/> tests, ALKiln must have [developer privileges](#alkiln_role) to se
 
 **This is for:** Everyone
 
-[Environment variables might contain sensitive information](#sensitive-info-diy). Because of this ALKiln takes extra care with them.
+[Workflow environment variables](writing_tests.mdx#env-vars) might contain sensitive information. Because of this ALKiln takes extra care with them.
 
 <SecureEnvVars/>
-
-It also avoids putting the values of environment variables in logs and reports.
 
 :::danger JSON variables
 You do need to [take care when you use JSON Steps](#json-vars).

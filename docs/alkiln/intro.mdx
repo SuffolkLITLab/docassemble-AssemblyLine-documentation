@@ -9,24 +9,10 @@ slug: /alkiln/intro
 WIP (Work in progress)
 :::
 
-<!-- Move to /docs
-## Refresher
 
-Some quick refreshers for those who need it.
+Welcome to the ALKiln testing framework! It helps you check that your docassemble interviews work the way you want them to. ALKiln acts like a user, following your instructions to do things like [fill in fields](writing_tests.mdx#story-table), [upload files](writing_tests.mdx#upload), [sign in](writing_tests.mdx#sign-in), and [check your PDFs for accuracy](writing_tests.mdx#compare-files).
 
-1. You write and edit `.feature` test files in your Sources folder.
-1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
-1. By default, each Step or field may only take 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. If you're using GitHub, tests are run when anyone commits to GitHub.
-1. Tests can download docx files, but humans have to review them to see if they've come out right.
-1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
-1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
- -->
-
-
-Welcome to the ALKiln testing framework! It helps you check that your docassemble interviews work the way you want them to. ALKiln acts like a user, following your instructions to do things like fill in fields, upload files, sign in, and check your PDFs for accuracy.
-
-**Any basic docassemble package can use ALKiln**[^1]. ALKiln (Assembly Line Kiln) took its name from where it was born - the AssemblyLine project - but it can be used with any docassemble project.<!-- It does come with features that are especially useful for AssemblyLine users.-->
+**Any basic docassemble package can use ALKiln**.[^basic] ALKiln (Assembly Line Kiln) took its name from where it was born - the AssemblyLine project - but it can be used with any docassemble project.<!-- It does come with features that are especially useful for AssemblyLine users.-->
 
 🚧 ALKiln is under very active development. Give us feedback and suggest ideas by opening issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
@@ -35,27 +21,25 @@ Welcome to the ALKiln testing framework! It helps you check that your docassembl
 
 Ready to start testing? Need to quickly refresh your memory on some important points? Start here.
 
-<!-- Change "install" to "setup"? -->
-- [Install ALKiln for your package and run tests](setup.mdx#recommended)
+- [Set up ALKiln for your package](setup.mdx#recommended)
 - [Write your first test](setup.mdx#first-test)
-- [Generate more complicated tests](https://plocket.github.io/alkiln_story/) <!-- (docs#generator) -->
+- [Generate a first draft for more complicated tests](https://plocket.github.io/alkiln_story/)
 
-:::warning TODO: add links
-- If you are coming back, refresh your memory about basic usage (docs#reminders)
-:::
+See [a few more reminders here](writing_tests.mdx#refresh).
 
 
 ## What will you find in these documents? {#toc}
 
-ALKiln topics you can explore.
+ALKiln topics you can explore:
 
 <!-- Change "setup" to "install"? -->
-- [Setting up](setup.mdx): Learn different ways to install ALKiln for your package or organization <!-- (setup and running tests and first test, maybe advanced pros and cons of setup) -->
+
+- [Setting up](setup.mdx): Learn different ways to install ALKiln for your package or organization and information about those test types
 - [Writing tests](writing_tests.mdx): What you need to know to effectively write tests
-- [Troubleshooting](troubleshooting.mdx): Help with common errors and warnings <!-- (errors, maybe in FAQ?) -->
+- [Troubleshooting](troubleshooting.mdx): Help with common errors and warnings
 - Support for [older Versions](older_versions.mdx): Guides for using older out-of-date features
 - [Frequently Asked Questions](writing_tests.mdx#faq) (FAQ): Find answers to common questions
-- [Security](security.mdx): Stay safe by using best practices and find out how we protect you too <!-- if you're going to mess with more complex workflows, read this section about GitHub security for workflows -->
+- [Security](security.mdx): Stay safe by using best practices and find out how we protect you too
 
 
 ## Why automate testing? {#why-test}
@@ -64,9 +48,7 @@ This may not be a good sales pitch, but you don't always need automated tests. A
 
 That said, the more complex your project gets the more useful automated tests can be.
 
-When you start creating a project, you test it by hand. You open the interview and run it yourself, clicking through every path your user might take. That does not scale as a project grows. Often, there is no time or energy to test all the paths accurately. You end up having to trust that the ones you skip still work. Automated tests make sure your interviews stay working as you keep editing your code.
-
-<!-- Automated tests make sure you know when you break something. -->
+When you start creating a project, you test it by hand. You open the interview and run it yourself, clicking through every path your user might take. That does not scale as a project grows. Often, there is no time or energy to test all the paths accurately. You end up having to trust that the ones you skip still work. Automated tests make sure you know when your edits break your code.
 
 Tests can protect your users from bugs that can:
 
@@ -91,9 +73,9 @@ To hear more about why and when to test, watch the first part of this Docacon 20
 
 ## What libraries does ALKiln use? {#dependencies}
 
-ALKiln uses [cucumberjs](https://cucumber.io/), [puppeteerjs](https://pptr.dev/), [cheerio](https://cheerio.js.org/), and runs the assertions using the [mocha](https://mochajs.org/) and [chai](https://www.chaijs.com/) libraries.
+ALKiln uses [cucumber](https://cucumber.io/), [puppeteerjs](https://pptr.dev/), [cheerio](https://cheerio.js.org/), and runs the assertions using the [mocha](https://mochajs.org/) and [chai](https://www.chaijs.com/) libraries.
 
-Even though this is built using cucumberjs, this framework has a different, less lofty, purpose. cucumberjs focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
+Even though this is built using cucumber, this framework has a different, less lofty, purpose. cucumber focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
 
 For security, [ALKiln freezes the versions of its third-party libraries](#alkiln-freezes-dependencies) and only updates them after we check their changes.
 
@@ -104,32 +86,17 @@ For security, [ALKiln freezes the versions of its third-party libraries](#alkiln
 - [GitHub setup interview](https://github.com/SuffolkLITLab/docassemble-ALKilnSetup) helps you install GitHub tests on your repository
 - [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) lets you run tests from your docassemble server <!-- '...lets you run <AutoDIY/> tests from... ' -->
 - [The Story Table test generator](https://github.com/plocket/alkiln_story) uses an interview's JSON variables to create a file containing a Story Table test
-
-:::warning TODO: add links
-- ALKiln's documentation repo
-:::
+- [This documentation](https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/tree/main/docs/alkiln)
 
 
 ## How can you contribute? {#contribute}
 
 <!-- Keep it simple. Just 2 repos -->
-- Give us feedback and suggestions by creating issues at https://github.com/SuffolkLITLab/ALKiln/issues
-:::warning TODO: add link
-- Improve this documentation on GitHub
-:::
+
+- Give us feedback and suggestions by [creating issues for ALKiln](https://github.com/SuffolkLITLab/ALKiln/issues)
+- Improve this documentation on GitHub (see the link at the bottom of the page)
 - Join and participate in the [docassemble community](https://docassemble.org/docs/support.html#slack)
 - Contact us on the docassemble Slack and become a collaborator
-
-
-<!-- - [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository) [our repositories](#repos), edit them, and make pull requests -->
-
-<!--
-If we want people to file different issues for different repos (which I think is too complex):
-- ALKiln in general and GitHub-based tests/workflows
-- ALKiln in the Playground
-- Setup
-- Edit ALKiln documentation
--->
 
 
 ## ALKiln docs collaborators {#doc-collaborators}
@@ -141,4 +108,4 @@ Regarding the former, we asked for feedback, ideas, and technical audits from st
 As for the latter, we sometimes used the free version of [phind](https://www.phind.com) to offer better (and often worse) suggestions for re-wording and phrasing.
 
 
-[^1]: There are some interview features ALKiln cannot yet handle. For example, [`object_multiselect` fields](https://docassemble.org/docs/fields.html#object_multiselect). ALKiln also may not understand complex [`CustomDatatype`](https://docassemble.org/docs/fields.html#custom%20datatype) fields if you make them. If you run into problems, [file a clear and descriptive issue on our repository](https://github.com/SuffolkLITLab/ALKiln/issues) and we will see if we can help.
+[^basic]: More complex packages might have trouble using ALKiln. There are some interview features ALKiln cannot yet handle. For example, [`object_multiselect` fields](https://docassemble.org/docs/fields.html#object_multiselect). ALKiln also may not understand custom validation code or complex [`CustomDatatype`](https://docassemble.org/docs/fields.html#custom%20datatype) fields if you make them. If you run into problems, [file a clear and descriptive issue on our repository](https://github.com/SuffolkLITLab/ALKiln/issues) and we will see if we can help.
