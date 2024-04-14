@@ -92,9 +92,9 @@ You have a typo in the Step that failed, so cucumber thinks that you are trying 
 1. If the test has the same problem, contact us. Maybe we have a typo in our documentation.
 
 
-## UnhandledPromiseRejection error
+## UnhandledPromiseRejection error {#unhandled-promise-rejection}
 
-This is a misleading error from a library ALKiln uses that is hiding the real error message inside it. You need to read the text of the whole paragraph to see what the actual error is. You might see more useful information in the [report](writing_tests.mdx#report) above those messages or in your [artifacts](writing_tests.mdx#artifacts).
+This is a misleading error from a library ALKiln uses. It is hiding the real error message inside it. You need to read the text of the whole paragraph to see what the actual error is. You might see more useful information in the [report](writing_tests.mdx#report) above those messages or in your [artifacts](writing_tests.mdx#artifacts).
 
 
 ## Everything works fine when I run the test manually {#works-manually}
@@ -195,7 +195,9 @@ Unfortunately, test code can be tricky to get right. You might have a simple typ
 
 You can check your test code for incorrect variable or value names in a few different ways.
 
-<!-- Check new notes for getting decoding values and see if there are easier instructions for getting HTML values -->
+<!-- TODO: Check new notes for getting decoding values and see if there are easier instructions for getting HTML values -->
+
+<!-- 1. If you have access to the YAML, log `the_var.intrinsicName` in your interview code to get close to the var name. If you use `log( the_var.intrinsicName )` look in the docassemble logs. If you use `log( the_var.intrinsicName, 'console' )` look in the browser console. If it has more than one `[]` then use extra quotes? Not sure how to turn this into proper instructions for the correct var name. Would like to replace the HTML thing with it if we can figure out good instructions. -->
 
 1. If you give every question in your interview an id, the [report](writing_tests.mdx#report) can help show you where the test failed or where ALKiln skipped setting variables. For each test, the report often has a list of question ids. For each question id, the report has a list of variables that ALKiln set on the page that had the error. If the test failed, you can see what question id the test got to. You can also check previous questions to see what variables are missing from each of those pages - what [fields ALKiln skipped](writing_tests.mdx#unused-rows).
 1. It is more annoying, but in most cases[^except] you can copy the variable name from your test and search for it in your interview code. You can do the same for values of multiple choice questions.
@@ -261,6 +263,8 @@ See a section in [tips about quotes](writing_tests.mdx#special-chars) for more d
 
 ## Timeout or "it took too long to load the next page" {#next-page-timeout}
 
+<!-- TODO: I think we've repeated this somewhere -->
+
 Different problems can cause the report to say that something "took too long" or caused a "timeout" error.
 
 A "timeout" error can happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
@@ -268,9 +272,9 @@ A "timeout" error can happen when a page took too long to load at some point in 
 1. The page was trying to load a big file
 1. ALKiln could not continue to the next page for some reason
 1. A Story Table was unable to reach the page with the specified `id`
-1. There's a typo in the name of the interview YAML file that the test should go to
+1. There is a typo in the name of the interview YAML file that the test should go to
 
-If a page was taking too long to load a big file, use [the `max seconds` Step](writing_tests.mdx#custom-timeout) to give the page more time to load.
+If a page was taking too long to load a big file, use [the "max seconds" Step](writing_tests.mdx#custom-timeout) to give the page more time to load.
 
 You might be able to look at the [error page picture and HTML](writing_tests.mdx#error-pics) for more details. In GitHub, you can download the [test artifacts](writing_tests.mdx#artifacts) to look for it.
 
@@ -278,11 +282,11 @@ In GitHub, this error can also happen when:
 
 1. The server was busy for too long.
 1. The server was down.
-1. That url is stored in the `SERVER_URL` [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) is wrong or out of date.
+1. That url is stored in the `SERVER_URL` [GitHub secret](writing_tests.mdx#secrets) is wrong or out of date.
 
 If the server might have been busy or down, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow).
 
-You won't be able to tell if the `SERVER_URL` is wrong - GitHub considers the value of the secret to be sensitive information, so it's impossible to see that value. You can still give it a new value, though, and that's worth trying. Find the address of the docassemble server where the docassemble testing account is located. Edit the secret to give it that url.
+The value of `SERVER_URL` will be invisible - GitHub considers the value of the secret to be sensitive information, so it is impossible to see that value. You can still give it a new value, though, and that is worth trying. Find the address of the docassemble server where the docassemble [testing account](security.mdx#testing-server) is located. Edit the secret to give it that url.
 
 
 ## No artifacts {#no-artifacts}
@@ -312,6 +316,22 @@ Possible reasons for missing artifacts for <GTOYS/> and <KittyLitter/> tests:
 
 - The package manager that installs ALKiln had a problem. This does happen every now and then. If this was the case, your [GitHub job logs](writing_tests.mdx#console) should show test setup failure. You can [check its status](https://status.npmjs.org/), but the problem would have to be happening for a lot of people at once for it to show up.
 - GitHub itself had a problem. This is pretty rare. It can cause a failure at any point in the test. You can [check GitHub's status](https://www.githubstatus.com/). Again, the problem would have to be happening to a lot of people at once for it to show up on that site.
+
+
+## <KittyLitter/> Docker trouble (advanced) {#docker-container}
+
+**This is for:** <KittyLitter/> tests
+
+**You should be familiar with:**
+
+- The terminal, command line, or command prompt
+- SSH
+- GitHub actions and workflows
+- Setting up and troubleshooting a docassemble docker container
+
+*This is a very advanced topic. If you want a hand, we are happy to help.*
+
+If your docker container is failing to start, failing to install docassemble, or failing to install your package, it is possible to do more docker troubleshooting using [the tmate GitHub action](https://github.com/marketplace/actions/debugging-with-tmate) and using the regular [docassemble docker troubleshooting steps](https://docassemble.org/docs/docker.html#troubleshooting).
 
 
 ## Slow tests {#slow}
@@ -375,6 +395,53 @@ I actually think this is false. These days we independently check whether the se
 - An interview page rendering slowly can hide a field that ALKiln is trying to fill in. If we find that there is a particular type of field that is particularly slow to load, we can slow down ALKiln for that type of field, but that is the most ALKiln can do.
 
 <KittyLitter/> test have the best chance of avoiding flakiness because they get their own dedicated server, but even they can flake out sometimes.
+
+
+## Missing trigger variable {#missing-trigger}
+
+<!-- TODO: Write section on transitioning to 2-column story tables -->
+
+This warning only matters for old 3-column Story Tables that use index variables or generic objects.
+
+If you are using a story table with [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`), you need to add some [special HTML](writing_tests.mdx#special-html) to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). Without that HTML, ALKiln can get confused about what variable you are try to set.
+
+The 3-column Story Table is old and you should stop using it. You should [switch to the current 2-column Story Table](#deprecated-story-tables) when you get a chance.
+
+This warning sometimes shows up when nothing is wrong. If you are not using a 3-column Story Table or your interview has no index variables or generic objects, you can ignore this warning.
+
+
+## Switch to 2-column Story Tables {#deprecated-story-tables}
+
+**This is for:** anyone using a 3-column Story Table and also has [index variables](https://docassemble.org/docs/fields.html#index%20variables) or generic objects](https://docassemble.org/docs/fields.html#generic).
+
+:::caution Switch to the 2-column Story Tables
+The 3-column format of the Story Table is deprecated. It is old and you should switch to the new 2-column version when you get a chance.
+:::
+
+How to switch from the 3-column Story Table to the 2-column Story Table.
+
+1. Remove the `trigger` column (the 3rd column) from the header row and every other row
+1. Replace all [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) in the `var` column (the 1st column) with their actual values.
+
+:::danger Before
+```gherkin
+    | var | value | trigger |
+    | x[i].hair.how_much | Enough | users[0].hair.how_much |
+    | x[i].hair.color | Sea green | users[0].hair.how_much |
+```
+:::
+
+:::danger After
+```gherkin
+    | var | value |
+    | users[0].hair.how_much | Enough |
+    | users[0].hair.color | Sea green |
+```
+:::
+
+Add more [special HTML](writing_tests.mdx#special-html) to your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). To summarize:
+
+Keep the trigger HTML in your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). It can be useful for other reasons. Add the proxy variable HTML to that `default screen parts` block.
 
 
 <!--
@@ -510,7 +577,7 @@ Something probably went wrong with Github. Or maybe they have a maximum amount t
 
 We might handle this now:
 
-That’s a stock system error. Some **Step** took too long to finish in a way for which we have not yet created a custom error message or cannot detect. It is often a page that took too long to load. It sometimes happens when the Project got deleted in the middle of the test, or when the [`Run npm run setup` phase doesn’t work correctly](#bookmark=id.y1ibk27fo4jy).
+That’s a stock system error (an error caused a dependency library, though?). Some **Step** took too long to finish in a way for which we have not yet created a custom error message or cannot detect. It is often a page that took too long to load. It sometimes happens when the Project got deleted in the middle of the test, or when the [`Run npm run setup` phase doesn’t work correctly](#bookmark=id.y1ibk27fo4jy).
 
 
 ### Some other mysterious error

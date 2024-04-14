@@ -75,7 +75,7 @@ Each type of test has its advantages and disadvantages. This documentation expla
 
 ## Recommended setup: <GTOYS/> {#recommended}
 
-This is the way we recommend setting up ALKiln tests for a repository for the first time. You are least likely to run into setup problems with this method. Every repository that needs to use this kind of test must go through this setup process.
+This is the way we recommend setting up ALKiln tests for a repository for the first time. It is the method that tends to work most smoothly. Every repository that needs to use this kind of test must go through this setup process.
 
 Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
@@ -85,23 +85,26 @@ The tests [run](writing_tests.mdx#trigger-tests) whenever you commit any code to
 
 - A developer or admin account on your docassemble server.
 - A package with a repository on GitHub.
-- A collaborator or admin account on your package's GitHub repository[^edit].
+- A collaborator or admin account on your package's GitHub repository[^auth].
 
 **It could help to know about:**
 
 - Docassemble API keys
+- GitHub personal authorization tokens (PATs)
+- GitHub pull requests (PRs)
+
+**Related topics:**
+
 - GitHub secrets
 - GitHub workflows
-- GitHub pull requests (PRs)<!-- **If you use the setup interview, it could help to know about:** -->
-- GitHub personal authorization tokens (PATs)
 
 **What to do:**
 
-Use [ALKiln's test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) to add ALKiln to your repository. You must run this setup interview for every package you want to test on GitHub.
+Use [ALKiln's test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) to add ALKiln to your repository. You must run this setup interview for every package you want to test on GitHub. This setup interview can take over 30 minutes, especially if you're unfamiliar with GitHub or with docassemble API keys.
 
 When you set up, you can choose to create your [first test](#first-test). We recommend that you do this. Either way, you can [add more tests](writing_tests.mdx#new-file) later.
 
-This setup interview can take over 30 minutes, especially if you're unfamiliar with GitHub or with docassemble API keys. To summarize, the instructions in the interview might help you:
+To summarize, the ALKiln tests setup interview interview can help you do one or more of the following:
 
 1. Add GitHub secrets to your repository (or organization[^org])
 1. Make a new branch in your repository
@@ -114,7 +117,7 @@ Once you accept the pull request and merge the code into your repository's main 
 If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <GTOYS plain={true}/> tests in GitHub](writing_tests.mdx#trigger-tests).
 
 
-[^edit]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
+[^auth]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
 
 [^org]: If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets. They can also [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repository the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repository and if one of the values changes, you will have to update it in every repository.
 
@@ -145,7 +148,7 @@ To learn how to do more with tests, you can read more about [writing tests](writ
 
 ## <AutoDIY/> tests {#diy-how-to}
 
-If you set up <AutoDIY/> tests, any developer can run tests on any of their Projects when they are logged into your docassemble test server. You can read more details and the pros and cons of <AutoDIY/> tests below.
+If you set up <AutoDIY/> tests, any developer can run tests on any of their Projects when they are logged into your docassemble test server. You only have to do this once. You can read more details and the pros and cons of <AutoDIY/> tests below.
 
 Remember to use a [separate server for these types of tests](security.mdx#testing-server).
 
@@ -196,7 +199,7 @@ The tests [run](writing_tests.mdx#trigger-tests) whenever you commit any code to
 **You need:**
 
 - A package with a repository on GitHub.
-- A collaborator or admin account on your package's GitHub repository[^edit].
+- A collaborator or admin account on your package's GitHub repository[^auth].
 
 **It helps to know about:**
 

@@ -407,7 +407,7 @@ Right now Story Tables are unable to use [workflow environment variables](writin
 
 <KittyLitter/> are very secure if you use them correctly. You still have to take some care.
 
-Avoid using hard-coded urls that lead to your server. That is, avoid using `https://my-testing-server.com` and interviews or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that is useful about the <KittyLitter/> method and makes the tests less secure again.
+Avoid using urls in your test that lead to your server. That is, avoid using `https://my-testing-server.com` and interviews there or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that is useful about the <KittyLitter/> method. It makes the tests less secure again.
 
 You also still have to avoid saving personal or security-critical information in public files and follow other security precautions, like the ones described in this documentation.
 
@@ -642,7 +642,7 @@ For example, you can require that:
 You can allow administrators to skip these restrictions if you want.
 
 
-### Use GitHub's recommended workflow practices {#workflow}
+### Use GitHub's recommended workflow practices {#github-workflow}
 
 **This is for any packages that:** have a repository in GitHub
 
@@ -672,12 +672,14 @@ As long as you ensure you [only test on your testing server](#testing-server), A
 
 In your GitHub [workflow run console](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results), GitHub redacts any text that matches the values of any of your [GitHub secrets](writing_tests.mdx#secrets). It replaces that text with "\*\*\*". Note that the text must be an exact match. GitHub is unable to recognize partial matches.
 
+If you are worried about logs or artifacts that already exist, you can [delete those](#github-output).
+
 
 ### Worry less: <AutoDIY/> tests already freeze your ALKiln version {#playground-version}
 
 **This is for any packages that:** use <AutoDIY/> tests
 
-The ALKiln framework lets you control the robot that goes through your interview answering questions. This documentation has already discussed how [you can freeze your ALKiln framework version on GitHub](#freeze-framework).
+The ALKiln framework lets you control the robot that goes through your interview answering questions. This documentation has already discussed how [you can freeze your ALKiln versions on GitHub](#freeze).
 
 [ALKiln itself already uses practices that protect you from malicious actors](#alkilns-precautions). If you want to take extra precautions, though, freezing the version you are using with <AutoDIY/> tests does give you more control over what code you are installing on your server and using to run your tests.
 
@@ -734,7 +736,7 @@ Security updates have the heading "Security". For example, [this is one of ALKil
 
 **This is for:** Everyone
 
-Just like you can freeze the versions of the [ALKiln framework](#freeze-framework) and [ALKiln actions](#freeze-actions), ALKiln freezes the versions of its own dependencies - the libraries it uses. When we update our dependencies to their latest versions, we check the updates and do our best to make sure that we are comfortable with the changes.
+Just like you can freeze the versions of the [ALKiln framework](#freeze), ALKiln freezes the versions of its own dependencies - the libraries it uses. When we update our dependencies to their latest versions, we check the updates and do our best to make sure that we are comfortable with the changes.
 
 
 ### ALKiln updates its dependencies {#alkiln-deps}
