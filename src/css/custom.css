@@ -122,3 +122,13 @@ html[class*="docs-doc-id-alkiln"] a.table-of-contents__link--active {
   text-decoration: underline;
   text-underline-offset: .4em;
 }
+
+html[class*="docs-doc-id-alkiln"] p,
+html[class*="docs-doc-id-alkiln"] div,
+html[class*="docs-doc-id-alkiln"] span,
+html[class*="docs-doc-id-alkiln"] ul,
+html[class*="docs-doc-id-alkiln"] ol,
+html[class*="docs-doc-id-alkiln"] li,
+html[class*="docs-doc-id-alkiln"] details {
+    scroll-margin-top: var(--ifm-navbar-height);
+}
