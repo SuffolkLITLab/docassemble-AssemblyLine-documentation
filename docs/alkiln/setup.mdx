@@ -61,7 +61,7 @@ Each type of test has its advantages and disadvantages. This documentation expla
 [^sand]: "The isolation metaphor is taken from the idea of children who do not play well together, so each is given [their] own sandbox to play in alone." - [Wikipedia, Sandbox_(computer_security)](https://en.wikipedia.org/wiki/Sandbox_(computer_security))
 
 
-## Recommended setup: <GTOYS/> {#recommended}
+## Recommended setup: <!-- GitHub+You --> <GTOYS/> {#recommended}
 
 This is the way we recommend setting up ALKiln tests for a repository for the first time. It is the method that tends to work most smoothly. Every repository that needs to use this kind of test must go through this setup process.
 
@@ -134,7 +134,7 @@ You can wait to write more complex tests till your code is more stable. "Stable"
 To learn how to do more with tests, you can read more about [writing tests](writing_tests.mdx) and more about [test files](writing_tests.mdx#test-files).
 
 
-## <AutoDIY/> tests {#diy-how-to}
+## <!-- ALKilnInThePlayground --> <AutoDIY/> tests {#diy-how-to}
 
 If you set up <AutoDIY/> tests, any developer that logs in can run tests on any of their Projects. You only have to do this once. You can read more details and the pros and cons of <AutoDIY/> tests below.
 
@@ -174,7 +174,7 @@ It also helps to have a Project with at least one ALKiln test in it, but you can
 If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or continue the above interview to [run your tests](writing_tests.mdx#trigger-autodiy).
 
 
-## <KittyLitter/> tests (advanced) {#sandbox-how-to}
+## <!-- GitHub Sandbox --> <KittyLitter/> tests (advanced) {#sandbox-how-to}
 
 <KittyLitter/> tests are the most secure because they never interact with your server. ALKiln makes a server on GitHub itself and runs the tests there.
 
@@ -229,7 +229,7 @@ Then edit the new workflow to look like  -->
 If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <KittyLitter plain={true}/> tests in GitHub](writing_tests.mdx#trigger-tests).
 
 
-## <GTOYS/> test details {#githubNyou-details}
+## <!-- GitHub+You --> <GTOYS/> test details {#githubNyou-details}
 
 Any developer will [trigger <GTOYS plain={true}/> tests when they commit code to GitHub](writing_tests.mdx#trigger-tests). They then create and test a Project on your docassemble [testing server](security.mdx#testing-server). They are our recommended test method because they are the easiest to set up.
 
@@ -251,7 +251,7 @@ When <GTOYS/> tests get triggered, ALKiln does the following:
 GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 
 
-<!-- ## Workflow file for <GTOYS/> tests {#githubNyou-workflow-file} -->
+<!-- ## Workflow file for <   !-- GitHub+You --   > <GTOYS/> tests {#githubNyou-workflow-file} -->
 
 <!-- [](writing_tests.mdx#workflows-where) -->
 
@@ -307,7 +307,7 @@ For some people:
 <!-- - TODO: package size? From experiments, it seems to not be a problem when they're installed on a Playground -->
 
 
-## <AutoDIY/> test details {#diy-details}
+## <!-- ALKilnInThePlayground --> <AutoDIY/> test details {#diy-details}
 
 <!-- Confusion about "Auto" and "manual" -->
 
@@ -317,7 +317,7 @@ Remember to use a [separate server](security.mdx#testing-server) for these types
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
-The ALKilnInThePlayground package installs the ALKiln testing framework directly on your server. For [security reasons](security.mdx#testing-server), avoid using these tests on your production server.
+The [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) installs the ALKiln testing framework directly on your server. For [security reasons](security.mdx#testing-server), avoid using these tests on your production server.
 
 
 ### What is ALKiln doing? {#diy-how}
@@ -353,7 +353,7 @@ For some people:
 - If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](#special-html) in your interview for signatures.
 
 
-## <KittyLitter/> test details {#sandbox-details}
+## <!-- GitHub Sandbox --> <KittyLitter/> test details {#sandbox-details}
 
 Any developer will [trigger <KittyLitter plain={true}/> tests when they commit code to GitHub](writing_tests.mdx#trigger-tests). They create their own docassemble server on GitHub and run tests there.
 
@@ -451,7 +451,7 @@ In GitHub, [you can disable any workflows (actions) for a whole organization](ht
 
 
 
-<!-- ## Workflow file for <KittyLitter/> tests {#sandbox-workflow-file} -->
+<!-- ## Workflow file for <   !-- GitHub Sandbox --   > <KittyLitter/> tests {#sandbox-workflow-file} -->
 
 <!-- []](writing_tests.mdx#workflows-where) -->
 

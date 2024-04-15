@@ -15,7 +15,7 @@ export const AutoDIY = (props) => {
   if ( props.plain === true ) {
     return <span>AutoDIY™</span>
   } else {
-    return <Link to="/docs/alkiln/setup#diy-details">AutoDIY™</Link>
+    return <Link to="/docs/alkiln/setup#diy-details">ALKilnInThePlayground™</Link>
   }
 }
 
