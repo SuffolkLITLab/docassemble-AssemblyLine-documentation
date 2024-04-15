@@ -59,15 +59,21 @@ You also might have a [typo in a Step itself](#step-undefined).
 
 ### Inconsistent cell count error {#table-cells}
 
-This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe (`|`) or could have an extra pipe, etc. This is an error from a library ALKiln uses.
+**Symptom:**
 
-To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
-
-The error message will include text similar to this:
+No tests will run. The error message will include text similar to this:
 
 ```
 Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
 ```
+
+**Problem:**
+
+This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe - a `|` character - or could have an extra pipe, etc. This is an error from a library ALKiln uses.
+
+**Debugging:**
+
+To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
 
 
 ### Undefined step {#step-undefined}
@@ -76,7 +82,7 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 
 At the very bottom of your [console output](writing_tests.mdx#console) you see the message "Undefined" and "You can implement missing steps with the snippets below".
 
-This is an error message from a library ALKiln uses called [cucumber](https://cucumber.io/).
+This will make just the current test fail. This is an error message from a library ALKiln uses called [cucumber](https://cucumber.io/).
 
 **Problem:**
 
@@ -202,14 +208,14 @@ You can check your test code for incorrect variable or value names in a few diff
 1. If you give every question in your interview an id, the [report](writing_tests.mdx#report) can help show you where the test failed or where ALKiln skipped setting variables. For each test, the report often has a list of question ids. For each question id, the report has a list of variables that ALKiln set on the page that had the error. If the test failed, you can see what question id the test got to. You can also check previous questions to see what variables are missing from each of those pages - what [fields ALKiln skipped](writing_tests.mdx#unused-rows).
 1. It is more annoying, but in most cases[^except] you can copy the variable name from your test and search for it in your interview code. You can do the same for values of multiple choice questions.
 1. Alternatively, in most cases[^except] you can go through the interview manually, but follow this procedure:
-   1. For every single page  (even if you think this page has nothing to do with the problem), click on the `<\/>` in the nav bar to see the source of the page.
+   1. For every single page  (even if you think this page has nothing to do with the problem), click on the `</>` in the nav bar to see the source of the page.
    1. Copy the name of the variable from your test and search for it on the page of the running interview.
    1. For multiple choice questions, do the same for the value.
    1. Use those values to answer the questions _exactly_ as the test would answer them.
    1. Continue doing this till you find the problem.
-1. If you are unable to find the name of the variable or value in any other way, our last suggestion is the hardest to do, but most reliable - run the interview manually and examine each page's HTML to find exact names. This is complex and we are happy to show you how to do this. Here is a refresher:
+1. If you are unable to find the name of the variable or value in any other way, our last suggestion is the hardest to do, but most reliable - run the interview manually and [inspect each page's HTML](https://www.dreamhost.com/blog/how-to-inspect-a-website/) to find exact names. This is complex and we are happy to show you how to do this. Here is a refresher:
     1. Go to a new page.
-    1. Click on the `<\/>` in the nav bar to see the source of the page.
+    1. Click on the `</>` in the nav bar to see the source of the page.
     1. For every field in the page:
         1. If you cannot see the variable name or value, like for an `object_checkbox` field or a field created with `code`:
             1. Open the browser development tools.
@@ -394,7 +400,7 @@ I actually think this is false. These days we independently check whether the se
 - Third-party services, like GitHub or package managers, that the tests rely on do have problems every now and then. You just have to re-run those tests.
 - An interview page rendering slowly can hide a field that ALKiln is trying to fill in. If we find that there is a particular type of field that is particularly slow to load, we can slow down ALKiln for that type of field, but that is the most ALKiln can do.
 
-<KittyLitter/> test have the best chance of avoiding flakiness because they get their own dedicated server, but even they can flake out sometimes.
+The <KittyLitter/> tests have the best chance of avoiding flakiness because they get their own dedicated server, but even they can flake out sometimes.
 
 
 ## Missing trigger variable {#missing-trigger}
@@ -412,13 +418,9 @@ This warning sometimes shows up when nothing is wrong. If you are not using a 3-
 
 ## Switch to 2-column Story Tables {#deprecated-story-tables}
 
-**This is for:** anyone using a 3-column Story Table and also has [index variables](https://docassemble.org/docs/fields.html#index%20variables) or generic objects](https://docassemble.org/docs/fields.html#generic).
+**This is for:** anyone using a 3-column Story Table and also has [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic).
 
-:::caution Switch to the 2-column Story Tables
-The 3-column format of the Story Table is deprecated. It is old and you should switch to the new 2-column version when you get a chance.
-:::
-
-How to switch from the 3-column Story Table to the 2-column Story Table.
+How to switch from the 3-column Story Table to the 2-column Story Table:
 
 1. Remove the `trigger` column (the 3rd column) from the header row and every other row
 1. Replace all [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) in the `var` column (the 1st column) with their actual values.
@@ -431,7 +433,7 @@ How to switch from the 3-column Story Table to the 2-column Story Table.
 ```
 :::
 
-:::danger After
+:::tip After
 ```gherkin
     | var | value |
     | users[0].hair.how_much | Enough |

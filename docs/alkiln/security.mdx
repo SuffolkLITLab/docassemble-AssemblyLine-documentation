@@ -205,7 +205,7 @@ Only give ALKiln an account if necessary. Make sure no one else uses the account
 
 We usually call the ALKiln user "automated_tests" and give it the email "automated_tests@example.com" with a secure password.
 
-<GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. That is the "developer" role. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
+The <GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. That is the "developer" role. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
 
 If you do need an account to sign in before a test, think of that account as a separate account because you might be able to give that account even less access. If the sign-in account can just be a user, make a new account just for signing in that just has a "user" role.
 
@@ -225,7 +225,7 @@ For <GTOYS/> tests, give the ALKiln docassemble account the "developer" [role](h
 
 If your <AutoDIY/> tests need an account on your server, give them the least privileges possible. In those cases, most authors only need to give ALKiln the "user" role.
 
-<KittyLitter/> tests run on their own server, create their own account, and manage their own permissions.
+The <KittyLitter/> tests run on their own server, create their own account, and manage their own permissions.
 
 
 <!--
@@ -284,7 +284,7 @@ The ["get JSON"](writing_tests.mdx#get-json) and ["compare JSON"](writing_tests.
 **To do this you MUST be:**
 
 - Either the GitHub repository admin or
-- the GitHub organization admin
+- The GitHub organization admin
 
 These are the only people that can create [GitHub secrets](writing_tests.mdx#secrets)
 
@@ -405,9 +405,9 @@ Right now Story Tables are unable to use [workflow environment variables](writin
 
 **This is for any packages that:** have <KittyLitter/> tests
 
-<KittyLitter/> are very secure if you use them correctly. You still have to take some care.
+The <KittyLitter/> are very secure if you use them correctly. You still have to take some care.
 
-Avoid using urls in your test that lead to your server. That is, avoid using `https://my-testing-server.com` and interviews there or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that is useful about the <KittyLitter/> method. It makes the tests less secure again.
+Avoid using urls in your test that lead to your server. That is, avoid using `https://my-server.com` or `https://testing.my-server.com` and interviews there or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that makes the <KittyLitter/> method so useful. Using urls like that makes the tests less secure again.
 
 You also still have to avoid saving personal or security-critical information in public files and follow other security precautions, like the ones described in this documentation.
 
@@ -525,7 +525,7 @@ Security updates will have the heading "Security". For example, [this is one of 
 
 [Upgrade your testing server's docassemble version](https://docassemble.org/docs/admin.html#upgrade) quickly when there is a security update. Then run all your tests before upgrading your production server too.
 
-With most updates, you can usually wait a little while to see if there are any bugs that come up and get fixed. You should deal with a security fix more quickly. You then want to make sure your testing server and your production server are using the same version so that your tests are more accurate.
+With most updates, you can usually wait a little while to see if there are any bugs that come up and get fixed. You should deal with a security fix more quickly. If possible, you then want to update your production server too to make sure your testing server and your production server are using the same version. That helps make your tests more accurate.
 
 <!-- If you feel you cannot update your production server, you can still update your testing server more often to keep an eye on recent changes. -->
 
@@ -540,7 +540,7 @@ Docassemble's Docker image gets updated occasionally. You can wait a little whil
 
 Even if there is not a security-related update, it is good to stress test your server setup. Since you might have to suddenly start a new Docker container at unexpected times because of system failures, it is a good idea to do this every now and then anyway to make sure your system can handle recovering from that kind of event and see if complications come up.
 
-You then want to make sure your testing server and your production server are using the same version so that your tests are more accurate.
+If possible, you then want to update your production server too to make sure your testing server and your production server are using the same version. That helps make your tests more accurate.
 
 <!-- If you feel you cannot update your production server, you can still update your testing server more often to keep an eye on recent changes. -->
 
@@ -627,7 +627,7 @@ For more complex scenarios or if you need to send emails without needing a Googl
 **To do this you MUST be:**
 
 - Either the GitHub repository admin or
-- the GitHub organization admin
+- The GitHub organization admin
 
 You can protect your packages from unintended changes or changes by new collaborators by protecting your default branch.
 

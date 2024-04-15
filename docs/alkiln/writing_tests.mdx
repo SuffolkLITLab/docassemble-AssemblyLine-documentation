@@ -117,7 +117,7 @@ The blank to fill in here is `<YAML file name>` - the name of the YAML file that
 Example with just the file name:
 
 ```gherkin
-  Given I start the interview at "favorite_bears.yml"
+  Given I start the interview at "favorite_bears"
 ```
 
 Example with the file extension:
@@ -134,7 +134,9 @@ Example with url arguments ([url_args](https://docassemble.org/docs/special.html
 
 You can also instead use the full url of the interview, though we recommend you avoid that. For example, one advantage to using the file name instead of the full url is that you can then still use the <KittyLitter/> test method to run those tests on GitHub.
 
+:::caution Before setting fields
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
+:::
 
 <!-- You can use url args with an `Examples` table to test multiple languages -->
 
@@ -354,7 +356,7 @@ You can use this Step to [upload files](#upload) and [fill in a signature](#sign
 :::
 
 
-[^id]: You can find the question `id` in your interview YAML in the `question` block of that page. It is a good idea for every `question` block in your interview to have an id.
+[^id]: You can find the question `id` in your interview YAML in the `question` block of that page. It is a [good idea for every `question` block in your interview to have a unique id](#id-tip). It can be useful for other blocks too.
 
 
 ### `I set the variable "<variable name>" to "<value to set>"` {#set}
@@ -523,7 +525,7 @@ If you think downloading the file will take more than 60 seconds, use the ["max 
 
 **It could help to know about:**
 
-- How to inspect and understand the HTML of a web page
+- How to [inspect and understand the HTML of a web page](https://www.dreamhost.com/blog/how-to-inspect-a-website/)
 - [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
 
 **The Step:**
@@ -565,7 +567,7 @@ This is the only way to explicitly wait after navigating to the new page. Some p
 
 **It could help to know about:**
 
-- How to inspect and understand the HTML of a web page
+- How to [inspect and understand the HTML of a web page](https://www.dreamhost.com/blog/how-to-inspect-a-website/)
 - [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
 
 **The Step:**
@@ -598,7 +600,7 @@ It is a good idea to add a [`wait` Step](#wait) after this Step to let the conte
 
 **It could help to know about:**
 
-- How to inspect and understand the HTML of a web page
+- How to [inspect and understand the HTML of a web page](https://www.dreamhost.com/blog/how-to-inspect-a-website/)
 - [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
 
 **The Step:**
@@ -739,7 +741,7 @@ Text-type fields are fields where the user needs to type text. The [default fiel
 - `datatype: text`
 - `datatype: integer`
 - `datatype: number`
-- `input type: area` fields are textarea fields and also accept text for their value.
+- `input type: area` fields are textarea fields and also accept text for their value
 
 You can see more [about `datatype`s and `input type`s in the docassemble docs](https://docassemble.org/docs/fields.html#data%20types).
 
@@ -1174,7 +1176,7 @@ Examples for variation 1 - the phrase **does exist** on the page:
   Then I should NOT see the phrase "Boo! This page's text is bad!"
 ```
 
-The `<page text>` should be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022) and **must never** itself contain double quotation marks inside it. Since docassemble interview text usually has special quotation marks, that is usually easy. See the [troubleshooting section on missing phrases](troubleshooting.mdx#missing-phrase) that talks about special characters.
+The `<page text>` must be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022) and **must never** itself contain double quotation marks inside it. Since docassemble interview text usually has special quotation marks, that is usually easy. See the [troubleshooting section on missing phrases](troubleshooting.mdx#missing-phrase) that talks about special characters.
 
 Unlike many other Steps, checking phrases is **language specific**. That is, if you want to test translations as well, you will have to use [an "Examples" table](#gherkin-sampler) in your test.
 
@@ -1235,7 +1237,7 @@ Variable values only show up in the JSON on the next page - the one after the pa
 
 The "picture" Step will not only take a picture of the page, it will also download an HTML file of the page. The associated HTML file will have the same name as the picture, but will end with `.html`. ALKiln will save those files in the Scenario folder of the [test results](#results).
 
-You can open the HTML file in your browser to interact with the page and inspect the page's HTML further. You should expect this page to look and act different than the original page - ALKiln is unable to get the full code that controls the behavior and styles of the original page. However, in the HTML, you can look at what options were in a drop down, examine some accessibility errors, or edit the HTML to expand some collapsed content. In fact, some pages are too long for the picture to show all the content. In the HTML, you can see that content.
+You can open the HTML file in your browser to interact with the page and [inspect the page's HTML](https://www.dreamhost.com/blog/how-to-inspect-a-website/) further. You should expect this page to look and act different than the original page - ALKiln is unable to get the full code that controls the behavior and styles of the original page. However, in the HTML, you can look at what options were in a drop down, examine some accessibility errors, or edit the HTML to expand some collapsed content. In fact, some pages are too long for the picture to show all the content. In the HTML, you can see that content.
 
 Example:
 
@@ -1386,7 +1388,7 @@ ALKiln only allows you to use some Gherkin keywords. Those are:
 
 - [`Feature:`](https://cucumber.io/docs/gherkin/reference/#feature) - each file can only use one `Feature:` keyword.
 - [`Scenario:`/`Example:`](https://cucumber.io/docs/gherkin/reference/#example) - We recommend you use `Scenario`. **Make the `Scenario` descriptions unique** because ALKiln will use them in the names of the reports it creates for you. This keyword is different from the plural `Examples`/`Scenarios`.
-- [`Scenario Outline:`](https://cucumber.io/docs/gherkin/reference/#scenario-outline)
+- [`Scenario Outline:`](https://cucumber.io/docs/gherkin/reference/#scenario-outline) - Like a `Scenario`, but it can contain `Examples`.
 - [`Examples:/Scenarios:`](https://cucumber.io/docs/gherkin/reference/#examples) - We recommend you use `Examples`. This can help you test translations, as shown below. When a `Scenario Outline` has an `Examples` table, the test will run at least once for each row in the table. This keyword is different from the singular `Scenario`/`Example`.
 - Any of these keywords that can start a Step - [`Given`](https://cucumber.io/docs/gherkin/reference/#given), [`When`](https://cucumber.io/docs/gherkin/reference/#when), [`Then`](https://cucumber.io/docs/gherkin/reference/#then), and [`And`](https://cucumber.io/docs/gherkin/reference/#and). They look different, but that is for us humans. They can be used interchangeably.
 
@@ -2070,7 +2072,7 @@ You can run <AutoDIY/> tests manually whenever you want to.
 
 <!-- TODO: Maybe here define jobs, workflows, workflow runs, test runs, etc. Maybe better in #workflows -->
 
-<GTOYS/> tests are made of three stages: the setup, the robot, and the take down.
+The <GTOYS/> tests are made of three stages: the setup, the robot, and the take down.
 
 **Setup:**
 
@@ -2110,7 +2112,7 @@ When all the tests finish, ALKiln cleans up the tests. It creates the [test outp
 
 **This is for:** <KittyLitter/> tests
 
-<KittyLitter/> tests are made of three stages: the setup, the robot, and the take down.
+The <KittyLitter/> tests are made of three stages: the setup, the robot, and the take down.
 
 **Setup:**
 
@@ -2196,7 +2198,7 @@ In GitHub, on [the actions page and related pages](https://docs.github.com/en/ac
 - A yellow dot next to the current workflow.
 - You can see [information about the running processes](#console) in the job's log (or console) as GitHub writes it.
 
-<AutoDIY/> tests show a waiting screen with how long the tests have been running, though we can add a yellow dot if enough users request it.
+The <AutoDIY/> tests show a waiting screen with how long the tests have been running, though we can add a yellow dot if enough users request it.
 
 
 ### What can I see when the tests end? {#end-status}
@@ -2414,7 +2416,7 @@ If everything looks right to you there, you can copy and paste the text under "R
 -->
 
 
-### debug_log.txt (#debug-log)
+### debug_log.txt {#debug-log}
 
 The debug_log.txt has the same content as [report.txt](#report), but a bit messier. It is messy because it writes the information right away, while the tests are actually running, instead of waiting to make them pretty at the end like the report does. This is so it can store the data immediately. If something goes wrong in the middle the tests, those logs will still be there. For example, you might stop the tests early. This way you should still get some data from whatever tests did run.
 
@@ -2458,7 +2460,7 @@ Some of these are just good practices to follow when coding your interviews.
 
 ### Question id {#id-tip}
 
-Add a [different id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. Those help make [some kinds of test output](#report) more clear.
+Add a [unique id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. Those help make [some kinds of test output](#report) more clear.
 
 They have other uses too. [Block ids are helpful for docassemble features and caching issues](https://docassemble.org/docs/modifiers.html#id). They can also help your team communicate with each other about your code more easily.
 
@@ -2657,7 +2659,7 @@ No, there is no way in which ALKiln collects your data or data from your tests. 
 On that note, who is still using ALKiln version 4.11.2?! Update!
 
 
-### You have a lot of open issues {#open-issues}
+### ALKiln has a lot of open issues {#open-issues}
 
 That is very true.
 

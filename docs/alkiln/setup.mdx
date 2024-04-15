@@ -161,7 +161,6 @@ It also helps to have a Project with at least one ALKiln test in it, but you can
 1. Go to your server's ["Package Management" page](https://docassemble.org/docs/packages.html#installing).
 1. Using the [GitHub install method](https://docassemble.org/docs/packages.html#github_install), install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
 1. Follow [docassemble's instructions](https://docassemble.org/docs/config.html#dispatch) to add it to the dispatch list. This will add it to the server's list of interviews. It may look something like this:
-
   ```yml
   dispatch:
     alkiln: docassemble.ALKilnInThePlayground:data/questions/run_alkiln_tests.yml
@@ -176,7 +175,7 @@ If you are ready to start running tests, you can read about how to [add our exam
 
 ## <!-- GitHub Sandbox --> <KittyLitter/> tests (advanced) {#sandbox-how-to}
 
-<KittyLitter/> tests are the most secure because they never interact with your server. ALKiln makes a server on GitHub itself and runs the tests there.
+The <KittyLitter/> tests are the most secure because they never interact with your server. ALKiln makes a server on GitHub itself and runs the tests there.
 
 Every repository that needs to use this kind of test must go through this setup process.
 
@@ -246,7 +245,9 @@ When <GTOYS/> tests get triggered, ALKiln does the following:
 1. It tries to fill out the fields and take the actions the tests describe.
 1. When all the tests are done, ALKiln deletes the Project it created.
 
-<GTOYS/> tests need to create a Project on your [testing server](security.mdx#testing-server) and pull code into it. Because of that, you need to create a [developer account](security.mdx#tests-accounts) for these types of tests.
+<!-- TODO: File docusaurus issue: Components can't start paragraphs or the spacing gets weird and the links only show their text! -->
+
+The <GTOYS/> tests need to create a Project on your [testing server](security.mdx#testing-server) and pull code into it. Because of that, you need to create a [developer account](security.mdx#test-accounts) for these types of tests.
 
 GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
 
@@ -311,7 +312,7 @@ For some people:
 
 <!-- Confusion about "Auto" and "manual" -->
 
-<AutoDIY/> tests are automated tests that you trigger manually from an interview you install on your docassemble [testing server](security.mdx#testing-server). The tests then run right on that server.
+The <AutoDIY/> tests are automated tests that you trigger manually from an interview you install on your docassemble [testing server](security.mdx#testing-server). The tests then run right on that server.
 
 Remember to use a [separate server](security.mdx#testing-server) for these types of tests. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#trigger-autodiy) in other documentation.
 
@@ -357,7 +358,7 @@ For some people:
 
 Any developer will [trigger <KittyLitter plain={true}/> tests when they commit code to GitHub](writing_tests.mdx#trigger-tests). They create their own docassemble server on GitHub and run tests there.
 
-<KittyLitter/> tests are the most secure because they never interact with your server and the isolated server they each create is temporary. Unfortunately, these tests also sometimes have more setup complications.
+The <KittyLitter/> tests are the most secure because they never interact with your server and the isolated server they each create is temporary. Unfortunately, these tests also sometimes have more setup complications.
 
 ### What is ALKiln doing? {#sandbox-how}
 
