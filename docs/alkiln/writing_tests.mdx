@@ -1816,6 +1816,8 @@ You can edit the values of `title`, `body`, and `labels` to customize the issue.
 <!-- TODO: Inputs are configuration. -->
 <!-- TODO: differentiate between test _run_/suite configuration and individual test configuration. -->
 
+Environment variables are one of the few ways for you to get information from GitHub or your server to ALKiln. (You do that in your [workflow file](#workflows).)
+
 What is a variable?
 
 A "variable" is a name with a value. That name, a "variable name", lets the rest of the program ask for that value when needed.[^name] Like calling a kid in for dinner. That is close enough for what we need right now.[^vars]
@@ -1833,8 +1835,6 @@ What are environment variables?
 Environment variables are variables that are available to the whole system - the whole environment the programs are working in. Like the town where that kid lives and where their house is. That means every test in your test suite can use that variable. You can call that kid in for dinner no matter where in the city they are.
 
 Because environment variables are so global, we recommend you start all your environment variable names with "ALKILN_" so they have less chance to interfere with your system's other environment variables. If you are going to broadcast your message across the town, every kid should have a unique name so everyone knows who you are yelling at.
-
-Environment variables are one of the few ways for you to get information from GitHub or your server to ALKiln. (You do that in your [workflow file](#workflows).)
 
 In <AutoDIY/> tests on your server, you put these values in your [config file](https://docassemble.org/docs/config.html#configfile) under a key you can add called `alkiln`. For example:
 
@@ -1938,22 +1938,28 @@ You can [make secrets for individual GitHub repositories](https://docs.github.co
 
 2. GitHub secrets are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.
 
-  For example, suppose Mo'nique has a GitHub organization named PolarisLaw. That organization has several repositories. Every test in every repository uses the value "small\_bear" as an answer to a question. Next month, though, the firm might need to change that value to "large\_bear". Mo'nique would have to edit that value in every test in every repository. Instead, she makes a GitHub secret in the PolarisLaw account called `ALKILN_BEAR_SIZE` and sets it to `small_bear`. Then she uses it in an environment variable she puts in all the workflow files in all the repositories.
+  <details>
+    <summary>Example situation</summary>
+    <div>
 
-  ```yml
-  env:
-    ALKILN_BEAR_SIZE: "${{ secrets.ALKILN_BEAR_SIZE }}"
-  ```
+    For example, suppose Mo'nique has a GitHub organization named PolarisLaw. That organization has several repositories. Every test in every repository uses the value "small\_bear" as an answer to a question. Next month, though, the firm might need to change that value to "large\_bear". Mo'nique would have to edit that value in every test in every repository. Instead, she makes a GitHub secret in the PolarisLaw account called `ALKILN_BEAR_SIZE` and sets it to `small_bear`. Then she uses it in an environment variable she puts in all the workflow files in all the repositories.
 
-  She can then use that environment variable in her tests:
+    ```yml
+    env:
+      ALKILN_BEAR_SIZE: "${{ secrets.ALKILN_BEAR_SIZE }}"
+    ```
 
-  ```gherkin
-    I set the variable "bear_size" to the GitHub secret "ALKILN_BEAR_SIZE"
-  ```
+    She can then use that environment variable in her tests:
 
-  Next month, if PolarisLaw needs to change that value, Mo'nique can just edit the value of that   secret and change it to `large_bear`. All the tests will use the new value without her changing   anything else.
+    ```gherkin
+      I set the variable "bear_size" to the GitHub secret "ALKILN_BEAR_SIZE"
+    ```
 
-  Why not create secrets on your server for <AutoDIY/> tests? On your server all config values are already secret because only authorized people can see them, so they are just like any other [environment variable](#env-vars). And all of your server's interviews can see and share those config values already. I know, not quite as exciting.
+    Next month, if PolarisLaw needs to change that value, Mo'nique can just edit the value of that secret and change it to `large_bear`. All the tests will use the new value without her changing   anything else.
+    </div>
+  </details>
+
+Why not create secrets on your server for <AutoDIY/> tests? On your server all config values are already secret because only authorized people can see them, so they are just like any other [environment variable](#env-vars). And all of your server's interviews can see and share those config values already. I know, not quite as exciting.
 
 <!--
 TODO: [Is this unnecessary now that inputs and env vars are so separate?] FAQ: How are GitHub inputs different than env vars?
@@ -2068,7 +2074,7 @@ You can run <AutoDIY/> tests manually whenever you want to.
 
 **Setup:**
 
-1. ALKiln goes to [its account](security.mdx#alkiln-account) and creates a new Project.
+1. ALKiln goes to [its account](security.mdx#test-accounts) and creates a new Project.
 1. It uploads the relevant GitHub branch of your package into the Project.
 
 **Robot:**
@@ -2079,7 +2085,7 @@ You can run <AutoDIY/> tests manually whenever you want to.
 
 When all the tests finish, ALKiln cleans up the tests.
 
-1. ALKiln deletes the Project it created from [ALKiln's account](security.mdx#alkiln-account).
+1. ALKiln deletes the Project it created from [ALKiln's account](security.mdx#test-accounts).
 1. It makes the [test output](#artifacts), like the report and Scenario folders.
 
 
