@@ -7,12 +7,14 @@ slug: /alkiln
 
 <!-- slug: /alkiln_old_overview -->
 
-**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.  <!-- Moved -->
+**Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
-🚧 Reference material for testing your interview with ALKiln. This is under very active development. <!-- Moved -->
+🚧 Reference material for testing your interview with ALKiln. This is under very active development.
 
 
-## Intro <!-- Moved -->
+## Intro
+
+([Moving](intro.mdx))
 
 The ALKiln (Assembly Line Kiln) framework runs tests on your docassemble interview either through the Playground or through GitHub, making sure your interviews are running correctly.
 
@@ -27,9 +29,14 @@ You can also read the [presentation slides themselves](https://docs.google.com/p
 
 ## Start
 
-You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.mdx#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests. <!-- Moved -->
+([Moving](setup.mdx))
 
-### Set up for ALKilnInThePlayground <!-- Moved -->
+You can run ALKiln in a variety of ways, each with their [pros and cons and other details](alkiln_advanced.mdx#multiple-ways-to-run-alkiln). The section below is about setting up different ways of running tests.
+
+
+### Set up for ALKilnInThePlayground
+
+([Moving](setup.mdx#diy-how-to))
 
 1. Leave the Playground and go to your server's "Package Management" page.
 1. Install the [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) from its `main` branch.
@@ -52,7 +59,10 @@ dispatch:
 <!-- 
 1. Optionally, if you have added "tags" to your tests using [the tag expression syntax](https://www.cuketest.com/en/cucumber/tag-expressions), you can use a tag expression to limit which tests you run. -->
 
-### Set up for GitHub-triggered tests <!-- Moved -->
+
+### Set up for GitHub-triggered tests
+
+([Moving](setup.mdx#recommended))
 
 You will need to have a GitHub account that has permissions to edit the GitHub repository that you want to test.
 
@@ -63,10 +73,15 @@ You will need to have a GitHub account that has permissions to edit the GitHub r
 1. [See the results](#see-github-test-results).
 
 :::tip
+([Moving](writing_tests.mdx#secrets))
+
 If the repositories you want to test belong to one GitHub organization, get one of the organization's admins to run the ALKiln test setup interview and create organization secrets or to [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repo the organization has will use those secrets so you don't have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repo and if one of the values changes, you'll have to update it in every repo.
 :::
 
-### Set up for isolated GitHub server tests <!-- Moved -->
+
+### Set up for isolated GitHub server tests
+
+([Moving](setup.mdx#sandbox-how-to))
 
 This is an advanced method and we are happy to help you with it. It would help a lot to be familiar with GitHub and GitHub actions. You'll need a GitHub repository or organization admin to do one of these steps. You'll need to set this up for each repo running ALKiln tests.
 
@@ -81,8 +96,13 @@ This is an advanced method and we are happy to help you with it. It would help a
 1. Make a pull request to your default branch (probably `main`) to review the code and merge it in.
 
 :::caution
+
+([Moving](security.mdx#sandbox))
+
 To use this method, avoid using hard-coded urls to go to a test interview. That is, avoid using `https://my-server.com` to navigate to interviews or other server pages. That will send the tests to your server.
 :::
+
+([Moving](writing_tests.mdx#sandbox-optional-inputs))
 
 If you need to troubleshoot the docker setup because the step to start the GitHub server keeps failing, you can make the docker startup logs visible and allow ALKiln to create an artifact of the docker installation logs. Do this by passing the input `SHOW_DOCKER_OUTPUT` to ALKiln's GitHub server action, like our script (linked above) does for itself. The input arguments might look like the below:
 
@@ -92,10 +112,14 @@ If you need to troubleshoot the docker setup because the step to start the GitHu
           SHOW_DOCKER_OUTPUT: true
 ```
 
+([Moving](troubleshooting.mdx#docker-container))
+
 It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
 
 
-## Quick reminders <!-- Moved -->
+## Quick reminders
+
+([Moving](writing_tests.mdx#refresh))
 
 1. You write and edit `.feature` test files in your Sources folder.
 1. There are some fields ALKiln cannot yet handle, including `object`-type fields, like `object_multiselect`.
@@ -105,7 +129,10 @@ It's possible to do more docker troubleshooting using [the tmate action](https:/
 1. You will be able to see pictures and the HTML of pages that errored. In GitHub, you can download them from the zip file in [the Action's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
 1. ALKiln also creates test reports. In GitHub, you can download them in the same place.
 
-### Example <!-- Moved -->
+
+### Example
+
+([Moving](writing_tests.mdx#refresh))
 
 The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/). Here's a complex example for a quick refresher on some of our features:
 
@@ -131,7 +158,10 @@ Feature: I have children
 
 ```
 
-## First test <!-- Moved -->
+
+## First test
+
+([Moving](setup.mdx#first-test))
 
 You can write a short test right away that just makes sure your YAML file runs.
 
@@ -152,11 +182,10 @@ Feature: Interviews load
 
 You can wait to write more complex tests till your code is more stable. For example, your variable names should be staying pretty much the same.
 
-## Story Tables <!-- Moved -->
 
-See our [**new and improved** Story Table section](writing_tests.mdx#story-table)!
+## Story Tables
 
-**Old**:
+([Moving](writing_tests.mdx#story-table))
 
 In your Scenario, you will:
 
@@ -197,7 +226,10 @@ Right now, Story Tables are unable to use GitHub secrets to set variables.
 A Story Table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
-### Generate a Story Table <!-- Removed -->
+
+### Generate a Story Table
+
+([Moving](writing_tests.mdx#alkiln_story))
 
 You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
 
@@ -221,6 +253,8 @@ Follow these instructions to use the generator:
 
 ### Step command
 
+([Moving](writing_tests.mdx#story-table))
+
 The Step that triggers a story table is
 
 ```
@@ -231,6 +265,8 @@ The Step that triggers a story table is
 
 
 ### Rows
+
+([Moving](writing_tests.mdx#story-table))
 
 Indented under the command, put the header row of the table:
 
@@ -248,7 +284,10 @@ Under that, add a blank row for a field that you want the test to interact with 
       |  |  |  |
 ```
 
+
 ### var
+
+(Moving to [Story Table](writing_tests.mdx#story-table) and to [setting values](writing_tests.mdx#values))
 
 In the `var` column, write the name of the variable that a field sets **exactly as it appears in the `question` block**. Most times you can see that name in the YAML `question` block. If `code:` is used to create the field's variable name, you may have to talk to the developers who wrote that code to find out the name or names of the variable or variables it generates.
 
@@ -265,7 +304,10 @@ x.favorite_color
 - `users[i].name_fields()` generates all the name fields with the right index number (NOT 'i'). E.g. `users[0].name.first`, `users[0].name.suffix`, `users[1].name.first`, `users[1].name.suffix`
 - `users[i].address_fields()` generates all the address fields with the right index number (NOT 'i'). E.g. `users[0].address.address`, `users[1].address.address` -->
 
+
 ### value
+
+(Moving to [Story Table](writing_tests.mdx#story-table) and to [setting values](writing_tests.mdx#values))
 
 In the `value` column, write what you want the field to be set to. For checkboxes, `True` means 'checked' and `False` means 'unchecked'.
 
@@ -279,7 +321,10 @@ One special value you can include is `today`. That will insert the date on which
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
 
+
 ### trigger
+
+([Moving and removing/updating](writing_tests.mdx#special-html))
 
 `trigger` is an optional value in most cases. It is only mandatory for rows that use [index variables](https://docassemble.org/docs/fields.html#index%20variables), like `i`, `j`, or `k`, or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`).
 
@@ -327,41 +372,59 @@ yesno: likes_mandatory_questions
 
 In those cases, leave the `trigger` column empty.
 
+
 ### Story Table examples
 
+([Moving](writing_tests.mdx#values))
+
 _Simple field types with their values._
+
+([Moving](writing_tests.mdx#yesno))
 
 The 'yes' choice of [`yesno` buttons](https://docassemble.org/docs/fields.html#yesno) or [`yesno` fields](https://docassemble.org/docs/fields.html#fields%20yesno) like `yesno` checkboxes and `yesnoradio`s.
 ```
       | has_hair | True | has_hair |
 ```
 
+([Moving](writing_tests.mdx#yesnomaybe))
+
 The 'maybe' choice in [yesnomaybe buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [datatype: yesnomaybe](https://docassemble.org/docs/fields.html#fields%20yesno) fields.
 ```
       | has_hair | None | has_hair |
 ```
+
+([Moving](writing_tests.mdx#checkboxes))
 
 Checkboxes with multiple choices. The value 'True' means to check the checkbox and 'False' means to uncheck it.
 ```
       | benefits['SSI'] | True | benefits |
 ```
 
+([Moving](writing_tests.mdx#radio))
+
 Radio or dropdown choices.
 ```
       | favorite_color | green | favorite_color |
 ```
+
+([Moving](writing_tests.mdx#text))
 
 Text field or textarea. Even if the answer has multiple lines, you can only use one line. When a new line is supposed to appear, instead use `\n`. See below:
 ```
       | favorite_color | Blue.\nNo, green!\nAah... | favorite_color |
 ```
 
+(Removed - no longer used)
+
 A generic object with an index variable.
 ```
       | x[i].name.first | Umi | users[1].name.first |
 ```
 
+
 ### `.there_is_another` loop
+
+([Moving](writing_tests.mdx#there-is-another))
 
 The `.there_is_another` loop in a story table is more complicated than you might expect.
 
@@ -378,27 +441,43 @@ The `trigger` column should have the name of the page's trigger variable, as usu
       | x.target_number | 3 | users.there_is_another |
 ```
 
+
 ### Story Table signature
+
+([Moving](writing_tests.mdx#sign))
 
 The `value` for a row setting a signature doesn't matter. All signatures will be a single dot.
 ```
       | user.signature |  | user.signature |
 ```
 
+
 ### Other story table notes
+
+([Moving](writing_tests.mdx#unused-rows))
 
 Don't worry about accidentally including variables that won't show up during the test. Extra rows will be ignored.
 
 
 ## Steps
 
+([Moving](writing_tests.mdx#steps))
+
 [Steps](https://cucumber.io/docs/gherkin/reference/#steps) must be written one after the other in the order they should happen. It's a bit more like you're the user clicking through the form. They can let you do things like download a file or make sure an user input invalidation message appears. If you change the order of the questions, even if you don't change any variable names, you may have to update these types of steps to change their order to match the new order of the screens.
+
+([Moving](writing_tests.mdx#gherkin-keywords))
 
 Note: `When`, `Then`, `And`, and `Given` at the beginning of sentences can all be used interchangeably. It doesn't matter which you use.
 
 ### Starting Steps
 
-_Establishing Steps that you might use as the first few lines of a "Scenario" - a test. They can also be used at any other time._ 
+([Moving](writing_tests.mdx#start))
+
+_Establishing Steps that you might use as the first few lines of a "Scenario" - a test. They can also be used at any other time._
+
+---
+
+([Moving](writing_tests.mdx#start-interview))
 
 :::caution
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
@@ -414,6 +493,8 @@ This Step must **always** be included in **each** `Scenario` **before** setting 
 
 ---
 
+([Moving](writing_tests.mdx#wait))
+
 The `wait` Step can be a way to pause before the test tries to go to the interview's first page.
 
 ```
@@ -427,7 +508,7 @@ This Step can also be used anywhere in your scenario to wait between Steps.
     And I wait 1 second
 ```
 
-<!-- Maybe put this in the errors/warnings section:
+<!-- Added and Moved: Maybe put this in the errors/warnings section:
 
 You might need this if your tests repeatedly fail on one Step, especially if it only happens sometimes. This is because some situations can cause race conditions that make the tests believe the next page has loaded even though it hasn't. We haven't yet found a way to detect all of these and it might never be possible. -->
 
@@ -435,6 +516,8 @@ You might need this if your tests repeatedly fail on one Step, especially if it 
 
 <!-- Given I start the interview at "filename" in lang "Español" -->
 <!-- And I am using a mobile -->
+
+([Moving](writing_tests.mdx#custom-timeout))
 
 You can also start by making sure the test will give the interview's first page time to load once the test goes there. The default maximum time is 30 seconds. This Step can be useful if you know that your interview's first page takes longer to load.
 
@@ -446,6 +529,8 @@ You can also start by making sure the test will give the interview's first page 
 This Step can also be used anywhere else in your Scenario to give Steps more time to finish.
 
 ---
+
+([Moving](writing_tests.mdx#sign-in))
 
 You can use <span id="log-in-step">the `log in` Step</span> to sign into your docassemble server before going to the interview:
 
@@ -462,6 +547,8 @@ This is a complex Step to use and right now only works in GitHub (though we are 
 
 ### Observe things about the page
 
+([Moving](writing_tests.mdx#observe))
+
 The `question id` Step will make sure the page's question id is right. This Step can help humans keep track of what page the tests are on. It will also show up in the logs of the tests and can help you see where things went wrong.
 
 Copy the `id` value from the YAML `question` block of the screen you want to test.
@@ -472,19 +559,23 @@ Copy the `id` value from the YAML `question` block of the screen you want to tes
 
 ---
 
+([Moving](writing_tests.mdx#invalid))
+
 The `invalid answers` Step can check that the user was prevented from continuing.
 
 ```
     Then I will be told an answer is invalid
 ```
 
-<!--
+<!-- Removed
 I don't think these are trustworthy enough yet
 Then I can't continue
 Then I arrive at the next page
 -->
 
 ---
+
+([Moving](writing_tests.mdx#pic))
 
 The `screenshot` Step will take a picture and download the HTML of the screen. In GitHub tests, it will be put in the GitHub action's [artifacts](#see-github-test-results).
 <!-- And I take a screenshot ?(?:named "([^"]+)")? -->
@@ -495,6 +586,8 @@ The `screenshot` Step will take a picture and download the HTML of the screen. I
 
 ---
 
+(Removed in favor of "I see the phrase")
+
 The `link` Step can make sure a link appears on the page. For example, a link to quickly leave the page for forms that deal with domestic abuse.
 
 ```
@@ -504,6 +597,8 @@ The `link` Step can make sure a link appears on the page. For example, a link to
 <!-- Then an element should have the id "some_HTML_element_id" -->
 
 ---
+
+([Moving](writing_tests.mdx#phrase))
 
 The `phrase` Steps can check for text on the page. Checking phrases will be language specific.
 
@@ -522,6 +617,8 @@ Getting the characters right can be tricky with docassemble. If you get told a p
 The phrase should be inside double quotation marks and should NOT itself contain [regular double quotation marks](https://www.compart.com/en/unicode/U+0022) inside it. That usually isn't a problem with docassemble pages because docassemble transforms our code in ways we don't always expect. See the [missing phrase section](#phrase-is-missing) that talks about special characters.
 
 ---
+
+([Moving](writing_tests.mdx#a11y))
 
 The `accessibility` Step can <span id="accessibility">check a page for its accessibility</span> by running [aXe-core](https://github.com/dequelabs/axe-core) on the page.
 
@@ -542,6 +639,8 @@ that the test runner sees.
 
 ---
 
+([Moving](writing_tests.mdx#compare-json))
+
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
 :::caution
@@ -561,6 +660,8 @@ This step is unable to check values of nested objects. For example, it can test 
 
 ---
 
+([Moving](writing_tests.mdx#get-json))
+
 The `JSON variables` Step will add the page's JSON variables to the final test report. It's a bit messy, but you do get to see all the variables.
 
 ```
@@ -576,9 +677,13 @@ The `JSON variables` Step will add the page's JSON variables to the final test r
 
 ### Set values
 
+([Moving](writing_tests.mdx#interact))
+
 _Fill in fields with answers, set values, and interact with the page in other ways._
 
 ---
+
+([Moving](writing_tests.mdx#continue))
 
 The `continue` Step will tap the button to continue to the next page. The text on the button itself doesn't matter.
 
@@ -588,17 +693,23 @@ The `continue` Step will tap the button to continue to the next page. The text o
 
 ---
 
+([Moving](writing_tests.mdx#set))
+
 Use the `set the variable` Step to fill in an answer on the page. This sets the value of that field's variable.
 
 The first set of quotes contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [story table](#story-tables)'s [`var` column](#var) and [`value` column](#value).
 
 Example of a text field:
 
+([Moving](writing_tests.mdx#text))
+
 ```
     When I set the variable "users[i].hair_color" to "Turqoise"
 ```
 
 Example of a checkbox field:
+
+([Moving](writing_tests.mdx#checkboxes))
 
 ```
     When I set the variable "users[i].fruits['apple']" to "True"
@@ -607,9 +718,13 @@ Example of a checkbox field:
 
 Example of a radio button field:
 
+([Moving](writing_tests.mdx#radio))
+
 ```
     When I set the variable "users[i].favorite_bear" to "cuddly_bear"
 ```
+
+([Moving](writing_tests.mdx#choice-values-tip))
 
 Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for this YAML code the `value` would be "cuddly_bear", not "Teddy bear". "Teddy bear" is just the label.
 
@@ -627,6 +742,8 @@ field:
 
 One special value you can use is `today`. That will insert the date on which the test is being run. You can subtract or add days using `today`. Examples:
 
+([Moving](writing_tests.mdx#today))
+
 ```
     When I set the variable "signature_date" to "today"
     When I set the variable "birthdate" to "today - 500"
@@ -638,6 +755,8 @@ Be careful with `today` math. If you're testing a "boundary" date, you want to p
 You can also use environment variables to set values with [the `secret variables` Step](#secret-variables-step), even if the value doesn't need to be secret.
 
 ---
+
+([Moving](writing_tests.mdx#secret-val))
 
 The <span id="secret-variables-step"><code>secret variables</code> Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. If there is an error on this page, ALKiln will still avoid taking a picture of the screen.
 
@@ -654,6 +773,8 @@ You **MUST** use [the `log in` Step](#log-in-step) if you want to sign into your
 
 ---
 
+([Moving](writing_tests.mdx#sign))
+
 Sign on a signature page. All signatures are the same - one dot.
 
 :::danger
@@ -668,6 +789,8 @@ Sign on a signature page. All signatures are the same - one dot.
 
 Use one of the `tap element` Steps to tap an item on the page. You need to know a bit about HTML to work with this Step.
 
+([Moving](writing_tests.mdx#tap-nav))
+
 1. You can tap on specific HTML elements on the page, like buttons, to navigate to the next page or a new page.
 You can use any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
 to get an element on the page. You can add any additional wait time after tapping the element.
@@ -677,6 +800,8 @@ to get an element on the page. You can add any additional wait time after tappin
     # Or
     And I tap the "#other-element" element and wait 5 seconds
 ```
+
+([Moving](writing_tests.mdx#tap-stay))
 
 2. You can also tap on HTML elements without navigating. For example, you can tap on [collapsible content](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox#collapsible-help-text) to show the text inside.
 
@@ -688,6 +813,8 @@ You might want to add a `wait` Step after that to let the contents become visibl
 
 ---
 
+([Moving](writing_tests.mdx#tap-tab))
+
 Use the `tap tab` Step to interact with [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs). ALKiln will tap on the tab and then wait until the tab contents are fully visible.
 
 ```
@@ -698,6 +825,8 @@ Use the HTML id of the tab, but **leave out the `#` symbol** (like the example s
 
 ---
 
+([Moving](writing_tests.mdx#story-table))
+
 Use the `story table` Step to make sure the test reaches a particular screen given a set of fields with their values. See more details in [sections above](#story-tables).
 
 ```
@@ -705,6 +834,8 @@ Use the `story table` Step to make sure the test reaches a particular screen giv
 ```
 
 ---
+
+([Moving](writing_tests.mdx#name))
 
 The `name` Step is specifically for the Document Assembly Line 4-part name questions.
 
@@ -720,6 +851,8 @@ Avoid punctuation. We recommend you just use 2 names - the first name and last n
 
 ---
 
+([Moving](writing_tests.mdx#address))
+
 The `address` Step is specifically for the Document Assembly Line 4-part address questions.
 
 It allows a US address format, but can otherwise be any address you want that matches the format of the example below. Remember the commas.
@@ -734,6 +867,8 @@ It allows a US address format, but can otherwise be any address you want that ma
 
 ---
 
+([Moving](writing_tests.mdx#download))
+
 Use the `download` Step to download files so that humans can check that they are correct. When the tests run in GitHub, the files will be in [the GitHub action's artifacts](#see-github-test-results). If you think this step could take more than 30 seconds, use the "maximum seconds for each Step" Step to give the file more time to download.
 
 ```
@@ -743,6 +878,8 @@ Use the `download` Step to download files so that humans can check that they are
 Leave out other parts of file's url.
 
 ---
+
+([Moving](writing_tests.mdx#compare-files))
 
 You can compare example PDFs (sometimes called a baseline) to downloaded PDFs to make sure they're the same. The baseline PDF must be stored in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests, and the downloaded PDF should have been downloaded by the above step (`Then I download "download.pdf"`) earlier in the same scenario.
 
@@ -754,6 +891,7 @@ This will compare all of the text in the baseline PDF with all of the text in th
 
 ---
 
+([Moving concept](writing_tests.mdx#upload). Step deprecated in favor of regular variable setting)
 
 Use the `upload` step to upload one or more files. You must store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests.
 
@@ -771,6 +909,8 @@ In a story table, use the name of the variable as usual and use the name of the 
 
 ---
 
+([Moving](writing_tests.mdx#custom-timeout))
+
 Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
@@ -778,6 +918,8 @@ Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your
 ```
 
 ---
+
+([Moving](writing_tests.mdx#wait))
 
 Use the `wait` Step to pause once a page has loaded. will let you wait a number of seconds when you are on a page. The time must be shorter than the maximum amount of time for each Step. By default, that's 30 seconds, but you can increase that with the "maximum seconds for each Step" Step.
 
@@ -840,7 +982,11 @@ That’s a stock system error. Some **Step** took too long to finish in a way fo
 
 ## Tips
 
+([Moving](writing_tests.mdx#tips))
+
 _Some of these are just good practices to follow when coding your interviews._
+
+([Moving](writing_tests.mdx#choice-values-tip))
 
 In questions with choices, give each label a value. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about key-value pairs.
 
@@ -862,27 +1008,39 @@ It's always possible to use the labels alone, but giving a value as well ensures
 
 ---
 
+([Moving](writing_tests.mdx#id-tip))
+
 Add a [unique id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. This also helps your team communicate with each other more easily.
 
 ---
+
+([Moving](writing_tests.mdx#noyes))
 
 Avoid `noyes` type fields. For one thing, the [story table generator](#generate-a-story-table) code will need less editing. For another, we've found that humans tend to find those confusing too.
 
 ---
 
+([Moving](writing_tests.mdx#html-tip))
+
 If your package is not importing specifically al_package.yml from the styled Assembly Line package, make sure to add the [trigger variable code](#trigger_variable_code) to your interview.
 
 ---
 
+([Moving](writing_tests.mdx#unstable-tip))
+
 You can write tests that just go part-way through an interview. That way, you can work on adding more content and yet also be sure that the work you've already done isn't affected by the new changes.
 
 ---
+
+([Moving](writing_tests.mdx#reuse-tip))
 
 Use old Scenarios or story tables to help you make new ones. You don't have to make everything from scratch.
 
 ---
 
 ## Test output
+
+([Moving](writing_tests.mdx#artifacts))
 
 ALKiln creates files and folders showing the output of the tests.
 In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) at the bottom of the summary page for that run of tests.
@@ -897,6 +1055,8 @@ The output ALKiln creates includes:
 - A report for that specific Scenario, as well as pictures you took of screens and the associated HTML of that page, files you downloaded, and pictures of any errors it caused with its HTML.
 
 ### Error pictures and HTML files
+
+([Moving](writing_tests.mdx#error-pics))
 
 ALKiln will try to take pictures of pages that run into errors. The names of those files use the id of the page where the error happened. There you might see that the test was unable to continue to the next page because required fields weren't filled, or that a variable wasn't defined. ALKiln avoids taking pictures of erroring pages when the page used GitHub secrets in case they contain sensitive information.
 
@@ -916,6 +1076,8 @@ To see more details about how the test steps ran on GitHub, go to the left colum
  -->
 
 ### Reports
+
+([Moving](writing_tests.mdx#report))
 
 We're always trying to understand what people would find helpful in these reports. Tell us about your experiences at https://github.com/SuffolkLITLab/ALKiln/issues.
 
@@ -955,6 +1117,8 @@ Within each of those, every Scenario will have its own section. In the Scenario'
 
 ---
 
+([Moving](writing_tests.mdx#report))
+
 If you used a [story table](#story-tables) Step, a Scenario might look more like this:
 
 ```
@@ -983,6 +1147,8 @@ If everything looks right to you there, you can copy and paste the text under "R
 
 ---
 
+(Removed as unclear)
+
 If a screen loaded with an error message, ALKiln will try to reload a few times, and will try to log the error message that it saw:
 
 ```
@@ -1000,11 +1166,15 @@ ERROR: Failed to load "a-great-interview" after 3 tries. Each try gave the page 
 **-- Scenario Failed --**
 ```
 
+([Moving](writing_tests.mdx#error-pics))
+
 ALKiln will also try to take a picture of the page where the error happened. There will be two copies of that picture - one in the main folder of the output and one in the folder of the specific test (the Scenario) that caused the error.
 
 Also watch the [errors and warnings](#errors-and-warnings) section for updates on similar information.
 
 ## See GitHub test results
+
+([Moving](writing_tests.mdx#results))
 
 In GitHub, to see the list of previous tests or running tests, go to your repository's [GitHub Actions page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-workflows-activity).
 
@@ -1017,9 +1187,13 @@ In GitHub, you can [download these GitHub "artifacts"](https://docs.github.com/e
 
 ## Errors and warnings
 
+([Moving](troubleshooting.mdx))
+
 _This section is a constant work in progress._
 
 ### A missing trigger variable
+
+([Moving](troubleshooting.mdx#missing-trigger))
 
 **This warning only matters for story tables that use index variables or generic objects.**
 
@@ -1029,6 +1203,8 @@ If you are using a story table with index variables or generic objects, you need
 
 <!-- This has to be a bit farther up than the code. For some reason the header isn't taken into account when jumping here. -->
 <a name="trigger_variable_code"></a>
+
+([Moving](writing_tests.mdx#special-html))
 
 Add exactly this code to your `default screen parts` block to insert an invisible element in all your screens:
 
@@ -1046,6 +1222,8 @@ If you already have something in your `post:`, just copy the `<div>` and paste i
 If you want to see some very technical details about why we need it in the first place, you can go to https://github.com/SuffolkLITLab/ALKiln/issues/256, where we've tried to summarize the problem this is solving. Unfortunately, we haven't found another way to solve this particular problem.
 
 ### Timeout or "took too long" error
+
+([Moving](troubleshooting.mdx#next-page-timeout))
 
 Different problems can cause the report to say that something "took too long" or caused a "timeout" error.
 
@@ -1072,13 +1250,19 @@ You won't be able to tell if the `SERVER_URL` is wrong - GitHub considers the va
 
 ### Invalid playground path error
 
+([Moving](troubleshooting.mdx#invalid-path))
+
 If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo.
 
 ### UnhandledPromiseRejection error
 
+([Moving](troubleshooting.mdx#unhandled-promise-rejection))
+
 This is a misleading error. You need to read the text of the whole paragraph to see what the actual error is.
 
 ### Phrase is missing
+
+([Moving](troubleshooting.mdx#missing-phrase))
 
 If you get an error message that an expected phrase is missing, make sure you copy and paste the text you're expecting **directly from the running interview page**.
 
@@ -1106,6 +1290,8 @@ Right:
 
 ### Inconsistent cell count
 
+([Moving](troubleshooting.mdx#table-cells))
+
 This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe (`|`) or could have an extra pipe, etc.
 
 To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors. The editor will not show error next to lines that are commented out. Those are the ones that start with `#`.
@@ -1119,23 +1305,27 @@ Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': 
 <!-- ### Access Denied -->
 
 
-## Security <!-- Moved -->
+## Security
 
-See our [**new and improved** security section](security.mdx)!
-
-**Old** content:
+([Moving](security.mdx))
 
 Using a third-party library or package is always a risk. That said, we take measures to help secure our code, such as protecting our release branches and requiring reviews before merging any new code.
 
 In addition, here are some actions you can take to manage the security of the tests, as well as general guidelines for server security.
 
-### Disable the tests <!-- Moved -->
+
+### Disable the tests
+
+([Moving](writing_tests.mdx#disable-test))
 
 If you become worried about the tests, there are different ways you can stop the tests from running.
 
 In order to run, the test setup interview added a "workflow" file to your repository. GitHub sometimes calls that an "action". That's what triggers the tests. You can manage that workflow, and your actions in general, in GitHub.
 
-#### Disabling tests in one repository <!-- Moved -->
+
+#### Disabling tests in one repository
+
+([Moving](writing_tests.mdx#disable-repo))
 
 GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
 
@@ -1143,11 +1333,17 @@ You can also delete the file from your repository completely. If you go to the f
 
 Another option is to disable or limit all tests, all actions, in your repository. GitHub's documentation for managing repository actions is at https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository.
 
-#### Disabling tests for the whole organization <!-- Moved -->
+
+#### Disabling tests for the whole organization
+
+([Moving](writing_tests.mdx#disable-org))
 
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
+
 ### Use a separate server just for testing
+
+([Moving](security.mdx#testing-server))
 
 Keep the test server completely separate from production server so that the tests never show sensitive information to potential malicious actors. To avoid running tests on your production server, use the testing server's address in the `SERVER_URL` GitHub secret. The test files themselves are secure as long as you don't put sensitive info in them. They don't do anything by themselves.
 
@@ -1157,11 +1353,17 @@ In addition, some general good practices are:
 * Periodically clear out the test server and start a new docker container from scratch.
 * Occasionally check the test server to make sure it's not running resource stealing code (blockchain miners, etc.)
 
-### See GitHub's security docs <!-- Moved -->
+
+### See GitHub's security docs
+
+([Moving](security.mdx#github-workflow))
 
 GitHub has documentation on some best practices as well: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions
 
-### Use ALKiln's commit sha <!-- Moved -->
+
+### Use ALKiln's commit sha
+
+([Moving](security.mdx#freeze))
 
 This one requires prior technical knowledge. To summarize, you can freeze the version of the ALKiln code your repository's tests use by referencing a specific ALKiln commit sha in your workflow file.
 
@@ -1177,13 +1379,23 @@ uses: suffolkLITLab/ALKiln@releases/v4
 
 When you want to update to a new version of the ALKiln, update that sha manually.
 
-### Set ALKiln's npm version <!-- Moved -->
+
+### Set ALKiln's npm version
+
+([Moving](security.mdx#freeze))
 
 This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/#get-involved) any questions you might have.
 
 You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
-### GitHub secrets <!-- Moved -->
+
+### GitHub secrets
+
+<!-- TODO: once "Moving" is changed "Moved", improve the accessibility of these links by putting their specific text in the link part -->
+
+- ([Moving](security.mdx#secrets) - secrets)
+- ([Moving](security.mdx#env-vars) - env vars)
+- ([Moving](security.mdx#sensitive-info-github) - using sensitive info)
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
@@ -1245,7 +1457,9 @@ jobs:
 ```
 
 
-### Things to worry about less <!-- Moved -->
+### Things to worry about less
+
+([Moving](security.mdx#github-redacts-secrets))
 
 There are some parts of testing that might look less secure than they are.
 
@@ -1255,6 +1469,8 @@ If you are still worried about the logs and artifacts in GitHub, [you can delete
 
 
 ## Your workflow file
+
+([Moving](security.mdx#workflows))
 
 **Where is it?**
 
@@ -1274,6 +1490,8 @@ These following sections probably require prior technical knowledge about [GitHu
 
 ### Required inputs
 
+([Moving](writing_tests.mdx#githubNyou-inputs))
+
 The setup interview should have helped you create these required `inputs` and their values. They are in the `jobs:` section. They look something like this:
 
 ```yml
@@ -1289,6 +1507,11 @@ The setup interview should have helped you create these required `inputs` and th
 We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
 
 ### Optional inputs
+
+<!-- TODO: once "Moving" is changed "Moved", improve the accessibility of these links by putting their specific text in the link part -->
+
+([Moving](writing_tests.mdx#optional-inputs) - some optional inputs)
+([Moving](writing_tests.mdx#githubNyou-optional-inputs) - other optional inputs)
 
 There are also optional inputs that can go under `with:`.
 
@@ -1317,6 +1540,8 @@ Other than `DOCASSEMBLE_DEVELOPER_API_KEY`, this information can usually be publ
 ```
 
 ### ALKiln environment variables
+
+Deleted in favor of the [SERVER_RELOAD_TIMEOUT_SECONDS input](writing_tests.mdx#githubNyou-optional-inputs).
 
 There are some environment variables that ALKiln uses internally that don't need to be "inputs". They go under the `env:` section instead of under `with:`.
 
@@ -1348,9 +1573,13 @@ ALKiln cannot stop the first test from failing, but `MAX_SECONDS_FOR_SERVER_RELO
 
 ### Arbitrary environment variables
 
+([Moving](writing_tests.mdx#env-vars))
+
 See [the GitHub secrets section](#github-secrets) on setting arbitrary environment variables. The section describes using GitHub secrets and using plain values.
 
 ### Make a GitHub issue when tests fail
+
+([Moving](writing_tests.mdx#issue))
 
 1. Go to your GitHub repository.
 1. Tap on the `.github` folder, then on `workflows`, then on the YAML file in there that runs the ALKiln tests.
@@ -1383,6 +1612,8 @@ If you've run the Setup interview more recently, you will already have this code
 
 ### Triggering GitHub tests
 
+([Moving](writing_tests.mdx#trigger-tests))
+
 By default, the ALKiln setup interview makes sure that the tests are triggered when someone pushes code the repository. For example, when they press the 'Commit' button in docassemble. It also makes sure the tests can be [triggered manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow).
 
 There is a file in your repository that GitHub uses to trigger this workflow. To see it:
@@ -1407,6 +1638,8 @@ The keys that trigger the workflow (e.g. `push` and `workflow_dispatch`) can be 
 
 #### Scheduled tests
 
+([Moving](writing_tests.mdx#schedule-trigger))
+
 You can also run these tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add `schedule` to the `on`  object in your workflow file and give it an "interval" value. For example:
 
 ```yml
@@ -1423,6 +1656,8 @@ If you've run the Setup interview more recently, you will already have this code
 
 #### Pull requests
 
+([Moving](writing_tests.mdx#pr-trigger))
+
 You can also trigger tests to run when someone makes a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) in GitHub.
 
 In the `on` object in your workflow file, add the `pull_request` trigger key. For example:
@@ -1435,6 +1670,8 @@ on:
 ```
 
 #### All together
+
+<!-- Deleted -->
 
 After adding all those, your whole `on` section might look something like this:
 
@@ -1453,7 +1690,11 @@ on:
 
 ## FAQ
 
+([Moving](writing_tests.mdx#faq))
+
 ### I have a private GitHub repository. Can I use this testing framework?
+
+([Moving](writing_tests.mdx#private-repo))
 
 Yes, you can use ALKiln with a private repository, though you have to do a bit of extra work.
 
@@ -1465,6 +1706,8 @@ As that documentation explains, no two accounts on a docassemble server can be c
 Also, there are some limits on the amount of time private repositories can run workflows: https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions
 
 ### How do I add a new test file?
+
+([Moving](writing_tests.mdx#new-file))
 
 Go to your Playground > the dropdown Folders menu > Sources.
 
@@ -1503,13 +1746,19 @@ Scenario: I allow unsupervised visitation
 
 After that, you can add the story table or other Steps that will test your interview.
 
+([Moving](writing_tests.mdx#file-rules))
+
 Make sure to leave the `Feature:` line at the very top of the file. Avoid repeating the `Feature:` key anywhere else in the file.
 
 ### Why should I write a Scenario description?
 
+([Moving](writing_tests.mdx#scenario-descriptions))
+
 `Scenario` descriptions affect the names of error screenshot files and report headings, so try to write something unique that you will recognize later. It will help you identify what happened with each test.
 
 ### When do tests run?
+
+([Moving](writing_tests.mdx#run))
 
 GitHub tests run when you commit your files to GitHub. That might be when you hit the 'Commit' button on the Packages page. It can also happen when you edit, add, or delete files in GitHub itself.
 
@@ -1575,15 +1824,21 @@ Who are the main users of the testing framework?
 
 ## Feedback
 
+([Moved](intro.mdx#contribute))
+
 Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
 
 ## Built with
+
+([Moved](intro.mdx#dependencies))
 
 Kiln uses cucumberjs, puppeteerjs, cheerio, and runs the assertions using mocha and chai libraries.
 
 Even though this is built using [cucumberjs](https://cucumber.io/), this framework has a different, less lofty, purpose. cucumber focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
 
 ## Repositories
+
+([Moved](intro.mdx#repos))
 
 - [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) is the package that will let you run tests directly on your server
 - [ALKiln's own repository](https://github.com/SuffolkLITLab/ALKiln)

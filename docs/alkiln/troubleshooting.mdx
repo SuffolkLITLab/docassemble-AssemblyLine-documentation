@@ -5,70 +5,217 @@ sidebar_label: WIP Troubleshooting & errors
 slug: /alkiln/trouble
 ---
 
+import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
+import TypoShameIsReal from './components/\_typo_shame_is_real.md'
+
 :::warning
 WIP (Work in progress)
 :::
 
-This page will try to help you figure out what is going wrong when you have errors or other problems with your ALKiln tests.
+This page will try to help you figure out what is going wrong when you have errors, warnings, or other problems with your ALKiln tests, whether they are from ALKiln itself or from the libraries ALKiln uses.
+
+Maybe you made a mistake, maybe there is a bug in our code, in docassemble, or in a package our tools depend on. Coding is 99% errors and debugging and the pain you feel is real and shared by many. Whatever the source of the problem is, you have made it this far, you belong in this space, and we are excited to have you here.
+
+This document is just starting out and would love contributions!
+
+This page helps with some:
+
+<!-- - General debugging suggestions (I think this would need an actual section for it if it's going to be listed here) -->
+<!-- - Common developer mistakes (I need to check the existing contents. It may need an actual section if it's going to be listed here) -->
+
+- ALKiln errors and warnings
+- Docassemble errors and warnings
+- Errors and warnings from the third-party libraries that ALKiln uses
 
 <!--
+- ALKiln errors and error and warning codes
+-->
+
+<!-- TODO: Every ALKiln error and warning should have a code, though, and giving us that code can help us narrow down your problem. -->
+
+
 ## Failing tests {#failure}
 
-Check report
-Check screenshots/pics
-Check HTML
-Check bottom of test output (for cucumber info)
-Go through the interview manually. Make sure to pull in a fresh new Project.
- -->
+There are some general troubleshooting steps that you can take when tests fail. If any of these steps help you find more specific problems, look for those on this page too because they may help you get to your solution faster.
 
-<!--
-## The variable could not be looked up
+For <AutoDIY/> tests, you can start by updating your version of [ALKilnInThePlayground](https://github.com/SuffolkLITLab/docassemble-ALKilnInThePlayground) and [updating your version of ALKiln](writing_tests.mdx#trigger-autodiy).
 
-> There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
- -->
+- Check the [console logs](writing_tests.mdx#console) of the test run. Remember that sometimes the errors will be near the top of the logs or near the bottom.
+- Check the [test run report](writing_tests.mdx#report).
+- Check [error screenshots/pictures and HTML pages](writing_tests.mdx#error-pics).
+- Check for [syntax errors in your test files](#gherkin).
 
-## Everything works fine when I run the test manually {#manual-works}
+If you are unsure if the test is acting correctly, go to your docassemble server, create a new Project, pull the code of your package into the Project, and go through the interview manually. Use the failing test as a guide and follow its Steps exactly.
 
-Or "It works when I run the interview manually" or "The tests pass when I run them with ALKilnInThePlayground".
 
-### Error: File not found {#file-not-found}
+## Test file bugs {#gherkin}
 
-<!-- Find that error -->
+There are some errors that come up because of various issues in your [test files](writing_tests.mdx#test-files).
 
-This might mean that you have a file in your Playground Project, but that you still have to save it on the Project's Packages page and commit that to GitHub. Your tests will pass for that Project in your Playground, but your interview will break when you or others install it from GitHub.
+A syntax error in any of your test files will stop your tests from running at all. To troubleshoot syntax typos, you can use an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
 
-### Error: Variable could not be looked up {#variable-not-found}
+You also might have a [typo in a Step itself](#step-undefined).
+
+
+### Inconsistent cell count error {#table-cells}
+
+**Symptom:**
+
+No tests will run. The error message will include text similar to this:
+
+```
+Error: Parse error in 'docassemble/ChildSupport/data/sources/new_case.feature': (10:5): inconsistent cell count within the table
+```
 
 **Problem:**
 
-> There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
+This error prevents all of your tests being run. The message is telling you that something about the syntax of the table is wrong. One of your story tables could missing a pipe - a `|` character - or could have an extra pipe, etc. This is an error from a library ALKiln uses.
 
-This is a reference error. It means docassemble tried to get the definition for a variable, but couldn't find the variable anywhere in your code or in the code you included or imported.
+**Debugging:**
 
-Sometime the easiest way to see what is wrong is to run the interview manually. Fill in the same values as the test fills in. You can then see what goes wrong when you reach the error.
+To fix this you can find the syntax typos by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor). It will let you paste in your test code and will show a red 'x' next to the lines that have syntax errors.
 
-If running the test manually seems to work fine, but running the automated tests gets a reference error, the test probably either has an incorrect variable name or an incorrect value for a variable. It might even be a value from a page much farther back than you expect.
 
-If you have a typo, ALKiln will be unable to find the variable or value that you were trying to set. In some Steps, that will cause a test to fail immediately. In a [Story Table Step](#story-table), ALKiln will just skip optional fields.
+### Undefined step {#step-undefined}
 
-[Checkboxes](#checkboxes) are a common place where authors make mistakes.
+**Symptom:**
+
+At the very bottom of your [console output](writing_tests.mdx#console) you see the message "Undefined" and "You can implement missing steps with the snippets below".
+
+This will make just the current test fail. This is an error message from a library ALKiln uses called [cucumber](https://cucumber.io/).
+
+**Problem:**
+
+You have a typo in the Step that failed, so cucumber thinks that you are trying to create a new Step. The error message should contain the text of the Step that you wrote.
 
 **Solution:**
 
-Check for:
+1. Check the documentation for the Step again.
+1. Copy/paste the Step from the documentation into a new line in your test.
+1. If you need to fill in blanks in the Step, copy/paste those values from your existing test code.
+1. If you want to be helpful to us, you can check if there really was a typo. If the text of the two lines look the same visually, use a diff checker like [https://www.diffchecker.com/text-compare/](https://www.diffchecker.com/text-compare/) to compare your original Step text with the new Step text. If the diff checker shows that the text is the same, contact us. Maybe we have a typo in our documentation.
+1. Delete your original Step text and try the test again.
+1. If the test has the same problem, contact us. Maybe we have a typo in our documentation.
 
-- [Incorrectly setting checkbox values](writing_tests.mdx#checkboxes)
-- Typos in variable names
-- Typos in the value for radio button options or similar fields
 
-You can check for incorrect variable or value names in a few different ways.
+## UnhandledPromiseRejection error {#unhandled-promise-rejection}
 
-1. If you give every question in your interview an id, the report can help show you where the test failed or where ALKiln skipped setting variables. For each test, the report often has a list of question ids. For each question id, the report has a list of variables that ALKiln set on the page. If the test failed, you can see what question id the test got to. You can also check previous questions to see what variables are missing from each of those pages - what fields ALKiln skipped.
+This is a misleading error from a library ALKiln uses. It is hiding the real error message inside it. You need to read the text of the whole paragraph to see what the actual error is. You might see more useful information in the [report](writing_tests.mdx#report) above those messages or in your [artifacts](writing_tests.mdx#artifacts).
+
+
+## Everything works fine when I run the test manually {#works-manually}
+
+When your ALKlin tests fail, but your interviews work fine when you run them by hand, it is possible that something is wrong with your package, with the test, or possibly with your understanding of the test code or interview code.
+
+For example, maybe when you run the interview manually, field by field, you *think* you are following your test to the letter, but a [misunderstanding of how to set a variable](writing_tests.mdx#values) has led you in the wrong direction.
+
+Some of the common reasons for specifically this problem are under this heading. That is especially true for tests that fail on GitHub, but pass manually *and* with <AutoDIY/> tests. Some problems are more complex and might be happening for other reasons, so they are elsewhere in these docs. For example, when your tests pass manually, you may have a [missing variable from a test typo](#var-val).
+
+
+### Uncommitted files {#uncommitted}
+
+Sometimes we forget to include/select a file on our [Project's Packages page](https://docassemble.org/docs/playground.html#packages) before [committing to GitHub](https://docassemble.org/docs/development.html#versioncontrol). This might be an interview file, template file, static file, source file, or a module.
+
+Leaving this out can lead to problems like a [file not being found](#file-not-found) or an [invalid playground path](#invalid-path).
+
+<!-- TODO: Add pics? Link to docassemble? -->
+
+
+### File not found {#file-not-found}
+
+<!-- TODO: Find the test of that error? But we can't rely on that. It would only be the default docssemble text. -->
+
+This might mean that you have a file in your Playground Project, but that you still have to save it on the Project's Packages page and commit that to GitHub. Your tests will pass for that Project in your Playground, but your interview will break when you or others install it from GitHub.
+
+
+### Invalid playground path {#invalid-path}
+
+If you see the text "invalid playground path" in the report, that means the `Given I start the interview at...` Step for that scenario is naming an interview that doesn't exist. Check for a typo in your interview name and check that the file exists.
+
+See [uncommitted files](#uncommitted).
+
+
+## Docassemble: Variable could not be looked up {#variable-not-found}
+
+**Symptom:**
+
+On the picture of the page with the error, you see this error message:
+
+> There was a reference to a variable ‘some_var’ that could not be looked up in the question file (for language ‘en’) or in any of the files incorporated by reference into the question file.
+
+This is a "reference error".
+
+**Problem:**
+
+This is a reference error. It means docassemble tried to get the value for a variable, but could not find where you defined the variable anywhere in your code or in the code you included or imported. Possible causes:
+
+- It may be that you have not defined a variable in your interview or that you have not defined it in a way that docassemble can find it. That can be for many reasons. For example, maybe you are using an [index variable](https://docassemble.org/docs/fields.html#index%20variables) or a [generic object](https://docassemble.org/docs/fields.html#generic) incorrectly or maybe you accidentally deleted the block where you were defining the variable.
+- It may be that you have a typo either where you use the variable or where you define the variable. The typo may be in the value instead.
+- It may be that you have a typo in a [variable name or value](#var-val) in your test.
+- It may be that you are [setting the value incorrectly](writing_tests.mdx#values) in your test. [Checkboxes are especially complex fields to set](writing_tests.mdx#checkboxes).
+
+The mistake may have happened on a page much farther back than you expect with a field ALKiln [skipped](writing_tests.mdx#unused-rows).
+
+**Debugging:**
+
+Sometime the easiest way to see what is wrong is to run the interview manually. Fill in the same values as the test fills in. You can then see what goes wrong when you reach the page with the error.
+
+If the mistake is in your interview code, you can fix that bug. If your interview code is fine, you might have to troubleshoot [a typo in your test code](#var-val).
+
+<TypoShameIsReal/>
+
+
+## ALKiln could not find a field or value {#missing}
+
+Some possible causes:
+
+<!-- 1. The field is in a `question` block that has `mandatory: True` (only signature page? I think others too). -->
+
+<!-- TODO: ALKiln: Can ALKiln check for a page triggered by `mandatory: True`? -->
+
+<!-- 1. [Special HTML](writing_tests.mdx#special-html) needed? -->
+
+1. You have changed your code to remove a variable or value and have not yet updated your tests.
+
+  Look at the error message closely. Look at the [picture and HTML of the error page](#writing_tests.mdx#error-pics). Try to find the variable or value in your interview code or in the code of included or imported files. See if that variable or value is also in your test file.
+
+1. The field is hidden behind a `show if` of some kind.
+
+  Follow the above steps first. Then check if the field is hidden. If it is hidden, try to see what can make that field visible. Whatever variable and value reveals that answer, check for those in your interview file and in your test code.
+
+1. There might be a typo in your test. Reading the [section about test typos](#var-val) might help.
+
+
+## Skipped rows or variables {#skipped}
+
+If you look in a [test suite report](writing_tests.mdx#report) and see that ALKiln [skipped setting a variable](writing_tests.mdx#unused-rows), your test code might be [missing a field or value](#missing) that it needs in order to fill out that field.
+
+If the test still passed, the variable probably belongs to a field that was optional.
+
+
+## Wrong variable or value {#var-val}
+
+Unfortunately, test code can be tricky to get right. You might have a simple typo or you might have a perfectly normal misunderstanding of [how to write variable names and values](writing_tests.mdx#values).
+
+<TypoShameIsReal/>
+
+You can check your test code for incorrect variable or value names in a few different ways.
+
+<!-- TODO: Check new notes for getting decoding values and see if there are easier instructions for getting HTML values -->
+
+<!-- 1. If you have access to the YAML, log `the_var.intrinsicName` in your interview code to get close to the var name. If you use `log( the_var.intrinsicName )` look in the docassemble logs. If you use `log( the_var.intrinsicName, 'console' )` look in the browser console. If it has more than one `[]` then use extra quotes? Not sure how to turn this into proper instructions for the correct var name. Would like to replace the HTML thing with it if we can figure out good instructions. -->
+
+1. If you give every question in your interview an id, the [report](writing_tests.mdx#report) can help show you where the test failed or where ALKiln skipped setting variables. For each test, the report often has a list of question ids. For each question id, the report has a list of variables that ALKiln set on the page that had the error. If the test failed, you can see what question id the test got to. You can also check previous questions to see what variables are missing from each of those pages - what [fields ALKiln skipped](writing_tests.mdx#unused-rows).
 1. It is more annoying, but in most cases[^except] you can copy the variable name from your test and search for it in your interview code. You can do the same for values of multiple choice questions.
-1. Alternatively, in most cases[^except] you can go through the interview manually. For every single page  (even if you think this page has nothing to do with the problem), click on the `<\/>` in the nav bar to see the source of the page. Copy the name of the variable from your test and search for it on the page of the running interview. For multiple choice questions, do the same for the value. Then answer the questions _exactly_ as the test would answer them.
-1. If you are unable to find the name of the variable or value in any other way, our last suggestion is the hardest to do, but most reliable - run the interview manually and examine each page's HTML to find exact names. This is complex and we are happy to show you how to do this. Here is a refresher:
+1. Alternatively, in most cases[^except] you can go through the interview manually, but follow this procedure:
+   1. For every single page  (even if you think this page has nothing to do with the problem), click on the `</>` in the nav bar to see the source of the page.
+   1. Copy the name of the variable from your test and search for it on the page of the running interview.
+   1. For multiple choice questions, do the same for the value.
+   1. Use those values to answer the questions _exactly_ as the test would answer them.
+   1. Continue doing this till you find the problem.
+1. If you are unable to find the name of the variable or value in any other way, our last suggestion is the hardest to do, but most reliable - run the interview manually and [inspect each page's HTML](https://www.dreamhost.com/blog/how-to-inspect-a-website/) to find exact names. This is complex and we are happy to show you how to do this. Here is a refresher:
     1. Go to a new page.
-    1. Click on the `<\/>` in the nav bar to see the source of the page.
+    1. Click on the `</>` in the nav bar to see the source of the page.
     1. For every field in the page:
         1. If you cannot see the variable name or value, like for an `object_checkbox` field or a field created with `code`:
             1. Open the browser development tools.
@@ -81,13 +228,364 @@ You can check for incorrect variable or value names in a few different ways.
         1. Set the value exactly as the test would have set it.
     1. Go on to the next page till you reach the end of your interview or the error.
 
-<!-- Check new notes for getting decoding values and see if there are easier instructions for getting HTML values -->
-
 
 [^except]: In some cases, you will be unable to find a variable or value name in your interview code. For example, `object`-type fields, like `object_multiselect` or for fields that use `code` might use values that are outside of your interview code. They might be in a module of your interview, in a module of an interview you `include`, in a database like S3, or somewhere else.
 
 
-## Skipped variables {#skipped}
+## Phrase is missing {#missing-phrase}
 
-If you look in a test report and see that ALKiln skipped setting a variable, you probably have a typo. See the [error for a missing variable reference](#variable-not-found)
+**Symptom**
 
+Example error:
+
+```txt
+The text "a document called a 'Certified docket sheet'" SHOULD be on this page, but it's NOT
+```
+
+**Debugging**
+
+First, look over the [HTML of the page that had the error](writing_tests.mdx#error-pics) and see what your test is seeing.
+
+If your phrase is missing there, try running the interview manually and see if it works. If it does, check the section on [interviews that work when you run them manually](#works-manually).
+
+If it looks like the phrase is actually there, a diff checker can be your best friend. Use a diff checker like [https://www.diffchecker.com/text-compare/](https://www.diffchecker.com/text-compare/) to copy/paste both the page's text and your test's text to check for differences. If the tool shows you differences, you can copy/paste the page's text into your test.
+
+Even though the text might look correct to you visually and might be the same ones you put in your code, you might not have used the exact same characters that the user is seeing. Docassemble sometimes gives the user slightly different characters than the ones you typed in your code. Ignore the text that you wrote in your code.
+
+See a section in [tips about quotes](writing_tests.mdx#special-chars) for more detailed information. To sum up, it is best to copy/paste the text **straight from the screen the user sees**.
+
+:::danger Wrong
+```gherkin
+  I should see the phrase "a document called a 'Certified docket sheet'"
+```
+:::
+
+:::tip Right
+```gherkin
+  I should see the phrase "a document called a ‘Certified docket sheet’"
+```
+:::
+
+
+## Timeout or "it took too long to load the next page" {#next-page-timeout}
+
+<!-- TODO: I think we've repeated this somewhere -->
+
+Different problems can cause the report to say that something "took too long" or caused a "timeout" error.
+
+A "timeout" error can happen when a page took too long to load at some point in setup, when running tests, or during test cleanup. This can be because:
+
+1. The page was trying to load a big file
+1. ALKiln could not continue to the next page for some reason
+1. A Story Table was unable to reach the page with the specified `id`
+1. There is a typo in the name of the interview YAML file that the test should go to
+
+If a page was taking too long to load a big file, use [the "max seconds" Step](writing_tests.mdx#custom-timeout) to give the page more time to load.
+
+You might be able to look at the [error page picture and HTML](writing_tests.mdx#error-pics) for more details. In GitHub, you can download the [test artifacts](writing_tests.mdx#artifacts) to look for it.
+
+In GitHub, this error can also happen when:
+
+1. The server was busy for too long.
+1. The server was down.
+1. That url is stored in the `SERVER_URL` [GitHub secret](writing_tests.mdx#secrets) is wrong or out of date.
+
+If the server might have been busy or down, try [re-running the tests](https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow).
+
+The value of `SERVER_URL` will be invisible - GitHub considers the value of the secret to be sensitive information, so it is impossible to see that value. You can still give it a new value, though, and that is worth trying. Find the address of the docassemble server where the docassemble [testing account](security.mdx#testing-server) is located. Edit the secret to give it that url.
+
+
+## No artifacts {#no-artifacts}
+
+If ALKiln is missing all [artifacts](writing_tests.mdx#artifacts) by the end of the test run, it means none of the tests ran. There are several possible reasons for this. For this type of error, it can be especially useful to look at the [console logs](writing_tests.mdx#console) and error messages.
+
+Possible reasons for missing artifacts for any test:
+
+- You might have a gherkin syntax error somewhere in your test files. If this was the case, the setup should have completed and the test run should have started, but immediately failed. [Find and fix that syntax error](#gherkin).
+
+Possible reasons for missing artifacts for <GTOYS/> tests:
+
+<!-- TODO: Add a pic of GitHub tests failing because the server is down. -->
+
+- Your test server was unavailable. If this was the case, your [GitHub job logs](writing_tests.mdx#console) should show that the test setup failed. Check if the server is running now and run the tests again.
+- Your docassemble developer account credentials were invalid. That is, the API key you created for the [docassemble testing account](security.mdx#test-accounts) and put in the [`DOCASSEMBLE_DEVELOPER_API_KEY` GitHub input](writing_tests.mdx#workflow-inputs) may no longer exist. Maybe the API key got deleted in a docassemble server update. Maybe someone else changed it. You should create a new API key for that testing account and change the value of your `DOCASSEMBLE_DEVELOPER_API_KEY` secret to the new value. You could also create a new testing account and create a new API key for the new account.
+
+<!-- TODO: Put the long explanation above in the "Access Denied" section and link to that from here. Create a section in setup about creating that docassemble account and API key and link to that too. -->
+
+Possible reasons for missing artifacts for <KittyLitter/> tests:
+
+- The Docker container or the docassemble server installation is having trouble starting up. If this is the case, your [GitHub job logs](writing_tests.mdx#console) should show that the docker build step failed. This is a complex problem and takes experience with creating docassemble servers and maybe Docker. You can set the ALKiln [`SHOW_DOCKER_OUTPUT` configuration input](writing_tests.mdx#sandbox-optional-inputs) to "true" to show you more information about what is going on during that setup process. If you have experience with actions and the command line, you might also be able to use the [tmate action](https://github.com/mxschmitt/action-tmate) to explore more about what is going on in your Docker container.
+
+Possible reasons for missing artifacts for <GTOYS/> and <KittyLitter/> tests:
+
+<!-- TODO: Add this for the ALKiln version installation instructions for <AutoDIY/> tests -->
+
+- The package manager that installs ALKiln had a problem. This does happen every now and then. If this was the case, your [GitHub job logs](writing_tests.mdx#console) should show test setup failure. You can [check its status](https://status.npmjs.org/), but the problem would have to be happening for a lot of people at once for it to show up.
+- GitHub itself had a problem. This is pretty rare. It can cause a failure at any point in the test. You can [check GitHub's status](https://www.githubstatus.com/). Again, the problem would have to be happening to a lot of people at once for it to show up on that site.
+
+
+## <!-- GitHub Sandbox --> <KittyLitter/> Docker trouble (advanced) {#docker-container}
+
+**This is for:** <KittyLitter/> tests
+
+**You should be familiar with:**
+
+- The terminal, command line, or command prompt
+- SSH
+- GitHub actions and workflows
+- Setting up and troubleshooting a docassemble docker container
+
+*This is a very advanced topic. If you want a hand, we are happy to help.*
+
+If your docker container is failing to start, failing to install docassemble, or failing to install your package, it is possible to do more docker troubleshooting using [the tmate GitHub action](https://github.com/marketplace/actions/debugging-with-tmate) and using the regular [docassemble docker troubleshooting steps](https://docassemble.org/docs/docker.html#troubleshooting).
+
+
+## Slow tests {#slow}
+
+**This is for:** Everyone
+
+<!-- TODO: This is different than a [never-ending test/infinite loop](#infinite) where there was no validation error, but the test can't move past the page. -->
+
+There are a various reasons your tests could be slow.
+
+First, there are reasons even passing tests can be slow, including:
+
+1. Your pages may just be taking a long time to load. This might happen if you are building a large document, uploading a large document, or for other reasons. That can even cause the tests to fail if it takes too long. You can use the ["max seconds" Step](writing_tests.mdx#custom-timeout) to give them more time. There are some things you can do to speed up some kinds of processes on your server, but that is out of scope for this document.
+1. [Downloading a lot of documents](writing_tests.mdx#download) can take a while. Right now, ALKiln is unable to tell when a document is done downloading, so it gives every document the maximum time possible. By default, that is a full 60 seconds. You can decrease that time with the ["max seconds" Step](writing_tests.mdx#custom-timeout), but that time might be too short for the documents to download. You can experiment a bit. You can also be tricky with the "max seconds" Step, though, and increase and decrease the value at appropriate times to improve both speed and downloading. <!-- (#missing-downloads) -->
+1. If your server reloads a lot during <GTOYS/> tests, it will take longer for tests to finish because the tests try to wait for the server to be available to avoid ["flaky"](#flake) tests. Your server can reload for many reasons. For example, saving your config file, saving a python module, or pulling a package that uses a python module can all cause your server to reload. This might even cause your tests to fail.
+
+There are also some different reasons that tests get slower when they fail, including:<span id="server-reload"></span>
+
+<!-- TODO: make a section just for about reloading? So that other places can link to that specifically. -->
+
+1. Each failing test gets re-run once, so that can double the amount of time that tests take. Currently, there is no way to choose whether to re-run tests or not.
+1. When a Story Table is trying to reach a target page and gets stuck somewhere, it will wait the maximum seconds allowed for a page load (which you can [change](writing_tests.mdx#custom-timeout)) to let the interview continue to the next page. By default, that is 30 seconds. Since those tests re-run, that can make a test take more than 1 minute.
+
+<!-- TODO: make sure we've covered this somewhere
+Like a normal user, an ALKiln test can get a server timeout error when the server reloads, which will cause the test to fail part-way through. This is a useless failure because it is just a ["flaky"](#flake) test and tells you, the developer, nothing about your actual code. ALKiln wants to wait so that the test retry and next tests will have a better chance of finishing properly.
+By default, ALKiln gives the server 150 seconds to reload.
+-->
+
+<!-- TODO: ALKiln: can some of these long timeouts be taken care of by detecting errors on the page? Can we try to detect an AL error page? Is that the problem? Maybe other types of pages too that have no continue button? -->
+
+<!--
+TODO: Look into this:
+Tests that end up on the wrong page take a default amount of 30 seconds to fail. Then those test are re-run, so they take at least 1 minute each. That's because there is no way for ALKiln to know whether the server is just taking a long time to load the correct page or if the test really ended up on the wrong page. This is especially a problem for the ALKiln Story Table (I think?).
+
+I don't think this is the reason. ALKiln Story Table would try to continue and get an "invalid answer" feedback and should be able to tell that it is an actual failure. Is this problem from something else? Is this a problem from the AL error page?
+-->
+
+<!--
+I actually think this is false. These days we independently check whether the server is actually responding.
+
+1. Some types of failing tests take an even longer time to fail. That is because some kinds of failures look the same to ALKiln as a docassemble server reloading. This is true even for <KittyLitter/> tests where the server is very unlikely to reload - ALKiln still treats those failures the same way.
+
+  Like a normal user, an ALKiln test can get a server timeout error when the server reloads, which will cause the test to fail part-way through. This is a useless failure because it is just a ["flaky"](#flake) test and tells you, the developer, nothing about your actual code. ALKiln wants to wait so that the test retry and next tests will have a better chance of finishing properly.
+
+  By default, ALKiln gives the server 150 seconds to reload. When ALKiln is wrong about a reload, ALKiln ends up waiting the full 150 seconds before moving on to the next test.
+
+  You can speed this up by decreasing the [`SERVER_RELOAD_TIMEOUT_SECONDS` input](writing_tests.mdx#githubNyou-optional-inputs) value. With <KittyLitter/> tests, that might be worth it. With other types of tests, it means that your server will get less time to reload if it really *does* need to, leading to flakier tests. You must make the decision based on what you know about your server.
+-->
+
+
+## Flaky tests {#flake}
+
+**This is for:** Everyone
+
+"Flake" happens when your tests fail for reasons that have nothing to do with your interview or test code. There can be many causes for flaky tests. For example:
+
+- Your server reloading during <GTOYS/> tests could make it impossible for your tests to reach your interview webpage. You just have to re-run those tests.
+- A slow-loading interview page might make ALKiln think your server is unavailable. That can happen for different reasons. For example, a large document might be taking a long time to load. You might be able to avoid this failure by increasing the maximum wait time with the ["max seconds" Step](writing_tests.mdx#custom-timeout). That can make tests [slower](#slow). You can be tricky about it, though. If you just increase that value for one Step and then reduce it again, that can avoid slowing down your tests too much.
+- Tapping on an element might show content and move other elements around. ALKiln might fail to click on the elements that are moving. You can use the ["wait" Step](writing_tests.mdx#wait) to give elements more time to finish moving.
+- Third-party services, like GitHub or package managers, that the tests rely on do have problems every now and then. You just have to re-run those tests.
+- An interview page rendering slowly can hide a field that ALKiln is trying to fill in. If we find that there is a particular type of field that is particularly slow to load, we can slow down ALKiln for that type of field, but that is the most ALKiln can do.
+
+The <KittyLitter/> tests have the best chance of avoiding flakiness because they get their own dedicated server, but even they can flake out sometimes.
+
+
+## Missing trigger variable {#missing-trigger}
+
+<!-- TODO: Write section on transitioning to 2-column story tables -->
+
+This warning only matters for old 3-column Story Tables that use index variables or generic objects.
+
+If you are using a story table with [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`), you need to add some [special HTML](writing_tests.mdx#special-html) to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). Without that HTML, ALKiln can get confused about what variable you are try to set.
+
+The 3-column Story Table is old and you should stop using it. You should [switch to the current 2-column Story Table](#deprecated-story-tables) when you get a chance.
+
+This warning sometimes shows up when nothing is wrong. If you are not using a 3-column Story Table or your interview has no index variables or generic objects, you can ignore this warning.
+
+
+## Switch to 2-column Story Tables {#deprecated-story-tables}
+
+**This is for:** anyone using a 3-column Story Table and also has [index variables](https://docassemble.org/docs/fields.html#index%20variables) or [generic objects](https://docassemble.org/docs/fields.html#generic).
+
+How to switch from the 3-column Story Table to the 2-column Story Table:
+
+1. Remove the `trigger` column (the 3rd column) from the header row and every other row
+1. Replace all [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) or [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) in the `var` column (the 1st column) with their actual values.
+
+:::danger Before
+```gherkin
+    | var | value | trigger |
+    | x[i].hair.how_much | Enough | users[0].hair.how_much |
+    | x[i].hair.color | Sea green | users[0].hair.how_much |
+```
+:::
+
+:::tip After
+```gherkin
+    | var | value |
+    | users[0].hair.how_much | Enough |
+    | users[0].hair.color | Sea green |
+```
+:::
+
+Add more [special HTML](writing_tests.mdx#special-html) to your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). To summarize:
+
+Keep the trigger HTML in your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). It can be useful for other reasons. Add the proxy variable HTML to that `default screen parts` block.
+
+
+<!--
+TODO: ?
+## Immediate error in running tests {#no-load}
+
+Anything that could prevent your interview running in any environment
+
+- Dependency package missing on server ("contact the server administrator")
+    For isolated servers, make sure to include as dependency
+    For your own server, make sure you've installed the right dependency packages
+- File missing in package, like template? (not sure if it's the same error)
+- Interview missing? (not sure if it's the same error)
+- Gherkin syntax error
+-->
+
+<!--
+## Tests that behave differently in Sandbox than in G+Y and AutoD
+
+Flaky
+Different packages or package versions on different servers
+Diff v of da
+Not required all dependencies
+Cached info. For example DAGlobal, Redis, DAStore, db data, etc. Your server retains the info. Sandbox has all fresh info.
+Different versions of ALKiln framework (check ALKILN_TAG_EXPRESSion)
+Different versions of ALKiln actions (check `uses`)
+
+## Tests that behave differently in Sandbox and in G+Y than AutoD
+
+A file was left out. It wasn't saved before committing.
+-->
+
+<!--
+TODO: internal docs
+
+On sandbox server, installing on server instead of in Playground because that means dependencies will be pulled in automatically.
+Why aren't internal tests checking for specific server errors in the output? Because the text of those can change.
+-->
+
+<!--
+## Downloaded files missing {#missing-downloads}
+-->
+
+<!--
+ ## Infinite loop {#infinite-loop}
+
+Same var or vars set over and over again and never stop.
+
+A page that has no invalidation message and yet is unable to move on.
+-->
+
+<!--
+## Timing out
+
+1. Could need more time for Steps to run, pages to load, documents to upload or download, etc. Increase the time you give those to happen by using the ["max seconds"](writing_tests.mdx#custom-timeout) Step.
+1. Server reloading
+1. Something went wrong with the library ALKiln is using and it got disconnected somehow.
+ -->
+
+<!--
+## Inconsistent failures {#inconsistent}
+
+If a test sometimes fails because it says it couldn't find a field or element on the page, and other times it passes, this Step can help. Use "wait" to pause for a moment before trying to interact. This is usually because some elements can take different amounts of time to fully load.
+
+Not all collapsed elements are being expanded - wait for each element to be expanded. When elements are moving on the page ALKiln has trouble interacting with them. Also, if it's helpful, you can instead use code to start with expanded elements when tests are running/when you are debugging. Or you can also go from bottom to top. When you go from top to bottom, elements below move around making it hard for ALKiln to interact. When you expand ones at the bottom first, the ones above stay in the same place.
+-->
+
+<!--
+## Some test file names have the word null in them
+
+Maybe "Some JSON files aren't being saved with the "save variables" (writing#save-vars) or "compare json" (writing#compare-json) Steps" - check on JSON file names to make sure they have a timestamp.
+
+Make sure every question block you create [has a unique id](writing_tests.mdx#id-tip)
+-->
+
+
+<!--
+### Package dependency missing {#missing-dependency}
+
+TODO: Check docker error when dependency is not installed in sandbox tests
+-->
+
+
+<!--
+TODO: (I think this was meant to be an example of `code` for when it's confusing to figure out the variable names for setting values)
+
+sets:
+  - x.gender
+id: gender
+generic object: ALIndividual
+question: |
+  What is ${x.possessive('gender')}?
+fields:
+  - code: |
+      x.gender_fields(show_help=True)
+-->
+
+
+<!-- ## Access Denied -->
+
+<!--
+## ALKiln was unable to continue to the next page
+
+Is this for when ALKiln gets invalid answer feedback that prevents continuing?
+-->
+
+<!--
+## GitHub tests are passing, but <   !-- ALKilnInThePlayground --   > <AutoDIY/> tests are failing
+
+Check if your GitHub workflow file is using the [`ALKILN_TAG_EXPRESSION` input](writing_tests.mdx#optional-inputs). Tags limit which tests you are running. You might be only running a test that happens to be passing.
+-->
+
+<!--
+From old docs (might already be incorporated here):
+
+### The tests fail at the very first Step
+{#the-tests-fail-at-the-very-first-step}
+
+1. Check the ‘Run npm run setup’ line right above the failed tests. Click to expand it and make sure that setting up the interview didn’t fail. If it did, try running it again.
+2. Manually [make a new Project](https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit#heading=h.8yw6hi5hgw1d) on the server and [pull the code](https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit#heading=h.yve8jwod1owz) from the exact same branch into that Project. Manually run the file that is named in your test and double check that it is working the way you expect it to.
+3. Make sure that the file you named in your `Given` **Step** is the right file.
+4. Have you changed the server where you were running your code? Check your repository’s code in the .github/workflows/run_form_tests.yml file. Make sure the `BASE_URL` in there is the correct one for your server. [Edit it](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) if it is the wrong one.
+5. Contact someone who might know more.
+
+### The test failed on or after ‘upload error artifacts’
+{#the-test-failed-on-or-after-‘upload-error-artifacts’}
+
+Something probably went wrong with Github. Or maybe they have a maximum amount that they can download that we haven’t yet dug up in their documentation. Try rerunning the tests and, if it fails the same way a second time, get in touch with us.
+
+
+### The error says it “timed out“
+{#the-error-says-it-“timed-out“}
+
+We might handle this now:
+
+That’s a stock system error (an error caused a dependency library, though?). Some **Step** took too long to finish in a way for which we have not yet created a custom error message or cannot detect. It is often a page that took too long to load. It sometimes happens when the Project got deleted in the middle of the test, or when the [`Run npm run setup` phase doesn’t work correctly](#bookmark=id.y1ibk27fo4jy).
+
+
+### Some other mysterious error
+{#some-other-mysterious-error}
+
+1. You can rerun the test
+2. Try to search for the text of the error online (don’t spend more than 20 min on this, though)
+3. Ask one of us. Remember that this framework is under development. Something might be wrong with our code.
+-->

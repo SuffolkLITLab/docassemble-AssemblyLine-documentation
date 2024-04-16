@@ -1,0 +1,3 @@
+If your interview uses [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) or [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc), you **must** have [special HTML](/docs/alkiln/writing_tests.mdx#special-html) in your interview to set the values of variables.
+
+<!-- TODO: help wanted: This is true as long as they don't literally use `x` or `i`. I'm not sure how to express that complexity. -->

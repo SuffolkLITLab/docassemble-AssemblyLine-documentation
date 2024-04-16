@@ -5,9 +5,22 @@ sidebar_label: WIP Writing tests
 slug: /alkiln/writing
 ---
 
-:::warning
+import styles from "../../src/css/images.module.css"
+
+import NeedProxyVars from './components/\_need_proxy_vars.md';
+import SecureEnvVars from './components/\_secure_env_vars.md';
+import A11y from './components/\_a11y.md';
+import WithSecretsForOrgs from './components/\_with_secrets.md';
+import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
+import { ScenarioDir } from './components/\_scenario_folder_contents.js';
+import { RobotStage } from './components/\_robot_stage.js';
+
+
+:::caution
 WIP (Work in progress)
 :::
+
+<!-- TODO: Note that interviews will not be deleted for the docassemble server testing account -->
 
 
 This page describes your tests files and how to write tests <!-- , run tests, -->  and other useful information. To see the table of contents on a small screen, tap on the dropdown menu at the top of the page. To see it on a wider screen, see the column on the right-hand side of the screen.
@@ -15,24 +28,26 @@ This page describes your tests files and how to write tests <!-- , run tests, --
 
 ## Do _I_ need to read this? {#who}
 
-If you are writing tests <!-- , running tests, --> or need to learn about test files, this page is for you.
+If you are writing tests <!-- , running tests, --> or need to learn about test files, this page is for you. It is easier to write the tests if you have access to the interview YAML code and understand a bit about docassemble.
 
 
 ## Quick refresher {#refresh}
 
-1. You can see [what your first test might look like](setup.mdx#first-test).
-1. You can generate a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story).
-1. Every time you change or add a required variable, you must update the tests that need that variable.
-1. You write and edit `.feature` test files in your Sources folder.
-1. You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
-1. If you are using GitHub tests, those tests will run when anyone commits to GitHub.
-1. By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the "the maximum seconds" Step listed in the Steps.
-1. ALKiln creates test reports and pictures. For example, ALKiln saves pictures and the HTML of pages that showed errors In GitHub, they are in the zip file in [your workflow's artifact section](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
-1. There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
+If you are coming back and just need some resource reminders, here is a short list:
 
-<!-- The tests use the [gherkin language and syntax](https://cucumber.io/docs/gherkin/reference/) -->
+- You can see [what your first test might look like](setup.mdx#first-test).
+- You can generate a first draft for a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story).
+- If your interview is using generic objects or index variables, you **must** include [special HTML](#special-html) in your interview.
+- Every time you change or add a required field variable, you must update the tests that need that variable.
+- You write and edit `.feature` test files in your package's Sources folder.
+- You can check the syntax of your test file by using an editor like the [editor at AssertThat](https://www.assertthat.com/online-gherkin-editor).
+- If you are using <GTOYS/> or <KittyLitter/> tests, those tests will run when anyone commits to GitHub.
+- By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the ["max seconds" Step](#custom-timeout).
+- ALKiln creates test [reports](#report) and pictures. For example, ALKiln saves [pictures and the HTML of pages that caused errors](#error-pics). In GitHub, those files are in the zip file in [your workflow's artifact section](#artifacts).
+- There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
+- The tests use the [gherkin language and syntax](#gherkin).
 
-Here is an example of a more complex test for a quick refresher on some of our features:
+Here is an example of a more complex test for a quick refresher on some of ALKiln's features:
 
 ```gherkin
 @children
@@ -42,7 +57,7 @@ Feature: I have children
 Scenario: child has benefits
   Given I start the interview at "some_file_name.yml"
   And I get to the question id "benefits" with this data:
-    | var | value | trigger |
+    | var | value |
     | children.there_are_any | True |
     | children.target_number | 2 |
     | children[0].name.first | Cashmere |
@@ -58,7 +73,7 @@ Scenario: child has benefits
 
 ## Writing test Steps overview {#steps}
 
-Most of [the code in test files](#files) is code for ALKiln Steps.
+Most of [the code in test files](#test-files) is code for ALKiln Steps.
 
 ALKiln Steps are how you give your instructions to the ALKiln robot. Steps are made of commands[^meh] that ALKiln has created for you. Those commands often need information from you. They are like fill-in-the-blank sentences. A sort of [madlibs](https://en.wikipedia.org/wiki/Mad_Libs#format) for your ALKiln robot. For example:
 
@@ -68,16 +83,181 @@ ALKiln Steps are how you give your instructions to the ALKiln robot. Steps are m
 
 This Step is made of three parts.
 
-1. `And` is one of the keywords that can start a Step
+1. `And` is one of the [keywords](#gherkin-keywords) that can start a Step
 1. `I set the variable "___" to "___"` is an ALKiln command with blanks that you need to fill in
 1. `likes_bears` and `True` are the information you put in the blanks so that the ALKiln robot knows what answer to give to a question
 
-That command can also be written as `I set the variable "<variable name>" to "<value>"`. This tells you what information you should put in each of these blanks. In this case there are two blank spaces you should fill. In the first blank, you are supposed to put the name of the variable that the field will set. In the second blank, you are supposed to put the value that you want the variable to have.
+That command description can also be written as `I set the variable "<variable name>" to "<value>"`. This tells you what information you should put in each of these blanks.
 
-Each of your tests - a `Scenario` or a `Scenario Outline` - usually contains many Steps. Any Step can be used as many times as you want and at any point in a test.
+In this case there are two blank spaces you should fill. In the first blank, you should put the name of the variable that the field will set. In the second blank, you should put the value that you want the variable to have.
+
+Each of your tests - [a `Scenario` or a `Scenario Outline`](#test-files) - usually contains many Steps. Any Step can be used as many times as you want anywhere in a test. If you follow [good code-writing practices](#choice-values-tip), most Steps work in any human language, so you can tests translations of your interviews.
 
 
-[^meh]: We are still working finding a more descriptive name. Suggestions are welcome.
+[^meh]: We are still working on finding a more descriptive name. Suggestions are welcome.
+
+
+## Steps to start tests {#start}
+
+Authors often use these Steps to start their tests, though these Steps can actually be used anytime in a test.
+
+
+### `I start the interview at "<file name>"` {#start-interview}
+
+Use the "start interview" Step to start a new session of an interview.
+
+The Step format:
+
+```gherkin
+  Given I start the interview at "<YAML file name>"
+```
+
+The blank to fill in here is `<YAML file name>` - the name of the YAML file that starts the interview.
+
+Example with just the file name:
+
+```gherkin
+  Given I start the interview at "favorite_bears"
+```
+
+Example with the file extension:
+
+```gherkin
+  Given I start the interview at "favorite_bears.yml"
+```
+
+Example with url arguments ([url_args](https://docassemble.org/docs/special.html#url_args)):
+
+```gherkin
+  Given I start the interview at "favorite_bears.yml&user_id=123&from=theinterwebs"
+```
+
+You can also instead use the full url of the interview, though we recommend you avoid that. For example, one advantage to using the file name instead of the full url is that you can then still use the <KittyLitter/> test method to run those tests on GitHub.
+
+:::caution Before setting fields
+You **must** include the `interview` Step in each Scenario **before setting any fields**.
+:::
+
+<!-- You can use url args with an `Examples` table to test multiple languages -->
+
+
+### `I sign in with the email "<username env var>" and the password "<password env var>"` {#sign-in}
+
+Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start interview" Step](#start-interview). You can use [GitHub secrets](#secrets) in combination with [environment variables](#env-vars) to store and use this sensitive sign in information.
+
+The Step format:
+
+```gherkin
+  Given I sign in with the email "<username env var>" and the password "<password env var>"
+```
+
+The two blanks to fill in are `<username env var>` and `<password env var>`. Each of them must be the name of an [environment variable](#env-vars) that you have already added to your [workflow file](#workflows).
+
+The `<username env var>` variable should contain the username of a [dedicated account](security.mdx#test_accounts) on your docassemble server. The `<password env var>` variable should contain the password of that account.
+
+Example Step:
+
+```gherkin
+  Given I sign in with the email "ALKILN_USER_EMAIL" and the password "ALKILN_USER_PASSWORD"
+```
+
+`"ALKILN_USER_EMAIL"` and `"ALKILN_USER_PASSWORD"` are just examples of environment variable names. You can use any names you want.
+
+The relevant section of your workflow file would look like this:
+
+```yml
+env:
+  ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
+  ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
+```
+
+You can have as many of these accounts as you want.
+
+:::danger Sensitive information
+You **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
+:::
+
+ALKiln does avoid taking pictures or downloading the HTML for this Step, even when the test has an error on that page, so that information is still protected. ALKiln also avoids printing the value of these variables anywhere in the report or in the console. Even so, it is possible for you to [expose this information](security.mdx#no-show).
+
+
+### `I go to "<url>"` {#go-anywhere}
+
+Use the "go anywhere" Step to go to any arbitrary url.
+
+The Step format:
+
+```gherkin
+  Given I go to "<url>"
+```
+
+The blank to fill in here is `<url>` - any valid url.
+
+Example:
+
+```gherkin
+  Given I go to "https://retractionwatch.com"
+```
+
+
+## Test configuration Steps {#test-config}
+
+<!-- Settings? Too much like "setting variables"? -->
+
+These Steps can change your settings for your tests. For example, the maximum amount of time one Step or page can take to finish.
+
+
+### `the maximum seconds for each Step is <number>` {#custom-timeout}
+
+Use the "max seconds" Step to set the maximum amount of time one Step can take to finish before it will fail. This is also the maximum amount of time ALKiln will spend trying to fill out the fields on a page before the test fails.
+
+The default maximum time is 30 seconds.
+
+The Step format:
+
+```gherkin
+  Given the maximum seconds for each Step is <number>
+```
+
+The blank to fill in is `<number>` - the number of seconds to allow a Step to run, or a page to be filled, before the test fails.
+
+Example:
+
+```gherkin
+  Given the maximum seconds for each Step is 200
+```
+
+You can set the max seconds as your first Step to give a slow-loading interview more time to load. If you are worried about increasing the time too much, you can immediately decrease the time after the interview loads. For example:
+
+```gherkin
+  Given the maximum seconds for each Step is 200
+  And I start the interview at "favorite_bears.yml"
+  And the maximum seconds for each Step is 30
+```
+
+You can also increase this setting before you try to download a large file. ALKiln spends twice the value of this setting to download a file. You can read more about the timing in the ["download" Step](#download).
+
+You can use this Step to change the maximum seconds setting at any time in your test.
+
+Increasing the maximum time can have down-sides. Some kinds of failures take the maximum amount of time possible. Since [each failed test is re-run](#rerun), those failing tests will take twice the amount of time that you set for your maximum Step time.
+
+Sometimes authors set the maximum seconds to a shorter time for most of their Steps and only lengthen the time for Steps that need more time. This can speed up failing tests.
+
+
+### `I check all pages for accessibility issues` {#a11y-all}
+
+Use the "all accessible" Step to turn accessibility checking on.
+
+Example:
+
+```gherkin
+  Then I check all pages for accessibility issues
+```
+
+After this Step, ALKiln will check every following page for accessibility issues until the end of the test.
+
+<A11y />
+
+This is different than the ["accessibility" Step](#a11y), which only checks the current page.
 
 
 ## Interactive Steps {#interact}
@@ -87,9 +267,11 @@ You can use some Steps to change what is on the page by filling in fields, press
 
 ### The Story Table Step {#story-table}
 
-The Story Table Step fills in fields on interview pages. It is the Step many of our authors work with the most. In our opinion, it is the most flexible way to fill in fields in your forms, unlike the linear ["I set" Step](#set). This makes a test easier to maintain.
+Use the "Story Table" Step to fill in multiple fields on multiple pages. It is the Step many of our authors work with the most. In our opinion, it is the most flexible way to fill in fields in your forms, unlike the linear ["I set" Step](#set). This makes a test easier to maintain.
 
-You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a first draft of a full test file that uses a Story Table based on an interview you have finished.
+<NeedProxyVars/>
+
+You can use the [story table generator](#alkiln_story) to generate a first draft of a full test file that uses a Story Table based on an interview you have finished.
 
 <!--
 TODO: add an extensive instructions section to the generator. Something like:
@@ -116,7 +298,7 @@ The Story Table Step is made of a sentence followed by a table. The data in the 
     | <variable name> | <value to set> |
 ```
 
-As you can see, there are three types of blanks you need to fill in for this Step: `<target question id>`, `<variable name>`, `<value to set>`. The way to use the names of variables and values to [set the values of fields](#field-values) is the same as the ["I set" Step](#set).
+As you can see, there are three types of blanks you need to fill in for this Step: `<target question id>`, `<variable name>`, `<value to set>`. The way to use the names of variables and values to [set the values of fields](#values) is the same as the ["I set" Step](#set).
 
 - The starting sentence **must** include the question `id`[^id] of a page in the interview.
 - The table **must** include all the variables and values necessary to get a user from the current page to the page with the given question id.
@@ -139,7 +321,7 @@ An example table:
     | var | value |
     | last_haircut_date | today - 730 |
     | wants_virtual_haircut | True |
-    | user_name | Jared |
+    | user_name | Jaime |
     | intro_screen_accepts_terms | True |
 ```
 
@@ -147,93 +329,600 @@ An example table:
 Filling in checkboxes is tricky. Check our [documentation about setting checkbox values](#checkboxes).
 :::
 
-This Step is flexible, which makes the test easier to maintain. The order of the rows is unimportant. That means you can edit the order of your pages or move fields to different pages without worrying about breaking the test.
+This Step is flexible, which makes the test easier to maintain. The order of the rows is unimportant. That means you can edit the order of your pages or move fields to different pages without worrying about breaking the test. <!-- ALKiln is also fine with extra rows that don't get used (not the same as duplicate rows). If you have duplicate rows in your test, ALKiln will warn you. -->
 
-ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears.
+ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears in your interview.
 
-You can use multiple Story Tables in a test.
+:::caution .there_is_another
+Avoid using `.there_is_another` in your Story Table. Read about [what to use instead](#there-is-another).
+:::
 
-Right now, Story Tables are unable to [use environment variables to fill in answers](#env-vars).
+You can use multiple Story Tables in a test.<span id="unused-rows"></span><span id="skipped-variable"></span>
 
-:::warning Unused rows
+Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.
+
+<!-- TODO: Why are our warnings red instead of yellow -->
+
+:::caution Unused rows
 The Story Table does not care about extra rows that never get used. This can make Story Tables easier to write, but it also means that the tests will technically "pass" even if variables that *should* get set are never filled in.
 
 That can be a sign that a question that the user *should* have seen got skipped or that there is a typo or mistake in the test.
 
-Because of this, the ALKiln report shows a list of unused rows for each table. You can check the report of passing tests to make sure none of the important rows got skipped.
+Because of this, the ALKiln [report](#report) shows a list of unused rows for each table. You can check the report of passing tests to make sure none of the important rows got skipped.
+:::
+
+:::info
+You can use this Step to [upload files](#upload) and [fill in a signature](#sign).
 :::
 
 
-[^id]: You can find the question `id` in your interview YAML in the `question` block of that page. It is a good idea for every `question` block in your interview to have an id.
+[^id]: You can find the question `id` in your interview YAML in the `question` block of that page. It is a [good idea for every `question` block in your interview to have a unique id](#id-tip). It can be useful for other blocks too.
 
 
 ### `I set the variable "<variable name>" to "<value to set>"` {#set}
 
-WIP
+Use the "I set" Step to fill in one [value](#values) on one page.
+
+<NeedProxyVars/>
+
+The format of the Step:
+
+```gherkin
+  And I set the variable "<variable name>" to "<value>"
+```
+
+There are two types of blanks you need to fill for this Step. The first set of quotes in this Step contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [Story Table's](#story-tables)'s `var` column and `value` column.
+
+This Step is "linear". That is, unlike Story Table rows, these "linear" variable-setting Steps have to be in the correct order and you **must** make sure your test has reached the exact page that has the field. Otherwise your test will fail.
+
+Example fields:
+
+```yml
+code: |
+  users[0].favorite_bear.name.first
+  users[0].favorite_bear.type
+---
+question: Name of your favorite bear
+field:
+  - Bear name: users[i].favorite_bear.name.first
+  - Why is this one your favorite?: users[i].favorite_bear.why
+    input type: area
+---
+question: Favorite bear type
+field:
+  - Pick one: users[i].favorite_bear.type
+    datatype: radio
+    choices:
+      - Black bear: wild_bear
+      - Teddy bear: cuddly_bear
+      - Jaime: maybe_not_a_bear
+```
+
+Example linear "I set" Step:
+
+```gherkin
+  And I set the variable "users[0].favorite_bear.name.first" to "Ultraman"
+  And I set the variable "users[0].favorite_bear.why" to "Why not?"
+  And I tap to continue
+  And I set the variable "users[0].favorite_bear.type" to "cuddly_bear"
+```
+
+<!--
+This is already discussed in security docs
+
+:::danger Avoid!
+Avoid using this Step with sensitive information, like passwords. Everyone will be able to see the information you put in this Step. Instead, [use an environment variable to set the value](#secret-val).
+:::
+ -->
+
+:::tip
+You can use this Step to [upload files](#upload).
+:::
 
 
-### Upload {#upload}
+### `I set the variable "<variable name>" to the GitHub secret "<environment variable name>"` {#secret-val}
 
-WIP
+<!-- TODO: Should we just call this the "environment variable" Step? People don't have to use it with sensitive information. Though ALKiln will keep the information secret. -->
+
+Use the "secret value" Step to use an [environment variable](#env-vars) to fill in one [value](#values) on one page.
+
+Even though the name has "GitHub" and "secret" in it, it can also use environment variables. It is still the only way to use sensitive information in your tests. To do that, you can use environment variables with [GitHub secrets](#secrets).
+
+<NeedProxyVars/>
+
+The format of the Step:
+
+```gherkin
+  And I set the variable "<variable name>" to the GitHub secret "<environment variable name>"
+```
+
+Here, `<variable name>` is the name of the variable you want to set and `<environment variable name>` is the name of the environment variable that has the value.
+
+Example:
+
+```gherkin
+  I set the variable "user1_account_password" to the GitHub secret "ALKILN_USER1_PASSWORD"
+```
+
+A lot of authors use this Step to set answers with sensitive information, like an account number. This is because ALKiln is extra careful with the security of these values.
+
+<SecureEnvVars/>
+
+:::caution Not for sign in
+This Step is unable to sign into your docassemble server. You **must** use [the "sign in" Step](#sign-in) to sign in to your docassemble server.
+:::
 
 
-### Environment variables {#env-vars}
+### `I tap to continue` {#continue}
 
-WIP
+Use the "continue" Step to tap the button to continue to the next page. If the continue button sets a variable, this Step will set that variable to `True`. Story Table Steps handle continuing by themselves.
 
+Example:
 
-## Steps to start tests {#start}
+```gherkin
+  When I tap to continue
+```
 
-There are some Steps that can be, and often are, the first Step in a test. They can still be used multiple times and at any point in the test. Your test **must** start with one of these Steps.
+The test will still continue to the next Step if tapping the continue button fails to go to the next page. Because of this, you can then use the ["invalid" Step](#invalid) to write tests that check that your answer validation works correctly. However, if the continue button was supposed to work and the next Step tries to interact with the next page, the test will probably fail.
 
-WIP
-
-
-### `I start the interview at "<YAML file name>"` {#start-interview}
-
-Use this Step to start a new session of an interview.
+<!-- If the fields are the same on both pages, the test will continue to run, though. In some cases, it might also repeat the page over and over. This is an [infinite loops](#infinite-loop). -->
 
 
-### `The maximum time for a Step is <number> seconds` {#custom-timeout}
+<!-- ### `I upload "<file or files>" to "<variable name>"` {#upload-step} not necessary anymore. deprecated -->
 
-WIP
+
+### `I set the name of "<variable name>" to "<name>"` {#name}
+
+The "name" Step is specifically for the Document Assembly Line 4-part name questions.
+
+Avoid punctuation. We recommend you just use 2 names - the first name and last name - but you can have all these formats:
+
+- Firstname Lastname
+- Firstname Middlename Lastname
+- Firstname Middlename Lastname Suffix (where suffix is one of the dropdown suffix choices, like `II`)
+
+```gherkin
+  And I set the name of "users[0]" to "Devon Upton"
+```
+
+
+### `I set the address of "<variable name>" to "<US address>` {#address}
+
+The "address" Step is specifically for the Document Assembly Line 4-part address questions. Right now, **the "address" Step can only handle the format of a US address**.
+
+```gherkin
+    When I set the address of "users[0]" to "120 Tremont Street, Unit 1, Boston, MA 02108"
+```
+
+Remember the commas.
+
+
+### `I download "<file name>"` {#download}
+
+Use the "download" Step to download files so that humans can check that they are correct. After all the tests are done the files will be the [artifacts folder of the Scenario (test)](#scenario-artifacts).
+
+```
+    Then I download "file-name.pdf"
+```
+
+Use just the name of the file.
+
+If the file is a PDF file, you can use the ["compare files" Step](#compare-files) to check that the PDF is correct.
+
+<!-- TODO: Add "not done downloading" to troubleshooting.mdx -->
+
+:::caution Unfinished downloads
+Currently, ALKiln is unable to tell when a file has actually finished downloading, so it runs the download Step for about twice the [maximum seconds allowed for a Step](#custom-timeout) no matter what. If a download takes longer than the current maximum seconds value, the test will not fully download the file[^d-time].
+
+If you think downloading the file will take more than 60 seconds, use the ["max seconds" Step](#custom-timeout) to give the file more time to download. The "download" Step will use the the full amount of time that you give it.
+:::
+
+
+[^d-time]: Technically, the file will keep downloading until the test ends.
+
+
+### `I tap the "<selector>" element and go to a new page` {#tap-nav}
+
+**It could help to know about:**
+
+- How to [inspect and understand the HTML of a web page](https://www.dreamhost.com/blog/how-to-inspect-a-website/)
+- [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
+
+**The Step:**
+
+Use one of the "tap and navigate" Steps to tap an element on the page, like a button, to go to a new page. If you just want to tap the continue button use the ["continue" Step](#continue).
+
+The format for variation 1:
+
+```gherkin
+  And I tap the "<selector>" element and go to a new page
+```
+
+The format for variation 2:
+
+```gherkin
+  And I tap the "<selector>" element and wait <number> seconds
+```
+
+One blank to fill in for these commands is `<selector>`, a CSS selector of the element you need to tap. It can be any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+
+For variation 2, the second blank to fill in is `<number>` - the number of seconds you want ALKiln to wait after tapping the element.
+
+Example of variation 1:
+
+```gherkin
+  When I tap the "#awesome_page_link" element and go to a new page
+```
+
+Example of variation 2:
+
+```gherkin
+  And I tap the ".link-container #even_better_page a" element and wait 45 seconds
+```
+
+This is the only way to explicitly wait after navigating to the new page. Some people try to use the ["wait" Step](#wait), but that will fail. Alternatively, you can use the ["max seconds" Step](#custom-timeout) to give your test more time to load new pages in general.
+
+
+### `I tap the "<selector>" element and stay on the same page` {#tap-stay}
+
+**It could help to know about:**
+
+- How to [inspect and understand the HTML of a web page](https://www.dreamhost.com/blog/how-to-inspect-a-website/)
+- [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
+
+**The Step:**
+
+Use the "tap and stay" Step to tap on HTML elements without navigating to a new page. For example, you can tap on [collapsible content](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox#collapsible-help-text) to show the text inside.
+
+The Step format:
+
+```gherkin
+  And I tap the "<selector>" element and stay on the same page
+```
+
+The blank to fill in for this command is `<selector>`, a CSS selector of the element you need to tap. It can be any valid [CSS Selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+
+Example:
+
+```gherkin
+  When I tap the "#an_id .al_toggle" element and stay on the same page
+```
+
+It is a good idea to add a [`wait` Step](#wait) after this Step to let the contents become visible before taking other actions, like pressing on other elements or checking for a phrase. For example:
+
+```gherkin
+  When I tap the "#an_id .al_toggle" element and stay on the same page
+  And I wait .7 seconds
+```
+
+
+### `I tap the "<tab id>" tab` {#tap-tab}
+
+**It could help to know about:**
+
+- How to [inspect and understand the HTML of a web page](https://www.dreamhost.com/blog/how-to-inspect-a-website/)
+- [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
+
+**The Step:**
+
+Use the "tap tab" Step to interact with AssemblyLine's [ALToolbox tabs](framework/altoolbox.md#display-a-series-of-tabs). ALKiln will tap on the tab and then wait until the tab contents are fully visible.
+
+The Step format:
+
+```gherkin
+  When I tap the "<tab html id>" tab
+```
+
+The blank to fill in here is `<tab html id>` - the text of the HTML id attribute of the tab.
+
+:::caution Not a selector
+`<tab html id>` is **not a selector**. Unlike the other "tap" Steps, **leave out the `#` symbol** (like the example shows).
+:::
+
+Example:
+
+```gherkin
+  When I tap the "TabGroup-specific_tab_name-tab" tab
+```
+
+
+<!-- Maybe: ### `I tap the defined text link {string}` -->
 
 
 ### `I wait for <number> seconds` {#wait}
 
-WIP
+You can use the "wait" Step after the previous Step has completely finished to tell ALKiln to wait before going to the next Step.
+
+:::caution Not for loading
+In most cases, this Step is unable to help the test wait longer for a page to finish loading. To give a page time to load, use the ["max seconds" Step](#custom-timeout).
+:::
+
+The Step format:
+
+```gherkin
+  When I wait <number> seconds
+```
+
+The blank to fill in here is `<number>` - the number of seconds to wait. If you want, the number can be less than a second.
+
+Examples:
+
+```gherkin
+  When I wait .6 seconds
+  When I wait 150 seconds
+```
+
+**When to use the "wait" Step:**
+
+If a test sometimes fails because ALKiln says it was unable find a field or element on the page, and other times the test passes, this Step can help. Use "wait" to pause for a moment before trying to interact. This is usually because some elements can take different amounts of time to fully appear.
+
+Use "wait" to let page elements finish moving around. For example, after you use the ["tap and stay" Step](#tap-stay) to expand content. When elements are moving on the page ALKiln has trouble interacting with them.
+
+Use "wait" to wait for a background process to finish - ALKiln is currently unable to detect a background process finishing.
+
+Use "wait" to give external data more time to load.
+
+<!-- Can this happen?: You can also wait at the beginning of a test before the test even goes to the interview page. This can be useful if you know that something on the server will be loading in between Steps. -->
 
 
-## Setting values {#field-values}
+<!-- Maybe: ### `When I do nothing` as a narrative Step. People have not expressed a need for this. -->
+
+
+## Setting values {#values}
 
 There are different ways to fill in fields. One is the [Story Table Step](#story-table) another is the ["I set" Step](#set). Each has different syntax, but they set values the same way.
+
+<NeedProxyVars/>
+
+Be sure to use the actual `value` of the field, not just the text that the user sees. For example, for the first choice in this field the `value` would be "wild_bear", not "Black bear". "Black bear" is just the text the user sees - the label.
+
+```yml
+question: Favorite bear type
+field:
+  - Pick one: users[i].favorite_bear.type
+    datatype: radio
+    choices:
+      - Black bear: wild_bear
+      - Teddy bear: cuddly_bear
+      - Jaime: maybe_not_a_bear
+```
+
+
+### Special HTML {#special-html}
+
+This HTML lets ALKiln set the correct variables and avoid other problems.
+
+Most authors add this extra HTML to the `post` section of their [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts). They do that by including the AssemblyLine's al_package.yml file or by adding this code themselves. For example:
+
+```yml
+default screen parts:
+  # HTML for interviews using ALKiln tests
+  # If your interview includes AssemblyLine's al_package.yml you can skip this
+  post: |
+    <div id="alkiln_proxy_var_values"
+    data-generic_object="${ encode_name(str( x.instanceName if defined('x') else '' )) }"
+    % for letter in [ 'i', 'j', 'k', 'l', 'm', 'n' ]:
+    data-index_var_${ letter }="${ encode_name(str( value( letter ) if defined( letter ) else '' )) }"
+    % endfor
+    aria-hidden="true" style="display: none;"></div>
+
+    <div id="trigger" data-variable="${ encode_name(str( user_info().variable )) }" aria-hidden="true" style="display: none;"></div>
+```
+
+This code will be invisible on the page. No one will see it. If you already have something in your `post:` default screen part, just copy the code and paste it in after whatever you have there. Putting it at the end can avoid messing up other HTML.
+
+**Do I need this?**
+
+You probably need the "alkiln_proxy_var_values" HTML element if you use [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) or [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc) in your interview.
+
+You probably need the "trigger" HTML element if you set `restrict input variables` to `True` in your [docassemble server configuration file](https://docassemble.org/docs/config.html#configfile).
+
+**Why `x` and `i`?**
+
+Without the help of the HTML, ALKiln has no way of knowing what the actual names are of variables that use [generic objects](https://docassemble.org/docs/fields.html#generic) (`x`) or [index variables](https://docassemble.org/docs/fields.html#index%20variables) (`i`, `j`, `k`, etc).
+
+**Why "trigger"?**
+
+If a docassemble server's config value of `restrict input variables` is set to True, ALKiln needs the help of the HTML to know what variable a [signature Step](#sign) is setting.
+
+That said, even the "trigger" HTML may not help if the question is triggered by `mandatory: True`.
 
 
 ### Text {#text}
 
-Fields such as the default field or those with `input type: text`, as well as `datatype: textarea` accept text for their value.
+Text-type fields are fields where the user needs to type text. The [default field type](https://docassemble.org/docs/fields.html#plaintext) is a text field. Other text fields include those with:
+
+- `datatype: date`
+- `datatype: time`
+- `datatype: currency`
+- `datatype: password`
+- `datatype: email`
+- `datatype: phone`
+- `datatype: text`
+- `datatype: integer`
+- `datatype: number`
+- `input type: area` fields are textarea fields and also accept text for their value
+
+You can see more [about `datatype`s and `input type`s in the docassemble docs](https://docassemble.org/docs/fields.html#data%20types).
+
+Example text fields:
+
+```yml
+question: Name of your favorite bear
+field:
+  - Bear name: users[i].favorite_bear.name.first
+  - Why is this one your favorite?: users[i].favorite_bear.why
+    input type: area
+```
+
+Example linear Steps:
+
+```gherkin
+  And I set the variable "users[0].favorite_bear.name.first" to "Ultraman"
+  And I set the variable "users[0].favorite_bear.why" to "Why not?\nIt seems ok to like Ultraman."
+```
+
+Example Story Table Step:
+
+```gherkin
+    | var | value |
+    | users[0].favorite_bear.name.first | Ultraman |
+    | users[0].favorite_bear.why | Why not?\nIt seems ok to like Ultraman. |
+```
+
+:::info New lines
+If an answer needs to have multiple lines, you can still only use one line in your test code. Instead use `\n` where a new line would be. See examples.
+:::
 
 
-### yesno {#yesno}
+### Dates {#dates}
 
-WIP
+Dates are a specific kind of text value. ALKiln expects the format ##/##/####. For example, 06/26/2015. For [Assembly Line custom three-parts date fields](../framework/altoolbox#birthdate-and-threepartsdate-custom-data-types), ALKiln will assume the date format is dd/mm/yyyy.
 
-
-### yesnomaybe {#yesnomaybe}
-
-WIP
+There is also [a special ALKiln value named `today`](#today).
 
 
-### radio {#radio}
+### Today {#today}
 
-WIP
+One special ALKiln value you can include is `today`. That will insert the date on which the test is being run. You can also subtract from, or add days to, `today`.
+
+Example linear Steps:
+
+```gherkin
+  And I set the value "signature_date" to "today"
+  And I set the value "court_date" to "today + 20"
+  And I set the value "minors_birth_date" to "today - 3650"
+```
+
+Example Story Table Step:
+
+```gherkin
+    | signature_date | today |
+    | court_date | today + 20 |
+    | minors_birth_date | today - 3650 |
+```
+
+The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
+
+:::caution Avoid boundary dates
+Be careful with `today` math. If you are testing a "boundary" date, you want to pick a date that is well within a boundary to make the test more robust. For example, if you want to test a date that was 10 or fewer days ago, use `today - 9` instead of `today - 10`.
+
+At some point your tests might run over night and hit midnight right in the middle of the test - after ALKlin fills in the answer, but before the interview finishes. In that situation, if ALKiln answered the question with `today - 10` the clock would tip into the next day by the end of the interview - 11 days from the filled-in date. Your test would fail incorrectly.
+
+The fact is, your users also might have that exact experience, so keep that in mind as you design your interview. For example, instead of just telling a user that they are or are not eligible, you can tell them the date of the deadline so they too will know about the boundary.
+:::
 
 
-### checkboxes {#checkboxes}
+### `yesno` {#yesno}
+
+There are a few different `yesno` fields - [`yesno` buttons](https://docassemble.org/docs/fields.html#yesno) or [`yesno` fields](https://docassemble.org/docs/fields.html#fields%20yesno) like `yesno` checkboxes and `yesnoradio`s.
+
+Example yesno checkbox field:
+
+```yml
+question: Bears
+field:
+  - Do you have any bears?: has_bear
+    datatype: yesno
+```
+
+Example of setting the yesno checkbox to "yes" in a linear Step:
+
+```gherkin
+  When I set the variable "has_bear" to "True"
+```
+
+Example of setting the yesno checkbox to "yes" in a Story Table Step:
+
+```gherkin
+    | var | value |
+    | has_bear | True |
+```
+
+
+### `noyes` {#noyes}
+
+Avoid `noyes` type fields. For one thing, using `noyes` will make you edit the code you get from the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story) more. For another, we've found that humans tend to find those confusing too.
+
+That said, it can be better to use "checked" or "unchecked" as opposed to "True" or "False":
+
+```gherkin
+  And I set the variable "likes_bears" to "checked"
+```
+
+or, in a Story Table:
+
+```gherkin
+  | var | value |
+  | likes_bears | checked |
+```
+
+
+### `yesnomaybe` {#yesnomaybe}
+
+There are a couple different `yesnomaybe` fields - [`yesnomaybe` buttons](https://docassemble.org/docs/fields.html#yesnomaybe) and [`datatype: yesnomaybe`](https://docassemble.org/docs/fields.html#fields%20yesno) fields.
+
+Example yesnomaybe field:
+
+```yml
+question: Bears
+field:
+  - Do you have any bears?: has_bear
+    datatype: yesnomaybe
+```
+
+Example of setting the yesnomaybe radio buttons to "maybe" in a linear Step:
+
+```gherkin
+  When I set the variable "has_bear" to "None"
+```
+
+Example of setting the yesnomaybe radio buttons to "maybe" in a Story Table Step:
+
+```gherkin
+    | var | value |
+    | has_bear | None |
+```
+
+
+### `radio` {#radio}
+
+Example radio button field:
+
+```yml
+question: Favorite bear type
+field:
+  - Pick one: users[i].favorite_bear.type
+    datatype: radio
+    choices:
+      - Black bear: wild_bear
+      - Teddy bear: cuddly_bear
+      - Jaime: maybe_not_a_bear
+```
+
+:::tip Good practice
+Always use options that have [both a label and a value](#choice-values-tip).
+:::
+
+Example linear Step:
+
+```gherkin
+  When I set the variable "users[0].favorite_bear.type" to "cuddly_bear"
+```
+
+Example Story Table Step:
+
+```gherkin
+    | var | value |
+    | users[0].favorite_bear.type | cuddly_bear |
+```
+
+
+### `checkboxes` {#checkboxes}
 
 <!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
 
-Many authors find setting checkboxes confusing and often accidentally use an incorrect variable name or value. When they do that, they can get a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just skip the field. Reading this section can help.
+Checkboxes are one of the most challenging variables to set. This might lead to a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just [skip the field](#unused-rows) causing problems later on.
 
 :::tip Advanced summary
 - The only value a checkbox can have is `True` or `False`.
@@ -248,23 +937,26 @@ fields:
   - Out of all your friends, choose your best friends: best_friends
     datatype: checkboxes
     choices:
-      - Emmet
-      - Maria
-      - Sam
+      - Emmet: emmet
+      - Maria: maria
+      - Sam: sam
 ```
+
+:::tip Good practice
+Always use options that have [both a label and a value](#choice-values-tip).
+:::
 
 The variable name of the checkbox for ALKiln is usually the same as its docassemble variable name. For example, `good_fruits['Apples']`. The only value a checkbox can have is `True` or `False`.
 
-<span class="negative">Wrong</span> way to set the value of the check box:
-
+:::danger Wrong
 ```gherkin
-    And I set the variable "best_friends" to "Emmet"
+  And I set the variable "best_friends" to "Emmet"
 ```
+:::
 
-<span class="positive">**Right**</span> ways:
-
+:::tip Right
 ```gherkin
-    And I set the variable "best_friends['Emmet']" to "True"
+  And I set the variable "best_friends['Emmet']" to "True"
 ```
 
 or, in a Story Table:
@@ -273,6 +965,7 @@ or, in a Story Table:
       | var | value |
       | best_friends['Emmet'] | True |
 ```
+:::
 
 One exception is field created with an `object` datatype, like `object_checkboxes`. Their ALKiln names are similar to their docassemble names, but they need extra quotes. For example, look at this field:
 
@@ -283,46 +976,139 @@ fields:
     choices: all_friends
 ```
 
-<span class="negative">Wrong</span> ways to set the value of the checkbox:
-
+:::danger Wrong
 ```gherkin
-    And I set the variable "best_friends" to "all_friends"
-    And I set the variable "best_friends" to "all_friends[0]"
-    And I set the variable "best_friends[all_friends[0]]" to "True"
+  And I set the variable "best_friends" to "all_friends"
+  And I set the variable "best_friends" to "all_friends[0]"
+  And I set the variable "best_friends[all_friends[0]]" to "True"
 ```
+:::
 
-<span class="positive">**Right**</span> ways:
-
+:::tip Right
 ```gherkin
-    And I set the variable "best_friends['all_friends[0]']" to "True"
+  And I set the variable "best_friends['all_friends[0]']" to "True"
 ```
 
 or, in a Story Table:
 
 ```gherkin
-      | var | value |
-      | best_friends['all_friends[0]'] | True |
+    | var | value |
+    | best_friends['all_friends[0]'] | True |
 ```
+:::
 
-:::warning Eagle eye
+:::caution Eagle eye
 Especially notice the quotes just inside the first square brackets.
 :::
 
 
-### others {#other-values}
+### `file` {#upload}
 
-WIP
+You can upload one or more files by setting a variable to a comma-separated list of file names to upload. You **must** store files that you plan to upload in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests.
 
-
-### Special values {#special-values}
-
-`today` is a special value in ALKiln. ALKiln will change that value into the date of the current day. Right now it uses the US format for the date. You can also add or subtract days from `today` to set a specific date in the past or in the future. These are the ways you can use `today`:
+The format for a linear Steps:
 
 ```gherkin
-    | signature_date | today |
-    | court_date | today + 20 |
-    | minors_birth_date | today - 3650 |
+  And I set the variable "<variable name>" to "<comma separated list of a file or files>"
 ```
+
+The format for a Story Table Step:
+
+```gherkin
+    | var | value |
+    | <variable name> | <comma separated list of a file or files> |
+```
+
+Example of a linear Step to upload 1 file:
+
+```gherkin
+  And I upload "refutable_evidence.jpg" to "evidence_files"
+```
+
+Example of a linear Step to upload multiple files:
+
+```gherkin
+  And I upload "irrefutable_evidence.jpg, refutable_evidence.pdf" to "evidence_files"
+```
+
+Example of a Story Table Step to upload 1 file:
+
+```gherkin
+    | var | value |
+    | evidence_files | refutable_evidence.jpg |
+```
+
+Example of a Story Table Step to upload multiple files:
+
+```gherkin
+    | var | value |
+    | evidence_files | irrefutable_evidence.jpg, refutable_evidence.pdf |
+```
+
+To upload more than one file you **must** separate their names with a comma.
+
+
+### `signature` {#sign}
+
+Signatures look a bit funny in ALKiln at the moment, but they work fine.
+
+Example of a docassemble [signature page](https://docassemble.org/docs/fields.html#signature):
+
+```yml
+question: Sign your name
+signature: user.signature
+under: ${ user }
+```
+
+Example of linear Steps:
+
+```gherkin
+  And I sign
+  # or
+  And I sign with the name "<signatory's name>"
+```
+
+The first version will show a single dot as the signature. The second version will show the name and also have a dot.
+
+In a Story Table, a signature variable has nothing in its `value` column. Example of a Story Table Step:
+
+```gherkin
+    | var | value |
+    | user.signature |  |
+```
+
+All Story Table signatures are a single dot.
+
+
+### `.there_is_another` {#there-is-another}
+
+In a Story Table, setting the value of `.there_is_another` for a docassemble loop is more complicated than you might expect. At first glance, to fill in the answers for two children some authors try to write the following:
+
+:::danger Wrong
+```gherkin
+    | var | value |
+    | kids.there_are_any | True |
+    | kids.there_is_another | True |
+```
+:::
+
+Instead of using `.there_are_any` and `.there_is_another`, always use `.target_number` in their place to set the number of items that you want to include in the test.
+
+:::tip Right
+For 3 children:
+
+```gherkin
+    | var | value |
+    | kids.target_number | 3 |
+```
+
+For no children:
+
+```gherkin
+    | var | value |
+    | kids.target_number | 0 |
+```
+:::
 
 
 ## Observational Steps {#observe}
@@ -330,25 +1116,259 @@ WIP
 You can use some Steps to look at what is on the page or compare data. You can use these to make sure the interview has done what you want it to.
 
 
+### `I check the page for accessibility issues` {#a11y}
+
+Use the "accessibility" Step to check the current page for problems with accessibility.
+
+Example:
+
+```gherkin
+  Then I check the page for accessibility issues
+```
+
+<A11y />
+
+This is different than the ["all accessible" Step](#a11y-all), which checks all the subsequent pages for accessibility issues.
+
+
+### `I expect the baseline PDF "<baseline file>" and the new PDF "<new file>" to be the same` {#compare-files}
+
+You can compare an example PDF (sometimes called a baseline) to the PDF your interview created to make sure they are the same. You must save the baseline PDF in your ["Sources" folder](https://docassemble.org/docs/playground.html#sources) along with your tests. Then use the ["download" Step](#download) to download the file your interview created. You can then compare the two PDFs.
+
+```gherkin
+  Then I expect the baseline PDF "baseline.pdf" and the new PDF "download.pdf" to be the same
+```
+
+First ALKiln will compare all of the text in the PDFs. Then ALKiln will compare the fillable fields in the PDFs. If anything is different, ALKiln will print the difference in the [report](#report). You can then use the text in the report to search through the PDFs and find the difference there.
+
+
 ### `I SHOULD see the phrase "<page text>"` {#phrase}
 
-WIP
+Use the "phrase" Step to check that specific text is visible on the page. You can also make sure that text that should NOT be visible is indeed absent.
+
+:::caution Missing phrases
+Getting some text characters right can be tricky with interview pages. If you get told ALKiln cannot find a phrase, read about [possible reasons for missing phrases](troubleshooting.mdx#missing-phrase) in the troubleshooting documentation.
+:::
+
+The Step format for variation 1 - the phrase **does exist** on the page:
+
+```gherkin
+  Then I SHOULD see the phrase "<page text>"
+```
+
+The Step format for variation 1 - the phrase is **absent** from the page:
+
+```gherkin
+  Then I should NOT see the phrase "<page text>"
+```
+
+The blank to fill in here is `<page text>` - the phrase to test.
+
+<!-- Do they need this explanation?: You might want to check that a phrase is absent to make sure some logic is working to hide incorrect text. -->
+
+Examples for variation 1 - the phrase **does exist** on the page:
+
+```gherkin
+  Then I SHOULD see the phrase "Yay! This page's text is great!"
+```
+
+```gherkin
+  Then I should NOT see the phrase "Boo! This page's text is bad!"
+```
+
+The `<page text>` must be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022) and **must never** itself contain double quotation marks inside it. Since docassemble interview text usually has special quotation marks, that is usually easy. See the [troubleshooting section on missing phrases](troubleshooting.mdx#missing-phrase) that talks about special characters.
+
+Unlike many other Steps, checking phrases is **language specific**. That is, if you want to test translations as well, you will have to use [an "Examples" table](#gherkin-sampler) in your test.
 
 
-## Understanding test results {#output}
+### `the text in the JSON variable "<variable name>" should be` {#compare-json}
 
-WIP
+Use the "compare JSON" Step to check that a variable on the page has a specific text value. **This is a multi-line step**. It is a little limited at the moment.
+
+The Step format:
+
+```gherkin
+  Then the text in the JSON variable "<variable name>" should be
+  """
+  <value>
+  """
+```
+
+The first blank to fill in for this Step is `<variable name>` which is the name of the variable that is in the JSON variables and values data of the page. The second blank to fill in is `<value>`, which is the value you want the variable to have. The value **must** be a string (text).
+
+:::caution Only flat values
+This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not an attribute like `user.affidavit`.
+:::
+
+Example for one line of text:
+
+```gherkin
+  Then the text in the JSON variable "nickname" should be
+  """
+  Ursus
+  """
+```
+
+Example for text with multiple lines:
+
+```gherkin
+  Then the text in the JSON variable "user_affidavit" should be
+  """
+  Three quotes then some affidavit text.
+
+  The text can be multi-line.
+
+  Then close with three quotes.
+  """
+```
+
+This Step will save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the current question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
+
+:::danger Security
+[Avoid JSON Steps](security.mdx#json-vars) when you have added sensitive information to your interview.
+:::
+
+:::tip Next page
+Variable values only show up in the JSON on the next page - the one after the page where you fill in the answers.
+:::
 
 
-## Test file anatomy {#files}
+### `I take a picture` {#pic}
+
+The "picture" Step will not only take a picture of the page, it will also download an HTML file of the page. The associated HTML file will have the same name as the picture, but will end with `.html`. ALKiln will save those files in the Scenario folder of the [test results](#results).
+
+You can open the HTML file in your browser to interact with the page and [inspect the page's HTML](https://www.dreamhost.com/blog/how-to-inspect-a-website/) further. You should expect this page to look and act different than the original page - ALKiln is unable to get the full code that controls the behavior and styles of the original page. However, in the HTML, you can look at what options were in a drop down, examine some accessibility errors, or edit the HTML to expand some collapsed content. In fact, some pages are too long for the picture to show all the content. In the HTML, you can see that content.
+
+Example:
+
+```gherkin
+  Then I take a picture
+```
+
+<SecureEnvVars/>
+
+
+<!-- ### `And I take a screenshot ?(?:named "([^"]+)")?` -->
+
+
+### `I get the page's JSON variables and values` {#get-json}
+
+Use the "get JSON" Step to add a page's JSON variables to the final test report.
+
+Example:
+
+```gherkin
+  And I get the page's JSON variables and values
+```
+
+The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1). It is a bit messy, but you do get to see all the variables.
+
+:::danger Security
+[Avoid JSON Steps](security.mdx#json-vars) when you have added sensitive information to your interview.
+:::
+
+:::tip Next page
+Variable values only show up in the JSON on the next page - the one after the page where you fill in the answers.
+:::
+
+<!-- This doesn't actually save a file with the vars in it other than the report file -->
+
+
+### `I will be told an answer is invalid` {#invalid}
+
+Use the "invalid answers" Step to check that the user got feedback that one or more of their answers were invalid.
+
+<!-- TODO: Change to "I see an answer is invalid" -->
+
+Example:
+
+```gherkin
+  Then I will be told an answer is invalid
+```
+
+
+### `the question id should be "<id>"` {#id}
+
+Use the "question id" Step to make sure the test has gotten to the right page.
+
+The Step format:
+
+```gherkin
+  Then the question id should be "<question id>"
+```
+
+The blank to fill here is `<question id>` - the [id of the `question` block](https://docassemble.org/docs/modifiers.html#id) for this page. To get the right `<question id>`, copy the `id` value from that block and paste it into your test.
+
+Example:
+
+```gherkin
+  Then the question id should be "some YAML block id!"
+```
+
+This Step can help humans keep track of what page the tests are on. It will also show up in the test reports and can help you see where things went wrong.
+
+
+<!-- ### `Then an element should have the id "some_HTML_element_id"` -->
+
+
+## Generate a Story Table {#alkiln_story}
+
+You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
+
+Follow these instructions to use the generator:
+
+1. If you don't have one already, [add a new test file](#how-do-i-add-a-new-test-file). You can leave out the Scenario.
+1. Ensure your server config is set up to [show debug info](https://docassemble.org/docs/config.html#debug).
+1. Run your interview manually until you reach the page you want the story table to get to.
+1. Open the "source" display of the interview. Currently, that looks like angle brackets, `</>`, in the header of the page.
+1. Note the `id` of the page.
+1. Tap the "Show variables and values" button. It will open a new tab showing a big JSON object.
+1. Copy all the text on that page.
+1. Go to the [story table generator](https://plocket.github.io/alkiln_story/).
+1. Paste the JSON into the text area there, as instructed.
+1. Use the other input fields to help finalize your Scenario, including the page `id`.
+1. Copy the Scenario that has been generated for you.
+1. Paste that into the already prepared test file.
+
+
+## Test file anatomy {#test-files}
 
 Your tests files have the code that tells ALKiln how to answer questions in your interview and do other things. The code may look different than other code you have seen, but it is still code. It is still rigid and needs you to use the right syntax and spelling.
 
 You should save your test files in your package's ["Sources" folder](https://docassemble.org/docs/playground.html#sources). If you used the ALKiln setup interview, there will already be a test there that just loads the interview.
 
-In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and keywords[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
+In test files, you use [Gherkin](https://cucumber.io/docs/gherkin/) syntax and [keywords](#gherkin-keywords)[^keywords] with [specific "Steps" that the ALKiln framework has created](#steps) for docassemble interviews.
+
 
 [^keywords]: Keywords are specific words that have a special meaning and purpose when you use them in specific places in your test code. They are similar to the words `else` and `not` in python.
+
+
+### Add a new test file {#new-file}
+
+Go to the Playground of your Project. Tap the "Folders" dropdown menu. Tap on Sources. Add a new file that ends in the extension `.feature`. For example, `has_children.feature`.
+
+Add this to the blank file:
+
+```gherkin
+Feature: A description of the category of the tests you will write in this file
+
+Scenario: The specific situation that this test is written for
+  Given I start the interview at "name_of_the_interview_file_to_test.yml"
+```
+
+Change the parts you need to change. Example:
+
+```gherkin
+Feature: I have children
+
+Scenario: I allow unsupervised visitation
+  Given I start the interview at "protective_order.yml"
+```
+
+You can then add the code for your tests.
+
+
+### Some rules {#file-rules}
 
 Here are some rules about test files:
 
@@ -359,27 +1379,38 @@ Here are some rules about test files:
 - Each file **must** contain only one `Feature:` keyword.
 - You **must** use **Gherkin** syntax for your tests. [Gherkin's own documentation](https://cucumber.io/docs/gherkin/reference/) is the best place to read about Gherkin syntax with some exceptions that you can read below. Ignore notes about "step definitions". Those are part of what ALKiln takes care of.
 
-To troubleshoot Gherkin synatx problems <!-- TODO: Add link to errors that indicate incorrect syntax. Wrong cell count, etc. --> in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, the editor should mark an extra `Feature:` keyword as incorrect.
+To troubleshoot [Gherkin synatx problems](troubleshooting.mdx#gherkin) in your tests, use an editor like the one at [AssertThat](https://www.assertthat.com/online-gherkin-editor). It will mark lines that have incorrect syntax. For example, if you have multiple `Feature` keywords in your file, the editor should mark the second one as incorrect.
+
+
+### Gherkin keywords {#gherkin-keywords}
 
 ALKiln only allows you to use some Gherkin keywords. Those are:
 
 - [`Feature:`](https://cucumber.io/docs/gherkin/reference/#feature) - each file can only use one `Feature:` keyword.
 - [`Scenario:`/`Example:`](https://cucumber.io/docs/gherkin/reference/#example) - We recommend you use `Scenario`. **Make the `Scenario` descriptions unique** because ALKiln will use them in the names of the reports it creates for you. This keyword is different from the plural `Examples`/`Scenarios`.
-- [`Scenario Outline:`](https://cucumber.io/docs/gherkin/reference/#scenario-outline)
+- [`Scenario Outline:`](https://cucumber.io/docs/gherkin/reference/#scenario-outline) - Like a `Scenario`, but it can contain `Examples`.
 - [`Examples:/Scenarios:`](https://cucumber.io/docs/gherkin/reference/#examples) - We recommend you use `Examples`. This can help you test translations, as shown below. When a `Scenario Outline` has an `Examples` table, the test will run at least once for each row in the table. This keyword is different from the singular `Scenario`/`Example`.
-- Theses keywords that can start a Step - [`Given`](https://cucumber.io/docs/gherkin/reference/#given), [`When`](https://cucumber.io/docs/gherkin/reference/#when), [`Then`](https://cucumber.io/docs/gherkin/reference/#then), and [`And`](https://cucumber.io/docs/gherkin/reference/#and).
+- Any of these keywords that can start a Step - [`Given`](https://cucumber.io/docs/gherkin/reference/#given), [`When`](https://cucumber.io/docs/gherkin/reference/#when), [`Then`](https://cucumber.io/docs/gherkin/reference/#then), and [`And`](https://cucumber.io/docs/gherkin/reference/#and). They look different, but that is for us humans. They can be used interchangeably.
+
+:::tip Unique descriptions
+It is useful to give a `Scenario` or a `Scenario Outline` a [unique description that you can remember](#scenario-descriptions).
+:::
 
 ALKiln also lets you use:
 
-- `@` ([Tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags)). The specific sections of the tags documentation that apply to ALKiln are:
-  - A [general description of tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags).
-  - [Tag expressions](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions)
-  - Extra: [Tag inheritance](https://cucumber.io/docs/cucumber/api/?lang=java#tag-inheritance).
-- `#` (Comments). They are a tiny bit different than python comments. They always have to be on their own line. The line can begin with zero or more spaces. You can use comments anywhere in your test file.
-- `|` ([Data tables](https://cucumber.io/docs/gherkin/reference/#data-tables)).
-- `"""` ([Doc strings](https://cucumber.io/docs/gherkin/reference/#doc-strings)).
+- `@` - [Tags](#tags)
+- `#` - Comments. They are a tiny bit different than python comments. They always have to be on their own line. The line can begin with zero or more spaces. You can use comments anywhere in your test file.
+- `|` - [Data tables](https://cucumber.io/docs/gherkin/reference/#data-tables).
+- `"""` - [Doc strings](https://cucumber.io/docs/gherkin/reference/#doc-strings).
+
+
+### Sample test file {#gherkin-sampler}
 
 We usually write test text as if it is from the perspective of the user. For example, "I wait" and "I start".
+
+:::tip
+Some Steps, like the ["phrase" Step](#phrase), are language-specific. You can still test translations with those Steps, though, if you use `Examples` with `Scenario Outline`. See the example below.
+:::
 
 Here is an example of a file that uses most of these features. The name of this file is `children.feature`.
 
@@ -420,6 +1451,61 @@ Scenario Outline: I allow visitation
 ```
 
 
+### Tags {#tags}
+
+You can use [Gherkin tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags) to choose to run only specific tests or files.
+
+To use a tag expression for GitHub tests you can [trigger your tests](#trigger-github) manually. When you do that, GitHub will offer you a drop down where you can give some inputs for your test run. One of the optional fields there will let you write a tag expression if you want. You can also add a tag expression to your workflow file as an [input](#optional-inputs).
+
+The <AutoDIY/> test interview has a field where you can add a tag expression if you want.
+
+To use tags, you must first add them to your [test files](#test-files). You can add them above the `Feature` keyword, or above `Scenario` keywords, or both.
+
+```gherkin
+@likes_bears
+Feature: I like bears
+
+@wild_bear @climbs_fast
+Scenario: I like wild bears
+  # Test 1 Steps
+
+@cuddly_bear @climbs_fast
+Scenario: I like cuddly bears
+  # Test 2 Steps...
+
+@maybe_not_a_bear
+Scenario: I like Jaime
+  # Test 3 Steps...
+```
+
+A [tag expression](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions) is the magic formula an author can use to tell ALKiln which tests to run.
+
+This documentation will only show some basics about tags. Based on the example test file above, these are some examples of tag expressions and which tests they will run:
+
+| Tag expression | What tests run? |
+| - | - |
+| @likes_bears | All tests in the file |
+| @cuddly_bear | Test 2 |
+| @climbs_fast | Tests 1 and 2 |
+| @cuddly_bear or @maybe_not_a_bear | Tests 2 and 3 |
+| not @wild_bear | All tests in all test files in your package except test 1 |
+
+Tests (Scenarios) can [inherit tags](https://cucumber.io/docs/cucumber/api/?lang=java#tag-inheritance).
+
+
+<!-- ### Scenario descriptions {} -->
+
+
+<!-- ### Translations
+
+(Maybe its own section in Tips or something)
+
+You can still test translations even when you use a language-specific Step, like the ["phrase" Step](#phrase). [Check Gherkin examples](#gherkin-sampler)
+
+Add example here instead.
+-->
+
+
 <!--
 Does this section need more details?
 
@@ -444,30 +1530,1167 @@ Each **Step** **must** start with one of these keywords:
 1. `When`
 1. `And`
 You can use any of those. It does not matter what you pick.
+-->
+
+
+## GitHub workflow files {#workflows}
+
+**This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
+
+Your [GitHub workflow](https://docs.github.com/en/actions/using-workflows/about-workflows) file is what starts and controls a package's tests on GitHub. Only [tests that run on GitHub](setup.mdx#types) need a workflow file. The file gives ALKiln some configuration information. You can use it to customize the ALKiln test runs and control when to trigger the GitHub tests.
+
+This section has a lot of challenging technical information about GitHub workflow files. We will do our best to help. We would love to hear how we can improve.
+
+You can use [workflow inputs](#workflow-inputs) to change global configuration settings for your ALKiln test runs.
+
+You can use custom [environment variables](#env-vars) to set values in your tests. Those are especially useful for answers that need to use sensitive information.
+
+For workflow security, see various sections in the [security documentation](security.mdx).
+
+GitHub's documentation can tell you many more [technical details about workflows](https://docs.github.com/en/actions/using-workflows).
+
+
+### Where in GitHub is the file? {#workflows-where}
+
+Your ALKiln workflow file is in your package's GitHub repository. To find it, go to the repository to the `.github` folder, then open the `workflows` folder there. The workflow file there might be called "run_form_tests.yml" or "alkiln_tests.yml" or something similar.
+
+
+### Example files {#workflows-examples}
+
+ALKiln's own workflow files are the most up-to-date, so using those as an example can be useful. Read carefully, though - those files have features that are unique to ALKiln, but they also have notes on how you can change them to what you need.
+
+You can see [ALKiln's own version of the <GTOYS plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/playground.yml).
+
+You can see [ALKiln's own version of the <KittyLitter plain={true}/> test workflow file here](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/github_server.yml).
+
+<!-- TODO: deep dive or standup: We could potentially use this plugin to show the actual file in here: https://github.com/rdilweb/docusaurus-plugin-remote-content -->
+
+
+## GitHub workflow inputs {#workflow-inputs}
+
+**This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
+
+<!-- TODO: Are autodiy tests able to use max server reload? -->
+
+Workflow input values let you customize global ALKiln configuration settings.
+
+This section is advanced and can be challenging for even experienced developers. Let us know how we can improve it.
+
+For any input, you put the input's value under the `with` in your workflow file:
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
+
+For the items that have values with sensitive information, you first create a [GitHub secret](#secrets) that stores the value. You then use that secret under the `with` in your workflow file:
+
+```yml
+        with:
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
+
+
+### Required inputs for <!-- GitHub+You --> <GTOYS/> tests {#githubNyou-inputs}
+
+**This is for:** <GTOYS/> tests
+
+The [<GTOYS plain={true}/> test method](setup.mdx#recommended) workflow file has a few absolutely **required** inputs. The [ALKiln setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) should create the secrets and workflow inputs for this type of test environment.
+
+You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
+
+- `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on. You should store the value for this input in a [GitHub secret](#secrets).
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for the ALKiln [testing account](security.mdx#test_accounts) on your server. You should store the value for this input in a [GitHub secret](#secrets).
+
+If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
+
+Use them the same way that the example workflow file uses them. They appear in 2 places.
+
+<!-- We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
+
+Or: Only `DOCASSEMBLE_DEVELOPER_API_KEY` needs to be private. The secrets can just help with maintenance.
+-->
+
+<!-- 1. Turn them into environment variables
+1. Give them to ALKiln as inputs. They are in the example file directly under the `with:` keyword.
+
+These are values you can put in your workflow file directly under the `with:` keyword.
+ -->
+
+
+[^org]: If your server is part of a GitHub organization, we recommend creating some of these values as organization secrets. That way, if you need to change the value of an input or environment variable you can do it one place.
+
+
+### Required inputs for <!-- GitHub Sandbox --> <KittyLitter/> tests {#sandbox-inputs}
+
+**This is for:** <KittyLitter/> tests
+
+These are the only required inputs for <KittyLitter/> tests. We are listing them here for the sake of completeness, but none of them need to be secrets and you can copy the correct values straight from [ALKiln's own <KittyLitter plain={true}/> tests workflow file](https://github.com/SuffolkLITLab/ALKiln/blob/-/.github/workflows/github_server.yml).
+
+You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
+
+- `SERVER_URL` is the url of the new docassemble server GitHub just created. Use the value that an earlier step created. You can see that in the example file.
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for a developer on the new server. Use the value that an earlier step created. You can see that in the example file.
+- `INSTALL_METHOD` is an internal value ALKiln needs from <KittyLitter/> tests. The value in ALKiln's example file is the correct value.
+
+
+### Optional inputs for all GitHub tests {#optional-inputs}
+
+**This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
+
+You can add some optional inputs to the workflow file of any tests that run on GitHub to control global ALKiln configuration values.
+
+The options are:
+
+- `ALKILN_VERSION` lets you use a specific version of the ALKiln framework for your tests. It can be useful for [security](security.mdx#freeze) or for trying out experimental versions of the ALKiln framework. The default value is the latest version.
+- `ALKILN_TAG_EXPRESSION` is the "tag expression" to use to limit which tests to run. These docs describe tags in the [Gherkin keywords section](#gherkin-keywords). The default is no tag expression so that all the tests run.
+- (Extra Advanced) `DOCASSEMBLECLI_VERSION` is the version of docassemblecli to install. If this means nothing to you then you can probably ignore it. You can also ask us about this.
+
+<!-- None of these need to be secrets, but they can be if you want[^org]. You will probably want to avoid using secrets for `ALKILN_VERSION` and `ALKILN_TAG_EXPRESSION`. Authors usually use them for a specific occasion for a specific reason. -->
+
+Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "@has_children"
+```
+
+<WithSecretsForOrgs/>
+
+<!-- Would need @theme/CodeBlock to abstract this kind of block and allow it to be part of the previous component -->
+
+```yml
+        with:
+          ALKILN_TAG_EXPRESSION: "${{ secrets.ALKILN_TAG_EXPRESSION }}"
+```
+
+
+### Optional inputs just for <!-- GitHub+You --> <GTOYS/> tests {#githubNyou-optional-inputs}
+
+**This is for:** <GTOYS/> tests
+
+You can add some optional inputs to the workflow file of any tests that run with the [<GTOYS plain={true}/> test method](setup.mdx#recommended) to control global ALKiln configuration values:
+
+- `MAX_SECONDS_FOR_SETUP` is the maximum amount of time to give the Project to upload your package's GitHub code. If your server is slow, increase this value. The default is 120 seconds.
+- `SERVER_RELOAD_TIMEOUT_SECONDS` is the maximum amount of time to give the server to reload while these tests are running. A server can reload for many reasons. A reload can make a test fail part-way through. If ALKiln waits long enough for the server to finish reloading, the next tests will get a chance to finish properly. The default maximum time is 150 seconds. If your server reloads more slowly, increase this value[^slow].
+
+Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+
+```yml
+        with:
+          SERVER_RELOAD_TIMEOUT_SECONDS: 500
+```
+
+<WithSecretsForOrgs/>
+
+```yml
+        with:
+          SERVER_RELOAD_TIMEOUT_SECONDS: "${{ secrets.MAX_SECONDS_FOR_SETUP }}"
+```
+
+<!-- TODO: ALKiln: create example rows in the different workflow files -->
+
+<!-- TODO: ALKiln: Look into detecting server requests and responses (for background tasks and... non-continuing page?) -->
+
+[^slow]: This also sometimes affects tests that fail due to genuine errors. Sadly, these types of failures look the same to ALKiln as a server reloading. That means that increasing the maximum server reload time will make some kinds of tests take an extra long time to fail.
+
+
+### Optional inputs just for <!-- GitHub Sandbox --> <KittyLitter/> tests {#sandbox-optional-inputs}
+
+**This is for:** <KittyLitter/> tests
+
+You can add some optional inputs to the workflow file of any <KittyLitter/> tests to control global ALKiln configuration values. We note when an option should also be a GitHub secret for security reasons:
+
+- `CONFIG_CONTENTS` is the contents of the [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. **For security, we strongly recommend you put this information into a GitHub secret** like `DOCASSEMBLE_DEVELOPER_API_KEY` above. If you have special configuration settings on your own server, you can use input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses.
+- `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output when ALKiln creates the docker container and installs docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information those logs might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
+- `MAX_SECONDS_FOR_DOCKER` is the maximum amount of time to give the docassemble docker container to get properly started. If your tests keep failing because your docker container is taking a long time to start, maybe because of configuration options, then you can increase this time. The default time is 600 seconds (10 min).
+
+<!-- TODO: What is the error message when docker container setup stops too early? -->
+
+Use these inputs in the same way and in the same places as the required inputs. You can use non-secret values by just writing the value directly in the workflow file. For example:
+
+```yml
+        with:
+          SHOW_DOCKER_OUTPUT: true
+```
+
+<WithSecretsForOrgs/>
+
+```yml
+        with:
+          SHOW_DOCKER_OUTPUT: "${{ secrets.SHOW_DOCKER_OUTPUT }}"
+```
+
+
+## GitHub workflow extras {#workflow-extras}
+
+**This is for:** all tests that run on GitHub
+
+You can customize your GitHub workflows to run on a schedule, make GitHub issues when tests fail, and much more. We will give some examples other developers have found useful. To edit your workflow file:
+
+1. Go to your GitHub repository
+1. [Find your workflow file](#workflows-where)
+1. Tap to [start editing the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
+1. Follow instructions below to change your file
+
+[GitHub's documentation can tell you much more about workflows](https://docs.github.com/en/actions/using-workflows).
+
+
+### Schedule tests {#schedule-trigger}
+
+You can run GitHub tests on a schedule - daily, weekly, monthly, or on any other interval. To run the tests on a schedule, you must add `schedule` to the `on`  object in your workflow file and give it an "interval" value. For example, these tests will get triggered by both a push (commit) and on a schedule every Tuesday:
+
+```yml
+on:
+  schedule:
+    - cron: "0 1 * * TUE"
+  push:
+```
+
+The GitHub docs can tell you more about [triggering workflows on a schedule](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule). The special syntax defining the interval uses cron syntax. If you want to change the interval, [these examples of cron syntax](https://crontab.guru/examples.html) can help a lot.
+
+You can read [GitHub's documentation about many other ways to trigger workflows](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
+
+
+### Pull request tests {#pr-trigger}
+
+You can trigger tests when someone makes a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) in GitHub.
+
+To do this, add the `pull_request` trigger key to the `on` object in your workflow file. Give it no values at all. For example, these tests will get triggered by both a pull request and on a schedule:
+
+```yml
+on:
+  pull_request:
+  schedule:
+    - cron: "0 1 * * TUE"
+```
+
+The [pull request trigger can have various values](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request), but leaving it empty uses the default values. We have only ever needed the defaults and pull request values can be confusing to customize.
+
+:::caution Double trouble
+If you use <GTOYS/> tests and decide to trigger tests with both `push` and `pull_request` you need to make sure that you avoid triggering both at the same time. When someone makes a pull request, changes some code, and then pushes to that pull request, both triggers will be... triggered. This is unnecessary and can cause <GTOYS/> tests to fail.
+
+Use code like this to avoid running double tests:
+
+```yml
+jobs:
+  ALKiln tests:
+    if: (github.event_name != 'pull_request' && ! github.event.pull_request.head.repo.fork) || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork)
+```
+
+See [an example](https://github.com/IHaskell/IHaskell/blob/60a750f5b038a17717609d8a40be0fafd69e1c35/.github/workflows/stack.yml#L37).
+:::
+
+You can read [GitHub's documentation about many other ways to trigger workflows](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow).
+
+
+### Make a GitHub issue when tests fail {#issue}
+
+To make a GitHub issue when tests fail, you can add the below code under the last line of text in the file. It might look like you need to create a GitHub secret for this, but you should avoid that. GitHub already has all these values.
+
+```yml
+      - name: "If tests failed create an issue"
+        if: ${{ failure() }}
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: "ALKiln tests failed"
+          body: |
+            An ALKiln test failed. See the action at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}.
+          labels: |
+            bug
+```
+
+:::danger Avoid new secrets
+Avoid changing the value `github_token` and avoid creating a new secret for it. The variable `secrets.github_token` is a value that your repository already has by default and it needs that value.
+:::
+
+If you use the code above, the [GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) will automatically contain a link to the workflow with these failing tests.
+
+You can edit the values of `title`, `body`, and `labels` to customize the issue.
+
+
+## Environment variables {#env-vars}
+
+**This is for:** Everyone
+
+<!-- TODO: Inputs are configuration. -->
+<!-- TODO: differentiate between test _run_/suite configuration and individual test configuration. -->
+
+Environment variables are one of the few ways for you to get information from GitHub or your server to ALKiln. (You do that in your [workflow file](#workflows).)
+
+What is a variable?
+
+A "variable" is a name with a value. That name, a "variable name", lets the rest of the program ask for that value when needed.[^name] Like calling a kid in for dinner. That is close enough for what we need right now.[^vars]
+
+[^name]: You might notice people also using the word "variable" to mean "variable name".
+
+[^vars]: A variable name is only sort of a label for a value. It is actually more like a label for a box and in that box is the value. You can change the value that's in the box and as long as the box and name stay the same, the program is happy. It will use whatever is in that box. Even that is a little bit untrue because in some languages, it is impossible to change the value in the box. Those variables are called "immutable".
+
+<!-- A flexible way to hold a value that you can change when you need to change it and so everything else in the program can use it, even if it changes. -->
+
+<!-- Variables in code are like boxes where you can put things you want to remember or use later. https://www.phind.com/agent?cache=cluroe4dp001ojl0bwystqj9g -->
+
+What are environment variables?
+
+Environment variables are variables that are available to the whole system - the whole environment the programs are working in. Like the town where that kid lives and where their house is. That means every test in your test suite can use that variable. You can call that kid in for dinner no matter where in the city they are.
+
+Because environment variables are so global, we recommend you start all your environment variable names with "ALKILN_" so they have less chance to interfere with your system's other environment variables. If you are going to broadcast your message across the town, every kid should have a unique name so everyone knows who you are yelling at.
+
+In <AutoDIY/> tests on your server, you put these values in your [config file](https://docassemble.org/docs/config.html#configfile) under a key you can add called `alkiln`. For example:
+
+```yml
+alkiln:
+  ALKILN_BEAR_SIZE: "small_bear"
+```
+
+`ALKILN_BEAR_SIZE` is the name of the environment variable. `"small_bear"` is the value of the environment variable. All the interviews on your server can see these config values, including the interview that runs your <AutoDIY/> tests, so you are actually setting these values for all the tests that you run on your server with <AutoDIY/> tests.
+
+In GitHub, you can make [GitHub workflow environment variables](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) by putting them in the `env` key in your [workflow file](#workflows):
+
+```yml
+# other code
+
+env:
+  ALKILN_BEAR_SIZE: "small_bear"
+
+job:
+  # other code
+```
+
+`ALKILN_BEAR_SIZE` is the name of the environment variable. `"small_bear"` is the value of the environment variable. In GitHub, there are different places to put `env`, so don't worry if you see them in other places in other people's files.
+
+<!-- TODO: maybe move this to secrets -->
+
+You can combine environment variables with [GitHub secrets](#secrets) to set sensitive information in your tests. Also, a GitHub organization can combine environment variables with [GitHub secrets](#secrets) to get a value to all the test suites in all the organization's repositories.
+
+<SecureEnvVars/>
+
+<!--
+What is so special about env vars?
+
+They are one of the only ways to get information from GitHub/your server to ALKiln.
+They are sent to a whole test run, so they can affect multiple tests.
+-->
+
+<!--
+How can you make env vars?
+
+GitHub: Variable names + values you put under `env`. There are different places to put `env`, so don't worry if you see them in other places in other people's files.
+
+```yml
+# other code
+
+env:
+  ALKILN_USER_EMAIL: tests@example.com
+
+job:
+  # other code
+```
+
+Playground: Variable names + values in your config under `alkiln`
+
+```yml
+alkiln:
+  ALKILN_USER_EMAIL: tests@example.com
+```
+
+If you do use sensitive information like that in GitHub, you should put it in a [GitHub "secret"](#secrets).
+ -->
+
+<!-- What do GitHub secrets have to do with it? Secrets let GitHub organizations share these values between all repositories, not just between all tests. Just like a repository can have secrets, (TODO: Link to GitHub docs on repo secrets) an organization can have secrets. (TODO: Link to GitHub docs on org secrets) All the repositories of that organization can use those secrets in their workflow files. -->
+
+
+## GitHub secrets {#secrets}
+
+**This is for:** owners of GitHub repositories or organizations
+
+<!--
+Is the confusion worth this particular detail?
+
+**This is for:** all tests that run on GitHub
+
+On GitHub only repository owners or organization owners can make a GitHub secret for a repository. Repository collaborators can use the ALKiln setup interview to make GitHub secrets for a repository.
+-->
+
+Shhh, don't tell anyone else - a secret is a value GitHub encrypts for you. Not even you can see a secret in GitHub after you create it. In fact, [GitHub redacts those values from your workflow logs](security.mdx#github-redacts-secrets).
+
+
+<!-- The only way to see a secret after creating it is to do something like use a tmate session in the middle of your workflow, though I think you need to have authorization. So it would be someone that can already edit your repository. -->
+
+<!-- in our club house/between just the two of us/?, "secret" describes... -->
+
+You can [make secrets for individual GitHub repositories](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) or you can [make secrets for your whole GitHub organization](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Once you have made the secrets, you might use them in combination with GitHub [environment variables](#env-vars) and for multiple reasons:
+
+1. Secrets are useful for creating values with sensitive information since no one can see those values. For example, with the ["sign in" Step](#sign-in). Here is one example of using a secret in a workflow file:
+
+  ```yml
+  # other code
+
+  env:
+    ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
+    ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
+
+  job:
+    # other code
+  ```
+
+  Remember to create a [separate account](security.mdx#test_accounts) for that "user". <span id="org-secrets"></span>
+
+2. GitHub secrets are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.
+
+  <details>
+    <summary>Example situation</summary>
+    <div>
+
+    For example, suppose Mo'nique has a GitHub organization named PolarisLaw. That organization has several repositories. Every test in every repository uses the value "small\_bear" as an answer to a question. Next month, though, the firm might need to change that value to "large\_bear". Mo'nique would have to edit that value in every test in every repository. Instead, she makes a GitHub secret in the PolarisLaw account called `ALKILN_BEAR_SIZE` and sets it to `small_bear`. Then she uses it in an environment variable she puts in all the workflow files in all the repositories.
+
+    ```yml
+    env:
+      ALKILN_BEAR_SIZE: "${{ secrets.ALKILN_BEAR_SIZE }}"
+    ```
+
+    She can then use that environment variable in her tests:
+
+    ```gherkin
+      I set the variable "bear_size" to the GitHub secret "ALKILN_BEAR_SIZE"
+    ```
+
+    Next month, if PolarisLaw needs to change that value, Mo'nique can just edit the value of that secret and change it to `large_bear`. All the tests will use the new value without her changing   anything else.
+    </div>
+  </details>
+
+Why not create secrets on your server for <AutoDIY/> tests? On your server all config values are already secret because only authorized people can see them, so they are just like any other [environment variable](#env-vars). And all of your server's interviews can see and share those config values already. I know, not quite as exciting.
+
+<!--
+TODO: [Is this unnecessary now that inputs and env vars are so separate?] FAQ: How are GitHub inputs different than env vars?
+-->
+
+<!-- Environment variables are can be a way to give sensitive information to ALKiln tests, a way to re-use a value in multiple tests, a way to re-use a value in multiple repositories, or all of those. -->
+
+<!--
+Some of us have found the term "environment variables" hard to memorize. It is a bit abstract.
+
+We know what variables are in our code: `court_name = "Massachusetts Court of Appeals"`
+
+We can use those in our ALKiln tests too:
+
+```gherkin
+  And I set the variable "favorite_bear" to "cuddly_bear"
+```
+
+Sometimes, though, our tests need ALKiln to use sensitive information answer a question. For example, to sign into the server before taking the interview.
+
+Think about an outdoor environment, somewhere grassy and green. A park. In the park are people (our programs) that run around in the park. They use variables like softballs and baseballs.
+
+When you want to play with ALKiln, you need to let it know
+-->
+
+<!--
+https://www.phind.com/agent?cache=cluroe4dp001ojl0bwystqj9g
+
+Code abstraction is like having a universal remote that can control multiple devices, ensuring you only need to change the channel once to affect all your TVs, reducing repetition and making it easier to manage.
+-->
+
+<!--
+Playground - config. GitHub - workflow file.
+
+Config values aren't env vars. ALKiln just turns them into env vars to match up behavior with GitHub? Could we pass them in another way?
+
+Env vars are one of the bridges that can connect GitHub/your server to ALKiln.
+
+Inputs vs. env vars metaphor:
+
+imagine a forest and a river running through it.
+
+Inputs: Each workflow input is a bridge the forest service (ALKiln) has built. It is infrastructure that ALKiln has built. ALKiln knows its bridges and knows to look for people (variables) crossing those bridges. Each bridge has a name that you must use when giving directions to your values about which bridge to cross.
+
+Using custom env vars: A custom env var is a plank that you brought from home and laid across the river to help one of your values cross. ALKiln doesn't know where those are or what the names of those bridges are. That's why you have to use special Steps. You have to tell ALKiln what the names (bridges) of your variables are so ALKiln will know where to find them.
+-->
+
+<!--
+env var with regular value
+
+env var with secret
+
+GitHub secret or server config are the only places to store info that are not visible to public people. GitHub secret is encrypted. Server config is inaccessible. Sensitive info example: password.
+
+Unlike the [inputs](#workflow-inputs), it goes under the [`env:` section](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) in your workflow file.
  -->
 
 
 ## Running tests {#run}
 
+**This is for:** Everyone
+
+This section will talk about ways to start (trigger) [different types of tests](setup.mdx#types) and will describe the journey of an ALKiln test run, from starting up to cleaning up.
+
+
+### Triggering tests {#trigger-tests}
+
+**This is for:** Everyone
+
+You control when your tests run and which tests run. How you do that depends on the [type of test](setup.mdx#types) you are using.<span id="trigger-github"></span>
+
+**<GTOYS/> and <KittyLitter/> tests:**
+
+By default, you can trigger tests on GitHub by committing your edits to your repository or by running the tests manually.
+
+The ALKiln setup interview gives you a default [workflow file](#workflows) that triggers GitHub tests when you commit your files to GitHub. That might be when you hit the 'Commit' button on the docassemble Packages page. It can also happen when you edit, add, or delete files in GitHub itself. Most authors go through this process:
+
+1. Edit the package's files in a Project on the docassemble server
+1. On your Project's "Packages" page, [commit the changes to GitHub](https://docassemble.org/docs/development.html#versioncontrol)
+1. Go to the repository in GitHub and tap on the "Actions" tab to [see the tests running](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results)
+
+You can use your [workflow file](#workflows) to customize some ALKiln test run settings.
+
+<!-- Best instructions for seeing workflow, action, and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
+
+You can also [trigger your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). When you run your tests manually, you can use [tags](#tags) to limit which tests to run. You can also [use tags in your workflow file](#optional-inputs).
+
+You can also edit your workflow file to [trigger your GitHub tests other ways](#workflow-extras).<span id="trigger-autodiy"></span>
+
+**<AutoDIY/> tests:**
+
+You can run <AutoDIY/> tests manually whenever you want to.
+
+1. Make sure you are logged into your docassemble [testing server](security.mdx#testing-server).
+1. Go to your server's list of available interviews.
+1. Run the ALKiln interview that you or someone else [installed on your server](setup.mdx#diy-how-to).
+1. On the first page, make sure you have the right version of ALKiln installed (usually the latest version) or install a different version.
+1. On the next page, pick a Project that already has tests in its Sources folder. If it has no tests, [add a new test](#new-file). It can be like the [example first test](setup.mdx#first-test).
+1. If you want to limit which tests to run, use a [tag expression](#tags) in the tag expression field.
+1. Run the tests and wait for the [output](#artifacts).
+
+<!-- TODO: Add images of picking new version -->
+
+
+### <!-- GitHub+You --> <GTOYS/> test stages {#gNy-stages}
+
+**This is for:** <GTOYS/> tests
+
+<!-- TODO: Maybe here define jobs, workflows, workflow runs, test runs, etc. Maybe better in #workflows -->
+
+The <GTOYS/> tests are made of three stages: the setup, the robot, and the take down.
+
+**Setup:**
+
+1. ALKiln goes to [its account](security.mdx#test-accounts) and creates a new Project.
+1. It uploads the relevant GitHub branch of your package into the Project.
+
+**Robot:**
+
+<RobotStage base_url={"the url of ALKiln's Project in its account's Playground"}/>
+
+**Take down:**
+
+When all the tests finish, ALKiln cleans up the tests.
+
+1. ALKiln deletes the Project it created from [ALKiln's account](security.mdx#test-accounts).
+1. It makes the [test output](#artifacts), like the report and Scenario folders.
+
+
+### <!-- ALKilnInThePlayground --> <AutoDIY/> test stages {#diy-stages}
+
+**This is for:** <AutoDIY/> tests
+
+When <AutoDIY/> tests run, they have two stages: the robot and the output.
+
+**Robot:**
+
+<RobotStage base_url={"the url of your Project in your Playground"}/>
+
+**Output:**
+
+When all the tests finish, ALKiln cleans up the tests. It creates the [test output](#results) to show on the final page.
+
+<!-- TODO: 1. ALKiln deletes those files from your server. (Check on this before adding it. This might actually be in setup) -->
+
+
+### <!-- GitHub Sandbox --> <KittyLitter/> test stages {#sandbox-stages}
+
+**This is for:** <KittyLitter/> tests
+
+The <KittyLitter/> tests are made of three stages: the setup, the robot, and the take down.
+
+**Setup:**
+
+1. ALKiln creates a new docker container on GitHub.
+1. It installs docassemble on that new docker container. If the [input `CONFIG_CONTENTS`](#sandbox-optional-inputs) is defined, ALKiln uses that value for the config. Otherwise, it installs docassemble with the default config.
+1. ALKiln waits for docassemble to finish enough that it can load up the new server's website properly.
+1. ALKiln installs your package as a server package on that new server.
+
+**Robot:**
+
+<RobotStage base_url={"the new isolated server's url on GitHub"}/>
+
+**Take down:**
+
+When all the tests finish, ALKiln cleans up the tests.
+
+1. The digital space where GitHub was running the server gets deleted, taking the new server and container with it.
+1. ALKiln makes the [test output](#artifacts), like the report and Scenario folders.
+
+
 <!--
-### Only run some tests.
-  Only run one test with tags. Here or in setup in the future section about running tests?
+### GitHub test stages {#github-run}
+
+**This is for:** all tests that run on GitHub.
+
+GitHub tests are made of three stages: the setup, the test run, and the take down.
+
+ALKiln sets up <GTOYS/> tests like this:
+
+1. ALKiln goes to the testing account you set up on your server and creates a new Project. If you log into that account, you'll be able to see the new Project in the list of projects.
+1. It uploads the relevant GitHub branch of your package into the Project.
+
+ALKiln sets up <KittyLitter/> tests like this:
+
+1. ALKiln creates a new docker container on GitHub.
+1. It installs docassemble on that new docker container. If the [input `CONFIG_CONTENTS`](#sandbox-optional-inputs) is defined, ALKiln uses that value for the config. Otherwise, it installs docassemble with the default config.
+1. ALKiln waits for docassemble to finish enough that it can load up the new server's website properly.
+1. ALKiln installs your package as a server package on that new server.
+
+ALKiln runs both <GTOYS/> and <KittyLitter/> tests like this:
+
+1. For each test, ALKiln follows the instructions in your test.
+1. Your first Steps could be any of a number of Steps, like waiting, signing into the server, or going to the interview.
+1. Usually you name an interview that should go to ALKiln. In <GTOYS/> tests ALKiln uses a Playground url. In <KittyLitter/> tests ALKiln goes to a server url.
+1. ALKiln pretends to be a human and tries to fill out the fields and take the actions the tests describe.
+
+When all the tests finish, ALKiln runs the take down to clean up the tests.
+
+For <GTOYS/> tests, ALKiln deletes the Project in the testing account on your testing server.
+
+When <GTOYS/> tests finish, ALKiln runs the take down to clean up the tests. It deletes the Project in the testing account on your testing server.
+
+When <KittyLitter/> tests finish, the space where GitHub was running the server gets deleted, taking the new server and container with it.
+
+Either way, ALKiln makes the [artifacts](#artifacts) for the tests, like the report and Scenario folders.
 -->
 
-WIP
+
+<!--
+### Running <   !-- ALKilnInThePlayground --   > <AutoDIY/> tests {#diy-run}
+
+**This is for:** <AutoDIY/> tests.
+
+You run <AutoDIY/> tests manually when you want to.
+
+1. Make sure you are logged into your docassemble testing server.
+1. Go to your server's list of available interviews.
+1. Run the ALKiln interview that you or someone else [installed on your server](setup.mdx#diy-how-to).
+1. On the first page, make sure you have the right version of ALKiln installed (usually the latest version) or install a different version.
+1. On the next page, pick a Project that already has tests in its Sources folder. If it has no tests, [add a new test](#new-file).
+1. If you want to limit which tests to run, use a [tag expression](#tags) in the tag expression field.
+1. Run the tests and wait for the output.
+ -->
+
+
+### What can I see while tests are running? {#running-data}
+
+<!-- Note: BEST instructions for getting to github workflows and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
+
+In GitHub, on [the actions page and related pages](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results) of your repository, you can see your workflow status ("check") and logs about the current test processes. On the actions page itself, under "All workflows", your current workflow should have the message/description you wrote for that last commit next to the name of the branch you worked on. On those various pages you can see:
+
+- How long a workflow has been running.
+- A yellow dot next to the current workflow.
+- You can see [information about the running processes](#console) in the job's log (or console) as GitHub writes it.
+
+The <AutoDIY/> tests show a waiting screen with how long the tests have been running, though we can add a yellow dot if enough users request it.
+
+
+### What can I see when the tests end? {#end-status}
+
+In GitHub, when the test run is done the yellow dot will change into a green circle with a check mark if the tests passed or a red circle with an "x" if something went wrong.
+
+In GitHub and with <AutoDIY/> tests, you will see the [results](#results).
+
+
+### Failures get re-run once {#rerun}
+
+**This is for:** all tests that run on GitHub.
+
+All tests that fail will get run a second time. These retries can make tests take double the time, but they can also help with [flaky failing tests](troubleshooting.mdx#flake) caused by [server reloads](troubleshooting.mdx#slow), which means you are more likely to be able to count on your results to give you real feedback.
+
+Currently, there is no way to choose whether to re-run tests or not.
+
+
+## Test results overview {#results}
+
+**This is for:** all tests.
+
+After your tests are done, there are different ways to look at the results of those tests. You can see:
+
+- [Job/console logs](#console): All the information about the processes that ran before, during, and after the tests
+- [Artifacts](#artifacts): The reports and other files ALKiln creates to give you more information about successes and failures
+
+You can read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+
+
+## Test logs {#console}
+
+**This is for**: all tests
+
+The console (in GitHub called the job log) shows the full raw output of the logs of the processes that ran before, during, and after the tests.
+
+In GitHub, you can see the test run's console at the [workflow's job logs](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results). You can see these messages appear as each process happens as well as after the tests finish running.
+
+In <AutoDIY/> tests, you can only see the console output after tests are done. They should be at the bottom of the final page.
+
+The console output should include at least one of these items, from top to bottom:
+
+1. Data from the start up processes, where errors can happen too.
+2. A list of each Scenario (test) description next to symbols that show what happened in that test:
+
+- `.` - a Step ran. Also, the test started or finished.
+- `*` - the test set a page variable.
+- `v` - the test pressed a continue button to set a variable.
+- `>` - a Story table row automatically continued.
+- `U` - an "undefined" Step tried to run. This usually shows up when you have a [typo in a Step you wrote](troubleshooting.mdx#step-undefined).
+- `F` - a test failed.
+
+3. The [ALKiln report](#report).
+1. Any errors from [the third-party libraries ALKiln uses](#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
+1. How many tests pass or failed.
+1. In GitHub, data from the take-down processes as ALKiln and GitHub clean up.
+
+<!-- TODO: put in troubleshooting: In GitHub, if the tests are having trouble, you might want to look at early steps too -->
+
+
+## Test output/artifacts {#artifacts}
+
+**This is for**: all tests
+
+Once the tests are finished, ALKiln creates the test run "artifacts" - files and folders you can examine, like an archaeologist, to understand what happened.
+
+If the test start up process failed, ALKiln will be [unable to create artifacts](troubleshooting.mdx#no-artifacts).
+
+import Dig from '../assets/archaeology.png';
+
+<p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a terracota vase."/></p>
+
+\- Text by [@Thinkwert](https://twitter.com/Thinkwert/status/1428488345357856777)[^text]
+\- Image by [PerspectiveFriendly](https://old.reddit.com/user/PerspectiveFriendly)[^img]
+
+In GitHub, you can [download a zip of these artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+
+For <AutoDIY/> tests, you can see and download the artifacts on the final page. The page is very plain at the moment and we hope to add more useful styles and indicators in the future. The page includes:
+
+- The name of the Project you tested.
+- The version of ALKiln the tests used. This is the version that is installed on your docassemble server.
+- How long it took the tests to run.
+- A link to download the zip file with all the artifacts.
+- The [report file](#report).
+- The [debug log file](#debug-log).
+- Any [pictures of error screens, along with that screen's HTML file](#error-pics).
+- A list of Scenarios with the [contents of their Scenario folders](#scenario-artifacts).
+- The test [console logs](#console). <!-- TODO: Why can't people download this as a file? I guess it will be in the verbose log eventually? -->
+
+<!-- - A list of Scenarios with their the contents of their Scenario folders including individual report, error screenshots and HTML pages, files you downloaded or created with Steps  -->
+
+On that page, when you click on the link to a file, you will see that file in a new browser window and can download it there.
+
+For all tests, the main artifact folder contains all the other artifacts. Its name includes the time the tests started in UTC format. When in GitHub, GitHub wraps the folder up in a zip file. The zip file's name includes the UTC time that the GitHub run started.
+
+The ALKiln folder contains these files and folders:
+
+- [report.txt](#report)
+- [debug_log.txt](#debug-log)
+- Copies of all [screenshots and HTML files](#error-pics) of pages all that caused errors
+- [Scenario folders](#scenario-artifacts) which have:
+<ScenarioDir/>
+
+
+[^text]: Name unknown [@Thinkwert]. (2021, Aug 19). *When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed.* [Tweet]. Twitter. https://twitter.com/Thinkwert/status/1428488345357856777
+[^img]: PerspectiveFriendly. "I'm waiting to bloom." Reddit, 08/29/2020, https://old.reddit.com/r/aww/comments/iit3ze/im_waiting_to_bloom/.
+
+
+### report.txt {#report}
+
+The report is the first place to look when a test fails. There are two places to find reports.
+
+1. Inside the main folder is the summary report containing all Scenario logs and results in one file
+1. In each Scenario folder is a report that only shows the logs and results for that test
+
+<!-- TODO: Scenario reports should also contain the report heading with the date and, in future, the version of ALKiln. -->
+
+The summary report is made up of multiple parts
+
+- The heading that includes the date of the test run
+- The "failed" Scenarios section that has the logs and results for each failed Scenario
+- The "passed" Scenarios section that has the logs and results for each passed Scenario
+
+A report might look something like this:
+
+<!-- TODO: Test failure in the middle of a Story Table Step -->
+
+```txt
+Assembly Line Kiln Automated Testing Report - Wed, 29 Dec 2021 17:49:00 GMT
+
+
+===============================
+===============================
+Failed scenarios:
+
+---------------
+Scenario: I dislike bears
+---------------
+Trying to load the interview at "https://server.org/interview?new_session=1&i=docassemble.playgroundplayground25BearNecessitiesmain1707019219591%3Abears_and_you.yml"
+screen id: bear_opinion
+      | likes_bears | False |
+
+ERROR: The question id was supposed to be "all done", but it's actually "favorite_bear_types".
+**-- Scenario Failed --**
+
+
+===============================
+===============================
+Passed scenarios:
+
+---------------
+Scenario: I like wild bears
+---------------
+Trying to load the interview at "https://server.org/interview?new_session=1&i=docassemble.playgroundplayground25BearNecessitiesmain1707019219591%3Abears_and_you.yml"
+screen id: bear_opinion
+Accessibility on direct-standard-fields passed!
+      | likes_bears | True |
+screen id: favorite_bear_types
+Accessibility on direct-standard-fields passed!
+      | favorite_bears | wild_bear |
+
+  Rows that got set:
+    And I get to the question id "screen features" with this data:
+      | var | value |
+      | likes_bears | True |
+      | favorite_bears | wild_bear |
+  Unused rows:
+      | user_climbing_speed | very fast |
+```
+
+:::caution Unused rows
+Even Scenarios that **pass** might have a section called "Unused rows" at the bottom of its part of the report, as you see above. [A Story Table will skip rows](#unused-rows) if it is unable to find any matching fields. That might mean that something actually did go wrong with the test.
+:::
+
+ALKiln currently only shows logs for some Steps, including:
+
+- [Accessibility checks](#a11y)
+- The [Story Table](#story-table) and ["I set"](#set) Steps
+- The ["get JSON" Step](#get-json)
+
+When you set variables, ALKiln will try to log the question ids for each page it comes to. Under each `screen id` will be the names of the variables whose fields ALKiln set and the values ALKiln set them to.
+
+<!-- TODO: In each Step section, say if it logs anything and, if so, show what that looks like -->
+
+We're always trying to understand what people would find helpful in these reports. Tell us about your experiences at https://github.com/SuffolkLITLab/ALKiln/issues.
+
+<!--
+TODO: put in Story Tables:
+
+If you used a [story table](#story-tables) Step, a Scenario might look more like this:
+
+```
+---------------
+Scenario: I fill in my name
+---------------
+screen id: user-name
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+
+  Rows that got set:
+    And I get to the question id "child information" with this data:
+      | var | value | trigger |
+      | user.name.first | Maru |  |
+      | user.name.last | Plaintiff |  |
+  Unused rows:
+      | defendant.name.first | Sam |  |
+      | defendant.name.last | Defendant |  |
+```
+
+Since story table Steps don't care about having extra unused rows, the report lets you know which rows did or did not get used. If rows are listed under "Unused rows", ALKiln couldn't find the fields for those variables during the test. Despite that, it was still able to get to the desired question id. You should check that section to make sure all your varibles got used.
+
+Rows are listed in alphabetical order. If you have thoughts on pros and cons, we'd love to hear from you.
+
+If everything looks right to you there, you can copy and paste the text under "Rows that got set" into your test to get rid of the extra rows you've got hanging around.
+-->
+
+
+### debug_log.txt {#debug-log}
+
+The debug_log.txt has the same content as [report.txt](#report), but a bit messier. It is messy because it writes the information right away, while the tests are actually running, instead of waiting to make them pretty at the end like the report does. This is so it can store the data immediately. If something goes wrong in the middle the tests, those logs will still be there. For example, you might stop the tests early. This way you should still get some data from whatever tests did run.
+
+<!-- TODO: Add link to stopping the test early in the playground into the #run section -->
+
+
+<!-- ### verbose_log.txt {#verbose-log} -->
+
+
+### Scenario folder {#scenario-artifacts}
+
+Each Scenario (test) has its own folder. A Scenario's folder contains its report, its errors, and the files you downloaded or created in that Scenario.
+
+The folder's name uses its Scenario description. That is one reason you should [make each Scenario description different](#scenario-descriptions). The folder contains:
+
+<ScenarioDir/>
+
+
+### Error pics and HTML {#error-pics}
+
+ALKiln will try to take pictures of pages that run into errors. They are like the pictures you take with the ["picture" Step](#pic). As you can read there, each time ALKiln takes a picture, it also saves the HTML of the page.
+
+ALKiln avoids making these files for pages that use [environment variables](#env-vars), even when they error, because environment variables can contain sensitive information.
+
+These error files are one of the first places to look for clues about what might have gone wrong.
+
+The files appear in 2 places:
+
+- Directly in the main folder. This is so you can have a quick look without digging through all the Scenario folders. Here the file names use the Scenario description and the id of the page where the error happened.
+- In the [Scenario folder](#scenario-artifacts). Here the file names use just the id of the page where the error happened.
+
+In those pictures you might see that a required file was missing, see why ALKiln was unable to continue to the next page, notice a missing phrase, or many other details. You can read more about [errors and troubleshooting in other documentation](troubleshooting.mdx).
+
+You can read more about these files in the section about the ["picture" Step](#pic).
 
 
 ## Tips {#tips}
 
-<!-- Something about unused rows? -->
+Some of these are just good practices to follow when coding your interviews.
 
-WIP
 
+### Question id {#id-tip}
+
+Add a [unique id](https://docassemble.org/docs/modifiers.html#id) to each `question` block of your interview. Those help make [some kinds of test output](#report) more clear.
+
+They have other uses too. [Block ids are helpful for docassemble features and caching issues](https://docassemble.org/docs/modifiers.html#id). They can also help your team communicate with each other about your code more easily.
+
+
+### Write unique Scenario descriptions {#scenario-descriptions}
+
+You write each Scenario's description in your [test files](#test-files). ALKiln includes those descriptions in the names of [test output folders](#scenario-artifacts), [error screenshot files](#error-pics), and [report](#report) headings, so try to write something different for each one - something that will help you later. It will help you identify what happened with each test.
+
+
+### Special HTML {#html-tip}
+
+If your package is leaving out the al_package.yml file from the Assembly Line package, make sure to add some [special ALKiln-specific HTML](#special-html) to your interview to let ALKiln work right.
+
+
+### Testing unfinished code {#unstable-tip}
+
+If you are still developing your interview, you can still write a [simple test](setup.mdx/#first-test) to make sure your interview at least loads without an error. You might want to wait till your code is more stable to write more tests.
+
+On the other hand, if there is a part of your interview that you think will stay pretty much the same, you can write tests that just go part-way through the interview to test just the stable part of the code. That way, you can work on adding more content and yet also be sure that the work you've already done stays working.
+
+
+### Recycle, reuse {#reuse-tip}
+
+Copy old Scenarios or Story Tables to help you make new ones. You don't have to make everything from scratch.
+
+
+### Values of choices {#choice-values-tip}
+
+In questions with choices, use both labels and values. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about those key-value pairs. The key is the label and the value is... the value ! You can use this for other fields with choices, like radio buttons.
+
+:::caution Unhelpful
+Just labels:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape
+      - Lilac
+```
+:::
+
+The test:
+
+```gherkin
+  And I set the variable "favorite_color" to "Lilac"
+```
+
+Every time you edit those labels to improve the text for your users, you will have to update the values in your tests:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape
+      - Dark lilac
+```
+
+The edited test:
+
+```gherkin
+  And I set the variable "favorite_color" to "Dark lilac"
+```
+
+:::tip Better
+Better with labels and values:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape: purple1
+      - Lilac: purple2
+```
+:::
+
+If your user chooses "Lilac", docassemble will set `favorite_color` to `purple2`.
+
+The test:
+
+```gherkin
+  And I set the variable "favorite_color" to "purple2"
+```
+
+When you have both labels and values you can edit what the user sees without worrying about your tests, so the tests are easier to maintain.
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - 🍇 Grape: purple1
+      - 🔮 Dark lilac: purple2
+```
+
+The test stays the same:
+
+```gherkin
+  And I set the variable "favorite_color" to "purple2"
+```
+
+The value can even be the same as the label if you want:
+
+```yaml
+fields:
+  - Favorite color: favorite_color
+    datatype: radio
+    choices:
+      - Grape: Grape
+      - Lilac: Lilac
+```
+
+:::tip
+As a bonus, using labels and values also makes your interview easier to translate. If you use only labels, translations will break your code.
+:::
+
+
+### Quotes {#quotes}
+
+Many blanks you need to fill in for Steps need to be inside [double quotation marks](https://www.compart.com/en/unicode/U+0022). You **must avoid** ever using double quotation marks inside those.
+
+This is usually fine for test authors. Read about [special characters](#special-chars) to learn why.
+
+
+### Special page characters {#special-chars}
+
+The text that docassemble shows the user - the text our tests need most often - is different than the text we write in our interview YAML file. Docassemble converts those characters to more semantically correct characters for the user. For example, in our code we write:
+
+```yml
+subquestion: |
+  This is called "relief"
+```
+
+That subquestion text uses the character `"`. The official name for this character is ["Quotation mark" and its unicode value is U+0022](https://www.compart.com/en/unicode/U+0022).
+
+When docassemble shows that page to the user, it changes the first `"` to a ["left double quotation mark" with a unicode value of U+201C](https://www.compart.com/en/unicode/U+201C): `“`. It changes the second `"` to a ["right double quotation mark" with a unicode value of U+201D](https://www.compart.com/en/unicode/U+201D): `”`
+
+The final text comes out looking more like this on the page:
+
+```
+This is called “relief”
+```
+
+They look similar to most humans, but computers think they look quite different.
+
+Docassemble does this for many other characters including single quotes and ellipses. It is best to copy/paste text your tests need **straight from the screen the user sees**.
+
+
+### Add a tag to each test {#add-tags}
+
+Add a [tag](#tags) to each of your tests so later you can pick specific tests to run. That way, if just one test is failing, you can avoid having to run all the tests just to find out what is going on in that one test.
+
+
+<!-- ### Something about unused rows? -->
 
 
 ## Frequently asked questions (FAQ) {#faq}
 
+Always ask more questions!
 
-### Do I have to set every variable in the interview? {#every-var}
 
-No, only required variables.
+### I have a private GitHub repository. Can I use ALKiln? {#private-repo}
+
+Yes, you can use ALKiln with a private repository, though you have to do a bit of extra work.
+
+1. Pick a GitHub account that has permission to change the private repository.
+1. Make sure the account on your docassemble server that you linked to the tests is integrated with the GitHub account. See [docassemble's documentation on integrating a GitHub account](https://docassemble.org/docs/packages.html#github).
+
+As that documentation explains, no two accounts on a docassemble server can be connected to the same GitHub account.
+
+Also, there are some [limits on the amount of time private repositories can use to run workflows](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)
+
+
+### Do I have to fill in every field? {#every-var}
+
+No. If you leave a required field blank, though, the test will get stuck on that page.
+
+
+### Will GitHub charge me? {#quota}
+
+It is unlikely you will run enough tests for GitHub to charge you. [GitHub's quota limits](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration) are very big, especially for public repositories.
+
+
+### Will ALKiln tests affect my analytics? {#analytics}
+
+No, none of the tests types can affect your analytics. <GTOYS/> and <AutoDIY/> tests both use interviews that are in the developer's Playground, not ones that are installed on your server. <KittyLitter/> tests run on their own isolated server, not your server, so your analytics software knows nothing about them.
+
+
+### Does ALKiln collect my data? {#no-data-collection}
+
+No, there is no way in which ALKiln collects your data or data from your tests. There are other services out of our control that do track your use of ALKiln. For example, GitHub keeps track of what repositories use ALKiln's code and [npm](https://www.npmjs.com/) keeps track of how many (unnamed) packages download ALKiln.
+
+On that note, who is still using ALKiln version 4.11.2?! Update!
+
+
+### ALKiln has a lot of open issues {#open-issues}
+
+That is very true.
+
+Some projects use issues just for bugs. We use ours for everything - ideas for enhancements, research, internal testing, documentation, discussions, and the list goes on. We have a lot of those with more coming in all the time, and not much time to work on them, so they do build up.
+
+Also bugs, of course. We take care of [security bugs](security.mdx#report) as soon as we find them. We take care of bugs that are having a big impact on our users as quickly as we can. We take care of smaller bugs when we have time, but sometimes spend that time on improving other parts of the project instead.
+
+<!-- Some projects close issues that are old, even when they are still relevant and actionable. That can keep things more tidy. If and when we have a project manager and they find that to be a  -->
+
+<!-- Some projects close issues that they are not planning to address immediately. We are currently making a different choice. -->
+
+<!-- This works for our current team. Having just one place to look saves us a lot of time and energy. Since we have limited resources, this is an important part of our workflow. -->
+
+We do wish it looked prettier, though.
+
+
+### Can I compare docx files? {#compare-docx}
+
+Not yet. You can use ALKiln to [compare PDF files](#compare-files) to make sure they have come out right, but not .docx files yet. It is on the list of features we want to build.
+
+
+<!--
+## Definitions
+
+(with links)
+
+test run: In the case of ALKiln, a workflow run that runs ALKiln tests.
+workflow run: A complete start, middle, and end of an automated GitHub process whose behavior was defined in a workflow file. In the case of ALKiln, a test run.
+workflow: A process that triggers and runs automatic GitHub behavior. In this case, triggers and runs ALKiln tests. Each workflow can have multiple jobs.
+workflow file: A file with code that defines what a workflow does.
+job: A job performs a set of actions in a workflow. Some kinds of data persist during that job. For example, a job can define some environment variables. Another job in that same file does not have access to those environment variables. A workflow can have multiple jobs. The jobs happen one after the other. The default ALKiln workflow file has only one job.
+
+-->
+
