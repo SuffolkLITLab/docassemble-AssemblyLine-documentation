@@ -96,11 +96,14 @@ This is an advanced method and we are happy to help you with it. It would help a
 1. Make a pull request to your default branch (probably `main`) to review the code and merge it in.
 
 :::caution
+
 ([Moving](security.mdx#sandbox))
+
 To use this method, avoid using hard-coded urls to go to a test interview. That is, avoid using `https://my-server.com` to navigate to interviews or other server pages. That will send the tests to your server.
 :::
 
 ([Moving](writing_tests.mdx#sandbox-optional-inputs))
+
 If you need to troubleshoot the docker setup because the step to start the GitHub server keeps failing, you can make the docker startup logs visible and allow ALKiln to create an artifact of the docker installation logs. Do this by passing the input `SHOW_DOCKER_OUTPUT` to ALKiln's GitHub server action, like our script (linked above) does for itself. The input arguments might look like the below:
 
 ```yml
@@ -110,6 +113,7 @@ If you need to troubleshoot the docker setup because the step to start the GitHu
 ```
 
 ([Moving](troubleshooting.mdx#docker-container))
+
 It's possible to do more docker troubleshooting using [the tmate action](https://github.com/marketplace/actions/debugging-with-tmate). You can see code for that in our workflow file as well.
 
 

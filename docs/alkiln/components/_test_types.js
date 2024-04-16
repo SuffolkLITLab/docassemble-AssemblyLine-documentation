@@ -13,7 +13,7 @@ export const GTOYS = (props) => {
 // Manually-Triggered on Your Server
 export const AutoDIY = (props) => {
   if ( props.plain === true ) {
-    return <span>AutoDIY™</span>
+    return <span>ALKilnInThePlayground™</span>
   } else {
     return <Link to="/docs/alkiln/setup#diy-details">ALKilnInThePlayground™</Link>
   }

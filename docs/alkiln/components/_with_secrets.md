@@ -1,3 +1,1 @@
-<!-- TODO: link to Mo'nique's story -->
-
-If you have an organization and want to use these values in multiple repositories, you can use organization GitHub secrets. In that case, your workflow file code would look more like this:
+If you have an organization and want to use these values in multiple repositories, you can use [organization GitHub secrets](/docs/alkiln/writing_tests.mdx#org-secrets). In that case, your workflow file code would look more like this:
