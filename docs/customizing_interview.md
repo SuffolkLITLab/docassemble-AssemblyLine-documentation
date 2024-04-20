@@ -76,7 +76,7 @@ Scroll through and take a look at the code. You will see:
   that are asked on each screen
 
 You do not need to understand all of the code. Absorb what you can, and feel free
-to experiment. Save your code often, preferably to a [GitHub](github.md) repository.
+to experiment. Save your code often, preferably to a [GitHub](/docs/github) repository.
 
 You will likely start by clicking the "Save and Run" button to try running your
 interview through to the end. Note any awkward wording or changes you want to make.
@@ -737,4 +737,4 @@ with the blinking cursor.
 If you want to discard your changes and start over, upload the package .ZIP file
 to your playground again. This will wipe out all of your changes.
 
-Use [GitHub](github.md) regularly to let you restore your work from a point in time.
+Use [GitHub](/docs/github) regularly to let you restore your work from a point in time.

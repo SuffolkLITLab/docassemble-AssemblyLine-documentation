@@ -48,7 +48,7 @@ Plan to spend about an hour in the Assembly Line Weaver.
 
 Almost all of your time will be in the refining and testing stage. You will take
 your draft output from the Weaver and start to [customize the
-output](customizing_interview.md). You should then share your work in progress regularly
+output](/docs/customizing_interview). You should then share your work in progress regularly
 with subject matter experts to check your assumptions and to refine the content.
 
 You may spend several months here, even for a small project. You should be able to

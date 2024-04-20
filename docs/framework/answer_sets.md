@@ -161,7 +161,7 @@ each interview by its author.
 ### Enabling answer sets
 
 Answer sets are not enabled by default. Enable the [configuration
-options](magic_variables.md#enable-or-disable-answer-sets) to turn on Answer
+options](magic_variables#enable-or-disable-answer-sets) to turn on Answer
 sets for your server.
 
 ### How answer sets are stored on the server

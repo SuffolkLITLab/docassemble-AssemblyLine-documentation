@@ -8,7 +8,7 @@ slug: /style_guide/question_style_sensitivities
 ## Respect your user
 
 This overlaps with the suggestions under [Respect and persuade your
-reader](style_guide_persuasive.md).
+reader](/docs/style_guide/respect).
 
 ## Provide choices that validate the user's identity
 
