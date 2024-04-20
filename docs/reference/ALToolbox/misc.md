@@ -5,10 +5,6 @@ title: ALToolbox.misc
 
 #### thousands
 
-```python
-def thousands(num: Union[float, str, Decimal], show_decimals=False) -> str
-```
-
 Return a whole number formatted with thousands separator.
 Optionally, format with 2 decimal points (for a PDF form with the
 currency symbol already present in the form)
@@ -18,21 +14,9 @@ rounding to the closest int.
 
 #### tel
 
-```python
-def tel(phone_number) -> str
-```
-
 Format a phone number so you can click on it to open in your phone dialer
 
 #### fa\_icon
-
-```python
-def fa_icon(icon: str,
-            color="primary",
-            color_css=None,
-            size="sm",
-            fa_class="fa-solid") -> str
-```
 
 Display a fontawesome icon inline.
 
@@ -52,6 +36,7 @@ you more control over the icon that is inserted.
   `md`, `lg`, `xl`, `2x1`, and the python `None`, which defaults to `md`.
 - `fa_class` - let&#x27;s you specify the fontawesome class, needed for any icon that isn&#x27;t
   the default class of `fa-solid`, like `fa-brands`, or `fa-regular` and `fa-light`.
+- `aria_hidden` - if True, adds `aria-hidden="true"` to the icon, which is the default
   
 
 **Returns**:
@@ -60,115 +45,68 @@ you more control over the icon that is inserted.
 
 #### space
 
-```python
-def space(var_name: str, prefix=" ", suffix="") -> str
-```
-
 If the value as a string is defined, return it prefixed/suffixed. Defaults to prefix
 of a space. Helps build a sentence with less cruft. Equivalent to SPACE function in
 HotDocs.
 
 #### yes\_no\_unknown
 
-```python
-def yes_no_unknown(var_name: str,
-                   condition: Optional[bool],
-                   unknown="Unknown",
-                   placeholder=0)
-```
-
 Return &#x27;unknown&#x27; if the value is None rather than False. Helper for PDF filling with
 yesnomaybe fields
 
 #### number\_to\_letter
-
-```python
-def number_to_letter(n: Optional[int]) -> str
-```
 
 Returns a capital letter representing ordinal position. E.g., 1=A, 2=B, etc. Appends letters
 once you reach 26 in a way compatible with Excel/Google Sheets column naming conventions. 27=AA, 28=AB...
 
 #### collapse\_template
 
-```python
-def collapse_template(template,
-                      classname=None,
-                      closed_icon="caret-right",
-                      open_icon="caret-down")
-```
-
 Insert HTML for a Bootstrap &quot;collapse&quot; div.
 
 Optionally, you can specify a custom icon to override the defaults:
 
-The default icons are "right caret" which displays when the text is collapsed (`closed_icon`) and
-"down caret" which displays when the text is open (`open_icon`).
+The default icons are &quot;right caret&quot; which displays when the text is collapsed (`closed_icon`) and
+&quot;down caret&quot; which displays when the text is open (`open_icon`).
 
 #### tabbed\_templates\_html
-
-```python
-def tabbed_templates_html(tab_group_name: str, *pargs) -> str
-```
 
 Provided a list of templates, create Bootstrap v 4.5 tabs with the `subject` as the tab label.
 
 #### review\_widget
-
-```python
-def review_widget(
-        *,
-        up_action: str,
-        down_action: str,
-        review_action: Optional[str] = None,
-        thumbs_display: str = "Did we help you?",
-        review_display: str = "Thanks! Let us know what we could do better",
-        submit_review_button: str = "Add your review",
-        post_review_display: str = "Thank you for your review!") -> str
-```
 
 A widget that allows people to give a quick review (thumbs up and down, with an optional text
 component) in the middle of an interview without triggering a page reload.
 
 If `review_action` is provided, once you press either of the thumbs, a text input screen with
 a submit button appears, and once the text review is submitted (or after the thumbs, if no
-`review_action` was provided), a final &quot;thank you&quot; messsage is displayed.
+`review_action` was provided), a final &quot;thank you&quot; message is displayed.
 
-@param up_action {string} - the variable name of an event to be executed on the server if the
-thumbs up is pressed
-@param down_action {string} - the variable name of an event to be executed on the server i
-the thumbs down is pressed
-@param (optional) review_action {string} - the variable name of an event to be execute on the
-server when someone submits their text review
-@param (optional) thumbs_display {string} - text displayed to user describing the thumbs
-@param (optional) review_display {string} - text displayed to user describing the text input
-@param (optional) submit_review_button {string} - text on the button to submit their text review
-@param (optional) post_review_display {string} - text displayed to user after review is
-submitted
+**Arguments**:
+
+- `up_action` - the variable name of an event to be executed on the server if the
+  thumbs up is pressed
+- `down_action` - the variable name of an event to be executed on the server if the
+  thumbs down is pressed
+- `review_action` - the variable name of an event to be execute on the
+  server when someone submits their text review
+- `thumbs_display` - text displayed to user describing the thumbs
+- `review_display` - text displayed to user describing the text input
+- `submit_review_button` - text on the button to submit their text review
+- `post_review_display` - text displayed to user after review is submitted
+
+**Returns**:
+
+  the HTML string of the widget
 
 #### sum\_if\_defined
-
-```python
-def sum_if_defined(*pargs)
-```
 
 Lets you add up the value of variables that are not in a list
 
 #### add\_records
 
-```python
-def add_records(obj, labels)
-```
-
 List demo interviews in the current package to be run from the landing page
 
 #### output\_checkbox
-
-```python
-def output_checkbox(value_to_check: bool,
-                    checked_value: str = "[X]",
-                    unchecked_value: str = "[  ]")
-```
 
 Generate a conditional checkbox for docx templates
 
@@ -180,10 +118,33 @@ Generate a conditional checkbox for docx templates
 
 #### nice\_county\_name
 
-```python
-def nice_county_name(address: Address) -> str
-```
-
 If the county name contains the word &quot;County&quot;, which Google Address
 Autocomplete does by default, remove it.
+
+#### button\_array
+
+Create a grid of da-buttons from a dictionary of links and icons
+
+This uses the same CSS classes to mimic the look and feel of Docassemble&#x27;s `buttons` field type, but
+doesn&#x27;t have the limits of that particular input method. This is meant to appear
+on any page of an interview in the `subquestion` area.
+
+Optionally, you can limit access to paricular buttons by specifying a privilege or a list
+of privileges.
+
+**Arguments**:
+
+- `button_list` - a dictionary of ButtonDicts (or plain dictionaries) with the following keys:
+  - `name`: the text to display on the button
+  - `image`: the name of a fontawesome icon to display on the button
+  - `url`: the name of the page to link to
+  - `privilege`: optional, the name of a Docassemble privilege that the user must have to see the button. Can be a list or a single string.
+  
+- `custom_container_class` - optional, a string of additional CSS classes to add to the container div
+- `custom_link_class` - optional, a string of additional CSS classes to add to each link
+  
+
+**Returns**:
+
+  HTML for a grid of buttons
 

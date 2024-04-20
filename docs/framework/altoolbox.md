@@ -41,10 +41,9 @@ your interviews.
 
 It works a lot like this `details` element:
 
-<details><summary>Like this</summary>
-<p>
-Context-specific help goes here.
-</p>
+<details>
+  <summary>Like this</summary>
+  Context-specific help goes here.
 </details>
 
 To include this in your interview:
@@ -238,8 +237,8 @@ Example:
 
 <Tabs>
   <TabItem value="DOCX Template" label="DOCX Template" default>
-
-![The following income and deductions are {{output_checkbox(is_monthly) }} monthly {{ output_checkbox(is_yearly) }} yearly FOR THE YEAR {{ today(format='YYYY') }}.](../assets/output_checkbox_example_pic.png)
+The following income and deductions are \{{ output_checkbox(is_monthly) }} monthly \{{ output_checkbox(is_yearly) }} yearly FOR THE YEAR \{{ today(format='YYYY') }}.
+![(screenshot)](../assets/output_checkbox_example_pic.png)
 
   </TabItem>
   <TabItem value="Docassemble Code" label="Docassemble Code">

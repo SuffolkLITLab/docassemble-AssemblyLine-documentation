@@ -12,17 +12,18 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.4.0",
-    "@docusaurus/mdx-loader": "^2.4.0",
-    "@docusaurus/plugin-client-redirects": "^2.4.0",
-    "@docusaurus/plugin-google-gtag": "^2.4.0",
-    "@docusaurus/plugin-ideal-image": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
-    "@easyops-cn/docusaurus-search-local": "^0.27.0",
-    "@mdx-js/react": "^1.6.21",
+    "@docusaurus/core": "^3.2.1",
+    "@docusaurus/mdx-loader": "^3.2.1",
+    "@docusaurus/plugin-client-redirects": "^3.2.1",
+    "@docusaurus/plugin-google-gtag": "^3.2.1",
+    "@docusaurus/plugin-ideal-image": "^3.2.1",
+    "@docusaurus/preset-classic": "^3.2.1",
+    "prism-react-renderer": "^2.1.0",
+    "@easyops-cn/docusaurus-search-local": "^0.40.1",
+    "@mdx-js/react": "^3.0",
     "clsx": "^1.1.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "browserslist": {
     "production": [

@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - run: pip install docspec_python==2.0.2 pydoc-markdown==4.6.4
+      - run: pip install docspec_python==2.0.2 git+https://github.com/nonprofittechy/pydoc-markdown
       - uses: actions/checkout@v3
         with:
           path: docs
