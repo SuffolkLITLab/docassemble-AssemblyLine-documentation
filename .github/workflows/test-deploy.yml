@@ -41,7 +41,7 @@ jobs:
           pydoc-markdown
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 20
           cache: npm
           cache-dependency-path: docs/package-lock.json
       - name: Test build
