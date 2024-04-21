@@ -88,6 +88,10 @@ module.exports = {
           {
             from: '/docs/automated_integrated_testing',
             to: '/docs/alkiln'
+          },
+          {
+            from: ['/docs/','/docs'],
+            to: '/docs/intro'
           }
         ]
       }
