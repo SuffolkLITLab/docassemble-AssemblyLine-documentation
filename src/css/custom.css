@@ -27,6 +27,12 @@
   --ifm-footer-padding-vertical: 15px;
 }
 
+article a {
+  text-decoration: underline;
+  text-decoration-thickness: 0.04em;
+  text-underline-offset: 0.3em;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
