@@ -90,9 +90,9 @@ module.exports = {
             to: '/docs/alkiln'
           },
           {
-            from: ['/docs/','/docs'],
-            to: '/docs/intro'
-          }
+            from: '/docs/intro',
+            to: '/docs/'
+          },
         ]
       }
     ]
