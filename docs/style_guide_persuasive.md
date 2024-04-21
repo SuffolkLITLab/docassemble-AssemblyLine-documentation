@@ -37,7 +37,7 @@ Jane, you can do this!
 Your phone number
 :::
 
-:::caution Indirect address
+:::warning Indirect address
 Plaintiff's phone number
 :::
 

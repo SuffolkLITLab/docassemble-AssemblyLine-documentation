@@ -16,7 +16,7 @@ import { ScenarioDir } from './components/\_scenario_folder_contents.js';
 import { RobotStage } from './components/\_robot_stage.js';
 
 
-:::caution
+:::warning
 WIP (Work in progress)
 :::
 
@@ -134,7 +134,7 @@ Example with url arguments ([url_args](https://docassemble.org/docs/special.html
 
 You can also instead use the full url of the interview, though we recommend you avoid that. For example, one advantage to using the file name instead of the full url is that you can then still use the <KittyLitter/> test method to run those tests on GitHub.
 
-:::caution Before setting fields
+:::warning Before setting fields
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
 :::
 
@@ -333,7 +333,7 @@ This Step is flexible, which makes the test easier to maintain. The order of the
 
 ALKiln sets a table variable every time it finds that variable on a page, no matter how many times that variable appears in your interview.
 
-:::caution .there_is_another
+:::warning .there_is_another
 Avoid using `.there_is_another` in your Story Table. Read about [what to use instead](#there-is-another).
 :::
 
@@ -343,7 +343,7 @@ Right now, Story Tables are unable to use environment variables to fill in answe
 
 <!-- TODO: Why are our warnings red instead of yellow -->
 
-:::caution Unused rows
+:::warning Unused rows
 The Story Table does not care about extra rows that never get used. This can make Story Tables easier to write, but it also means that the tests will technically "pass" even if variables that *should* get set are never filled in.
 
 That can be a sign that a question that the user *should* have seen got skipped or that there is a typo or mistake in the test.
@@ -448,7 +448,7 @@ A lot of authors use this Step to set answers with sensitive information, like a
 
 <SecureEnvVars/>
 
-:::caution Not for sign in
+:::warning Not for sign in
 This Step is unable to sign into your docassemble server. You **must** use [the "sign in" Step](#sign-in) to sign in to your docassemble server.
 :::
 
@@ -511,7 +511,7 @@ If the file is a PDF file, you can use the ["compare files" Step](#compare-files
 
 <!-- TODO: Add "not done downloading" to troubleshooting.mdx -->
 
-:::caution Unfinished downloads
+:::warning Unfinished downloads
 Currently, ALKiln is unable to tell when a file has actually finished downloading, so it runs the download Step for about twice the [maximum seconds allowed for a Step](#custom-timeout) no matter what. If a download takes longer than the current maximum seconds value, the test will not fully download the file[^d-time].
 
 If you think downloading the file will take more than 60 seconds, use the ["max seconds" Step](#custom-timeout) to give the file more time to download. The "download" Step will use the the full amount of time that you give it.
@@ -615,7 +615,7 @@ The Step format:
 
 The blank to fill in here is `<tab html id>` - the text of the HTML id attribute of the tab.
 
-:::caution Not a selector
+:::warning Not a selector
 `<tab html id>` is **not a selector**. Unlike the other "tap" Steps, **leave out the `#` symbol** (like the example shows).
 :::
 
@@ -633,7 +633,7 @@ Example:
 
 You can use the "wait" Step after the previous Step has completely finished to tell ALKiln to wait before going to the next Step.
 
-:::caution Not for loading
+:::warning Not for loading
 In most cases, this Step is unable to help the test wait longer for a page to finish loading. To give a page time to load, use the ["max seconds" Step](#custom-timeout).
 :::
 
@@ -804,7 +804,7 @@ Example Story Table Step:
 
 The last example makes sure that the date is 10 years in the past, ensuring that a minor always stays a minor for that test.
 
-:::caution Avoid boundary dates
+:::warning Avoid boundary dates
 Be careful with `today` math. If you are testing a "boundary" date, you want to pick a date that is well within a boundary to make the test more robust. For example, if you want to test a date that was 10 or fewer days ago, use `today - 9` instead of `today - 10`.
 
 At some point your tests might run over night and hit midnight right in the middle of the test - after ALKlin fills in the answer, but before the interview finishes. In that situation, if ALKiln answered the question with `today - 10` the clock would tip into the next day by the end of the interview - 11 days from the filled-in date. Your test would fail incorrectly.
@@ -997,7 +997,7 @@ or, in a Story Table:
 ```
 :::
 
-:::caution Eagle eye
+:::warning Eagle eye
 Especially notice the quotes just inside the first square brackets.
 :::
 
@@ -1146,7 +1146,7 @@ First ALKiln will compare all of the text in the PDFs. Then ALKiln will compare 
 
 Use the "phrase" Step to check that specific text is visible on the page. You can also make sure that text that should NOT be visible is indeed absent.
 
-:::caution Missing phrases
+:::warning Missing phrases
 Getting some text characters right can be tricky with interview pages. If you get told ALKiln cannot find a phrase, read about [possible reasons for missing phrases](troubleshooting.mdx#missing-phrase) in the troubleshooting documentation.
 :::
 
@@ -1196,7 +1196,7 @@ The Step format:
 
 The first blank to fill in for this Step is `<variable name>` which is the name of the variable that is in the JSON variables and values data of the page. The second blank to fill in is `<value>`, which is the value you want the variable to have. The value **must** be a string (text).
 
-:::caution Only flat values
+:::warning Only flat values
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not an attribute like `user.affidavit`.
 :::
 
@@ -1768,7 +1768,7 @@ on:
 
 The [pull request trigger can have various values](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request), but leaving it empty uses the default values. We have only ever needed the defaults and pull request values can be confusing to customize.
 
-:::caution Double trouble
+:::warning Double trouble
 If you use <GTOYS/> tests and decide to trigger tests with both `push` and `pull_request` you need to make sure that you avoid triggering both at the same time. When someone makes a pull request, changes some code, and then pushes to that pull request, both triggers will be... triggered. This is unnecessary and can cause <GTOYS/> tests to fail.
 
 Use code like this to avoid running double tests:
@@ -2369,7 +2369,7 @@ Accessibility on direct-standard-fields passed!
       | user_climbing_speed | very fast |
 ```
 
-:::caution Unused rows
+:::warning Unused rows
 Even Scenarios that **pass** might have a section called "Unused rows" at the bottom of its part of the report, as you see above. [A Story Table will skip rows](#unused-rows) if it is unable to find any matching fields. That might mean that something actually did go wrong with the test.
 :::
 
@@ -2477,7 +2477,7 @@ If your package is leaving out the al_package.yml file from the Assembly Line pa
 
 ### Testing unfinished code {#unstable-tip}
 
-If you are still developing your interview, you can still write a [simple test](setup#.mdx#first-test) to make sure your interview at least loads without an error. You might want to wait till your code is more stable to write more tests.
+If you are still developing your interview, you can still write a [simple test](setup#first-test) to make sure your interview at least loads without an error. You might want to wait till your code is more stable to write more tests.
 
 On the other hand, if there is a part of your interview that you think will stay pretty much the same, you can write tests that just go part-way through the interview to test just the stable part of the code. That way, you can work on adding more content and yet also be sure that the work you've already done stays working.
 
@@ -2491,7 +2491,7 @@ Copy old Scenarios or Story Tables to help you make new ones. You don't have to 
 
 In questions with choices, use both labels and values. See [docassemble's documentation on buttons](https://docassemble.org/docs/fields.html#field%20with%20buttons) to read about those key-value pairs. The key is the label and the value is... the value ! You can use this for other fields with choices, like radio buttons.
 
-:::caution Unhelpful
+:::warning Unhelpful
 Just labels:
 
 ```yaml

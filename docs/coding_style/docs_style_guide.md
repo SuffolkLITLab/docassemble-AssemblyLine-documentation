@@ -198,7 +198,7 @@ This is important
 
 :::
 
-:::caution
+:::warning
 
 This is a caution
 

@@ -116,7 +116,7 @@ See the GitHub docs about:
 
 You can also see [the docassemble docs on how to create new Projects](https://docassemble.org/docs/playground.html#projects).
 
-:::caution
+:::warning
 Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packages-pascalcase) or you will get an error: a unique name that starts with an alphabetical letter and uses only alphanumeric characters.
 :::
 <!-- (TODO: Add link to creating a package) -->
@@ -207,7 +207,7 @@ A docassemble **Package** bundles code, metadata, dependencies, and your PDF's o
 
 Also see docassemble docs about [pushing a Package to GitHub by committing](https://docassemble.org/docs/packages.html#github) and [about Packages in general](https://docassemble.org/docs/packages.html).
 
-:::caution
+:::warning
 Sometimes docassemble will not create a new repository on GitHub. If your Package name matches the name of a Package that is already in your GitHub repository or in a repository of an organization you belong to, docassemble will try to push to that repository instead of creating a new repository.
 
 In most cases, you will get a "merge conflict" error when this happens.
@@ -269,7 +269,7 @@ If your organization has teams, pick which teams can have access to this reposit
 
 Check your organization's GitHub page to make sure your project appears there. You may have to ask give the administrator the new link to the repository and ask them to [give the rest of the team permissions on it](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository).
 
-:::caution
+:::warning
 If you get a pink error message that says you don't have permissions, you have not been [added as a member of that GitHub organization](#join_your_organization).
 
 ![Cannot transfer repo](./assets/github_cannot_transfer.png)

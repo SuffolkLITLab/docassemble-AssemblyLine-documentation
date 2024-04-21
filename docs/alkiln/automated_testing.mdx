@@ -95,7 +95,7 @@ This is an advanced method and we are happy to help you with it. It would help a
 1. See that the tests pass.
 1. Make a pull request to your default branch (probably `main`) to review the code and merge it in.
 
-:::caution
+:::warning
 
 ([Moving](security.mdx#sandbox))
 
@@ -222,7 +222,7 @@ You can write a Story Table that goes all the way through your interview, or a S
 
 Right now, Story Tables are unable to use GitHub secrets to set variables.
 
-:::caution
+:::warning
 A Story Table Step **must not** be the first step in your Scenario. The [`interview` Step](#starting-steps) **must** come before it.
 :::
 
@@ -479,7 +479,7 @@ _Establishing Steps that you might use as the first few lines of a "Scenario" - 
 
 ([Moving](writing_tests.mdx#start-interview))
 
-:::caution
+:::warning
 You **must** include the `interview` Step in each Scenario **before setting any fields**.
 :::
 
@@ -643,7 +643,7 @@ that the test runner sees.
 
 The `text in JSON` Step can check that a variable on the page has a specific text value. **This is a multi-line step**. It will also save a copy of all of the page's JSON variables to a file that starts with 'json_for' followed by the question's id. The JSON variables are the same variables that you would see in [the docassemble sources tab](https://docassemble.org/docs/errors.html#tocAnchor-1-1).
 
-:::caution
+:::warning
 This step is unable to check values of nested objects. For example, it can test the value of a variable like `user_affidavit`, but not an attribute like `user.affidavit`.
 :::
 
@@ -767,7 +767,7 @@ This is a complex Step to use and currently only works with tests running in Git
     I set the variable "user_account_password" to the GitHub secret "USER1_PASSWORD"
 ```
 
-:::caution
+:::warning
 You **MUST** use [the `log in` Step](#log-in-step) if you want to sign into your docassemble server. The `secret variables` Step shown here is unable to do that.
 :::
 

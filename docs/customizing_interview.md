@@ -42,7 +42,7 @@ your interview, work steadily to make it better.
 When you have finished using the Weaver, download your package. This will put a
 .zip file in the Downloads folder on your computer.
 
-:::caution If you are using Safari on a Mac OS computer
+:::warning If you are using Safari on a Mac OS computer
 Safari, by default, will turn your downloaded package into
 a folder on your PC.
 

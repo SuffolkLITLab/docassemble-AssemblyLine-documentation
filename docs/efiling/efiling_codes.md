@@ -10,7 +10,7 @@ Codes are how Tyler Technologies handles the complexity of case categories,
 case types, filing types, and party types. Each code is a number along with
 a human readable name, like "210" and "Family" for the family case category.
 
-:::caution
+:::warning
 This e-filing functionality is being updated often, so this documentation might be out of date.
 If anything is incorrect or doesn't work as expected, feel free to email us at
 [massaccess@suffolk.edu](mailto:massaccess@suffolk.edu).
