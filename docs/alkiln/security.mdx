@@ -82,7 +82,7 @@ Categories:
 [Not sure of this either. When you choose to use a tool, that gives you some software you are using. Additional packages are additional risk] Unnecessary: Everything is unnecessary. It is different. Unnecessary code is harder to know what that is. [Unnecessary = stuff that production doesn’t need to function]
 - [x] None of them can disrupt analytics. Ones on your server work in the playground. Ones that are server installed are in the sandbox. ~~Can disrupt analytics.~~
 - [x] [Don't remember where this was from] “Critical” is not clear. No real info.
-- [x] Databases. Give example, Like google spreadsheets that have real info. Including old databases. (Databases or a copy of real data)
+- [x] Databases. Give example, Like Google spreadsheets that have real info. Including old databases. (Databases or a copy of real data)
 - [x] [Not sure where this was supposed to go] “To actual user info” or old user info.
 - [x] ~~[Not found any links so far]~~ Maybe link to good external reference describing dangers of using old user info. No suggestions
 
@@ -143,7 +143,7 @@ Personal incentives are also a factor, but words on a page will not capture them
 
 ## Principle of least privilege {#privilege}
 
-Follow the [principle of least privilege](https://www.cyberark.com/what-is/least-privilege/). That means give software (or people) the least access possible to your server and data while still letting them do what they need to do. For example, if someone just needs to fill out an interview, give them the [role](https://docassemble.org/docs/users.html) of "user", not "developer". If someone needs to develop interviews, give them the role of "developer", not "admin".
+Follow the [principle of least privilege](https://www.cyberark.com/what-is/least-privilege/). That means we should give software (or people) the least access possible to your server and data while still letting them do what they need to do. For example, if someone just needs to fill out an interview, give them the [role](https://docassemble.org/docs/users.html) of "user", not "developer". If someone needs to develop interviews, give them the role of "developer", not "admin".
 
 It is one of the most effective ways to protect yourself and your users. Only give ALKiln the access it needs and no more.
 
@@ -158,7 +158,7 @@ If you are worried you have already shown sensitive information in your GitHub t
 
 Using a separate testing server and separate testing data are some of the most effective ways to limit ALKiln's access to personal and security-critical data.
 
-There are some kinds of tests that projects run on their production server, but ALKiln is in a different category of tests. Limiting ALKiln's access means it:
+There are some kinds of tests that packages run on their production server, but ALKiln is in a different category of tests. Limiting ALKiln's access means that it:
 
 - Never has access to actual user information
 - Never has access to your production server's security-critical data like configuration tokens
@@ -181,14 +181,14 @@ A separate server is only one part of separating production and testing sever ac
 
 **This is for**: Everyone
 
-Determined people can do a lot with very little data. For example, they can [use even anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is [old data](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/). If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
+Determined people can do a lot with very little data. For example, they can [even use anonymized data](https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt) to identify your users. Avoid giving your ALKiln tests access to real data, even if it is [old data](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/). If you need help creating fake data, sites or tools like https://cobbl.io/ might be useful.
 
 If your test needs a logged-in user, avoid using a real person's account. Instead, use [ALKiln's account](#test-accounts) or a completely separate fake account.
 
 Never use a database with real information with your tests, even old information. For example:
 
-- Never share data between your production server and your testing server. For example, if your production server uses a google spreadsheet to store some user or server data, create a separate google spreadsheet with fake data for your testing server.
-- Never use old databases. Some projects realize that they should avoid using their current user database for testing. Instead, they decide use an old database. Avoid that as well. Even if the data seems so old that it is useless, it can still [expose you and your users](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
+- Never share data between your production server and your testing server. For example, if your production server uses a Google spreadsheet to store some user or server data, create a separate Google spreadsheet with fake data for your testing server.
+- Never use old databases. Some projects realize that they should avoid using their current user database for testing. Instead, they decide to use an old database. Avoid that as well. Even if the data seems so old that it is useless, it can still [expose you and your users](https://www.wired.com/2015/11/samy-kamkar-10-dollar-tool-can-guess-and-steal-your-next-credit-card-number/).
 
 
 ### Make accounts just for tests {#test-accounts}
@@ -201,11 +201,11 @@ Even though you are using a [testing server](#testing-server), avoid giving ALKi
 
 <!-- TODO: Move to creating an account section when it exists: If you use <GTOYS/> tests, you need to put those values in your GitHub secrets. If you lose the sign-in information for that account, delete it, create a new one, and update the secrets. -->
 
-Only give ALKiln an account if necessary. Make sure no one else uses the account. Give that account [a role with only the privileges it needs](#alkiln_role) and no more. Also avoid giving it other real data or access. For example, avoid giving it any real person's name and avoid giving it GitHub integration.
+Only give ALKiln an account if necessary. Make sure no one else uses the account. Give that account [a role with only the privileges it needs](#alkiln_role) and no more. Also, avoid giving it other real data or access. For example, avoid giving it any real person's name and avoid giving it GitHub integration.
 
 We usually call the ALKiln user "automated_tests" and give it the email "automated_tests@example.com" with a secure password.
 
-The <GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. That is the "developer" role. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign into an account before going to an interview.
+The <GTOYS/> tests need to be connected to a docassemble account with the [right role](#alkiln_role) (permissions) to work properly. That is the "developer" role. Even if you are using another type of test, though, your tests may need an account. For example, you may want a test to sign in to an account before going to an interview.
 
 If you do need an account to sign in before a test, think of that account as a separate account because you might be able to give that account even less access. If the sign-in account can just be a user, make a new account just for signing in that just has a "user" role.
 
@@ -251,7 +251,7 @@ Even after keeping personal and security-critical data away from [the account th
 
 **This is for:** Everyone
 
-Avoid putting personal or security-critical information in your package's files. It is possible that someone will see those files. For example, if you have a pubic repository on GitHub, anyone can see your package's files.
+Avoid putting personal or security-critical information in your package's files. It is possible that someone will see those files. For example, if you have a public repository on GitHub, anyone can see your package's files.
 
 If you need to use sensitive information in your tests:
 
@@ -298,7 +298,7 @@ These are the only people that can create [GitHub secrets](writing_tests.mdx#sec
 
 Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](writing_tests.mdx#secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-diy).
 
-1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set one or more GitHub secrets. You can add these to one repository's secrets or you can add these to your organization's secrets[^org_secrets], whichever is right for you.
+1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set up one or more GitHub secrets. You can add these secrets to one secrets or you can add these to your organization[^org_secrets], whichever is right for you.
 2. [Find your workflow file](writing_tests.mdx#workflows-where).
 3. It should include a line that looks similar to this:
 
@@ -360,7 +360,7 @@ We recommend that you start your environment variable names with "ALKILN_". That
 
 <SecureEnvVars/>
 
-Right now Story Tables are unable to use [workflow environment variables](writing_tests.mdx#env-vars) to fill in fields.
+Right now, Story Tables are unable to use [workflow environment variables](writing_tests.mdx#env-vars) to fill in fields.
 
 
 <!-- TODO: Move this to writing_tests.mdx #env-vars -->
@@ -388,7 +388,7 @@ alkiln:
   ALKILN_USER_PASSWORD: 123password
 ```
 
-The use that environment variable name in your test. For example:
+Then use that environment variable name in your test. For example:
 
 ```gherkin
   And I set the variable "very_secure_password" to "ALKILN_USER_PASSWORD"
@@ -398,7 +398,7 @@ We recommend that you start your environment variable names with "ALKILN_". That
 
 <SecureEnvVars/>
 
-Right now Story Tables are unable to use [workflow environment variables](writing_tests.mdx#env-vars) to fill in fields.
+Right now, Story Tables are unable to use [workflow environment variables](writing_tests.mdx#env-vars) to fill in fields.
 
 
 ### <!-- GitHub Sandbox --> <KittyLitter/> tests {#sandbox}
@@ -407,7 +407,7 @@ Right now Story Tables are unable to use [workflow environment variables](writin
 
 The <KittyLitter/> are very secure if you use them correctly. You still have to take some care.
 
-Avoid using urls in your test that lead to your server. That is, avoid using `https://my-server.com` or `https://testing.my-server.com` and interviews there or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that makes the <KittyLitter/> method so useful. Using urls like that makes the tests less secure again.
+In your tests, avoid using urls that lead to your server. That is, avoid using `https://my-server.com` or `https://testing.my-server.com` and interviews there or other pages there. That kind of url will send the tests to your server, which escapes the sandbox that makes the <KittyLitter/> method so useful. Using urls like that makes the tests less secure again.
 
 You also still have to avoid saving personal or security-critical information in public files and follow other security precautions, like the ones described in this documentation.
 
@@ -447,7 +447,7 @@ Is it possible to use string substitution in GitHub workflow `uses`? [Answer: Lo
 
 To control which version of ALKiln is running your tests on GitHub, you can manually set the exact version you want. That is called "freezing" the version. Then, when you are ready, you can look at what has changed and decide which version you want to update to.
 
-By default ALKiln runs your tests with its latest version. This means you have all the latest bug fixes and new features. Some organizations choose to use a version that has code and behavior that is familiar and comfortable to them.
+By default, ALKiln runs your tests with its latest version. This means you have all the latest bug fixes and new features. Some organizations choose to use a version that has code and behavior that is familiar and comfortable for them.
 
 ALKiln is actually made of 2 parts. One part is the ALKiln framework, which lets you control the robot that goes to your interview and fills in answers. Another part of ALKiln is its GitHub actions, which manage setting up, starting, and cleaning up the tests.
 
@@ -455,7 +455,7 @@ Because of factors out of our control, each of these parts has a different way t
 
 1. Find the semantic version that you want.
    1. Look at the ["git blame" for our package.json](https://github.com/SuffolkLITLab/ALKiln/blame/-/package.json).
-   1. Find the 3rd line down. It should be the line that shows ALKiln's version.
+   1. Find the 3rd line. It should be the line that shows ALKiln's version.
    1. To [see the previous version](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#viewing-the-line-by-line-revision-history-for-a-file), you can tap on this symbol: <svg ariaHidden="true" focusable="false" role="img" className="octicon octicon-versions" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style={{display: "inline-block", "user-select": "none", "vertical-align": "text-bottom", overflow: "visible",}}><path d="M7.75 14A1.75 1.75 0 0 1 6 12.25v-8.5C6 2.784 6.784 2 7.75 2h6.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14Zm-.25-1.75c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25h-6.5a.25.25 0 0 0-.25.25ZM4.9 3.508a.75.75 0 0 1-.274 1.025.249.249 0 0 0-.126.217v6.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.75 1.75 0 0 1 3 11.25v-6.5c0-.649.353-1.214.874-1.516a.75.75 0 0 1 1.025.274ZM1.625 5.533h.001a.249.249 0 0 0-.126.217v4.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.748 1.748 0 0 1 0 10.25v-4.5a1.748 1.748 0 0 1 .873-1.516.75.75 0 1 1 .752 1.299Z"></path></svg>
    1. Go back in history by tapping on that symbol until you find the version you are looking for. For example, `5.8.0`.
 1. Find the matching commit id.
@@ -464,7 +464,7 @@ Because of factors out of our control, each of these parts has a different way t
 1. Set both versions.
    1. [Find your workflow file](writing_tests.mdx#workflows-where).
    2. Tap to [edit the file](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
-   3. Go to the lines that look similar to the below.
+   3. Go to the lines that look similar to the ones below.
 
 ```yml
         uses: SuffolkLITLab/ALKiln@v5
@@ -473,7 +473,7 @@ Because of factors out of our control, each of these parts has a different way t
           DOCASSEMBLE_DEVELOPER_API_KEY: "${{ secrets.DOCASSEMBLE_DEVELOPER_API_KEY }}"
 ```
 
-   4. Replace `v5` with the commit id you found. For example `a29519914ffc235802be9b9b143d78ffc3a06028`.
+   4. Replace `v5` with the commit id you found. For example, `a29519914ffc235802be9b9b143d78ffc3a06028`.
    1. Add a line below `DOCASSEMBLE_DEVELOPER_API_KEY`. The indentation level should be the same as ` DOCASSEMBLE_DEVELOPER_API_KEY`.
    1. Add the text `ALKILN_VERSION: ""`
    1. Between the quotes, put the semantic version that matches the commit id. For example, `5.8.0`.
@@ -507,14 +507,14 @@ Update your tools, especially when that update includes a security fix. Security
 
 Choosing when to update to the latest version of software can be tricky. New features and bug fixes can interfere with your working system. That said, when there is a security update you should seriously think about upgrading quickly.
 
-Your tools should keep a record of their changes, often called a "changelog". This is [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). This is [docassemble's changelog](https://docassemble.org/docs/changelog.html). However your software tracks changes, those records should clearly label security updates. Keep an eye out for those updates.
+Your tools should keep a record of their changes, often called a "changelog". This is [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). This is [docassemble's changelog](https://docassemble.org/docs/changelog.html). However, your software tracks changes, those records should clearly label security updates. Keep an eye out for those updates.
 
 
 ### Update ALKiln when needed {#upgrade-ALKiln}
 
 **This is for:** Everyone
 
-Check the [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md) for updates and update regularly, especially when there is a security update.
+Check [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md) for updates and update regularly, especially when there is a security update.
 
 Security updates will have the heading "Security". For example, [this is one of ALKiln's security updates](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md#security-1).
 
@@ -525,7 +525,7 @@ Security updates will have the heading "Security". For example, [this is one of 
 
 [Upgrade your testing server's docassemble version](https://docassemble.org/docs/admin.html#upgrade) quickly when there is a security update. Then run all your tests before upgrading your production server too.
 
-With most updates, you can usually wait a little while to see if there are any bugs that come up and get fixed. You should deal with a security fix more quickly. If possible, you then want to update your production server too to make sure your testing server and your production server are using the same version. That helps make your tests more accurate.
+With most updates, you can usually wait a little while to see if there are any bugs that come up and get fixed. You should deal with a security fix more quickly. If possible, you then want to update your production server too, to make sure your testing server and your production server are using the same version. That helps make your tests more accurate.
 
 <!-- If you feel you cannot update your production server, you can still update your testing server more often to keep an eye on recent changes. -->
 
@@ -540,7 +540,7 @@ Docassemble's Docker image gets updated occasionally. You can wait a little whil
 
 Even if there is not a security-related update, it is good to stress test your server setup. Since you might have to suddenly start a new Docker container at unexpected times because of system failures, it is a good idea to do this every now and then anyway to make sure your system can handle recovering from that kind of event and see if complications come up.
 
-If possible, you then want to update your production server too to make sure your testing server and your production server are using the same version. That helps make your tests more accurate.
+If possible, you then want to update your production server too, to make sure your testing server and your production server are using the same version. That helps make your tests more accurate.
 
 <!-- If you feel you cannot update your production server, you can still update your testing server more often to keep an eye on recent changes. -->
 
@@ -562,7 +562,7 @@ If you configure your workflows to be triggered by a pull request, someone can c
 
 By default, GitHub [prevents first-time contributors from triggering pull request workflows without your permission](https://docs.github.com/en/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks). Unfortunately, some people make first-time contributions that are very reasonable, like fixing typos. Once you accept that contribution, they are then able to trigger workflows with their pull requests. Before making that pull request, they can edit the code of the tests, the workflow, or the rest of the interview to contain malicious code.
 
-You can make those setting more strict [for public repositories](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#controlling-changes-from-forks-to-workflows-in-public-repositories) and [for organizations](https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#configuring-required-approval-for-workflows-from-public-forks). One setting in there makes sure you have to approve triggering workflows each time an outside collaborator makes a pull request.
+You can make those settings more strict [for public repositories](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#controlling-changes-from-forks-to-workflows-in-public-repositories) and [for organizations](https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#configuring-required-approval-for-workflows-from-public-forks). One setting makes sure no outside collaborator can trigger workflows with a pull request without your approval.
 
 Private repositories can ignore this since they would first have to share their repository with an outside collaborator, presumably someone they trust. If they do want to collaborate with unfamiliar people, private repositories can also [require approval from forks](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories).
 
@@ -571,9 +571,9 @@ Private repositories can ignore this since they would first have to share their 
 
 **This is for any packages that:** run tests in GitHub
 
-On GitHub, workflow job logs and artifacts of public repositories are visible to the public, just like the code. Also, any logged in user can download those workflow artifacts.
+On GitHub, workflow job logs and artifacts of public repositories are visible to the public, just like the code. Also, any logged-in user can download those workflow artifacts.
 
-That might be fine. Part of being transparent is letting the public understand how your packages are working. Also, there are [some ways](#secret-val) ALKiln lets you set variables that you want to keep secret. That said, if you are concerned about your logs and artifacts there are some things you can do to make these less available:
+That might be fine. Part of being transparent is letting the public understand how your packages are working. Also, there are [some ways](#secret-val) ALKiln lets you set variables that you want to keep secret. That said, if you are concerned about your logs and artifacts, there are some things you can do to make these less available:
 
 - Make your repository private
 - [Delete the logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#deleting-logs) and [delete the artifacts](https://docs.github.com/en/actions/managing-workflow-runs/removing-workflow-artifacts).
@@ -670,7 +670,7 @@ As long as you ensure you [only test on your testing server](#testing-server), A
 
 **This is for any packages that:** run tests in GitHub
 
-In your GitHub [workflow run console](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results), GitHub redacts any text that matches the values of any of your [GitHub secrets](writing_tests.mdx#secrets). It replaces that text with "\*\*\*". Note that the text must be an exact match. GitHub is unable to recognize partial matches.
+In your GitHub [workflow run console](https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results), GitHub redacts any text that matches the values of your [GitHub secrets](writing_tests.mdx#secrets). It replaces that text with "\*\*\*". Note that the text must be an exact match. GitHub is unable to recognize partial matches.
 
 If you are worried about logs or artifacts that already exist, you can [delete those](#github-output).
 
@@ -716,7 +716,7 @@ With <GTOYS/> tests, ALKiln must have [developer privileges](#alkiln_role) to se
 
 **This is for:** Everyone
 
-[Workflow environment variables](writing_tests.mdx#env-vars) might contain sensitive information. Because of this ALKiln takes extra care with them.
+[Workflow environment variables](writing_tests.mdx#env-vars) might contain sensitive information. Because of this, ALKiln takes extra care with them.
 
 <SecureEnvVars/>
 
@@ -727,7 +727,7 @@ You do need to [take care when you use JSON Steps](#json-vars).
 
 ### ALKiln reports its security updates {#alkiln-logs}
 
-When ALKiln as a security update, we announce it on [docassemble's Slack channel](https://docassemble.org/docs/support.html#slack) and post it in [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). The Slack channel is called "#alkiln-automated-testing".
+When ALKiln has a security update, we announce it on [docassemble's Slack channel](https://docassemble.org/docs/support.html#slack) and post it in [ALKiln's changelog](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md). The Slack channel is called "#alkiln-automated-testing".
 
 Security updates have the heading "Security". For example, [this is one of ALKiln's security updates](https://github.com/SuffolkLITLab/ALKiln/blob/-/CHANGELOG.md#security-1).
 
@@ -743,14 +743,14 @@ Just like you can freeze the versions of the [ALKiln framework](#freeze), ALKiln
 
 **This is for:** Everyone
 
-The ALKiln team checks on the security of ALKiln's dependencies. When a dependency reports a new security improvement, we update ALKiln so it uses that new improvement. Not all dependency fixes are relevant to ALKiln, but it is still good to keep up to date.
+The ALKiln team checks on the security of ALKiln's dependencies. When a dependency reports a new security improvement, we update ALKiln to use that new improvement. Not all dependency fixes are relevant to ALKiln, but it is still good to keep up to date.
 
 
 ### ALKiln protects its major branches {#alkiln-branches}
 
 **This is for:** Everyone
 
-ALKiln protects itself from unintended changes or changes by new collaborators. ALKiln has gotten many volunteer contributions over time and we want to make sure we check that code carefully before we release it to you.
+ALKiln protects itself from unintended changes or changes by new collaborators. ALKiln has gotten many volunteer contributions over time, and we want to make sure we check that code carefully before we release it to you.
 
 As our documentation described, [you can protect your default branch from changes](#default-branch). ALKiln has multiple branches that users depend on - one branch for every major version. For example, v3, v4, and v5. It protects all those branches in various ways. For example, we:
 

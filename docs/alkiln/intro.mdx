@@ -39,7 +39,7 @@ ALKiln topics you can explore:
 - [Troubleshooting](troubleshooting.mdx): Help with common errors and warnings
 - Support for [older Versions](older_versions.mdx): Guides for using older out-of-date features
 - [Frequently Asked Questions](writing_tests.mdx#faq) (FAQ): Find answers to common questions
-- [Security](security.mdx): Stay safe by using best practices and find out how we protect you too
+- [Security](security.mdx): Find out how to stay safe by using best practices and how we protect you too
 
 
 ## What can I test with these tests? {#what-test}
@@ -54,7 +54,7 @@ There are two main purposes for ALKiln tests right now.
 
 This may not be a good sales pitch, but you do not always need automated tests. Automated tests need to be updated along with your code. That may not be worth your time for some projects or at some stages in a project.
 
-That said, the more complex your project gets the more useful automated tests can be.
+That said, the more complex your project gets, the more useful automated tests can be.
 
 When you start creating a project, you test it by hand. You open the interview and run it yourself, clicking through every path your user might take. That does not scale as a project grows. Often, there is no time or energy to test all the paths accurately. You end up having to trust that the ones you skip still work. Automated tests make sure you know when your edits break your code.
 
@@ -83,7 +83,7 @@ To hear more about why and when to test, watch the first part of this Docacon 20
 
 ALKiln uses [cucumber](https://cucumber.io/), [puppeteerjs](https://pptr.dev/), [cheerio](https://cheerio.js.org/), and runs the assertions using the [mocha](https://mochajs.org/) and [chai](https://www.chaijs.com/) libraries.
 
-Even though this is built using cucumber, this framework has a different, less lofty, purpose. cucumber focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
+Even though ALKiln is built using cucumber, this framework has a different, less lofty, purpose. Cucumber focuses on BDD (behavior driven development). This framework mostly deals with regression testing and other conveniences.
 
 For security, [ALKiln freezes the versions of its third-party libraries](#alkiln-freezes-dependencies) and only updates them after we check their changes.
 
