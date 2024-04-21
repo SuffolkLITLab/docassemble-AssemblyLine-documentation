@@ -25,7 +25,7 @@ Once you have a broad idea of what each class is about, you can choose from one 
 * [Jobs](jobs.md)
 * [Itemized Jobs](itemizedjobs.md)
 
-:::caution Work in progress
+:::warning Work in progress
 The following classes don't yet have tutorials that you can follow, but you can follow
 how they are used in the [al_income_demo interview](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blobl/main/docassemble/ALToolbox/data/questions/al_income_demo.yml), and by checking out their source code below.
 

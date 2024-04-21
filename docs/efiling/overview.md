@@ -183,7 +183,7 @@ handles more advanced docassemble features for you.
 
 The EFSP package also contains a generic filing interview that can be used an example of how to work with the python API.
 
-:::caution
+:::warning
 The generic filing interview is made for development purposes, and not intended for non-expert (legal or technical) use.
 :::
 

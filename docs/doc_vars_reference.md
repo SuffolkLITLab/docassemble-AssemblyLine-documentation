@@ -34,7 +34,7 @@ rules below to add as many custom labels as you need.
 #### Labels should be valid Python variable names that start with a letter
 
 PDF and DOCX `labels` should also work as valid [Python variable
-names](coding_style/python.md). The basic rule is that Python variable names
+names](/docs/coding_style_guide/python). The basic rule is that Python variable names
 need to start with a letter and can only contain letters, digits, and the `_`
 underscore character. Some variable names are
 [reserved](framework/reserved_keywords.md) and have a special meaning inside

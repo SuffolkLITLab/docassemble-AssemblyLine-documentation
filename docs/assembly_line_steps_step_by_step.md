@@ -38,12 +38,12 @@ Next, [customize your form](customizing_interview.md).
 ### Getting expert review
 
 Get feedback from your subject matter experts. Turn the feedback into actionable
-[Github](github.md) issues that you can triage later.
+[Github](/docs/github) issues that you can triage later.
 
 ### Getting plain language review
 
 Hopefully you kept in mind our guidance on [writing good
-questions](question_style_overview.md). Nevertheless, get a second opinion that
+questions](/docs/style_guide/question_overview). Nevertheless, get a second opinion that
 focuses just on how readable and easy to understand the substantive content 
 of your app is.
 
@@ -69,7 +69,7 @@ issue, so if you lack the ability to set up structured sessions, you could
 directly share a testing link with potential users to get feedback.
 
 In either case: use this time, again, to turn the feedback into [actionable
-Github issues](github.md). Spend time afterwards triaging and prioritizing the
+Github issues](/docs/github). Spend time afterwards triaging and prioritizing the
 feedback.
 
 ### Iteration

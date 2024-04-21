@@ -10,7 +10,7 @@ This guide will help you integrate a case search feature into
 your interview, helping your users find their cases in their
 court's e-filing system.
 
-:::caution
+:::warning
 This e-filing functionality is being updated often, so this documentation might be out of date.
 If anything is incorrect or doesn't work as expected, feel free to email us at
 [massaccess@suffolk.edu](mailto:massaccess@suffolk.edu).

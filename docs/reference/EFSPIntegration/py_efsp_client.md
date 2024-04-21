@@ -3,47 +3,31 @@ sidebar_label: py_efsp_client
 title: EFSPIntegration.py_efsp_client
 ---
 
+The base python client used to communicate with the E-file proxy server.
+
+Doesn&#x27;t include anything from docassemble, and can be used without having it installed.
+
 ## EfspConnection Objects
 
 ```python
 class EfspConnection()
 ```
 
+A python client that communicates with the E-file proxy server.
+
 #### \_\_init\_\_
 
-```python
-def __init__(*, url: str, api_key: str, default_jurisdiction: str = None)
-```
+**Arguments**:
 
-Params:
-url (str)
-api_key (str)
-default_jurisdiction (str)
+  url (str)
+  api_key (str)
+  default_jurisdiction (str)
 
 #### authenticate\_user
 
-```python
-def authenticate_user(*,
-                      tyler_email: Optional[str] = None,
-                      tyler_password: Optional[str] = None,
-                      jeffnet_key: Optional[str] = None,
-                      jurisdiction: str = None) -> ApiResponse
-```
-
-Params:
-tyler_email (str)
-tyler_password (str)
-jeffnet_key (str)
+Authenticates the user with the EFM server (not the E-file proxy).
 
 #### register\_user
-
-```python
-def register_user(person: dict,
-                  registration_type: str,
-                  *,
-                  password: str = None,
-                  firm_name_or_id: str = None) -> ApiResponse
-```
 
 registration_type needs to be INDIVIDUAL, FIRM_ADMINISTRATOR, or FIRM_ADMIN_NEW_MEMBER.
 If registration_type is INDIVIDUAL or FIRM_ADMINISTRATOR, you need a password.
@@ -51,25 +35,20 @@ If it&#x27;s FIRM_ADMINISTRATOR or FIRM_ADMIN_NEW_MEMBER, you need a firm_name_o
 
 #### get\_password\_rules
 
-```python
-def get_password_rules() -> ApiResponse
-```
+Password rules are stored in the global court, id 0.
 
-Password rules are stored in the global court, id 1.
+TODO: They&#x27;re in other courts too, including 1. Could they ever be different?
 
 #### get\_notification\_options
 
-```python
-def get_notification_options() -> ApiResponse
-```
-
 AKA NotificationPreferencesList
 
-#### update\_firm
+#### get\_firm
 
-```python
-def update_firm(firm: dict) -> ApiResponse
-```
+Gets info about the &quot;firm&quot; for an associated user. If a user is a pro-se, this
+contains their address information.
+
+#### update\_firm
 
 firm should have the below keys:
 * firstName, middleName, lastName if it&#x27;s a person
@@ -78,23 +57,28 @@ firm should have the below keys:
 * phoneNumber
 * email
 
-#### get\_service\_types
+#### get\_courts
 
-```python
-def get_service_types(court_id: str, all_vars: dict = None) -> ApiResponse
-```
+Gets the list of courts.
+
+#### get\_court
+
+Gets codes for a specific court
+
+#### get\_court\_list
+
+Gets a list of all of the courts that you can file into. Slightly more limited than
+[get_courts](#get_courts)
+
+#### get\_filing\_list
+
+Returns a list of filings that a particular user has made with a court.
+
+#### get\_service\_types
 
 Checks the court info: if it has conditional service types, call a special API with all filing info so far to get service types
 
 #### get\_cases\_raw
-
-```python
-def get_cases_raw(court_id: str,
-                  *,
-                  person_name: dict = None,
-                  business_name: str = None,
-                  docket_number: str = None) -> ApiResponse
-```
 
 Finds existing cases at a particular court. Only one of person_name, business_name, or docket_number should be
 provided at a time.

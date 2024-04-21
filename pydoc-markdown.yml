@@ -17,3 +17,9 @@ renderer:
   relative_output_path: reference
   relative_sidebar_path: sidebar.json
   sidebar_top_level_label: API Reference
+  markdown:
+    escape_html_in_docstring: true
+    escape_curly_braces_in_docstring: true
+    signature_code_block: false
+    render_typehint_in_data_header: true
+    toc_maxdepth: 4

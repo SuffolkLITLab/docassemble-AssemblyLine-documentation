@@ -72,7 +72,7 @@ Sometimes passive voice sentences leave the subject out altogether.
 The dog knocked over the lamp.
 :::
 
-:::caution Passive voice
+:::warning Passive voice
 The lamp was knocked over by the dog.
 :::
 
@@ -140,7 +140,7 @@ For example:
 Use lots of details in your description.
 :::
 
-:::caution Negative rule
+:::warning Negative rule
 Be careful not to leave information out of your description.
 :::
 

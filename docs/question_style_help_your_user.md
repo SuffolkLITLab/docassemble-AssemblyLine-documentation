@@ -15,10 +15,11 @@ A good pattern to provide help that users can show or hide as-needed is a
 collapsible accordion-style input. Use the `collapse_template()` function to
 provide help when you use the Assembly Line framework.
 
-<details><summary>Like this</summary>
-<p>
-Context-specific help goes here.
-</p>
+<details>
+   <summary>Like this</summary>
+   <p>
+      Context-specific help goes here.
+   </p>
 </details>
 
 Use clear headings, labels, and information typed out in the main area of

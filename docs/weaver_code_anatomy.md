@@ -7,7 +7,7 @@ sidebar_label: |
 slug: /generated_yaml
 ---
 
-:::caution
+:::warning
 This page is very much under construction as we develop the Weaver's capabilities. These 🚧 emoji notes features that are being actively developed in the Weaver and thus might change
 :::
 
