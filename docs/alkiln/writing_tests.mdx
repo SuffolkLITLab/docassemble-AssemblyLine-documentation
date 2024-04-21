@@ -835,7 +835,9 @@ Example of setting the yesno checkbox to "yes" in a Story Table Step:
 
 Avoid `noyes` type fields. For one thing, using `noyes` will make you edit the code you get from the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story) more. For another, we've found that humans tend to find those confusing too.
 
-That said, it can be better to use "checked" or "unchecked" as opposed to "True" or "False":
+If you do need to use a `noyes` field, you will have to think differently about the value here. Set the variable to `True` if you want the box to be checked. Set it to `False` if you want the box to be unchecked.
+
+Example of making sure a `noyes` checkbox field gets checked in a linear Step:
 
 ```gherkin
   And I set the variable "likes_bears" to "checked"
