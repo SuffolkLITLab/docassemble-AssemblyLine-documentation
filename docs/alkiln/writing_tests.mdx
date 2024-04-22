@@ -36,7 +36,7 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 If you are coming back and just need some resource reminders, here is a short list:
 
 - You can see [what your first test might look like](setup.mdx#first-test).
-- You can generate a first draft for a more complex test with the help of the [ALKiln Story Table Step generator](https://github.com/plocket/alkiln_story).
+- You can generate a first draft for a more complex test with the help of the [ALKiln Story Table Step generator](#alkiln_story).
 - If your interview is using generic objects or index variables, you **must** include [special HTML](#special-html) in your interview.
 - Every time you change or add a required field variable, you must update the tests that need that variable.
 - You write and edit `.feature` test files in your package's Sources folder.
@@ -1595,8 +1595,8 @@ The [<GTOYS plain={true}/> test method](setup.mdx#recommended) workflow file has
 
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
-- `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on. You should store the value for this input in a [GitHub secret](#secrets).
-- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for the ALKiln [testing account](security.mdx#test_accounts) on your server. You should store the value for this input in a [GitHub secret](#secrets).
+- `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on. If you are using ALKiln for a GitHub organization, you should store the value for this input in a [GitHub secret](#secrets) so that all your organization repositories can share it.
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for the ALKiln [testing account](security.mdx#test_accounts) on your server. You should store the value for this input in a [GitHub secret](#secrets) so that no one can see this secure information.
 
 If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
 
@@ -1697,9 +1697,9 @@ Use these inputs in the same way and in the same places as the required inputs. 
 
 You can add some optional inputs to the workflow file of any <KittyLitter/> tests to control global ALKiln configuration values. We note when an option should also be a GitHub secret for security reasons:
 
-- `CONFIG_CONTENTS` is the contents of the [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. **For security, we strongly recommend you put this information into a GitHub secret** like `DOCASSEMBLE_DEVELOPER_API_KEY` above. If you have special configuration settings on your own server, you can use input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses.
-- `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output when ALKiln creates the docker container and installs docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information those logs might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
 - `MAX_SECONDS_FOR_DOCKER` is the maximum amount of time to give the docassemble docker container to get properly started. If your tests keep failing because your docker container is taking a long time to start, maybe because of configuration options, then you can increase this time. The default time is 600 seconds (10 min).
+- `SHOW_DOCKER_OUTPUT` you can give this the values "true" or "false". When you set it to "true", you will see more output when ALKiln creates the docker container and installs docassemble there. The output will be visible to anyone that can see the action running, like GitHub admins or collaborators. By default, it is "false". This is because our team is unsure about what information those logs might include, so we are unsure if it will show sensitive configuration information, like tokens and API keys.
+- `CONFIG_CONTENTS` is an input most authors can ignore. Its value is the contents of a [docassemble config file](https://docassemble.org/docs/config.html) for the new docassemble server GitHub will create. If you have special configuration settings on your own server, you can use this input to include them and make this new fresh server more like your production server. The default is the default config that docassemble itself uses. **For security, we strongly recommend you put this information into a [GitHub secret](#secrets)** like `DOCASSEMBLE_DEVELOPER_API_KEY` above.
 
 <!-- TODO: What is the error message when docker container setup stops too early? -->
 
@@ -1933,7 +1933,7 @@ You can [make secrets for individual GitHub repositories](https://docs.github.co
 
   Remember to create a [separate account](security.mdx#test_accounts) for that "user". <span id="org-secrets"></span>
 
-2. GitHub secrets are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.
+2. GitHub secrets are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.<!-- TODO: Actually, SERVER_URL may be the best example because lots of users use it and it is an appropriate variable to use a secret for that isn't security-critical information. -->
 
   <details>
     <summary>Example situation</summary>
