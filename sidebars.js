@@ -62,7 +62,6 @@ module.exports = {
                         'question_library/ql_terms_of_use',
                     ]
                 },
-                'framework/error_actions',
             ]
         },
         {
@@ -103,6 +102,8 @@ module.exports = {
                         'framework/answer_set_intakes',
                     ]
                 },
+                'framework/navigation',
+                'framework/error_actions',
             ]
         },
         'framework/alrecipes',
