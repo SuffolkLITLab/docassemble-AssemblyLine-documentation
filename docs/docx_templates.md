@@ -59,7 +59,9 @@ features it has, like:
 1. add comments with `{# ... your comment here #}` tags
 1. add special preformatted text from certain Docassemble functions with `{{r }}`
 
-:::caution Docassemble uses the [docxtpl](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax) syntax, which has slight differences to the more
+:::caution Docassemble uses the [docxtpl](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax) syntax, 
+
+docxtpl has slight differences to the more
 common Jinja2 format used in HTML documents. If a feature isn't working as
 you expect, make sure to check the docxtpl documentation.
 :::
@@ -128,8 +130,7 @@ similarly for conditional or repeated columns.
 If you have a few conditional words in a paragraph, you can use `{% if %}`
 in-line in the paragraph. For example:
 
-`{%if user == "self" %}I request{% else %}{{user}} requests{% endif %}
-the following:`
+`{%if user == "self" %}I request{% else %}{{user}} requests{% endif %} the following:`
 
 If you have many repeated examples of the same condition, though, you may be
 better off making the whole paragraph conditional.
@@ -167,7 +168,7 @@ Make sure that the bold formatting, etc., is applied to the whole label, includi
 
 Example:
 
-This is an inline formatted _{{ variable }}_.
+This is an inline formatted _\{\{ variable \}\}_.
 
 ### Use filters, functions, and methods for advanced changes to variables
 
@@ -221,10 +222,10 @@ Use these filters for common changes to capitalization:
 
 Purpose | Filter | Example
 --------|--------|-----------
-Capitalize all letters | `upper` | `{{ some_variable | upper }}`
-Make all letters lowercase | `lower` | `{{ some_variable | lower }}`
-Capitalize just the first letter | `capitalize` | `{{ some_variable | capitalize }}`
-Capitalize just the first letter of each word | `title` | `{{ some_variable | title }}`
+Capitalize all letters | `upper` | `\{\{ some_variable | upper \}\}`
+Make all letters lowercase | `lower` | `\{\{ some_variable \| lower \}\}`
+Capitalize just the first letter | `capitalize` | `\{\{ some_variable \| capitalize \}\}`
+Capitalize just the first letter of each word | `title` | `\{\{ some_variable \| title \}\}`
 
 Note that the "title" filter is not smart enough to follow [standard grammatical 
 rules](https://apastyle.apa.org/style-grammar-guidelines/capitalization/title-case).
@@ -387,9 +388,9 @@ You can also combine multiple `selectattr` filters in a series, like:
 
 ## Quality control checklist
 
-1. [ ] Make sure the DOCX template has valid Jinja syntax. You can use the [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard),
+- [ ] Make sure the DOCX template has valid Jinja syntax. You can use the [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard),
    installed on your own Docassemble server, to check.
-1. [ ] All of the expected standard field names are recognized by the Weaver (marked in bold when you upload and view the quality control screen)
-1. [ ] Custom field names are all properly spelled, without typos
-1. [ ] Run the interview with short, long, and one and many items for repeated lists to ensure that the full range of common scenarios looks proper.
-1. [ ] Check choices that can trigger conditional text to make sure white space is correct across all conditions. It's easy to add an extra space when using in-line conditions.
+- [ ] All of the expected standard field names are recognized by the Weaver (marked in bold when you upload and view the quality control screen)
+- [ ] Custom field names are all properly spelled, without typos
+- [ ] Run the interview with short, long, and one and many items for repeated lists to ensure that the full range of common scenarios looks proper.
+- [ ] Check choices that can trigger conditional text to make sure white space is correct across all conditions. It's easy to add an extra space when using in-line conditions.
