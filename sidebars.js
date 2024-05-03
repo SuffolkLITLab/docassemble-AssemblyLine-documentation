@@ -29,6 +29,7 @@ module.exports = {
                 'plan_interview',
                 'pdf_templates',
                 'docx_templates',
+                'authoring/dynamic_phrasing_based_on_values',
                 'document_variables_reference',
                 'alweaver_overview',
                 'customizing_interview',
