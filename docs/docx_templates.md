@@ -4,7 +4,6 @@ title: Working with DOCX files
 sidebar_label: Working with DOCX files
 slug: /docx
 ---
-## Add labels and fields
 
 DOCX templates can be edited in any editor that is able to edit DOCX files, including:
 
@@ -12,14 +11,68 @@ DOCX templates can be edited in any editor that is able to edit DOCX files, incl
 * [Libre Office](https://www.libreoffice.org/)
 * Google Docs
 
-Most developers should use the word processing tool that they are already familiar with.
-Rarely, you may run into compatibility issues with formatting of a DOCX file when it
-is converted into a PDF. Docassemble uses Libre Office to convert DOCX files to PDF.
-Try editing the file in the free [Libre Office](https://www.libreoffice.org/) and get
-it looking right there if you have any PDF conversion problems.
+We recommend using Microsoft Word as your editor when possible if the document
+may need additional editing by the user.
 
-While most editors should work, it is important to save the document in the DOCX
-format.
+If your document will be converted into a PDF for the user, it may be useful to open the 
+DOCX file in Libre Office. Docassemble, by default, uses Libre Office to convert the Word 
+file to PDF. Sometimes formatting glitches will be visible only when the document is opened in Libre Office.
+
+DOCX files can be very simple to work with, but we've taken the time to describe some common tasks,
+such as working with tables and lists, in more detail here. You have much more control over those
+features in a DOCX template than you do in a PDF.
+
+## DOCX field labels are just typed in
+
+Fields are added to DOCX templates simply by typing the variable name in the body of your
+Microsoft Word document, surrounded by two sets of curly braces, like: `{{ variable_name }}`.
+
+The syntax to type in fields in a DOCX template is named `jinja2`.
+
+[Learn more about Jinja2](https://suffolklitlab.org/legal-tech-class/docs/jinja2)
+and about [DOCX templates in Docassemble](https://docassemble.org/docs/documents.html#docx%20template%20file).
+
+The most common kinds of fields you will use again and again
+are:
+
+1. Fill in the blank fields, which are simply surrounded with double curly brackets: `{{ field_name }}`
+1. Conditional text with `{% if some_condition %}` and `{% endif %}`, or the slight variation `{%p if some_condition %} ... {%p endif %}` to make a whole paragraph conditional.
+
+:::caution Docassemble uses the [docxtpl](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax) variant of Jinja2
+
+docxtpl has slight differences to the more
+common Jinja2 format used in HTML documents. If a feature isn't working as
+you expect, make sure to check the [docxtpl documentation](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax).
+:::
+
+Here is an example of a DOCX template:
+
+```jinja2
+{{ other_parties[0].address_block() }}
+
+Dear {{ other_parties[0] }}:
+
+I am writing today because my {{ house_or_apartment }} is not up to code.
+
+Specifically,
+
+* {%p for item in problems %}
+* {{ item }}
+* {%p endfor %}
+
+{%p if previously_notified %}
+I already told you about this problem on {{ notification_date.format("MM/dd/yyyy") }}
+{%p endif %}
+
+Please solve this problem promptly.
+
+Yours,
+
+{{ users[0].signature_if_final(i) }}
+{{ users[0] }}
+```
+
+### 
 
 ## Start by just adding the basic variables in your DOCX template, without repeated elements or advanced code
 
@@ -35,36 +88,6 @@ you add it before you upload it to the Weaver. You can add these refining detail
 after you run the form through the Weaver. Use the first draft just to add placeholders 
 where information will go. 
 
-## DOCX field labels are just typed in
-
-You already know how to add fields to a DOCX template: just type them in as
-ordinary text. The only difference is that you type brackets `{{ }}` or `{% %}`
-to tell Docassemble that you want to replace the field with information that
-comes from the Docassemble interview.
-
-The syntax to type in fields in a DOCX template is named `jinja2`.
-
-[Learn more about Jinja2](https://suffolklitlab.org/legal-tech-class/docs/jinja2)
-and about [DOCX templates in Docassemble](https://docassemble.org/docs/documents.html#docx%20template%20file).
-
-Jinja2 is very powerful but you will probably only use a small number of the
-features it has, like:
-
-1. adding `fields` with double curly brackets: `{{ field_name }}`
-1. adding conditional text with `{% if some_condition %}` and `{% endif %}`
-1. add conditional text in its own paragraph, row, or column, without extra whitespace with:
-    * `{%p  %}` tags for conditional or repeated paragraphs
-    * `{%tr  %}` tags for conditional or repeated rows in a table
-    * `{%tc %}` tags for conditional or repeated columns in a table
-1. add comments with `{# ... your comment here #}` tags
-1. add special preformatted text from certain Docassemble functions with `{{r }}`
-
-:::caution Docassemble uses the [docxtpl](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax) syntax, 
-
-docxtpl has slight differences to the more
-common Jinja2 format used in HTML documents. If a feature isn't working as
-you expect, make sure to check the docxtpl documentation.
-:::
 
 ## Use the Assembly Line's standard field names for DOCX templates
 
@@ -86,7 +109,16 @@ special meaning. Specifically:
 
 Always using a space helps avoid you forgetting these special cases. It also helps with readability.
 
-## Use `{%p %}` and `{%tr %}` to control white space at the paragraph level
+## Dealing with whitespace and conditional text
+
+:::info Avoid using `-` to control whitespace
+While in standard Jinja2 you can use a `-` to control whitespace, this won't
+work reliably in Docassemble. That is because Docassemble uses [docxtpl](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax), not the standard Jinja2.
+
+Avoid using this feature in your templates.
+:::
+
+### Use `{%p %}` and `{%tr %}` to control white space at the paragraph level
 
 When inserting conditional paragraphs, make sure that they are wrapped in `{%p %}` tags, like this:
 
@@ -125,6 +157,10 @@ similarly for conditional or repeated columns.
 
 `{%tr %}` and `{%tc %}` should always be in their own row or column.
 
+:::caution Don't use `{%p %}` inside a table cell
+`{%p %}` can lead to unexpected results inside a table. Use `{%tr %}` instead.
+:::
+
 ### Use `{% if %}` for conditional text inside a single paragraph
 
 If you have a few conditional words in a paragraph, you can use `{% if %}`
@@ -138,14 +174,7 @@ better off making the whole paragraph conditional.
 When using in-line conditions, make sure you consistently place the space across
 each condition.
 
-### The standard `-` Jinja2 whitespace control will not work in Docassemble
-
-While in standard Jinja2 you can use a `-` to control whitespace, this won't
-work reliably in Docassemble. That is because Docassemble uses [docxtpl](https://docxtpl.readthedocs.io/en/latest/#jinja2-like-syntax), not the standard Jinja2.
-
-Avoid using this feature in your templates.
-
-### Use `output_checkbox()` for checkbox fields that look like paper forms
+### Use `output_checkbox()` for conditional checkbox fields that look like paper forms
 
 In some cases, you need to make your Word Document look like a document that was
 filled in by hand. [`output_checkbox()`](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/altoolbox#shorthand-function-to-display-a-checkbox-in-replace-of-a-truefalse-boolean-value-in-a-docx-template) can be used to add a checkbox in-line in your document.
@@ -153,8 +182,8 @@ filled in by hand. [`output_checkbox()`](https://suffolklitlab.org/docassemble-A
 These two expressions are equivalent, but the second version takes substantially less
 space in your template:
 
-&nbsp; | &nbsp;
--------|--------
+Using if/else/endif | Using output_checkbox()
+--------------------|------------------------------
 `{%if condition %}[X]{% else %}[  ]{% endif %}` | `{{ output_checkbox(condition) }}`
 
 ## Changing the appearance of inserted variable text
@@ -222,10 +251,10 @@ Use these filters for common changes to capitalization:
 
 Purpose | Filter | Example
 --------|--------|-----------
-Capitalize all letters | `upper` | `\{\{ some_variable | upper \}\}`
-Make all letters lowercase | `lower` | `\{\{ some_variable \| lower \}\}`
-Capitalize just the first letter | `capitalize` | `\{\{ some_variable \| capitalize \}\}`
-Capitalize just the first letter of each word | `title` | `\{\{ some_variable \| title \}\}`
+Capitalize all letters | `upper` | `{{ some_variable \| upper }}`
+Make all letters lowercase | `lower` | `{{ some_variable \| lower }}`
+Capitalize just the first letter | `capitalize` | `{{ some_variable \| capitalize }}`
+Capitalize just the first letter of each word | `title` | `{{ some_variable \| title }}`
 
 Note that the "title" filter is not smart enough to follow [standard grammatical 
 rules](https://apastyle.apa.org/style-grammar-guidelines/capitalization/title-case).
@@ -269,7 +298,7 @@ Microsoft Word has [several features](https://support.microsoft.com/en-us/office
 text to be at the top of its own page, rather than relying on the current amount
 of text to flow onto a new page automatically.
 
-## Working with filtered and truncated lists 
+## Working with lists inside a DOCX file
 
 Unfortunately, if you've gotten used to using [list comprehensions](https://docs.python.org/3/tutorial/datastructures.html) to filter and manage
 working with lists, you cannot use list comprehensions
@@ -310,6 +339,17 @@ More special variables with information about the list are [documented here](htt
 
 You can use Python's normal list "slices" to shorten the size of the list you display
 in the template, as well as list indices to get just one item.
+
+The basic syntax of a list "slice" is to put the starting and ending index inside
+the brackets. You can leave off either the starting or ending digit to get everything up
+to/before that index, or you can specify negative numbers to count backwards.
+
+* list[1:] starts at index 1 in the list and returns everything after that index.
+* list[:5] gets items at the indices 0-4.
+* list[1:3] returns a list with the items at indices 1 and 2.
+* list[2] returns just the item at index 2 (not a list of items).
+* list[:-1] returns every item except the final item in the list.
+* list[-1] returns only the last item in the list.
 
 ```jinja
 1. Primary agent
@@ -386,9 +426,55 @@ You can also combine multiple `selectattr` filters in a series, like:
 
 `{{ my_list | selecattr("test1") | selecattr("test2") }}`
 
+## Troubleshooting DOCX files
+
+### Fixing corrupt or potentially corrupt DOCX files
+
+You can fix some hard to track down problems in a DOCX file by converting to a simpler format, such
+as RTF, and then converting back to DOCX. These problems might only appear when you merge multiple DOCX files together and be silently fixed when you open just one at a time.
+This is sometimes caused by using Google Docs, which reliably produces DOCX files that don't
+meet the full DOCX technical specification.
+
+To try this fix:
+
+1. Open the document in Microsoft Word or Libre Office
+1. Choose File | Save as, and select "RTF - Rich Text Format" as the file type
+1. Close your word processor
+1. Open the file with the newly added .RTF extension
+1. Save the file back to Microsoft Word - DOCX format.
+
+### Troubleshooting problems with conversion to PDF
+
+Sometimes the DOCX will look right, but things like headings, numberings, and other
+styles will look off when Docassemble converts your template to PDF.
+
+The first thing to check when troubleshooting a DOCX conversion to PDF is to see
+how the document looks in [Libre Office](https://www.libreoffice.org/). Docassemble
+uses Libre Office to convert DOCX to PDF, so if you can fix issues in Libre Office
+on your home computer, it should look right when Docassemble converts it to PDF on the
+server.
+
+#### Installing the proper fonts
+
+One issue you may find is that the PDF doesn't have the right fonts. There are two potential
+solutions:
+
+1. You can revise your document to use the Microsoft True Type Core Fonts for the Web, which come pre-installed on Docassemble servers. These include Arial and Times New Roman.
+1. You can install the fonts on the Docassemble server. The [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard)'s "Install fonts" widget can help you install a TTF (TrueType)
+font on your server.
+1. You can [embed the fonts](https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc) inside the DOCX file. 
+This might significantly increase the file size.
+
+### Problems with lists and numbering after automation
+
+Multi-level numbered and lettered lists are a frequent problem spot. On occasion, the
+only way to fix the list in your template is to copy all of the text, paste into a new document
+as unformatted text, and then re-apply all of the formatting (or at least the list formatting) 
+manually.
+
 ## Quality control checklist
 
-- [ ] Make sure the DOCX template has valid Jinja syntax. You can use the [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard),
+- [ ] The DOCX template has valid Jinja syntax. You can use the [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard)'s "Validate DOCX template" widget,
    installed on your own Docassemble server, to check.
 - [ ] All of the expected standard field names are recognized by the Weaver (marked in bold when you upload and view the quality control screen)
 - [ ] Custom field names are all properly spelled, without typos
