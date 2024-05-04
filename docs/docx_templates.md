@@ -166,7 +166,7 @@ similarly for conditional or repeated columns.
 If you have a few conditional words in a paragraph, you can use `{% if %}`
 in-line in the paragraph. For example:
 
-`{%if user == "self" %}I request{% else %}{{user}} requests{% endif %} the following:`
+`{%if user == "self" %}I request{% else %}{{ user }} requests{% endif %} the following:`
 
 If you have many repeated examples of the same condition, though, you may be
 better off making the whole paragraph conditional.
@@ -376,7 +376,7 @@ For example, suppose every item in the list `my_list` has an attribute
 1. People with jobs
 
 {%p for person in my_list.filter(is_employed=True) %}
-{{person}}
+{{ person }}
 {%p endfor %}
 ```
 
