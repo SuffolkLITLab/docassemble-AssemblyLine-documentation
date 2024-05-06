@@ -408,12 +408,35 @@ Here is the basic process of using an addendum:
   maximum number of _characters_ or _items_ that may appear in that field
 1. optionally, set the value of the `label` attribute of the `ALAddendumField`
    (this is used in the default addendum file)
+1. Also optionally, se the value of the `headers` attribute of the `ALAddendumField`
+   (used to control the order of columns in the default addendum's table)
 1. optionally, specify the template file that you want to use for the addendum
 
 ### Assumptions and changes to whitespace
 
 The addendum code does not preserve whitespace; both repeated spaces and
 new lines will always be condensed.
+
+### Customizing the order of columns in the default addendum
+
+By default, the addendum provided with the Assembly Line will display
+the column for every attribute of the object in a list. You may want to
+control both the order and the set of attributes that is displayed. You can
+do so by defining the `headers` attribute for the field.
+
+`headers` should be a list of dictionaries in the order that you want the
+column to appear, with the `key` being the name of the attribute and the `value`
+being the column's label.
+
+```yaml
+---
+code: |
+  my_attachment.overflow_fields['attorneys'].headers = [
+    {"name": "Name"},
+    {"bbo_number": "Bar number"},
+    {"firm": "Firm name"}
+  ]
+```
 
 ### Example
 
@@ -445,6 +468,13 @@ attachment:
 code: |
   CRA_Motion_to_Dismiss_attachment.overflow_fields['reasons_for_request'].overflow_trigger = 640
   CRA_Motion_to_Dismiss_attachment.overflow_fields['reasons_for_request'].label = "Reasons for request"
+  CRA_Motion_to_Dismiss_attachment.overflow_fields['children'].overflow_trigger = 3
+  CRA_Motion_to_Dismiss_attachment.overflow_fields['children'].label = "Children"
+  CRA_Motion_to_Dismiss_attachment.overflow_fields['children'].headers = [
+    {"name": "Name"},
+    {"birthdate": "Birthdate"},
+    {"address": "Address"},
+  ]
   CRA_Motion_to_Dismiss_attachment.overflow_fields.gathered = True  
 # highlight-end  
 ---
