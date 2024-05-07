@@ -50,6 +50,7 @@ converted into issues).
 
 #### Alternatives to GitHub projects for asynchronous communication
 
+Alternatives to GitHub project boards:
 * A shared Google Document
 * Trello
 * Microsoft Planner
