@@ -89,7 +89,8 @@ Come up with a rough schedule with key milestones.
 ### Understanding success metrics
 
 1. How will we know if the project is successful?
-        * How much time does the process take now? What is the goal?
+        * How much time does the process take now?
+        * How long should it take users to complete the process after the project is done?
         * Who is unable to complete the process now? How will we know if they
           can complete it with assistance?
         * What is the total possible population the tool is targeting? (e.g., how many
