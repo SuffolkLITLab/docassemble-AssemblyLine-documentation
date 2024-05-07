@@ -55,11 +55,11 @@ Alternatives to GitHub project boards:
 * Trello
 * Microsoft Planner
 
-And both
+Supplementary tools:
+
+Either of these may be useful for closer to real-time communication.
 * Microsoft Teams
 * Slack
-
-May be useful for closer to real-time communication.
 
 ## Gather information
 
