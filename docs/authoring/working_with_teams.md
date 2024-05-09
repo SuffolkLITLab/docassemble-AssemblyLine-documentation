@@ -13,7 +13,7 @@ Identify an internal and external team for the project. It should include:
 
 1. A project manager tasked with keeping the project on schedule. This can be either
    internal or external.
-1. The developer or developers.
+1. A lead developer, with additional developers as needed
 1. An identified subject matter expert or experts, as well as representative users of the final project
 1. Key stakeholders who will need to sign off on the project or make decisions.
 
@@ -138,7 +138,33 @@ Identify the following substantive points:
         * Will they be able to or need to return to complete the form in multiple sittings?
 
 Consider working with the client to create a few [user personas](https://en.wikipedia.org/wiki/Persona_(user_experience)). After you have built a few out,
-they should be validated with feedback from the client.
+they should be validated with feedback from the client. ChatGPT can help you make user personas (but make sure you
+validate them).
+
+**If the user is an attorney or paralegal in the firm, consider making a persona both for the attorney and for their ultimate client.**
+
+:::tip A sample persona for an eviction defense tool
+
+**Persona: Maria Rodriguez**
+* Age: 35
+* Location: Boston, Massachusetts
+* Occupation: Retail Worker
+* Family Status: Single mother with two children, ages 8 and 5
+* Income Level: Low-income bracket
+* Housing Status: Renting a two-bedroom apartment in a building primarily occupied by similar low-income families
+* Technology Use: Maria owns an older Android smartphone but has limited data. She's used to using social media and does all her communication on it
+
+**Challenges**
+* Financial Strain: Maria’s earns $20,000 a year, which isn't enough for her expenses. She often has to decide between paying different bills.
+* Lack of Legal Knowledge: She has limited understanding of her rights as a tenant and feels intimidated by legal processes.
+* Access to Resources: Maria has limited access to technology and legal assistance due to her financial situation and work hours.
+
+**Goals**
+* Stability: Maria’s primary goal is to provide a stable home for her children. She wants to avoid eviction to maintain access to her children’s school and her local support network.
+* Education: She is keen to learn more about her rights as a tenant and how she can legally contest an unfair eviction.
+* Assistance: Maria needs easy-to-understand, accessible legal advice and support that fits into her limited budget and time constraints.
+
+:::
 
 #### How sophisticated does the automation need to be?
 
@@ -195,6 +221,18 @@ For a project involving multiple forms, we recommend:
 * Moving on to the most complex form to confirm the shape and logic
   of the whole process with your client
 * Then continuing with the remaining forms
+
+:::tip Sample timeline for a project with 12 forms of varied complexity
+
+Each phase is scheduled for 2 weeks-2 months:
+1.	Phase 1, 2 weeks: Completion of a draft of 1 key document, which may include a subset of the full functionality, in order to obtain the client's input and review. The decisions that come out of this first document will guide completion of the remaining 11 documents.
+2.	Phase 2: Completion of drafts of up to 6 of the remaining documents.
+3.	Coordination of usability tests to identify changes that should apply to the remaining documents.
+4.	Phase 3: Completion of the full document set. Some functionality may be in a rough draft or ommitted for this stage.
+5.	Phase 4: All functionality is implemented. client to review and offer suggestions. Coordinate for second round of usability testing and feedback.
+6.	Final phase: based on the final feedback and proposed changes, complete all remaining work. Budget up to 30 hours for this phase.
+
+:::
 
 ### Understanding success metrics
 
@@ -368,10 +406,14 @@ the written work.
 ### Have your stakeholders take detailed notes or record their feedback
 
 In some instances, it may be useful to have the stakeholder record themselves
-using the tool. Make sure that the screen ID is visible in the recording.
+using the tool to capture errors. Make sure that the screen ID is visible in the recording.
 
 A recording may capture irrelevant feedback. If the stakeholder has capacity,
 it's more useful for them to write down their feedback.
+
+You should also be ready to use the [ALDashboard's View Answers](https://github.com/SuffolkLITLab/docassemble-ALDashboard) feature
+to inspect the stakeholder's interview session and so you can reproduce the inputs
+that they made to lead to the unexpected or undesired output.
 
 ### Help the stakeholder communicate using marked up documents
 
@@ -379,6 +421,32 @@ If there is a problem in the output document, have the user both:
 
 1. Share the generated document
 1. Annotate (e.g., edit with tracked changes or highlight) the corrections
+
+### Ask the stakeholder to directly edit the document for some formatting changes
+
+Sometimes it may be more helpful to ask the stakeholder to directly edit the template
+(to make proposed formatting changes that don't directly involve variables) than
+to try to interpret their requests.
+
+1. Download the templates from the Docassemble package or playground
+1. Send the templates to the user in an email, with instructions to ignore anything inside curly brackets
+1. When you get the documents back, use Word's "compare documents" feature to make sure
+   they didn't accidentally change something they weren't supposed to change
+1. Run the edited template through the [ALDashboard's](https://github.com/SuffolkLITLab/docassemble-ALDashboard)
+   Validate DOCX Template tool to catch any syntax errors the client introduced.
+
+### Ask the stakeholder to directly edit the language of the interview on GitHub
+
+Sometimes, you can train the stakeholder to make direct edits of the interview's YAML on GitHub and
+propose the change as a pull request. This can cut back on issues with understanding
+and interpreting feedback, but requires careful review by the developer and a
+brave stakeholder.
+
+If you do take this approach, you'll need to set aside time to do a brief training 
+for the client. Record yourself walking the client through a simple edit.
+
+Make sure that the client has a firm timeline to make their edits (such as 7 days)
+and that you do not need to edit any of the documents at the same time.
 
 ### Ask the decision maker to triage feedback
 
@@ -409,3 +477,38 @@ problems.
 In addition to synchronous meetings, some projects will benefit from weekly status
 updates by email, Slack or Teams.
 
+## Your first meeting with the client
+
+:::tip A sample agenda and script for the first meeting from the developer's perspective
+
+1. Introductions
+1. What automation is and what it can do:
+        * It's not just fill in the blank
+        * We can follow rules, apply grammar, and possibly use generative AI where rules aren't enough
+        * Explain the tradeoffs between features and cost or timeline, the maturity model and how it relates to the expected user
+                * E.g., targeting level 1-2 for internal tools, and 2-3 for most external facing projects, rarity of level 4
+1. Explain the expected timeline.
+1. Explain what a minimum viable product is, and why we may share early, rough drafts for feedback.
+        * Marked up template
+        * Flowcharts
+        * A very rough runnable prototype
+1. Confirm who the expected user is:
+        * Attorney
+        * Paralegal
+        * Social worker or helper (repeat user)
+        * Client (single or repeat user)
+1. Confirm the scope:
+        * Which documents will we produce, and in what combinations?
+        * Where will the information need to go after it is input by the user?
+1. Establish communication methods and frequencies
+1. What are your goals for this project?
+1. How will you know if the project succeeded?
+1. Sometimes we will need decisions about options, contradictory feedback, features that change the scope, and timelines. Who will be the decision makers on these points?
+1. How do you expect to handle gathering feedback and sharing it with us?
+1. What else do you think we need to know before we get started?
+1. What questions do you have for our team right now?
+1. Schedule an interview with the subject matter expert to get more detailed information about the process, potentially walking through as if we are the client.
+1. Schedule initial document markup review and review of any flowcharts or wireframes.
+1. Schedule the next standup meetings.
+
+:::
