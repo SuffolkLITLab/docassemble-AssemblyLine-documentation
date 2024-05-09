@@ -27,6 +27,7 @@ module.exports = {
             label: 'Authoring interviews',
             items: [
                 'plan_interview',
+                'authoring/working_with_teams',
                 'pdf_templates',
                 'docx_templates',
                 'authoring/dynamic_phrasing_based_on_values',
