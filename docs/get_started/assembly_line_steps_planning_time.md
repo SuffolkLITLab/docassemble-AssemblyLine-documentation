@@ -2,7 +2,7 @@
 id: assembly_line_steps_planning_time
 title: Planning your time
 sidebar_label: Planning your time
-slug: /assembly_line_steps/planning_time
+slug: /get_started/assembly_line_steps/planning_time
 ---
 
 ## Planning out your app

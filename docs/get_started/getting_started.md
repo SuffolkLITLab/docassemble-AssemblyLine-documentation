@@ -4,7 +4,7 @@ title: |
   Getting started: Setting up your own Assembly Line
 sidebar_label: |
   Getting started: Setting up your own Assembly Line
-slug: /getting_started
+slug: /get_started/getting_started
 ---
 
 <!-- TODO: Add link to someplace to give feedback or some kind of forum. -->
@@ -51,7 +51,7 @@ The broad strokes of the details you can see in the Trello checklists:
 **MVP:** Minimum viable product - first make something that works. 
 
 Henrik Kniberg has [created a useful skateboard analogy for an MVP](https://blog.crisp.se/2016/01/25/henrikkniberg/making-sense-of-mvp).
-![Minimum viable product](./assets/mvp.png)
+![Minimum viable product](../assets/mvp.png)
 -- Henrik Kniberg
 
 An MVP will be different for different projects. The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify your MVP. Once you've decided what this form's MVP is, avoid adding anything unless absolutely necessary.

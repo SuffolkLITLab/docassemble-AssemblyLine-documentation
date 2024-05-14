@@ -2,7 +2,7 @@
 id: assembly_line_steps_roles
 title: Roles
 sidebar_label: Roles
-slug: /assembly_line_steps/roles
+slug: /get_started/assembly_line_steps/roles
 ---
 
 It's common for one or more roles to be shared by a single person. On our project

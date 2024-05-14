@@ -2,7 +2,7 @@
 id: assembly_line_steps_step_by_step
 title: Step-by-step
 sidebar_label: Step-by-step
-slug: /assembly_line_steps/steps
+slug: /get_started/assembly_line_steps/steps
 ---
 
 

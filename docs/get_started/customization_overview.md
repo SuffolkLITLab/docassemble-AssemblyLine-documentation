@@ -1,8 +1,8 @@
 ---
-id: customization_overview
+id: customization
 title: Applying a custom theme or brand
 sidebar_label: Applying a custom theme or brand
-slug: /customization/overview
+slug: /get_started/customization
 ---
 
 ## Sharing a custom look and feel across multiple Assembly Line interviews

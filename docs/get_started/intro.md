@@ -2,7 +2,7 @@
 id: intro
 title: The Document Assembly Line
 sidebar_label: Intro
-slug: /
+slug: /get_started
 ---
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y7Bwk9g8H7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -25,7 +25,7 @@ management techniques](https://trello.com) to:
 * draft easy to read questions and [guidelines](question_style_overview.md) to promote access to justice
   for users of all abilities and languages
 
-![building_blocks](./assets/undraw_fill_form_re_cwyf.svg)
+![building_blocks](../assets/undraw_fill_form_re_cwyf.svg)
 
 <p>
 <a class="button button--primary" href="https://courtformsonline.org">Visit CourtFormsOnline.org</a>

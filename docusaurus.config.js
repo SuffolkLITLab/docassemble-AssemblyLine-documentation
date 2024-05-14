@@ -91,7 +91,7 @@ module.exports = {
           },
           {
             from: '/docs/intro',
-            to: '/docs/'
+            to: '/docs/get_started'
           },
         ]
       }

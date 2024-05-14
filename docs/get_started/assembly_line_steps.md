@@ -2,7 +2,7 @@
 id: assembly_line_steps
 title: The Assembly Line process
 sidebar_label: The Assembly Line process
-slug: /assembly_line_steps
+slug: /get_started/assembly_line_steps
 ---
 
 
