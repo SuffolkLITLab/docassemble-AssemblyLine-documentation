@@ -78,8 +78,7 @@ module.exports = {
                 'coding_style/yaml_interface',
                 'coding_style/yaml_translation',
                 'coding_style/defense',
-                'coding_style/accessibility',
-                'coding_style/docs_style_guide'
+                'coding_style/accessibility'
             ]
         },
         'framework/magic_variables',
