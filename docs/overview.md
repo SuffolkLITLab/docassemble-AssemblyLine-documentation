@@ -1,8 +1,8 @@
 ---
-id: getting_started_docassemble
-title: Getting started developing in Docassemble
-sidebar_label: Getting started
-slug: /getting_started_docassemble
+id: overview
+title: Developing with Docassemble and the Document Assembly Line
+sidebar_label: Overview
+slug: /overview
 ---
 
 ## This documentation covers the custom stuff

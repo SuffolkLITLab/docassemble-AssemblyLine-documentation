@@ -21,7 +21,7 @@ module.exports = {
         'get_started/contributors',
     ],
     docs: [
-        'getting_started_docassemble',
+        'overview',
         {
             type: 'category',
             label: 'Authoring interviews',
