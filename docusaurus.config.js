@@ -37,19 +37,14 @@ module.exports = {
           label: 'Documentation',
         },
         {
-          type: 'dropdown',
-          label: 'Docassemble',
+          href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
+          label: 'Legal Tech Class',
           position: 'right',
-          items: [
-            {
-              href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-              label: 'Intro to Docassemble',
-            },
-            {
-              href: 'https://docassemble.org/docs.html',
-              label: 'Docassemble Docs',
-            },
-          ]
+        },
+        {
+          href: 'https://docassemble.org/docs.html',
+          label: 'Docassemble Docs',
+          position: 'right',
         },
         {
           href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
