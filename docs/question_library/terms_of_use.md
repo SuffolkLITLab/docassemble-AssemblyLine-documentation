@@ -9,18 +9,13 @@ slug: /question_library/terms_of_use
 
 * Keep the terms of use short and relatively readable
 * Make the terms of use in-line (and scrollable). Don't use an external link
-* Have your user affirmatively check a box to accept the terms of use. Don't use a default
-  or opt-out terms of use
+* Have your user affirmatively check a box to accept the terms of use. Don't use a default or opt-out terms of use
 
 ### Explanation
 
-Some of your users will want to read every word of the terms of use. Some of those
-same users will be confused about how to get back to your site if the terms of use
-open in a new tab.
+Some of your users will want to read every word of the terms of use. Some of those same users will be confused about how to get back to your site if the terms of use open in a new tab.
 
-To comply with recommendations from state bar associations and to follow best practices
-that we have seen with the California Data Privacy Protection Act and GDPR, if you
-are asking your user to accept the terms of use, you should do it affirmatively.
+To comply with recommendations from state bar associations and to follow best practices that we have seen with the California Data Privacy Protection Act and GDPR, if you are asking your user to accept the terms of use, you should do it affirmatively.
 
 ## What to include in your terms of use
 
@@ -29,11 +24,14 @@ recommendations by the New York State Bar Association:
 
 * State explicitly that the app is not an attorney
 * Describe who authors the apps
-* Explicitly state if the app is guaranteed to be enforceable (e.g., related to law changes)
-  or if not, what steps can be taken (such as talking to an attorney)
+* Explicitly state if the app is guaranteed to be enforceable (e.g., related to law changes) or if not, what steps can be taken (such as talking to an attorney)
 * Have an update policy
 * Explain information is not covered by privilege or work product doctrine
 * Explain what information you collect, why, and how you keep it safe
+
+## Terms of use generator
+
+Lemma Legal has a [free plain language terms of use generator](https://interviews.lemmalegal.com/run/terms_and_conditions/#/1) designed for interactive legal apps.
 
 ## A complete example
 
