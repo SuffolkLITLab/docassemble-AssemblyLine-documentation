@@ -51,7 +51,7 @@ These websites and interviews are built with the Document Assembly Line tools:
 
 * [CourtFormsOnline](https://courtformsonline.org/) (the original)
 * [Missouri Tenant Help](http://motenanthelp.org)
-* Illinois Legal Aid Online is converting its existing interviews to Docassem ___ and ___ interviews
+* Illinois Legal Aid Online's [order of protection](https://www.illinoislegalaid.org/legal-information/order-protection), [eviction](https://www.illinoislegalaid.org/legal-information/evict-tenant), and [fee waiver](https://www.illinoislegalaid.org/legal-information/fee-waiver) interviews are some of the interviews ILAO has converted to Docassemble with the Document Assembly Line
 
 ## Get involved/how you can help
 
@@ -72,7 +72,7 @@ To join the community, just [email us](mailto:litlab@suffolk.edu)!
 ### Partner with the LIT Lab
 
 :::tip
-[Get our one-page overview comparing Document Assemble Line partnerships with other options.](https://suffolklitlab.org/onepagers/partnerships/)
+[Get our one-page overview comparing Document Assemble Line partnerships with other online guided interview–building options.](https://suffolklitlab.org/onepagers/partnerships/)
 :::
 
 The LIT Lab's work has been and will continue to be supported by grants. Moving forward we will also rely on our court partners to help support our work. Funded partners pay for software development and support, training, user research, community building, project management, and technical support as well as direct costs like servers and staff time.
