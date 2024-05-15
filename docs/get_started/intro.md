@@ -1,181 +1,108 @@
 ---
 id: intro
-title: The Document Assembly Line
+title: Introduction to the Document Assembly Line
 sidebar_label: Intro
 slug: /get_started
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y7Bwk9g8H7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+The Document Assembly Line is a toolbox for building online guided interviews for court forms and other legal documents for use by self-represented litigants. It is supported by the [Legal Innovation and Technology Lab (LIT Lab)](https://suffolklitlab.org/) at [Suffolk University Law School](https://www.suffolk.edu/law/) and an active community of courts, orgs, and volunteers.
 
-The Document Assembly Line project will help you produce **[beautiful web apps](https://courtformsonline.org)**
-that help users complete legal forms more quickly.
+## Background
 
-Go straight from a PDF or DOCX file to a runnable prototype in less than an hour. Build out from
-there with expert-vetted questions and standardized components using our step-by-step process.
+This short, 3-minute video by David Colarusso and Quinten Steenhuis explains how the Document Assembly Line was born from a large-scale international pandemic collaboration:
 
-We used [open source tools](https://docassemble.org) and [modern project
-management techniques](https://trello.com) to:
-
-* gather more than 200 volunteers from around the world
-* break the process of document automation into a series of small steps, so a
-  volunteer with just a few hours can still make a difference
-* build a [tool](weaver_overview.md) that takes specially prepared court forms and turns them directly
-  into draft [Docassemble](https://docassemble.org) interviews, ready to get
-  feedback and iterate on
-* draft easy to read questions and [guidelines](question_style_overview.md) to promote access to justice
-  for users of all abilities and languages
-
-![building_blocks](../assets/undraw_fill_form_re_cwyf.svg)
-
-<p>
-<a class="button button--primary" href="https://courtformsonline.org">Visit CourtFormsOnline.org</a>
+<p align="center">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y7Bwk9g8H7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
-## Get involved
+The LIT Lab gathered more than 200 volunteers from around the world and built tools such as:
 
-The Assembly Line Project is operated by [Suffolk Law's Legal Innovation and
-Technology Lab](https://suffolklitlab.org/). Email <a
-href="mailto:massaccess@suffolk.edu">massaccess@suffolk.edu</a> to reach out!
+* An [workflow](get_started/assembly_line_steps) for building [Docassemble](https://docassemble.org) interviews to assemble court forms for filing.
+* The core [Document Assembly Line Tools](https://github.com/SuffolkLITLab/docassemble-AssemblyLine), to make it easier to use key Docassemble features.
+* The [the Weaver](generating_code), a tool for converting existing PDF and DOCX court forms into draft Docassemble interviews in as little as one hour.
+* A [library](question_library/names) of pre-built, commonly used, accessible questions, vetted by experts and translated into at least 5 languages.
+* A [style guide](style_guide/question_overview) for interview questions that are easy to read and answer.
+* The first [open-source, non-profit e-filing service provider (EFSP)](efiling/overview) so that forms completed through guided interviews could be filed directly with courts using the Tyler e-filing management system.
+* A [collection of existing PDF forms](https://suffolklitlab.org/form-explorer/)
+  across multiple jurisdictions.
 
-### How we can help you
+## More information
 
-Suffolk Law School is looking for grant partners with our funder, [Pew](https://www.pewtrusts.org/en/projects/civil-legal-system-modernization)! Our grant cycle runs from October 2021 through October 2023.
+:::tip
+[Get our one-page overview of the Document Assembly Line.](https://suffolklitlab.org/onepagers/docassemblyline/)
+:::
 
-Partners can be:
+All Document Assembly Line interviews:
 
-* Courts
-* Legal aids and other nonprofits
-* Law schools
+* Have a common look and feel, with reusable components.
+* Are mobile friendly so users can do everything on a smartphone.
+* Contain contextual help to guide users through the interview.
+* Use a standardized structure and questions to build consistency and gain trust.
+* Use address autocompletion to improve accuracy and save time.
+* Allow users to text, email, or share a link to their work in progress with a
+  friend or advocate if they want help.
+* Have an integrated feedback form for users to report problems or send praise.
+* Gather anonymized statistics in aggregate for reporting on usage.
+* Support digital signatures.
 
-We are in the early stage of building tools that help someone through the
-lifecycle of a court form. We want early users to help us build the right tools
-with the right features. We can help partners:
+## See it in action
 
-* [Visualize existing PDF forms](https://suffolklitlab.org/form-explorer/)
-  across an entire jurisdiction
-  * Gain machine learning-driven insights into:
-    * Readability
-    * Ease of completion
-    * Shared fields and redundancies in your existing forms
-* [Automate existing forms with Docassemble](plan_interview.md)
-  * Eliminate repetitive work with integrated interview templates
-  * Use standardized guided interview structure, questions and components
-  * Translate into multiple languages
-  * Get to a rough prototype with one click
-* [Electronically file](efiling/overview.md) forms straight to a case
-  management system
-* [Get advice](question_style_overview.md) and guidance on drafting questions
-* Get automated insights to improve your guided interview
-  * Get instant feedback from our ongoing [style guide](question_style_overview.md)
+These websites and interviews are built with the Document Assembly Line tools:
 
-Our tools are free and open source. Use them on your own or with our help.
+* [CourtFormsOnline](https://courtformsonline.org/) (the original)
+* [Missouri Tenant Help](http://motenanthelp.org)
+* Illinois Legal Aid Online is converting its existing interviews to Docassem ___ and ___ interviews
 
-### How you can help us
+## Get involved/how you can help
 
-We are looking for experienced court administrators, legal experts, and document
-automators to help us:
+The Document Assembly Line is community built and supported. Because all our tools and software are open source, courts and orgs can build with confidence knowing the underlying software will be free to use, forever, with no vendor lock-in. Instead we are building digital public infrastructure together.
 
-* Share existing, completed paper PDF forms from court dockets so we can
-  understand the lifecycle of existing forms and identify intances where
-  litigants are spending the most time
-* Focus our insights on existing PDF forms to deliver the most value to courts
-* Help us create a more useful model of what makes forms easy or hard for
-  litigants to understand and use (we think readability is not enough)
-* Improve and extend our [library of questions](question_library/names.md)
-* Use and give us feedback on our [Assembly Line Weaver](plan_interview.md) tool
-* Expand our [e-filing](efiling/overview.md) capabilities
+### Join the community
 
+The Document Assembly Line community is hosted and supported by the [LIT Lab](https://suffolklitlab.org/). The community is open to courts, legal aid organizations, and anyone else interested in building online guided interviews with Docassemble and the Document Assembly Line Tools.
 
-## Our tools
+You don't have to go it alone! We offer:
 
-We built the **[Weaver](weaver_overview.md)** to help turn a [labeled](doc_vars_reference.md)
-PDF or Word document into a draft of a guided interview.
+* **Weekly community check-ins.** Interview builders meet every Monday at 10am Eastern. We follow a standup-style agenda focused on identifying and removing "blockers." Backend developers who work on the Document Assembly Line tools have a similar meeting on Fridays at 12:30pm Eastern.
+* **Community forum.** The LIT Lab hosts a community forum for the Document Assembly Line in Microsoft Teams for general discussions, coding help, server admin, and more.
+* **First-Wednesday workshops.** On the first Wednesday of each month at 3pm Eastern we host online workshops where we go in-depth on topics requested by the community. These are informal sessions centered around questions from viewers. Our workshops are also streamed and archived on YouTube.
 
-We built a **library of model questions** for common court form fields, like:
+To join the community, just [email us](mailto:litlab@suffolk.edu)!
 
-* names and addresses
-* the user's role in a court case
-* contact information
-* selecting and identifying a court
+### Partner with the LIT Lab
 
-These questions have been written to target a 6th grade reading level and to be
-usable by people with different abilities.
+:::tip
+[Get our one-page overview comparing Document Assemble Line partnerships with other options.](https://suffolklitlab.org/onepagers/partnerships/)
+:::
 
-We built an **[electronic-filing
-integration](https://github.com/SuffolkLITLab/EfileProxyServer)** for Tyler
-Technologies EFMs so your finished court form can be delivered straight to an
-electronic docket. It works in Louisiana's home-grown e-filing system, too.
+The LIT Lab's work has been and will continue to be supported by grants. Moving forward we will also rely on our court partners to help support our work. Funded partners pay for software development and support, training, user research, community building, project management, and technical support as well as direct costs like servers and staff time.
 
-We are in the process of building an **automated style checker** and
-**visualization tool** to help courts and legal aid providers understand how
-their forms can be improved, both on an individual form level and in the
-aggregate.
+* We can partner with legal aid organizations on grant applications for building online interview portals.
+* We can partner with courts that want to build online interview portals.
+* We can partner with granting organizations that want to help us expand access to justice by building digital public infrastructure.
 
-## Form features
+Our funded partners can access additional training, Docassemble server hosting, and e-filing.
 
-All of the forms produced by our tools:
+## Our repositories
 
-* have a common look and feel, with reusable components
-* mobile friendly layout so users can do everything on a smartphone
-* help in context to guide users to filling in the form correctly
-* use a standardized structure and questions to build consistency and gain trust
-* use address autocompletion, to improve accuracy and save user time
-* allow users to text, email, or share a link to their work in progress with a
-  friend or advocate helping them complete a form
-* integrated feedback form to help users report bugs or send praise quickly
-* gather anonymized statistics in aggregate for reporting on usage
-* use our database of court locations and jurisdictions in Massachusetts to
-  guide users to file in the right venue
-* digital signatures
+All code generated as part of this project is available for free [on GitHub](https://github.com/SuffolkLITLab) under the [MIT license](https://opensource.org/license/mit).
 
-Some forms can also be directly filed with a court, using either email,
-our integration with Tyler Technologies, or our integration with
-Louisiana's Jefferson Parish.
+### Docassemble interview-building tools
 
-<!-- TODO: add some images of the features here -->
+* [The core AssemblyLine package](https://github.com/SuffolkLITLab/docassemble-AssemblyLine) contains runtime code and shared questions for interviews.
+* [ALWeaver](https://github.com/SuffolkLITLab/docassemble-ALWeaver) is a tool for
+  rapidly generating interviews from marked-up court form PDF and DOCX templates.
+* [ALToolbox](https://github.com/SuffolkLITLab/docassemble-ALToolbox) contains functions and components that might benefit Docassemble developers whether or not they choose not to install the full Document Assembly Line toolbox.
+* [ALRecipes](https://github.com/SuffolkLITLab/docassemble-ALRecipes) examples and snippets that use Assembly Line features or demonstrate best practices. Can be included directly in the Docassemble Playground to supplement the list of Playground examples.
+* [PovertyScale](https://github.com/SuffolkLITLab/docassemble-PovertyScale) which contains a Python library, Docassemble code, static JSON and a REST server for determining income qualification based on the [United States Federal Poverty Scale](https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines), updated on an annual basis.
+* [GithubFeedbackForm](https://github.com/SuffolkLITLab/docassemble-GithubFeedbackForm) helps Docassemble authors collect feedback from users and generate GitHub issues.
 
-## Our Repositories
+### Docassemble server tools
 
-All code generated as part of this project is available for free on GitHub under
-the MIT license.
+* [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) is a Document Assembly Line–independent tool that makes it easier to maintain a Docassemble server.
+* [InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/) for gathering usage analytics.
 
-* [The ALWeaver](https://github.com/SuffolkLITLab/docassemble-ALWeaver) for
-  rapidly generating interactive court forms from marked-up templates.
-* [The AssemblyLine docassemble
-  package](https://github.com/SuffolkLITLab/docassemble-AssemblyLine) with
-  runtime code and shared questions for interactive court forms.
-  * [ALToolbox](https://github.com/SuffolkLITLab/docassemble-ALToolbox)
-      contains functions and components that might benefit Docassemble
-      developers who choose not to install the full Assembly Line framework.
-  * [GithubFeedbackForm](https://github.com/SuffolkLITLab/docassemble-GithubFeedbackForm)
-      helps Docassemble authors collect feedback from endusers and generate GitHub issues.
-  * [ALRecipes](https://github.com/SuffolkLITLab/docassemble-ALRecipes)
-      examples and snippets that use Assembly Line features or demonstrate best
-      practices. Can be included directly in the Docassemble Playground to supplement the list
-      of Playground examples.
-  * [InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/) for
-      gathering usage analytics.
-* [PovertyScale](https://github.com/SuffolkLITLab/docassemble-PovertyScale) which contains
-  a Python library, Docassemble code, static JSON and a REST server for determining income
-  qualification based on the [United States Federal Poverty
-  Scale](https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines), updated
-  on an annual basis.
-* [ALMassachusetts](https://github.com/SuffolkLITLab/docassemble-ALMassachusetts) with
-  Massachusetts-specific questions and links to Massachusetts courts.
-* [MACourts](https://github.com/GBLS/docassemble-MACourts) is maintained by Greater Boston
-  Legal Services but has been expanded and improved by the Assembly Line Project. It contains
-  a list of courts in Massachusetts and rules to determine jurisdiction and venue based on
-  address.
-* [MassAccess](https://github.com/SuffolkLITLab/docassemble-MassAccess) with branding
-  specific to the [CourtFormsOnline.org](https://courtformsonline.org) website.
-* [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) an Assembly Line-
-  independent tool that makes it easier to maintain a Docassemble server.
-* [EFSP Integration](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/) which
-  is a Python and Docassemble frontend for Suffolk Law School's electronic filing Java server.
-* [EFileProxyServer](https://github.com/SuffolkLITLab/EfileProxyServer) which is a Java-based
-  REST server which provides a simplified interface to [Tyler EFMs](https://www.tylertech.com/products/odyssey/file-serve),
-  as well as an interface to JeffNet, the home-brew efiling server run by Jefferson Parish, Louisiana. Suffolk LIT Lab
-  is currently in the process of being a certified Tyler E-Filing Service Provider (EFSP).
+### E-filing
 
-We have also produced draft or final [automations of almost 100 unique Massachusetts court forms](https://github.com/orgs/SuffolkLITLab/repositories)
-during the lifetime of our project.
+* [EFSP Integration](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/) is a Python and Docassemble frontend for Suffolk Law School's electronic filing Java server.
+* [EFileProxyServer](https://github.com/SuffolkLITLab/EfileProxyServer) is a Java-based REST server that provides a simplified interface to [Tyler EFMs](https://www.tylertech.com/products/odyssey/file-serve), as well as an interface to JeffNet, the home-brew efiling server run by Jefferson Parish, Louisiana.
