@@ -18,7 +18,7 @@ module.exports = {
                 'get_started/customization',
             ],
         },
-        'get_started/contributors',
+        'contributors',
     ],
     docs: [
         'overview',

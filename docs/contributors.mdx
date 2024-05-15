@@ -1,0 +1,247 @@
+---
+id: contributors 
+title: Project Contributors
+sidebar_label: Contributors
+slug: /contributors
+---
+
+## Our Team
+
+### People 
+
+Not everyone on the team is on Twitter, but here's a [Twitter list](https://twitter.com/i/lists/1246069325880012800?s=20) made up of team members. New folks are joining the team every day, and though we try to keep this list up-to-date, like this entire project, it is ever changing.
+
+
+<!--
+The `<Contrib>` tag has the following attributes:
+* name: the contributors name (plus project title, if desired)
+* pic (optional): a link to the contributor's image, starting with a `/` and starting at https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/tree/main/static. If not there, we use the robot pic as default.
+* page_id: the text of the in-page anchor link
+* socials (optional): a list of 2 element lists: first element is the URL, second is what it's called (LinkedIn, personal website, etc.)
+-->
+import useBaseUrl from '@docusaurus/useBaseUrl';
+export const Contrib = ({children, name, pic, page_id, socials}) => (
+  <tr id={page_id}>
+    <td>
+      <img src={(pic) ? useBaseUrl(pic) : useBaseUrl("/img/contributors/robby.jpg")} alt={ name + " Profile Picture"}/>
+      <br/> <sub><b><a href={"#" + page_id}>{name}</a></b></sub>
+    </td>
+    <td>{children}</td>
+    <td>
+      <ul>
+        {
+          (socials) ? (socials.map((social, i) => {
+            return <li key={i}><a href={social[0]}>{social[1]}</a></li>
+          })) : null 
+        }
+      </ul>
+    </td>
+  </tr>
+);
+
+<table>
+  <tbody>
+    <Contrib name="Warren Agin" pic="/img/contributors/agin.jpg" page_id="warren-agin"
+        socials={[["https://twitter.com/analyticlaw", "Twitter"], ["https://www.linkedin.com/in/warren-e-agin-a50b0/", "LinkedIn"]]}>
+      Lawyer who plays with data. Practiced bankruptcy, corporate and internet law for 28 years. Now managing director for Elevate Services' Digital Strategy & Solutions group
+    </Contrib>
+    <Contrib name="Kate Barry, The Assembly Line 209A Czar" page_id="kate_barry">
+      The DocAssemble Line 209A Czar! Staff attorney in the family law unit at Greater Boston Legal Services.
+    </Contrib>
+    <Contrib name="Mia Bonardi" pic="/img/contributors/bonardi.jpg" page_id="bonardi"
+      socials={[["https://www.linkedin.com/in/miabonardi/", "LinkedIn"]]}>
+      Mia Bonardi is a 3L at Suffolk University Law School.
+    </Contrib>
+    <Contrib name="Matthew Brooks" pic="/img/contributors/brooks.jpg" page_id="brooks"
+      socials={[["https://www.linkedin.com/in/matthew-brooks-he-him-ab944315/", "LinkedIn"]]}>
+      Matt Brooks is a staff attorney at <a href="https://www.gbls.org/">Greater Boston Legal Services</a> who focuses on consumer debt issues. He is also an occasional docassemble developer, a former Equal Justice Works Fellow, and a former law clerk for the Bankruptcy Court for the Northern District of Texas. He once rode <a href="https://en.wikipedia.org/wiki/Coney_Island_Cyclone">The Cyclone</a> rollercoaster in Coney Island 135 times in a row to raise an embarrassingly small amount of money for charity. The experience haunts him to this day.
+    </Contrib>
+    <Contrib name="Chandler Burnham" pic="/img/contributors/burnham.jpg" 
+      page_id="burnham" socials={[["https://www.linkedin.com/in/chandler-burnham/", "LinkedIn"]]}>
+      Chandler is a Massachusetts native currently attending Boston University School of Law. Prior to law school, he worked for a Boston based tech company after studying biology at University of Massachusetts Amherst.
+    </Contrib>
+    <Contrib name="Esme Caramello" page_id="caramello"
+      socials={[["https://hls.harvard.edu/faculty/directory/10132/Caramello", "University Listing"]]}>
+      <p>Faculty Director at the Harvard Legal Aid Bureau, Member of the Access to Justice Commission and its COVID-19 Task Force</p>
+    </Contrib>
+    <Contrib name="Jack Castor" pic="/img/contributors/castor.jpg" page_id="castor"
+      socials={[["https://www.linkedin.com/in/jcastor/", "LinkedIn"]]}>
+      <p>Jack Castor is a rising 2L at Suffolk University Law School. Jack is amazing at playing Tetris and has even surpassed Steve Wozniak's infamous high score. Everyone is impressed with his Tetris skills.</p>
+    </Contrib>
+    <Contrib name="David Colarusso, Director of the Legal Innovation and Technology Lab, Practitioner-in-Residence" pic="/img/contributors/colarusso_1.jpg" page_id="colarusso"
+      socials={[["http://www.davidcolarusso.com/", "Personal Website"], ["https://twitter.com/Colarusso", "Twitter"], ["https://www.linkedin.com/in/colarusso/", "LinkedIn"], ["https://osf.io/fya6w/", "LawArXiv"]]}>
+    <p>David Colarusso is the Director of Suffolk University Law School's Legal Innovation and Technology Lab. An attorney and educator by training, he has worked as a public defender, data scientist, software engineer, and high school physics teacher. 
+       He is the author of a programming language for lawyers, <a href="http://www.qnamarkup.org/">QnA Markup</a>, an award winning <a href="http://www.lawtechnologytoday.org/2014/08/aba-first-hackathon-how-a-public-defender-built-due-processr/">legal hacker</a>, 
+       <a href="http://www.abajournal.com/legalrebels/article/david_colarusso_profile">ABA Legal Rebel</a>, and <a href="http://www.fastcase.com/fastcase50/?class=2016">Fastcase 50 honoree</a>. In 2017 he was named one of the ABA's <a href="http://www.abajournal.com/magazine/article/best_law_twitter_web_100">top legal tweeters</a>.</p>
+    </Contrib>
+    <Contrib name="Michael Cronin" pic="/img/contributors/cronin.jpg" page_id="cronin"
+      socials={[["https://www.linkedin.com/in/michael-cronin-384608116", "LinkedIn"]]}>
+      <p>Michael is a 2021 J.D. Candidate at Suffolk University Law School. He is the President of the Real Estate and Trusts and Estates student association at Suffolk and graduated from Wheaton College in 2016 where he was a 4 year varsity soccer athlete and Philosophy Major.</p>
+    </Contrib>
+    <Contrib name="Jodi Cantrell" pic="/img/contributors/cantrell.jpg" page_id="cantrell"
+      socials={[["https://www.linkedin.com/in/jodi-cantrell/", "LinkedIn"]]}>
+      <p>Jodi is a 4L at Suffolk University Law School in Boston and has more than 20 years of IT experience.  As a former IT Director with Thermo Fisher Scientific, Jodi lead the North American Employee Experience group consisting of the Desktop and Site Support teams, as well as leading the Global IT Service Desk. She also held various project management roles within the IT Organization and played a key role in leading system integrations following Thermo Fisher's acquisition of Life Technologies in 2014.  Prior to joining Thermo Fisher in 2011, Jodi spent 10 years in various IT leadership functions with America West Airlines and US Airways.  Jodi completed her Bachelor's degree in Broadcast Journalism from Arizona State University..</p>
+    </Contrib>
+    <Contrib name="Charlotte Damico" pic="/img/contributors/damico.jpg" page_id="damico"
+      socials={[["https://www.linkedin.com/in/charlottedamico/", "LinkedIn"]]}>
+      Charlotte is a 3L at Drexel Law School in Philadelphia, PA.
+    </Contrib>
+    <Contrib name="Rose Devlin" pic="/img/contributors/devlin.jpg" page_id="devlin"
+      socials={[["https://www.linkedin.com/in/rosedevlin/", "LinkedIn"]]}>
+      <p>Rose is the lead UX/UI designer at Theory and Principle, a legal technology product design and development firm based in Portland, Maine. She has been a designer for 12 years, starting her career as a graphic designer in San Francisco and then moving on to user experience design in 2013. Rose has designed products ranging from large eCommerce sites, to health care products, to applications in the justice space. She is skilled at Sketch and InVision prototyping, moodboards and typography, illustration, and user flows. She has a BFA in Communications Design from Syracuse University’s School of Visual and Performing Arts and is a regular contributor to local User Experience Professional Association chapters.</p>
+    </Contrib>
+    <Contrib name="Hadley Duncan" pic="/img/contributors/duncan.jpg" page_id="duncan"
+      socials={[["https://www.linkedin.com/in/hadley-duncan-541a4364/", "LinkedIn"]]}>
+      <p>I am a 3L in Quinten Steenhuis's Lawyer Smart Machine course. Prior to law school I worked for a public relations firm in Boston. I attended Trinity College for undergraduate school and played varsity lacrosse and field hockey during my four years there. </p>
+    </Contrib>
+    <Contrib name="Alex Faig" pic="/img/contributors/faig.jpg" page_id="faig"
+      socials={[["https://www.linkedin.com/in/alex-faig-6886b282/", "LinkedIn"]]}>
+			Alex is a 3L at William & Mary Law School, and grew up in Richmond, Virginia.
+    </Contrib>
+    <Contrib name="Lance Godard" pic="/img/contributors/godard.jpg" page_id="godard"
+      socials={[["http://thegodardgroup.com/", "Personal Website"], 
+                ["https://www.linkedin.com/in/lancegodard/", "LinkedIn"]]}>
+      <p>After three decades inside and outside of law firms around the world providing a broad range of marketing, communications, and business development solutions, Lance recently took up coding to join the movement using technology to disrupt the profession, change the ways lawyers provide services, and provide access to justice for the underrepresented.</p>
+    </Contrib>
+    <Contrib name="Michael Hofrichter" pic="/img/contributors/hofrichter.jpg" page_id="hofrichter"
+      socials={[["https://twitter.com/mhofrichter", "Twitter"],
+        ["https://www.linkedin.com/in/michael-hofrichter-263a411/", "LinkedIn"]]}>
+      <p>Outgoing Executive Director for Houston Volunteer Lawyers. Former Operations/Tech at HVL where I did some major HotDocs projects, Docassemble projects, integrated Docassemble into our LegalServer configuration, and other database customizations. Basically held every job at HVL in the decade I worked there and got my first full-time job there because I was a self-taught techie when they needed someone. I went to law school at the University of Houston, undergrad at Brandeis University, and grew up in New Jersey. Outside of work, I'm an ultimate frisbee enthusiast and father of two young kids. </p>
+    </Contrib>
+    <Contrib name="Abigail Holt" pic="/img/contributors/holt.jpg" page_id="holt"
+      socials={[["https://www.cobden.co.uk/barristers/abigail_holt/", "Professional Website"]]}>
+      <p>UK Barrister and part-time First-Tier Tribunal Judge Oxford University - MA Jurisprudence Inns of Court School of law - Barrister-at-law Manchester University - MA Healthcare Law and Ethics Kings College, London - Post-graduate Diploma European Law Regents University, London - Diploma in Mediation and ADR  My practice at the Bar is pulmonary disease litigation, clinical negligence and all medical cases (including regulation of healthcare professionals) and general personal injury. From my judicial experience, I have knowledge of human rights, immigration, asylum and elements of EU law and international conventions.  Executive Committee of the European Circuit of the Bar (Treasurer)</p>
+    </Contrib>
+    <Contrib name="Fionola Hughes" pic="/img/contributors/hughes.jpg" page_id="hughes"
+      socials={[["https://www.linkedin.com/in/fionola-hughes-5b53701b2/", "LinkedIn"]]}>
+      <p>Fionola is a Law and French Graduate from the National University of Ireland, Galway and Sciences Po University, France.</p>
+    </Contrib>
+    <Contrib name="Dan Jackson" pic="/img/contributors/jackson.jpg" page_id="jackson"
+      socials={[["https://www.linkedin.com/in/dan-jackson-66898513/", "LinkedIn"]]}>
+    <p>
+      Dan Jackson directs the NuLawLab at Northeastern University School of Law, an interdisciplinary innovation laboratory working to merge creative arts and law to create new models of legal empowerment.  Dan is a 1997 graduate of Northeastern Law and a 1990 graduate of Northwestern University.  Following a postgraduate clerkship with The Hon. Hugh H. Bownes at the U.S. Court of Appeals for the First Circuit, Dan worked for 13 years with the law firm of Bingham McCutchen, ultimately serving as the firm’s director of attorney development after practicing in the employment law group.  Prior to law school, Dan worked as a designer for theater.  He continues to do so, most recently with the Provincetown Tennessee Williams Theater Festival and The Provincetown Theater.
+    </p>
+    </Contrib>
+    <Contrib name="Noelle Lussier" page_id="lussier">
+      <p>Fourth year evening student at Suffolk University Law School</p>
+    </Contrib>
+    <Contrib name="Maeve MacGlinchey, Docassembly Line Project Manager" pic="/img/contributors/macglinchey.jpg" page_id="macglinchey"
+      socials={[["https://twitter.com/maevemac", "Twitter"], ["https://www.linkedin.com/in/maevemacglinchey/", "LinkedIn"]]}>
+      <p>Maeve is a South African attorney and notary with four years experience in litigation and transactional law. She resigned from practice at the beginning of 2020 to pursue her interest in improving access to justice and the supply of legal services through the use of technology.</p>
+    </Contrib>
+    <Contrib name="Michelle, Docassembly Line Project Manager" page_id="michelle"
+      socials={[["https://twitter.com/restless_tech", "Twitter"]]}>
+      <p>Coder interested in creating with people, not for them.</p>
+    </Contrib>
+    <Contrib name="Matt Milward" pic="/img/contributors/milward.jpg" page_id="milward" 
+      socials={[["https://www.linkedin.com/in/matthew-milward-1a605913b/", "LinkedIn"]]}> 
+      <p>Matt is a rising 2L at Suffolk University Law School.</p>
+    </Contrib>
+    <Contrib name="Pablo Perez" pic="/img/contributors/perez.jpg" page_id="perez"
+      socials={[["https://twitter.com/ppr1994", "Twitter"]]}>
+      <p>Right to Counsel Coordinator at the Eviction Defense Collaborative, San Francisco </p>
+    </Contrib>
+    <Contrib name="James Richardson" pic="/img/contributors/richardson.jpg" page_id="richardson">
+      <p>James is a third-year law student at Suffolk University Law School.  He is a part of Suffolk's Accelerator to Practice Program and is interested in the use of technology in small firm practice.</p>
+    </Contrib>
+    <Contrib name="Blake Rigdon" pic="/img/contributors/rigdon.jpg" page_id="ridgon"
+      socials={[["https://www.linkedin.com/in/blake-rigdon-96b899164/", "LinkedIn"]]}>
+      <p>A rising 2L at Suffolk University Law School with an interest in civil litigation and legal technology.</p>
+    </Contrib>
+    <Contrib name="Caroline Robinson" pic="https://www.mlri.org/wp-content/uploads/2018/04/CarolineRobinson.jpg" page_id="robinson"
+      socials={[["https://www.linkedin.com/in/caroline-robinson-34708a3/", "LinkedIn"]]}>
+      <p>Caroline Robinson co-directs the Massachusetts Legal Aid Websites Project, and runs MassLegalHelp.org (MLH), based at Massachusetts Law Reform Institute (MLRI).  The Websites Project uses technology to increase access to justice for low-income and vulnerable Massachusetts residents. MLH is Massachusetts legal aid programs' collaborative effort to provide relevant, easy-to-read, civil legal information and tools for Massachusetts residents.  Prior to joining MLRI, she was Community Content Developer and Artimedia and InTouch Kirklees, a national prototype digital television project integrating community and official information for low income and vulnerable people, in the United Kingdom. She is a Returned Peace Corps Volunteer and has been advocating survivors of domestic violence since 1981.</p>
+    </Contrib>
+    <Contrib name="Liza Rosenof, Legal Research & Innovation Librarian" pic="/img/contributors/rosenof.jpg" page_id="rosenof"
+      socials={[["https://www.linkedin.com/in/liza-rosenof-70b1969b/", "LinkedIn"], 
+        ["https://www.suffolk.edu/law/faculty-research/about-the-library/library-staff/liza-rosenof", "University Listing"]]}>
+      <p>Before coming to Suffolk in 2015, Liza worked as a reference librarian at the Western New England School of Law Library in Springfield, MA. While still in law school, Liza served as an articles editor on the Boston College Environmental Affairs Law Review. She also interned at the Northeastern University School of Law Library and worked part-time at the Honan-Allston branch of the Boston Public Library during library school.</p>
+    </Contrib>
+    <Contrib name="Samuel Roth" pic="/img/contributors/roth.jpg" page_id="roth"
+      socials={[["https://www.linkedin.com/in/samuel-roth-b66464113/", "LinkedIn"]]}>
+      <p>Sam is a 2L student at Suffolk University Law School having previously graduated from the University of Rochester with a B.A. in history.</p>
+    </Contrib>
+    <Contrib name="Melanie Rush" pic="/img/contributors/rush.jpg" page_id="rush"
+      socials={[["https://www.linkedin.com/in/melanie-rush-35a04a178/", "LinkedIn"]]}>
+      <p>Melanie Rush is a recent graduate of Brandeis University with experience in history, politics, and social justice research. She joined this awesome project through her research internship at the Massachusetts Appleseed Center for Law & Justice. Since then, Melanie has taken on the role of Research and Policy Assistant at Massachusetts Appleseed, working on policy areas including access to justice, language access, and youth homelessness. In her free time, she enjoys watching an unhealthy amount of television, baking chocolate chip cookies, dancing, and catching up on recent historical works.</p>
+    </Contrib>
+    <Contrib name="Tyler Shannon" pic="/img/contributors/shannon.jpg" page_id="shannon"
+      socials={[["https://twitter.com/TylerShannon13", "Twitter"], 
+               ["https://www.linkedin.com/in/tylershannon/", "LinkedIn"]]}>
+      <p>Tyler is a licensed architect in Massachusetts where he leads the data science and research practice of a 100-person architecture and design firm. His work overlaps areas of urban planning, housing and transportation policy, real estate and technology. Tyler is currently in the early stages of the Law School application process and is looking forward to getting more involved in the legal community. Tyler lives in the South End of Boston with his wife and cat.</p>
+    </Contrib>
+    <Contrib name="Michael Slomovics" pic="/img/contributors/slomovics.jpg" page_id="slomovics"
+      socials={[["https://www.linkedin.com/in/michaelslomovics/", "LinkedIn"]]}>
+      <p>Michael is a third-year student at Yale Law School. He is from NYC where he plans on living after law school.</p>
+    </Contrib>
+    <Contrib name="Aubrie Souza" pic="/img/contributors/souza.jpg" page_id="Souza"
+      socials={[["https://www.linkedin.com/in/aubriesouza/", "LinkedIn"]]}>
+      <p>Aubrie is a 2L at Suffolk University Law School.</p>
+    </Contrib>
+    <Contrib name="Quinten Steenhuis, Clinical Fellow, Legal Innovation and Technology Lab" pic="/img/contributors/steenhuis.jpg" page_id="steenhuis"
+      socials={[["https://www.nonprofittechy.com/", "Personal Website"], 
+          ["https://twitter.com/QSteenhuis", "Twitter"], 
+          ["https://github.com/nonprofittechy", "GitHub"],
+          ["https://www.linkedin.com/in/quintensteenhuis/", "LinkedIn"]]}>
+      <p>Quinten Steenhuis is a clinical fellow at Suffolk University Law School in their Legal Innovation and Technology Lab. Quinten has practiced housing and eviction defense law since 2008, and has been a professional programmer and web application developer since 2001. He speaks at area law schools and blogs frequently on the topic of legal technology. He works on projects addressing social justice and access to justice with technology focusing on the topic of housing and evictions. Quinten is an active member of his local community, serving as an appointed member of the City of Cambridge's Recycling Advisory Committee, serving on the Access to Justice Commission's working group on housing through the Justice for All initiative, founding a neighborhood political action group, and serving as the long-time president of a <a href="https://www.meetup.com/Scrabble-Enthusiasts-of-Boston/">Scrabble club in Somerville, MA</a>. He received his B.Sc. in Logic and Computation with an additional B.Sc. in Political Science from Carnegie Mellon University and J.D. from Cornell Law School.</p>
+    </Contrib>
+    <Contrib name="Henry Strum" page_id="strum"
+      socials={[["https://www.linkedin.com/in/henry-sturm/", "LinkedIn"]]}>
+      <p>
+        I'm a 3L at Northeastern University School of Law and the resident legal design apprentice with the NuLaw Lab. Alongside NUSL's Domestic Violence Institute, I am working to help our DV Clinic rapidly respond to the COVID crisis and the likely increase in intimate partner violence during the stay-at-home period. We are doing this by using technology like the Doc Assembly Line to connect with potential clients in Dorchester, MA, which is what brought me to this project.
+      </p><p>
+        Most importantly, I'm a proud Texan and a pet-parent to 3 cats and 1 dog.
+      </p>
+    </Contrib>
+    <Contrib name="Jason Swadel" page_id="swadel">
+      <p>2L at Suffolk University Law School; Massachusetts native.</p>
+    </Contrib>
+    <Contrib name="Nicholas Taltos" pic="/img/contributors/taltos.jpg" page_id="taltos"
+      socials={[["https://www.linkedin.com/in/nicholas-taltos-17aa07179/", "LinkedIn"]]}>
+      <p>Nick is a rising 3L at Cardozo Law School in New York. He participated in Cardozo's Mediation Clinic and is currently an Executive Editor for the ADR Competition Honor Society. His interest in Access to Justice stems from research assistance he provided for a professor writing about the necessity of Access to Justice material for pro se litigants in mediation. Nick enjoys Tai Chi, improv, and writing.</p>
+    </Contrib>
+    <Contrib name="Vincent Tamburino" pic="/img/contributors/tamburino.jpg" page_id="tamburino"
+      socials={[["http://www.linkedin.com/in/vincenttamburino", "LinkedIn"]]}>
+      <p>Vincent Tamburino is a 3L rising law student at Suffolk University Law School. At Suffolk, Vincent participates in the Business Law Concentration and plans to practice transactional work in New York after he graduates. A proud graduate of Syracuse University, Vincent completed the unthinkable, graduating with a triple major in Political Science, European History & Italian Language and Literature. Once Vincent graduates from Suffolk Law in 2021, he plans on returning to his home state of New York where he will be able to wear his Saquon Barkley jersey in public.</p>
+    </Contrib>
+    <Contrib name="Philip Titcomb" pic="/img/contributors/titcomb.jpg" page_id="titcomb"
+      socials={[["https://www.linkedin.com/in/philip-titcomb/", "LinkedIn"]]}>
+      <p>Philip is originally from Massachusetts and currently a 2L at New York University School of Law. He previously attended Cornell University, where he studied Industrial & Labor Relations.</p>
+    </Contrib>
+    <Contrib name="Sinéad Vaughan" pic="/img/contributors/sinead.jpg" page_id="vaughan"
+      socials={[["https://www.linkedin.com/in/sin%C3%A9ad-vaughan-she-her-963788140/", "LinkedIn"]]}>
+      <p>Sinéad Vaughan is an International Law, Sociology and Politics graduate from the National University of Ireland, Galway and Leiden University, the Netherlands.</p>
+    </Contrib>
+    <Contrib name="Katharine Walton" page_id="walton"
+      socials={[["https://www.linkedin.com/in/katharine-walton/", "LinkedIn"]]}>
+      <p>Kat is a second-year law student at the University of Illinois School of Law. She plans to practice in Chicago after she graduates. In her free time, she enjoys reading mystery novels. </p>
+    </Contrib>
+    <Contrib name="Tyler Weber" pic="/img/contributors/weber.jpg" page_id="weber"
+      socials={[["https://www.linkedin.com/in/tyler-weber-b70159147/", "LinkedIn"]]}>
+      <p>Tyler is a 3L at Suffolk University Law School. Prior to law school Tyler studied Public Relations at SUNY Fredonia near Buffalo, NY.</p>
+    </Contrib>
+    <Contrib name="Bryce Willey" pic="/img/contributors/willey.jpg" page_id="willey"
+      socials={[["https://www.linkedin.com/in/bryce-willey-2a867989/", "LinkedIn"],
+        ["https://github.com/BryceStevenWilley/", "Github"],
+        ["https://brycewilley.xyz", "Personal Website"]]}>
+        Bryce is a clinical fellow with the Suffolk LIT Lab, working on e-filing and developing usable, easy-to-make court forms. Bryce graduated from Rice University with a dual BS in Computer Science and BA in Visual and Dramatic Arts in 2017, and with a MS in Computer Science in 2018, working in the <a href="http://kavrakilab.org/" target="_blank">KavrakiLab</a>. He previously worked at Realtime Robotics as a Motion Planning Software Engineer, and was a Political Data Fellow with Bluebonnet Data, organizing data and technology efforts on downballot campaigns. He is active in <a href="http://dotbike.org/" target="_blank">dotbike</a>, a biking advocacy group in Dorchester, and Code for Boston. 
+    </Contrib>
+  </tbody>
+</table>
+
+### Organizations
+
+The following organizations and groups have generously donated the time of their employees/members.
+
+* <a href="https://www.suffolk.edu/law"  >Suffolk University Law School</a>
+* <a href="http://www.massa2j.org/a2j/"  >The Massachusetts Access to Justice Commission</a>
+* <a href="https://docassemble.org/"  >docassemble</a>
+* <a href="https://www.gbls.org/"  >Greater Boston Legal Services</a>
+* <a href="https://www.northeastlegalaid.org/"  >Northeast Legal Aid</a>
+* <a href="https://www.mlri.org/"  >MLRI</a>
+* <a href="https://www.theoryandprinciple.com/"  >Theory and Principle</a>
+* <a href="https://www.nulawlab.org/"  >Northeastern Law School's NuLawLab</a>
+* <a href="https://www.appgeo.com/"  >AppGeo</a>
+* <a href="https://www.bentley.edu/academics/graduate-programs/masters-human-factors"  >Bentley University Court UX Team</a>
+* <a href="https://community.lawyer/"  >Community Lawyer</a>
+* <a href="https://www.documate.org/"  >Documate</a>
