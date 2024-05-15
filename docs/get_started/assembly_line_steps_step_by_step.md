@@ -5,11 +5,13 @@ sidebar_label: Step-by-step
 slug: /get_started/assembly_line_steps/steps
 ---
 
+:::warning
+We are actively updating the Document Assembly Line workflow and much of the information in this section is outdated.
+:::
 
-The guidance below is for organizations that want to set up their **own** copy of the 
-Assembly Line, not for individual automators.
+The guidance below is for organizations that want to set up their **own** copy of the Assembly Line, not for individual automators.
 
-Below is a brief explanation of the content on our sample [Trello boards](#trello).
+Below is a brief explanation of the content on our sample Trello boards.
 
 ## Pre-processing
 

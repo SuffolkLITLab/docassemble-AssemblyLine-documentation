@@ -85,7 +85,7 @@ code: |
 1. `original_form` is a link to the original, fillable PDF form that this interview is automating, if it exists.
 1. 🚧 `allowed courts` allows your code to decide which courts to let the user pick from when they need to pick their court, usually used in conjunction with [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate).
 1. `categories` is the [LIST taxonomy](https://taxonomy.legal/) code for this interview, which can be used by your organization to organize your interviews.
-1. `attachment block variable` used to be used in the code that sends documents to courts, but now the [ALDocument object block](#aldocument-object-block) is used instead.
+1. `attachment block variable` used to be used in the code that sends documents to courts, but now the [ALDocument object block](reference/AssemblyLine/al_document#aldocument-objects) is used instead.
 1. `logic block variable` should also no longer be used.
 1. `typical role`: controls which questions the user gets asked about themselves and other parties.
 

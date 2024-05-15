@@ -5,6 +5,10 @@ sidebar_label: Planning your time
 slug: /get_started/assembly_line_steps/planning_time
 ---
 
+:::warning
+We are actively updating the Document Assembly Line workflow and much of the information in this section is outdated.
+:::
+
 ## Planning out your app
 
 Spend some time **mapping out the process**. Decide where your app will intervene, and

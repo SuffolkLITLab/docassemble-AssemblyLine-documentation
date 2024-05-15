@@ -5,6 +5,10 @@ sidebar_label: Roles
 slug: /get_started/assembly_line_steps/roles
 ---
 
+:::warning
+We are actively updating the Document Assembly Line workflow and much of the information in this section is outdated.
+:::
+
 It's common for one or more roles to be shared by a single person. On our project
 we benefited from a lot of volunteers and the ability to split roles more evenly. Think
 about finding people to play the following roles:

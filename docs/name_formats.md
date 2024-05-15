@@ -12,7 +12,7 @@ things makes reading and writing code easier. At the AssemblyLine project, we've
 several conventions:
 
 1. [`snake_case`](#snake_case)
-1. [`kebab-case`](#kebab_case)
+1. [`kebab-case`](#kebab-case)
 1. [`PascalCase`](#pascalcase)
 
 ## Types of Naming Conventions
@@ -53,7 +53,7 @@ Some examples: `ProtectiveOrder`, `ProtectiveOrderRemoveAddress`
 * Avoid adding suffixes or information about the progress of the form at the end of the file. For example, use `protective_order.pdf` over `protective_order_processed.pdf` or `protective_order_reviewed.pdf`.
 * In all other ways, use the common name of the form - the name attorneys know it by.
 
-### Downloadable documents: [kebab-case](#kebab_case)
+### Downloadable documents: [kebab-case](#kebab-case)
 
 * We use dashes (`-`) because underscores (`_`) can be hard to see in file names, especially if the text is underlined.
 * Exactly the same as [the docassemble form name](#form-files-stored-in-docassemble-snake_case) in all other ways.
@@ -64,7 +64,7 @@ Some examples: `ProtectiveOrder`, `ProtectiveOrderRemoveAddress`
 
 ### PDF variables:  [snake_case](#snake_case)
 
-* Each label name must be unique. See how to [ensure uniqueness while still creating fields that display the same value](doc_vars_reference.md#print-a-value-in-multiple-places).
+* Each label name must be unique. See how to [ensure uniqueness while still creating fields that display the same value](label_variables#some-suggestions-for-coming-up-with-custom-labels).
 * Meets PDF or DOCX requirements
 * Is consistent with AssemblyLine conventions (which will help you!). See more details about [labels' variable names in documents](doc_vars_reference.md).
 

@@ -285,8 +285,8 @@ default_line_height: the default height (16 pt), in pixels (at 200 dpi), which i
 
 #### auto\_add\_fields
 
-Uses [get_possible_fields](#formfyxer.pdf_wrangling.get_possible_fields) and
-[set_fields](#formfyxer.pdf_wrangling.set_fields) to automatically add new detected fields
+Uses [get_possible_fields](#get_possible_fields) and
+[set_fields](#set_fields) to automatically add new detected fields
 to an input PDF.
 
 **Example**:
