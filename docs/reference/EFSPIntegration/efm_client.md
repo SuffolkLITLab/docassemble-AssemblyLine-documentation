@@ -11,7 +11,7 @@ class ProxyConnection(EfspConnection)
 
 The main class you use to communicate with the E-file proxy server from docassemble.
 
-Many methods are unchanged from the parent class, [EfspConnection](py_efsp_client#EfspConnection),
+Many methods are unchanged from the parent class, [EfspConnection](py_efsp_client),
 and are documented there.
 
 #### \_\_init\_\_

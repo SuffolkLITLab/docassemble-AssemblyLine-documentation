@@ -2,8 +2,12 @@
 id: assembly_line_steps_planning_time
 title: Planning your time
 sidebar_label: Planning your time
-slug: /assembly_line_steps/planning_time
+slug: /get_started/assembly_line_steps/planning_time
 ---
+
+:::warning
+We are actively updating the Document Assembly Line workflow and much of the information in this section is outdated.
+:::
 
 ## Planning out your app
 

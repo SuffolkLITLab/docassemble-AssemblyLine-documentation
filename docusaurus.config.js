@@ -37,19 +37,14 @@ module.exports = {
           label: 'Documentation',
         },
         {
-          type: 'dropdown',
-          label: 'Docassemble',
+          href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
+          label: 'Legal Tech Class',
           position: 'right',
-          items: [
-            {
-              href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-              label: 'Intro to Docassemble',
-            },
-            {
-              href: 'https://docassemble.org/docs.html',
-              label: 'Docassemble Docs',
-            },
-          ]
+        },
+        {
+          href: 'https://docassemble.org/docs.html',
+          label: 'Docassemble Docs',
+          position: 'right',
         },
         {
           href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
@@ -91,7 +86,43 @@ module.exports = {
           },
           {
             from: '/docs/intro',
-            to: '/docs/'
+            to: '/docs/get_started'
+          },
+          {
+            from: '/docs/al_project_architecture',
+            to: '/docs/get_started/al_project_architecture'
+          },
+          {
+            from: '/docs/installation',
+            to: '/docs/get_started/installation'
+          },
+          {
+            from: '/docs/getting_started',
+            to: '/docs/get_started/assembly_line_setup'
+          },
+          {
+            from: '/docs/assembly_line_steps',
+            to: '/docs/get_started/assembly_line_steps'
+          },
+          {
+            from: '/docs/assembly_line_steps/roles',
+            to: '/docs/get_started/assembly_line_steps/roles'
+          },
+          {
+            from: '/docs/assembly_line_steps/planning_time',
+            to: '/docs/get_started/assembly_line_steps/planning_time'
+          },
+          {
+            from: '/docs/assembly_line_steps/steps',
+            to: '/docs/get_started/assembly_line_steps/steps'
+          },
+          {
+            from: '/docs/customization',
+            to: '/docs/get_started/customization'
+          },
+          {
+            from: '/docs/bootcamp',
+            to: '/docs/get_started/bootcamp'
           },
         ]
       }

@@ -2,7 +2,7 @@
 id: installation
 title: Installing the Document Assembly Line
 sidebar_label: Installation
-slug: /installation
+slug: /get_started/installation
 ---
 
 Before you get started, make sure that you have [installed
@@ -35,7 +35,7 @@ To install ALDashboard:
 1. visit the "Package Management" menu on your Docassemble server when you are
    logged in as a server administrator
 1. Type `docassemble.ALDashboard` into the input box labeled `Package on PyPI`
-   ![Package on PyPI](./assets/installation_package_on_pypi.png)
+   ![Package on PyPI](../assets/installation_package_on_pypi.png)
 1. Click the **Update** button.
 
 ## Run the installation script
@@ -49,7 +49,7 @@ https://YOURSERVER.com/start/ALDashboard/menu
 
 Click the icon labeled "Install Assembly Line"
 
-![Install assembly line](./assets/installation_install_assembly_line.png)
+![Install assembly line](../assets/installation_install_assembly_line.png)
 
 You will be asked to set up multiple APIs during the installation process.
 If you do not have accounts yet, you can use the default choices for those
@@ -80,7 +80,7 @@ them for your own jurisdiction or organization.
 
 To use this package, [pull it into your own Docassemble playground](https://docassemble.org/docs/playground.html#packages).
 
-Next, [follow our guide](customization/customization_overview.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
+Next, [follow our guide](customization_overview.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
 
 Now, create a new package from the [Playground packages menu](https://docassemble.org/docs/playground.html#packages).
 Give the package a meaningful name, like LouisianaSharedBranding.
@@ -158,7 +158,7 @@ nano /etc/nginx/nginx.conf
 
 Add the following exact text to the `http` section: `uwsgi_read_timeout 300s;`
 
-![Edit uwsgi timeout](./assets/edit_uwsgi_timeout.png)
+![Edit uwsgi timeout](../assets/edit_uwsgi_timeout.png)
 
 Type CTRL+O, Enter, and then CTRL+X to save and exit the configuration file.
 

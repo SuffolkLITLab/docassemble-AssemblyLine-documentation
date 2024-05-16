@@ -1,16 +1,15 @@
 ---
-id: getting_started
+id: assembly_line_setup
 title: |
-  Getting started: Setting up your own Assembly Line
+  Set up your Document Assembly Line
 sidebar_label: |
-  Getting started: Setting up your own Assembly Line
-slug: /getting_started
+  Set up your Document Assembly Line
+slug: /get_started/assembly_line_setup
 ---
 
 <!-- TODO: Add link to someplace to give feedback or some kind of forum. -->
 
-The guidance below is for organizations that want to set up their **own** copy of the 
-Assembly Line, not for individual automators.
+The guidance below is for organizations that want to set up their **own** copy of the Assembly Line, not for individual automators.
 
 How do you develop and deploy court forms effectively? This is what has worked
 for us. Adjust it when you need to. We'd love to hear about the changes you make
@@ -51,7 +50,7 @@ The broad strokes of the details you can see in the Trello checklists:
 **MVP:** Minimum viable product - first make something that works. 
 
 Henrik Kniberg has [created a useful skateboard analogy for an MVP](https://blog.crisp.se/2016/01/25/henrikkniberg/making-sense-of-mvp).
-![Minimum viable product](./assets/mvp.png)
+![Minimum viable product](../assets/mvp.png)
 -- Henrik Kniberg
 
 An MVP will be different for different projects. The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify your MVP. Once you've decided what this form's MVP is, avoid adding anything unless absolutely necessary.

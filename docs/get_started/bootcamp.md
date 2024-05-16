@@ -2,7 +2,7 @@
 id: bootcamp
 title: Suffolk LIT Lab's Document Assembly Line Bootcamp
 sidebar_label: Bootcamp
-slug: /bootcamp
+slug: /get_started/bootcamp
 ---
 
 :::info

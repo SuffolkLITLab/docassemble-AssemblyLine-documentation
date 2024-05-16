@@ -270,7 +270,7 @@ If your organization has teams, pick which teams can have access to this reposit
 Check your organization's GitHub page to make sure your project appears there. You may have to ask give the administrator the new link to the repository and ask them to [give the rest of the team permissions on it](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository).
 
 :::warning
-If you get a pink error message that says you don't have permissions, you have not been [added as a member of that GitHub organization](#join_your_organization).
+If you get a pink error message that says you don't have permissions, you have not been [added as a member of that GitHub organization](#join-your-organization).
 
 ![Cannot transfer repo](./assets/github_cannot_transfer.png)
 :::
@@ -313,7 +313,7 @@ Make a new branch when you first start working on a feature or goal. For example
 1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
 1. [Go to "Packages"](#go-to-the-package) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
 1. In the branches dropdown, select `New Branch`.
-1. Give the branch a [snake_case](name_formats.md#snake-case) name.
+1. Give the branch a [snake_case](naming#snake_case) name.
 1. Commit your changes with a [commit message](#commit-messages).
 
 You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
@@ -363,7 +363,7 @@ You can see [a list of your repository's branches in GitHub](https://docs.github
 
 aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches, branches diverged
 
-Sometimes when you start to [make a pull request](#request-others-merge-your-code), GitHub will tell you that you have a [merge conflict](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-merge-conflicts). This means that while you were making changes to your branch, changes were also made to the branch you are trying to merge with and they changed the same lines of code. Git will not decide which bits of code to keep where - you have to decide that.
+Sometimes when you start to [make a pull request](#request-others-test-your-code), GitHub will tell you that you have a [merge conflict](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-merge-conflicts). This means that while you were making changes to your branch, changes were also made to the branch you are trying to merge with and they changed the same lines of code. Git will not decide which bits of code to keep where - you have to decide that.
 
 These are unavoidable and a pain to deal with. Everyone runs into them now and again and they are tricky to resolve without introducing bugs.
 

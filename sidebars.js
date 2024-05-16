@@ -2,26 +2,26 @@ module.exports = {
     mainSidebar: [
     ],
     get_started: [
-        'intro',
-        'al_project_architecture',
-        'installation',
+        'get_started/intro',
+        'get_started/al_project_architecture',
+        'get_started/installation',
         {
             type: 'category',
             label: 'Setting up your team',
             items: [
-                'bootcamp',
-                'getting_started',
-                'assembly_line_steps',
-                'assembly_line_steps_roles',
-                'assembly_line_steps_planning_time',
-                'assembly_line_steps_step_by_step',
-                'customization/customization_overview',
+                'get_started/assembly_line_setup',
+                'get_started/assembly_line_steps',
+                'get_started/assembly_line_steps_roles',
+                'get_started/assembly_line_steps_planning_time',
+                'get_started/assembly_line_steps_step_by_step',
+                'get_started/customization',
+                'get_started/bootcamp',
             ],
         },
         'contributors',
     ],
     docs: [
-        'getting_started_docassemble',
+        'overview',
         {
             type: 'category',
             label: 'Authoring interviews',
@@ -78,8 +78,7 @@ module.exports = {
                 'coding_style/yaml_interface',
                 'coding_style/yaml_translation',
                 'coding_style/defense',
-                'coding_style/accessibility',
-                'coding_style/docs_style_guide'
+                'coding_style/accessibility'
             ]
         },
         'framework/magic_variables',
