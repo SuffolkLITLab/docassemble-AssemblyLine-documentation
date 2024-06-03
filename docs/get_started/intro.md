@@ -51,7 +51,7 @@ These websites and interviews are built with the Document Assembly Line tools:
 
 * [CourtFormsOnline](https://courtformsonline.org/) (the original)
 * [Missouri Tenant Help](http://motenanthelp.org)
-* Illinois Legal Aid Online's [order of protection](https://www.illinoislegalaid.org/legal-information/order-protection), [eviction](https://www.illinoislegalaid.org/legal-information/evict-tenant), and [fee waiver](https://www.illinoislegalaid.org/legal-information/fee-waiver) interviews are some of the interviews ILAO has converted to Docassemble with the Document Assembly Line
+* Illinois Legal Aid Online's [motion](https://www.illinoislegalaid.org/legal-information/motion) and [transfer on death instrument (TODI)](https://www.illinoislegalaid.org/legal-information/transfer-death-instrument-or-todi) are some of the interviews ILAO has converted to Docassemble
 
 ## Get involved/how you can help
 
