@@ -1,92 +1,110 @@
 ---
 id: github
-title: Using GitHub with docassemble
-sidebar_label: GitHub tutorials
+title: Using GitHub with Docassemble
+sidebar_label: "Appendix: Using GitHub"
 slug: /github
 ---
 
-import styles from "../src/css/images.module.css"
 
-<div className={ styles.medium_width }>
+We strongly recommend using [GitHub](https://github.com/) with Docassemble. GitHub is a version control system. It lets you save a snapshot of your interview that you can revert to an earlier version if you need to and see changes over time. GitHub also makes it easier to build interviews as a team, get help, and hand off your code to future interview builders and maintainers.
 
-<!-- original: https://docs.google.com/document/d/1pj1DFIhzzwB6raeCytnmPSR41WfNvG-T9GYPsf1wOsA/edit -->
+Here are some more reasons to use GitHub with Docassemble:
 
-Ways to use GitHub in combination with docassemble. GitHub itself has decent documentation for its own features.
+* Save versions of the interview code you are working on so you can back up to an earlier version/save point if new edits break something.
+* Collaborate with others to build Docassemble interviews, get help, and hand off your code to future interview builders and maintainers.
+* Share your code with others who might want to build similar interviews.
+* Create branches to work on specific issues, or create multiple branches to keep different issues isolated from each other while you work on them.
+* Track and discuss issues with your code, like tasks, bugs, feature requests, etc. Issues can be assigned, tagged, and attached to commits and pull requests that complete or fix them.
+* Use projects to gather issues from multiple repositories and organize them on a Kanban-style project board.
 
-## Why?
+:::info
+This page covers how to use GitHub with Docassemble. Refer to the [GitHub documentation](https://docs.github.com/en) if you have questions about its features. The [Git documentation](https://git-scm.com/doc) may also be helpful if you want to understand GitHub's underlying version control software.
+:::
 
-GitHub lets you collaborate with your team more easily, helps other people help you if you run into problems, saves working code so you can come back to it if new edits break something (a savepoint), and lets others find your code if they want to do something similar.
+## Set Up GitHub in the Docassemble Playground
 
-These are some thing GitHub lets you do and why you might want them.
+In order to use GitHub with Docassemble you will need two things:
 
-### Why: branches and commits
-* Avoid introducing breaking changes to the working code.
-* Work on multiple features/changes at the same time, keeping each isolated from the others. Either collaborators can work that way or one individual and isolate specific issues to work on.
-* Try implementing a feature multiple different ways.
-* Try out and review each others' code without messing up your own code.
-* Clearly see what has changed between versions of your code when you lose track.
-* Get reviews/tests from other people to make sure code is working before adding it to the main/master working branch.
+1. Developer privileges on a Docassemble development server with the [GitHub integration configured](https://docassemble.org/docs/installation.html#github). (If you don't have access to a Docassemble development server, [contact us](mailto:litlab@suffolk.edu).)
+2. A [GitHub](https://github.com/) account. If this is a new account, you may want to [keep your email address private](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github) and [avoid sharing your email address on commits](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address).
 
-### Why: [issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues)
-* Track tasks that need doing and add context to them.
-* Track decisions that have been made.
-* Search the tasks when looking for relevant information.
-* Assign tasks to specific people.
-* See the tasks that were assigned to you specifically.
+Then, follow the [Docassemble instructions for publishing an interview package to GitHub](https://docassemble.org/docs/packages.html#github).
 
-### Why: community
-* People with more experience can pull your code in more easily to experiment with it and troubleshoot more effectively.
-* When your time on the project is over, other people can take up the code to continue developing it.
+## Best Practices
 
-## Setup
+### Commit Early & Often
 
-### Get a docassemble account
+A commit is a save point. It saves your progress and creates a snapshot of the current state of your interview code. It also helps you find old, working code when something breaks or you need to track down a bug.
 
-1. Find server administrator.
-1. Give them your email.
-1. Ask them to [invite you to the server](https://docassemble.org/docs/users.html#invite) with developer privileges.
-1. When you get an invitation email, follow the link to the server.
-1. Make sure you can sign in.
+GitHub can't help you if you don't use it, so **commit early and often**!
 
-![Sign in](./assets/da_account_sign_in.png)
+:::tip
+When you first start working with Docassemble it can be hard to remember to stop and commit. Try creating a daily reminder on your phone.
+:::
 
-### Join GitHub
+You can commit to a branch as often as you want. Developers often wait to commit code until they have it working, but they also might commit broken code so other people can help them troubleshoot, or to save their progress. If you are concerned about ruining working code, [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit it to that branch.
 
-1. Make sure you have a [GitHub account](https://github.com/join)
-1. If this is a new GitHub account, adjust settings to [keep your email address private](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/setting-your-commit-email-address#setting-your-commit-email-address-on-github) and [make sure your email does not get stored when you send your code to GitHub](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/blocking-command-line-pushes-that-expose-your-personal-email-address).
+#### Commit Your Interview Code
 
-### Join your organization
-1. Make sure your organization [invites you to their GitHub Organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization) or [invites you to their Team](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-organization-members-to-a-team).
-1. Follow the link in your email to accept the invitation.
-   
-### Connect GitHub to your docassemble account
+1. In the Playground, select **Packages** from the **Folders** menu.
+![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
+1. Scroll to the bottom of the page.
+1. Review the **README file** text to make sure it mentions the jurisdiction the interview applies to and describes the documents generated by the interview.
+1. Click on the **GitHub** button.
+1. Select the branch you want to commit to, or create a new branch.
+1. Enter a [commit message](#commit-messages).
+1. Click the **Commit** button. 
+1. That's it! Your commit should show up on GitHub!
 
-**Summary**
+#### Commit Messages
 
-1. Go to your docassemble "Profile" > "Other Settings" > "GitHub integration"
-1. Authorize docassemble to access your GitHub account
+A commit message is required to make a commit. Commit messages are more helpful if they describe the specific change(s) you just made. You can write commit messages like a task on a to-do list. For example: "Updates cash income question" or "Fixes broken address field." That way, when you look back over your list of commits you can reconstruct the work you did. If you need to undo (revert) a commit, your commit messages can help you find the specific commit.
 
-**Details**
+Commit messages can also link to or close issues, just like [pull request messages](#close-an-issue-with-a-pr).
 
-Open docassemble and select "Profile" from the drop down menu.
+### Use Branches
 
-![Open your profile from the sign-in dropdown menu in the top right](./assets/da_dropdown_profile.png)
+Make a new branch when you start working on a new feature or fixing an error. The new branch keeps your previous work separate and lets other people see the changes before they are merged into the `main` branch with a pull request.
 
-Tap "Other Settings" and then "GitHub integration" from the drop down menu.
+It preserves your previous work so that it isn't affected by these changes and lets other people see the changes before they're completely added in. This is very similar to committing changes, but has a couple additional steps.
 
-![Navigate to GitHub the integrations page](./assets/da_settings_github_integration.png)
+1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
+1. [Go to "Packages"](#go-to-the-package) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
+1. In the branches dropdown, select `New Branch`.
+1. Give the branch a [snake_case](naming#snake_case) name.
+1. Commit your changes with a [commit message](#commit-messages).
 
-Tap "Configure".
+You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
 
-![Tap 'Configure' on the GitHub integrations page](./assets/da_settings_github_integration.png)
+<!-- TODO: Move the naming conventions here to the name formats doc? -->
+:::note Branch name
+A branch name reminds you and your collaborators, at a glance, what topic, problem, or feature the branch is for. 1 to 3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
+ 
+**More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductibles`.
+:::
 
-Tap to authorize your docassemble server on GitHub. It will restart the server.
 
-![Authorize docassemble](./assets/da_github_authorize.png)
+#### Branches vs. commits
+**Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
 
-Once the server is done you can [return to the Playground](#go-to-the-playground).
+**Commits** should encapsulate one particular action in a branch. One commit might be adding one question or getting one part of the code working, even if other parts still need some work. Together, individual commits add up to the complete feature. A commit might fix typos, improve readability of the first three questions, or add the question about debt.
 
-### Make issues
+<!-- Here's where we left off. This is the code we pushed in our first commit.  -->
+<!-- 
+:::note
+Our convention for formatting: All lowercase alphanumeric separated by underscores.
+
+One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. Example: income_questions or income_calculations.
+
+**More advanced:** The issue number and type of action you're doing and. Example: 116_fix_income_calculations or 42_feature_deductibles.
+:::
+
+*This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
+ -->
+<!-- A similar message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
+
+
+### Use Issues
 
 Keywords: Tasks, todo lists, bugs, features, documentation, milestones
 
@@ -278,72 +296,6 @@ If you get a pink error message that says you don't have permissions, you have n
 ## Sharing code
 
 Mistakes will happen. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` for version control and it's specifically made for rolling back changes. Docassemble does not give full access to its features and its a complex ecosystem, so someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
-
-### Commit - EARLY AND OFTEN
-
-aka. Savepoints, saving your progress, bookmark where your code is at right now.
-
-Commits help preserve your work, help you find old working code when something breaks, and help you track down bugs by peeling back only a few changes at a time till you get to a working version.
-
-Note: When you first start, it's hard to remember to stop and commit. Create a daily alarm in your phone to commit all code that you haven't yet committed that day.
-
-**COMMIT EARLY AND OFTEN** (bears repeating). GitHub can't help you if you don't use it.
-
-You can commit to a branch as many, or as few, times as you want. Developers often wait to commit code until they have it working, but they might commit broken code to make it easier for other people to help them or to save progress. If you are concerned about ruining working code, you can [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit to that branch.
-
-1. Go to the correct Project and make at least one change (edit or add a file).
-1. [Go to "Packages"](#go-to-the-package).
-1. In the branches dropdown, select the branch you want to add your changes to or [create a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix).
-1. Write a [commit message](#commit-messages) (required)
-1. Tap 'Commit'
-1. See your **commit** on GitHub!
-
-<!-- TODO: Add the below back in when we have images as the GitHub docs on this currently do not show something useful (https://docs.github.com/en/github/committing-changes-to-your-project/differences-between-commit-views):
-
-If you want, you can see them one at a time and see very clearly what changes you made so you can make sure they were the changes you wanted. -->
-
-<!-- **Most important:** It doesn't actually matter what you put here. It can be more useful or less useful. You just have to put something here. -->
-
-### Making a new branch for a new goal or bug fix
-
-Make a new branch when you first start working on a feature or goal. For example, income questions or a bug fix. It preserves your previous work so that it isn't affected by these changes and lets other people see the changes before they're completely added in. This is very similar to committing changes, but has a couple additional steps.
-
-<!-- TODO: Reduce this to just being about a new branch. Make a section for starting a new goal or bug fix that links to making a new branch and making commits. -->
-
-1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
-1. [Go to "Packages"](#go-to-the-package) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
-1. In the branches dropdown, select `New Branch`.
-1. Give the branch a [snake_case](naming#snake_case) name.
-1. Commit your changes with a [commit message](#commit-messages).
-
-You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
-
-<!-- TODO: Move the naming conventions here to the name formats doc? -->
-:::note Branch name
-A branch name reminds you and your collaborators, at a glance, what topic, problem, or feature the branch is for. 1 to 3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
- 
-**More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductibles`.
-:::
-
-
-#### Branches vs. commits
-**Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
-
-**Commits** should encapsulate one particular action in a branch. One commit might be adding one question or getting one part of the code working, even if other parts still need some work. Together, individual commits add up to the complete feature. A commit might fix typos, improve readability of the first three questions, or add the question about debt.
-
-<!-- Here's where we left off. This is the code we pushed in our first commit.  -->
-<!-- 
-:::note
-Our convention for formatting: All lowercase alphanumeric separated by underscores.
-
-One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. Example: income_questions or income_calculations.
-
-**More advanced:** The issue number and type of action you're doing and. Example: 116_fix_income_calculations or 42_feature_deductibles.
-:::
-
-*This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
- -->
-<!-- A similar message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
 
 ### Request others test your code
 
@@ -630,23 +582,7 @@ Find docassemble pages like the Playground and the Packages pages.
 ### Go to the Playground
 ![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
 
-### Go to the Package
-[Playground](#go-to-the-playground) > Folders > Packages
-
-![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
-
-
 ## Advanced/Needs bandwidth
-
-### Commit messages
-
-<!-- When you're more comfortable with commit messages, take a moment to think what your recent changes have accomplished. -->
-
-A commit message is required to make a commit. The most important part of a It describes the specific changes you just made that are working towards the goal of the branch. You can write a commit message as if it is an item in a todo list. It helps to start with a verb. Example: `Update cash income question`.
-
-When you look back on your list of such commits, you would be able to construct a todo list of what needed to get done. If commits need to be undone (reverted), these might help you recover the tasks that need doing.
-
-Regular commit messages can also link to or close issues, just like [the commit messages of a PR can reference or close issues](#close-an-issue-with-a-pr). Pro tip: they're actually all just regular commit messages.
 
 ### Close an issue with a PR
 
@@ -733,5 +669,3 @@ If you do not have write permissions on a repository, you can still see play wit
 When you make a pull request from one branch of your fork to another branch of your fork, make sure the chosen branches in the dropdowns are correct. GitHub will automatically set your pull request to use the original owner's repository instead of your own.
 
 If you later do want to offer your changes to the owner of the original repository, you can [make a pull request from your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
-
-</div>
