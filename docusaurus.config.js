@@ -122,7 +122,7 @@ module.exports = {
           },
           {
             from: '/docs/bootcamp',
-            to: '/docs/get_started/bootcamp'
+            to: '/docs/archive/bootcamp'
           },
         ]
       }

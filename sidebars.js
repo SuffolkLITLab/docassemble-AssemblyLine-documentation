@@ -15,10 +15,16 @@ module.exports = {
                 'get_started/assembly_line_steps_planning_time',
                 'get_started/assembly_line_steps_step_by_step',
                 'get_started/customization',
-                'get_started/bootcamp',
             ],
         },
         'contributors',
+        {
+            type: 'category',
+            label: 'Archived Pages',
+            items: [
+                'archive/bootcamp',
+            ],
+        },
     ],
     docs: [
         'overview',
@@ -130,6 +136,7 @@ module.exports = {
                 "reference/ALToolbox/save_input_data"
             ]
         },
+        'framework/alrecipes',
         'complexity/complexity',
         'framework/github_feedback',
         'analytics/tracking_usage',
