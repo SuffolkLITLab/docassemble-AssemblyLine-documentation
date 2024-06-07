@@ -5,6 +5,7 @@ module.exports = {
         'get_started/intro',
         'get_started/al_project_architecture',
         'get_started/installation',
+        'get_started/interview_building',
         {
             type: 'category',
             label: 'Setting up your team',
