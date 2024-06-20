@@ -21,6 +21,18 @@ Here are some more reasons to use GitHub with Docassemble:
 This page covers how to use GitHub with Docassemble. Refer to the [GitHub documentation](https://docs.github.com/en) if you have questions about its features. The [Git documentation](https://git-scm.com/doc) may also be helpful if you want to understand GitHub's underlying version control software.
 :::
 
+## Workflow
+
+Here is what we recommend for a workflow for using GitHub with the Docassemble playground. Repeat these steps each time you start working on a new task or issue:
+
+1. Create a new project in your Docassemble playground, then pull the `main` branch of your interview from GitHub.
+2. When you commit from that playground project, commit to a new branch.
+3. When you finish working on the branch, commit it one last time. Then go to the repository in GitHub and create a pull request. If you are working with someone on the interview, request a review from them.
+4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request.
+5. Decide on the next task or issue you want to work on and start over at #1.
+
+For more detail on these steps, see below.
+
 ## Set Up GitHub in the Docassemble Playground
 
 In order to use GitHub with Docassemble you will need two things:
