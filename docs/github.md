@@ -126,10 +126,6 @@ Examples of a good branch name, commit messages, and pull request title:
 
 That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
 
-## Sharing code
-
-Mistakes will happen. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` for version control and it's specifically made for rolling back changes. Docassemble does not give full access to its features and its a complex ecosystem, so someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
-
 ### Request others test your code
 
 <!-- TODO: Consider adding procedure with an intermediate branch -->
