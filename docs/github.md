@@ -60,7 +60,7 @@ You must use [PascalCase](naming#pascalcase) when naming projects.
 
 1. In the Docassemble playground, click on the **Folders** menu and select **Packages**.
 2. Scroll to the bottom of the page and click on the **GitHub** button.
-3. Select the branch you want to commit to, enter a [commit message](#commit-messages), and click the **Commit** button. 
+3. Select the branch you want to commit to, enter a [commit message](#branches-pull-requests-and-commits), and click the **Commit** button. 
 
 That's it! Your commit should show up on GitHub!
 
@@ -111,7 +111,7 @@ GitHub can't help you if you don't use it, so **commit early and often**!
 When you first start working with Docassemble it can be hard to remember to stop and commit. Try creating a daily reminder on your phone.
 :::
 
-You can commit to a branch as often as you want. Developers often wait to commit code until they have it working, but they also might commit broken code so other people can help them troubleshoot, or to save their progress. If you are concerned about ruining working code, [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit it to that branch.
+You can commit to a branch as often as you want. Developers often wait to commit code until they have it working, but they also might commit broken code so other people can help them troubleshoot, or to save their progress. If you are concerned about ruining working code, make a new branch for the broken code and commit it to that branch.
 
 ### Use Issues
 
@@ -181,4 +181,4 @@ If you think your GitHub account does have permission, try [redoing the GitHub i
 
 #### If You See `CONFLICT (content): Merge conflict`
 
-The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#merge-conflicts) looks like in docassemble in git. Simply [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) and commit the changes there. Work out the merge conflicts afterwards.
+The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#resolve-conflicts) looks like in docassemble in git. Simply make a new branch and commit the changes there. Work out the merge conflicts afterwards.
