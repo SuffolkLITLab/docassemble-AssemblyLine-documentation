@@ -80,6 +80,23 @@ To reduce merge conflicts:
 3. Communicate with your team in order to avoid working on the same sections of code at the same time.
 :::
 
+### Review Pull Requests
+
+When someone assigns you to review a pull request (PR), you will be able to see it in [your GitHub notifications](https://github.com/notifications). Don't let these requests sit around too long, or you increase the likelihood of [merge conflicts](#resolve-conflicts).
+
+The requester should have left notes on what needs to be tested in the description of the pull request.
+
+1. Pull the code into the a new playground project.
+2. Test the change(s) made in the pull request.
+3. If it does not do what it is supposed to do, leave a comment requesting changes.
+4. If it does what it is supposed to do, approve the changes and then you or the PR submitter can merge the PR and delete the branch.
+
+:::tip
+You can [make comments connected to specific lines of code](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-comments-to-a-pull-request). This is often helpful when reviewing PRs.
+:::
+
+Afterward you can delete the playground project you created for the review.
+
 ## Best Practices
 
 ### Commit Early & Often
@@ -163,56 +180,6 @@ If you think your GitHub account does have permission, try [redoing the GitHub i
 #### If You See `CONFLICT (content): Merge conflict`
 
 The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#merge-conflicts) looks like in docassemble in git. Simply [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) and commit the changes there. Work out the merge conflicts afterwards.
-
-
-### Testing someone else's code
-
-#### Reviewing PRs
-<!-- One of the github teaching tuesdays? -->
-
-When someone assigns you as a reviewer for a pull request, you will be able to see it in [your GitHub pull request list](https://github.com/pulls) or [your notifications page](https://github.com/notifications). You can read more in [the GitHub documentation on seeing your issues and pull requests](see how to navigate therehttps://docs.github.com/en/github/managing-your-work-on-github/viewing-all-of-your-issues-and-pull-requests). To just look at the pull requests for a repository, go to the 'Pull Requests' tab on the repository's home page.
-
-<!-- TODO: Create section on merge conflicts -->
-
-Don't let pull requests hang around too long. Other code will get edited and [merge conflicts](#merge-conflicts) will crop up, making it hard to bring the code back together.
-
-The requester should have left notes on what needs to be tested in the description of the pull request (PR).
-
-**Summary**
-
-1. Pull the code into the a [new Project](https://docassemble.org/docs/playground.html#projects) in your Playground.
-1. If the behavior is as expected, approve the changes and merge the branch.
-1. If the behavior is not as expected, request changes.
-
-**Details**
-
-[Make a new Project in docassemble](https://docassemble.org/docs/playground.html#projects) and [pull the code](#get-github-code-into-your-playground) from the branch that's making the PR. You can see the name of the branch on GitHub in the pull request itself:
-
-![Name of pull request branch](./assets/github_pull_request_branch_name.png)
-
-Test the behavior that is affected by the changes in their code. Sometimes it can help to look at the pull request (PR) [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests) in GitHub to see what code has been changed. If it works as expected:
-
-1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) saying what you tested and the results.
-1. As described in that documentation, select 'Approve'.
-1. [Merge their branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request).
-1. Depending on your agreed upon practices, [delete the branch](https://docs.github.com/en/github/administering-a-repository/deleting-and-restoring-branches-in-a-pull-request#deleting-a-branch-used-for-a-pull-request).
-
-If the interview does not work as expected:
-
-1. [Write a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review) that describes what you saw that you think needs changing.
-1. As described in that documentation, select 'Request Changes'.
-1. Let the requester know about your review.
-
-Finally, [delete the Project](https://docassemble.org/docs/playground.html#projects) you created for the review.
-
-<!-- Clarifying: Comparing the code on GitHub   -->
-<!-- Pictures from GitHub as to where to see the comparison. -->
-<!-- TODO: Add pictures -->
-
-:::note
-1. You can [make comments connected to specific lines of code](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).
-1. You can make a pull request with someone's branch even if the person is not there as long as you have write permissions on the repository.
-:::
 
 ### Get GitHub code into your Playground
 
