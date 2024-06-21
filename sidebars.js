@@ -7,7 +7,7 @@ module.exports = {
         'get_started/installation',
         'get_started/interview_builder_onboarding',
         'get_started/interview_building_workflow',
-        'get_started/interview_builder_resources',
+        'get_started/interview_building_resources',
         {
             type: 'category',
             label: 'Setting up your team',
