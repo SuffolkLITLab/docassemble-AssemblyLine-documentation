@@ -126,53 +126,6 @@ Examples of a good branch name, commit messages, and pull request title:
 
 That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
 
-### Create a new YAML file
-**Summary**
-
-[Go to the Playground](#go-to-the-playground), tap "Add", and give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_case).
-
-**Details**
-
-[Go to the Playground](#go-to-the-playground) and tap "Add".
-
-![Tap "Add"](./assets/da_playground_add.png)
-
-Give the file [an appropriate name](name_formats.md#form-files-stored-in-docassemble-snake_case). Then save the file.
-
-![Name and save the YAML file](./assets/da_playground_save.png)
-
-Your save options should change below the code area to indicate the save was successful.
-
-![The editor buttons change once the file has been saved the first time](./assets/da_playground_after_save.png)
-
-### Upload a YAML file
-See the [docassemble docs about Playground YAML files](https://docassemble.org/docs/playground.html#interview_files).
-
-### Upload a package
-See the docassemble docs to [use a zip file to upload a package](https://docassemble.org/docs/playground.html#packages).
-
-### Template Files: Upload the PDF or DOCX file that your code fills out
-See the docassemble docs about [uploading template files](https://docassemble.org/docs/playground.html#templates).
-
-**Summary**
-
-[Navigate to Playground](#go-to-the-playground) > "Folders" > "Templates" and upload your file.
-
-**Details**
-
-[Go to the Playground](#go-to-the-playground) and make sure you're in the right Project.
-
-![Check your Project's name](./assets/da_project_new_playground.png)
-
-Tap "Folders" and then "Templates".
-
-![Open the Templates folder](./assets/da_playground_folders_templates.png)
-
-Your file will be in the list below of available templates.
-
-![Open the Templates folder](./assets/da_templates_list.png)
-
-
 ## Sharing code
 
 Mistakes will happen. You will accidentally include changes you didn't mean to include or push to the wrong branch. The great thing is that you can't break things permanently. GitHub uses `git` for version control and it's specifically made for rolling back changes. Docassemble does not give full access to its features and its a complex ecosystem, so someone more experienced may need to lend a hand, but it's all there. Your gut won't believe it right now, but you will come to trust the process.
