@@ -25,22 +25,52 @@ This page covers how to use GitHub with Docassemble. Refer to the [GitHub docume
 
 Here is what we recommend for a workflow for using GitHub with the Docassemble playground. Repeat these steps each time you start working on a new task or issue:
 
-1. Create a new project in your Docassemble playground, then pull the `main` branch of your interview from GitHub.
-2. When you commit from that playground project, commit to a new branch.
-3. When you finish working on the branch, commit it one last time. Then go to the repository in GitHub and create a pull request. If you are working with someone on the interview, request a review from them.
+1. Create a new project in your Docassemble playground. Give it a name that describes the work to be done, then pull the `main` branch of your interview from GitHub into the project.
+2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code).
+3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#create-a-pull-request). If you are working with someone on the interview, request a review from them.
 4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request.
 5. Decide on the next task or issue you want to work on and start over at #1.
 
 For more detail on these steps, see below.
 
-## Set Up GitHub in the Docassemble Playground
+## How To
+
+### Set Up the GitHub Integration
 
 In order to use GitHub with Docassemble you will need two things:
 
 1. Developer privileges on a Docassemble development server with the [GitHub integration configured](https://docassemble.org/docs/installation.html#github). (If you don't have access to a Docassemble development server, [contact us](mailto:litlab@suffolk.edu).)
 2. A [GitHub](https://github.com/) account. If this is a new account, you may want to [keep your email address private](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github) and [avoid sharing your email address on commits](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address).
 
-Then, follow the [Docassemble instructions for publishing an interview package to GitHub](https://docassemble.org/docs/packages.html#github).
+Then, follow the [Docassemble instructions for publishing an interview package to GitHub](https://docassemble.org/docs/packages.html#github). This will create a repository in your personal GitHub account. After you have created the repository, follow [these GitHub instructions to transfer it to your organization](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository).
+
+:::tip
+In order to transfer a repository to an organization you must be a member of the organization and have permission to create a repository in the organization.
+:::
+
+### Create and Manage Playground Projects
+
+To create and manage projects, in the Docassemble playground click **Playground** in the nav menu and select **Manage Projects**.
+
+:::tip
+You must use [PascalCase](naming#pascalcase) when naming projects.
+:::
+
+### Commit Your Code
+
+1. In the Docassemble playground, click on the **Folders** menu and select **Packages**.
+2. Scroll to the bottom of the page and click on the **GitHub** button.
+3. Select the branch you want to commit to, enter a [commit message](#commit-messages), and click the **Commit** button. 
+
+That's it! Your commit should show up on GitHub!
+
+### Create a Pull Request
+
+Refer to the [GitHub documentation for how to create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
+
+### Resolve Conflicts
+
+Refer to the [GitHub documentation on resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github).
 
 ## Best Practices
 
@@ -56,130 +86,45 @@ When you first start working with Docassemble it can be hard to remember to stop
 
 You can commit to a branch as often as you want. Developers often wait to commit code until they have it working, but they also might commit broken code so other people can help them troubleshoot, or to save their progress. If you are concerned about ruining working code, [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) for the broken code and commit it to that branch.
 
-#### Commit Your Interview Code
-
-1. In the Playground, select **Packages** from the **Folders** menu.
-![Getting to Packages from the Playground folder](./assets/da_playground_folders_packages.png)
-1. Scroll to the bottom of the page.
-1. Review the **README file** text to make sure it mentions the jurisdiction the interview applies to and describes the documents generated by the interview.
-1. Click on the **GitHub** button.
-1. Select the branch you want to commit to, or create a new branch.
-1. Enter a [commit message](#commit-messages).
-1. Click the **Commit** button. 
-1. That's it! Your commit should show up on GitHub!
-
-#### Commit Messages
-
-A commit message is required to make a commit. Commit messages are more helpful if they describe the specific change(s) you just made. You can write commit messages like a task on a to-do list. For example: "Updates cash income question" or "Fixes broken address field." That way, when you look back over your list of commits you can reconstruct the work you did. If you need to undo (revert) a commit, your commit messages can help you find the specific commit.
-
-Commit messages can also link to or close issues, just like [pull request messages](#close-an-issue-with-a-pr).
-
-### Use Branches
-
-Make a new branch when you start working on a new feature or fixing an error. The new branch keeps your previous work separate and lets other people see the changes before they are merged into the `main` branch with a pull request.
-
-It preserves your previous work so that it isn't affected by these changes and lets other people see the changes before they're completely added in. This is very similar to committing changes, but has a couple additional steps.
-
-1. Make at least one change. Edit code or include a new file with cmd/ctrl + click.
-1. [Go to "Packages"](#go-to-the-package) and tap "GitHub".  <!-- TODO: Should we break these paths out into their own sections? A section on menus? Does docassemble have that documentation already? -->
-1. In the branches dropdown, select `New Branch`.
-1. Give the branch a [snake_case](naming#snake_case) name.
-1. Commit your changes with a [commit message](#commit-messages).
-
-You will now be able to see your new branch on GitHub! If you want, you can [compare your branch to any other branch](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) and see the exact differences.
-
-<!-- TODO: Move the naming conventions here to the name formats doc? -->
-:::note Branch name
-A branch name reminds you and your collaborators, at a glance, what topic, problem, or feature the branch is for. 1 to 3 words separated by underscores is usually a good guideline. Example: `income_questions` or `income_calculations`
- 
-**More advanced:** Include the issue number and type of goal of the branch - a feature, a fix, etc. Example: `116_fix_income_calculations` or `42_feature_deductibles`.
-:::
-
-
-#### Branches vs. commits
-**Branches** should encapsulate specific goals, like adding a set of questions or creating automated tests for one path in your interview.
-
-**Commits** should encapsulate one particular action in a branch. One commit might be adding one question or getting one part of the code working, even if other parts still need some work. Together, individual commits add up to the complete feature. A commit might fix typos, improve readability of the first three questions, or add the question about debt.
-
-<!-- Here's where we left off. This is the code we pushed in our first commit.  -->
-<!-- 
-:::note
-Our convention for formatting: All lowercase alphanumeric separated by underscores.
-
-One convention for branch names: They're to remind you and your collaborators basically what it's for at a glance, so one to three words separated by underscores is usually a good guideline. Example: income_questions or income_calculations.
-
-**More advanced:** The issue number and type of action you're doing and. Example: 116_fix_income_calculations or 42_feature_deductibles.
-:::
-
-*This is an example of creating a new branch that relates to an "issue" created in GitHub, (issue 12). This branch is created to work on the task in issue 12, develop review screens, which is a late stage part of the interview development. *
- -->
-<!-- A similar message should appear at the top of the page when you have successfully commit the package to GitHub.  -->
-
-
 ### Use Issues
 
-Keywords: Tasks, todo lists, bugs, features, documentation, milestones
+In GitHub, **[issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)** are flexible items for planning, discussing, and tracking your work when building interviews. Issues are one of our primary tools for building and maintaining interviews. Discussions on issues can be especially useful for anyone who may work on the interview in the future—including you.
 
-<!-- TODO: Add link to maturity model? -->
+[Create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) for:
 
-#### When to make an issue
+* Tasks
+* Bugs
+* Questions
+* Features
+* Ideas
+* Documentation
+* Etc.
 
-You can make an issue to:
-1. Document a decision. It is useful to include who was involved in the discussion and why that decision was made. Some example decisions might be about language choices, question-type, order, and flow. When new people come to work on the form we don't want to duplicate work that's already been done or to re-interrogate old decisions without the context of why they were made.
-1. Add a new task. For example, problems that needs to be researched or programmed. Research could involve consulting a specific SME (subject matter expert) and you, or someone commenting on the issue, could note their name.
-1. Categorize and organize tasks. For example, MVP items, version 2 improvements, and bugs.
+You can also [close issues in commit messages and pull request descriptions](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
 
-Give all the links possible! All context!
+### Branches, Pull Requests, and Commits
 
-#### What to do with issues
+While you are building an interview, use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch, and then when you are finished with the branch, [create a pull request](#create-a-pull-request) to merge your changes with `main`.
 
-See the GitHub docs about:
-1. [Making an issue](https://docs.github.com/en/github/managing-your-work-on-github/creating-an-issue).
-1. [Assigning the task to yourself or another member](https://docs.github.com/en/github/managing-your-work-on-github/assigning-issues-and-pull-requests-to-other-github-users).
-1. [Adding labels](https://docs.github.com/en/github/managing-your-work-on-github/managing-labels).
-1. [Creating milestones](https://docs.github.com/en/github/managing-your-work-on-github/creating-and-editing-milestones-for-issues-and-pull-requests).
-1. [Adding a milestone to an issue](https://docs.github.com/en/github/managing-your-work-on-github/associating-milestones-with-issues-and-pull-requests) (you can only have one milestone one per issue).
+As a general rule the `main` branch should only be updated with pull requests from branches.
 
-## New forms
+When naming branches or writing commit messages or pull request titles, it is helpful to describe the change(s) they relate to.
 
-### Prepare a new Project
+* Since branches usually precede pull requests in the [workflow](#workflow), branch names should anticipate the future pull request title.
+* While you are working on a branch, [commit early and often](#commit-early--often), and use the commit message to describe the change you just made to the interview code. Examples of good commit messages:
+* Pull request titles should describe the bigger change, and pull request descriptions should provide context, mention related issues, and generally explain the reason for the change.
 
-You can also see [the docassemble docs on how to create new Projects](https://docassemble.org/docs/playground.html#projects).
+Examples of a good branch name, commit messages, and pull request title:
 
-:::warning
-Follow [the Project naming rules](name_formats.md#docassemble-projects-and-packages-pascalcase) or you will get an error: a unique name that starts with an alphabetical letter and uses only alphanumeric characters.
-:::
-<!-- (TODO: Add link to creating a package) -->
-<!-- (TODO: Add link to pushing the package) -->
+* Branch name: **2024_court_form_updates**
+* Commit messages:
+    * **Update cash income question**
+    * **Fix broken address field**
+    * **Update e-filing codes**
+    * **Update interview version**
+* Pull request title: **Updates the interview for the new 2024 court form**
 
-**Summary**
-
-1. [Go to "Playground"](#go-to-the-playground) > "Manage Projects", create a new Project, and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
-1. Go back to "Playground" and upload your files or make a new file. The name of the YAML file should be the [name of your form](name_formats.md#form-files-stored-in-docassemble-snake_case).
-1. [Go to Packages](#go-to-the-package) and save your package. Its name should be based on the form name and [follow conventions](name_formats.md#docassemble-projects-and-packages-pascalcase).
-1. [Commit/push the package to GitHub](https://docassemble.org/docs/packages.html#github).
-
-**Details**
-
-In the Playground, tap the top left dropdown and select "Manage Projects".
-
-![Navigate to "Manage Projects"](./assets/da_playground_manage_projects.png)
-
-[Make a new Project](https://docassemble.org/docs/playground.html#projects) and [name it appropriately](name_formats.md#docassemble-projects-and-packages-pascalcase).
-
-![Create a new Project](./assets/da_projects_new.png)
-
-![Name a new Project](./assets/da_project_new_project_name.png)
-
-Tap your new Project's name.
-
-![Open a Project](./assets/da_projects_open.png)
-
-The Playground will open the Project with a default "test.yml" file. Either [add a new file](#create-a-new-yaml-file) or upload your generated `.yml` file by tapping "Upload".
-
-![Upload a YAML file in the Playground](./assets/da_playground_upload_yaml.png)
-
-[Create your Package and push it to GitHub](#create-a-new-repository).
+That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
 
 ### Create a new YAML file
 **Summary**
@@ -227,83 +172,6 @@ Your file will be in the list below of available templates.
 
 ![Open the Templates folder](./assets/da_templates_list.png)
 
-
-### Create a new repository
-aka. Create a new Package, commit or upload a new Package to GitHub for the first time.
-
-This is about creating a brand new Package from new files. If you are creating a new Package from the files of an old Package, we hope to develop a section for that in the future.
-
-A docassemble **Package** bundles code, metadata, dependencies, and your PDF's or DOCX files into one place for you and others to access. You get to pick and choose the files that you want to go into that particular Package.
-
-Also see docassemble docs about [pushing a Package to GitHub by committing](https://docassemble.org/docs/packages.html#github) and [about Packages in general](https://docassemble.org/docs/packages.html).
-
-:::warning
-Sometimes docassemble will not create a new repository on GitHub. If your Package name matches the name of a Package that is already in your GitHub repository or in a repository of an organization you belong to, docassemble will try to push to that repository instead of creating a new repository.
-
-In most cases, you will get a "merge conflict" error when this happens.
-:::
-
-**Summary**
-
-1. [Go to "Packages"](#go-to-the-package).
-1. Give your new Package a name.
-1. Save it.
-1. Commit to GitHub.
-
-<!-- TODO: use pic where project name is different than form name. -->
-<!-- TODO: Advanced note: If you make changes to the files or re-upload your PDF or DOCX to your Templates folder, as long as you use the same name, everything updates by itself. If you change the name, you will need to select that file in here again.  -->
-<!-- Advanced note: A good commit message also helps you find your place when you need look back through your code -->
-<!-- TODO: Add... note?: Avoid the "install package" checkbox. Leave it alone. -->
-<!-- TODO: Add... caution?: Never hit "Install". Leave it alone. -->
-<!-- TODO: Add advanced: One convention for commit messages is to write them as if they were an item in a todo list. Example: "Fix #19, update income question" - start with a verb (link to committing and to issues sections) -->
-
-**Details**
-
-[Switch to the correct Project](https://docassemble.org/docs/playground.html#projects) if you need to. [Go to the Project's Packages folder](#go-to-the-package). [Name your Package](name_formats.md#docassemble-projects-and-packages-pascalcase) based on your document file name. Example: The name of the marriage_without_delay.pdf package would be "MarriageWithoutDelay".
-
-![Name the Package](./assets/da_package_name.png)
-
-Scroll down to the boxes further down the page. Use cmd/ctrl + click to select the YAML files and documents you want to have in your repository. For example, here we would select plaintiff_s_motion_to_modify.yml and plaintiff_s_motion_to_modify.pdf.
-
-![Select your files](./assets/da_package_select_files.png)
-
-Scroll down to the bottom and tap Save.
-
-![Save the Package settings](./assets/da_package_save.png)
-
-If you have [configured your GitHub account](#connect-github-to-your-docassemble-account), once your package saves and the page reloads the GitHub button will appear near the Save button. Tap GitHub.
-
-![Tap the GitHub button](./assets/da_package_github_button.png)
-
-You **must** write a message describing what this commit is for. [Read more about commit messages here](#commit-messages). This is the first commit message, though, and a common first commit message is "Initial commit". When your message is ready, tap "Commit".
-
-![Write a commit message](./assets/da_package_commit_message_and_button.png)
-
-Look at the bottom of the Package screen again. Just above the Github button will be links to your new repository.
-
-![Links to the repository](./assets/da_package_links_to_github.png)
-
-You can also read the [docassemble docs on pushing your package to GitHub by committing](https://docassemble.org/docs/packages.html#github)
-
-### Transfer ownership to your organization
-
-After the repository's ownership is transferred, only people who have permissions in your organization will be able to work on the code. Your organization can [give people permissions through GitHub](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization).
-
-Read the GitHub docs on [transferring ownership of your repository](https://docs.github.com/en/github/administering-a-repository/transferring-a-repository#transferring-a-repository-owned-by-your-user-account).
-
-<!-- TODO: Transferring before divorcing a fork from upstream will cause an error -->
-
-If your organization has teams, pick which teams can have access to this repository.
-
-![Transfer to teams](./assets/github_transfer_to_team.png)
-
-Check your organization's GitHub page to make sure your project appears there. You may have to ask give the administrator the new link to the repository and ask them to [give the rest of the team permissions on it](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/managing-team-access-to-an-organization-repository).
-
-:::warning
-If you get a pink error message that says you don't have permissions, you have not been [added as a member of that GitHub organization](#join-your-organization).
-
-![Cannot transfer repo](./assets/github_cannot_transfer.png)
-:::
 
 ## Sharing code
 
@@ -666,18 +534,7 @@ aka. Make a new package, cherry pick some files to make a package, select indivi
 1. Select the file you want in this package. They can be the same files as before.
 1. [Commit](#commit---early-and-often)
 
-### Edit a package without write permission
+## Useful GitHub Documentation
 
-aka. forking a repository, making a PR from a forked repository, working with someone else's repository.
 
-If you do not have write permissions on a repository, you can still see play with its code and even make a pull request to help them change the code.
-
-1. Make sure the repository is not owned by an organization you belong to. If it does, ask an admin to [set your permissions](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github) correctly.
-1. On GitHub, [fork the repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
-1. In docassemble [make a new Project](https://docassemble.org/docs/playground.html#projects) and [pull](#get-github-code-into-your-playground) from that forked repository.
-1. Make a small edit and [make a commit](#commit---early-and-often) to make sure you are able to push to your fork.
-1. You can now treat this as you would treat any other package.
-
-When you make a pull request from one branch of your fork to another branch of your fork, make sure the chosen branches in the dropdowns are correct. GitHub will automatically set your pull request to use the original owner's repository instead of your own.
-
-If you later do want to offer your changes to the owner of the original repository, you can [make a pull request from your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
+* [Comparing commits, branches, etc.](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits)
