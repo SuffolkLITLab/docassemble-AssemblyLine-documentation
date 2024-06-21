@@ -134,52 +134,33 @@ Examples of a good branch name, commit messages, and pull request title:
 
 That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
 
+## Troubleshooting Errors when Committing from Docassemble
 
-
-
-### Errors when committing from docassemble
-
-aka. I made edits, but docassemble says I can't push to GitHub.
-
-When you get an error committing (and pushing) from docassemble, nothing has been changed on GitHub. One of three things is probably going on.
+When you get an error committing from Docassemble, it means Docassemble did not change anything on GitHub. One of three things is probably going on.
 
 1. You have technically not made any changes to the code that is actually being pushed to GitHub.
-1. You lack [permissions for that repository](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github).
-1. The changes between your branch and the branch on GitHub do not match up. That is, there's a [merge conflict](#merge-conflicts).
+2. You lack [permissions for the repository](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github) you are trying to commit to.
+3. There is a [merge conflict to resolve](#resolve-conflicts).
 
-Scroll to the bottom of the page of the error. The text on this page is a step-by-step log of what is happening in git, the version control technology GitHub uses, and the most recent message is at the bottom. Ignore the line talking about a `Detached head` - this is a red herring. It's actually a natural intermediate part of the process.
+Scroll to the bottom of the page to see the details of the error. These are a step-by-step log of what is happening in git, the version-control system GitHub uses. The most recent message is at the bottom. (Ignore the line talking about a `Detached head`. That is actually a natural intermediate part of the process, not a problem.)
 
-#### `nothing to commit, working tree clean`
+#### If You See `nothing to commit, working tree clean`
 
-This means git cannot detect any changes in your code. You cannot commit anything from docassemble if you have not made changes, not even to a new branch. These are possible ways to confirm the problem:
-1. If you created a new file you may have not added it to your Package yet. In the image below, only **court_form.docx** has been selected.
+This means git cannot detect any changes in your code. You cannot commit anything from docassemble if you have not made changes—not even to a new branch. These are some possibilities:
 
-![Unselected template files](./assets/da_package_template_files.png)
+* If you created a new file you may have not added it to your playground package. Select **Folder** / **Packages** and scroll down to the **Interview files** and **Template files** sections. Use Command (⌘)+click on a Mac and Ctrl+click on Windows to select the files you want to commit to the repository.
+* You may not have saved changes to a file. If the file is still open you can click the **Save** button. If the file is closed you will have to open it and make the changes again.
+* You may not actually have made any changes to the files even though you thought you did.
 
-On a Mac use **cmd + click** to select a file you need. On a PC use **ctrl + click**. If there are two files with very similar names, make sure the name of the file you need exactly matches up with the name you are clicking.
+#### If You See `403`
 
-2. You may have forgotten to save the changes you made to a file. If you still have the file open, you can tap 'Save'. If the file is closed, you will have to make the changes again.
-3. You may not have made any changes to files even if you thought you did. To sanity check changes to a code file:
-    1. Find a diff checker, like [https://www.diffchecker.com/](https://www.diffchecker.com/).
-    1. [Go to the Playground](#go-to-the-playground) to the file you think you've changed.
-    1. Copy all the text there.
-    1. Go back to the diff checker and paste it in the right-hand column.
-    1. In GitHub, navigate to the file you think you changed.
-    1. Copy the text in it.
-    1. Put it in the left side of the diff checker.
-    1. Press the button to compare the text.
+A [**403** error](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#403) means you do not have **write** permission for the repository. Ask the person or organization that owns it to give you permission or add you to a team that has permission.
 
-If you do not see differences between the files, you have not made the edits you think you have. Are you in the right Project? Did you change a file with a very similar name to another file?
+If you are trying to make a new repository on your GitHub account, you may belong to an organization that already has a  repository with the same name. You will either have to change the name, have the organization delete its repository, or get permission to write to the existing repository.
 
-#### [`403`](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#403)
+If you think your GitHub account does have permission, try [redoing the GitHub integration](https://docassemble.org/docs/installation.html#github).
 
-A `403` error, `remote: Permission to ... denied to ...`, means you have not been given [permission](https://docs.github.com/en/github/getting-started-with-github/access-permissions-on-github) to change things in that repository. The person or organization that owns the package will have to give you or the team you are on 'write' permissions. They could also add you to a team that already has write permissions.
-
-If you are trying to make a new repository on your GitHub account, you may belong to an organization that owns a Package by the same name. You may not have permission to change that repository. You will either have to change the name of your Package, have the organization delete that repository, or have the admin give you or your team 'write' permissions as described above.
-
-If you think your GitHub account does have permission, try re-doing your GitHub integration. You can manage your GitHub integration through the menu on your Profile page.
-
-#### `CONFLICT (content)`
+#### If You See `CONFLICT (content): Merge conflict`
 
 The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#merge-conflicts) looks like in docassemble in git. Simply [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) and commit the changes there. Work out the merge conflicts afterwards.
 
