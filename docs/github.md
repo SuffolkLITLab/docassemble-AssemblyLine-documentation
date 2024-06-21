@@ -78,6 +78,8 @@ To reduce merge conflicts:
 1. Keep the goals of your branches "small" so there are fewer changes to merge.
 2. Merge pull requests in the order they were made.
 3. Communicate with your team in order to avoid working on the same sections of code at the same time.
+
+You can also [comparing commits, branches, etc.](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) in GitHub at any time.
 :::
 
 ### Review Pull Requests
@@ -180,90 +182,3 @@ If you think your GitHub account does have permission, try [redoing the GitHub i
 #### If You See `CONFLICT (content): Merge conflict`
 
 The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#merge-conflicts) looks like in docassemble in git. Simply [make a new branch](#making-a-new-branch-for-a-new-goal-or-bug-fix) and commit the changes there. Work out the merge conflicts afterwards.
-
-
-
-
-## Navigating
-
-Find docassemble pages like the Playground and the Packages pages.
-
-### Go to the Playground
-![Go to the Playground through the dropdown](./assets/da_dropdown_to_playground.png)
-
-## Advanced/Needs bandwidth
-
-### Close an issue with a PR
-
-See the GitHub docs on [closing an issue with a PR](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue). The issue will only be closed when the PR is merged into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch) (usually the one called 'main'). Example: `Add all financial questions, fix #15`
-
-You can also just create a link to an issue with a PR or commit by omitting the closing keywords shown in the GitHub documentation. Just use the pound sign (`#`) and the number of the issue. Example: `Add question about assets, #15`
-<!-- 
-**Adding a link to an issue in your commit or PR**
-
-Do not use a closing keyword. Just use the issue number alone in your PR description. Ex: #22. GitHub should note the connection in the relevant issue.
--->
-<!-- 
-### Branches
-
-**Making a new branch without any new content** (TODO)
-
-This has to be done on GitHub. GitHub documentation might help.
-
-You can make branches off of
-
-TODO: Link to definition of 'base branch'
-
-You can also make a branch off of *that* new branch if you want. There's nothing special about the main branch. They're all just branches. You pull from `some_branch`, edit code, then 'commit' to a 'New branch' we'll call `yet_another_branch` and you've done it. `some_branch` is now the **base** branch of `yet_another_branch`.
-
-TODO: Add link to making branches off of branches from within docassemble? (add section)
-
-TODO: Add more about what's important to look at for a pull request?
-
-TODO: Add section on getting rid of zombie files.
-
-TODO: Add HTTP status error codes to a 'further reading'/'other resources' section?
-
-TODO: Add updating a branch to the changes in its base branch. Include warning about merge conflict that will make changes in both branches.
-
-TODO: Why to keep default branch clean. e.g. if a hot fix is needed, it can be implemented without concern for other stuff that's broken.
--->
-
-<!-- 
-What was this about?
-### Extra information GitHub can show you
-
-**Comparing code**
-
-**Am I in the right branch?**
-
-1. Look at the last commit and its date (pic needed). Does that match up with what you remember?
-1. Compare the file you have in the playground with the file in that branch of the repository.
-1. If not, try a different branch
--->
-
-### Which branch am I editing?
-
-In docassemble it can be hard to tell if you are in the correct Project or which branch's files you are editing.
-
-1. [Go to Playground > Folders > Packages](#go-to-the-package).
-1. Scroll down to the GitHub section.
-1. You will see the name of this package's branch in the links above the GitHub button and can follow a link to go to the repository.
-
-![Links to GitHub repository](./assets/da_package_links_to_github.png)
-
-### Make a new package with selected files
-
-aka. Make a new package, cherry pick some files to make a package, select individual files.
-
-1. If you have not done so yet, pull in the repository branch with the files you want.
-1. Stay in the Packages page.
-1. At the top of the page, tap "Add".
-1. Give the new package [a name using the appropriate rules](name_formats.md#docassemble-projects-and-packages-pascalcase).
-1. Select the file you want in this package. They can be the same files as before.
-1. [Commit](#commit---early-and-often)
-
-## Useful GitHub Documentation
-
-
-* [Comparing commits, branches, etc.](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits)
