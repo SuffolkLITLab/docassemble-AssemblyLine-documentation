@@ -28,7 +28,7 @@ If you are finding this page after February 18th, 2021, be sure to watch the vid
 
 Read:
 
-1. If you are unfamiliar with the Assembly Line project, please give the [intro page](/get-started/intro) a look
+1. If you are unfamiliar with the Assembly Line project, please give the [intro page](../get_started) a look
 1. Read over this short [introduction to Docassemble](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
 1. And if you want more context, consider reading [what should you use Docassemble for?](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/practical-guide-docassemble)
 
