@@ -126,20 +126,6 @@ Examples of a good branch name, commit messages, and pull request title:
 
 That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
 
-### Request others test your code
-
-<!-- TODO: Consider adding procedure with an intermediate branch -->
-
-aka. Getting a review, making a PR, a pull request, a merge request.
-
-You can see [a list of your repository's branches in GitHub](https://docs.github.com/en/github/administering-a-repository/viewing-branches-in-your-repository) and you can make a pull request from there to merge a branch's changes into your [default branch](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches#about-the-default-branch).
-
-1. [Create a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request).
-1. If this PR is related to an issue, edit the description to link to the issue. You can use the same format as described in [the section about closing an issue with a PR](#close-an-issue-with-a-pr).
-1. Edit the description to [add a checklist](https://docs.github.com/en/github/managing-your-work-on-github/about-task-lists#creating-task-lists) of things the reviewer needs to check or test.
-1. [Request a review from another member](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review).
-1. Send a message to that person to let them know you've assigned them as a reviewer.
-
 ### Merge conflicts
 
 aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches, branches diverged
