@@ -72,6 +72,14 @@ Refer to the [GitHub documentation for how to create a pull request](https://doc
 
 Refer to the [GitHub documentation on resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github).
 
+:::tip
+To reduce merge conflicts:
+
+1. Keep the goals of your branches "small" so there are fewer changes to merge.
+2. Merge pull requests in the order they were made.
+3. Communicate with your team in order to avoid working on the same sections of code at the same time.
+:::
+
 ## Best Practices
 
 ### Commit Early & Often
@@ -126,36 +134,7 @@ Examples of a good branch name, commit messages, and pull request title:
 
 That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
 
-### Merge conflicts
 
-aka. Errors combining two branches, trouble merging, trouble combining, resolve merge conflicts, fixing merge conflicts between two branches, branches diverged
-
-Sometimes when you start to [make a pull request](#request-others-test-your-code), GitHub will tell you that you have a [merge conflict](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-merge-conflicts). This means that while you were making changes to your branch, changes were also made to the branch you are trying to merge with and they changed the same lines of code. Git will not decide which bits of code to keep where - you have to decide that.
-
-These are unavoidable and a pain to deal with. Everyone runs into them now and again and they are tricky to resolve without introducing bugs.
-
-:::tip
-Ways to reduce the likelihood of merge conflicts:
-
-1. If possible, make the goals of your branches small so that you only make a few changes on a branch before making a pull request with it.
-1. Merge pull requests in the order they were made.
-1. Avoid editing the same sections of code at the same time.
-1. If you are working with collaborators, try to make sure you are working on tasks that do not edit the same lines.
-:::
-
-You can still make your pull request, but GitHub will prohibit merging. There are two ways GitHub might handle merge conflicts:
-
-1. GitHub allows you to ['resolve' the conflict in GitHub itself](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-on-github) by editing the files in GitHub.
-1. GitHub is unable to help you resolve the issue (it doesn't offer the option).
-
-Either way, the most reliable way to deal with this situation is, unfortunately, to redo your changes on top of the new code:
-
-1. Make the pull request as usual, and use it as a tool. The changes you made will be highlighted in the [file comparison tab](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-comparing-branches-in-pull-requests).
-1. In docassemble [create a new Project](https://docassemble.org/docs/playground.html#projects) and pull in the other branch (the one you want to merge with).
-1. Using the file comparison as a guide, manually add your changes back.
-1. Make sure functionality affected by your code changes still works the way it should.
-
-<!-- TODO: Add section about updating to a base branch with the warning that conflicts will cause both branches to update -->
 
 
 ### Errors when committing from docassemble
