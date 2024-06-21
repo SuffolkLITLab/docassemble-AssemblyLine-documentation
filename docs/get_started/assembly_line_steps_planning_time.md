@@ -28,7 +28,6 @@ you may spend several weeks here.
 If you are a completely new Docassemble developer, we recommend getting familiar in two steps:
 
 * Get familiar with the Docassemble playground and the structure of a YAML file by completing a [Hello, World](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world) exercise. Use the [Docassemble Slack](https://docassemble.org/docs/support.html#tocAnchor-1-1) or our Teams channel when you get stuck.
-* Get familiar with the Weaver by following the exercises in our [Bootcamp](/archive/bootcamp)
 
 Give yourself 2-3 weeks to become familiar with Docassemble basics.
 
