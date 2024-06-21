@@ -41,10 +41,10 @@ module.exports = {
                 'authoring/dynamic_phrasing_based_on_values',
                 'document_variables_reference',
                 'alweaver_overview',
+                'github',
                 'customizing_interview',
                 'writing_review_screen',
                 'yaml_anatomy',
-                'github',
             ],
         },
         {
