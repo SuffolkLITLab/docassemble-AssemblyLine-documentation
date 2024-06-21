@@ -91,10 +91,19 @@ For a boolean value, use a word or phrase that you can answer with yes or no. Th
 
 Use a plural word for a list of things, and a singular word for one thing. **Examples:** `children`, `child`
 
-### Docassemble Projects and Packages: [PascalCase](#pascalcase)
+### Docassemble Projects and Packages
 
-* Each Project has to have a unique name, different from all other Project names.
-* Your Package name doesn't have to be the same as your Project name. A Package's name should be the name of the form for which you are making the interview, but using [PascalCase](#pascalcase).
+In the Docassemble playground:
+
+* Each project must have a unique name.
+* Your package name doesn't have to be the same as your project name.
+* Use [PascalCase](#pascalcase) when naming projects and packages.
+
+If you are naming a package for the first time (for example, before [publishing an interview to GitHub](github#set-up-the-github-integration)), take a moment to check the package name, which will be difficult to change later on. Follow these guidelines:
+
+* The package name should be name of the form for which you are making the interview.
+* Use [PascalCase](#pascalcase) (**SmallClaims**, not **Smallclaims**).
+* Package and GitHub repository names should include an abbreviation for the jurisdiction. (For example, **MASmallClaims** for a Massachusetts small claims form interview. Or perhaps **MATCSmallClaims** if you want to specify that it is for the Massachusetts Trial Court.)
 
 ## Definitions
 
