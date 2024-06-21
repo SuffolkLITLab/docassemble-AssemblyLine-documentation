@@ -40,6 +40,7 @@ module.exports = {
                 'docx_templates',
                 'authoring/dynamic_phrasing_based_on_values',
                 'document_variables_reference',
+                'name_formats',
                 'alweaver_overview',
                 'github',
                 'customizing_interview',
