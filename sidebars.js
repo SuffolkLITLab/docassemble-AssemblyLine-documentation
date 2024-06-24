@@ -5,6 +5,9 @@ module.exports = {
         'get_started/intro',
         'get_started/al_project_architecture',
         'get_started/installation',
+        // 'get_started/interview_builder_onboarding',
+        // 'get_started/interview_building_workflow',
+        // 'get_started/interview_building_resources',
         {
             type: 'category',
             label: 'Setting up your team',
@@ -15,10 +18,16 @@ module.exports = {
                 'get_started/assembly_line_steps_planning_time',
                 'get_started/assembly_line_steps_step_by_step',
                 'get_started/customization',
-                'get_started/bootcamp',
             ],
         },
         'contributors',
+        {
+            type: 'category',
+            label: 'Archived Pages',
+            items: [
+                'archive/bootcamp',
+            ],
+        },
     ],
     docs: [
         'overview',
@@ -32,11 +41,12 @@ module.exports = {
                 'docx_templates',
                 'authoring/dynamic_phrasing_based_on_values',
                 'document_variables_reference',
+                'name_formats',
                 'alweaver_overview',
+                'github',
                 'customizing_interview',
                 'writing_review_screen',
                 'yaml_anatomy',
-                'github',
             ],
         },
         {
@@ -130,6 +140,7 @@ module.exports = {
                 "reference/ALToolbox/save_input_data"
             ]
         },
+        'framework/alrecipes',
         'complexity/complexity',
         'framework/github_feedback',
         'analytics/tracking_usage',

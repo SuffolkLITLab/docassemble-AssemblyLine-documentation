@@ -53,7 +53,7 @@ Large changes to an interview's logic will require large changes to the review s
 
 Download the primary YAML files of your interview. You can download the YAML file either:
 
-* from the [docassemble playground](github#go-to-the-playground), clicking on the "Download" button below the YAML editor, or
+* from the docassemble playground, clicking on the "Download" button below the YAML editor, or
 * from GitHub. For example, for the [Motion to Stay Eviction](https://github.com/SuffolkLITLab/docassemble-MotionToStayEviction/), you can navigate
   to [the primary YAML file, SP6A.yml](https://github.com/SuffolkLITLab/docassemble-MotionToStayEviction/blob/main/docassemble/MotionToStayEviction/data/questions/SP6A.yml), and click the "download raw file" button.
 
