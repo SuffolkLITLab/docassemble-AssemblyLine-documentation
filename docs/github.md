@@ -177,9 +177,7 @@ When you get an error committing from Docassemble, it means Docassemble was unab
 
 Scroll to the bottom of the page to see the details of the error. These are a step-by-step log of what is happening in git, the version-control system GitHub uses. The most recent message is at the bottom. (Ignore the line talking about a `Detached head`. That is actually a natural intermediate part of the process, not a problem.)
 
-Here are details about the three problems we described above, how you can identify them, and possible solutions.
-
-Here are details about the three problems we described above, how you can identify them, and possible solutions.
+Here are details about the three problems above, how you can identify them, and possible solutions.
 
 #### If You See `nothing to commit, working tree clean`
 
