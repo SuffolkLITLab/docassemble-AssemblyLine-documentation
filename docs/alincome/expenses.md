@@ -50,7 +50,7 @@ of code can be used in longer interviews as well.
 Before you start, we'll assume that you:
 
 * have access to a [developer account on a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/classes/assembly-line/2020-assembly-line-assignment-1#before-you-get-started)
-* have the [`AssemblyLine` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script), or have installed the [`ALToolbox` package](https://github.com/SuffolkLITLab/docassemble-ALToolbox) separately.
+* have the [`AssemblyLine` package installed on your server](https://assemblyline.suffolklitlab.org/docs/installation#run-the-installation-script), or have installed the [`ALToolbox` package](https://github.com/SuffolkLITLab/docassemble-ALToolbox) separately.
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
 
@@ -271,4 +271,4 @@ subquestion: |
 </details>
 
 
-You'll likely want to display this information in a PDF or word template as well. [This section describing the Attachment block](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/generated_yaml#attachment-block) will help with displaying information in the PDF, and [this page about working with DOCX files](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/docx) will help DOCX users.
+You'll likely want to display this information in a PDF or word template as well. [This section describing the Attachment block](https://assemblyline.suffolklitlab.org/docs/generated_yaml#attachment-block) will help with displaying information in the PDF, and [this page about working with DOCX files](https://assemblyline.suffolklitlab.org/docs/docx) will help DOCX users.

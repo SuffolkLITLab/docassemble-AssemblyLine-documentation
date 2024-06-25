@@ -180,7 +180,7 @@ to identify and validate the features the RateMyPDF score measures.
 1. Jenny Ziviani and John Elkins. 1984. An Evaluation of Handwriting Performance. Educational Review 36, 3 (November 1984), 249–261. DOI:https://doi.org/10.1080/0013191840360304
 1. (2015). Paperwork Reduction Act (44 U.S.C. 3501 et seq.). Digital.gov. Retrieved February 2, 2023 from https://digital.gov/resources/paperwork-reduction-act-44-u-s-c-3501-et-seq/
 1. (2023). Textstat. Retrieved February 7, 2023 from https://github.com/textstat/textstat
-1. Field labels to use in template files | The Document Assembly Line Project. Retrieved February 3, 2023 from https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/label_variables
+1. Field labels to use in template files | The Document Assembly Line Project. Retrieved February 3, 2023 from https://assemblyline.suffolklitlab.org/docs/label_variables
 1. How to estimate burden | A Guide to the Paperwork Reduction Act. Retrieved November 9, 2022 from https://pra.digital.gov/burden/estimation/
 1. How to write good questions for forms - NHS digital service manual. nhs.uk. Retrieved February 6, 2023 from https://service-manual.nhs.uk
 1. Restraining order/abuse prevention order court forms | Mass.gov. Retrieved February 6, 2023 from https://www.mass.gov/lists/restraining-orderabuse-prevention-order-court-forms

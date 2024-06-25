@@ -178,7 +178,7 @@ There are a few sections of the generated review screen YAML:
     
     But your interview might include [objects](https://docassemble.org/docs/objects.html#Individual) and lists of objects, like a list of plaintiffs and another list of defendants. Instead of re-asking every question that someone answered to fill the list, docassemble brings to the user to a `revisit` screen that shows each item in the list to the user, and lets them choose which to edit individually.
 
-    If you used the [Weaver](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/label_variables#standard-roles) to make your interview, your interview might have a few different lists for people,
+    If you used the [Weaver](https://assemblyline.suffolklitlab.org/docs/label_variables#standard-roles) to make your interview, your interview might have a few different lists for people,
     like `users`, `other_parties`, `children`, `debt_collectors`, and `guardians`.
 
 4. The `revisit` screens each show the `table` attribute of the `DAList`. If needed, blocks defining the table for the lists will appear at the end of the generated review file.

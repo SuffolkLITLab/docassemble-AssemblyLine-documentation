@@ -1,6 +1,6 @@
 # AssemblyLine Documentation
 
-[Read the documentation](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/)
+[Read the documentation](https://assemblyline.suffolklitlab.org/)
 
 ## What this is
 
@@ -44,7 +44,7 @@ npm run start
 
 ### Deploy
 
-We use GitHub pages for deployment. Use the command below to deploy the repository to the gh-pages branch. It will then [go live](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/).
+We use GitHub pages for deployment. Use the command below to deploy the repository to the gh-pages branch. It will then [go live](https://assemblyline.suffolklitlab.org/).
 
 ```console
 GIT_USER=<Your GitHub username> USE_SSH=TRUE npm run deploy

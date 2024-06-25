@@ -23,7 +23,7 @@ to be embedded into your interview.
 Before starting this guide, you should have:
 
 * a working docassemble interview, preferably using the AssemblyLine.
-  * If you don't have one yet, follow [these steps to author your interview](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/planning).
+  * If you don't have one yet, follow [these steps to author your interview](https://assemblyline.suffolklitlab.org/docs/planning).
 * contacted us for access to the EFSP server. We aren't yet making access publicly available, but will include an interest form here when we do.
 
 ## Steps

@@ -122,7 +122,7 @@ $theme-colors: (
 
 Once you have written your `custom.scss` file, you can use the
 [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) (which you can [install on
-your docassemble server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#install-aldashboard))
+your docassemble server](https://assemblyline.suffolklitlab.org/docs/installation#install-aldashboard))
 to compile a custom Bootstrap theme. If you are associated with the Suffolk LIT Lab and have an account on
 the Suffolk Development server, you can visit a [live version of the tool](https://apps-dev.suffolklitlab.org/start/ALDashboard/compile_bootstrap)
 to try it out.

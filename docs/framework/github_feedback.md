@@ -51,7 +51,7 @@ It won't:
 Before you start, we'll assume that you:
 
 * have access to an [admin account on a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/classes/assembly-line/2020-assembly-line-assignment-1#before-you-get-started)
-* have the [`GithubFeedbackForm` package installed on your server](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation#run-the-installation-script)
+* have the [`GithubFeedbackForm` package installed on your server](https://assemblyline.suffolklitlab.org/docs/installation#run-the-installation-script)
 * know how to [edit the docassemble configuration (config) file](https://docassemble.org/docs/config.html#edit)
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
@@ -172,6 +172,6 @@ The other option is for reviews, which will show all of the scores given to an i
 
 :::note Under development
 
-The browsing feature is actively under development. If you have suggestions for improvements, [let us know on Teams](/docassemble-AssemblyLine-documentation/docs/get_started).
+The browsing feature is actively under development. If you have suggestions for improvements, [let us know on Teams](/docs/get_started).
 
 :::
