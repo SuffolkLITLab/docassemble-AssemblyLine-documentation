@@ -1,8 +1,8 @@
 module.exports = {
   title: 'The Document Assembly Line',
   tagline: 'From paper to webform, made easier',
-  url: 'https://suffolklitlab.org',
-  baseUrl: '/docassemble-AssemblyLine-documentation/',
+  url: 'https://assemblyline.suffolklitlab.org',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
