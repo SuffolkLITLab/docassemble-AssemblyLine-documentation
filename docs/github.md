@@ -28,7 +28,7 @@ Here is what we recommend for a workflow for using GitHub with the Docassemble p
 1. Create a new project in your Docassemble playground. Give it a name that describes the work to be done, then pull the `main` branch of your interview from GitHub into the project.
 2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code).
 3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#create-a-pull-request). If you are working with someone on the interview, request a review from them.
-4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request.
+4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch.
 5. Decide on the next task or issue you want to work on and start over at #1.
 
 :::warning
