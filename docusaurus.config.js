@@ -124,6 +124,14 @@ module.exports = {
             from: '/docs/bootcamp',
             to: '/docs/archive/bootcamp'
           },
+          {
+            from: '/docs/plan_interview',
+            to: '/docs/get_started/planning'
+          },
+          {
+            from: '/docs/authoring/working_with_teams',
+            to: '/docs/get_started/working_with_teams'
+          },
         ]
       }
     ]

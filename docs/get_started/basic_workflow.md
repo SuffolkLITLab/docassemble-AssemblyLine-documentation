@@ -1,8 +1,8 @@
 ---
-id: interview_building_workflow
-title: Interview Building Workflow
-sidebar_label: Workflow
-slug: /get_started/interview_building_workflow
+id: basic_workflow
+title: Basic Interview Building Workflow
+sidebar_label: Basic Workflow
+slug: /get_started/basic_workflow
 ---
 
 <!-- 
@@ -12,10 +12,10 @@ Creating issues
   Use to track questions for decisionmaker meetings.
 -->
 
-This pages walks you through the interview-building workflow we have developed for building interviews with students. It includes some brief onboarding exercises that will help you if this is your first time building a Docassemble interview.
+This page walks you through the interview-building workflow we have developed for building interviews with students. It includes some brief onboarding exercises that will help you if this is your first time building a Docassemble interview.
 
 :::tip
-If you are new to building Docassemble interviews and you have not gone through the [orientation steps](interview_builder_orientation), it's a good idea to take an hour or so to do them before you continue with this page.
+If you are new to building Docassemble interviews and you have not gone through the [beginner's guide](./beginners_guide.md), it's a good idea to take an hour or so to do them before you continue with this page.
 :::
 
 ### 2. Prepare the Court Form for the Weaver

@@ -5,9 +5,11 @@ module.exports = {
         'get_started/intro',
         'get_started/al_project_architecture',
         'get_started/installation',
-        'get_started/interview_building_beginners_guide',
-        'get_started/interview_building_workflow',
-        'get_started/interview_building_resources',
+        'get_started/beginners_guide',
+        'get_started/basic_workflow',
+        'get_started/plan_interview',
+        'get_started/working_with_teams',
+        'get_started/resources',
         {
             type: 'category',
             label: 'Setting up your team',
@@ -35,8 +37,6 @@ module.exports = {
             type: 'category',
             label: 'Authoring interviews',
             items: [
-                'plan_interview',
-                'authoring/working_with_teams',
                 'pdf_templates',
                 'docx_templates',
                 'authoring/dynamic_phrasing_based_on_values',
