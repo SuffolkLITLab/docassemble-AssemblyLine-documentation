@@ -1,8 +1,8 @@
 ---
-id: basic_workflow
-title: Basic Interview Building Workflow
-sidebar_label: Basic Workflow
-slug: /get_started/basic_workflow
+id: workflow
+title: Interview-Building Workflow
+sidebar_label: Workflow
+slug: /get_started/workflow
 ---
 
 <!-- 
@@ -11,6 +11,8 @@ Project board overview and usage
 Creating issues
   Use to track questions for decisionmaker meetings.
 -->
+
+This page outlines the workflow for building a Docassemble interview based on an existing form.
 
 This page walks you through the interview-building workflow we have developed for building interviews with students. It includes some brief onboarding exercises that will help you if this is your first time building a Docassemble interview.
 
