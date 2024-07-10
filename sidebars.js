@@ -6,7 +6,7 @@ module.exports = {
         'get_started/al_project_architecture',
         'get_started/installation',
         'get_started/beginners_guide',
-        'get_started/basic_workflow',
+        'get_started/workflow',
         'get_started/plan_interview',
         'get_started/working_with_teams',
         'get_started/resources',

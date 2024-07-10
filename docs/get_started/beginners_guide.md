@@ -5,53 +5,64 @@ sidebar_label: Beginner's Guide
 slug: /get_started/beginners_guide
 ---
 
-If you have never used Docassemble before, you are on the right page! We take every beginner through the same interview builder orientation steps before they start turning their first form into a guided interview. These steps will get you up and running 
+**If you have never used Docassemble before, you are on the right page!** This is how the [LIT Lab](https://suffolklitlab.org) teaches people to turn their first court form into a Docassemble guided interview.
 
-1. First, we will introduce you to Docassemble with the Hello, World exercise.
-2. Second, we will demonstrate the Weaver, a Document Assembly Line tool for quickly turning prepared forms into draft Docassemble interviews.
-3. Then you will be ready to start working on your first form!
+If you follow this guide you will be learning by doing. We want you to get started building your first interview as quickly as possible, and then the Document Assembly Line community can help you keep moving forward.
 
-After you have run your first form through the Weaver, we will introduce you to the interview building workflow, including working with GitHub.
+Here are the steps:
 
-## Initial Onboarding
+1. [Do the Hello, World exercise](#do-the-hello-world-exercise) for a friendly introduction to Docassemble
+2. [Watch a demonstration of the Weaver](#watch-a-demonstration-of-the-weaver), a Document Assembly Line tool for quickly turning prepared forms into draft Docassemble interviews
+3. [Review the interview-building workflow](#review-the-interview-building-workflow)
+4. [Join the Document Assembly Line community](#join-the-document-assembly-line-community)
+5. [Start building your first interview!](#start-building-your-first-interview)
 
-### 1. Do the Hello, World Exercise
+:::tip
+In order to build interviews you will need access to a [Docassemble playground](https://docassemble.org/docs/playground.html). But if you don't have one you can use ours! Register an account on the [LIT Lab Docassemble development server](https://apps-dev.suffolklitlab.org/user/register), then [email us](mailto:litlab@suffolk.edu) and ask for developer privileges.
+:::
+
+## Do the Hello, World Exercise
 
 In his Legal Tech Class, Quinten Steenhuis introduces Docassemble with a [short "Hello, World" exercise](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world). This introductory exercise is a great way to demystify Docassemble and see what it's like to build a simple interview—by actually doing it.
 
-:::info
-In order to do this exercise you will need access to a Docassemble playground. If you don't have that and you don't want to set up your own Docassemble development server, register an account on the [LIT Lab Docassemble development server](https://apps-dev.suffolklitlab.org/user/register), then [email us](mailto:litlab@suffolk.edu) and ask for developer privileges.
-:::
+**➡️ [Go to the Hello, World exercise.](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world)**
 
-Once you have successfully completed the Hello, World exercise you might want to continue with the next few lessons in the Legal Tech Class. When you are finished, move on to the next step: learning about the Weaver.
+Once you have successfully completed the Hello, World exercise you might want to continue with the next few lessons in the Legal Tech Class to learn more about building interviews in Docassemble.
 
-### 2. Watch the Weaver Demo
+When you have finished the Hello, World exercise, move on to the next step: learning about the Weaver.
 
-The Weaver is a Document Assembly Line time-saving tool. It makes it much easier and faster to get from a PDF or DOCX form to a draft Docassemble interview. The best way to explain it is to see it in action:
+## Watch a Demonstration of the Weaver
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1zF_omoCm1c?si=f8CxMChjI9DVLt5d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-If you want to skip the context and get right to the demo, it starts at about 26:35.
+The Weaver is a Document Assembly Line tool that generates a draft Docassemble interview from a prepared PDF or DOCX form so you don't have to start from scratch. The best way to explain it is to see it in action:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1zF_omoCm1c?si=UVHiheS_2tdteg0h&amp;start=1595" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+(The video should start playing from 26:35, which is when the demo starts.)
 
 The interview generated by the Weaver is not a finished interview. It is a starting point intended for further editing.
 
-### 3. Start Working on Your First Form!
+Now you are probably itching to start building your first interview! But before you do, take a moment to review the interview-building workflow and join the Document Assembly Line community.
 
-You probably already have an idea of the first form you want to work on, so get it out, go to the [Interview Building Workflow page](basic_workflow.md), and get started!
+## Review the Interview-Building Workflow
 
-:::tip
-You will encounter problems. To get help solving them, [join the Document Assembly Line community](intro.md#join-the-community) and take advantage of the available [interview building resources](resources).
-:::
+Building a successful interview involves more than just coding in the Docassemble playground. You'll also need to consider things like project management, [working with a team](working_with_teams.md), [requirements](working_with_teams.md#understanding-the-projects-users-and-intended-purpose), [usability](../question_style_overview.md), [testing](/alkiln/intro.mdx), etc.
 
-## Later
+**➡️ [Review the interview-building workflow.](workflow.md)**
 
-### GitHub Workflow
+## Join the Document Assembly Line Community
 
-* Working with branches in the playground; playground projects
-* Submitting PRs
-* Resolving merge conflicts
+You know enough to get started, but you will need help. The Document Assembly Line community meets weekly on Zoom for live support, and coding help is available 24/7 in our Microsoft Teams forum.
 
-## More Training
+**➡️ [Email us to join the Document Assembly Line community.](mailto:litlab@suffolk.edu)**
+
+You can also take advantage of other [interview building resources and documentation](resources.md).
+
+## Start Building Your First Interview!
+
+You probably already have an idea of the first form you want to work on, so pull up the [workflow](workflow.md) and get started!
+
+## Learn More
 
 If you've completed the above you are ready to get started building your first interview. But if you want a more in-depth beginner training, check out this 3.5–hour beginner training from [Docacon 2020](https://docacon.com/2020/index.html):
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Lsh_2qmTSAw?si=eVg0iE1amt13HR8c&amp;start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Lsh_2qmTSAw?si=v5quUzfrXhj144v0&amp;start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
