@@ -1,25 +1,15 @@
 ---
-id: workflow
-title: Interview-Building Workflow
-sidebar_label: Workflow
-slug: /get_started/workflow
+id: interview_project_roadmap
+title: Interview Project Roadmap
+sidebar_label: Interview Project Roadmap
+slug: /get_started/interview_project_roadmap
 ---
+
+Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview project—whether it is your first or fiftieth—this page will guide you through the stages of an interview-building project.
 
 <!-- 
 
 Audience/who is using this page: Forms Camp grads. In other words, someone at a court or legal aid org who is going to start building an interview.
-
-Interview Project Roadmap
-Roadmap of an Interview Project
-
-Leading/Managing an Interview-Building Project
-Overview of an Interview-Building Project
-Interview Development Blueprint
-Interview Project Lifecycle/Timeline
-Interview Project Execution
-
-
-
 Planning an interview/[working with a team](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/authoring/working_with_teams/)
 Project board overview and usage
 Show the pain of merging first—as a way to persuade people to use GitHub well earlier
@@ -27,9 +17,9 @@ Creating issues
   Use to track questions for decisionmaker meetings.
 -->
 
-:::tip
-If you are new to building Docassemble interviews and you have not gone through the [beginner's guide](./beginners_guide.md), it's a good idea to take an hour or so to do them before you continue with this page.
-:::
+## Identify Roles
+
+
 
 ## First Meeting with Stakeholders
 
@@ -39,7 +29,7 @@ Overall: define expectations/get on the same page
 
 * Introduce the development process
 * Define roles and responsibilities
-* Identify the single decisionmaker <-- most important
+* Identify the single decisionmaker (most important)
 * Define the requirements—including things we'll need in the future
 * Discuss MVPs and select the maturity model level
 * Discuss "change orders"—establish a process for changing the scope of the process
