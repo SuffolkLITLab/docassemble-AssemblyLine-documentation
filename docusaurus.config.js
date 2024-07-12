@@ -138,10 +138,11 @@ module.exports = {
   ],
   themes: [
 	  [
-	  require.resolve("@easyops-cn/docusaurus-search-local"),
-	  {
-		  hashed: true,
-	  }],
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+      }
+    ],
   ],
   presets: [
     [
