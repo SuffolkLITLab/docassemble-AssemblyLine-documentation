@@ -5,7 +5,7 @@ sidebar_label: Interview Project Roadmap
 slug: /get_started/interview_project_roadmap
 ---
 
-Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview project—whether it is your first or fiftieth—this page will guide you through the stages of an interview-building project.
+Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview project—whether it is your first or fiftieth—this page will guide you through the stages of an interview-building project, from concept to launch.
 
 <!-- 
 
@@ -19,15 +19,37 @@ Creating issues
 
 ## Identify Roles
 
+There are three essential roles on an interview building project, and two of them may have sub-roles.
 
+1. **Interview builders.** The person or team responsible for building the actual interview, including at least one developer and a project manager.
+2. **Decisionmaker.** One person who is responsible for managing stakeholders and converting their feedback into clear decisions.
+3. **Stakeholders.** Anyone who needs to have a say in the interview project, such as managers, judges, clerks, subject matter experts, IT staff, and users (self-represented litigants and lawyers).
 
-## First Meeting with Stakeholders
+:::note
+One person may have multiple roles, and there may be multiple people in any role other than the decisionmaker. You may have a team of interview builders and dozens of stakeholders, or you may be the only person working on this project.
+:::
 
-Meeting goals:
+![Interview Project Roles & Lines of Communication](../assets/interview-project-roles-communication.png)
 
-Overall: define expectations/get on the same page
+**The decisionmaker is probably the most important role for a successful interview project.** Most interview projects have multiple stakeholders, which can result in confusing or conflicting feedback.
 
-* Introduce the development process
+Without a decisionmaker, interview builders must try to interpret the feedback they receive, then seek further feedback on their proposed solution, which often results in more confusing feedback, and so on. This dramatically slows progress. 
+
+With a decisionmaker, interview builders should have clarity in order to keep moving forward. In order to be successful an interview project should have a single decisionmaker whose job includes:
+
+* Being a single point of contact and single source of decisions
+* Regular meetings with the interview building team
+* Timely responses to requests for feedback
+* Gathering feedback from stakeholders and converting it to clear decisions
+* Making the go/no-go decision to launch the interview
+
+## Kickoff Meeting
+
+As early as possible after you have identified the roles above, schedule a kickoff meeting for the interview building project. The interview building team, the decisionmaker, and the key stakeholders should attend.
+
+Kickoff meeting agenda:
+
+* Introduce the development process (you can use this page)
 * Define roles and responsibilities
 * Identify the single decisionmaker (most important)
 * Define the requirements—including things we'll need in the future
