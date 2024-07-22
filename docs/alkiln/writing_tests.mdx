@@ -143,7 +143,7 @@ You **must** include the `interview` Step in each Scenario **before setting any 
 
 ### `I sign in with the email "<username env var>" and the password "<password env var>"` {#sign-in}
 
-Use the "sign in" Step to sign into your docassemble server before going to the interview with the ["start interview" Step](#start-interview). You can use [GitHub secrets](#secrets) in combination with [environment variables](#env-vars) to store and use this sensitive sign in information.
+Use the "sign in" Step to sign into your docassemble server before going to an interview with the ["start interview" Step](#start-interview). If you run your tests on GitHub, remember to use [GitHub secrets](#secrets) to store this sensitive information.
 
 The Step format:
 
@@ -154,6 +154,11 @@ The Step format:
 The two blanks to fill in are `<username env var>` and `<password env var>`. Each of them must be the name of an [environment variable](#env-vars) that you have already added to your [workflow file](#workflows).
 
 The `<username env var>` variable should contain the username of a [dedicated account](security.mdx#test_accounts) on your docassemble server. The `<password env var>` variable should contain the password of that account.
+
+To use this Step:
+
+1. When you create a user for ALKiln on your docassemble server, note the email address and the password for that account.
+1. Create [GitHub secrets](#secrets) or config values to store the email address and password.
 
 Example Step:
 
@@ -174,10 +179,67 @@ env:
 You can have as many of these accounts as you want.
 
 :::danger Sensitive information
-You **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
+If you run this in a <GTOYS/> test, you **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
 :::
 
 ALKiln does avoid taking pictures or downloading the HTML for this Step, even when the test has an error on that page, so that information is still protected. ALKiln also avoids printing the value of these variables anywhere in the report or in the console. Even so, it is possible for you to [expose this information](security.mdx#no-show).
+
+
+### `I sign in with the email "<username env var>", the password "<password env var>", and the API key <api key env var>` {#delete-interview-session}
+
+Use the "sign in and clean up" Step to sign into your docassemble server before going to an interview with the ["start interview" Step](#start-interview), then delete the interview from the account's "My interviews" list. If you run your tests on GitHub, remember to use [GitHub secrets](#secrets) to store this sensitive information.
+
+This is very similar to the ["sign in" Step](#sign-in) above. See that for basic information. The difference here is that you can also make sure that ALKiln deletes the interviews this user creates.
+
+The new blank to fill in is `<api key env var>`. It is the name of the [environment variable](#env-vars) containing an API key you create for the account that signs in.
+
+Example Step:
+
+```gherkin
+  Given I sign in with the email "ALKILN_USER_EMAIL" and the password "ALKILN_USER_PASSWORD", and the API key "ALKILN_USER_API_KEY"
+```
+
+`"ALKILN_USER_EMAIL"`, `"ALKILN_USER_PASSWORD"`, and `"ALKILN_USER_API_KEY"` are just examples of environment variable names. You can use any names you want. See the ["sign in" Step](#sign-in) for more details.
+
+To set up the API key, do the following:
+
+<!-- TODO: Check if you can make multiple API keys with the same name. -->
+
+1. Ask an admin on your docassemble server to [create an API key for themselves in their user profile](https://docassemble.org/docs/api.html#manage_api)[^new_key].
+1. Use that admin API key to create an API key for your user by using the [docassemble API endpoint](https://docassemble.org/docs/api.html#api_user_user_id_api_post). If you lose this API key, you can make a new one. You can do that in your terminal or command prompt with this code:
+   ```bash
+   $(curl -X POST \
+     <your server url>/api/user/<user's email>/api \
+     -H 'Content-Type: application/json' \
+     -d '{
+       "key": "<your admin API key>",
+       "name": "alkiln_key",
+       "method": "none"
+     }')
+   ```
+
+   `<your server url>` is the url of your server in this format: https://your-server-url.org.
+   `<user's email>` is the email of ALKiln's user account you name in your sign in Step.
+   `<your admin API key>` is the API key your admin made.
+1. Press enter.
+1. Copy the result you get from that curl request.
+1. Int GitHub, put that variable in a GitHub secret. Avoid including the outer quotation marks.
+1. Add that secret to your environment variables. Here's a GitHub workflow file example:
+   ```yml
+   env:
+     ALKILN_USER_EMAIL: "${{ secrets.ALKILN_USER_EMAIL }}"
+     ALKILN_USER_PASSWORD: "${{ secrets.ALKILN_USER_PASSWORD }}"
+     ALKILN_USER_API_KEY: "${{ secrets.ALKILN_USER_API_KEY }}"
+   ```
+1. Write this "sign in and clean up" Step in your `.feature` test file.
+
+:::danger Sensitive information
+If you run this in a <GTOYS/> test, you **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
+:::
+
+ALKiln does avoid taking pictures or downloading the HTML for this Step, even when the test has an error on that page, so that information is still protected. ALKiln also avoids printing the value of these variables anywhere in the report or in the console. Even so, it is possible for you to [expose this information](security.mdx#no-show).
+
+[^new_key]: If you lose this API key you can make a new one. You can make as many as you need.
 
 
 ### `I go to "<url>"` {#go-anywhere}
@@ -1271,7 +1333,7 @@ Variable values only show up in the JSON on the next page - the one after the pa
 
 ### `I will be told an answer is invalid` {#invalid}
 
-Use the "invalid answers" Step to check that the user got feedback that one or more of their answers were invalid.
+Use the "invalid answer" Step to check that the user got feedback that one or more of their answers were invalid.
 
 <!-- TODO: Change to "I see an answer is invalid" -->
 
@@ -1817,7 +1879,7 @@ Environment variables are one of the few ways for you to get information from Gi
 
 What is a variable?
 
-A "variable" is a name with a value. That name, a "variable name", lets the rest of the program ask for that value when needed.[^name] Like calling a kid in for dinner. That is close enough for what we need right now.[^vars]
+A "variable" is a name with a value[^vars]. That name, a "variable name", lets the rest of the program ask for that value when needed.[^name] You might already know what they are, but we are going to use a metaphor to help with the rest of the explanation. A variable name is like a kid's name and when the program asks for the value, that's like calling a kid in for dinner.
 
 [^name]: You might notice people also using the word "variable" to mean "variable name".
 
@@ -1829,9 +1891,11 @@ A "variable" is a name with a value. That name, a "variable name", lets the rest
 
 What are environment variables?
 
-Environment variables are variables that are available to the whole system - the whole environment the programs are working in. Like the town where that kid lives and where their house is. That means every test in your test suite can use that variable. You can call that kid in for dinner no matter where in the city they are.
+Environment variables are variables that are available to the whole system - the whole environment the programs are working in. That's like the town where that kid lives and where their house is. That means every test in your test suite can use that variable. You can call that kid in for dinner no matter where in the city they are.
 
 Because environment variables are so global, we recommend you start all your environment variable names with "ALKILN_" so they have less chance to interfere with your system's other environment variables. If you are going to broadcast your message across the town, every kid should have a unique name so everyone knows who you are yelling at.
+
+### Docassemble config file env vars {#config-vars}
 
 In <AutoDIY/> tests on your server, you put these values in your [config file](https://docassemble.org/docs/config.html#configfile) under a key you can add called `alkiln`. For example:
 
@@ -1841,6 +1905,8 @@ alkiln:
 ```
 
 `ALKILN_BEAR_SIZE` is the name of the environment variable. `"small_bear"` is the value of the environment variable. All the interviews on your server can see these config values, including the interview that runs your <AutoDIY/> tests, so you are actually setting these values for all the tests that you run on your server with <AutoDIY/> tests.
+
+# GitHub env vars {#github-vars}
 
 In GitHub, you can make [GitHub workflow environment variables](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) by putting them in the `env` key in your [workflow file](#workflows):
 
