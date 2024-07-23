@@ -45,6 +45,13 @@ Kickoff meeting agenda:
 * Agree on a single decisionmaker
 * Describe the development process (use this page)
 * Schedule a regular check-in meeting
+* Walk through the procedural context for the form
+  * Who will be using this form? (What are they called?) Who can't use it?
+  * What does this form do? What can someone do with it? What can't they do with it?
+  * When in the process would someone use this form? What has happened before they use it?
+  * Where would someone file this form?
+  * Why would someone use this form?
+  * How does someone file this form?
 * Agree on a [minimum viable product (MVP)](assembly_line_setup#stick-to-an-mvp) and define the requirements for this project
 * Agree on a process for changing the scope of the project (i.e., adding features)
 * Discuss what success looks like for this project, and how you will measure it
