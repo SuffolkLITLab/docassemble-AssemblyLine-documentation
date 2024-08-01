@@ -312,6 +312,62 @@ Results in:
 They are her shoes.
 ```
 
+### Automatically use responsive first and second person pronouns ("I", "We", "You", "Your", etc.)
+
+Versions of the Assembly Line >= 3.0.0 and Docassemble servers later than 1.4.103 can 
+conjugate pronouns in the first and second person as well as the default third-person.
+This works both for an ALIndividual and an ALPeopleList.
+
+These minimum versions support a new parameter, `person`, that can be one of:
+
+* 1 (First person, responsive to list length)
+* "1p" (first person plural)
+* 2 (second person, responsive to list length)
+* "2p" (second person plural)
+* 3 (third person, responsive to list length. **Default**)
+* "3p" (third person plural)
+
+This is especially helpful in an output document when there can be either 1 or multiple litigants, 
+such as a letter or complaint that is written from the litigant's perspective.
+
+For example, to write a letter that is from the perspective of the user or users:
+
+```jinja
+It's all about {{ users.pronoun(person=1) }}.
+
+{{ users.pronoun_subjective(person=1) }} love animals.
+
+Especially {{ users.pronoun_possessive("elephant", person=1) }}.
+```
+
+Results in:
+
+> It's all about me.
+> I love animals.
+> Especially my elephant.
+
+If users is a list with exactly 1 person, and
+
+> It's all about us.
+> We love animals.
+> Especially our elephant.
+
+When there are 2 or more people in the list.
+
+The `person=2` parameter would result in the following output,
+regardless of the length of the list (because there is not a separate
+second person pronoun in English):
+
+> It's all about you.
+> You love animals.
+> Especially your elephant.
+
+### More about adapting language based on gender and plurality
+
+[Docassemble's documentation](https://docassemble.org/docs/objects.html#language%20methods) 
+includes several more comprehensive examples of how to use these functions to automatically 
+use appropriate pronouns.
+
 ### `salutation`
 
 The [`salutation`](https://docassemble.org/docs/objects.html#Individual.salutation) method
