@@ -154,6 +154,13 @@ module.exports = {
         },
         {
             type: 'category',
+            label: 'Translation',
+            items: [
+                'translation/translation'
+            ]
+        },
+        {
+            type: 'category',
             label: 'E-filing',
             items: [
                 'efiling/overview',
