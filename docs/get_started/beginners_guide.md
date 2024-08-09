@@ -13,7 +13,7 @@ Here are the steps:
 
 1. [Do the Hello, World exercise](#do-the-hello-world-exercise) for a friendly introduction to Docassemble
 2. [Watch a demonstration of the Weaver](#watch-a-demonstration-of-the-weaver), a Document Assembly Line tool for quickly turning prepared forms into draft Docassemble interviews
-3. [Review the interview project roadmap](#review-the-interview-building-workflow)
+3. [Review the interview project roadmap](#review-the-interview-project-roadmap)
 4. [Join the Document Assembly Line community](#join-the-document-assembly-line-community)
 5. [Start building your first interview!](#start-building-your-first-interview)
 
