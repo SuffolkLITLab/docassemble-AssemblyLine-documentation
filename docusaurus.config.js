@@ -77,6 +77,10 @@ module.exports = {
       {
         redirects: [
           {
+            from: '/docs',
+            to: '/'
+          },
+          {
             from: '/docs/framework/efiling',
             to: '/docs/efiling/overview'
           },
@@ -125,7 +129,7 @@ module.exports = {
             to: '/docs/archive/bootcamp'
           },
           {
-            from: '/docs/plan_interview',
+            from: '/docs/planning',
             to: '/docs/get_started/planning'
           },
           {

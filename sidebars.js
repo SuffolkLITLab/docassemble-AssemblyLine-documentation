@@ -155,11 +155,19 @@ module.exports = {
         },
         {
             type: 'category',
+            label: 'Translation',
+            items: [
+                'translation/translation'
+            ]
+        },
+        {
+            type: 'category',
             label: 'E-filing',
             items: [
                 'efiling/overview',
                 'efiling/efiling_through_docassemble',
                 'efiling/efiling_case_search',
+                'efiling/efiling_codes',
                 'efiling/monitoring',
             ]
         },
