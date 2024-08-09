@@ -53,7 +53,7 @@ to continue editing your code.
 The steps that the Weaver will walk you through are as follows:
 
 1. validate the labels and your template file
-1. add some basic information about your form (follow the [planning your interview](plan_interview.md) to get this ready)
+1. add some basic information about your form (follow the [planning your interview](/get_started/plan_interview.md) to get this ready)
 1. add on-screen prompts for each labeled field
 1. choose a datatype for each labeled field (for example: text, number, date)
 1. organize the fields onto individual screens with headings and optional additional text
