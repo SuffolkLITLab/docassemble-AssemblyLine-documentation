@@ -2,7 +2,7 @@
 id: working_with_teams
 title: Working with teams
 sidebar_label: Working with teams
-slug: /authoring/working_with_teams
+slug: /get_started/working_with_teams
 ---
 
 ## Getting the project started

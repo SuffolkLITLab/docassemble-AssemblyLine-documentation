@@ -2,7 +2,7 @@
 id: plan_interview
 title: Planning your interview
 sidebar_label: Planning your interview
-slug: /planning
+slug: /get_started/planning
 ---
 
 ## Planning and automating your first interview with the Assembly Line Framework

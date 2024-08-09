@@ -1,8 +1,8 @@
 ---
-id: interview_building_resources
+id: resources
 title: Interview Building Resources
 sidebar_label: Resources
-slug: /get_started/interview_building_resources
+slug: /get_started/resources
 ---
 
 As you are building interviews, use these resources to find answers to your questions, solve problems you run into, and get help.
