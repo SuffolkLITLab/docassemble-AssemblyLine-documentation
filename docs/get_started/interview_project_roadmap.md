@@ -198,16 +198,18 @@ You can also set up [collect analytics](../analytics/tracking_usage) to learn ho
 
 ## Do a Retrospective
 
-Whether or not your project was successful, the interview-building team, the decisionmaker, and the key stakeholders should do a retrospective.
+Before you start another interview-building project, pause briefly for a retrospective on how this one went. The retrospective format comes from [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development), and it is a way to embrace continuous improvement by taking a moment to reflect on the project you just finished in order to improve the next one.
 
-The retrospective comes from [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development) and a way of embracing continuous improvement. 
-
-To do a retrospective, discuss three questions:
+To do a retrospective, gather the group and discuss three questions:
 
 1. What went well that we should keep doing?
 2. What did not go well that we should stop doing?
 3. What should we try going forward?
 
-Retrospectives are generally more effective when the team is together in real time—on Zoom, for example. You can do a group retrospective or the project manager can meet separately with the interview builders and decisionmaker. Do what feels right based on the group dynamics.
+Retrospectives are generally more effective when the team is together in real time—on Zoom, for example. Depending on the group dynamics you can do a retrospective as a group or meet with one person at a time.
+
+:::tip
+Insist that everyone give at least one answer to each question. Even if someone insists nothing went badly, ask if they found themselves confused or struggling at any point during the project. Their answer may lead to an area that could be improved.
+:::
 
 Use what you learn from the retrospective when planning your next interview-biulding project.
