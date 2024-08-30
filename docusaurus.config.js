@@ -148,6 +148,14 @@ module.exports = {
             from: '/docs/get_started/customization',
             to: '/docs/framework/althemetemplate'
           },
+          {
+            from: '/docs/get_started/assembly_line_steps/planning_time',
+            to: '/docs/get_started/interview_project_roadmap'
+          },
+          {
+            from: '/docs/get_started/assembly_line_setup',
+            to: '/docs/get_started/interview_project_roadmap'
+          },
         ]
       }
     ]

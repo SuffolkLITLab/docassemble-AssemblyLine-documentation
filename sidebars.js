@@ -10,14 +10,6 @@ module.exports = {
         'get_started/plan_interview',
         'get_started/working_with_teams',
         'get_started/resources',
-        {
-            type: 'category',
-            label: 'Setting up your team',
-            items: [
-                'get_started/assembly_line_setup',
-                'get_started/assembly_line_steps_planning_time',
-            ],
-        },
         'contributors',
         {
             type: 'category',

@@ -9,6 +9,10 @@ Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org
 
 This roadmap reflects the procedures, templates, and tools the LIT Lab uses on our own interview-building projects, which you can adapt to your projects.
 
+:::tip
+If this is your first interview-building project, it may help to read more about [planning and building your first expert system](https://projects.suffolklitlab.org/legal-tech-class/docs/interview-structure/building-an-app-outline).
+:::
+
 ## Identify Key Roles & Responsibilities
 
 ![Interview Project Roles & Lines of Communication](../assets/interview-project-roles-communication.png)
@@ -56,14 +60,21 @@ Here is a sample kickoff meeting agenda:
   * Explain the court process leading up to someone using this interview.
   * Identify the substantive laws or procedural rules the interview builders should be familiar with.
   * Where and how must the completed documents be filed, served, or delivered?
-* Agree on a [minimum viable product (MVP)](assembly_line_setup#stick-to-an-mvp)
+* Agree on a [minimum viable product (MVP)](#stick-to-an-mvp)
 * Define the requirements for this interview
 * Agree on a process for changing the scope of the project (i.e., adding features)
 * Discuss what success looks like for this project, and how you will measure it
 * Consider doing a [pre-mortem](https://en.wikipedia.org/wiki/Pre-mortem)—imagine this project has failed and discuss why
 
-:::tip
-Even if this is a solo project, you should make time for a kickoff "meeting" with yourself.
+:::info
+### Stick to an MVP
+A minimum viable product (MVP) is the essence of of iterative, incremental development—first make something that works, then make it better.
+
+Consider Henrik Kniberg's skateboard analogy:
+
+![Minimum viable product](../assets/mvp.png)
+
+Different projects will have different MVPs/skateboards. The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify the MVP for your project. Once you decide what this project's MVP is, avoid adding anything more to it.
 :::
 
 ## Complete the Draft Interview
@@ -123,7 +134,7 @@ Finally, when showing the relevant part of the interview as part of asking a que
 
 ## Get Feedback on the Interview
 
-Once the interview works from start to finish and you have closed all the issues that are in scope for the [MVP](assembly_line_setup#stick-to-an-mvp), it is ready for feedback. Start by getting preliminary feedback from someone with Document Assembly Line experience. After you have made revisions based on the preliminary feedback, give the interview to the decisionmaker and stakeholders for their feedback.
+Once the interview works from start to finish and you have closed all the issues that are in scope for the [MVP](#stick-to-an-mvp), it is ready for feedback. Start by getting preliminary feedback from someone with Document Assembly Line experience. After you have made revisions based on the preliminary feedback, give the interview to the decisionmaker and stakeholders for their feedback.
 
 ### Preliminary Feedback
 
@@ -145,7 +156,7 @@ During the demonstration or testing:
 
 ### Stakeholder Feedback
 
-Once you have closed all the issues that are in scope for the [MVP](assembly_line_setup#stick-to-an-mvp) and tested the interview yourself, it should be ready to hand off to the decisionmaker and stakeholders for their testing and feedback.
+Once you have closed all the issues that are in scope for the [MVP](#stick-to-an-mvp) and tested the interview yourself, it should be ready to hand off to the decisionmaker and stakeholders for their testing and feedback.
 
 Get the interview ready the same as [above](#preliminary-feedback), then click the **Share** button in the testing project playground to get the link to the interview.
 
