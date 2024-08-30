@@ -118,7 +118,7 @@ module.exports = {
           },
           {
             from: '/docs/assembly_line_steps/steps',
-            to: '/docs/get_started/assembly_line_steps/steps'
+            to: '/docs/get_started/interview_project_roadmap'
           },
           {
             from: '/docs/customization',
@@ -142,6 +142,10 @@ module.exports = {
           },
           {
             from: '/docs/get_started/assembly_line_steps',
+            to: '/docs/get_started/interview_project_roadmap'
+          },
+          {
+            from: '/docs/get_started/assembly_line_steps/steps',
             to: '/docs/get_started/interview_project_roadmap'
           },
         ]
