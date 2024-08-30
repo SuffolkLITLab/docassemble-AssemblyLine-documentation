@@ -110,7 +110,7 @@ module.exports = {
           },
           {
             from: '/docs/assembly_line_steps/roles',
-            to: '/docs/get_started/assembly_line_steps/roles'
+            to: '/docs/get_started/interview_project_roadmap#identify-key-roles--responsibilities'
           },
           {
             from: '/docs/assembly_line_steps/planning_time',
@@ -135,6 +135,10 @@ module.exports = {
           {
             from: '/docs/authoring/working_with_teams',
             to: '/docs/get_started/working_with_teams'
+          },
+          {
+            from: '/docs/get_started/assembly_line_steps/roles',
+            to: '/docs/get_started/interview_project_roadmap#identify-key-roles--responsibilities'
           },
         ]
       }
