@@ -16,7 +16,6 @@ module.exports = {
             label: 'Setting up your team',
             items: [
                 'get_started/assembly_line_setup',
-                'get_started/assembly_line_steps',
                 'get_started/assembly_line_steps_planning_time',
                 'get_started/assembly_line_steps_step_by_step',
                 'get_started/customization',
