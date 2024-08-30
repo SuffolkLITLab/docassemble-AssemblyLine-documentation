@@ -6,7 +6,7 @@ slug: /archive/bootcamp
 ---
 
 :::info
-This pages is about the bootcamp that we ran from February 18th, 2021 to March 11th, 2021. Although the camp is already finished, you can
+This page is about the bootcamp that we ran from February 18th, 2021 to March 11th, 2021. Although the camp is already finished, you can
 follow along yourself using the resources on this page!
 :::
 
