@@ -106,11 +106,11 @@ module.exports = {
           },
           {
             from: '/docs/assembly_line_steps',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/assembly_line_steps/roles',
-            to: '/docs/get_started/interview_project_roadmap#identify-key-roles--responsibilities'
+            to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
           },
           {
             from: '/docs/assembly_line_steps/planning_time',
@@ -118,7 +118,7 @@ module.exports = {
           },
           {
             from: '/docs/assembly_line_steps/steps',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/bootcamp',
@@ -134,15 +134,15 @@ module.exports = {
           },
           {
             from: '/docs/get_started/assembly_line_steps/roles',
-            to: '/docs/get_started/interview_project_roadmap#identify-key-roles--responsibilities'
+            to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
           },
           {
             from: '/docs/get_started/assembly_line_steps',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/get_started/assembly_line_steps/steps',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/get_started/customization',
@@ -150,15 +150,15 @@ module.exports = {
           },
           {
             from: '/docs/get_started/assembly_line_steps/planning_time',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/get_started/assembly_line_setup',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/get_started/planning',
-            to: '/docs/get_started/interview_project_roadmap'
+            to: '/docs/get_started/roadmap'
           },
         ]
       }

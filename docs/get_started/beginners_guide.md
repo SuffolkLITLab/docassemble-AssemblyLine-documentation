@@ -47,7 +47,7 @@ Now you are probably itching to start building your first interview! But before 
 
 Building a successful interview involves more than just coding in the Docassemble playground. You'll also need to consider things like project management, [working with a team](working_with_teams.md), [requirements](working_with_teams.md#understanding-the-projects-users-and-intended-purpose), [usability](../question_style_overview.md), [testing](/alkiln/intro.mdx), etc.
 
-**➡️ [Review the interview-building workflow.](interview_project_roadmap.md)**
+**➡️ [Review the interview-building workflow.](roadmap.md)**
 
 ## Join the Document Assembly Line Community
 
@@ -59,7 +59,7 @@ You can also take advantage of other [interview building resources and documenta
 
 ## Start Building Your First Interview!
 
-You probably already have an idea of the first form you want to work on, so pull up the [workflow](interview_project_roadmap.md) and get started!
+You probably already have an idea of the first form you want to work on, so pull up the [workflow](roadmap.md) and get started!
 
 ## Learn More
 

@@ -6,8 +6,15 @@ module.exports = {
         'get_started/al_project_architecture',
         'get_started/installation',
         'get_started/beginners_guide',
-        'get_started/interview_project_roadmap',
-        'get_started/working_with_teams',
+        {
+            type: 'category',
+            label: 'Interview Projects',
+            items: [
+                'get_started/roadmap',
+                'get_started/working_with_teams',
+            ],
+            collapsed: false,
+        },
         'get_started/resources',
         'contributors',
         {

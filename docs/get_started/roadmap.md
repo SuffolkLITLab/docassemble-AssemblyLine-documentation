@@ -1,8 +1,8 @@
 ---
-id: interview_project_roadmap
+id: roadmap
 title: Roadmap of a Successful Interview Project
-sidebar_label: Interview Project Roadmap
-slug: /get_started/interview_project_roadmap
+sidebar_label: Roadmap
+slug: /get_started/roadmap
 ---
 
 Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview-building project—whether it is your first or fiftieth—this page will guide you through the stages of a successful project, from concept to launch.
@@ -53,8 +53,8 @@ Here is a sample kickoff meeting agenda:
 * Identify the decisionmaker
 * Development process overview (use this page)
 * Schedule regular check-ins with the decisionmaker and one or two key stakeholders
-* Introduce the source form/document and its context. In other words:
-  * Who can use this interview?
+* Introduce the source form/document, its context, and its users. In other words:
+  * Who can use this interview? In which language(s) will they be able to read and write? (Consider creating a couple of [user personas](https://en.wikipedia.org/wiki/Persona_(user_experience)) together.)
   * What are they called (i.e., plaintiff, respondent, or appellee)?
   * What can/can't this interview be used to do?
   * Explain the court process leading up to someone using this interview.
@@ -63,10 +63,17 @@ Here is a sample kickoff meeting agenda:
 * Agree on a [minimum viable product (MVP)](#stick-to-an-mvp)
 * Define the requirements for this interview
 * Agree on a process for changing the scope of the project (i.e., adding features)
+* Discuss the timeline. Key dates:
+  * Start date
+  * Draft interview completed
+  * Preliminary feedback
+  * Decisionmaker/stakeholder feedback
+  * Interview finalized and ready for go/no-go decision
+  * Launch
 * Discuss what success looks like for this project, and how you will measure it
 * Consider doing a [pre-mortem](https://en.wikipedia.org/wiki/Pre-mortem)—imagine this project has failed and discuss why
 
-:::info
+:::tip
 ### Stick to an MVP
 A minimum viable product (MVP) is the essence of of iterative, incremental development—first make something that works, then make it better.
 
@@ -74,7 +81,7 @@ Consider Henrik Kniberg's skateboard analogy:
 
 ![Minimum viable product](../assets/mvp.png)
 
-Different projects will have different MVPs/skateboards. The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify the MVP for your project. Once you decide what this project's MVP is, avoid adding anything more to it.
+Different projects will have different MVPs/"skateboards". The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify the MVP for your project (interviews built for the general public should usually target level 2+). Once you decide what this project's MVP is, avoid adding anything more to it.
 :::
 
 ## Complete the Draft Interview
@@ -135,6 +142,10 @@ Finally, when showing the relevant part of the interview as part of asking a que
 ## Get Feedback on the Interview
 
 Once the interview works from start to finish and you have closed all the issues that are in scope for the [MVP](#stick-to-an-mvp), it is ready for feedback. Start by getting preliminary feedback from someone with Document Assembly Line experience. After you have made revisions based on the preliminary feedback, give the interview to the decisionmaker and stakeholders for their feedback.
+
+:::tip
+For complex interviews that involve multiple forms/templates, consider doing this in stages. Start with the simplest form and get preliminary and stakeholder feedback early. Then move on to the most complex form to confirm the shape and logic of the overall interview. Then continue with the remaining forms.
+:::
 
 ### Preliminary Feedback
 
