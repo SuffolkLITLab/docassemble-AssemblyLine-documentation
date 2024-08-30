@@ -5,6 +5,21 @@ sidebar_label: Working with PDF files
 slug: /pdfs
 ---
 
+:::tip
+Consider whether to use a DOCX template instead.
+
+**Reasons to use PDF:**
+
+* PDF files may be the best choice if you are automating an approved court form that already exists as a PDF
+* PDF files are good for heavily formatted content that includes columns and multiple fields on a single line
+
+**Reasons to avoid PDF:**
+
+* PDF documents are rigid, and may not contain enough room for real-world information
+* Conditional logic must be applied field-by-field
+* Lists and repeated data must be labeled one field at a time
+:::
+
 ## Edit your PDF
 
 PDF templates can be edited in:
@@ -13,9 +28,7 @@ PDF templates can be edited in:
 * [the Documate online free PDF editor](https://www.documate.org/pdf)
 * many other PDF editors that support Acrobat Forms (mostly paid)
 
-The free [Documate PDF
-editor](https://www.documate.org/pdf) will meet most people's needs. It will allow
-you to:
+The free [Documate PDF editor](https://www.documate.org/pdf) will meet most people's needs. It will allow you to:
 
 1. add text, checkbox, and digital signature fields
 1. easily rename fields
@@ -25,9 +38,7 @@ Documate has [a page that talks about its PDF
 editor](https://help.documate.org/articles/unlocking-pdf-documents).
 
 Adobe Acrobat can still be helpful. The most important feature it has that
-Documate lacks is the ability to automatically recognize blank spaces and turn
-them into fields. You may decide to use a trial version of Adobe Acrobat for
-this feature, which is only needed at the beginning of your project.
+Documate lacks is the ability to automatically recognize blank spaces and turn them into fields. You may decide to use a trial version of Adobe Acrobat for this feature, which is only needed at the beginning of your project.
 
 Watch a 2 minute video segment on [how to edit a
 PDF](https://help.documate.org/articles/unlocking-pdf-documents) with Documate's editor.

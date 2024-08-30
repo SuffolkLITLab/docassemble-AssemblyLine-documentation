@@ -5,6 +5,22 @@ sidebar_label: Working with DOCX files
 slug: /docx
 ---
 
+:::tip
+Consider whether to use a PDF template instead.
+
+**Reasons to use DOCX:**
+
+* DOCX documents will grow or shrink to accomodate as much or as little information as the user provides
+* DOCX documents allow you to use lists and repeated groups naturally and with little extra effort after labeling the first item
+* DOCX documents allow you to easily make whole sections of a document contingent
+* DOCX documents work well with linear content that is read by scanning down the page, not across
+
+**Reasons to avoid DOCX:**
+
+* DOCX documents do not work as well for content formatted in columns or that require precise layout
+* DOCX document content may flow unexpectedly if it is longer than expected
+:::
+
 DOCX templates can be edited in any editor that is able to edit DOCX files, including:
 
 * Microsoft Word, or Microsoft Word Online
