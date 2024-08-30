@@ -117,10 +117,6 @@ module.exports = {
             to: '/docs/archive/bootcamp'
           },
           {
-            from: '/docs/authoring/working_with_teams',
-            to: '/docs/get_started/working_with_teams'
-          },
-          {
             from: '/docs/get_started/assembly_line_steps/roles',
             to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
           },
