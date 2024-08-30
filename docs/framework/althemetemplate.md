@@ -1,8 +1,9 @@
 ---
-id: customization
-title: Applying a custom theme or brand
-sidebar_label: Applying a custom theme or brand
-slug: /get_started/customization
+id: althemetemplate
+title: |
+  ALThemeTemplate: Applying a Custom Theme or Brand
+sidebar_label: ALThemeTemplate
+slug: /althemetemplate
 ---
 
 ## Sharing a custom look and feel across multiple Assembly Line interviews

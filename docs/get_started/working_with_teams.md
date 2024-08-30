@@ -1,9 +1,13 @@
 ---
 id: working_with_teams
-title: Working with teams
-sidebar_label: Working with teams
+title: Working with Teams
+sidebar_label: Working with Teams
 slug: /get_started/working_with_teams
 ---
+
+:::warning
+We are actively updating the Document Assembly Line documentation and much of the information on this page is outdated.
+:::
 
 ## Getting the project started
 

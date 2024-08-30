@@ -101,32 +101,32 @@ module.exports = {
             to: '/docs/get_started/installation'
           },
           {
-            from: '/docs/getting_started',
-            to: '/docs/get_started/assembly_line_setup'
-          },
-          {
             from: '/docs/assembly_line_steps',
-            to: '/docs/get_started/assembly_line_steps'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/assembly_line_steps/roles',
-            to: '/docs/get_started/assembly_line_steps/roles'
-          },
-          {
-            from: '/docs/assembly_line_steps/planning_time',
-            to: '/docs/get_started/assembly_line_steps/planning_time'
+            to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
           },
           {
             from: '/docs/assembly_line_steps/steps',
-            to: '/docs/get_started/assembly_line_steps/steps'
-          },
-          {
-            from: '/docs/customization',
-            to: '/docs/get_started/customization'
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/bootcamp',
             to: '/docs/archive/bootcamp'
+          },
+          {
+            from: '/docs/get_started/assembly_line_steps/roles',
+            to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
+          },
+          {
+            from: '/docs/get_started/assembly_line_steps',
+            to: '/docs/get_started/roadmap'
+          },
+          {
+            from: '/docs/get_started/assembly_line_steps/steps',
+            to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/planning',
