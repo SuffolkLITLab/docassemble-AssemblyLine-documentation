@@ -146,7 +146,7 @@ module.exports = {
           },
           {
             from: '/docs/get_started/customization',
-            to: '/docs/customization'
+            to: '/docs/framework/althemetemplate'
           },
         ]
       }

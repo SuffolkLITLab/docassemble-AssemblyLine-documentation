@@ -42,7 +42,6 @@ module.exports = {
                 'alweaver_overview',
                 'github',
                 'customizing_interview',
-                'customization',
                 'writing_review_screen',
                 'yaml_anatomy',
             ],
@@ -139,6 +138,7 @@ module.exports = {
             ]
         },
         'framework/alrecipes',
+        'framework/althemetemplate',
         'complexity/complexity',
         'framework/github_feedback',
         'analytics/tracking_usage',
