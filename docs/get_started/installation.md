@@ -80,7 +80,7 @@ them for your own jurisdiction or organization.
 
 To use this package, [pull it into your own Docassemble playground](https://docassemble.org/docs/playground.html#packages).
 
-Next, [follow our guide](customization_overview.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
+Next, [follow our guide](/framework/althemetemplate.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
 
 Now, create a new package from the [Playground packages menu](https://docassemble.org/docs/playground.html#packages).
 Give the package a meaningful name, like LouisianaSharedBranding.

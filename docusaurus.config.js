@@ -101,10 +101,6 @@ module.exports = {
             to: '/docs/get_started/installation'
           },
           {
-            from: '/docs/getting_started',
-            to: '/docs/get_started/assembly_line_setup'
-          },
-          {
             from: '/docs/assembly_line_steps',
             to: '/docs/get_started/roadmap'
           },
@@ -113,20 +109,12 @@ module.exports = {
             to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
           },
           {
-            from: '/docs/assembly_line_steps/planning_time',
-            to: '/docs/get_started/assembly_line_steps/planning_time'
-          },
-          {
             from: '/docs/assembly_line_steps/steps',
             to: '/docs/get_started/roadmap'
           },
           {
             from: '/docs/bootcamp',
             to: '/docs/archive/bootcamp'
-          },
-          {
-            from: '/docs/planning',
-            to: '/docs/get_started/planning'
           },
           {
             from: '/docs/authoring/working_with_teams',
@@ -142,22 +130,6 @@ module.exports = {
           },
           {
             from: '/docs/get_started/assembly_line_steps/steps',
-            to: '/docs/get_started/roadmap'
-          },
-          {
-            from: '/docs/get_started/customization',
-            to: '/docs/framework/althemetemplate'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps/planning_time',
-            to: '/docs/get_started/roadmap'
-          },
-          {
-            from: '/docs/get_started/assembly_line_setup',
-            to: '/docs/get_started/roadmap'
-          },
-          {
-            from: '/docs/get_started/planning',
             to: '/docs/get_started/roadmap'
           },
         ]

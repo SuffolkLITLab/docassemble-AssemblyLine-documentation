@@ -17,7 +17,7 @@ This short, 3-minute video by David Colarusso and Quinten Steenhuis explains how
 
 The LIT Lab gathered more than 200 volunteers from around the world and built tools such as:
 
-* An [workflow](get_started/assembly_line_steps) for building [Docassemble](https://docassemble.org) interviews to assemble court forms for filing.
+* An [workflow](/get_started/roadmap.md) for building [Docassemble](https://docassemble.org) interviews to assemble court forms for filing.
 * The core [Document Assembly Line Tools](https://github.com/SuffolkLITLab/docassemble-AssemblyLine), to make it easier to use key Docassemble features.
 * The [the Weaver](generating_code), a tool for converting existing PDF and DOCX court forms into draft Docassemble interviews in as little as one hour.
 * A [library](question_library/names) of pre-built, commonly used, accessible questions, vetted by experts and translated into at least 5 languages.
