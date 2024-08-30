@@ -156,6 +156,10 @@ module.exports = {
             from: '/docs/get_started/assembly_line_setup',
             to: '/docs/get_started/interview_project_roadmap'
           },
+          {
+            from: '/docs/get_started/planning',
+            to: '/docs/get_started/interview_project_roadmap'
+          },
         ]
       }
     ]
