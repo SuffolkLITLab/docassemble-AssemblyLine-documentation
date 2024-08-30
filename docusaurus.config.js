@@ -132,6 +132,14 @@ module.exports = {
             from: '/docs/get_started/assembly_line_steps/steps',
             to: '/docs/get_started/roadmap'
           },
+          {
+            from: '/docs/planning',
+            to: '/docs/get_started/planning'
+          },
+          {
+            from: '/docs/authoring/working_with_teams',
+            to: '/docs/get_started/working_with_teams'
+          },
         ]
       }
     ]
