@@ -5,9 +5,9 @@ sidebar_label: Interview Project Roadmap
 slug: /get_started/interview_project_roadmap
 ---
 
-Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview project—whether it is your first or fiftieth—this page will guide you through the stages of an interview-building project, from concept to launch.
+Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview-building project—whether it is your first or fiftieth—this page will guide you through the stages of a successful project, from concept to launch.
 
-This roadmap reflects the procedures, templates, and tools the LIT Lab uses on our interview-building projects, which you can adapt to yours.
+This roadmap reflects the procedures, templates, and tools the LIT Lab uses on our own interview-building projects, which you can adapt to your projects.
 
 ## Identify Key Roles & Responsibilities
 
@@ -25,13 +25,13 @@ You may have a team of interview builders and dozens of stakeholders, or you may
 
 ### The Decisionmaker
 
-**While a successful interview project needs all these roles, the decisionmaker is especially important.** Most interview projects involve multiple stakeholders. When the interview building team requests guidance or feedback, multiple stakeholders may give multiple responses that may be confusing or conflicting. This dramatically slows progress.
+**While a successful interview project needs all these roles, the decisionmaker is especially important.** Most interview projects involve multiple stakeholders. When the interview building team requests guidance or feedback, multiple stakeholders may give multiple responses that may be confusing or conflicting and dramatically slow progress.
 
 The decisionmaker's job is to gather and clarify stakeholders' feedback so that interview builders have clear decisions to work from. The decisionmaker's responsibilities also include:
 
 * Being a single point of contact and single source of decisions
 * Regular meetings with the interview building team
-* Timely responses to requests for feedback
+* Timely responses to requests for decisions and feedback
 * Gathering feedback or approvals from stakeholders and converting it to clear decisions
 * Making the go/no-go decision to launch the interview
 
@@ -41,43 +41,37 @@ The decisionmaker must either (1) have the authority necessary to carry out thes
 
 Schedule a kickoff meeting for the project as early as possible. The interview building team, the decisionmaker, and the key stakeholders should attend.
 
+The goal of a kickoff meeting is to get everyone on the same page when it comes to roles, expectations, and timeline. A good kickoff meeting sets the stage for a successful project.
+
 Here is a sample kickoff meeting agenda:
 
-* Everyone should introduce themselves and identify their role in the project.
-* Discuss the reason for having a single decisionmaker and identify that person.
-* Give an overview of the development process (use this page as a guide).
-* Schedule a regular check-in meeting (weekly or every other week) with the decisionmaker and one or two key stakeholders.
-* Introduce the form and how it will be used. Cover the who, what, when, where, and why:
-  * Who will use it and what are they called? Who else appears on the form? Who can't use it and how would they know?
-  * What can someone do with it? What can't they do with it?
-  * When would someone use it, and what will have happened before they do?
-  * Where would someone use it? Where would they file it?
-  * Why would someone use it?
-  * How do they file it? If it shouldn't be filed, what should they do after completing it?
-* Agree on a [minimum viable product (MVP)](assembly_line_setup#stick-to-an-mvp) and define the requirements for this project.
-* Agree on a process for changing the scope of the project (i.e., adding features).
-* Discuss what success looks like for this project, and how you will measure it.
-* Do a [pre-mortem](https://en.wikipedia.org/wiki/Pre-mortem)—imagine this project has failed and discuss why.
-
-:::info
-If this is a solo project you should still make time for a kickoff "meeting" with yourself.
-:::
-
-## Build the Interview
-
-After the kickoff meeting it is time to get to work! Interview building includes:
-
-* Coding (following the [GitHub workflow](../github.md#workflow))
-* Keeping track of tasks, change requests, questions, etc., using [GitHub issues](../github.md#use-issues)
-* Getting help with blockers ([resources](resources.md))
-* Testing the interview
-* Demonstrating the interview
-* Regular standups with the interview building team
-* Regular check-ins with the decisionmaker and key stakeholders
-* More coding
+* Introductions
+* Identify the decisionmaker
+* Development process overview (use this page)
+* Schedule regular check-ins with the decisionmaker and one or two key stakeholders
+* Introduce the source form/document and its context. In other words:
+  * Who can use this interview?
+  * What are they called (i.e., plaintiff, respondent, or appellee)?
+  * What can/can't this interview be used to do?
+  * Explain the court process leading up to someone using this interview.
+  * Identify the substantive laws or procedural rules the interview builders should be familiar with.
+  * Where and how must the completed documents be filed, served, or delivered?
+* Agree on a [minimum viable product (MVP)](assembly_line_setup#stick-to-an-mvp)
+* Define the requirements for this interview
+* Agree on a process for changing the scope of the project (i.e., adding features)
+* Discuss what success looks like for this project, and how you will measure it
+* Consider doing a [pre-mortem](https://en.wikipedia.org/wiki/Pre-mortem)—imagine this project has failed and discuss why
 
 :::tip
-The LIT Lab's [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) can help you keep your project organized. Just click the **Use this template** button to use it. (You'll need a free [GitHub](../github.md) account.)
+Even if this is a solo project, you should make time for a kickoff "meeting" with yourself.
+:::
+
+## Complete the Draft Interview
+
+After the kickoff meeting it is time to get to work! As you work on the interview, follow the [GitHub workflow](../github.md#workflow). If you get stuck on a problem for more than twenty minutes, ask for help. (Use the [Resources](resources.md) page to find options.)
+
+:::tip
+The LIT Lab's [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) can help you keep your project organized and on track. Just click the **Use this template** button to use it. (You'll need a free [GitHub](../github.md) account.)
 :::
 
 ## Meeting Cadence
@@ -86,7 +80,7 @@ Two recurring meetings will help you keep the project moving forward. These are 
 
 ### Interview-Building Team Meetings
 
-The interview-building team should meet frequently. Daily check-ins are most common on active projects, and anything less than weekly is unlikely to be effective.
+The interview-building team should meet frequently. Daily check-ins are common on active projects, and anything less than weekly is unlikely to be effective.
 
 :::tip
 Consider incorporating our Monday community meetings into your standup schedule. We run them standup-style, with time for solving blockers as a group. If this is a solo project, the Document Assembly Line community can be part of your interview-building team!
@@ -98,7 +92,7 @@ These meetings should follow a straightforward standing agenda. Each person on t
 2. **Plan:** what they are working on now
 3. **Blockers:** issues that are preventing them from making progress
 
-The reason for sharing your progress and plan for the day/week is so that everyone has an idea what everyone else is working on. This is necessary for the project manager, and can help interview builders avoid code conflicts or identify when it's time to merge branches.
+The reason for sharing your progress and plan for the day or week is so that everyone has an idea what everyone else is working on. This is necessary for the project manager, and can help interview builders avoid code conflicts or identify when it's time to merge branches.
 
 The reason for sharing blockers is to get help. Some teams reserve a larger block of time and use it to solve blockers together, like we do in our Monday community meetings. Other teams prefer to solve blockers separately. And sometimes a blocker is a question you need answered by the decisionmaker.
 
@@ -113,23 +107,23 @@ Weekly or every-other week meetings with the decisionmaker and one or two key st
 When sharing progress and the current plan, it can help to give a percentage estimate. Something like: "We think we are about 30% of the way to a complete draft interview, and by our next meeting we hope to be at 50%."
 
 :::tip
-Use [GitHub issues](../github.md#use-issues) to keep track of your questions for the decisionmaker. Add a **question** label to GitHub issues to make it easy to pull up your list of questions during a meeting.
+Use [GitHub issues](../github.md#use-issues) to keep track of your questions for the decisionmaker. If you add a **question** label to issues, it is easy to pull up the list of your questions during a meeting.
 :::
 
 To get better answers, ask questions better. Here are some tips for asking questions:
 
-* Before you pose a question to the decisionmaker, ask your interview-building team (or the community).
+* Only ask for a decisions when you can't make it yourself. Before you pose a question to the decisionmaker, ask your interview-building team (or the community).
 * Avoid open-ended questions. When you decide to pose a question to the decisionmaker, give them two or three options and explain the pros, cons, and implications of each.
 * If you do ask an open-ended question, explain that you are trying to generate ideas, not decide on a solution.
-* Don't ask the decisionmaker to design the interview. Ask for goals ("Do you need the attorney's ID number?"), not details ("Do you want the ID number field to show up right under the attorney's name field?"). 
+* Don't ask the decisionmaker to design the interview. It is usually better to ask for goals ("Do you need the attorney's ID number?"), not details ("Do you want the ID number field to show up right under the attorney's name field?").
 
-**Remember: if you ask a question you will get an answer.** Avoid asking questions when you don't need an answer so you don't make the project more complicated than it needs to be. The decisionmaker and stakeholders will have ample opportunity to give feedback on the full interview later.
+**Remember: if you ask a question you will get an answer.** If you don't need an answer, asking for one is not likely to help and may complicate the project.
 
-Finally, when asking questions it helps to show the relevant part of the interview, but it is also a good idea to remind the decisionmaker and stakeholders that the interview is a work in progress. If a different screen from the interview catches their eye, you can just let them know you are still working on it and you aren't ready for their feedback, yet.
+Finally, when showing the relevant part of the interview as part of asking a question, remind the decisionmaker and stakeholders that the interview is a work in progress and you are not ready for feedback beyond the answer to your question.
 
 ## Get Feedback on the Interview
 
-Once the interview works from start to finish you can get feedback on it. Start by getting preliminary feedback from someone with Document Assembly Line experience. After you have made revisions based on the preliminary feedback, give the interview to the decisionmaker and stakeholders for their feedback.
+Once the interview works from start to finish and you have closed all the issues that are in scope for the [MVP](assembly_line_setup#stick-to-an-mvp), it is ready for feedback. Start by getting preliminary feedback from someone with Document Assembly Line experience. After you have made revisions based on the preliminary feedback, give the interview to the decisionmaker and stakeholders for their feedback.
 
 ### Preliminary Feedback
 
@@ -139,7 +133,7 @@ To get the interview ready:
 
 1. [Merge your code](../github#create-a-pull-request) into **main** or a testing branch
 2. [Create a new playground project](../github#create-and-manage-playground-projects) for the interview demonstration and pull your code into it
-3. Make sure the interview works as expected in the testing project (**don't skip this step!**)
+3. Make sure the interview works as expected in the testing project
 
 Once the interview is ready, schedule a video meeting with the tester so you can watch them go through the interview. Or they can watch you demonstrate it. Record the test if you can so you can focus on the test instead of taking notes.
 
@@ -153,18 +147,18 @@ During the demonstration or testing:
 
 Once you have closed all the issues that are in scope for the [MVP](assembly_line_setup#stick-to-an-mvp) and tested the interview yourself, it should be ready to hand off to the decisionmaker and stakeholders for their testing and feedback.
 
-Get the interview ready the same as [above](#get-preliminary-feedback), then click the **Share** button in the testing project playground to get the link to the interview.
+Get the interview ready the same as [above](#preliminary-feedback), then click the **Share** button in the testing project playground to get the link to the interview.
 
 :::tip
-When sharing the interview link, make sure the URL ends with `#page1`. If you have been testing the interview the **Share** link will go to the last page you were viewing instead of the start of the interview. Usually this won't matter, but it could result in unexpected behavior.
+When sharing the interview link, make sure the URL ends with `#page1`. If you have been testing the interview the **Share** link will point to the last page you were viewing instead of the start of the interview. Usually this won't matter, but it could result in unexpected behavior.
 :::
 
-Share the link with the decisionmaker, and give them a few tips for giving helpful feedback:
+Share the link with the decisionmaker and give them a few tips for giving helpful feedback:
 
-* The feedback should come in the form of a written list of requested changes.
-* If there is confusing or conflicting feedback from stakeholders it is the decisionmaker's responsiblity to clarify it before presenting it to the interview building team.
+* The feedback should come in the form of a written list of requested changes
+* If there is confusing or conflicting feedback from stakeholders it is the decisionmaker's responsiblity to clarify it before presenting it to the interview building team
 * Change requests should be specific. For example, if the text of a question should be changed, the change request should include the new text.
-* At the top of each page of the interview is an ID. This ID is a reliable identifier when referring to an interview page. (The "fifth page" might be different dependind on the interview logic.)
+* At the top of each page of the interview is an ID. This ID is a reliable identifier when referring to an interview page. (For example, the "fifth page" might be different depending on the interview logic.)
 
 ## Revise the Interview
 
@@ -172,7 +166,7 @@ After getting feedback, create a [GitHub issue](../github#use-issues) for each c
 
 When you have closed all the issues/items on your punch list, send it back to the decisionmaker for further feedback. Each round of feedback should result in fewer change requests and move the project closer to completion.
 
-:::tip
+:::info
 Two rounds of feedback and revision are usually enough. It it takes more than three, consider ways to improve your process going forward.
 :::
 
