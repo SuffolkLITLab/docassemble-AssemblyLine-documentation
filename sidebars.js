@@ -17,7 +17,6 @@ module.exports = {
             items: [
                 'get_started/assembly_line_setup',
                 'get_started/assembly_line_steps_planning_time',
-                'get_started/customization',
             ],
         },
         'contributors',
@@ -43,6 +42,7 @@ module.exports = {
                 'alweaver_overview',
                 'github',
                 'customizing_interview',
+                'customization',
                 'writing_review_screen',
                 'yaml_anatomy',
             ],

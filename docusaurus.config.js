@@ -121,10 +121,6 @@ module.exports = {
             to: '/docs/get_started/interview_project_roadmap'
           },
           {
-            from: '/docs/customization',
-            to: '/docs/get_started/customization'
-          },
-          {
             from: '/docs/bootcamp',
             to: '/docs/archive/bootcamp'
           },
@@ -147,6 +143,10 @@ module.exports = {
           {
             from: '/docs/get_started/assembly_line_steps/steps',
             to: '/docs/get_started/interview_project_roadmap'
+          },
+          {
+            from: '/docs/get_started/customization',
+            to: '/docs/customization'
           },
         ]
       }

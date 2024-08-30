@@ -2,7 +2,7 @@
 id: customization
 title: Applying a custom theme or brand
 sidebar_label: Applying a custom theme or brand
-slug: /get_started/customization
+slug: /customization
 ---
 
 ## Sharing a custom look and feel across multiple Assembly Line interviews
@@ -130,7 +130,7 @@ to try it out.
 At the end of the tool, you can view what all of the different bootstrap components will look like with your theme.
 If you want to change any of the colors, you can go back and edit your "custom.scss" file and regenerate the bootstrap theme.
 
-![A screenshot that says "Your file is compiled! You can view and copy your file, or download it directly by right clicking the link to save it as a CSS file". Below are examples of Bootstrap components like buttons and nav bars.](../assets/dashboard-bootstrap-example.png)
+![A screenshot that says "Your file is compiled! You can view and copy your file, or download it directly by right clicking the link to save it as a CSS file". Below are examples of Bootstrap components like buttons and nav bars.](./assets/dashboard-bootstrap-example.png)
 
 Once you like the colors you've chosen, download the compiled file, and then add it
 a docassemble project, in the `static` folder. You can then reference your new file
