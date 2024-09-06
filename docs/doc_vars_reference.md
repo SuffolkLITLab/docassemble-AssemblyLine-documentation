@@ -14,6 +14,20 @@ that we list below for full compatibility.
 - [A fully labeled PDF](./assets/generic_motion_family_law.pdf)
 - [The DOCX version of the same motion](./assets/generic_motion_family_law.docx)
 
+:::info Use a custom AI assistant for labeling instead
+
+As a supplement to reading these documents, you can use a Custom GPT to apply the information they contain:
+
+* [Custom GPT to label DOCX files](https://chatgpt.com/g/g-YXA6N4aNQ-weaver-field-name-assistant-for-docx-files)
+* [Custom GPT to label PDF files](https://chatgpt.com/g/g-UVwQeaoIb-weaver-field-name-assistant-for-pdfs)
+
+The Custom GPTs have instructions to help you come up with a label for any field in your document
+that follows the rules.
+
+AI can make mistakes! Always double-check the information it gives you.
+
+:::
+
 ## The basics
 
 ### Fields, labels, and variables
