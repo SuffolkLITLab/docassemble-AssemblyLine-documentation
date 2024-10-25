@@ -20,6 +20,10 @@ In partnership with Legal Services Vermont, funded by a Technology Initiative Gr
   * ECF 5 compliance
   * Making it possible to separate e-filing configuration code from Docassemble interview code
 
+:::note
+Like all our work on the Document Assembly Line, our work toward grant-funded deliverables is also subsidized by—and would not be possible without—our other funding partners, including the State Justice Institute and the Massachusetts Trial Court.
+:::
+
 ### Additional priorities
 
 * Creating an ongoing process for shaping this development roadmap with input from the community, funding partners, etc.
