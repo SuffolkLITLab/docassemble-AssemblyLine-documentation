@@ -16,6 +16,7 @@ module.exports = {
             collapsed: false,
         },
         'get_started/resources',
+        'get_started/development_roadmap',
         'contributors',
         {
             type: 'category',
@@ -23,7 +24,7 @@ module.exports = {
             items: [
                 'archive/bootcamp',
             ],
-        },
+        }
     ],
     docs: [
         'overview',
