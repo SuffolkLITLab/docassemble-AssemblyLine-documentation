@@ -132,7 +132,8 @@ module.exports = {
                 "reference/ALToolbox/business_days",
                 "reference/ALToolbox/copy_button",
                 "reference/ALToolbox/misc",
-                "reference/ALToolbox/save_input_data"
+                "reference/ALToolbox/save_input_data",
+                "reference/ALToolbox/llms",
             ]
         },
         'framework/alrecipes',
