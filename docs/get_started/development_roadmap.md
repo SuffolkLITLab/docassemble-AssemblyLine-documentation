@@ -1,7 +1,7 @@
 ---
 id: development_roadmap
-title: Development Roadmap for the Document Assembly Line
-sidebar_label: Development Roadmap
+title: Development roadmap for the Document Assembly Line
+sidebar_label: Development roadmap
 slug: /get_started/development_roadmap
 ---
 
