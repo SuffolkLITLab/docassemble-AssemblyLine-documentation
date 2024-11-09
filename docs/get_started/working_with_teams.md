@@ -323,7 +323,7 @@ Getting a will or trust is an intermediate goal, not the ultimate success state.
         * Online court docket
         * Case management systems or CRMs
         * Help pages, glossaries, documentation, and videos?
-1. What are the output of the tool?
+1. What are the outputs of the tool?
         1. What templates will be automated?
         1. How will the templates be grouped or bundled for different recipients?
         1. Are any documents produced in a mirrored form (for example, for each spouse) or copied for 
