@@ -1,6 +1,6 @@
 ---
 id: roadmap
-title: Roadmap of a Successful Interview Project
+title: Roadmap of a successful interview project
 sidebar_label: Roadmap
 slug: /get_started/roadmap
 ---
@@ -13,9 +13,9 @@ This roadmap reflects the procedures, templates, and tools the LIT Lab uses on o
 If this is your first interview-building project, it may help to read more about [planning and building your first expert system](https://projects.suffolklitlab.org/legal-tech-class/docs/interview-structure/building-an-app-outline).
 :::
 
-## Identify Key Roles & Responsibilities
+## Identify key roles & responsibilities
 
-![Interview Project Roles & Lines of Communication](../assets/interview-project-roles-communication.png)
+![Interview project roles & lines of communication](../assets/interview-project-roles-communication.png)
 
 Every interview project has:
 
@@ -27,7 +27,7 @@ Every interview project has:
 You may have a team of interview builders and dozens of stakeholders, or you may be the only person working on this project. Even if this is a solo project, it helps to keep your different roles in mind.
 :::
 
-### The Decisionmaker
+### The decisionmaker
 
 **While a successful interview project needs all these roles, the decisionmaker is especially important.** Most interview projects involve multiple stakeholders. When the interview building team requests guidance or feedback, multiple stakeholders may give multiple responses that may be confusing or conflicting and dramatically slow progress.
 
@@ -41,7 +41,7 @@ The decisionmaker's job is to gather and clarify stakeholders' feedback so that 
 
 The decisionmaker must either (1) have the authority necessary to carry out these responsiblities, or (2) be responsible for getting authority when necessary.
 
-## Kickoff Meeting
+## Kickoff meeting
 
 Schedule a kickoff meeting for the project as early as possible. The interview building team, the decisionmaker, and the key stakeholders should attend.
 
@@ -85,7 +85,7 @@ Consider [Henrik Kniberg's skateboard analogy](https://blog.crisp.se/2016/01/25/
 Different projects will have different MVPs/"skateboards". The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify the MVP for your project (interviews built for the general public should usually target level 2+). Once you decide what this project's MVP is, stick to it. Don't add to the MVP without a compelling justification.
 :::
 
-## Complete the Draft Interview
+## Complete the draft interview
 
 After the kickoff meeting it is time to get to work! As you work on the interview, follow the [GitHub workflow](../github.md#workflow). If you get stuck on a problem for more than twenty minutes, ask for help. (Use the [Resources](resources.md) page to find options.)
 
@@ -93,11 +93,11 @@ After the kickoff meeting it is time to get to work! As you work on the intervie
 The LIT Lab's [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) can help you keep your project organized and on track. Just click the **Use this template** button to use it. (You'll need a free [GitHub](../github.md) account.)
 :::
 
-## Meeting Cadence
+## Meeting cadence
 
 Two recurring meetings will help you keep the project moving forward. These are short, 5–15 minute "standup" meetings to share progress and identify and remove blockers—anything preventing someone from making progress.
 
-### Interview-Building Team Meetings
+### Interview-building team meetings
 
 The interview-building team should meet frequently. Daily check-ins are common on active projects, and anything less than weekly is unlikely to be effective.
 
@@ -115,7 +115,7 @@ The reason for sharing your progress and plan for the day or week is so that eve
 
 The reason for sharing blockers is to get help. Some teams reserve a larger block of time and use it to solve blockers together, like we do in our Monday community meetings. Other teams prefer to solve blockers separately. And sometimes a blocker is a question you need answered by the decisionmaker.
 
-### Decisionmaker Meetings
+### Decisionmaker meetings
 
 Weekly or every-other week meetings with the decisionmaker and one or two key stakeholders are a chance to keep them informed of your progress and get decisions when you need them to move forward. The standing agenda is similar to the one above:
 
@@ -140,7 +140,7 @@ To get better answers, ask questions better. Here are some tips for asking quest
 
 Finally, when showing the relevant part of the interview as part of asking a question, remind the decisionmaker and stakeholders that the interview is a work in progress and you are not ready for feedback beyond the answer to your question.
 
-## Get Feedback on the Interview
+## Get feedback on the interview
 
 Once the interview works from start to finish and you have closed all the issues that are in scope for the [MVP](#stick-to-an-mvp), it is ready for feedback. Start by getting preliminary feedback from someone with Document Assembly Line experience. After you have made revisions based on the preliminary feedback, give the interview to the decisionmaker and stakeholders for their feedback.
 
@@ -148,7 +148,7 @@ Once the interview works from start to finish and you have closed all the issues
 For complex interviews that involve multiple forms/templates, consider doing this in stages. Start with the simplest form and get preliminary and stakeholder feedback early. Then move on to the most complex form to confirm the shape and logic of the overall interview. Then continue with the remaining forms.
 :::
 
-### Preliminary Feedback
+### Preliminary feedback
 
 Before you show the interview to the decisionmaker and stakeholders, get someone with Document Assembly Line experience to test it with you. This will help you identify issues you may have missed and questions you still need to ask the decisionmaker.
 
@@ -164,7 +164,7 @@ During the demonstration or testing:
 * Ask them to follow different branches of the interview logic
 * Listen carefully to their feedback and ask follow-up questions to make sure you understand it
 
-### Stakeholder Feedback
+### Stakeholder feedback
 
 Once you have closed all the issues that are in scope for the [MVP](#stick-to-an-mvp) and tested the interview yourself, it should be ready to hand off to the decisionmaker and stakeholders for their testing and feedback.
 
@@ -175,7 +175,7 @@ Share the interview with the decisionmaker and give them a few tips for giving h
 * Change requests should be specific. For example, if the text of a question should be changed, the change request should include the new text.
 * At the top of each page of the interview is an ID. Use the ID to refer to specific interview pages, not a page number.
 
-## Revise the Interview
+## Revise the interview
 
 After getting feedback, create a [GitHub issue](../github#use-issues) for each change request from the tester or decisionmaker. Consider this your "punch list" to finish the project. Then get back to work on those issues!
 
@@ -185,7 +185,7 @@ When you have closed all the issues/items on your punch list, send it back to th
 Two rounds of feedback and revision are usually enough.
 :::
 
-## Get a Go/No-Go Decision
+## Get a go/no-go decision
 
 When the interview is complete, there is one last decision for the decisionmaker to make: whether the interview is ready to go live.
 
@@ -193,7 +193,7 @@ If the answer is yes, launch the interview!
 
 If the answer is no, find out if further revision would result in a yes. If not, [do a retrospective](#do-a-retrospective) and try to understand what happened.
 
-## Launch the Interview
+## Launch the interview
 
 When you are ready to launch, add the interview to your production server and make sure it works as intended.
 
@@ -205,7 +205,7 @@ Once the interview is live, consider how people who need it will find it.
 
 You can also set up [collect analytics](../analytics/tracking_usage) to learn how people are finding and using the interview.
 
-## Do a Retrospective
+## Do a retrospective
 
 Before you start another interview-building project, pause briefly for a retrospective on how this one went. The retrospective format comes from [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development), and it is a way to embrace continuous improvement by taking a moment to reflect on the project you just finished in order to improve the next one.
 
