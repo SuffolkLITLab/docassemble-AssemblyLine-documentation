@@ -10,7 +10,7 @@ module.exports = {
             type: 'category',
             label: 'Interview Projects',
             items: [
-                'get_started/roadmap',
+                'get_started/project_management',
                 'get_started/working_with_teams',
             ],
             collapsed: false,
