@@ -211,13 +211,13 @@ Before you start another interview-building project, pause briefly for a retrosp
 
 If your interview project fails, a retrospective is an important tool for making sure you avoid another failure.
 
-To do a retrospective, gather the group and discuss three questions:
+To do a retrospective, the project manager should meet with each member of the group to discuss and document the answers to three questions:
 
 1. What went well that we should keep doing?
 2. What did not go well that we should stop doing?
 3. What should we try going forward?
 
-Retrospectives are generally more effective when the team is together in real time—on Zoom, for example. Depending on the group dynamics you can do a retrospective as a group or meet with one person at a time.
+Retrospectives are generally most effective one-on-one, in real time.
 
 :::tip
 Insist that everyone give at least one answer to each question. Even if someone insists nothing went badly, ask if they found themselves confused or struggling at any point during the project. Their answer may lead to an area that could be improved.
