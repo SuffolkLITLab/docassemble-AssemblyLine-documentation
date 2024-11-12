@@ -5,7 +5,7 @@ sidebar_label: Roadmap
 slug: /get_started/roadmap
 ---
 
-Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview-building project—whether it is your first or fiftieth—this page will guide you through the stages of a successful project, from concept to launch.
+Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview-building project, this page will guide you through the stages of a successful project.
 
 This roadmap reflects the procedures, templates, and tools the LIT Lab uses on our own interview-building projects, which you can adapt to your projects.
 
