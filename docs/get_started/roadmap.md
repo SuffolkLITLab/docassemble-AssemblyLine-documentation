@@ -70,6 +70,7 @@ Here is a sample kickoff meeting agenda:
   * Decisionmaker/stakeholder feedback
   * Interview finalized and ready for go/no-go decision
   * Launch
+  * Promotion
 * Discuss what success looks like for this project, and how you will measure it
 * Consider doing a [pre-mortem](https://en.wikipedia.org/wiki/Pre-mortem)—imagine this project has failed and discuss why
 
