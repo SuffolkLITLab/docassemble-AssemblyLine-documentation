@@ -208,6 +208,8 @@ You can also set up [collect analytics](../analytics/tracking_usage) to learn ho
 
 Before you start another interview-building project, pause briefly for a retrospective on how this one went. The retrospective format comes from [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development), and it is a way to embrace continuous improvement by taking a moment to reflect on the project you just finished in order to improve the next one.
 
+If your interview project fails, a retrospective is an important tool for making sure you avoid another failure.
+
 To do a retrospective, gather the group and discuss three questions:
 
 1. What went well that we should keep doing?
