@@ -151,6 +151,10 @@ For complex interviews that involve multiple forms/templates, consider doing thi
 
 Before you show the interview to the decisionmaker and stakeholders, get someone with Document Assembly Line experience to test it with you. This will help you identify issues you may have missed and questions you still need to ask the decisionmaker.
 
+:::tip
+If you aren't sure where to find someone to give you preliminary feedback, try asking [the community](http://localhost:3000/docs/get_started#join-the-community)! Come to one of the Monday community meetings or ask in the Microsoft Teams forum.
+:::
+
 To get the interview ready:
 
 1. [Merge your code](../github#create-a-pull-request) into **main** or a testing branch
