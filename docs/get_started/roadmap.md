@@ -181,7 +181,7 @@ After getting feedback, create a [GitHub issue](../github#use-issues) for each c
 When you have closed all the issues/items on your punch list, send it back to the decisionmaker for further feedback. Each round of feedback should result in fewer change requests and move the project closer to completion.
 
 :::info
-Two rounds of feedback and revision are usually enough. It it takes more than three, consider ways to improve your process going forward.
+Two rounds of feedback and revision are usually enough.
 :::
 
 ## Get a Go/No-Go Decision
