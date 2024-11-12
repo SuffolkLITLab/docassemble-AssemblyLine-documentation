@@ -31,6 +31,12 @@ Here is what we recommend for a workflow for using GitHub with the Docassemble p
 4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch.
 5. Decide on the next task or issue you want to work on and start over at #1.
 
+We also shared this workflow in a Document Assembly Line workshop:
+
+<p align="center">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4j7rRRvsbfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
 :::warning
 When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. Create a new project, first, if you don't want to risk this.
 :::

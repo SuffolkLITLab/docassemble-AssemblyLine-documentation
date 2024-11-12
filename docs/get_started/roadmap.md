@@ -224,3 +224,11 @@ Insist that everyone give at least one answer to each question. Even if someone 
 :::
 
 Use what you learn from the retrospective when planning your next interview-biulding project.
+
+## Tips from the community
+
+In a Document Assembly Line workshop, members of the community shared their tips for managing a successful interview-building project:
+
+<p align="center">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/txm6VJVlG_Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
