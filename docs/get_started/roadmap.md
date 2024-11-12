@@ -172,7 +172,7 @@ Share the interview with the decisionmaker and give them a few tips for giving h
 * The feedback should come in the form of a written list of requested changes
 * If there is confusing or conflicting feedback from stakeholders it is the decisionmaker's responsiblity to clarify it before presenting it to the interview building team
 * Change requests should be specific. For example, if the text of a question should be changed, the change request should include the new text.
-* At the top of each page of the interview is an ID. This ID is a reliable identifier when referring to an interview page. (For example, the "fifth page" might be different depending on the interview logic.)
+* At the top of each page of the interview is an ID. Use the ID to refer to specific interview pages, not a page number.
 
 ## Revise the Interview
 
