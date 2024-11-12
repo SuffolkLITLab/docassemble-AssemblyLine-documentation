@@ -155,13 +155,7 @@ Before you show the interview to the decisionmaker and stakeholders, get someone
 If you aren't sure where to find someone to give you preliminary feedback, try asking [the community](http://localhost:3000/docs/get_started#join-the-community)! Come to one of the Monday community meetings or ask in the Microsoft Teams forum.
 :::
 
-To get the interview ready:
-
-1. [Merge your code](../github#create-a-pull-request) into **main** or a testing branch
-2. [Create a new playground project](../github#create-and-manage-playground-projects) for the interview demonstration and pull your code into it
-3. Make sure the interview works as expected in the testing project
-
-Once the interview is ready, schedule a video meeting with the tester so you can watch them go through the interview. Or they can watch you demonstrate it. Record the test if you can so you can focus on the test instead of taking notes.
+Schedule a video meeting with the tester so you can watch them go through the interview. Or they can watch you demonstrate it. Record the test if you can so you can focus on the test instead of taking notes.
 
 During the demonstration or testing:
 
@@ -173,13 +167,7 @@ During the demonstration or testing:
 
 Once you have closed all the issues that are in scope for the [MVP](#stick-to-an-mvp) and tested the interview yourself, it should be ready to hand off to the decisionmaker and stakeholders for their testing and feedback.
 
-Get the interview ready the same as [above](#preliminary-feedback), then click the **Share** button in the testing project playground to get the link to the interview.
-
-:::tip
-When sharing the interview link, make sure the URL ends with `#page1`. If you have been testing the interview the **Share** link will point to the last page you were viewing instead of the start of the interview. Usually this won't matter, but it could result in unexpected behavior.
-:::
-
-Share the link with the decisionmaker and give them a few tips for giving helpful feedback:
+Share the interview with the decisionmaker and give them a few tips for giving helpful feedback:
 
 * The feedback should come in the form of a written list of requested changes
 * If there is confusing or conflicting feedback from stakeholders it is the decisionmaker's responsiblity to clarify it before presenting it to the interview building team
