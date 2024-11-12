@@ -81,7 +81,7 @@ Consider [Henrik Kniberg's skateboard analogy](https://blog.crisp.se/2016/01/25/
 
 ![Minimum viable product](../assets/mvp.png)
 
-Different projects will have different MVPs/"skateboards". The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify the MVP for your project (interviews built for the general public should usually target level 2+). Once you decide what this project's MVP is, avoid adding anything more to it.
+Different projects will have different MVPs/"skateboards". The [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) can help you identify the MVP for your project (interviews built for the general public should usually target level 2+). Once you decide what this project's MVP is, stick to it. Don't add to the MVP without a compelling justification.
 :::
 
 ## Complete the Draft Interview
