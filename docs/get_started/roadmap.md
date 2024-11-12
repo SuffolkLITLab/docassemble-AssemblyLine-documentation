@@ -77,7 +77,7 @@ Here is a sample kickoff meeting agenda:
 ### Stick to an MVP
 A minimum viable product (MVP) is the essence of of iterative, incremental development—first make something that works, then make it better.
 
-Consider Henrik Kniberg's skateboard analogy:
+Consider [Henrik Kniberg's skateboard analogy](https://blog.crisp.se/2016/01/25/henrikkniberg/making-sense-of-mvp):
 
 ![Minimum viable product](../assets/mvp.png)
 
