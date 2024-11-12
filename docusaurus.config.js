@@ -101,16 +101,20 @@ module.exports = {
             to: '/docs/get_started/installation'
           },
           {
+            from: '/docs/get_started/roadmap',
+            to: '/docs/get_started/project_management'
+          },
+          {
             from: '/docs/assembly_line_steps',
-            to: '/docs/get_started/roadmap'
+            to: '/docs/get_started/project_management'
           },
           {
             from: '/docs/assembly_line_steps/roles',
-            to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
+            to: '/docs/get_started/project_management#identify-key-roles--responsibilities'
           },
           {
             from: '/docs/assembly_line_steps/steps',
-            to: '/docs/get_started/roadmap'
+            to: '/docs/get_started/project_management'
           },
           {
             from: '/docs/bootcamp',
@@ -118,15 +122,15 @@ module.exports = {
           },
           {
             from: '/docs/get_started/assembly_line_steps/roles',
-            to: '/docs/get_started/roadmap#identify-key-roles--responsibilities'
+            to: '/docs/get_started/project_management#identify-key-roles--responsibilities'
           },
           {
             from: '/docs/get_started/assembly_line_steps',
-            to: '/docs/get_started/roadmap'
+            to: '/docs/get_started/project_management'
           },
           {
             from: '/docs/get_started/assembly_line_steps/steps',
-            to: '/docs/get_started/roadmap'
+            to: '/docs/get_started/project_management'
           },
           {
             from: '/docs/planning',
