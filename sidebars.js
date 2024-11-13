@@ -136,7 +136,6 @@ module.exports = {
                 "reference/ALToolbox/llms",
             ]
         },
-        'framework/alrecipes',
         'framework/althemetemplate',
         'complexity/complexity',
         'framework/github_feedback',
