@@ -89,6 +89,12 @@ module.exports = {
         'framework/magic_variables',
         'framework/reserved_keywords',
         {
+            "type": "html",
+            "value": "Assembly Line components",
+            "className": "sidebar-heading",
+            "defaultStyle": true
+        },
+        {
             "type": "category",
             "label": "AssemblyLine",
             "items": [
