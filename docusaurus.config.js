@@ -77,68 +77,57 @@ module.exports = {
       {
         redirects: [
           {
-            from: '/docs',
-            to: '/'
+            to: '/',
+            from: '/docs'
           },
           {
-            from: '/docs/framework/efiling',
-            to: '/docs/efiling/overview'
+            to: '/docs/efiling/overview',
+            from: '/docs/framework/efiling'
           },
           {
-            from: '/docs/automated_integrated_testing',
-            to: '/docs/alkiln'
+            to: '/docs/alkiln',
+            from: '/docs/automated_integrated_testing'
           },
           {
-            from: '/docs/intro',
-            to: '/docs/get_started'
+            to: '/docs/get_started',
+            from: '/docs/intro'
           },
           {
-            from: '/docs/al_project_architecture',
-            to: '/docs/get_started/al_project_architecture'
+            to: '/docs/get_started/al_project_architecture',
+            from: '/docs/al_project_architecture'
           },
           {
-            from: '/docs/installation',
-            to: '/docs/get_started/installation'
+            to: '/docs/get_started/installation',
+            from: '/docs/installation'
           },
           {
-            from: '/docs/get_started/roadmap',
-            to: '/docs/get_started/project_management'
+            to: '/docs/get_started/project_management',
+            from: [
+              '/docs/assembly_line_steps',
+              '/docs/assembly_line_steps/steps',
+              '/docs/get_started/assembly_line_steps',
+              '/docs/get_started/assembly_line_steps/steps',
+              '/docs/get_started/roadmap'
+            ]
           },
           {
-            from: '/docs/assembly_line_steps',
-            to: '/docs/get_started/project_management'
+            to: '/docs/get_started/project_management#identify-key-roles--responsibilities',
+            from: [
+              '/docs/assembly_line_steps/roles',
+              '/docs/get_started/assembly_line_steps/roles'
+            ]
           },
           {
-            from: '/docs/assembly_line_steps/roles',
-            to: '/docs/get_started/project_management#identify-key-roles--responsibilities'
+            to: '/docs/archive/bootcamp',
+            from: '/docs/bootcamp'
           },
           {
-            from: '/docs/assembly_line_steps/steps',
-            to: '/docs/get_started/project_management'
+            to: '/docs/get_started/planning',
+            from: '/docs/planning'
           },
           {
-            from: '/docs/bootcamp',
-            to: '/docs/archive/bootcamp'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps/roles',
-            to: '/docs/get_started/project_management#identify-key-roles--responsibilities'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps/steps',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/planning',
-            to: '/docs/get_started/planning'
-          },
-          {
-            from: '/docs/authoring/working_with_teams',
-            to: '/docs/get_started/working_with_teams'
+            to: '/docs/get_started/working_with_teams',
+            from: '/docs/authoring/working_with_teams'
           },
         ]
       }
@@ -161,7 +150,7 @@ module.exports = {
           editUrl:
             'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
         },
-
+        blog: false,
         pages: {
         },
         theme: {
