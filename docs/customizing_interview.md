@@ -700,10 +700,27 @@ For example:
 ```yaml
 ---
 objects:
-  - users: ALPeopleList.using(there_are_any=True) # Will prompt one at a time
+  - attorneys: ALPeopleList # Uses the default `there_are_any` question, no minimum number
+  - users: ALPeopleList.using(there_are_any=True) # Will prompt one at a time, but asks for at least one
   - other_parties: ALPeopleList.using(ask_number=True, target_number=1) # Tells Docassemble there is exactly one other_party
  ```
 
+#### Placing a limit on the number of items gathered in a list
+
+If you want to limit the number of items in a list, but there isn't a minimum number,
+you can add a code block that answers the `there_is_another` question rather than allowing
+the user to answer it interactively.
+
+```yaml
+---
+objects:
+  - users: ALPeopleList # Use the default there_are_any/there_is_another loop gathering method
+---
+code: |
+  # This block only is reached if they added 2 people the normal way
+  if users.number() >= 2: 
+    users.there_is_another = False
+```
 
 ## How to make changes safely
 
