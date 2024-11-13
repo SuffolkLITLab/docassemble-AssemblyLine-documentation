@@ -22,4 +22,4 @@ renderer:
     escape_curly_braces_in_docstring: true
     signature_code_block: false
     render_typehint_in_data_header: true
-    toc_maxdepth: 4
+    toc_maxdepth: 6
