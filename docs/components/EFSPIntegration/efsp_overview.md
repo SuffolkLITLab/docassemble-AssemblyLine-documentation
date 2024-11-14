@@ -1,9 +1,7 @@
 ---
-id: overview 
-title: |
-    E-filing with Assembly Line
-sidebar_label: Overview
-slug: /efiling/overview
+id: efsp_overview 
+title: E-filing with the Document Assembly Line
+sidebar_label: EFSP overview
 ---
 
 ## Overview
@@ -118,7 +116,7 @@ to connect with Tyler Technologies and JeffNet:
 
 Many states are also interested in the accessibility of guided interview that
 use an e-filing integration. We have produced a
-[test suite](../alkiln/automated_testing.mdx) that can provide automated
+[test suite](/docs/alkiln/automated_testing.mdx) that can provide automated
 accessibility information to audit Docassemble interview compliance with WCAG 2.0 and 2.1's A and AA certification levels.
 
 ### For users of the Assembly Line framework
@@ -160,7 +158,7 @@ v4.0](http://docs.oasis-open.org/legalxml-courtfiling/specs/ecf/v4.01/ecf-v4.01-
 
 Below is a broad diagram of the entities that the e-filing feature interacts with.
 
-![A diagram of the e-filing proxy server interacting with the EFSP docassemble package, and courts](../assets/efile_broad_arch.svg)
+![A diagram of the e-filing proxy server interacting with the EFSP docassemble package, and courts](../../assets/efile_broad_arch.svg)
 
 ### E-file Proxy Server
 

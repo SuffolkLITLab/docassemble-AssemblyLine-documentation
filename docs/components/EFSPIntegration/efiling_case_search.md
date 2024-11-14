@@ -3,7 +3,6 @@ id: efiling_case_search
 title: |
   E-filing: Case Search
 sidebar_label: Case Search
-slug: /efiling/case_search
 ---
 
 This guide will help you integrate a case search feature into
@@ -31,9 +30,9 @@ Before staring this guide you should:
   * first, you can contact us for access to the EFSP server.
       We aren't yet making access publicly available, but
       will include an interest form here when we do.
-  * second, you can follow the instructions in ["Server Setup"](efiling_through_docassemble.md#server-setup) to setup your server's
+  * second, you can follow the instructions in ["Server Setup"](efiling_through_docassemble#server-setup) to setup your server's
     configuration.
-* know about [Tyler e-filing codes](efiling_codes.md)
+* know about [Tyler e-filing codes](efiling_codes)
   * Note: this tutorial is only partially written, but it will be completed soon!
 
 ## Steps
@@ -70,13 +69,13 @@ Start off by hard coding a few pieces of information:
 
 * use the `illinois' jurisdiction. Currently, the E-file proxy server is only running in production in Illinois, but we have access to the staging servers in Massachusetts and Texas.
 * file in the "adams" county court in Illinois. Handling court
-  hierarchies is a complicated task, and something that the AssemblyLine can't do for you. You'll need to make your own way to let users select what court they want to file in depending on your jurisdiction. See [our documentation for `al_courts`](../components/AssemblyLine/al_courts.md) for some possible ideas.
+  hierarchies is a complicated task, and something that the AssemblyLine can't do for you. You'll need to make your own way to let users select what court they want to file in depending on your jurisdiction. See [our documentation for `al_courts`](../AssemblyLine/al_courts) for some possible ideas.
 
 You should be able to run the interview now. If this is the first time you're running the interview on the server, you will be asked to log in to eFileIL. If you don't yet have an account, you should be able to make a new pro-se user account with eFileIL by following the links to make a new account on the page. Once you've logged in on the server, subsequent runs of the interview won't ask you to log in, until the eFileIL token expires and you have to log in again, in about 1-2 hours.
 
 The next page will ask if you want to search by party name or by case number.
 
-![A screenshot of the case search screen. The title says "Find your case in Adams", followed by the question "How do you want to find your case?" and the options "Party name" and "Case number".](case_search_start.png)
+![A screenshot of the case search screen. The title says "Find your case in Adams", followed by the question "How do you want to find your case?" and the options "Party name" and "Case number".](../../assets/case_search_start.png)
 
 
 For now, let's search by case number. If you select "case number", and then enter the case number "2022SC9",
@@ -99,7 +98,7 @@ press continue, and wait. Searching by party name takes longer on eFileIL's serv
 will see that there are many cases involving John Smith. For speed purposes, the EFSP library
 only gets information about the first 8, and let's you click the next button to see the next 8.
 
-![A screenshot of the "case search results" page. At the top it says "We found 25 cases. Here are 1 to 8:", with a "next" button below it. There is a bulleted list showing 8 cases involving John Smith and various other parties.](case_search_results.png)
+![A screenshot of the "case search results" page. At the top it says "We found 25 cases. Here are 1 to 8:", with a "next" button below it. There is a bulleted list showing 8 cases involving John Smith and various other parties.](../../assets/case_search_results.png)
 
 If you select the John Smith vs. Bob Doe case, you then see the last page in the interview YAML; `show_all_info`. This page shows all of the information that you, the interview author, can use
 from the `case_search.found_case`, the variable for the found case. The `details` and
@@ -109,7 +108,7 @@ from the `case_search.found_case`, the variable for the found case. The `details
   specific case types, so even though you searched for cases in the "adams" court, you
   should use this value for the rest of the interview.
 * `participants`, an ALPeopleList object that has all of the participants in the case on both sides.
-  * each participant has a `party_type` and `party_type_name`, i.e. `participants[0].party_type_name` might be "Plaintiff/Petitioner". These values are [Tyler e-filing codes](efiling_codes.md) that are set by the court.
+  * each participant has a `party_type` and `party_type_name`, i.e. `participants[0].party_type_name` might be "Plaintiff/Petitioner". These values are [Tyler e-filing codes](efiling_codes) that are set by the court.
 * `attorneys` is a dictionary that contains any attorneys that are a part of the case.
 * `efile_case_type` is the Tyler e-filing code for the type of case. This is useful if your interview
   is only relevant for certain case types. If users don't or can't fill out your form for their case, you can send users to a page that says they don't need this form and why.
@@ -119,7 +118,7 @@ from the `case_search.found_case`, the variable for the found case. The `details
 
 ### Using case search data in your Assembly Line interview
 
-You are likely using the [ALWeaver](../weaver_overview.md) and the rest of the Assembly Line framework
+You are likely using the [ALWeaver](/docs/weaver_overview.md) and the rest of the Assembly Line framework
 in your docassemble interview, and you will want to put this information from the case search into
 variables that your interview knows about, like `users` and `other_parties`. To do this, we can add
 some more code to the above example:

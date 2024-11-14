@@ -3,7 +3,6 @@ id: efiling_api
 title: |
   EFSP REST API
 sidebar_label: REST API
-slug: /efiling/rest-api
 ---
 
 A guide to describe what calls you need to make to our E-filing Service Provider (EFSP) REST API to make a filing.

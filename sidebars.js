@@ -157,20 +157,25 @@ module.exports = {
             "label": "FormFyxer",
             "type": "category",
             "items": [
-                "components/formfyxer/lit_explorer",
-                "components/formfyxer/docx_wrangling",
-                "components/formfyxer/pdf_wrangling"
+                "components/FormFyxer/lit_explorer",
+                "components/FormFyxer/docx_wrangling",
+                "components/FormFyxer/pdf_wrangling"
             ]
         },
         {
-            label: 'E-filing',
+            label: 'EFSPIntegration',
             type: 'category',
             items: [
-                'efiling/overview',
-                'efiling/efiling_through_docassemble',
-                'efiling/efiling_case_search',
-                'efiling/efiling_codes',
-                'efiling/monitoring',
+                'components/EFSPIntegration/efsp_overview',
+                'components/EFSPIntegration/efiling_through_docassemble',
+                'components/EFSPIntegration/efiling_case_search',
+                'components/EFSPIntegration/efiling_codes',
+                'components/EFSPIntegration/efiling_monitoring',
+                'components/EFSPIntegration/efiling_api',
+                'components/EFSPIntegration/efm_client',
+                'components/EFSPIntegration/conversions',
+                'components/EFSPIntegration/interview_logic',
+                'components/EFSPIntegration/py_efsp_client',
             ]
         },
         {

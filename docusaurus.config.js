@@ -81,10 +81,6 @@ module.exports = {
             from: '/docs'
           },
           {
-            to: '/docs/efiling/overview',
-            from: '/docs/framework/efiling'
-          },
-          {
             to: '/docs/alkiln',
             from: '/docs/automated_integrated_testing'
           },
@@ -246,12 +242,35 @@ module.exports = {
             from: '/docs/analytics/tracking_usage'
           },
           {
-            to: '/docs/components/formfyxer/lit_explorer',
+            to: '/docs/components/FormFyxer/lit_explorer',
             from: '/docs/reference/formfyxer/lit_explorer'
           },
           {
-            to: '/docs/components/formfyxer/pdf_wrangling',
+            to: '/docs/components/FormFyxer/pdf_wrangling',
             from: '/docs/reference/formfyxer/pdf_wrangling'
+          },
+          {
+            to: '/docs/components/EFSPIntegration/efsp_overview',
+            from: [
+              '/docs/efiling/overview',
+              '/docs/framework/efiling'
+            ]
+          },
+          {
+            to: '/docs/components/EFSPIntegration/efiling_through_docassemble',
+            from: '/docs/efiling/efiling_through_docassemble'
+          },
+          {
+            to: '/docs/components/EFSPIntegration/efiling_case_search',
+            from: '/docs/efiling/efiling_case_search'
+          },
+          {
+            to: '/docs/components/EFSPIntegration/efiling_codes',
+            from: '/docs/efiling/efiling_codes'
+          },
+          {
+            to: '/docs/components/EFSPIntegration/efiling_monitoring',
+            from: '/docs/efiling/monitoring'
           },
         ]
       }
