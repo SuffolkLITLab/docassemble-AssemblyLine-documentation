@@ -134,6 +134,34 @@ module.exports = {
             from: '/docs/translation/translation'
           },
           {
+            to: '/docs/components/AssemblyLine/al_general_overview',
+            from: '/docs/framework/algeneral'
+          },
+          {
+            to: '/docs/components/AssemblyLine/al_document_overview',
+            from: '/docs/framework/aldocument'
+          },
+          {
+            to: '/docs/components/AssemblyLine/al_reminders_overview',
+            from: '/docs/framework/alreminders'
+          },
+          {
+            to: '/docs/components/AssemblyLine/answer_sets',
+            from: '/docs/framework/answer_sets'
+          },
+          {
+            to: '/docs/components/AssemblyLine/answer_set_intakes',
+            from: '/docs/framework/answer_set_intakes'
+          },
+          {
+            to: '/docs/components/AssemblyLine/navigation',
+            from: '/docs/framework/navigation'
+          },
+          {
+            to: '/docs/components/AssemblyLine/error_actions',
+            from: '/docs/framework/error_actions'
+          },
+          {
             to: '/docs/components/AssemblyLine/al_general',
             from: '/docs/reference/AssemblyLine/al_general'
           },
@@ -152,6 +180,10 @@ module.exports = {
           {
             to: '/docs/components/AssemblyLine/sessions',
             from: '/docs/reference/AssemblyLine/sessions'
+          },
+          {
+            to: '/docs/components/ALRecipes/alrecipes_overview',
+            from: '/docs/framework/alrecipes'
           },
           {
             to: '/docs/components/ALToolbox/al_income',

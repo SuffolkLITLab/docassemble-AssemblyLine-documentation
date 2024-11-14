@@ -1,8 +1,7 @@
 ---
-id: alreminders
+id: al_reminders_overview
 title: Scheduled reminders
 sidebar_label: Scheduled reminders
-slug: /framework/alreminders
 ---
 
 A guided interview is always an intervention into one part of a larger process.
@@ -101,7 +100,7 @@ will be evaluated.
 
 Here is what the default `al_user_wants_reminders` question looks like:
 
-![](./reminders_question.png)
+![](../../assets/reminders_question.png)
 
 Here is a complete example:
 

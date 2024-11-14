@@ -1,27 +1,19 @@
 ---
-id: algeneral
-title: 'al_general: Python Classes representing people'
-sidebar_label: al_general 01
-slug: /framework/algeneral
+id: al_general_overview
+title: Python classes for representing people and addresses
+sidebar_label: Representing people & addresses
 ---
 
-The functions and classes listed on this page are always available in Assembly
-Line interviews.
+The functions and classes listed on this page are always available in Assembly Line interviews.
 
-## Python classes for representing people and addresses
-
-### ALAddress and ALAddressList classes {#ALAddress}
+## ALAddress and ALAddressList classes {#ALAddress}
 
 The `ALAddress` class is an extension of the built-in Docassemble
 [`Address`](https://docassemble.org/docs/objects.html#Address) class.
 
-If an address is an `ALAddress`, it has an `address_fields()` method that can be used
-inside a `fields: code: |` statement to insert a consistently formatted series of
-address fields. `address_fields()` will include an autocomplete method and is 
-internationalized.
+If an address is an `ALAddress`, it has an `address_fields()` method that can be used inside a `fields: code: |` statement to insert a consistently formatted series of address fields. `address_fields()` will include an autocomplete method and is internationalized.
 
-Assembly Line question library questions use `ALAddress` objects for both the
-`address` and `mailing_address` attributes of people.
+Assembly Line question library questions use `ALAddress` objects for both the `address` and `mailing_address` attributes of people.
 
 Example:
 
@@ -62,7 +54,7 @@ The `address_fields()` method includes the following optional parameters:
 * `show_country`: defaults to `False`. If enabled, a country drop down menu will
   be displayed.
 
-#### ALAddressList {#ALAddressList}
+### ALAddressList {#ALAddressList}
 
 The `ALAddressList` class is a collection of `ALAddress`es. It is used to
 allow you to collect multiple addresses in one go and otherwise works exactly
@@ -131,12 +123,12 @@ They return `True` or `False` depending on the value of the `gender` attribute.
 * `gender_unknown`
 * `gender_self_described`
 
-##### Relation to the `Individual` class
+#### Relation to the `Individual` class
 
 The `ALIndividual` class inherits from Docassemble's [`Individual`](https://docassemble.org/docs/objects.html#Individual) class, and all other methods of `Individual` work
 the same way as they do in the `Individual` class.
 
-#### ALPeopleList {#ALPeopleList}
+### ALPeopleList {#ALPeopleList}
 
 The `ALPeopleList` class is used to represent a group of people. Otherwise it
 works exactly like the built-in Docassemble [`DAList`
@@ -163,7 +155,7 @@ Example:
 list contains John Smith, Jane Smith, and Jane Doe. `et al` is not used if the
 list is at or below the limit provided.
 
-##### Relation to the `DAList` class
+### Relation to the `DAList` class
 
 `ALPeopleList` inherits from Docassemble's
 [`DAList`](https://docassemble.org/docs/objects.html#DAList) class, and retains
@@ -182,7 +174,7 @@ methods, they can lead to odd ungrammatical "fragments". As tedious as it may
 be, the best practice for translation inside the interview is to use conditional
 logic for full sentences matching each gender and number.
 
-### Classes for specific kinds of people {#other-people}
+## Classes for specific kinds of people {#other-people}
 
 Currently, the Assembly Line interviews provide these classes that you can use 
 to target questions to a specific type of person:

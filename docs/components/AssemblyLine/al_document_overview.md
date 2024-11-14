@@ -1,8 +1,7 @@
 ---
-id: aldocument
-title: 'al_document: Python Classes to simplify working with multiple templates'
-sidebar_label: al_document 01
-slug: /framework/aldocument
+id: al_document_overview
+title: Python Classes to simplify working with multiple templates
+sidebar_label: Working with multiple templates
 ---
 
 ## Overview
@@ -57,7 +56,7 @@ depending on the value of the `key` so that the template does not need to be cre
 twice.
 
 The `signature_if_final` method of an
-[ALIndividual](algeneral#ALIndividual) was created to simplify this
+[ALIndividual](al_general_overview#ALIndividual) was created to simplify this
 common use case.
 
 Here's how to use an ALDocument:

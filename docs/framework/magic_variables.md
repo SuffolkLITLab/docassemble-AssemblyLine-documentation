@@ -14,7 +14,7 @@ configuration. They are not configurable on a per-interview basis.
 
 Add the following entry in your global
 [config.yml](https://docassemble.org/docs/config.html#edit) to turn on the
-[Answer Set](answer_sets.md) feature that allows users to save answers for reuse in other
+[Answer Set](/docs/components/AssemblyLine/answer_sets) feature that allows users to save answers for reuse in other
 interviews.
 
 ```yaml

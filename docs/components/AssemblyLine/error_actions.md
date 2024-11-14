@@ -2,7 +2,6 @@
 id: error_actions
 title: Helping users recover from developer errors
 sidebar_label: Error pages
-slug: /framework/error_actions
 ---
 
 ## Overview
@@ -36,7 +35,7 @@ what this event can do.
 
 By default the Assembly Line error page looks like this:
 
-![](../assets/error_action_example.png)
+![](../../assets/error_action_example.png)
 
 It always includes:
 
@@ -110,7 +109,7 @@ a custom event named `al_error_action_download_screen`.
 
 This is what the page may look like:
 
-![](../assets/error_action_download_screen.png)
+![](../../assets/error_action_download_screen.png)
 
 It includes this text:
 

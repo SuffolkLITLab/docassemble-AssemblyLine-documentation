@@ -1,9 +1,7 @@
 ---
-id: alrecipes
-title: |
-    ALRecipes
+id: alrecipes_overview
+title: ALRecipes
 sidebar_label: ALRecipes
-slug: /framework/alrecipes
 ---
 
 This repository includes two groups of recipes, one group contains examples for the Document Assembly Line project, the other group contains generic docassemble interviews addressing specific needs.
@@ -22,7 +20,7 @@ These examples are created to handle scenarios that are currently unavailable in
 
 These recipes are ready to be inserted into your interview. You can access them either from the live demo page, or more conveniently from your Playground's **Example blocks** area. 
 
-![Example blocks](../assets/alrecipes-examples.png)
+![Example blocks](../../assets/alrecipes-examples.png)
 
 ## Add AssemblyLine examples to your Playground
 

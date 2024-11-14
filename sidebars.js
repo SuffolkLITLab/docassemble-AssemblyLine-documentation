@@ -7,20 +7,20 @@ module.exports = {
         'get_started/installation',
         'get_started/beginners_guide',
         {
-            type: 'category',
             label: 'Interview Projects',
+            collapsed: false,
+            type: 'category',
             items: [
                 'get_started/project_management',
                 'get_started/working_with_teams',
             ],
-            collapsed: false,
         },
         'get_started/resources',
         'get_started/development_roadmap',
         'contributors',
         {
-            type: 'category',
             label: 'Archived Pages',
+            type: 'category',
             items: [
                 'archive/bootcamp',
             ],
@@ -29,8 +29,8 @@ module.exports = {
     docs: [
         'overview',
         {
-            type: 'category',
             label: 'Authoring interviews',
+            type: 'category',
             items: [
                 'pdf_templates',
                 'docx_templates',
@@ -45,8 +45,8 @@ module.exports = {
             ],
         },
         {
-            type: 'category',
             label: 'Writing good questions',
+            type: 'category',
             items: [
                 'question_style_overview',
                 'style_guide_respect',
@@ -58,8 +58,8 @@ module.exports = {
                 'style_guide_formatting',
                 'question_style_validation',
                 {
-                    type: 'category',
                     label: 'Question library',
+                    type: 'category',
                     items: [
                         'question_library/ql_names',
                         'question_library/ql_addresses',
@@ -72,8 +72,8 @@ module.exports = {
             ]
         },
         {
-            type: 'category',
             label: 'Coding style guide',
+            type: 'category',
             items: [
                 'coding_style/coding_style_overview',
                 'coding_style/python',
@@ -99,35 +99,35 @@ module.exports = {
             "type": "category",
             "label": "AssemblyLine",
             "items": [
-                'framework/algeneral',
-                "components/AssemblyLine/al_general",
-                "components/AssemblyLine/al_courts",
-                'framework/aldocument',
-                "components/AssemblyLine/al_document",
-                "components/AssemblyLine/language",
-                'framework/alreminders',
-                "components/AssemblyLine/sessions",
+                'components/AssemblyLine/al_general_overview',
+                'components/AssemblyLine/al_document_overview',
+                'components/AssemblyLine/al_reminders_overview',
                 {
-                    type: 'category',
                     label: 'Answer sets',
+                    type: 'category',
                     items: [
-                        'framework/answer_sets',
-                        'framework/answer_set_intakes',
+                        'components/AssemblyLine/answer_sets',
+                        'components/AssemblyLine/answer_set_intakes',
                     ]
                 },
-                'framework/navigation',
-                'framework/error_actions',
+                'components/AssemblyLine/navigation',
+                'components/AssemblyLine/error_actions',
+                "components/AssemblyLine/al_general",
+                "components/AssemblyLine/al_courts",
+                "components/AssemblyLine/al_document",
+                "components/AssemblyLine/language",
+                "components/AssemblyLine/sessions",
             ]
         },
-        'framework/alrecipes',
+        'components/ALRecipes/alrecipes_overview',
         {
             "type": "category",
             "label": "ALToolbox",
             "items": [
                 'framework/altoolbox',
                 {
-                    type: 'category',
                     label: 'ALIncome',
+                    type: 'category',
                     items: [
                         "components/ALToolbox/al_income",
                         'alincome/overview',
@@ -156,8 +156,8 @@ module.exports = {
             ]
         },
         {
-            type: 'category',
             label: 'E-filing',
+            type: 'category',
             items: [
                 'efiling/overview',
                 'efiling/efiling_through_docassemble',
@@ -167,8 +167,8 @@ module.exports = {
             ]
         },
         {
-            type: 'category',
             label: 'ALKiln',
+            type: 'category',
             items: [
                 // WIPs
                 'alkiln/alkiln_intro',

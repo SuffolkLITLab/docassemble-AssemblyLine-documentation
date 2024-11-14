@@ -2,9 +2,7 @@
 id: answer_sets
 title: |
     Answer Sets: save and reuse answers across interviews
-sidebar_label: |
-  Answer Sets: save and reuse answers across interviews
-slug: /framework/answer_sets
+sidebar_label: Save and reuse answers across interviews
 ---
 
 ## Overview
@@ -44,7 +42,7 @@ set". In a desktop browser, the main menu will display your email address. In a
 mobile browser, it will be three horizontal lines (sometimes called a
 "hamburger" menu).
 
-![](../assets/answer_set_menu.png)
+![](../../assets/answer_set_menu.png)
 
 Now, choose a name for your answer set. The default name is your name and the
 name of the opposing party in your case, but you can give the answer set
@@ -65,7 +63,7 @@ server. Currently, only the most recent 500 answer sets that you authored are
 displayed. Click the name of the answer set (1) that you want to load to copy the
 answers into your current interview.
 
-![](../assets/load_answer_set_table.png)
+![](../../assets/load_answer_set_table.png)
 
 
 You also have the option to delete or view more information about each answer
@@ -78,12 +76,12 @@ To rename an answer set, first visit the answer set's information page:
 1. Find the answer set in the "My interviews" page and click to open
 2. Or, use the "Load answer set" menu and then click the "view" icon. (3)
 
-![](../assets/load_answer_set_table.png)
+![](../../assets/load_answer_set_table.png)
 
 On the answer set's information page, use the "Rename" button (1) at the top of the
 screen to give the answer set a new name.
 
-![](../assets/answer_set_information_screen.png)
+![](../../assets/answer_set_information_screen.png)
 
 ### Deleting unneeded answer sets
 
@@ -92,7 +90,7 @@ To delete an answer set that you no longer need:
 1. Use the "delete" button on the "My interviews" page, or
 1. Use the "Load answer set" menu and click the "delete" icon (2)
 
-![](../assets/load_answer_set_table.png)
+![](../../assets/load_answer_set_table.png)
 
 ### Exporting and importing answers
 
@@ -106,7 +104,7 @@ To export an answer set, visit the answer set's information page:
 Next, click the "Export in JSON format" button (2). Save the "variables.json" file in
 a location of your choice.
 
-![](../assets/answer_set_information_screen.png)
+![](../../assets/answer_set_information_screen.png)
 
 
 If your server administrator has enabled the import feature, you can import an
@@ -116,7 +114,7 @@ You will be shown a dialog where you can upload a valid JSON file. After you
 click "Next", the answers in the JSON file will be loaded into the current
 interview session.
 
-![](../assets/load_answer_set_json.png)
+![](../../assets/load_answer_set_json.png)
 
 The JSON file should follow [Docassemble
 conventions](https://docassemble.org/docs/api.html#session_post) and is expected
@@ -161,7 +159,7 @@ each interview by its author.
 ### Enabling answer sets
 
 Answer sets are not enabled by default. Enable the [configuration
-options](magic_variables#enable-or-disable-answer-sets) to turn on Answer
+options](../../framework/magic_variables#enable-or-disable-answer-sets) to turn on Answer
 sets for your server.
 
 ### How answer sets are stored on the server
