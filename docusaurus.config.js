@@ -133,6 +133,58 @@ module.exports = {
             to: '/docs/translation',
             from: '/docs/translation/translation'
           },
+          {
+            to: '/docs/components/AssemblyLine/al_general',
+            from: '/docs/reference/AssemblyLine/al_general'
+          },
+          {
+            to: '/docs/components/AssemblyLine/al_courts',
+            from: '/docs/reference/AssemblyLine/al_courts'
+          },
+          {
+            to: '/docs/components/AssemblyLine/al_document',
+            from: '/docs/reference/AssemblyLine/al_document'
+          },
+          {
+            to: '/docs/components/AssemblyLine/language',
+            from: '/docs/reference/AssemblyLine/language'
+          },
+          {
+            to: '/docs/components/AssemblyLine/sessions',
+            from: '/docs/reference/AssemblyLine/sessions'
+          },
+          {
+            to: '/docs/components/ALToolbox/al_income',
+            from: '/docs/reference/ALToolbox/al_income'
+          },
+          {
+            to: '/docs/components/ALToolbox/business_days',
+            from: '/docs/reference/ALToolbox/business_days'
+          },
+          {
+            to: '/docs/components/ALToolbox/copy_button',
+            from: '/docs/reference/ALToolbox/copy_button'
+          },
+          {
+            to: '/docs/components/ALToolbox/misc',
+            from: '/docs/reference/ALToolbox/misc'
+          },
+          {
+            to: '/docs/components/ALToolbox/save_input_data',
+            from: '/docs/reference/ALToolbox/save_input_data'
+          },
+          {
+            to: '/docs/components/ALToolbox/llms',
+            from: '/docs/reference/ALToolbox/llms'
+          },
+          {
+            to: '/docs/components/formfyxer/lit_explorer',
+            from: '/docs/reference/formfyxer/lit_explorer'
+          },
+          {
+            to: '/docs/components/formfyxer/pdf_wrangling',
+            from: '/docs/reference/formfyxer/pdf_wrangling'
+          },
         ]
       }
     ]

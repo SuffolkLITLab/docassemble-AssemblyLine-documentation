@@ -15,10 +15,10 @@ JavaScript file.
 
 The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, you can see more in [the "Live demos" section](#live-demos) below. You can also see more details about each individual function in the ALToolbox API reference for each module:
 
-* [`ALToolbox.business_days`](../reference/ALToolbox/business_days.md)
-* [`ALToolbox.copy_button`](../reference/ALToolbox/copy_button.md)
-* [`ALToolbox.misc`](../reference/ALToolbox/misc.md)
-* [`ALToolbox.save_input_data`](../reference/ALToolbox/save_input_data.md)
+* [`ALToolbox.business_days`](../components/ALToolbox/business_days.md)
+* [`ALToolbox.copy_button`](../components/ALToolbox/copy_button.md)
+* [`ALToolbox.misc`](../components/ALToolbox/misc.md)
+* [`ALToolbox.save_input_data`](../components/ALToolbox/save_input_data.md)
 
 ## Live demos
 
@@ -71,7 +71,7 @@ content: |
   Context-specific help goes here.
 ```
 
-[API for `collapse_template`](../reference/ALToolbox/misc#collapse_template), and [Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
+[API for `collapse_template`](../components/ALToolbox/misc#collapse_template), and [Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
 
 ## Display markdown template with a scroll bar
 

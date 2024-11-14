@@ -100,13 +100,13 @@ module.exports = {
             "label": "AssemblyLine",
             "items": [
                 'framework/algeneral',
-                "reference/AssemblyLine/al_general",
-                "reference/AssemblyLine/al_courts",
+                "components/AssemblyLine/al_general",
+                "components/AssemblyLine/al_courts",
                 'framework/aldocument',
-                "reference/AssemblyLine/al_document",
-                "reference/AssemblyLine/language",
+                "components/AssemblyLine/al_document",
+                "components/AssemblyLine/language",
                 'framework/alreminders',
-                "reference/AssemblyLine/sessions",
+                "components/AssemblyLine/sessions",
                 {
                     type: 'category',
                     label: 'Answer sets',
@@ -129,18 +129,18 @@ module.exports = {
                     type: 'category',
                     label: 'ALIncome',
                     items: [
-                        "reference/ALToolbox/al_income",
+                        "components/ALToolbox/al_income",
                         'alincome/overview',
                         'alincome/expenses',
                         'alincome/jobs',
                         'alincome/itemizedjobs',
                     ]
                 },
-                "reference/ALToolbox/business_days",
-                "reference/ALToolbox/copy_button",
-                "reference/ALToolbox/misc",
-                "reference/ALToolbox/save_input_data",
-                "reference/ALToolbox/llms",
+                "components/ALToolbox/business_days",
+                "components/ALToolbox/copy_button",
+                "components/ALToolbox/misc",
+                "components/ALToolbox/save_input_data",
+                "components/ALToolbox/llms",
             ]
         },
         'framework/althemetemplate',
@@ -151,8 +151,8 @@ module.exports = {
             "label": "FormFyxer",
             "type": "category",
             "items": [
-                "reference/formfyxer/lit_explorer",
-                "reference/formfyxer/pdf_wrangling"
+                "components/formfyxer/lit_explorer",
+                "components/formfyxer/pdf_wrangling"
             ]
         },
         {

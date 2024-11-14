@@ -70,7 +70,7 @@ Start off by hard coding a few pieces of information:
 
 * use the `illinois' jurisdiction. Currently, the E-file proxy server is only running in production in Illinois, but we have access to the staging servers in Massachusetts and Texas.
 * file in the "adams" county court in Illinois. Handling court
-  hierarchies is a complicated task, and something that the AssemblyLine can't do for you. You'll need to make your own way to let users select what court they want to file in depending on your jurisdiction. See [our documentation for `al_courts`](../reference/AssemblyLine/al_courts.md) for some possible ideas.
+  hierarchies is a complicated task, and something that the AssemblyLine can't do for you. You'll need to make your own way to let users select what court they want to file in depending on your jurisdiction. See [our documentation for `al_courts`](../components/AssemblyLine/al_courts.md) for some possible ideas.
 
 You should be able to run the interview now. If this is the first time you're running the interview on the server, you will be asked to log in to eFileIL. If you don't yet have an account, you should be able to make a new pro-se user account with eFileIL by following the links to make a new account on the page. Once you've logged in on the server, subsequent runs of the interview won't ask you to log in, until the eFileIL token expires and you have to log in again, in about 1-2 hours.
 

@@ -223,4 +223,4 @@ pre: |
 
 You can read more about the stock language features in the official Docassemble [language features documentation](https://docassemble.org/docs/language.html).
 
-Also, see the documentation for the [AL language module](/docs/reference/AssemblyLine/language)
+Also, see the documentation for the [AL language module](/docs/components/AssemblyLine/language)
