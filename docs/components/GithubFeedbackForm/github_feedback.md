@@ -1,9 +1,8 @@
 ---
-id: github_feedback
+id: githubfeedbackform_overview
 title: |
     Setting up and using Feedback
-sidebar_label: Feedback
-slug: /framework/github_feedback
+sidebar_label: GithubFeedbackForm
 ---
 
 When testing your interviews and after you go live, you'll want a way to for users to tell you their thoughts
@@ -29,7 +28,7 @@ The standard feedback cycle for a software product is the following:
 6. Repeat back to 1.
 
 This tool helps you solve steps 3 and 4; users submitting feedback to you, and you being able to triage that feedback.
-Since much docassemble development [already involves GitHub](../github.md), the AssemblyLine uses [GitHub's issues](https://docs.github.com/en/issues) to handle and triage feedback.
+Since much docassemble development [already involves GitHub](../../github), the AssemblyLine uses [GitHub's issues](https://docs.github.com/en/issues) to handle and triage feedback.
 GitHub issues let you tag user feedback as such, link issues to PRs that fix the code, and track
 when the fix has been added to the code.
 
@@ -128,7 +127,7 @@ you setup [`github issues` in the config block above](#configuration), there sho
 While having a feedback link in the footer is useful for users who are specifically seeking to give feedback, you can take a more proactive approach and let users
 give quick feedback with an in-interview review widget. The final product of this guide will look like the below screenshot:
 
-![A screenshot of the review widget. The widget is outlined in a light gray box has the text "Did we help you?", with two buttons below, one with a thumbs up and one with a thumbs down.](../assets/github_feedback_review_widget.png)
+![A screenshot of the review widget. The widget is outlined in a light gray box has the text "Did we help you?", with two buttons below, one with a thumbs up and one with a thumbs down.](../../assets/github_feedback_review_widget.png)
 
 This review information is stored only on the docassemble server, and isn't sent out to GitHub.
 
@@ -157,7 +156,7 @@ The key lines in the above are:
 The `only_once_review_widget` will ask two questions, one is a simple "Did we help you?" with thumbs up and thumbs down options, and the second is an open text box for users to write more. If they answer the first question and refresh the screen or continue through the interview, the feedback widget won't be shown again, given that the user
 doesn't go back past the widget's screen in the interview.
 
-You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](../components/ALToolbox/misc#review_widget). That is the function `only_once_review_widget` is using.
+You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](/docs/components/ALToolbox/misc#review_widget). That is the function `only_once_review_widget` is using.
 
 The `only_once_review_widget` review information is only stored on the docassemble server, and can be viewed [using the feedback browsing interview](#how-to-browse-feedback-on-the-server).
 

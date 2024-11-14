@@ -238,6 +238,10 @@ module.exports = {
             from: '/docs/complexity/complexity'
           },
           {
+            to: '/docs/components/GithubFeedbackForm/githubfeedbackform_overview',
+            from: '/docs/framework/github_feedback'
+          },
+          {
             to: '/docs/components/formfyxer/lit_explorer',
             from: '/docs/reference/formfyxer/lit_explorer'
           },

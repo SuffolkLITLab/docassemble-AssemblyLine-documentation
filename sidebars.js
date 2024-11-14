@@ -145,7 +145,7 @@ module.exports = {
         },
         'components/ALThemeTemplate/althemetemplate_overview',
         'components/RateMyPDF/ratemypdf_overview',
-        'framework/github_feedback',
+        'components/GithubFeedbackForm/githubfeedbackform_overview',
         'analytics/tracking_usage',
         {
             "label": "FormFyxer",
