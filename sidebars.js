@@ -88,6 +88,7 @@ module.exports = {
         },
         'framework/magic_variables',
         'framework/reserved_keywords',
+        'translation',
         {
             "type": "html",
             "value": "Assembly Line components",
@@ -152,13 +153,6 @@ module.exports = {
             "items": [
                 "reference/formfyxer/lit_explorer",
                 "reference/formfyxer/pdf_wrangling"
-            ]
-        },
-        {
-            type: 'category',
-            label: 'Translation',
-            items: [
-                'translation/translation'
             ]
         },
         {
