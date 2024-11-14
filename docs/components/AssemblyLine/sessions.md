@@ -29,7 +29,7 @@ Standardized metadata dictionary:
 **Arguments**:
 
 - `filename` _str_ - The filename of the interview to add metadata for
-- `session_id` _int_ - The session ID of the interview to add metadata for
+- `session_id` _str_ - The session ID of the interview to add metadata for
 - `data` _Dict_ - The metadata to add
 - `metadata_key_name` _str, optional_ - The name of the metadata key. Defaults to &quot;metadata&quot;.
 
@@ -41,7 +41,7 @@ We implement this with the docassemble jsonstorage table and a dedicated `tag` w
 **Arguments**:
 
 - `filename` _str_ - The filename of the interview to retrieve metadata for
-- `session_id` _int_ - The session ID of the interview to retrieve metadata for
+- `session_id` _str_ - The session ID of the interview to retrieve metadata for
 - `metadata_key_name` _str, optional_ - The name of the metadata key. Defaults to &quot;metadata&quot;.
   
 
@@ -71,13 +71,47 @@ an existing interview to the answer set.
 - `offset` _int, optional_ - The offset to start returning results from. Defaults to 0.
 - `filename_to_exclude` _str, optional_ - The filename to exclude from the results. Defaults to &quot;&quot;.
 - `exclude_current_filename` _bool, optional_ - Whether to exclude the current filename from the results. Defaults to True.
-- `exclude_filenames` _Optional[List[str]], optional_ - A list of filenames to exclude from the results. Defaults to None.
+- `exclude_filenames` _Optional[List[str]], optional_ - List of filenames to exclude. Defaults to None. If the `filename` does not contain a `:` it will be treated as a prefix, allowing you to filter out whole packages (e.g., any path starting with docassemble.ALDashboard or docassemble.playground)
 - `exclude_newly_started_sessions` _bool, optional_ - Whether to exclude sessions that are still on &quot;step 1&quot;. Defaults to False.
   
 
 **Returns**:
 
   List[Dict[str, Any]]: A list of saved sessions for the specified filename.
+
+#### find\_matching\_sessions
+
+Get a list of sessions where the metadata for the session matches the provided keyword search terms.
+This function is designed to be used in a search interface where the user can search for sessions by keyword.
+The keyword search is case-insensitive and will match any part of the metadata column values.
+
+**Arguments**:
+
+- `keyword` _str_ - The keyword to search for in the metadata
+- `metadata_column_names` _List[str], optional_ - The names of the metadata columns to search. If not provided, defaults to [&quot;title&quot;, &quot;auto_title&quot;, &quot;description&quot;].
+- `filenames` _List[str], optional_ - The filename or filenames of the interviews to retrieve sessions for.
+- `user_id` _Union[int, str, None], optional_ - The user ID to retrieve sessions for. Defaults to current user. Specify &quot;all&quot; if you want and have the necessary privileges to search all sessions.
+- `metadata_key_name` _str, optional_ - The name of the metadata key. Defaults to &quot;metadata&quot;.
+- `limit` _int, optional_ - The maximum number of results to return. Defaults to 50.
+- `offset` _int, optional_ - The offset to start returning results from. Defaults to 0.
+- `filename_to_exclude` _str, optional_ - The filename to exclude from the results. Defaults to &quot;&quot;.
+- `exclude_current_filename` _bool, optional_ - Whether to exclude the current filename from the results. Defaults to True.
+- `exclude_filenames` _Optional[List[str]], optional_ - A list of filenames to exclude from the results. Defaults to None.
+- `exclude_newly_started_sessions` _bool, optional_ - Whether to exclude sessions that are still on &quot;step 1&quot;. Defaults to False.
+- `global_search_allowed_roles` _Union[Set[str],List[str]], optional_ - A list or set of roles that are allowed to search all sessions. Defaults to \{&#x27;admin&#x27;,&#x27;developer&#x27;, &#x27;advocate&#x27;\}. &#x27;admin&#x27; and &#x27;developer&#x27; are always allowed to search all sessions.
+  
+
+**Returns**:
+
+  List[Dict[str, Any]]: A list of saved sessions for the specified filename that match the search keyword
+  
+
+**Example**:
+
+  
+    ```python
+    matching_sessions=find_matching_sessions("smith", user_id="all", filenames=[f"\{user_info().package\}:intake.yml", "docassemble.MyPackage:intake.yml"])
+    ```
 
 #### delete\_interview\_sessions
 
@@ -122,6 +156,7 @@ itself in a way that adds additional steps)
 - `offset` _int, optional_ - Offset for the session list. Defaults to 0.
 - `display_interview_title` _bool, optional_ - If True, displays the title of the interview. Defaults to True.
 - `show_view_button` _bool, optional_ - If True, shows the view button. Defaults to True.
+- `answers` _Optional[List[Dict[str, Any]]], optional_ - A list of answers to format and display. Defaults to showing all sessions for the current user.
   
 
 **Returns**:
@@ -214,7 +249,7 @@ user sessions. The results exclude the answer set filename by default.
 - `metadata_key_name` _str, optional_ - Name of the metadata key. Defaults to &quot;metadata&quot;.
 - `filename_to_exclude` _str, optional_ - Name of the file to exclude. Defaults to `al_session_store_default_filename`.
 - `exclude_current_filename` _bool, optional_ - If True, excludes the current filename. Defaults to True.
-- `exclude_filenames` _Optional[List[str]], optional_ - List of filenames to exclude. Defaults to None.
+- `exclude_filenames` _Optional[List[str]], optional_ - List of filenames to exclude. Defaults to None. If the `filename` does not contain a `:` it will be treated as a prefix, allowing you to filter out whole packages (e.g., any path starting with docassemble.ALDashboard or docassemble.playground)
 - `exclude_newly_started_sessions` _bool, optional_ - If True, excludes newly started sessions. Defaults to False.
 - `name_label` _str, optional_ - Label for the session name/title. Defaults to translated word &quot;Title&quot;.
 - `date_label` _str, optional_ - Label for the date column. Defaults to translated word &quot;Date modified&quot;.
@@ -231,6 +266,7 @@ user sessions. The results exclude the answer set filename by default.
 - `limit` _int, optional_ - Limit for the number of sessions returned. Defaults to 50.
 - `offset` _int, optional_ - Offset for the session list. Defaults to 0.
   
+  
 
 **Returns**:
 
@@ -244,7 +280,7 @@ metadata that may be present.
 **Arguments**:
 
 - `filename` _str_ - The filename of the interview to rename
-- `session_id` _int_ - The session ID of the interview to rename
+- `session_id` _str_ - The session ID of the interview to rename
 - `new_name` _str_ - The new name to set for the interview
 - `metadata_key_name` _str, optional_ - The name of the metadata key. Defaults to &quot;metadata&quot;.
   
@@ -318,6 +354,7 @@ If no filename and session ID are provided, the current session&#x27;s variables
 - `session_id` _Optional[int], optional_ - Session ID to retrieve variables from. Defaults to None.
 - `variables_to_filter` _Union[Set[str], List[str], None], optional_ - List or set of variables to exclude. Defaults to `al_sessions_variables_to_remove`.
 - `additional_variables_to_filter` _Union[Set[str], List[str], None], optional_ - List or set of additional variables to exclude. Defaults to None.
+- `indent` _int, optional_ - Number of spaces to indent the JSON string. Defaults to 4.
   
 
 **Returns**:
@@ -333,7 +370,7 @@ the active session. This function is primarily used for migrating answers betwee
 **Arguments**:
 
 - `old_interview_filename` _str_ - Filename of the old interview.
-- `old_session_id` _int_ - Session ID of the old interview.
+- `old_session_id` _str_ - Session ID of the old interview.
 - `new_session` _bool, optional_ - Determines whether to create a new session. Defaults to False.
 - `new_interview_filename` _Optional[str], optional_ - Filename for the new session. Defaults to None.
 - `variables_to_filter` _Optional[List[str]], optional_ - List of variables to exclude. Defaults to None.

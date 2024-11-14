@@ -57,11 +57,12 @@ NOTE: This function is stateful under specific conditions. Refer to the conditio
 - `show_if` _Union[str, Dict[str, str], None]_ - Condition to display each field. Defaults to None.
 - `allow_no_address` _bool_ - Allow users to specify they don&#x27;t have an address. Defaults to False.
 - `ask_if_impounded` _Optional[bool]_ - Whether to ask if the address is impounded. Defaults to False.
+- `maxlengths` _Optional[Dict[str, int]]_ - A dictionary of field names and their maximum lengths. Defaults to None.
   
 
 **Returns**:
 
-- `list` - A list of YAML structure representing address fields.
+  List[Dict[str, Any]]: A list of dictionaries representing address fields.
   
 
 **Notes**:
@@ -272,6 +273,10 @@ Provide names and addresses of individuals on one line.
 
 Provide a list of familiar forms of names of individuals.
 
+**Arguments**:
+
+- `**kwargs` - Keyword arguments to pass to the familiar method.
+
 **Returns**:
 
 - `str` - Formatted string of familiar names.
@@ -279,6 +284,11 @@ Provide a list of familiar forms of names of individuals.
 #### familiar\_or
 
 Provide a list of familiar forms of names of individuals separated by &#x27;or&#x27;.
+
+**Arguments**:
+
+- `**kwargs` - Keyword arguments to pass to the familiar method.
+  
 
 **Returns**:
 
@@ -311,6 +321,25 @@ Return a formatted list of full names of individuals.
 **Returns**:
 
 - `str` - Formatted string of full names.
+
+#### pronoun\_reflexive
+
+Returns the appropriate reflexive pronoun for the list of people, depending
+on the `person` keyword argument and the number of items in the list.
+
+If the list is singular, return the reflexive pronoun for the first item in the list.
+If it is plural, return the appropriate plural reflexive pronoun (e.g., &quot;themselves&quot;)
+
+**Arguments**:
+
+- `**kwargs` - Additional keyword arguments that are defined [upstream](https://docassemble.org/docs/objects.html#language%20methods).
+  - person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See [upstream](https://docassemble.org/docs/objects.html#language%20methods) documentation for more information.
+  - default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.
+  
+
+**Returns**:
+
+- `str` - The reflexive pronoun for the list.
 
 ## ALIndividual Objects
 
@@ -418,6 +447,7 @@ and other provided parameters.
   of common titles in English-speaking countries.
 - `show_if` _Union[str, Dict[str, str], None], optional_ - Condition to determine which fields to show.
   It can be a string, a dictionary with conditions, or None. Default is None.
+- `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
   
 
 **Returns**:
@@ -443,6 +473,7 @@ Generate field prompts for capturing an address.
 - `show_if` _Union[str, Dict[str, str], None]_ - Condition to determine if the field should be shown. Defaults to None.
 - `allow_no_address` _bool_ - Whether to permit entries with no address. Defaults to False.
 - `ask_if_impounded` _bool_ - Whether to ask if the address is impounded. Defaults to False.
+- `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
   
 
 **Returns**:
@@ -458,6 +489,7 @@ self-described option.
 
 - `show_help` _bool_ - Whether to show additional help text. Defaults to False.
 - `show_if` _Union[str, Dict[str, str], None]_ - Condition to determine if the field should be shown. Defaults to None.
+- `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
   
 
 **Returns**:
@@ -475,6 +507,7 @@ Generate fields for capturing pronoun information.
 - `required` _bool_ - Whether the field is required. Defaults to False.
 - `shuffle` _bool_ - Whether to shuffle the order of pronouns. Defaults to False.
 - `show_unknown` _Union[Literal[&quot;guess&quot;], bool]_ - Whether to show an &quot;unknown&quot; option. Can be &quot;guess&quot;, True, or False. Defaults to &quot;guess&quot;.
+- `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
   
 
 **Returns**:
@@ -487,9 +520,20 @@ Retrieve a set of the individual&#x27;s pronouns.
 
 If the individual has selected the &quot;self-described&quot; option, it will use their custom input.
 
+Can be formatted however the author likes.
+
 **Returns**:
 
 - `set` - A set of strings representing the individual&#x27;s pronouns.
+
+#### list\_pronouns
+
+Retrieve a formatted string of the individual&#x27;s pronouns, arranged with
+the comma_list() function.
+
+**Returns**:
+
+- `str` - A formatted string of the individual&#x27;s pronouns.
 
 #### language\_fields
 
@@ -500,6 +544,7 @@ Generate fields for capturing language preferences.
 - `choices` _Optional[List[Dict[str, str]]]_ - A list of language choices. Defaults to None.
 - `style` _str_ - The display style of choices. Defaults to &quot;radio&quot;.
 - `show_if` _Union[str, Dict[str, str], None]_ - Condition to determine if the field should be shown. Defaults to None.
+- `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
   
 
 **Returns**:
@@ -594,19 +639,19 @@ Generate a formatted address block for mailings.
 
 #### pronoun
 
-Returns an objective pronoun as appropriate, based on attributes.
+Returns an objective pronoun as appropriate, based on the user&#x27;s `pronouns` attribute or `gender` attribute.
 
-The pronoun could be &quot;you,&quot; &quot;her,&quot; &quot;him,&quot; &quot;it,&quot; or &quot;them&quot;. It depends
-on the `gender` and `person_type` attributes and whether the individual
-is the current user.
+The pronoun could be &quot;I&quot;, &quot;you,&quot; &quot;her,&quot; &quot;him,&quot; &quot;it,&quot; or &quot;them&quot;, or a user-provided pronoun.
+If the user has selected multiple pronouns, each will appear, separated by a &quot;/&quot;.
 
-If the user selected specific pronouns, they take priority over
-gender (only if they chose a pronoun from the list)
+This method will not trigger the definition of `gender` or `pronouns`, but it will use them if they are defined,
+with `pronouns` taking precedence. As a default, it will either use the value of `default` or the individual&#x27;s full name.
 
 **Arguments**:
 
-- `**kwargs` - Additional keyword arguments.
-  
+- `**kwargs` - Additional keyword arguments that are defined [upstream](https://docassemble.org/docs/objects.html#language%20methods).
+  - person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See [upstream](https://docassemble.org/docs/objects.html#language%20methods) documentation for more information.
+  - default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.
 
 **Returns**:
 
@@ -629,36 +674,62 @@ Returns the same pronoun as the `pronoun()` method.
 
 Returns a possessive pronoun and a target word, based on attributes.
 
+This method will not trigger the definition of `gender` or `pronouns`, but it will use them if they are defined,
+with `pronouns` taking precedence. As a default, it will either use the value of `default` or the individual&#x27;s full name.
+
 Given a target word, the function returns &quot;\{pronoun\} \{target\}&quot;. The pronoun could be
-&quot;her,&quot; &quot;his,&quot; &quot;its,&quot; or &quot;their&quot;. It depends on the `gender` and `person_type` attributes
+&quot;my&quot;, &quot;her,&quot; &quot;his,&quot; &quot;its,&quot; or &quot;their&quot;. It depends on the `gender` and `person_type` attributes
 and whether the individual is the current user.
 
 **Arguments**:
 
 - `target` _str_ - The target word to follow the pronoun.
-- `**kwargs` - Additional keyword arguments.
+- `**kwargs` - Additional keyword arguments that can be passed to modify the behavior. These might include:
+  - `default` (Optional[str]): The default word to use if the pronoun is not defined, e.g., &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.
+  - `person` (Optional[Union[str, int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See [upstream documentation](https://docassemble.org/docs/objects.html#language%20methods) for more information.
   
 
 **Returns**:
 
-- `str` - The appropriate possessive phrase.
+- `str` - The appropriate possessive phrase, e.g., &quot;her book&quot;, &quot;their document&quot;.
 
 #### pronoun\_subjective
 
 Returns a subjective pronoun, based on attributes.
 
-The pronoun could be &quot;you,&quot; &quot;she,&quot; &quot;he,&quot; &quot;it,&quot; or &quot;they&quot;. It depends
+The pronoun could be &quot;you,&quot; &quot;we&quot;, &quot;she,&quot; &quot;he,&quot; &quot;it,&quot; or &quot;they&quot;. It depends
 on the `gender` and `person_type` attributes and whether the individual
 is the current user.
 
 **Arguments**:
 
-- `**kwargs` - Additional keyword arguments.
-  
+- `**kwargs` - Additional keyword arguments that are defined [upstream](https://docassemble.org/docs/objects.html#language%20methods).
+  - person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See [upstream](https://docassemble.org/docs/objects.html#language%20methods) documentation for more information.
+  - default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.
 
 **Returns**:
 
 - `str` - The appropriate subjective pronoun.
+
+#### pronoun\_reflexive
+
+Returns the appropriate reflexive pronoun (&quot;herself&quot;, &quot;themself&quot;, &quot;myself&quot;), based on the user&#x27;s pronouns or gender and whether we are asked
+to return a 1st, 2nd, or 3rd person pronoun.
+
+Note that if the person has pronouns of they/them/theirs or a nonbinary gender, we return &quot;themself&quot; as the singular non-gendered
+reflexive pronoun and not &quot;themselves&quot;. This has growing acceptance although some consider it nonstandard.
+See: https://www.merriam-webster.com/wordplay/themself
+
+**Arguments**:
+
+- `**kwargs` - Additional keyword arguments that are defined [upstream](https://docassemble.org/docs/objects.html#language%20methods).
+  - person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See [upstream](https://docassemble.org/docs/objects.html#language%20methods) documentation for more information.
+  - default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.
+  
+
+**Returns**:
+
+- `str` - The appropriate reflexive pronoun.
 
 #### name\_full
 
@@ -687,6 +758,42 @@ Equivalent to self.name.firstlast()
 **Returns**:
 
 - `str` - The individual&#x27;
+
+#### familiar
+
+Returns the individual&#x27;s name in the most familiar form possible.
+
+The purpose is to allow using a short version of the individual&#x27;s name in an unambiguous
+way in the interview. For example: referring to the child in a guardianship petition
+by first name instead of &quot;the minor&quot;. But there may be a problem if context doesn&#x27;t make
+it clear if you are talking about the child or their parent when they share a name.
+
+In order, it will try to use:
+
+* just the first name
+* the first name and suffix
+* the first and middle name
+* the first and last name
+* the full name
+* the default value, e.g., &quot;the minor&quot;, if provided
+* the full name
+
+**Arguments**:
+
+- `unique_names` _Optional[List[Any]]_ - A list of unique names to compare against. Defaults to None.
+- `default` _Optional[str]_ - The default name to return if no unique name is found. Defaults to None.
+  
+
+**Returns**:
+
+- `str` - The individual&#x27;s name in the most familiar form possible.
+  
+
+**Example**:
+
+    ```mako
+    Who do you want to take care of $\{ children.familiar(unique_names=parents + petitioners, default="the minor") \}
+    ```
 
 #### section\_links
 

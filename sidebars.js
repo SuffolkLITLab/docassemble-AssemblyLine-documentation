@@ -184,16 +184,16 @@ module.exports = {
             type: 'category',
             items: [
                 // WIPs
-                'alkiln/alkiln_intro',
+                'components/ALKiln/alkiln_intro',
                 // Old
-                'alkiln/alkiln_about',
-                'alkiln/alkiln_advanced',
+                'components/ALKiln/alkiln_about',
+                'components/ALKiln/alkiln_advanced',
                 // WIPs
-                'alkiln/alkiln_setup',
-                'alkiln/alkiln_writing',
-                'alkiln/alkiln_troubleshooting',
-                'alkiln/alkiln_security',
-                'alkiln/alkiln_deprecated',
+                'components/ALKiln/alkiln_setup',
+                'components/ALKiln/alkiln_writing_tests',
+                'components/ALKiln/alkiln_troubleshooting',
+                'components/ALKiln/alkiln_security',
+                'components/ALKiln/alkiln_deprecated',
             ]
         }
     ]

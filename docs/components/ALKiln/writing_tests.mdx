@@ -1,11 +1,10 @@
 ---
-id: alkiln_writing
+id: alkiln_writing_tests
 title: Writing ALKiln tests
 sidebar_label: WIP Writing tests
-slug: /alkiln/writing
 ---
 
-import styles from "../../src/css/images.module.css"
+import styles from "/src/css/images.module.css"
 
 import NeedProxyVars from './components/\_need_proxy_vars.md';
 import SecureEnvVars from './components/\_secure_env_vars.md';
@@ -35,7 +34,7 @@ If you are writing tests <!-- , running tests, --> or need to learn about test f
 
 If you are coming back and just need some resource reminders, here is a short list:
 
-- You can see [what your first test might look like](setup.mdx#first-test).
+- You can see [what your first test might look like](alkiln_setup#first-test).
 - You can generate a first draft for a more complex test with the help of the [ALKiln Story Table Step generator](#alkiln_story).
 - If your interview is using generic objects or index variables, you **must** include [special HTML](#special-html) in your interview.
 - Every time you change or add a required field variable, you must update the tests that need that variable.
@@ -2327,7 +2326,7 @@ Once the tests are finished, ALKiln creates the test run "artifacts" - files and
 
 If the test start up process failed, ALKiln will be [unable to create artifacts](troubleshooting.mdx#no-artifacts).
 
-import Dig from '../assets/archaeology.png';
+import Dig from '../../assets/archaeology.png';
 
 <p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a terracota vase."/></p>
 
@@ -2537,7 +2536,7 @@ If your package is leaving out the al_package.yml file from the Assembly Line pa
 
 ### Testing unfinished code {#unstable-tip}
 
-If you are still developing your interview, you can still write a [simple test](setup#first-test) to make sure your interview at least loads without an error. You might want to wait till your code is more stable to write more tests.
+If you are still developing your interview, you can still write a [simple test](alkiln_setup#first-test) to make sure your interview at least loads without an error. You might want to wait till your code is more stable to write more tests.
 
 On the other hand, if there is a part of your interview that you think will stay pretty much the same, you can write tests that just go part-way through the interview to test just the stable part of the code. That way, you can work on adding more content and yet also be sure that the work you've already done stays working.
 

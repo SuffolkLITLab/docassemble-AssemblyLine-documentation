@@ -116,7 +116,7 @@ to connect with Tyler Technologies and JeffNet:
 
 Many states are also interested in the accessibility of guided interview that
 use an e-filing integration. We have produced a
-[test suite](/docs/alkiln/automated_testing.mdx) that can provide automated
+[test suite](/docs/components/ALKiln/alkiln_about) that can provide automated
 accessibility information to audit Docassemble interview compliance with WCAG 2.0 and 2.1's A and AA certification levels.
 
 ### For users of the Assembly Line framework

@@ -81,10 +81,6 @@ module.exports = {
             from: '/docs'
           },
           {
-            to: '/docs/alkiln',
-            from: '/docs/automated_integrated_testing'
-          },
-          {
             to: '/docs/get_started',
             from: '/docs/intro'
           },
@@ -271,6 +267,41 @@ module.exports = {
           {
             to: '/docs/components/EFSPIntegration/efiling_monitoring',
             from: '/docs/efiling/monitoring'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_intro',
+            from: [
+              '/docs/alkiln/alkiln_intro',
+              '/docs/automated_integrated_testing'
+            ]
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_about',
+            from: '/docs/alkiln/alkiln_about'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_advanced',
+            from: '/docs/alkiln/alkiln_advanced'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_setup',
+            from: '/docs/alkiln/alkiln_setup'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_writing_tests',
+            from: '/docs/alkiln/alkiln_writing'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_troubleshooting',
+            from: '/docs/alkiln/alkiln_troubleshooting'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_security',
+            from: '/docs/alkiln/alkiln_security'
+          },
+          {
+            to: '/docs/components/ALKiln/alkiln_deprecated',
+            from: '/docs/alkiln/alkiln_deprecated'
           },
         ]
       }

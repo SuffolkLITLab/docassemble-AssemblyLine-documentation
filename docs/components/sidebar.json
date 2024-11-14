@@ -1,49 +1,12 @@
 {
   "items": [
-    {
-      "items": [
-        "components/ALToolbox/al_income",
-        "components/ALToolbox/business_days",
-        "components/ALToolbox/copy_button",
-        "components/ALToolbox/llms",
-        "components/ALToolbox/misc",
-        "components/ALToolbox/save_input_data"
-      ],
-      "label": "ALToolbox",
-      "type": "category"
-    },
-    {
-      "items": [
-        "components/AssemblyLine/al_courts",
-        "components/AssemblyLine/al_document",
-        "components/AssemblyLine/al_general",
-        "components/AssemblyLine/language",
-        "components/AssemblyLine/project_maintenance",
-        "components/AssemblyLine/sessions"
-      ],
-      "label": "AssemblyLine",
-      "type": "category"
-    },
-    {
-      "items": [
-        "components/EFSPIntegration/conversions",
-        "components/EFSPIntegration/efm_client",
-        "components/EFSPIntegration/interview_logic",
-        "components/EFSPIntegration/py_efsp_client"
-      ],
-      "label": "EFSPIntegration",
-      "type": "category"
-    },
-    {
-      "items": [
-        "components/formfyxer/docx_wrangling",
-        "components/formfyxer/lit_explorer",
-        "components/formfyxer/pdf_wrangling"
-      ],
-      "label": "formfyxer",
-      "type": "category"
-    }
+    "components/AssemblyLine/al_courts",
+    "components/AssemblyLine/al_document",
+    "components/AssemblyLine/al_general",
+    "components/AssemblyLine/language",
+    "components/AssemblyLine/project_maintenance",
+    "components/AssemblyLine/sessions"
   ],
-  "label": "API Reference",
+  "label": "AssemblyLine",
   "type": "category"
 }

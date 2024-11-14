@@ -81,6 +81,7 @@ Built around Pandas dataframe.
 **Attributes**:
 
 - `filename` _str_ - Path to the file containing court information.
+- `converters` _Dict[str, Callable]_ - A dictionary of functions to apply to columns in the dataframe.
 
 #### all\_courts
 
