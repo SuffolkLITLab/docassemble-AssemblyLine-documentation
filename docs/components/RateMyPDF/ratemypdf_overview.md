@@ -1,8 +1,7 @@
 ---
-id: complexity
+id: ratemypdf_overview
 title: Scoring form complexity with RateMyPDF
 sidebar_label: RateMyPDF
-slug: /complexity/complexity
 ---
 
 [RateMyPDF](https://ratemypdf.com) is a tool built by Suffolk LIT Lab to help you
@@ -46,7 +45,7 @@ browse the forms we gathered on the [Form Explorer](https://suffolklitlab.org/fo
 ### Download and cite our paper
 
 <p>
-<a target="\_blank" class="button button--primary" href={require('../assets/Beyond Readability with RateMyPDF.pdf').default}>Download our paper</a>
+<a target="\_blank" class="button button--primary" href={require('../../assets/Beyond Readability with RateMyPDF.pdf').default}>Download our paper</a>
 </p>
 
 Please cite our paper, our dataset, and this website as follows:

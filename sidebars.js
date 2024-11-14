@@ -144,7 +144,7 @@ module.exports = {
             ]
         },
         'framework/althemetemplate',
-        'complexity/complexity',
+        'components/RateMyPDF/ratemypdf_overview',
         'framework/github_feedback',
         'analytics/tracking_usage',
         {

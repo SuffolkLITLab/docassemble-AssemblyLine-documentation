@@ -210,6 +210,10 @@ module.exports = {
             from: '/docs/reference/ALToolbox/llms'
           },
           {
+            to: '/docs/components/RateMyPDF/ratemypdf_overview',
+            from: '/docs/complexity/complexity'
+          },
+          {
             to: '/docs/components/formfyxer/lit_explorer',
             from: '/docs/reference/formfyxer/lit_explorer'
           },
