@@ -176,6 +176,7 @@ module.exports = {
                 'components/EFSPIntegration/conversions',
                 'components/EFSPIntegration/interview_logic',
                 'components/EFSPIntegration/py_efsp_client',
+                'components/EFSPIntegration/test/test_conversions',
             ]
         },
         {
