@@ -158,6 +158,7 @@ module.exports = {
             "type": "category",
             "items": [
                 "components/formfyxer/lit_explorer",
+                "components/formfyxer/docx_wrangling",
                 "components/formfyxer/pdf_wrangling"
             ]
         },
