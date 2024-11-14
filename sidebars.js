@@ -16,6 +16,12 @@ module.exports = {
             ],
         },
         'get_started/resources',
+        {
+            "type": "link",
+            "label": "Developer documentation",
+            "href": "/docs/overview",
+            "description": "View developer documentation"
+        },
         'get_started/development_roadmap',
         'contributors',
         {
