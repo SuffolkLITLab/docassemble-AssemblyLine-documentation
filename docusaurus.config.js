@@ -186,6 +186,26 @@ module.exports = {
             from: '/docs/framework/alrecipes'
           },
           {
+            to: '/docs/components/ALToolbox/altoolbox_overview',
+            from: '/docs/framework/altoolbox'
+          },
+          {
+            to: '/docs/components/ALToolbox/al_income_overview',
+            from: '/docs/alincome/overview'
+          },
+          {
+            to: '/docs/components/ALToolbox/al_income_expenses',
+            from: '/docs/alincome/expenses'
+          },
+          {
+            to: '/docs/components/ALToolbox/al_income_itemizedjobs',
+            from: '/docs/alincome/itemizedjobs'
+          },
+          {
+            to: '/docs/components/ALToolbox/al_income_jobs',
+            from: '/docs/alincome/jobs'
+          },
+          {
             to: '/docs/components/ALToolbox/al_income',
             from: '/docs/reference/ALToolbox/al_income'
           },
@@ -208,6 +228,10 @@ module.exports = {
           {
             to: '/docs/components/ALToolbox/llms',
             from: '/docs/reference/ALToolbox/llms'
+          },
+          {
+            to: '/docs/components/ALThemeTemplate/althemetemplate_overview',
+            from: '/docs/framework/althemetemplate'
           },
           {
             to: '/docs/components/RateMyPDF/ratemypdf_overview',

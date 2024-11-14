@@ -124,18 +124,18 @@ module.exports = {
             "type": "category",
             "label": "ALToolbox",
             "items": [
-                'framework/altoolbox',
+                'components/ALToolbox/altoolbox_overview',
                 {
                     label: 'ALIncome',
                     type: 'category',
                     items: [
-                        "components/ALToolbox/al_income",
-                        'alincome/overview',
-                        'alincome/expenses',
-                        'alincome/jobs',
-                        'alincome/itemizedjobs',
+                        'components/ALToolbox/al_income_overview',
+                        'components/ALToolbox/al_income_expenses',
+                        'components/ALToolbox/al_income_jobs',
+                        'components/ALToolbox/al_income_itemizedjobs',
                     ]
                 },
+                "components/ALToolbox/al_income",
                 "components/ALToolbox/business_days",
                 "components/ALToolbox/copy_button",
                 "components/ALToolbox/misc",
@@ -143,7 +143,7 @@ module.exports = {
                 "components/ALToolbox/llms",
             ]
         },
-        'framework/althemetemplate',
+        'components/ALThemeTemplate/althemetemplate_overview',
         'components/RateMyPDF/ratemypdf_overview',
         'framework/github_feedback',
         'analytics/tracking_usage',

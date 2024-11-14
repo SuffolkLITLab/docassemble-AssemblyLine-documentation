@@ -1,10 +1,8 @@
 ---
-id: expenses
+id: al_income_expenses
 title: |
     Expenses: ALExpense and ALExpenseList
-sidebar_label: |
-  Expenses
-slug: /alincome/expenses
+sidebar_label: Expenses
 ---
 
 The `ALExpenseList` is a class that helps you ask a user about their different expenses.
@@ -115,7 +113,7 @@ This will ask the user a few questions:
 
   Here is what this question screen will look like:
 
-  ![A screenshot of a webpage. At the top, it asks "What kind of expenses do you have?" There is a checkbox next to each option, like "rent" and "food". There is a continue button at the bottom](../assets/alincome_expenses_checkboxes.jpg)
+  ![A screenshot of a webpage. At the top, it asks "What kind of expenses do you have?" There is a checkbox next to each option, like "rent" and "food". There is a continue button at the bottom](../../assets/alincome_expenses_checkboxes.jpg)
 
   :::tip `display_name`
 

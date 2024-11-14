@@ -1,8 +1,7 @@
 ---
-id: altoolbox
+id: altoolbox_overview
 title: ALToolbox functions and components
 sidebar_label: ALToolbox functions and components
-slug: /framework/altoolbox
 ---
 
 import Tabs from '@theme/Tabs';
@@ -15,10 +14,10 @@ JavaScript file.
 
 The **ALToolbox** repo is constantly expanded to add new functions. As this page provides only some samples, you can see more in [the "Live demos" section](#live-demos) below. You can also see more details about each individual function in the ALToolbox API reference for each module:
 
-* [`ALToolbox.business_days`](../components/ALToolbox/business_days.md)
-* [`ALToolbox.copy_button`](../components/ALToolbox/copy_button.md)
-* [`ALToolbox.misc`](../components/ALToolbox/misc.md)
-* [`ALToolbox.save_input_data`](../components/ALToolbox/save_input_data.md)
+* [`ALToolbox.business_days`](business_days)
+* [`ALToolbox.copy_button`](copy_button)
+* [`ALToolbox.misc`](misc)
+* [`ALToolbox.save_input_data`](save_input_data)
 
 ## Live demos
 
@@ -71,7 +70,7 @@ content: |
   Context-specific help goes here.
 ```
 
-[API for `collapse_template`](../components/ALToolbox/misc#collapse_template), and [Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
+[API for `collapse_template`](misc#collapse_template), and [Code for `collapse_template`](https://github.com/SuffolkLITLab/docassemble-ALToolbox/blob/main/docassemble/ALToolbox/misc.py)
 
 ## Display markdown template with a scroll bar
 
@@ -201,7 +200,7 @@ Example:
 <Tabs>
   <TabItem value="Preview" label="Preview" default>
 
-![Preview of BirthDate selector with 3 separate inputs for month, day and year](../assets/BirthDate.png)
+![Preview of BirthDate selector with 3 separate inputs for month, day and year](../../assets/BirthDate.png)
 
   </TabItem>
   <TabItem value="Code" label="Code">
@@ -238,7 +237,7 @@ Example:
 <Tabs>
   <TabItem value="DOCX Template" label="DOCX Template" default>
 The following income and deductions are \{\{ output_checkbox(is_monthly) \}\} monthly \{\{ output_checkbox(is_yearly) \}\} yearly FOR THE YEAR \{\{ today(format='YYYY') \}\}.
-![(screenshot)](../assets/output_checkbox_example_pic.png)
+![(screenshot)](../../assets/output_checkbox_example_pic.png)
 
   </TabItem>
   <TabItem value="Docassemble Code" label="Docassemble Code">
@@ -266,7 +265,7 @@ attachment:
   </TabItem>
   <TabItem value="Output DOCX" label="Output DOCX">
 
-![The following income and deductions are [X] monthly [  ] yearly FOR THE YEAR 2023.](../assets/output_checkbox_post_pic.png)
+![The following income and deductions are [X] monthly [  ] yearly FOR THE YEAR 2023.](../../assets/output_checkbox_post_pic.png)
 
   </TabItem>
 </Tabs>

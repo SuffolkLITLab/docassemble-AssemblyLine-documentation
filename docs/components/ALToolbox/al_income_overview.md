@@ -1,8 +1,7 @@
 ---
-id: overview
-title: 'al_income: Python classes to gather financial information'
-sidebar_label: 'al_income 02'
-slug: /alincome/overview
+id: al_income_overview
+title: Python classes to gather financial information
+sidebar_label: Gathering financial information
 ---
 
 ## Overview
@@ -21,9 +20,9 @@ on your server, and run the [al_income_demo interview](https://github.com/Suffol
 
 Once you have a broad idea of what each class is about, you can choose from one of the more in-depth tutorials:
 
-* [Expenses](expenses.md)
-* [Jobs](jobs.md)
-* [Itemized Jobs](itemizedjobs.md)
+* [Expenses](al_income_expenses)
+* [Jobs](al_income_jobs)
+* [Itemized Jobs](al_income_itemizedjobs)
 
 :::warning Work in progress
 The following classes don't yet have tutorials that you can follow, but you can follow
