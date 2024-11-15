@@ -38,16 +38,16 @@ module.exports = {
             label: 'Authoring interviews',
             type: 'category',
             items: [
-                'pdf_templates',
-                'docx_templates',
+                'authoring/pdf_templates',
+                'authoring/docx_templates',
                 'authoring/dynamic_phrasing_based_on_values',
-                'document_variables_reference',
-                'name_formats',
-                'alweaver_overview',
-                'github',
-                'customizing_interview',
-                'writing_review_screen',
-                'yaml_anatomy',
+                'authoring/document_variables_reference',
+                'authoring/name_formats',
+                'authoring/alweaver_overview',
+                'authoring/github',
+                'authoring/customizing_interview',
+                'authoring/writing_review_screen',
+                'authoring/yaml_anatomy',
             ],
         },
         {
@@ -92,8 +92,8 @@ module.exports = {
                 'coding_style/accessibility'
             ]
         },
-        'framework/magic_variables',
-        'framework/reserved_keywords',
+        'magic_variables',
+        'reserved_keywords',
         'translation',
         {
             "type": "html",

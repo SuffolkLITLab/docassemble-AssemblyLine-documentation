@@ -16,7 +16,7 @@ If you are tempted to write a large amount of text on the screen, consider:
 
 1. Using a link
 1. Adding a [progressive disclosure
-element](/docs/coding_style_guide/yaml_interface) that lets a user click to read more.
+element](../coding_style/yaml_interface.md) that lets a user click to read more.
 
 Your user is very goal oriented when using a legal form. They rarely come to
 a form to be educated about the law. Help them get to the end as quickly

@@ -49,7 +49,7 @@ Docassemble interview files use several kinds of markup. Most of what you will n
 * [Markdown](https://daringfireball.net/projects/markdown/) (formatting text)
 * [Mako](https://docs.makotemplates.org/en/latest/) (using variables and code within questions)
 * [Python](https://docs.python.org/3/reference/index.html) (coding in Mako tags and [code blocks](https://docassemble.org/docs/code.html))
-* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) (used in [DOCX templates](/docs/docx))
+* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) (used in [DOCX templates](../authoring/docx_templates.md))
 
 You can also use [HTML](https://docassemble.org/docs/markup.html#markdownhtml), [CSS](https://docassemble.org/docs/ui.html#css), and [Javascript](https://docassemble.org/docs/initial.html#javascript) in Docassemble interviews.
 

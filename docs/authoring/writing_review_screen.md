@@ -4,7 +4,7 @@ title: |
   Writing a Review Screen
 sidebar_label: |
   Review Screen
-slug: /review_screen
+slug: /authoring/review_screen
 ---
 
 ## Overview
@@ -57,7 +57,7 @@ Download the primary YAML files of your interview. You can download the YAML fil
 * from GitHub. For example, for the [Motion to Stay Eviction](https://github.com/SuffolkLITLab/docassemble-MotionToStayEviction/), you can navigate
   to [the primary YAML file, SP6A.yml](https://github.com/SuffolkLITLab/docassemble-MotionToStayEviction/blob/main/docassemble/MotionToStayEviction/data/questions/SP6A.yml), and click the "download raw file" button.
 
-  ![A github page screenshot, the "download raw file" button in the top bar of the github file is circled](../docs/assets/review_download_yaml_from_github.png)
+  ![A github page screenshot, the "download raw file" button in the top bar of the github file is circled](../assets/review_download_yaml_from_github.png)
 
 You should download all of the YAML files that define variables used in your interview. The more YAML files you download, the more content you might have to
 cut from the generated review screen.
@@ -178,7 +178,7 @@ There are a few sections of the generated review screen YAML:
     
     But your interview might include [objects](https://docassemble.org/docs/objects.html#Individual) and lists of objects, like a list of plaintiffs and another list of defendants. Instead of re-asking every question that someone answered to fill the list, docassemble brings to the user to a `revisit` screen that shows each item in the list to the user, and lets them choose which to edit individually.
 
-    If you used the [Weaver](https://assemblyline.suffolklitlab.org/docs/label_variables#standard-roles) to make your interview, your interview might have a few different lists for people,
+    If you used the [Weaver](doc_vars_reference.md#standard-roles) to make your interview, your interview might have a few different lists for people,
     like `users`, `other_parties`, `children`, `debt_collectors`, and `guardians`.
 
 4. The `revisit` screens each show the `table` attribute of the `DAList`. If needed, blocks defining the table for the lists will appear at the end of the generated review file.

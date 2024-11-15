@@ -2,7 +2,7 @@
 id: customizing_interview
 title: Editing your interview
 sidebar_label: Editing your interview
-slug: /customizing_interview
+slug: /authoring/customizing_interview
 ---
 
 ## Edit your completed draft interview in the Docassemble playground
@@ -34,7 +34,7 @@ quite right, perhaps something as simple as a typo.
 ## Work towards a readable, usable interview
 
 You should also take this chance to review our guidance about
-[writing good questions](/docs/style_guide/question_overview). While you edit
+[writing good questions](../style_guide/question_style_overview.md). While you edit
 your interview, work steadily to make it better.
 
 ## Getting the draft into your playground
@@ -56,11 +56,11 @@ Before downloading the package, turn off that behavior:
 First, create a new "Project" in your playground. Using projects will
 help you keep your Docassemble code organized.
 
-![playground | projects ](./assets/playground_projects.png)
+![playground | projects ](../assets/playground_projects.png)
 
 Next, upload this file to the Docassemble playground's `Packages` folder.
 
-![Folders | Packages ](./assets/playground_packages_menu.png)
+![Folders | Packages ](../assets/playground_packages_menu.png)
 
 ## How to edit your interview
 
@@ -76,7 +76,7 @@ Scroll through and take a look at the code. You will see:
   that are asked on each screen
 
 You do not need to understand all of the code. Absorb what you can, and feel free
-to experiment. Save your code often, preferably to a [GitHub](/docs/github) repository.
+to experiment. Save your code often, preferably to a [GitHub](../authoring/github.md) repository.
 
 You will likely start by clicking the "Save and Run" button to try running your
 interview through to the end. Note any awkward wording or changes you want to make.
@@ -84,7 +84,7 @@ interview through to the end. Note any awkward wording or changes you want to ma
 Use the `id` that is on the top of each screen to find the screen that you want to change.
 Then, change the text that you want to change, or change the order of fields.
 
-![id: request a guardianship](./assets/playground_id.png)
+![id: request a guardianship](../assets/playground_id.png)
 
 Below we describe some of the most common starting customizations you will make,
 especially changes that interact with an Assembly Line convention.
@@ -436,7 +436,7 @@ content: |
 We usually don't recommend using the other options,
 which include help for the whole page (it comes too late) or `terms` (they get very cluttered very quickly).
 
-A more complete guide to [helping your user](/docs/coding_style/yaml_interface.md#adding-help-in-context).
+A more complete guide to [helping your user](../coding_style/yaml_interface.md#adding-help-in-context).
 
 ## Why is this question getting asked?!!!
 
@@ -737,4 +737,4 @@ with the blinking cursor.
 If you want to discard your changes and start over, upload the package .ZIP file
 to your playground again. This will wipe out all of your changes.
 
-Use [GitHub](/docs/github) regularly to let you restore your work from a point in time.
+Use [GitHub](../authoring/github.md) regularly to let you restore your work from a point in time.

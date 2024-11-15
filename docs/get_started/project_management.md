@@ -87,10 +87,10 @@ Different projects will have different MVPs/"skateboards". The [legal form matur
 
 ## Complete the draft interview
 
-After the kickoff meeting it is time to get to work! As you work on the interview, follow the [GitHub workflow](../github.md#workflow). If you get stuck on a problem for more than twenty minutes, ask for help. (Use the [Resources](resources.md) page to find options.)
+After the kickoff meeting it is time to get to work! As you work on the interview, follow the [GitHub workflow](../authoring/github.md#workflow). If you get stuck on a problem for more than twenty minutes, ask for help. (Use the [Resources](resources.md) page to find options.)
 
 :::tip
-The LIT Lab's [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) can help you keep your project organized and on track. Just click the **Use this template** button to use it. (You'll need a free [GitHub](../github.md) account.)
+The LIT Lab's [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) can help you keep your project organized and on track. Just click the **Use this template** button to use it. (You'll need a free [GitHub](../authoring/github.md) account.)
 :::
 
 ## Meeting cadence
@@ -126,7 +126,7 @@ Weekly or every-other week meetings with the decisionmaker and one or two key st
 When sharing progress and the current plan, it can help to give a percentage estimate. Something like: "We think we are about 30% of the way to a complete draft interview, and by our next meeting we hope to be at 50%."
 
 :::tip
-Use [GitHub issues](../github.md#use-issues) to keep track of your questions for the decisionmaker. If you add a **question** label to issues, it is easy to pull up the list of your questions during a meeting.
+Use [GitHub issues](../authoring/github.md#use-issues) to keep track of your questions for the decisionmaker. If you add a **question** label to issues, it is easy to pull up the list of your questions during a meeting.
 :::
 
 To get better answers, ask questions better. Here are some tips for asking questions:
@@ -177,7 +177,7 @@ Share the interview with the decisionmaker and give them a few tips for giving h
 
 ## Revise the interview
 
-After getting feedback, create a [GitHub issue](../github#use-issues) for each change request from the tester or decisionmaker. Consider this your "punch list" to finish the project. Then get back to work on those issues!
+After getting feedback, create a [GitHub issue](../authoring/github.md#use-issues) for each change request from the tester or decisionmaker. Consider this your "punch list" to finish the project. Then get back to work on those issues!
 
 When you have closed all the issues/items on your punch list, send it back to the decisionmaker for further feedback. Each round of feedback should result in fewer change requests and move the project closer to completion.
 
@@ -203,7 +203,7 @@ Once the interview is live, consider how people who need it will find it.
 * Others might want to direct people to the interview, like courts, legal aid organizations, and other advocates. Ask them to link to your landing page from their own websites.
 * Paid advertising can help spread awareness, if you have a budget for it.
 
-You can also set up [collect analytics](/docs/components/InterviewStats/interviewstats_overview) to learn how people are finding and using the interview.
+You can also set up [collect analytics](../components/InterviewStats/interviewstats_overview) to learn how people are finding and using the interview.
 
 ## Do a retrospective
 

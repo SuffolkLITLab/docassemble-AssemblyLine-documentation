@@ -35,7 +35,7 @@ display with an arrow, and the `content` of the template will be shown when the
 `subject` is clicked on.
 
 We [recommend using this for help
-text](/docs/style_guide/question_help_your_user#provide-help-information-in-context) in
+text](../../style_guide/question_style_help_your_user.md#provide-help-information-in-context) in
 your interviews.
 
 It works a lot like this `details` element:

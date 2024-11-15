@@ -2,7 +2,7 @@
 id: docx_templates
 title: Working with DOCX files
 sidebar_label: Working with DOCX files
-slug: /docx
+slug: /authoring/docx
 ---
 
 :::tip
@@ -193,7 +193,7 @@ each condition.
 ### Use `output_checkbox()` for conditional checkbox fields that look like paper forms
 
 In some cases, you need to make your Word Document look like a document that was
-filled in by hand. [`output_checkbox()`](https://assemblyline.suffolklitlab.org/docs/framework/altoolbox#shorthand-function-to-display-a-checkbox-in-replace-of-a-truefalse-boolean-value-in-a-docx-template) can be used to add a checkbox in-line in your document.
+filled in by hand. [`output_checkbox()`](../components/ALToolbox/altoolbox_overview.md#shorthand-function-to-display-a-checkbox-in-replace-of-a-truefalse-boolean-value-in-a-docx-template) can be used to add a checkbox in-line in your document.
 
 These two expressions are equivalent, but the second version takes substantially less
 space in your template:

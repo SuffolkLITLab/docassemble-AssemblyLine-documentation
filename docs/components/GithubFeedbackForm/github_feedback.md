@@ -28,7 +28,7 @@ The standard feedback cycle for a software product is the following:
 6. Repeat back to 1.
 
 This tool helps you solve steps 3 and 4; users submitting feedback to you, and you being able to triage that feedback.
-Since much docassemble development [already involves GitHub](../../github), the AssemblyLine uses [GitHub's issues](https://docs.github.com/en/issues) to handle and triage feedback.
+Since much docassemble development [already involves GitHub](../../authoring/github.md), the AssemblyLine uses [GitHub's issues](https://docs.github.com/en/issues) to handle and triage feedback.
 GitHub issues let you tag user feedback as such, link issues to PRs that fix the code, and track
 when the fix has been added to the code.
 
@@ -50,7 +50,7 @@ It won't:
 Before you start, we'll assume that you:
 
 * have access to an [admin account on a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/classes/assembly-line/2020-assembly-line-assignment-1#before-you-get-started)
-* have the [`GithubFeedbackForm` package installed on your server](https://assemblyline.suffolklitlab.org/docs/installation#run-the-installation-script)
+* have the [`GithubFeedbackForm` package installed on your server](../../get_started/installation.md#run-the-installation-script)
 * know how to [edit the docassemble configuration (config) file](https://docassemble.org/docs/config.html#edit)
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
@@ -156,7 +156,7 @@ The key lines in the above are:
 The `only_once_review_widget` will ask two questions, one is a simple "Did we help you?" with thumbs up and thumbs down options, and the second is an open text box for users to write more. If they answer the first question and refresh the screen or continue through the interview, the feedback widget won't be shown again, given that the user
 doesn't go back past the widget's screen in the interview.
 
-You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](/docs/components/ALToolbox/misc#review_widget). That is the function `only_once_review_widget` is using.
+You can change several aspects of the review widget. For more information, see [the API reference of `review_widget` in ALToolbox](../ALToolbox/misc.md#review_widget). That is the function `only_once_review_widget` is using.
 
 The `only_once_review_widget` review information is only stored on the docassemble server, and can be viewed [using the feedback browsing interview](#how-to-browse-feedback-on-the-server).
 
@@ -171,6 +171,6 @@ The other option is for reviews, which will show all of the scores given to an i
 
 :::note Under development
 
-The browsing feature is actively under development. If you have suggestions for improvements, [let us know on Teams](/docs/get_started).
+The browsing feature is actively under development. If you have suggestions for improvements, [let us know on Teams](../../get_started/intro.md).
 
 :::

@@ -2,7 +2,6 @@
 id: magic_variables
 title: Special variables for Document Assembly Line interviews
 sidebar_label: Special variables
-slug: /framework/magic_variables
 ---
 
 ## Server-wide configuration options
@@ -14,7 +13,7 @@ configuration. They are not configurable on a per-interview basis.
 
 Add the following entry in your global
 [config.yml](https://docassemble.org/docs/config.html#edit) to turn on the
-[Answer Set](/docs/components/AssemblyLine/answer_sets) feature that allows users to save answers for reuse in other
+[Answer Set](components/AssemblyLine/answer_sets.md) feature that allows users to save answers for reuse in other
 interviews.
 
 ```yaml

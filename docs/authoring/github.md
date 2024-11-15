@@ -2,7 +2,7 @@
 id: github
 title: Using GitHub with Docassemble
 sidebar_label: "Using GitHub"
-slug: /github
+slug: /authoring/github
 ---
 
 

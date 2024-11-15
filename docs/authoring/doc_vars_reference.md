@@ -2,7 +2,7 @@
 id: document_variables_reference
 title: Field labels to use in template files
 sidebar_label: Field labels to use in template files
-slug: /label_variables
+slug: /authoring/label_variables
 ---
 
 The Document Assembly Line framework can help you automate templates that use any
@@ -11,8 +11,8 @@ that we list below for full compatibility.
 
 ## Example documents
 
-- [A fully labeled PDF](./assets/generic_motion_family_law.pdf)
-- [The DOCX version of the same motion](./assets/generic_motion_family_law.docx)
+- [A fully labeled PDF](../assets/generic_motion_family_law.pdf)
+- [The DOCX version of the same motion](../assets/generic_motion_family_law.docx)
 
 :::info Use a custom AI assistant for labeling instead
 
@@ -48,12 +48,12 @@ rules below to add as many custom labels as you need.
 #### Labels should be valid Python variable names that start with a letter
 
 PDF and DOCX `labels` should also work as valid [Python variable
-names](/docs/coding_style_guide/python). The basic rule is that Python variable names
+names](../coding_style/python.md). The basic rule is that Python variable names
 need to start with a letter and can only contain letters, digits, and the `_`
 underscore character. Some variable names are
-[reserved](framework/reserved_keywords.md) and have a special meaning inside
+[reserved](../reserved_keywords.md) and have a special meaning inside
 AssemblyLine interviews. You should not use a variable name on the
-[reserved](framework/reserved_keywords.md) list. Doing so can lead to 
+[reserved](../reserved_keywords.md) list. Doing so can lead to 
 hard to track bugs.
 
 #### Variable names are case sensitive - make them all lowercase
@@ -395,4 +395,4 @@ your edited template directly to the Docassemble playground's templates folder.
 
 ## See also
 
-- [List of reserved variable names](framework/reserved_keywords.md)
+- [List of reserved variable names](../reserved_keywords.md)

@@ -4,7 +4,7 @@ title: |
    "Weaving" your form into a draft interview
 sidebar_label: |
    "Weaving" your form into a draft interview
-slug: /generating_code
+slug: /authoring/generating_code
 ---
 
 <!-- Boilerplate, Baseline, kit, ready to build, some assembly required, something to build on, starting point, blank slate, foundation, groundwork, starter dough, groundwork, spark -->
@@ -92,7 +92,7 @@ When you have finished using the Weaver, download your package. This will put a
 
 Next, upload this file to the Docassemble playground's `Packages` folder.
 
-![Folders | Packages ](./assets/playground_packages_menu.png)
+![Folders | Packages ](../assets/playground_packages_menu.png)
 
 :::warning If you are using Safari on a Mac OS computer
 Safari, by default, will turn your downloaded package into
@@ -108,6 +108,6 @@ Before downloading the package, turn off that behavior:
 ## Example of a page in a Docassemble interview
 A page might look like this:
 
-![One page of an interview made up of a heading, explanatory text, and the fields](./assets/interview_screen_or_page.png)
+![One page of an interview made up of a heading, explanatory text, and the fields](../assets/interview_screen_or_page.png)
 
 You can see [the ALWeaver docassemble package on GitHub](https://github.com/suffolkLITLab/docassemble-ALWeaver)

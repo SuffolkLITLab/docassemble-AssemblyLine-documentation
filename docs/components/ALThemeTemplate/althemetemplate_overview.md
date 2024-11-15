@@ -17,9 +17,9 @@ You can customize Docassemble, and Assembly Line interviews, with a Bootstrap 5 
 ### Customizing the logo and title for Assembly Line interviews
 
 You should also customize the:
-* [Title](framework/magic_variables.md#al_organization_title)
-* [Home page](framework/magic_variables.md#al_organization_homepage)
-* and [logo](framework/magic_variables.md#al_logo)
+* [Title](../../magic_variables.md#al_organization_title)
+* [Home page](../../magic_variables.md#al_organization_homepage)
+* and [logo](../../magic_variables.md#al_logo)
 
 ### Creating a custom CSS theme with Bootstrap.build
 
@@ -122,7 +122,7 @@ $theme-colors: (
 
 Once you have written your `custom.scss` file, you can use the
 [ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) (which you can [install on
-your docassemble server](https://assemblyline.suffolklitlab.org/docs/installation#install-aldashboard))
+your docassemble server](../../get_started/installation.md#install-aldashboard))
 to compile a custom Bootstrap theme. If you are associated with the Suffolk LIT Lab and have an account on
 the Suffolk Development server, you can visit a [live version of the tool](https://apps-dev.suffolklitlab.org/start/ALDashboard/compile_bootstrap)
 to try it out.
