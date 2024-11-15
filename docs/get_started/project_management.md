@@ -153,7 +153,7 @@ For complex interviews that involve multiple forms/templates, consider doing thi
 Before you show the interview to the decisionmaker and stakeholders, get someone with Document Assembly Line experience to test it with you. This will help you identify issues you may have missed and questions you still need to ask the decisionmaker.
 
 :::tip
-If you aren't sure where to find someone to give you preliminary feedback, try asking [the community](http://localhost:3000/docs/get_started#join-the-community)! Come to one of the Monday community meetings or ask in the Microsoft Teams forum.
+If you aren't sure where to find someone to give you preliminary feedback, try asking [the community](https://assemblyline.suffolklitlab.org/docs/get_started#join-the-community)! Come to one of the Monday community meetings or ask in the Microsoft Teams forum.
 :::
 
 Schedule a video meeting with the tester so you can watch them go through the interview. Or they can watch you demonstrate it. Record the test if you can so you can focus on the test instead of taking notes.
