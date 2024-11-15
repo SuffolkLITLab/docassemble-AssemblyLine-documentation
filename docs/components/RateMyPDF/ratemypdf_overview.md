@@ -59,7 +59,7 @@ Bibtex format:
 
 ## Why readability scores aren't good enough
 
-[Readability](style_guide_readability.md) has been one of the only available
+[Readability](/docs/style_guide/readability) has been one of the only available
 tools to measure the ease of use of court forms. Forward thinking courts have
 readability targets of 6th grade. But because people don't just read forms--they
 answer questions and follow instructions--readability isn't a very good measure
@@ -186,7 +186,7 @@ to identify and validate the features the RateMyPDF score measures.
 
 And:
 
-1. Our own page on [readability](style_guide_readability.md)
+1. Our own page on [readability](/docs/style_guide/readability)
 1. [Readability Scores: Reference guide](https://brycewilley.xyz/2022/01/readability-scores-reference), by team member Bryce Willey
 1. [Benchmarking everyday documents](https://uploads-ssl.webflow.com/5c06fb475dbf1265069aba1e/5c2bb2a81110ecda570573fe_SC5Benchmarkingv4.pdf), Martin Evans, April 2011
 1. [What makes a good document?](https://www.reading.ac.uk/web/files/simplification/SC2CriteriaGoodDoc-7.pdf), Rob Waller, April 2011

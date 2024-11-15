@@ -2,7 +2,7 @@
 id: ql_language
 title: language
 sidebar_label: Language
-slug: /question_library/language
+slug: /style_guide/question_library/language
 ---
 
 import Tabs from '@theme/Tabs';

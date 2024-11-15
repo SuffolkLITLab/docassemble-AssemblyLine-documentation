@@ -34,7 +34,7 @@ quite right, perhaps something as simple as a typo.
 ## Work towards a readable, usable interview
 
 You should also take this chance to review our guidance about
-[writing good questions](/docs/question_style_overview.md). While you edit
+[writing good questions](/docs/style_guide/question_overview). While you edit
 your interview, work steadily to make it better.
 
 ## Getting the draft into your playground

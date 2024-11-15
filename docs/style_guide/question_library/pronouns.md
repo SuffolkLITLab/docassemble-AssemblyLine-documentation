@@ -2,7 +2,7 @@
 id: ql_pronouns
 title: Pronouns
 sidebar_label: Pronouns
-slug: /question_library/pronouns
+slug: /style_guide/question_library/pronouns
 ---
 
 import Tabs from '@theme/Tabs';

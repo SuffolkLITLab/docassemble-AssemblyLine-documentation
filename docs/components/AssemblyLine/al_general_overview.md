@@ -33,7 +33,7 @@ fields:
       the_address.address_fields()
 ```
 
-See [`Addresses`](question_library/addresses.md) for more information and
+See [`Addresses`](/docs/style_guide/question_library/addresses) for more information and
 examples.
 
 :::note 
@@ -99,13 +99,13 @@ entities.
   displays only years.
 * `name_fields(person_or_business:str = 'person', show_suffix=True)` is like
   `address_fields()` and is used to display a list of either 3 or 4 fields for a
-  person's name. See [`Names`](question_library/names.md)
+  person's name. See [`Names`](/docs/style_guide/question_library/names)
 * `address_fields()` is a wrapper around the `address_fields()` method of an
   `ALAddress` with the same parameters.
 * `gender_fields(show_help=False)` is like the `address_fields()` method but
   displays a list of vetted gender options. Read more about
-  [`gender`](/question_library/gender.md) questions.
-* `pronoun_fields()` displays a question that allows the user to provide their pronouns, with multiple choice and a fill-in-the-blank option. See [`pronouns`](/question_library/pronouns.md).
+  [`gender`](/docs/style_guide/question_library/gender) questions.
+* `pronoun_fields()` displays a question that allows the user to provide their pronouns, with multiple choice and a fill-in-the-blank option. See [`pronouns`](/docs/style_guide/question_library/pronouns).
 * `initials()` is used to return a string with the 1, 2, or 3 initial letters of
   a person's name. E.g., `QKS` for Quinten K Steenhuis.
 * `language_fields(choices=List[Dict[str, str]])` provides a language selector that sets the `.language` attribute of the user, together with an `other` fill-in. This should be the two-letter ISO language code. We recommend defining and passing a dictionary named `al_language_user_choices` which will also be used by built-in questions triggered from `ql_baseline.yml`.

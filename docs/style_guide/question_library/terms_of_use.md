@@ -2,7 +2,7 @@
 id: ql_terms_of_use
 title: Terms of Use
 sidebar_label: Terms of Use
-slug: /question_library/terms_of_use
+slug: /style_guide/question_library/terms_of_use
 ---
 
 ## How to share a terms of use with your users

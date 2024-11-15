@@ -2,7 +2,7 @@
 id: ql_addresses
 title: Addresses
 sidebar_label: Addresses
-slug: /question_library/addresses
+slug: /style_guide/question_library/addresses
 ---
 
 import Tabs from '@theme/Tabs';
