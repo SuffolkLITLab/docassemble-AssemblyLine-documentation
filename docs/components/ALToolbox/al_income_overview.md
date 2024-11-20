@@ -21,9 +21,9 @@ on your server, and run the [al_income_demo interview](https://github.com/Suffol
 
 Once you have a broad idea of what each class is about, you can choose from one of the more in-depth tutorials:
 
-* [Expenses](al_income_expenses)
-* [Jobs](al_income_jobs)
-* [Itemized Jobs](al_income_itemizedjobs)
+* [Expenses](al_income_expenses.md)
+* [Jobs](al_income_jobs.md)
+* [Itemized Jobs](al_income_itemizedjobs.md)
 
 :::warning Work in progress
 The following classes don't yet have tutorials that you can follow, but you can follow

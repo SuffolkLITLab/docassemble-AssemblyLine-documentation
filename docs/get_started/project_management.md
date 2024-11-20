@@ -203,7 +203,7 @@ Once the interview is live, consider how people who need it will find it.
 * Others might want to direct people to the interview, like courts, legal aid organizations, and other advocates. Ask them to link to your landing page from their own websites.
 * Paid advertising can help spread awareness, if you have a budget for it.
 
-You can also set up [collect analytics](../components/InterviewStats/interviewstats_overview) to learn how people are finding and using the interview.
+You can also set up [collect analytics](../components/InterviewStats/interviewstats_overview.md) to learn how people are finding and using the interview.
 
 ## Do a retrospective
 

@@ -57,7 +57,7 @@ depending on the value of the `key` so that the template does not need to be cre
 twice.
 
 The `signature_if_final` method of an
-[ALIndividual](al_general_overview#ALIndividual) was created to simplify this
+[ALIndividual](al_general_overview.md#ALIndividual) was created to simplify this
 common use case.
 
 Here's how to use an ALDocument:

@@ -22,7 +22,7 @@ The LIT Lab gathered more than 200 volunteers from around the world and built to
 * The [the Weaver](../authoring/weaver_overview.md), a tool for converting existing PDF and DOCX court forms into draft Docassemble interviews in as little as one hour.
 * A [library](../style_guide/question_library/names.md) of pre-built, commonly used, accessible questions, vetted by experts and translated into at least 5 languages.
 * A [style guide](../style_guide/question_style_overview.md) for interview questions that are easy to read and answer.
-* The first [open-source, non-profit e-filing service provider (EFSP)](../components/EFSPIntegration/efsp_overview.md) so that forms completed through guided interviews could be filed directly with courts using the Tyler e-filing management system.
+* The first [open-source, non-profit e-filing service provider (EFSP)](components/EFSPIntegration/efsp_overview.md) so that forms completed through guided interviews could be filed directly with courts using the Tyler e-filing management system.
 * A [collection of existing PDF forms](https://suffolklitlab.org/form-explorer/)
   across multiple jurisdictions.
 

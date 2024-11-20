@@ -22,7 +22,7 @@ those tips might be different in the context of guided interviews compared to
 more general guidance about good legal writing and good writing for forms.
 
 We have also thought deeply about how to **measure** the burden that completing
-a form places on a user. You might find our section on [form complexity](../components/RateMyPDF/ratemypdf_overview) helpful to read along with this section.
+a form places on a user. You might find our section on [form complexity](../components/RateMyPDF/ratemypdf_overview.md) helpful to read along with this section.
 
 ## There's no substitute for usability testing
 

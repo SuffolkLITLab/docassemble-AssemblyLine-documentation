@@ -18,7 +18,7 @@ Sometimes, courts will ask for specific pieces of information about a person's p
 will want to use a job that can handle itemizing different types of incomes and deductions for the same type of job.
 
 This is not the class that you should reach for first. You should
-check and see if the [ALJob](al_income_jobs) class satisfies your needs, since it asks the user far fewer questions than the ALItemizedJob.
+check and see if the [ALJob](al_income_jobs.md) class satisfies your needs, since it asks the user far fewer questions than the ALItemizedJob.
 
 If you need to use it, a main benefit is the fact that the ALItemizedJobList
 will do all of the calculations needed over multiple jobs to get a single answer for monthly pay, even if the jobs have different pay schedules, and have multiple incomes per job that come at different rates.
@@ -33,7 +33,7 @@ Before you start, we'll assume that you
 * have the [`ALToolbox` package installed on your server](../../get_started/installation.md#run-the-installation-script)
 * know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
 * know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
-* have looked at the [the `ALJob` tutorial](al_income_jobs) and decided you need to handle more complicated information
+* have looked at the [the `ALJob` tutorial](al_income_jobs.md) and decided you need to handle more complicated information
 
 ### Writing the interview
 
