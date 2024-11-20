@@ -3,6 +3,7 @@ id: answer_set_intakes
 title: |
     Using Answer Sets to capture and re-use client information
 sidebar_label: Capture and re-use client information
+slug: answer_sets/intakes
 ---
 
 ## Overview

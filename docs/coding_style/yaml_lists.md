@@ -2,7 +2,7 @@
 id: yaml_lists
 title: Collecting items in lists
 sidebar_label: Collecting items in lists
-slug: /coding_style_guide/yaml_lists
+slug: yaml_lists
 ---
 
 ## Guiding Principles

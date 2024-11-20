@@ -2,7 +2,7 @@
 id: docx_templates
 title: Working with DOCX files
 sidebar_label: Working with DOCX files
-slug: /authoring/docx
+slug: docx
 ---
 
 :::tip

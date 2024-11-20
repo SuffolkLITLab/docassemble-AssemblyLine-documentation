@@ -2,7 +2,7 @@
 id: question_style_validation
 title: Use input validation carefully
 sidebar_label: Use input validation carefully
-slug: /style_guide/question_style_validation
+slug: question_style_validation
 ---
 
 ## When to use input validation

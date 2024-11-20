@@ -2,7 +2,7 @@
 id: question_style_structure
 title: Group questions into screens
 sidebar_label: Group questions into screens
-slug: /style_guide/question_structure
+slug: question_structure
 ---
 
 ## Structuring your guided interview

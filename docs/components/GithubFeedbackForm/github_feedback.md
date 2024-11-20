@@ -3,6 +3,7 @@ id: githubfeedbackform_overview
 title: |
     Setting up and using Feedback
 sidebar_label: GithubFeedbackForm
+slug: overview
 ---
 
 When testing your interviews and after you go live, you'll want a way to for users to tell you their thoughts

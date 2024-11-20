@@ -2,6 +2,7 @@
 id: navigation
 title: Dynamic navigation sections
 sidebar_label: Dynamic navigation sections
+slug: navigation
 ---
 
 By default, Assembly Line interviews have navigation turned on. In some cases, you

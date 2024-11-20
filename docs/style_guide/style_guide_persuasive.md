@@ -2,7 +2,7 @@
 id: style_guide_respect
 title: Respect your user
 sidebar_label: Respect your user
-slug: /style_guide/respect
+slug: respect
 ---
 
 Write in a way that respects your reader. Do not tell your reader how to think or feel.

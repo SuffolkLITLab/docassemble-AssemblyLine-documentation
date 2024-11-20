@@ -2,7 +2,7 @@
 id: question_style_organize_fields
 title: Organize fields thoughtfully on each screen
 sidebar_label: Organize fields thoughtfully on each screen
-slug: /style_guide/question_style_organize_fields
+slug: question_style_organize_fields
 ---
 
 Guided interviews aren't constrained by the length of a piece of paper. But

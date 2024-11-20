@@ -3,6 +3,7 @@ id: efiling_through_docassemble
 title: |
   E-filing through Docassemble
 sidebar_label: Integrating Docassemble interviews with e-filing
+slug: docassemble_integration
 ---
 
 This is a guide to get from a working Assembly Line Interview to an interview that can e-file through our EFSP to the Tyler EFM system.

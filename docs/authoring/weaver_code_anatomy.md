@@ -4,7 +4,7 @@ title: |
   Appendix: Understanding the YAML code
 sidebar_label: |
   Appendix: Understanding the YAML code
-slug: /authoring/generated_yaml
+slug: generated_yaml
 ---
 
 :::warning

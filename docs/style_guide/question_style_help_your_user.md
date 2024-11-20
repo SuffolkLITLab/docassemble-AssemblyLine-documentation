@@ -2,7 +2,7 @@
 id: question_style_help_your_user
 title: Help your user
 sidebar_label: Help your user
-slug: /style_guide/question_help_your_user
+slug: question_help_your_user
 ---
 
 ## Provide help information in context

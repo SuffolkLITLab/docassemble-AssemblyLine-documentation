@@ -2,7 +2,7 @@
 id: development_roadmap
 title: Development roadmap for the Document Assembly Line
 sidebar_label: Development roadmap
-slug: /get_started/development_roadmap
+slug: development_roadmap
 ---
 
 The Document Assembly Line is under continuous development. Our goal with this roadmap is to share our plans and priorities for the Document Assembly Line with the community.

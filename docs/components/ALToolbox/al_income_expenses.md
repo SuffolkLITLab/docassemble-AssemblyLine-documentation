@@ -3,6 +3,7 @@ id: al_income_expenses
 title: |
     Expenses: ALExpense and ALExpenseList
 sidebar_label: Expenses
+slug: ALIncome/expenses
 ---
 
 The `ALExpenseList` is a class that helps you ask a user about their different expenses.

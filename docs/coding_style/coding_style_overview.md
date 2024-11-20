@@ -2,7 +2,7 @@
 id: coding_style_overview
 title: Docassemble Coding Style Guide
 sidebar_label: Coding Style
-slug: /coding_style_guide
+slug: overview
 ---
 
 <!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->

@@ -2,7 +2,7 @@
 id: style_guide_formatting
 title: Format text for legibility
 sidebar_label: Format text for legibility
-slug: /style_guide/formatting
+slug: formatting
 ---
 
 ## Avoid "walls of text"

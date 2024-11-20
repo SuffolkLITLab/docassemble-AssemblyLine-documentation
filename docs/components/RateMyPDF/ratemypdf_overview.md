@@ -2,6 +2,7 @@
 id: ratemypdf_overview
 title: Scoring form complexity with RateMyPDF
 sidebar_label: RateMyPDF
+slug: overview
 ---
 
 [RateMyPDF](https://ratemypdf.com) is a tool built by Suffolk LIT Lab to help you

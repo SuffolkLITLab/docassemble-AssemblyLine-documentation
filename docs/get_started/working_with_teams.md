@@ -2,7 +2,7 @@
 id: working_with_teams
 title: Working with Teams
 sidebar_label: Working with Teams
-slug: /get_started/working_with_teams
+slug: working_with_teams
 ---
 
 :::warning

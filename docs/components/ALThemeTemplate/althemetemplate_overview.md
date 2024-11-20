@@ -3,6 +3,7 @@ id: althemetemplate_overview
 title: |
   ALThemeTemplate: Applying a Custom Theme or Brand
 sidebar_label: ALThemeTemplate
+slug: overview
 ---
 
 ## Sharing a custom look and feel across multiple Assembly Line interviews

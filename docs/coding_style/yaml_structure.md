@@ -2,7 +2,7 @@
 id: yaml_structure
 title: Structuring your interview
 sidebar_label: Structuring your interview
-slug: /coding_style_guide/yaml_structure
+slug: yaml_structure
 ---
 
 ### Use a logical order for blocks inside your YAML file

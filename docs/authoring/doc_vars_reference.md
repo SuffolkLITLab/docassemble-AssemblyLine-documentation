@@ -2,7 +2,7 @@
 id: document_variables_reference
 title: Field labels to use in template files
 sidebar_label: Field labels to use in template files
-slug: /authoring/label_variables
+slug: label_variables
 ---
 
 The Document Assembly Line framework can help you automate templates that use any

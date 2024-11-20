@@ -2,7 +2,7 @@
 id: ql_gender
 title: Gender
 sidebar_label: Gender
-slug: /style_guide/question_library/gender
+slug: gender
 ---
 
 import Tabs from '@theme/Tabs';

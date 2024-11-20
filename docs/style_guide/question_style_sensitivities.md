@@ -2,7 +2,7 @@
 id: question_style_sensitivities
 title: Be considerate to your user
 sidebar_label: Be considerate to your user
-slug: /style_guide/question_style_sensitivities
+slug: question_style_sensitivities
 ---
 
 ## Respect your user

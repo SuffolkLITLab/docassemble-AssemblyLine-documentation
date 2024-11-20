@@ -4,7 +4,7 @@ title: |
   Writing a Review Screen
 sidebar_label: |
   Review Screen
-slug: /authoring/review_screen
+slug: review_screen
 ---
 
 ## Overview

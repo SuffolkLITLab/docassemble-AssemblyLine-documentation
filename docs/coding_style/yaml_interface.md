@@ -2,7 +2,7 @@
 id: yaml_interface
 title: Choosing interface options
 sidebar_label: Choosing interface options
-slug: /coding_style_guide/yaml_interface
+slug: yaml_interface
 ---
 
 ## Use radio buttons for short lists of options

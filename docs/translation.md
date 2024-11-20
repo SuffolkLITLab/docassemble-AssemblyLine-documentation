@@ -2,7 +2,7 @@
 id: translation 
 title: Translating your interview
 sidebar_label: Translating your interview
-slug: /translation
+slug: translation
 ---
 
 The Assembly Line has several tools that build on Docassemble's native translation system

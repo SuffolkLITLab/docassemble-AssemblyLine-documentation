@@ -3,6 +3,7 @@ id: efiling_codes
 title: |
   E-filing: Tyler codes
 sidebar_label: E-filing codes
+slug: tyler_codes
 ---
 
 Codes are how Tyler Technologies handles the complexity of case categories,

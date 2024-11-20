@@ -3,6 +3,7 @@ id: al_income_itemizedjobs
 title: |
   Itemized Jobs: ALItemizedJob and ALItemizedJobList
 sidebar_label: Itemized jobs
+slug: ALIncome/itemizedjobs
 ---
 
 Sometimes, you'll need detailed information about a person's

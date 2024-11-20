@@ -4,7 +4,7 @@ title: |
    "Weaving" your form into a draft interview
 sidebar_label: |
    "Weaving" your form into a draft interview
-slug: /authoring/generating_code
+slug: generating_code
 ---
 
 <!-- Boilerplate, Baseline, kit, ready to build, some assembly required, something to build on, starting point, blank slate, foundation, groundwork, starter dough, groundwork, spark -->

@@ -2,7 +2,7 @@
 id: style_guide_readability
 title: Use plain language
 sidebar_label: Use plain language
-slug: /style_guide/readability
+slug: readability
 ---
 
 <!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->

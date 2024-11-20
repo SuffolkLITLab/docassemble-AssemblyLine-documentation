@@ -2,7 +2,7 @@
 id: yaml
 title: Interview files
 sidebar_label: Interview files
-slug: /coding_style_guide/yaml
+slug: yaml
 ---
 
 Docassemble interviews are written in

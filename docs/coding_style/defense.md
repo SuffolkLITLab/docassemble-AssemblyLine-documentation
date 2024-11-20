@@ -4,7 +4,7 @@ title: |
    "Safe" coding
 sidebar_label: |
    "Safe" coding
-slug: /coding_style_guide/defense
+slug: defense
 ---
 
 ## Use Docassemble lists, dictionaries, and sets, or subclasses

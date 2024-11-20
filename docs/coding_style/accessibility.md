@@ -2,7 +2,7 @@
 id: accessibility
 title: Making your interview accessible
 sidebar_label: Interview accessibility
-slug: /coding_style_guide/accessibility
+slug: accessibility
 ---
 
 **Web Accessibility** is the practice of making your website usable by many different users, such as those who use keyboard controls or screen readers.

@@ -2,7 +2,7 @@
 id: beginners_guide
 title: Learn to build Docassemble interviews
 sidebar_label: Beginner's guide
-slug: /get_started/beginners_guide
+slug: beginners_guide
 ---
 
 **If you have never used Docassemble before, you are on the right page!** This is how the [LIT Lab](https://suffolklitlab.org) teaches people to turn their first court form into a Docassemble guided interview.

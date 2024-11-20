@@ -2,6 +2,7 @@
 id: error_actions
 title: Helping users recover from developer errors
 sidebar_label: Error pages
+slug: error_actions
 ---
 
 ## Overview

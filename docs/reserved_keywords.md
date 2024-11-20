@@ -2,6 +2,7 @@
 id: reserved_keywords
 title: Reserved variable names you cannot use in Document Assembly Line interviews
 sidebar_label: Reserved variables
+slug: reserved_keywords
 ---
 
 ## What is a "reserved" name?

@@ -2,7 +2,7 @@
 id: project_management
 title: Interview project management guide
 sidebar_label: Project management
-slug: /get_started/project_management
+slug: project_management
 ---
 
 Whether you are a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else getting started on an interview-building project, this page will guide you through the stages of a successful project.

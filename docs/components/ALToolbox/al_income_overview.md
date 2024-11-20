@@ -2,6 +2,7 @@
 id: al_income_overview
 title: Python classes to gather financial information
 sidebar_label: Gathering financial information
+slug: ALIncome/overview
 ---
 
 ## Overview

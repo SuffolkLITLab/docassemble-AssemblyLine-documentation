@@ -2,6 +2,7 @@
 id: altoolbox_overview
 title: ALToolbox functions and components
 sidebar_label: ALToolbox functions and components
+slug: overview
 ---
 
 import Tabs from '@theme/Tabs';

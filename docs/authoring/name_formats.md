@@ -2,7 +2,7 @@
 id: name_formats
 title: Name formats
 sidebar_label: Name formats
-slug: /authoring/naming
+slug: naming
 ---
 
 In programming languages (and sometimes in computer files and names in general),

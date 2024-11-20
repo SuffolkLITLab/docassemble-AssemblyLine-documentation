@@ -2,6 +2,7 @@
 id: alrecipes_overview
 title: ALRecipes
 sidebar_label: ALRecipes
+slug: overview
 ---
 
 This repository includes two groups of recipes, one group contains examples for the Document Assembly Line project, the other group contains generic docassemble interviews addressing specific needs.

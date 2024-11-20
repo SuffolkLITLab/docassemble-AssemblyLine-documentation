@@ -2,7 +2,7 @@
 id: question_style_overview
 title: Writing good questions
 sidebar_label: Writing good questions
-slug: /style_guide/question_overview
+slug: question_overview
 ---
 
 <!-- original: https://docs.google.com/document/d/1B-_6A5OKZ0b3s8z2S14KdRQsK7ga4nmjjthJiaZMiB8/edit#heading=h.cvtj6d8ezh8x -->

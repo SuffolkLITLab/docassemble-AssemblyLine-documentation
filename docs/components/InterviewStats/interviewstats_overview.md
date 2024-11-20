@@ -2,6 +2,7 @@
 id: interviewstats_overview
 title: 'InterviewStats: Tracking usage of Assembly Line interviews'
 sidebar_label: InterviewStats
+slug: overview
 ---
 
 ## Overview

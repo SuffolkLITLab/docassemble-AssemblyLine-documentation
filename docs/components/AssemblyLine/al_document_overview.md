@@ -2,6 +2,7 @@
 id: al_document_overview
 title: Python Classes to simplify working with multiple templates
 sidebar_label: Working with multiple templates
+slug: ALDocument/overview
 ---
 
 ## Overview

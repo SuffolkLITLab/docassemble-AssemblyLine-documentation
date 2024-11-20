@@ -2,7 +2,7 @@
 id: customizing_interview
 title: Editing your interview
 sidebar_label: Editing your interview
-slug: /authoring/customizing_interview
+slug: customizing_interview
 ---
 
 ## Edit your completed draft interview in the Docassemble playground

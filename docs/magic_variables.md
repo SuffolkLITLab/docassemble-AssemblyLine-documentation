@@ -2,6 +2,7 @@
 id: magic_variables
 title: Special variables for Document Assembly Line interviews
 sidebar_label: Special variables
+slug: magic_variables
 ---
 
 ## Server-wide configuration options

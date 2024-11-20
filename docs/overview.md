@@ -2,7 +2,7 @@
 id: overview
 title: Developing with Docassemble and the Document Assembly Line
 sidebar_label: Overview
-slug: /overview
+slug: overview
 ---
 
 ## This documentation covers the custom stuff

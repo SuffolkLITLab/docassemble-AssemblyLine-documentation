@@ -2,6 +2,7 @@
 id: al_reminders_overview
 title: Scheduled reminders
 sidebar_label: Scheduled reminders
+slug: ALReminders/overview
 ---
 
 A guided interview is always an intervention into one part of a larger process.

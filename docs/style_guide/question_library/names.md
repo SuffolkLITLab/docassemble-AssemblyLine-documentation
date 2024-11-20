@@ -2,7 +2,7 @@
 id: ql_names
 title: Names
 sidebar_label: Names
-slug: /style_guide/question_library/names
+slug: names
 ---
 
 import Tabs from '@theme/Tabs';

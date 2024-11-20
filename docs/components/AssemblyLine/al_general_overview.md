@@ -2,6 +2,7 @@
 id: al_general_overview
 title: Python classes for representing people and addresses
 sidebar_label: Representing people & addresses
+slug: ALGeneral/overview
 ---
 
 The functions and classes listed on this page are always available in Assembly Line interviews.

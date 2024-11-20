@@ -2,7 +2,7 @@
 id: pdf_templates
 title: Working with PDF files
 sidebar_label: Working with PDF files
-slug: /authoring/pdfs
+slug: pdfs
 ---
 
 :::tip

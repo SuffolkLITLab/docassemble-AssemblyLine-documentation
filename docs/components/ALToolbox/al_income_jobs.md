@@ -3,6 +3,7 @@ id: al_income_jobs
 title: |
     Jobs: ALJob and ALJobList
 sidebar_label: Jobs
+slug: ALIncome/jobs
 ---
 
 Asking people about their jobs is a common task when getting financial information. The `ALJob` class tries to be complete but simple for your users to answer, doing the math for them, and straight-forward for you to use.

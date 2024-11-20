@@ -3,6 +3,7 @@ id: efiling_monitoring
 title: |
   Monitoring your e-filing operations
 sidebar_label: Monitoring
+slug: monitoring
 ---
 
 ## Monitoring

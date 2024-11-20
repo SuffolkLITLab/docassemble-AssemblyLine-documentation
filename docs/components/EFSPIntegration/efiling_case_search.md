@@ -3,6 +3,7 @@ id: efiling_case_search
 title: |
   E-filing: Case Search
 sidebar_label: Case Search
+slug: case_search
 ---
 
 This guide will help you integrate a case search feature into
