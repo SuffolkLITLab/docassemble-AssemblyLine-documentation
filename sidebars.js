@@ -92,8 +92,6 @@ module.exports = {
                 'coding_style/accessibility'
             ]
         },
-        'magic_variables',
-        'reserved_keywords',
         'translation',
         {
             "type": "html",
@@ -116,6 +114,8 @@ module.exports = {
                         'components/AssemblyLine/answer_set_intakes',
                     ]
                 },
+                'components/AssemblyLine/magic_variables',
+                'components/AssemblyLine/reserved_keywords',
                 'components/AssemblyLine/navigation',
                 'components/AssemblyLine/error_actions',
                 "components/AssemblyLine/al_general",
@@ -163,7 +163,7 @@ module.exports = {
             ]
         },
         {
-            label: 'EFSPIntegration',
+            label: 'E-filing integration (EFSP)',
             type: 'category',
             items: [
                 'components/EFSPIntegration/efsp_overview',
@@ -180,7 +180,7 @@ module.exports = {
             ]
         },
         {
-            label: 'ALKiln',
+            label: 'Automated testing (ALKiln)',
             type: 'category',
             items: [
                 // WIPs

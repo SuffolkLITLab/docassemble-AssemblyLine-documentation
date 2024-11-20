@@ -51,9 +51,9 @@ PDF and DOCX `labels` should also work as valid [Python variable
 names](../coding_style/python.md). The basic rule is that Python variable names
 need to start with a letter and can only contain letters, digits, and the `_`
 underscore character. Some variable names are
-[reserved](../reserved_keywords.md) and have a special meaning inside
+[reserved](../components/AssemblyLine/reserved_keywords.md) and have a special meaning inside
 AssemblyLine interviews. You should not use a variable name on the
-[reserved](../reserved_keywords.md) list. Doing so can lead to 
+[reserved](../components/AssemblyLine/reserved_keywords.md) list. Doing so can lead to 
 hard to track bugs.
 
 #### Variable names are case sensitive - make them all lowercase
@@ -395,4 +395,4 @@ your edited template directly to the Docassemble playground's templates folder.
 
 ## See also
 
-- [List of reserved variable names](../reserved_keywords.md)
+- [List of reserved variable names](../components/AssemblyLine/reserved_keywords.md)

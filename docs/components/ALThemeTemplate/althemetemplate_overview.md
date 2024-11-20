@@ -18,9 +18,9 @@ You can customize Docassemble, and Assembly Line interviews, with a Bootstrap 5 
 ### Customizing the logo and title for Assembly Line interviews
 
 You should also customize the:
-* [Title](../../magic_variables.md#al_organization_title)
-* [Home page](../../magic_variables.md#al_organization_homepage)
-* and [logo](../../magic_variables.md#al_logo)
+* [Title](../AssemblyLine/magic_variables.md#al_organization_title)
+* [Home page](../AssemblyLine/magic_variables.md#al_organization_homepage)
+* and [logo](../AssemblyLine/magic_variables.md#al_logo)
 
 ### Creating a custom CSS theme with Bootstrap.build
 
