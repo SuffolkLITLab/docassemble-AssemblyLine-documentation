@@ -1,0 +1,12 @@
+{
+  "items": [
+    "components/AssemblyLine/al_courts",
+    "components/AssemblyLine/al_document",
+    "components/AssemblyLine/al_general",
+    "components/AssemblyLine/language",
+    "components/AssemblyLine/project_maintenance",
+    "components/AssemblyLine/sessions"
+  ],
+  "label": "AssemblyLine",
+  "type": "category"
+}

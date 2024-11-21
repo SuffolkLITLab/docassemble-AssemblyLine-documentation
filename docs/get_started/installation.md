@@ -2,7 +2,7 @@
 id: installation
 title: Installing the Document Assembly Line
 sidebar_label: Install the Assembly Line
-slug: /get_started/installation
+slug: installation
 ---
 
 Before you get started, make sure that you have [installed
@@ -80,7 +80,7 @@ them for your own jurisdiction or organization.
 
 To use this package, [pull it into your own Docassemble playground](https://docassemble.org/docs/playground.html#packages).
 
-Next, [follow our guide](/framework/althemetemplate.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
+Next, [follow our guide](../components/ALThemeTemplate/althemetemplate_overview.md) to edit the YAML files and add a custom CSS theme to fit your own organization's needs.
 
 Now, create a new package from the [Playground packages menu](https://docassemble.org/docs/playground.html#packages).
 Give the package a meaningful name, like LouisianaSharedBranding.
@@ -94,7 +94,7 @@ challenging to rename a package.
 
 ### Using your ALThemeTemplate with the ALWeaver
 
-If you plan on using the [ALWeaver](weaver_overview.md) to create your
+If you plan on using the [ALWeaver](../authoring/weaver_overview.md) to create your
 interviews, you will want to include your branding package in your
 weaved interviews. You can do this by adding 2 files to your branding
 package:

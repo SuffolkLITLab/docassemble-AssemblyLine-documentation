@@ -2,7 +2,7 @@
 id: dynamic_phrasing_based_on_values
 title: Dynamic phrasing based on values (gender, list length, and more)
 sidebar_label: Dynamic phrasing based on values
-slug: /authoring/dynamic_phrasing_based_on_values
+slug: dynamic_phrasing_based_on_values
 ---
 
 Docassemble has several clever features that you can use in templates

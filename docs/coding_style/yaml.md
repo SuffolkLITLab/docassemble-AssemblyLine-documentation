@@ -2,7 +2,7 @@
 id: yaml
 title: Interview files
 sidebar_label: Interview files
-slug: /coding_style_guide/yaml
+slug: yaml
 ---
 
 Docassemble interviews are written in
@@ -75,7 +75,7 @@ trust with your end user.
 Avoid using numbers, underscores, and other markers to indicate that you have a
 "final", "draft", etc. interview even during the editing process, as these have
 a chance of getting leaked to the public. Instead, use [version
-control](/docs/github) to track the history of your files as your project develops.
+control](../authoring/github.md) to track the history of your files as your project develops.
 
 ### Use a small number of YAML files for each project
 

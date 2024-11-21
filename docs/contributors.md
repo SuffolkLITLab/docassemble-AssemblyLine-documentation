@@ -2,7 +2,7 @@
 id: contributors 
 title: Project Contributors
 sidebar_label: Contributors
-slug: /contributors
+slug: contributors
 ---
 
 The Document Assembly Line project was organized by the Suffolk LIT Lab in the early days of the COVIC pandemic in 2020. Volunteers from around the world worked together to build online guided interviews so people could complete vital legal forms. This page acknowledges as many of those early contributors as possible.

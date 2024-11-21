@@ -2,7 +2,7 @@
 id: yaml_dynamic
 title: Making your interview dynamic
 sidebar_label: Making your interview dynamic
-slug: /coding_style_guide/yaml_dynamic
+slug: yaml_dynamic
 ---
 
 ### Use the `depends on` modifier when setting values with code

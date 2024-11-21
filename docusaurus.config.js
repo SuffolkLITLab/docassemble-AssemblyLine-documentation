@@ -77,69 +77,9 @@ module.exports = {
       {
         redirects: [
           {
-            from: '/docs',
-            to: '/'
-          },
-          {
-            from: '/docs/framework/efiling',
-            to: '/docs/efiling/overview'
-          },
-          {
-            from: '/docs/automated_integrated_testing',
-            to: '/docs/alkiln'
-          },
-          {
-            from: '/docs/intro',
-            to: '/docs/get_started'
-          },
-          {
-            from: '/docs/al_project_architecture',
-            to: '/docs/get_started/al_project_architecture'
-          },
-          {
-            from: '/docs/installation',
-            to: '/docs/get_started/installation'
-          },
-          {
-            from: '/docs/get_started/roadmap',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/assembly_line_steps',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/assembly_line_steps/roles',
-            to: '/docs/get_started/project_management#identify-key-roles--responsibilities'
-          },
-          {
-            from: '/docs/assembly_line_steps/steps',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/bootcamp',
-            to: '/docs/archive/bootcamp'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps/roles',
-            to: '/docs/get_started/project_management#identify-key-roles--responsibilities'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/get_started/assembly_line_steps/steps',
-            to: '/docs/get_started/project_management'
-          },
-          {
-            from: '/docs/planning',
-            to: '/docs/get_started/planning'
-          },
-          {
-            from: '/docs/authoring/working_with_teams',
-            to: '/docs/get_started/working_with_teams'
-          },
+            to: '/',
+            from: '/docs'
+          }
         ]
       }
     ]
@@ -161,7 +101,7 @@ module.exports = {
           editUrl:
             'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
         },
-
+        blog: false,
         pages: {
         },
         theme: {

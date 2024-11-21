@@ -2,7 +2,7 @@
 id: beginners_guide
 title: Learn to build Docassemble interviews
 sidebar_label: Beginner's guide
-slug: /get_started/beginners_guide
+slug: beginners_guide
 ---
 
 **If you have never used Docassemble before, you are on the right page!** This is how the [LIT Lab](https://suffolklitlab.org) teaches people to turn their first court form into a Docassemble guided interview.
@@ -45,7 +45,7 @@ Now you are probably itching to start building your first interview! But before 
 
 ## Review the interview project management guide
 
-Building a successful interview involves more than just coding in the Docassemble playground. You'll also need to consider things like project management, [working with a team](working_with_teams.md), [requirements](working_with_teams.md#understanding-the-projects-users-and-intended-purpose), [usability](../question_style_overview.md), [testing](/alkiln/intro.mdx), etc.
+Building a successful interview involves more than just coding in the Docassemble playground. You'll also need to consider things like project management, [working with a team](working_with_teams.md), [requirements](working_with_teams.md#understanding-the-projects-users-and-intended-purpose), [usability](../style_guide/question_style_overview.md), [testing](../components/ALKiln/intro.mdx), etc.
 
 **➡️ [Review the interview project management guide.](project_management.md)**
 

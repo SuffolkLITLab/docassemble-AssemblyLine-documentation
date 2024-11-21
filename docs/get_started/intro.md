@@ -17,12 +17,12 @@ This short, 3-minute video by David Colarusso and Quinten Steenhuis explains how
 
 The LIT Lab gathered more than 200 volunteers from around the world and built tools such as:
 
-* A [project management guide](/get_started/project_management.md) for building [Docassemble](https://docassemble.org) interviews to assemble court forms for filing.
+* A [project management guide](project_management.md) for building [Docassemble](https://docassemble.org) interviews to assemble court forms for filing.
 * The core [Document Assembly Line Tools](https://github.com/SuffolkLITLab/docassemble-AssemblyLine), to make it easier to use key Docassemble features.
-* The [the Weaver](generating_code), a tool for converting existing PDF and DOCX court forms into draft Docassemble interviews in as little as one hour.
-* A [library](question_library/names) of pre-built, commonly used, accessible questions, vetted by experts and translated into at least 5 languages.
-* A [style guide](style_guide/question_overview) for interview questions that are easy to read and answer.
-* The first [open-source, non-profit e-filing service provider (EFSP)](efiling/overview) so that forms completed through guided interviews could be filed directly with courts using the Tyler e-filing management system.
+* The [the Weaver](../authoring/weaver_overview.md), a tool for converting existing PDF and DOCX court forms into draft Docassemble interviews in as little as one hour.
+* A [library](../style_guide/question_library/names.md) of pre-built, commonly used, accessible questions, vetted by experts and translated into at least 5 languages.
+* A [style guide](../style_guide/question_style_overview.md) for interview questions that are easy to read and answer.
+* The first [open-source, non-profit e-filing service provider (EFSP)](components/EFSPIntegration/efsp_overview.md) so that forms completed through guided interviews could be filed directly with courts using the Tyler e-filing management system.
 * A [collection of existing PDF forms](https://suffolklitlab.org/form-explorer/)
   across multiple jurisdictions.
 

@@ -2,7 +2,7 @@
 id: python
 title: Python
 sidebar_label: Python
-slug: /coding_style_guide/python
+slug: python
 ---
 
 ## Use Python conventions for Python code

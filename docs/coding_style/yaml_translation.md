@@ -2,7 +2,7 @@
 id: yaml_translation
 title: Planning for translation and flexible updates
 sidebar_label: Planning for translation
-slug: /coding_style_guide/yaml_translation
+slug: yaml_translation
 ---
 ### Use labeled options with the `choices` modifier
 

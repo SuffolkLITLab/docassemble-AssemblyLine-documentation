@@ -2,7 +2,7 @@
 id: bootcamp
 title: Suffolk LIT Lab's Document Assembly Line Bootcamp
 sidebar_label: Bootcamp
-slug: /archive/bootcamp
+slug: bootcamp
 ---
 
 :::info
@@ -46,9 +46,9 @@ After signing up, you should have received invites to our docassemble server (ht
 
 Resources from the session:
 
-* [Running templates through the Weaver](weaver_overview.md)
-* [Labeling PDF variables](pdf_templates.md)
-* [Naming Variables Quick Reference](doc_vars_reference.md)
+* [Running templates through the Weaver](../authoring/weaver_overview.md)
+* [Labeling PDF variables](../authoring/pdf_templates.md)
+* [Naming Variables Quick Reference](../authoring/doc_vars_reference.md)
 * [The LIST taxonomy](https://taxonomy.legal/)
 
 Homework:
@@ -78,7 +78,7 @@ additional questions.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VAzXYEacN78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-* [Using Github in Docassemble](github.md)
+* [Using Github in Docassemble](../authoring/github.md)
 * Customizing basic branding with the [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate) package.
     * Logo
     * Intro screen
