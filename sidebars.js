@@ -118,6 +118,7 @@ module.exports = {
                 'components/AssemblyLine/reserved_keywords',
                 'components/AssemblyLine/navigation',
                 'components/AssemblyLine/error_actions',
+                'components/AssemblyLine/background_assembly',
                 "components/AssemblyLine/al_general",
                 "components/AssemblyLine/al_courts",
                 "components/AssemblyLine/al_document",
