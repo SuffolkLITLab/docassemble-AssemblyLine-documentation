@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-components/AssemblyLine/al_general" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">AssemblyLine.al_general | The Document Assembly Line</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/al_general"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="AssemblyLine.al_general | The Document Assembly Line"><meta data-rh="true" name="description" content="safe\subdivision\type"><meta data-rh="true" property="og:description" content="safe\subdivision\type"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/al_general"><link data-rh="true" rel="alternate" href="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/al_general" hreflang="en"><link data-rh="true" rel="alternate" href="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/al_general" hreflang="x-default"><link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.02bdc068.css">
+<script src="/assets/js/runtime~main.ab85005d.js" defer="defer"></script>
+<script src="/assets/js/main.05adf1d9.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const a=new URLSearchParams(window.location.search).entries();for(var[t,e]of a)if(t.startsWith("docusaurus-data-")){var n=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(n,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><div class="announcementBar_mb4j" style="background-color:#fafbfc;color:#091E42" role="banner"><div class="content_knG7 announcementBarContent_xLdY">Save the date for Suffolk's annual 🔥LIT Conference🔥 on April 7th, 2025! <a target="_blank" rel="noopener noreferrer" href="https://suffolklitlab.org/litcon/">View past LITCons</a></div></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/LITLab_white_and_gold.svg" alt="The Suffolk LIT Lab Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/LITLab_white_and_gold.svg" alt="The Suffolk LIT Lab Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">The Document Assembly Line</b></a><a class="navbar__item navbar__link" href="/docs/get_started">Get Started</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/overview">Documentation</a></div><div class="navbar__items navbar__items--right"><a href="https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Legal Tech Class<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://docassemble.org/docs.html" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Docassemble Docs<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG menuWithAnnouncementBar_GW3s"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/overview">Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/authoring/pdfs">Authoring interviews</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/style_guide/question_overview">Writing good questions</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/coding_style/overview">Coding style guide</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/translation">Translating your interview</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menuHtmlItem_M9Kj menu__list-item sidebar-heading">Assembly Line components</li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/components/AssemblyLine/ALGeneral/overview">AssemblyLine</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/ALGeneral/overview">Representing people &amp; addresses</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/ALDocument/overview">Working with multiple templates</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/ALReminders/overview">Scheduled reminders</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/components/AssemblyLine/answer_sets/overview">Answer sets</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/magic_variables">Special variables</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/reserved_keywords">Reserved variables</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/navigation">Dynamic navigation sections</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/error_actions">Error pages</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/components/AssemblyLine/al_general">al_general</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/al_courts">al_courts</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/al_document">al_document</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/language">language</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/sessions">sessions</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/ALRecipes/overview">ALRecipes</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/ALToolbox/overview">ALToolbox</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/ALThemeTemplate/overview">ALThemeTemplate</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/RateMyPDF/overview">RateMyPDF</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/GithubFeedbackForm/overview">GithubFeedbackForm</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/InterviewStats/overview">InterviewStats</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/FormFyxer/lit_explorer">FormFyxer</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/EFSPIntegration/overview">E-filing integration (EFSP)</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/ALKiln/intro">Automated testing (ALKiln)</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">AssemblyLine</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">al_general</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AssemblyLine.al_general</h1></header><h4 class="anchor anchorWithStickyNavbar_LWe7" id="safe_subdivision_type">safe_subdivision_type<a class="hash-link" aria-label="Direct link to safe_subdivision_type" title="Direct link to safe_subdivision_type" href="/docs/components/AssemblyLine/al_general#safe_subdivision_type">​</a></h4>
+<p>Returns the subdivision type for the country with the given country code.
+If no subdivision type is found, returns None.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>country_code</code> <em>str</em> - The ISO-3166-1 alpha-2 code for the country.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>Optional[str]</code> - The subdivision type for the country with the given country code.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aladdress-objects">ALAddress Objects<a class="hash-link" aria-label="Direct link to ALAddress Objects" title="Direct link to ALAddress Objects" href="/docs/components/AssemblyLine/al_general#aladdress-objects">​</a></h2>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALAddress</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">Address</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>This class is used to store addresses. The ALAddress class extends the Address
+class with the <code>address_fields()</code> method and &quot;smarter&quot;
+handling of the unit attribute when printing a formatted address.</p>
+<p><strong>Attributes</strong>:</p>
+<ul>
+<li><code>address</code> <em>str</em> - The street where the person lives.</li>
+<li><code>unit</code> <em>str</em> - The unit number where the person lives.</li>
+<li><code>city</code> <em>str</em> - The city where the person lives.</li>
+<li><code>state</code> <em>str</em> - The state where the person lives.</li>
+<li><code>zip</code> <em>str</em> - The zip code where the person lives.</li>
+<li><code>country</code> <em>str</em> - The country where the person lives.</li>
+<li><code>impounded</code> <em>Optional[bool]</em> - Whether the address is impounded.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="address_fields">address_fields<a class="hash-link" aria-label="Direct link to address_fields" title="Direct link to address_fields" href="/docs/components/AssemblyLine/al_general#address_fields">​</a></h4>
+<p>Return a YAML structure representing the list of fields for the object&#x27;s address.</p>
+<p>Optionally, allow the user to specify they do not have an address. When using
+<code>allow_no_address=True</code>, ensure to trigger the question with <code>users[0].address.has_no_address</code>
+rather than <code>users[0].address.address</code>. If <code>show_if</code> is used, it will not be applied when
+<code>allow_no_address</code> is also used. Ensure <code>country_code</code> adheres to ISO-3166-1 alpha-2 code standard.</p>
+<p>NOTE: This function is stateful under specific conditions. Refer to the conditions mentioned below.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>country_code</code> <em>Optional[str]</em> - ISO-3166-1 alpha-2 code of the country. Defaults to None.</li>
+<li><code>default_state</code> <em>Optional[str]</em> - Default state to set. Defaults to None.</li>
+<li><code>show_country</code> <em>bool</em> - Whether to display the country field. Defaults to False.</li>
+<li><code>show_county</code> <em>bool</em> - Whether to display the county field. Defaults to False.</li>
+<li><code>show_if</code> <em>Union[str, Dict[str, str], None]</em> - Condition to display each field. Defaults to None.</li>
+<li><code>allow_no_address</code> <em>bool</em> - Allow users to specify they don&#x27;t have an address. Defaults to False.</li>
+<li><code>ask_if_impounded</code> <em>Optional[bool]</em> - Whether to ask if the address is impounded. Defaults to False.</li>
+<li><code>maxlengths</code> <em>Optional[Dict[str, int]]</em> - A dictionary of field names and their maximum lengths. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, Any]]: A list of dictionaries representing address fields.</p>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li>The function will set the <code>country</code> attribute of the Address to <code>country_code</code> under these
+circumstances:</li>
+</ul>
+<ol>
+<li>The <code>country_code</code> parameter is used.</li>
+<li>The <code>show_country</code> parameter is not used.</li>
+<li><code>country_code</code> differs from the value returned by <code>get_country()</code>.</li>
+</ol>
+<ul>
+<li>Link to ISO-3166-1 alpha-2 codes:
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank" rel="noopener noreferrer">Officially assigned code elements</a>.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="formatted_unit">formatted_unit<a class="hash-link" aria-label="Direct link to formatted_unit" title="Direct link to formatted_unit" href="/docs/components/AssemblyLine/al_general#formatted_unit">​</a></h4>
+<p>Returns the unit, formatted appropriately.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language</code> <em>str, optional</em> - The language in which to format the unit. Defaults to None (which uses system language).</li>
+<li><code>require</code> <em>bool, optional</em> - A flag indicating whether the unit is required. If set to True, the function will
+raise an error if the unit attribute does not exist. Defaults to False.</li>
+<li><code>bare</code> <em>bool, optional</em> - A flag indicating whether to add the word &#x27;Unit&#x27; before the unit number. If set to
+True, the function will not add &#x27;Unit&#x27; regardless of other conditions. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The formatted unit. If the unit attribute does not exist and require is set to False, this will be an
+empty string. If the unit attribute exists and is not None or an empty string, the function will return
+the unit number, possibly prefixed with &#x27;Unit&#x27;. If the unit attribute exists and is None or an empty
+string, the function will return an empty string.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="block">block<a class="hash-link" aria-label="Direct link to block" title="Direct link to block" href="/docs/components/AssemblyLine/al_general#block">​</a></h4>
+<p>Returns a one-line formatted address, primarily for geocoding.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language</code> <em>str, optional</em> - Language for the address format.</li>
+<li><code>international</code> <em>bool</em> - If True, formats the address as an international address. Defaults to False.</li>
+<li><code>show_country</code> <em>bool, optional</em> - If True, includes the country in the formatted address.
+If None, decides based on the country attribute.</li>
+<li><code>bare</code> <em>bool</em> - If True, excludes certain formatting elements. Defaults to False.</li>
+<li><code>long_state</code> <em>bool</em> - If True, uses the full state name. Defaults to False.</li>
+<li><code>show_impounded</code> <em>bool</em> - If True, shows the address even if impounded. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The one-line formatted address.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="line_one">line_one<a class="hash-link" aria-label="Direct link to line_one" title="Direct link to line_one" href="/docs/components/AssemblyLine/al_general#line_one">​</a></h4>
+<p>Returns the first line of the address, including the unit number if it exists.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language</code> <em>str, optional</em> - Language for the address format.</li>
+<li><code>bare</code> <em>bool</em> - If True, excludes certain formatting elements. Defaults to False.</li>
+<li><code>show_impounded</code> <em>bool</em> - If True, shows the address even if impounded. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The first line of the address.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="line_two">line_two<a class="hash-link" aria-label="Direct link to line_two" title="Direct link to line_two" href="/docs/components/AssemblyLine/al_general#line_two">​</a></h4>
+<p>Returns the second line of the address, including city, state, and postal code.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language</code> <em>str, optional</em> - Language for the address format.</li>
+<li><code>long_state</code> <em>bool</em> - If True, uses the full state name. Defaults to False.</li>
+<li><code>show_impounded</code> <em>bool</em> - If True, shows the address even if impounded. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The second line of the address.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="on_one_line">on_one_line<a class="hash-link" aria-label="Direct link to on_one_line" title="Direct link to on_one_line" href="/docs/components/AssemblyLine/al_general#on_one_line">​</a></h4>
+<p>Returns a one-line formatted address.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>include_unit</code> <em>bool</em> - If True, includes the unit in the formatted address. Defaults to True.</li>
+<li><code>omit_default_country</code> <em>bool</em> - If True, doesn&#x27;t show the Docassemble default country in the formatted address. Defaults to True.</li>
+<li><code>language</code> <em>str, optional</em> - Language for the address format.</li>
+<li><code>show_country</code> <em>bool, optional</em> - If True, includes the country in the formatted address.
+If None, decides based on the country attribute.</li>
+<li><code>bare</code> <em>bool</em> - If True, excludes certain formatting elements. Defaults to False.</li>
+<li><code>long_state</code> <em>bool</em> - If True, uses the full state name. Defaults to False.</li>
+<li><code>show_impounded</code> <em>bool</em> - If True, shows the address even if impounded. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The one-line formatted address.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="normalized_address">normalized_address<a class="hash-link" aria-label="Direct link to normalized_address" title="Direct link to normalized_address" href="/docs/components/AssemblyLine/al_general#normalized_address">​</a></h4>
+<p>Try geocoding the address, returning the normalized version if successful.</p>
+<p>If geocoding is successful, the method returns the &quot;long&quot; normalized version
+of the address. All methods, such as <code>my_address.normalized_address().block()</code>, are
+still available on the returned object. However, note that the returned object will
+be a standard Address object, not an ALAddress object. If geocoding fails, it returns
+the version of the address as entered by the user.</p>
+<p>Warning: currently the normalized address will not be redacted if the address is impounded.</p>
+<p><strong>Returns</strong>:</p>
+<p>Union[Address, &quot;ALAddress&quot;]: Normalized address if geocoding is successful, otherwise
+the original address.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="state_name">state_name<a class="hash-link" aria-label="Direct link to state_name" title="Direct link to state_name" href="/docs/components/AssemblyLine/al_general#state_name">​</a></h4>
+<p>Returns the full state name based on the state abbreviation.</p>
+<p>If a <code>country_code</code> is provided, it will override the country attribute of the Address
+object. Otherwise, the method uses, in order:</p>
+<ol>
+<li>The country code associated with the Address object, and then</li>
+<li>The country set in the global config for the server.</li>
+</ol>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>country_code</code> <em>str, optional</em> - ISO-3166-1 alpha-2 code to override the country attribute of
+the Address object. For valid codes, refer to:
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements</a></li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The full state name corresponding to the state abbreviation. If an error occurs
+or the full name cannot be determined, returns the state abbreviation.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aladdresslist-objects">ALAddressList Objects<a class="hash-link" aria-label="Direct link to ALAddressList Objects" title="Direct link to ALAddressList Objects" href="/docs/components/AssemblyLine/al_general#aladdresslist-objects">​</a></h2>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALAddressList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>A class to store a list of ALAddress objects.</p>
+<p>Extends the DAList class and specifically caters to ALAddress objects.
+It provides methods to initialize the list and get a string representation
+of the list in a formatted manner.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="__str__">__str__<a class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__" href="/docs/components/AssemblyLine/al_general#__str__">​</a></h4>
+<p>Provide a string representation of the ALAddressList.</p>
+<p>This method returns the addresses in the list formatted in a
+comma-separated manner using the on_one_line method of ALAddress.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of all addresses in the list.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alnamelist-objects">ALNameList Objects<a class="hash-link" aria-label="Direct link to ALNameList Objects" title="Direct link to ALNameList Objects" href="/docs/components/AssemblyLine/al_general#alnamelist-objects">​</a></h2>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALNameList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>A class to store a list of IndividualName objects.</p>
+<p>Extends the DAList class and is tailored for IndividualName objects.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="__str__-1">__str__<a class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__" href="/docs/components/AssemblyLine/al_general#__str__-1">​</a></h4>
+<p>Provide a string representation of the ALNameList.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of all names in the list.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alpeoplelist-objects">ALPeopleList Objects<a class="hash-link" aria-label="Direct link to ALPeopleList Objects" title="Direct link to ALPeopleList Objects" href="/docs/components/AssemblyLine/al_general#alpeoplelist-objects">​</a></h2>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALPeopleList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Class to store a list of ALIndividual objects, representing people.</p>
+<p>For example, defendants, plaintiffs, or children.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="names_and_addresses_on_one_line">names_and_addresses_on_one_line<a class="hash-link" aria-label="Direct link to names_and_addresses_on_one_line" title="Direct link to names_and_addresses_on_one_line" href="/docs/components/AssemblyLine/al_general#names_and_addresses_on_one_line">​</a></h4>
+<p>Provide names and addresses of individuals on one line.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>comma_string</code> <em>str, optional</em> - The string to use between name-address pairs. Defaults to &#x27;; &#x27;.</li>
+<li><code>bare</code> <em>bool, optional</em> - If True, prevents appending the word &quot;Unit&quot; to the unit attribute. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of names followed by addresses.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="familiar">familiar<a class="hash-link" aria-label="Direct link to familiar" title="Direct link to familiar" href="/docs/components/AssemblyLine/al_general#familiar">​</a></h4>
+<p>Provide a list of familiar forms of names of individuals.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Keyword arguments to pass to the familiar method.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of familiar names.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="familiar_or">familiar_or<a class="hash-link" aria-label="Direct link to familiar_or" title="Direct link to familiar_or" href="/docs/components/AssemblyLine/al_general#familiar_or">​</a></h4>
+<p>Provide a list of familiar forms of names of individuals separated by &#x27;or&#x27;.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Keyword arguments to pass to the familiar method.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of familiar names separated by &#x27;or&#x27;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="short_list">short_list<a class="hash-link" aria-label="Direct link to short_list" title="Direct link to short_list" href="/docs/components/AssemblyLine/al_general#short_list">​</a></h4>
+<p>Return a subset of the list, truncated with &#x27;et. al.&#x27; if it exceeds a given limit.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>limit</code> <em>int</em> - The maximum number of items to display before truncating.</li>
+<li><code>truncate_string</code> <em>str, optional</em> - The string to append when truncating. Defaults to &#x27;, et. al.&#x27;.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of names, truncated if needed.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="full_names">full_names<a class="hash-link" aria-label="Direct link to full_names" title="Direct link to full_names" href="/docs/components/AssemblyLine/al_general#full_names">​</a></h4>
+<p>Return a formatted list of full names of individuals.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>comma_string</code> <em>str, optional</em> - The string to use between names. Defaults to &#x27;,&#x27;.</li>
+<li><code>and_string</code> <em>str, optional</em> - The string to use before the last name in the list. Defaults to &#x27;and&#x27;.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of full names.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun_reflexive">pronoun_reflexive<a class="hash-link" aria-label="Direct link to pronoun_reflexive" title="Direct link to pronoun_reflexive" href="/docs/components/AssemblyLine/al_general#pronoun_reflexive">​</a></h4>
+<p>Returns the appropriate reflexive pronoun for the list of people, depending
+on the <code>person</code> keyword argument and the number of items in the list.</p>
+<p>If the list is singular, return the reflexive pronoun for the first item in the list.
+If it is plural, return the appropriate plural reflexive pronoun (e.g., &quot;themselves&quot;)</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Additional keyword arguments that are defined <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a>.<!-- -->
+<ul>
+<li>person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a> documentation for more information.</li>
+<li>default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The reflexive pronoun for the list.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alindividual-objects">ALIndividual Objects<a class="hash-link" aria-label="Direct link to ALIndividual Objects" title="Direct link to ALIndividual Objects" href="/docs/components/AssemblyLine/al_general#alindividual-objects">​</a></h2>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALIndividual</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">Individual</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Used to represent an Individual on the assembly line project.</p>
+<p>This class extends the Individual class and adds more tailored attributes and methods
+relevant for the assembly line project. Specifically, it has attributes for previous addresses,
+other addresses, mailing addresses, previous names, aliases, and a preferred name.</p>
+<p><strong>Attributes</strong>:</p>
+<ul>
+<li><code>previous_addresses</code> <em>ALAddressList</em> - List of previous addresses.</li>
+<li><code>other_addresses</code> <em>ALAddressList</em> - List of other addresses.</li>
+<li><code>mailing_address</code> <em>ALAddress</em> - Current mailing address.</li>
+<li><code>service_address</code> <em>ALAddress</em> - Service address.</li>
+<li><code>previous_names</code> <em>ALNameList</em> - List of previous names.</li>
+<li><code>aliases</code> <em>ALNameList</em> - List of aliases.</li>
+<li><code>preferred_name</code> <em>IndividualName</em> - The preferred name.</li>
+</ul>
+<p><strong>Notes</strong>:</p>
+<p>Objects as attributes should not be passed directly to the constructor due to
+initialization requirements in the Docassemble framework. See the <code>init</code> method.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="signature_if_final">signature_if_final<a class="hash-link" aria-label="Direct link to signature_if_final" title="Direct link to signature_if_final" href="/docs/components/AssemblyLine/al_general#signature_if_final">​</a></h4>
+<p>Returns the individual&#x27;s signature if <code>i</code> is &quot;final&quot;, which usually means we are assembling the final version of the document (as opposed to a preview).</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>i</code> <em>str</em> - The condition which, if set to &quot;final&quot;, returns the signature.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>Union[DAFile, str]: The signature if the condition is met, otherwise an empty string.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="phone_numbers">phone_numbers<a class="hash-link" aria-label="Direct link to phone_numbers" title="Direct link to phone_numbers" href="/docs/components/AssemblyLine/al_general#phone_numbers">​</a></h4>
+<p>Fetches and formats the phone numbers of the individual.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>country</code> <em>str, optional</em> - The country for phone number formatting. Defaults to the country of the docassemble server.</li>
+<li><code>show_impounded</code> <em>bool</em> - If True, shows the phone numbers even if impounded. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted string of phone numbers.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contact_methods">contact_methods<a class="hash-link" aria-label="Direct link to contact_methods" title="Direct link to contact_methods" href="/docs/components/AssemblyLine/al_general#contact_methods">​</a></h4>
+<p>Generates a formatted string of all provided contact methods.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - A formatted string indicating the available methods to contact the individual.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="merge_letters">merge_letters<a class="hash-link" aria-label="Direct link to merge_letters" title="Direct link to merge_letters" href="/docs/components/AssemblyLine/al_general#merge_letters">​</a></h4>
+<p>If the Individual has a child_letters attribute, add the new letters to the existing list</p>
+<p>Avoid using. Only used in 209A.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>new_letters</code> <em>str</em> - The new letters to add to the existing list of letters</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="formatted_age">formatted_age<a class="hash-link" aria-label="Direct link to formatted_age" title="Direct link to formatted_age" href="/docs/components/AssemblyLine/al_general#formatted_age">​</a></h4>
+<p>Calculates and formats the age of the individual based on their birthdate.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - Formatted age string that shows the most relevant time unit; for example, if under 2 years, it will return &quot;X months&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="normalized_address-1">normalized_address<a class="hash-link" aria-label="Direct link to normalized_address" title="Direct link to normalized_address" href="/docs/components/AssemblyLine/al_general#normalized_address-1">​</a></h4>
+<p>Fetches the normalized version of the address.</p>
+<p><strong>Returns</strong>:</p>
+<p>Union[Address, ALAddress]: The normalized address object.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="name_fields">name_fields<a class="hash-link" aria-label="Direct link to name_fields" title="Direct link to name_fields" href="/docs/components/AssemblyLine/al_general#name_fields">​</a></h4>
+<p>Generates suitable field prompts for a name based on the type of entity (person or business)
+and other provided parameters.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>person_or_business</code> <em>str, optional</em> - Specifies the entity type. It can either be &quot;person&quot; or &quot;business&quot;.
+Default is &quot;person&quot;.</li>
+<li><code>show_suffix</code> <em>bool, optional</em> - Determines if the name&#x27;s suffix (e.g., Jr., Sr.) should be included in the prompts.
+Default is True.</li>
+<li><code>show_title</code> - (bool, optional): Determines if the name&#x27;s title (e.g., Mr., Ms.) should be included in the prompts.
+Default is False.</li>
+<li><code>title_options</code> <em>List[str], optional</em> - A list of title options to use in the prompts. Default is defined as a list
+of common titles in English-speaking countries.</li>
+<li><code>show_if</code> <em>Union[str, Dict[str, str], None], optional</em> - Condition to determine which fields to show.
+It can be a string, a dictionary with conditions, or None. Default is None.</li>
+<li><code>maxlengths</code> <em>Dict[str, int], optional</em> - A dictionary of field names and their maximum lengths. Default is None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: A list of dictionaries where each dictionary contains field prompt details.</p>
+<p><strong>Notes</strong>:</p>
+<p>If <code>person_or_business</code> is set to None, the method will offer the end user a choice
+and will set appropriate &quot;show ifs&quot; conditions for each type.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="address_fields-1">address_fields<a class="hash-link" aria-label="Direct link to address_fields" title="Direct link to address_fields" href="/docs/components/AssemblyLine/al_general#address_fields-1">​</a></h4>
+<p>Generate field prompts for capturing an address.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>country_code</code> <em>str</em> - The default country for the address. Defaults to &quot;US&quot;.</li>
+<li><code>default_state</code> <em>Optional[str]</em> - Default state if applicable. Defaults to None.</li>
+<li><code>show_country</code> <em>bool</em> - Whether to display the country field. Defaults to False.</li>
+<li><code>show_county</code> <em>bool</em> - Whether to display the county field. Defaults to False.</li>
+<li><code>show_if</code> <em>Union[str, Dict[str, str], None]</em> - Condition to determine if the field should be shown. Defaults to None.</li>
+<li><code>allow_no_address</code> <em>bool</em> - Whether to permit entries with no address. Defaults to False.</li>
+<li><code>ask_if_impounded</code> <em>bool</em> - Whether to ask if the address is impounded. Defaults to False.</li>
+<li><code>maxlengths</code> <em>Dict[str, int], optional</em> - A dictionary of field names and their maximum lengths. Default is None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: A list of dictionaries with field prompts for addresses.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_fields">gender_fields<a class="hash-link" aria-label="Direct link to gender_fields" title="Direct link to gender_fields" href="/docs/components/AssemblyLine/al_general#gender_fields">​</a></h4>
+<p>Generate fields for capturing gender information, including a
+self-described option.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>show_help</code> <em>bool</em> - Whether to show additional help text. Defaults to False.</li>
+<li><code>show_if</code> <em>Union[str, Dict[str, str], None]</em> - Condition to determine if the field should be shown. Defaults to None.</li>
+<li><code>maxlengths</code> <em>Dict[str, int], optional</em> - A dictionary of field names and their maximum lengths. Default is None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: A list of dictionaries with field prompts for gender.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun_fields">pronoun_fields<a class="hash-link" aria-label="Direct link to pronoun_fields" title="Direct link to pronoun_fields" href="/docs/components/AssemblyLine/al_general#pronoun_fields">​</a></h4>
+<p>Generate fields for capturing pronoun information.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>show_help</code> <em>bool</em> - Whether to show additional help text. Defaults to False.</li>
+<li><code>show_if</code> <em>Union[str, Dict[str, str], None]</em> - Condition to determine if the field should be shown. Defaults to None.</li>
+<li><code>required</code> <em>bool</em> - Whether the field is required. Defaults to False.</li>
+<li><code>shuffle</code> <em>bool</em> - Whether to shuffle the order of pronouns. Defaults to False.</li>
+<li><code>show_unknown</code> <em>Union[Literal[&quot;guess&quot;], bool]</em> - Whether to show an &quot;unknown&quot; option. Can be &quot;guess&quot;, True, or False. Defaults to &quot;guess&quot;.</li>
+<li><code>maxlengths</code> <em>Dict[str, int], optional</em> - A dictionary of field names and their maximum lengths. Default is None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: A list of dictionaries with field prompts for pronouns.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_pronouns">get_pronouns<a class="hash-link" aria-label="Direct link to get_pronouns" title="Direct link to get_pronouns" href="/docs/components/AssemblyLine/al_general#get_pronouns">​</a></h4>
+<p>Retrieve a set of the individual&#x27;s pronouns.</p>
+<p>If the individual has selected the &quot;self-described&quot; option, it will use their custom input.</p>
+<p>Can be formatted however the author likes.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>set</code> - A set of strings representing the individual&#x27;s pronouns.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="list_pronouns">list_pronouns<a class="hash-link" aria-label="Direct link to list_pronouns" title="Direct link to list_pronouns" href="/docs/components/AssemblyLine/al_general#list_pronouns">​</a></h4>
+<p>Retrieve a formatted string of the individual&#x27;s pronouns, arranged with
+the comma_list() function.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - A formatted string of the individual&#x27;s pronouns.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="language_fields">language_fields<a class="hash-link" aria-label="Direct link to language_fields" title="Direct link to language_fields" href="/docs/components/AssemblyLine/al_general#language_fields">​</a></h4>
+<p>Generate fields for capturing language preferences.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>choices</code> <em>Optional[List[Dict[str, str]]]</em> - A list of language choices. Defaults to None.</li>
+<li><code>style</code> <em>str</em> - The display style of choices. Defaults to &quot;radio&quot;.</li>
+<li><code>show_if</code> <em>Union[str, Dict[str, str], None]</em> - Condition to determine if the field should be shown. Defaults to None.</li>
+<li><code>maxlengths</code> <em>Dict[str, int], optional</em> - A dictionary of field names and their maximum lengths. Default is None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: A list of dictionaries with field prompts for language preferences.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="language_name">language_name<a class="hash-link" aria-label="Direct link to language_name" title="Direct link to language_name" href="/docs/components/AssemblyLine/al_general#language_name">​</a></h4>
+<p>Get the human-readable version of the individual&#x27;s selected language.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The human-readable version of the language. If &#x27;other&#x27; is selected,
+it returns the value in <code>language_other</code>. Otherwise, it uses the
+<code>language_name</code> function.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_male">gender_male<a class="hash-link" aria-label="Direct link to gender_male" title="Direct link to gender_male" href="/docs/components/AssemblyLine/al_general#gender_male">​</a></h4>
+<p>Returns True only if the gender is male.</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_female">gender_female<a class="hash-link" aria-label="Direct link to gender_female" title="Direct link to gender_female" href="/docs/components/AssemblyLine/al_general#gender_female">​</a></h4>
+<p>Returns True only if the gender is female.</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_other">gender_other<a class="hash-link" aria-label="Direct link to gender_other" title="Direct link to gender_other" href="/docs/components/AssemblyLine/al_general#gender_other">​</a></h4>
+<p>Returns True only if the gender is not male or female.</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_nonbinary">gender_nonbinary<a class="hash-link" aria-label="Direct link to gender_nonbinary" title="Direct link to gender_nonbinary" href="/docs/components/AssemblyLine/al_general#gender_nonbinary">​</a></h4>
+<p>Returns True only if the gender is nonbinary.</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_unknown">gender_unknown<a class="hash-link" aria-label="Direct link to gender_unknown" title="Direct link to gender_unknown" href="/docs/components/AssemblyLine/al_general#gender_unknown">​</a></h4>
+<p>Returns True only if the gender is unknown.</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_undisclosed">gender_undisclosed<a class="hash-link" aria-label="Direct link to gender_undisclosed" title="Direct link to gender_undisclosed" href="/docs/components/AssemblyLine/al_general#gender_undisclosed">​</a></h4>
+<p>Returns True only if the gender is not disclosed (&quot;prefer-not-to-say&quot;)</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="gender_self_described">gender_self_described<a class="hash-link" aria-label="Direct link to gender_self_described" title="Direct link to gender_self_described" href="/docs/components/AssemblyLine/al_general#gender_self_described">​</a></h4>
+<p>Returns True only if the gender is self described.</p>
+<p>Used to assist with checkbox filling in PDFs with &quot;skip undefined&quot;
+turned on.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contact_fields">contact_fields<a class="hash-link" aria-label="Direct link to contact_fields" title="Direct link to contact_fields" href="/docs/components/AssemblyLine/al_general#contact_fields">​</a></h4>
+<p>Return field prompts for other contact info</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="initials">initials<a class="hash-link" aria-label="Direct link to initials" title="Direct link to initials" href="/docs/components/AssemblyLine/al_general#initials">​</a></h4>
+<p>Returns the initials of the individual as a string.</p>
+<p>For example, &quot;Quinten K Steenhuis&quot; would return &quot;QKS&quot;.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="address_block">address_block<a class="hash-link" aria-label="Direct link to address_block" title="Direct link to address_block" href="/docs/components/AssemblyLine/al_general#address_block">​</a></h4>
+<p>Generate a formatted address block for mailings.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language</code> <em>Optional</em> - The language in which the address is written.</li>
+<li><code>international</code> <em>bool</em> - If True, format for international mailing. Defaults to False.</li>
+<li><code>show_country</code> <em>bool</em> - If True, include the country in the address. Defaults to False.</li>
+<li><code>bare</code> <em>bool</em> - If True, produce the address without additional formatting. Defaults to False.</li>
+<li><code>show_impounded</code> <em>bool</em> - If True, show the address even if it is impounded. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The formatted address block.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun">pronoun<a class="hash-link" aria-label="Direct link to pronoun" title="Direct link to pronoun" href="/docs/components/AssemblyLine/al_general#pronoun">​</a></h4>
+<p>Returns an objective pronoun as appropriate, based on the user&#x27;s <code>pronouns</code> attribute or <code>gender</code> attribute.</p>
+<p>The pronoun could be &quot;I&quot;, &quot;you,&quot; &quot;her,&quot; &quot;him,&quot; &quot;it,&quot; or &quot;them&quot;, or a user-provided pronoun.
+If the user has selected multiple pronouns, each will appear, separated by a &quot;/&quot;.</p>
+<p>This method will not trigger the definition of <code>gender</code> or <code>pronouns</code>, but it will use them if they are defined,
+with <code>pronouns</code> taking precedence. As a default, it will either use the value of <code>default</code> or the individual&#x27;s full name.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Additional keyword arguments that are defined <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a>.<!-- -->
+<ul>
+<li>person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a> documentation for more information.</li>
+<li>default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The appropriate pronoun.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun_objective">pronoun_objective<a class="hash-link" aria-label="Direct link to pronoun_objective" title="Direct link to pronoun_objective" href="/docs/components/AssemblyLine/al_general#pronoun_objective">​</a></h4>
+<p>Returns the same pronoun as the <code>pronoun()</code> method.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Additional keyword arguments.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The appropriate objective pronoun.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun_possessive">pronoun_possessive<a class="hash-link" aria-label="Direct link to pronoun_possessive" title="Direct link to pronoun_possessive" href="/docs/components/AssemblyLine/al_general#pronoun_possessive">​</a></h4>
+<p>Returns a possessive pronoun and a target word, based on attributes.</p>
+<p>This method will not trigger the definition of <code>gender</code> or <code>pronouns</code>, but it will use them if they are defined,
+with <code>pronouns</code> taking precedence. As a default, it will either use the value of <code>default</code> or the individual&#x27;s full name.</p>
+<p>Given a target word, the function returns &quot;{pronoun} {target}&quot;. The pronoun could be
+&quot;my&quot;, &quot;her,&quot; &quot;his,&quot; &quot;its,&quot; or &quot;their&quot;. It depends on the <code>gender</code> and <code>person_type</code> attributes
+and whether the individual is the current user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>target</code> <em>str</em> - The target word to follow the pronoun.</li>
+<li><code>**kwargs</code> - Additional keyword arguments that can be passed to modify the behavior. These might include:<!-- -->
+<ul>
+<li><code>default</code> (Optional[str]): The default word to use if the pronoun is not defined, e.g., &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.</li>
+<li><code>person</code> (Optional[Union[str, int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream documentation</a> for more information.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The appropriate possessive phrase, e.g., &quot;her book&quot;, &quot;their document&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun_subjective">pronoun_subjective<a class="hash-link" aria-label="Direct link to pronoun_subjective" title="Direct link to pronoun_subjective" href="/docs/components/AssemblyLine/al_general#pronoun_subjective">​</a></h4>
+<p>Returns a subjective pronoun, based on attributes.</p>
+<p>The pronoun could be &quot;you,&quot; &quot;we&quot;, &quot;she,&quot; &quot;he,&quot; &quot;it,&quot; or &quot;they&quot;. It depends
+on the <code>gender</code> and <code>person_type</code> attributes and whether the individual
+is the current user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Additional keyword arguments that are defined <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a>.<!-- -->
+<ul>
+<li>person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a> documentation for more information.</li>
+<li>default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The appropriate subjective pronoun.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pronoun_reflexive-1">pronoun_reflexive<a class="hash-link" aria-label="Direct link to pronoun_reflexive" title="Direct link to pronoun_reflexive" href="/docs/components/AssemblyLine/al_general#pronoun_reflexive-1">​</a></h4>
+<p>Returns the appropriate reflexive pronoun (&quot;herself&quot;, &quot;themself&quot;, &quot;myself&quot;), based on the user&#x27;s pronouns or gender and whether we are asked
+to return a 1st, 2nd, or 3rd person pronoun.</p>
+<p>Note that if the person has pronouns of they/them/theirs or a nonbinary gender, we return &quot;themself&quot; as the singular non-gendered
+reflexive pronoun and not &quot;themselves&quot;. This has growing acceptance although some consider it nonstandard.
+See: <a href="https://www.merriam-webster.com/wordplay/themself" target="_blank" rel="noopener noreferrer">https://www.merriam-webster.com/wordplay/themself</a></p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Additional keyword arguments that are defined <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a>.<!-- -->
+<ul>
+<li>person (Optional[[Union[str,int]]): Whether to use a first, second, or third person pronoun. Can be one of 1/&quot;1p&quot;, 2/&quot;2p&quot;, or 3/&quot;3p&quot; (default is 3). See <a href="https://docassemble.org/docs/objects.html#language%20methods" target="_blank" rel="noopener noreferrer">upstream</a> documentation for more information.</li>
+<li>default (Optional[str]): The default word to use if the pronoun is not defined, e.g. &quot;the agent&quot;. If not defined, the default term is the user&#x27;s name.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The appropriate reflexive pronoun.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="name_full">name_full<a class="hash-link" aria-label="Direct link to name_full" title="Direct link to name_full" href="/docs/components/AssemblyLine/al_general#name_full">​</a></h4>
+<p>Returns the individual&#x27;s full name.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The individual&#x27;s full name.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="name_initials">name_initials<a class="hash-link" aria-label="Direct link to name_initials" title="Direct link to name_initials" href="/docs/components/AssemblyLine/al_general#name_initials">​</a></h4>
+<p>Returns the individual&#x27;s name with the middle name as an initial.
+Equivalent to <code>name.full(middle=&quot;initial&quot;)</code>, which is also the default.
+Defined only to make it possible to be explicit about the name form.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The individual&#x27;s name with the middle name as an initial.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="name_short">name_short<a class="hash-link" aria-label="Direct link to name_short" title="Direct link to name_short" href="/docs/components/AssemblyLine/al_general#name_short">​</a></h4>
+<p>Returns the individual&#x27;s name without any middle name.</p>
+<p>Equivalent to self.name.firstlast()</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The individual&#x27;</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="familiar-1">familiar<a class="hash-link" aria-label="Direct link to familiar" title="Direct link to familiar" href="/docs/components/AssemblyLine/al_general#familiar-1">​</a></h4>
+<p>Returns the individual&#x27;s name in the most familiar form possible.</p>
+<p>The purpose is to allow using a short version of the individual&#x27;s name in an unambiguous
+way in the interview. For example: referring to the child in a guardianship petition
+by first name instead of &quot;the minor&quot;. But there may be a problem if context doesn&#x27;t make
+it clear if you are talking about the child or their parent when they share a name.</p>
+<p>In order, it will try to use:</p>
+<ul>
+<li>just the first name</li>
+<li>the first name and suffix</li>
+<li>the first and middle name</li>
+<li>the first and last name</li>
+<li>the full name</li>
+<li>the default value, e.g., &quot;the minor&quot;, if provided</li>
+<li>the full name</li>
+</ul>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>unique_names</code> <em>Optional[List[Any]]</em> - A list of unique names to compare against. Defaults to None.</li>
+<li><code>default</code> <em>Optional[str]</em> - The default name to return if no unique name is found. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The individual&#x27;s name in the most familiar form possible.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="language-mako codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-mako codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">Who do you want to take care of $\{ children.familiar(unique_names=parents + petitioners, default=&quot;the minor&quot;) \}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="section_links">section_links<a class="hash-link" aria-label="Direct link to section_links" title="Direct link to section_links" href="/docs/components/AssemblyLine/al_general#section_links">​</a></h4>
+<p>Returns a list of clickable navigation links without animation.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>nav</code> - The navigation object.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>List[str]</code> - A list of clickable navigation links without animation.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="will_send_to_real_court">will_send_to_real_court<a class="hash-link" aria-label="Direct link to will_send_to_real_court" title="Direct link to will_send_to_real_court" href="/docs/components/AssemblyLine/al_general#will_send_to_real_court">​</a></h4>
+<p>For legacy email to court forms, this checks to see if the form
+is being run on the dev, test, or production server.</p>
+<p>The text &quot;dev&quot; or &quot;test&quot; needs to be in the URL root in the DA config: can change in <code>/config</code>.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True if the form is being run on the dev, test, or production server.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="filter_letters">filter_letters<a class="hash-link" aria-label="Direct link to filter_letters" title="Direct link to filter_letters" href="/docs/components/AssemblyLine/al_general#filter_letters">​</a></h4>
+<p>Used to take a list of letters like [&quot;A&quot;,&quot;ABC&quot;,&quot;AB&quot;] and filter out any duplicate letters.</p>
+<p>Avoid using, this is created for 209A.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>letter_strings</code> <em>Union[List[str], str]</em> - A list of letters.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - A string of unique letters.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="fa_icon">fa_icon<a class="hash-link" aria-label="Direct link to fa_icon" title="Direct link to fa_icon" href="/docs/components/AssemblyLine/al_general#fa_icon">​</a></h4>
+<p>Return HTML for a font-awesome icon of the specified size and color. You can reference
+a CSS variable (such as Bootstrap theme color) or a true CSS color reference, such as &#x27;blue&#x27; or
+&#x27;<code>DDDDDD</code>&#x27;. Defaults to Bootstrap theme color &quot;primary&quot;.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>icon</code> <em>str</em> - The name of the icon to use. See <a href="https://fontawesome.com/icons" target="_blank" rel="noopener noreferrer">https://fontawesome.com/icons</a> for a list of icons.</li>
+<li><code>color</code> <em>str</em> - The color of the icon. Defaults to &quot;primary&quot;.</li>
+<li><code>color_css</code> <em>Optional[str]</em> - A CSS variable or color reference. Defaults to None.</li>
+<li><code>size</code> <em>str</em> - The size of the icon. Defaults to &quot;sm&quot;.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - HTML for the icon.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="is_sms_enabled">is_sms_enabled<a class="hash-link" aria-label="Direct link to is_sms_enabled" title="Direct link to is_sms_enabled" href="/docs/components/AssemblyLine/al_general#is_sms_enabled">​</a></h4>
+<p>Checks if SMS (Twilio) is enabled on the server. Does not verify that it works.</p>
+<p>See <a href="https://docassemble.org/docs/config.html#twilio" target="_blank" rel="noopener noreferrer">https://docassemble.org/docs/config.html#twilio</a> for more info.</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True if there is a non-empty Twilio config on the server, False otherwise</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="is_phone_or_email">is_phone_or_email<a class="hash-link" aria-label="Direct link to is_phone_or_email" title="Direct link to is_phone_or_email" href="/docs/components/AssemblyLine/al_general#is_phone_or_email">​</a></h4>
+<p>Returns True if the string is either a valid phone number or a valid email address.
+If SMS is not enabled on the server (through the Twilio config), only accepts emails.
+Email validation is extremely minimal--just checks for an @ sign between two non-zero length
+strings.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>text</code> <em>str</em> - The string to check.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True if the string is either a valid phone number or a valid email address.</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<p>DAValidationError if the string is neither a valid phone number nor a valid email address.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="github_modified_date">github_modified_date<a class="hash-link" aria-label="Direct link to github_modified_date" title="Direct link to github_modified_date" href="/docs/components/AssemblyLine/al_general#github_modified_date">​</a></h4>
+<p>Returns the date that the given GitHub repository was modified or None if API call fails.</p>
+<p>Will check for the presence of credentials in the configuration labeled &quot;github issues&quot;
+in this format:</p>
+<p>github issues:
+username: YOUR_GITHUB_USERNAME
+token: YOUR_GITHUB_PRIVATE_TOKEN</p>
+<p>If those credentials aren&#x27;t found, it will then search for credentials in this format (deprecated):</p>
+<p>github readonly:
+username: YOUR_GITHUB_USERNAME
+password: YOUR_GITHUB_PRIVATE_TOKEN
+type: basic</p>
+<p>If no valid auth information is in the configuration, it will fall back to anonymous authentication.
+The GitHub API is rate-limited to 60 anonymous API queries/hour.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>github_user</code> <em>str</em> - The GitHub username of the repository owner.</li>
+<li><code>github_repo_name</code> <em>str</em> - The name of the repository.</li>
+<li><code>auth</code> <em>Optional[dict]</em> - A dictionary containing authentication information. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>Union[DADateTime, None]: The date that the given GitHub repository was modified or None if API call fails.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="language_name-1">language_name<a class="hash-link" aria-label="Direct link to language_name" title="Direct link to language_name" href="/docs/components/AssemblyLine/al_general#language_name-1">​</a></h4>
+<p>Given a 2 digit language code abbreviation, returns the full
+name of the language. The language name will be passed through the <code>word()</code>
+function.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language_code</code> <em>str</em> - A 2 digit language code abbreviation.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The full name of the language.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="safe_states_list">safe_states_list<a class="hash-link" aria-label="Direct link to safe_states_list" title="Direct link to safe_states_list" href="/docs/components/AssemblyLine/al_general#safe_states_list">​</a></h4>
+<p>Wrapper around states_list that doesn&#x27;t error if passed
+an invalid country_code (e.g., a country name spelled out)</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>country_code</code> <em>str</em> - A 2 digit country code abbreviation.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: A list of dictionaries with field prompts for states.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="has_parsable_pronouns">has_parsable_pronouns<a class="hash-link" aria-label="Direct link to has_parsable_pronouns" title="Direct link to has_parsable_pronouns" href="/docs/components/AssemblyLine/al_general#has_parsable_pronouns">​</a></h4>
+<p>Returns True if the pronouns string can be parsed into a dictionary of pronouns.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>pronouns</code> - a string of pronouns in the format &quot;objective/subjective/possessive&quot;</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>True if the pronouns string can be parsed into a dictionary of pronouns, False otherwise</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parse_custom_pronouns">parse_custom_pronouns<a class="hash-link" aria-label="Direct link to parse_custom_pronouns" title="Direct link to parse_custom_pronouns" href="/docs/components/AssemblyLine/al_general#parse_custom_pronouns">​</a></h4>
+<p>Parses a custom pronoun string into a dictionary of pronouns.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>pronouns</code> - a string of pronouns in the format &quot;objective/subjective/possessive&quot;</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>a dictionary of pronouns in the format {&quot;o&quot;: objective, &quot;s&quot;: subjective, &quot;p&quot;: possessive}</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_visible_al_nav_items">get_visible_al_nav_items<a class="hash-link" aria-label="Direct link to get_visible_al_nav_items" title="Direct link to get_visible_al_nav_items" href="/docs/components/AssemblyLine/al_general#get_visible_al_nav_items">​</a></h4>
+<p>Processes a list of nav items and returns only the ones that are not hidden.
+Can be used to control the visible nav items in a more declarative way while keeping
+the navigation dynamic.</p>
+<p>Expects a list like this:</p>
+<p>data = [
+{&quot;key&quot;: &quot;value&quot;, &quot;hidden&quot;: True},
+&quot;top level item&quot;,
+{&quot;key2&quot;: [{&quot;subkey&quot;: &quot;subvalue&quot;, &quot;hidden&quot;: False}, {&quot;subkey&quot;: &quot;subvalue2&quot;, &quot;hidden&quot;: True}]},
+]</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>nav_items</code> - a list of nav items</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>a list of nav items with hidden items removed</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/docs/components/AssemblyLine/al_general.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/components/AssemblyLine/error_actions"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Error pages</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/components/AssemblyLine/al_courts"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">al_courts</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/docs/components/AssemblyLine/al_general#aladdress-objects">ALAddress Objects</a></li><li><a class="table-of-contents__link toc-highlight" href="/docs/components/AssemblyLine/al_general#aladdresslist-objects">ALAddressList Objects</a></li><li><a class="table-of-contents__link toc-highlight" href="/docs/components/AssemblyLine/al_general#alnamelist-objects">ALNameList Objects</a></li><li><a class="table-of-contents__link toc-highlight" href="/docs/components/AssemblyLine/al_general#alpeoplelist-objects">ALPeopleList Objects</a></li><li><a class="table-of-contents__link toc-highlight" href="/docs/components/AssemblyLine/al_general#alindividual-objects">ALIndividual Objects</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.</div></div></div></footer></div>
+</body>
+</html>

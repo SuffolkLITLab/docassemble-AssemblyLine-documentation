@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-components/AssemblyLine/sessions" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">AssemblyLine.sessions | The Document Assembly Line</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/sessions"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="AssemblyLine.sessions | The Document Assembly Line"><meta data-rh="true" name="description" content="is\file\like"><meta data-rh="true" property="og:description" content="is\file\like"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/sessions"><link data-rh="true" rel="alternate" href="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/sessions" hreflang="en"><link data-rh="true" rel="alternate" href="https://assemblyline.suffolklitlab.org/docs/components/AssemblyLine/sessions" hreflang="x-default"><link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.02bdc068.css">
+<script src="/assets/js/runtime~main.ab85005d.js" defer="defer"></script>
+<script src="/assets/js/main.05adf1d9.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const a=new URLSearchParams(window.location.search).entries();for(var[t,e]of a)if(t.startsWith("docusaurus-data-")){var n=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(n,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><div class="announcementBar_mb4j" style="background-color:#fafbfc;color:#091E42" role="banner"><div class="content_knG7 announcementBarContent_xLdY">Save the date for Suffolk's annual 🔥LIT Conference🔥 on April 7th, 2025! <a target="_blank" rel="noopener noreferrer" href="https://suffolklitlab.org/litcon/">View past LITCons</a></div></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/LITLab_white_and_gold.svg" alt="The Suffolk LIT Lab Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/LITLab_white_and_gold.svg" alt="The Suffolk LIT Lab Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">The Document Assembly Line</b></a><a class="navbar__item navbar__link" href="/docs/get_started">Get Started</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/overview">Documentation</a></div><div class="navbar__items navbar__items--right"><a href="https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Legal Tech Class<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://docassemble.org/docs.html" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Docassemble Docs<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG menuWithAnnouncementBar_GW3s"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/overview">Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/authoring/pdfs">Authoring interviews</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/style_guide/question_overview">Writing good questions</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/coding_style/overview">Coding style guide</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/translation">Translating your interview</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menuHtmlItem_M9Kj menu__list-item sidebar-heading">Assembly Line components</li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/components/AssemblyLine/ALGeneral/overview">AssemblyLine</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/ALGeneral/overview">Representing people &amp; addresses</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/ALDocument/overview">Working with multiple templates</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/ALReminders/overview">Scheduled reminders</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/components/AssemblyLine/answer_sets/overview">Answer sets</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/magic_variables">Special variables</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/reserved_keywords">Reserved variables</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/navigation">Dynamic navigation sections</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/error_actions">Error pages</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/al_general">al_general</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/al_courts">al_courts</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/al_document">al_document</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/components/AssemblyLine/language">language</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/components/AssemblyLine/sessions">sessions</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/ALRecipes/overview">ALRecipes</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/ALToolbox/overview">ALToolbox</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/ALThemeTemplate/overview">ALThemeTemplate</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/RateMyPDF/overview">RateMyPDF</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/GithubFeedbackForm/overview">GithubFeedbackForm</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/components/InterviewStats/overview">InterviewStats</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/FormFyxer/lit_explorer">FormFyxer</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/EFSPIntegration/overview">E-filing integration (EFSP)</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/components/ALKiln/intro">Automated testing (ALKiln)</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">AssemblyLine</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">sessions</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AssemblyLine.sessions</h1></header><h4 class="anchor anchorWithStickyNavbar_LWe7" id="is_file_like">is_file_like<a class="hash-link" aria-label="Direct link to is_file_like" title="Direct link to is_file_like" href="/docs/components/AssemblyLine/sessions#is_file_like">​</a></h4>
+<p>Return True if the object is a file-like object.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>obj</code> <em>Any</em> - The object to test</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True if the object is a file-like object.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="set_interview_metadata">set_interview_metadata<a class="hash-link" aria-label="Direct link to set_interview_metadata" title="Direct link to set_interview_metadata" href="/docs/components/AssemblyLine/sessions#set_interview_metadata">​</a></h4>
+<p>Add searchable interview metadata for the specified filename and session ID.
+Intended to be used to add an interview title, etc.
+Standardized metadata dictionary:</p>
+<ul>
+<li>title</li>
+<li>subtitle</li>
+<li>original_interview_filename</li>
+<li>variable_count</li>
+</ul>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>str</em> - The filename of the interview to add metadata for</li>
+<li><code>session_id</code> <em>str</em> - The session ID of the interview to add metadata for</li>
+<li><code>data</code> <em>Dict</em> - The metadata to add</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_interview_metadata">get_interview_metadata<a class="hash-link" aria-label="Direct link to get_interview_metadata" title="Direct link to get_interview_metadata" href="/docs/components/AssemblyLine/sessions#get_interview_metadata">​</a></h4>
+<p>Retrieve the unencrypted metadata associated with an interview.
+We implement this with the docassemble jsonstorage table and a dedicated <code>tag</code> which defaults to <code>metadata</code>.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>str</em> - The filename of the interview to retrieve metadata for</li>
+<li><code>session_id</code> <em>str</em> - The session ID of the interview to retrieve metadata for</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>Dict[str, Any]: The metadata associated with the interview</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_saved_interview_list">get_saved_interview_list<a class="hash-link" aria-label="Direct link to get_saved_interview_list" title="Direct link to get_saved_interview_list" href="/docs/components/AssemblyLine/sessions#get_saved_interview_list">​</a></h4>
+<p>Get a list of saved sessions for the specified filename. If the save_interview_answers function was used
+to add metadata, the result list will include columns containing the metadata.
+If the user is a developer or administrator, setting user_id = None will list all interviews on the server. Otherwise,
+the user is limited to their own sessions.</p>
+<p>Setting <code>exclude_newly_started_sessions</code> to True will exclude any results from the list that are still on
+&quot;step 1&quot;. Note that while this may be useful to filter out interviews that were accidentally started
+and likely do not need to be resumed, it will also have the side effect of excluding all answer sets from the
+results. Answer sets generally have exactly one &quot;step&quot;, which is the step where information was copied from
+an existing interview to the answer set.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>str, optional</em> - The filename of the interview to retrieve sessions for. Defaults to al_session_store_default_filename.</li>
+<li><code>user_id</code> <em>Union[int, str, None], optional</em> - The user ID to retrieve sessions for. Defaults to None.</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+<li><code>limit</code> <em>int, optional</em> - The maximum number of results to return. Defaults to 50.</li>
+<li><code>offset</code> <em>int, optional</em> - The offset to start returning results from. Defaults to 0.</li>
+<li><code>filename_to_exclude</code> <em>str, optional</em> - The filename to exclude from the results. Defaults to &quot;&quot;.</li>
+<li><code>exclude_current_filename</code> <em>bool, optional</em> - Whether to exclude the current filename from the results. Defaults to True.</li>
+<li><code>exclude_filenames</code> <em>Optional[List[str]], optional</em> - List of filenames to exclude. Defaults to None. If the <code>filename</code> does not contain a <code>:</code> it will be treated as a prefix, allowing you to filter out whole packages (e.g., any path starting with docassemble.ALDashboard or docassemble.playground)</li>
+<li><code>exclude_newly_started_sessions</code> <em>bool, optional</em> - Whether to exclude sessions that are still on &quot;step 1&quot;. Defaults to False.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, Any]]: A list of saved sessions for the specified filename.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="find_matching_sessions">find_matching_sessions<a class="hash-link" aria-label="Direct link to find_matching_sessions" title="Direct link to find_matching_sessions" href="/docs/components/AssemblyLine/sessions#find_matching_sessions">​</a></h4>
+<p>Get a list of sessions where the metadata for the session matches the provided keyword search terms and metadata filters.
+This function is designed to be used in a search interface where the user can search for sessions by keyword and specific metadata values.
+The keyword search is case-insensitive and will match any part of the metadata column values.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>keyword</code> <em>str</em> - The keyword to search for in the metadata</li>
+<li><code>metadata_column_names</code> <em>List[str], optional</em> - The names of the metadata columns to search. If not provided, defaults to [&quot;title&quot;, &quot;auto_title&quot;, &quot;description&quot;].</li>
+<li><code>filenames</code> <em>List[str], optional</em> - The filename or filenames of the interviews to retrieve sessions for.</li>
+<li><code>user_id</code> <em>Union[int, str, None], optional</em> - The user ID to retrieve sessions for. Defaults to current user. Specify &quot;all&quot; if you want and have the necessary privileges to search all sessions.</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+<li><code>limit</code> <em>int, optional</em> - The maximum number of results to return. Defaults to 50.</li>
+<li><code>offset</code> <em>int, optional</em> - The offset to start returning results from. Defaults to 0.</li>
+<li><code>filename_to_exclude</code> <em>str, optional</em> - The filename to exclude from the results. Defaults to &quot;&quot;.</li>
+<li><code>exclude_current_filename</code> <em>bool, optional</em> - Whether to exclude the current filename from the results. Defaults to True.</li>
+<li><code>exclude_filenames</code> <em>Optional[List[str]], optional</em> - A list of filenames to exclude from the results. Defaults to None.</li>
+<li><code>exclude_newly_started_sessions</code> <em>bool, optional</em> - Whether to exclude sessions that are still on &quot;step 1&quot;. Defaults to False.</li>
+<li><code>global_search_allowed_roles</code> <em>Union[Set[str],List[str]], optional</em> - A list or set of roles that are allowed to search all sessions. Defaults to {&#x27;admin&#x27;,&#x27;developer&#x27;, &#x27;advocate&#x27;}. &#x27;admin&#x27; and &#x27;developer&#x27; are always allowed to search all sessions.</li>
+<li><code>metadata_filters</code> <em>Optional[Dict[str, Tuple[Any, str, Optional[str]]]], optional</em> - A dictionary of metadata column names and their corresponding filter tuples.
+Each tuple should contain (value, operator, cast_type).<!-- -->
+<ul>
+<li>value: The value to compare against</li>
+<li>operator: One of &#x27;=&#x27;, &#x27;!=&#x27;, &#x27;&lt;&#x27;, &#x27;&lt;=&#x27;, &#x27;&gt;&#x27;, &#x27;&gt;=&#x27;, &#x27;LIKE&#x27;, &#x27;ILIKE&#x27;</li>
+<li>cast_type: Optional. One of &#x27;int&#x27;, &#x27;float&#x27;, or None for string (default)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, Any]]: A list of saved sessions for the specified filename that match the search keyword and metadata filters</p>
+<p><strong>Example</strong>:</p>
+<p>matching_sessions = find_matching_sessions(
+&quot;smith&quot;,
+user_id=&quot;all&quot;,
+filenames=[f&quot;{user_info().package}<!-- -->:intake<!-- -->.yml&quot;, &quot;docassemble.MyPackage<!-- -->:intake<!-- -->.yml&quot;],
+metadata_filters={</p>
+<ul>
+<li><code>&quot;owner&quot;</code> - (&quot;samantha&quot;, &quot;ILIKE&quot;, None),</li>
+<li><code>&quot;age&quot;</code> - (30, &quot;&gt;=&quot;, &quot;int&quot;),</li>
+<li><code>&quot;status&quot;</code> - (&quot;%complete%&quot;, &quot;LIKE&quot;, None)
+}
+)</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li><code>\{&quot;owner&quot;</code> - (&quot;samantha&quot;, &quot;ILIKE&quot;, None), &quot;age&quot;: (30, &quot;&gt;=&quot;, &quot;int&quot;), &quot;status&quot;: (&quot;%complete%&quot;, &quot;LIKE&quot;, None)}</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="delete_interview_sessions">delete_interview_sessions<a class="hash-link" aria-label="Direct link to delete_interview_sessions" title="Direct link to delete_interview_sessions" href="/docs/components/AssemblyLine/sessions#delete_interview_sessions">​</a></h4>
+<p>Delete all sessions for the specified user, excluding the current filename
+and by default, the intentionally saved &quot;answer sets&quot;. Created because
+interview_list(action=&quot;delete_all&quot;) is both quite slow and because it deletes answer sets.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>user_id</code> <em>Optional[int], optional</em> - The user ID to delete sessions for. Defaults to None.</li>
+<li><code>filename_to_exclude</code> <em>str, optional</em> - The filename to exclude from the results. Defaults to al_session_store_default_filename.</li>
+<li><code>exclude_current_filename</code> <em>bool, optional</em> - Whether to exclude the current filename from the results. Defaults to True.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="interview_list_html">interview_list_html<a class="hash-link" aria-label="Direct link to interview_list_html" title="Direct link to interview_list_html" href="/docs/components/AssemblyLine/sessions#interview_list_html">​</a></h4>
+<p>Return a string containing an HTML-formatted table with the list of saved answers
+associated with the specified filename.</p>
+<p>Designed to return a list of &quot;answer sets&quot; and by default clicking a title will
+trigger an action to load the answers into the current session. This only works as
+designed when inside an AssemblyLine line interview.</p>
+<p><code>exclude_newly_started_sessions</code> should almost always be set to False, because most answer sets
+are on &quot;page 1&quot; (exactly 1 step was taken to copy the answers and the user isn&#x27;t able to interact with the answer set
+itself in a way that adds additional steps)</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>str, optional</em> - Name of the file. Defaults to <code>al_session_store_default_filename</code>.</li>
+<li><code>user_id</code> <em>Union[int, str, None], optional</em> - User&#x27;s ID. Defaults to None.</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - Name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+<li><code>exclude_newly_started_sessions</code> <em>bool, optional</em> - If True, newly started sessions are excluded. Defaults to False.</li>
+<li><code>date_label</code> <em>str, optional</em> - Label for the date column. Defaults to translated word &quot;Date&quot;.</li>
+<li><code>details_label</code> <em>str, optional</em> - Label for the details column. Defaults to translated word &quot;Details&quot;.</li>
+<li><code>actions_label</code> <em>str, optional</em> - Label for the actions column. Defaults to translated word &quot;Actions&quot;.</li>
+<li><code>delete_label</code> <em>str, optional</em> - Label for the delete action. Defaults to translated word &quot;Delete&quot;.</li>
+<li><code>view_label</code> <em>str, optional</em> - Label for the view action. Defaults to translated word &quot;View&quot;.</li>
+<li><code>load_action</code> <em>str, optional</em> - Name of the load action. Defaults to &quot;al_sessions_fast_forward_session&quot;.</li>
+<li><code>delete_action</code> <em>str, optional</em> - Name of the delete action. Defaults to &quot;al_sessions_delete_session&quot;.</li>
+<li><code>view_only</code> <em>bool, optional</em> - If True, only view is allowed. Defaults to False.</li>
+<li><code>limit</code> <em>int, optional</em> - Limit for the number of sessions returned. Defaults to 50.</li>
+<li><code>offset</code> <em>int, optional</em> - Offset for the session list. Defaults to 0.</li>
+<li><code>display_interview_title</code> <em>bool, optional</em> - If True, displays the title of the interview. Defaults to True.</li>
+<li><code>show_view_button</code> <em>bool, optional</em> - If True, shows the view button. Defaults to True.</li>
+<li><code>answers</code> <em>Optional[List[Dict[str, Any]]], optional</em> - A list of answers to format and display. Defaults to showing all sessions for the current user.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - HTML-formatted table containing the list of saved answers.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="nice_interview_title">nice_interview_title<a class="hash-link" aria-label="Direct link to nice_interview_title" title="Direct link to nice_interview_title" href="/docs/components/AssemblyLine/sessions#nice_interview_title">​</a></h4>
+<p>Return a human readable version of the interview name. Will try several strategies
+in descending priority order.</p>
+<ol>
+<li>Try looking up the interview title from the <code>dispatch</code> directive</li>
+<li>Try removing the package and path from the filename and replace _ with spaces.</li>
+<li>Finally, return &quot;Untitled interview&quot; or translated phrase from system-wide words.yml</li>
+</ol>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>answer</code> <em>Dict[str, str]</em> - The answer dictionary to get the interview title from</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The human readable interview title</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pascal_to_zwspace">pascal_to_zwspace<a class="hash-link" aria-label="Direct link to pascal_to_zwspace" title="Direct link to pascal_to_zwspace" href="/docs/components/AssemblyLine/sessions#pascal_to_zwspace">​</a></h4>
+<p>Insert a zero-width space into words that are PascalCased to help
+with word breaks on small viewports.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>text</code> <em>str</em> - The text to insert zero-width spaces into</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The text with zero-width spaces inserted</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="nice_interview_subtitle">nice_interview_subtitle<a class="hash-link" aria-label="Direct link to nice_interview_subtitle" title="Direct link to nice_interview_subtitle" href="/docs/components/AssemblyLine/sessions#nice_interview_subtitle">​</a></h4>
+<p>Return first defined of the &quot;title&quot; metadata, the &quot;auto_title&quot; metadata, or empty string.</p>
+<p>If exclude_identical, return empty string when title is the same as the subtitle.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>answer</code> <em>Dict[str, str]</em> - The answer dictionary to get the interview subtitle from</li>
+<li><code>exclude_identical</code> <em>bool, optional</em> - If True, excludes the subtitle if it is identical to the title. Defaults to True.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The human readable interview subtitle</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="radial_progress">radial_progress<a class="hash-link" aria-label="Direct link to radial_progress" title="Direct link to radial_progress" href="/docs/components/AssemblyLine/sessions#radial_progress">​</a></h4>
+<p>Return HTML for a radial progress bar, or the number of steps if progress isn&#x27;t available in the metadata.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>answer</code> <em>Dict[str, Union[str, int]]</em> - The answer dictionary to get the interview progress from</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - the HTML as a string</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="local_date">local_date<a class="hash-link" aria-label="Direct link to local_date" title="Direct link to local_date" href="/docs/components/AssemblyLine/sessions#local_date">​</a></h4>
+<p>Return a localized date from a UTC string.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>utcstring</code> <em>Optional[str]</em> - The UTC string to convert to a localized date</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>DADateTime</code> - The localized date</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="session_list_html">session_list_html<a class="hash-link" aria-label="Direct link to session_list_html" title="Direct link to session_list_html" href="/docs/components/AssemblyLine/sessions#session_list_html">​</a></h4>
+<p>Return a string containing an HTML-formatted table with the list of user sessions.
+While interview_list_html() is for answer sets, this feature is for standard
+user sessions. The results exclude the answer set filename by default.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li>
+<p><code>filename</code> <em>Optional[str], optional</em> - Name of the file. Defaults to None.</p>
+</li>
+<li>
+<p><code>user_id</code> <em>Union[int, str, None], optional</em> - User&#x27;s ID. Defaults to None.</p>
+</li>
+<li>
+<p><code>metadata_key_name</code> <em>str, optional</em> - Name of the metadata key. Defaults to &quot;metadata&quot;.</p>
+</li>
+<li>
+<p><code>filename_to_exclude</code> <em>str, optional</em> - Name of the file to exclude. Defaults to <code>al_session_store_default_filename</code>.</p>
+</li>
+<li>
+<p><code>exclude_current_filename</code> <em>bool, optional</em> - If True, excludes the current filename. Defaults to True.</p>
+</li>
+<li>
+<p><code>exclude_filenames</code> <em>Optional[List[str]], optional</em> - List of filenames to exclude. Defaults to None. If the <code>filename</code> does not contain a <code>:</code> it will be treated as a prefix, allowing you to filter out whole packages (e.g., any path starting with docassemble.ALDashboard or docassemble.playground)</p>
+</li>
+<li>
+<p><code>exclude_newly_started_sessions</code> <em>bool, optional</em> - If True, excludes newly started sessions. Defaults to False.</p>
+</li>
+<li>
+<p><code>name_label</code> <em>str, optional</em> - Label for the session name/title. Defaults to translated word &quot;Title&quot;.</p>
+</li>
+<li>
+<p><code>date_label</code> <em>str, optional</em> - Label for the date column. Defaults to translated word &quot;Date modified&quot;.</p>
+</li>
+<li>
+<p><code>details_label</code> <em>str, optional</em> - Label describing the progress of the session. Defaults to translated word &quot;Progress&quot;.</p>
+</li>
+<li>
+<p><code>actions_label</code> <em>str, optional</em> - Label for actions applicable to the session. Defaults to translated word &quot;Actions&quot;.</p>
+</li>
+<li>
+<p><code>delete_label</code> <em>str, optional</em> - Label for the delete action. Defaults to translated word &quot;Delete&quot;.</p>
+</li>
+<li>
+<p><code>rename_label</code> <em>str, optional</em> - Label for the rename action. Defaults to translated word &quot;Rename&quot;.</p>
+</li>
+<li>
+<p><code>rename_action</code> <em>str, optional</em> - Name of the rename action. Defaults to &quot;interview_list_rename_action&quot;.</p>
+</li>
+<li>
+<p><code>delete_action</code> <em>str, optional</em> - Name of the delete action. Defaults to &quot;interview_list_delete_session&quot;.</p>
+</li>
+<li>
+<p><code>copy_action</code> <em>str, optional</em> - Name of the copy action. Defaults to &quot;interview_list_copy_action&quot;.</p>
+</li>
+<li>
+<p><code>clone_label</code> <em>str, optional</em> - Label for the action to copy as an answer set. Defaults to translated word &quot;Copy as answer set&quot;.</p>
+</li>
+<li>
+<p><code>show_title</code> <em>bool, optional</em> - If True, shows the title of the session. Defaults to True.</p>
+</li>
+<li>
+<p><code>show_copy_button</code> <em>bool, optional</em> - If True, show a copy button for answer sets. Defaults to True.</p>
+</li>
+<li>
+<p><code>limit</code> <em>int, optional</em> - Limit for the number of sessions returned. Defaults to 50.</p>
+</li>
+<li>
+<p><code>offset</code> <em>int, optional</em> - Offset for the session list. Defaults to 0.</p>
+</li>
+<li>
+<p><code>answers</code> <em>Optional[List[Dict[str, Any]], optional</em> - A list of answers to format and display. Defaults to showing all sessions for the current user.</p>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - HTML-formatted table containing the list of user sessions.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="rename_interview_answers">rename_interview_answers<a class="hash-link" aria-label="Direct link to rename_interview_answers" title="Direct link to rename_interview_answers" href="/docs/components/AssemblyLine/sessions#rename_interview_answers">​</a></h4>
+<p>Update the &#x27;title&#x27; metadata of an interview, as stored in the dedicated <code>metadata</code> column, without touching other
+metadata that may be present.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li>
+<p><code>filename</code> <em>str</em> - The filename of the interview to rename</p>
+</li>
+<li>
+<p><code>session_id</code> <em>str</em> - The session ID of the interview to rename</p>
+</li>
+<li>
+<p><code>new_name</code> <em>str</em> - The new name to set for the interview</p>
+</li>
+<li>
+<p><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</p>
+<p>If exception is raised in set_session_variables, this will silently fail but log the error.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="set_current_session_metadata">set_current_session_metadata<a class="hash-link" aria-label="Direct link to set_current_session_metadata" title="Direct link to set_current_session_metadata" href="/docs/components/AssemblyLine/sessions#set_current_session_metadata">​</a></h4>
+<p>Set metadata for the current session, such as the title, in an unencrypted database entry.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>data</code> <em>Dict[str, Any]</em> - The metadata to set</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="rename_current_session">rename_current_session<a class="hash-link" aria-label="Direct link to rename_current_session" title="Direct link to rename_current_session" href="/docs/components/AssemblyLine/sessions#rename_current_session">​</a></h4>
+<p>Update the &quot;title&quot; metadata entry for the current session without changing any other
+metadata that might be present.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>new_name</code> <em>str</em> - The new name to set for the interview</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - The name of the metadata key. Defaults to &quot;metadata&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="save_interview_answers">save_interview_answers<a class="hash-link" aria-label="Direct link to save_interview_answers" title="Direct link to save_interview_answers" href="/docs/components/AssemblyLine/sessions#save_interview_answers">​</a></h4>
+<p>Copies the answers from a given session into a new session with a specified interview filename.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>str, optional</em> - The desired filename for the new session. Defaults to <code>al_session_store_default_filename</code>.</li>
+<li><code>variables_to_filter</code> <em>Union[Set[str], List[str], None], optional</em> - The &quot;base&quot; list or set of variables to filter out. Defaults to <code>al_sessions_variables_to_remove</code>. There&#x27;s usually no reason to change this and changing it might break sessions.</li>
+<li><code>metadata</code> <em>Optional[Dict], optional</em> - Dictionary containing metadata. Defaults to an empty dictionary.</li>
+<li><code>metadata_key_name</code> <em>str, optional</em> - Key name for metadata storage. Defaults to &quot;metadata&quot;.</li>
+<li><code>original_interview_filename</code> <em>str, optional</em> - Original filename of the interview. Defaults to None.</li>
+<li><code>source_filename</code> <em>str, optional</em> - Source filename to get session variables from. Defaults to None.</li>
+<li><code>source_session</code> <em>str, optional</em> - Session ID of the source file. Defaults to None.</li>
+<li><code>additional_variables_to_filter</code> <em>Union[Set[str], List[str], None], optional</em> - List or set of variables to filter out. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - ID of the new session.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_filtered_session_variables">get_filtered_session_variables<a class="hash-link" aria-label="Direct link to get_filtered_session_variables" title="Direct link to get_filtered_session_variables" href="/docs/components/AssemblyLine/sessions#get_filtered_session_variables">​</a></h4>
+<p>Retrieves a filtered subset of variables from a specified interview and session.
+If no filename and session ID are given, it will return a filtered list of variables
+from the current interview.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>Optional[str], optional</em> - Filename of the session. Defaults to None.</li>
+<li><code>session_id</code> <em>Optional[int], optional</em> - Session ID to retrieve variables from. Defaults to None.</li>
+<li><code>variables_to_filter</code> <em>Union[Set[str], List[str], None], optional</em> - List or set of variables to exclude. Defaults to <code>al_sessions_variables_to_remove</code>.</li>
+<li><code>additional_variables_to_filter</code> <em>Union[Set[str], List[str], None], optional</em> - List or set of additional variables to exclude. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>Dict[str, Any]: A dictionary of filtered session variables.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_filtered_session_variables_string">get_filtered_session_variables_string<a class="hash-link" aria-label="Direct link to get_filtered_session_variables_string" title="Direct link to get_filtered_session_variables_string" href="/docs/components/AssemblyLine/sessions#get_filtered_session_variables_string">​</a></h4>
+<p>Returns a JSON string that represents the filtered contents of a specified filename and session ID.
+If no filename and session ID are provided, the current session&#x27;s variables will be used.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>Optional[str], optional</em> - Filename of the session. Defaults to None.</li>
+<li><code>session_id</code> <em>Optional[int], optional</em> - Session ID to retrieve variables from. Defaults to None.</li>
+<li><code>variables_to_filter</code> <em>Union[Set[str], List[str], None], optional</em> - List or set of variables to exclude. Defaults to <code>al_sessions_variables_to_remove</code>.</li>
+<li><code>additional_variables_to_filter</code> <em>Union[Set[str], List[str], None], optional</em> - List or set of additional variables to exclude. Defaults to None.</li>
+<li><code>indent</code> <em>int, optional</em> - Number of spaces to indent the JSON string. Defaults to 4.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - A JSON-formatted string of filtered session variables.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="load_interview_answers">load_interview_answers<a class="hash-link" aria-label="Direct link to load_interview_answers" title="Direct link to load_interview_answers" href="/docs/components/AssemblyLine/sessions#load_interview_answers">​</a></h4>
+<p>Loads answers from a specified session. If the parameter <code>new_session</code> is set to True, it will create
+a new session with the provided or current interview filename. Otherwise, it will load the answers into
+the active session. This function is primarily used for migrating answers between sessions.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>old_interview_filename</code> <em>str</em> - Filename of the old interview.</li>
+<li><code>old_session_id</code> <em>str</em> - Session ID of the old interview.</li>
+<li><code>new_session</code> <em>bool, optional</em> - Determines whether to create a new session. Defaults to False.</li>
+<li><code>new_interview_filename</code> <em>Optional[str], optional</em> - Filename for the new session. Defaults to None.</li>
+<li><code>variables_to_filter</code> <em>Optional[List[str]], optional</em> - List of variables to exclude. Defaults to None.</li>
+<li><code>additional_variables_to_filter</code> <em>Optional[List[str]], optional</em> - List of additional variables to exclude. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>Optional[Union[int, bool]]: ID of the newly created session if <code>new_session</code> is True, otherwise True or False based on success.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="load_interview_json">load_interview_json<a class="hash-link" aria-label="Direct link to load_interview_json" title="Direct link to load_interview_json" href="/docs/components/AssemblyLine/sessions#load_interview_json">​</a></h4>
+<p>Given a JSON string, this function loads the specified variables into a Docassemble session.
+JSON strings containing annotated class names will be transformed into Docassemble objects.
+If the <code>new_session</code> argument is not set, the JSON answers will be loaded into the current interview.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>json_string</code> <em>str</em> - A JSON-formatted string containing session variables.</li>
+<li><code>new_session</code> <em>bool, optional</em> - Specifies whether to create a new session or load into the current one. Defaults to False.</li>
+<li><code>new_interview_filename</code> <em>Optional[str], optional</em> - Filename for the new session. Defaults to None.</li>
+<li><code>variables_to_filter</code> <em>Optional[List[str]], optional</em> - List of variables to exclude. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>Optional[Union[int, bool]]: ID of the newly created session if <code>new_session</code> is True, otherwise True or False based on success.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="export_interview_variables">export_interview_variables<a class="hash-link" aria-label="Direct link to export_interview_variables" title="Direct link to export_interview_variables" href="/docs/components/AssemblyLine/sessions#export_interview_variables">​</a></h4>
+<p>Generates a DAFile containing a JSON representation of a specified session&#x27;s interview answers.
+The resultant output is compatible with <code>set_session_variables(process_objects=True)</code> and
+<code>set_variables(process_objects=True)</code> methods.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>filename</code> <em>Optional[str], optional</em> - Filename of the session. Defaults to None.</li>
+<li><code>session_id</code> <em>Optional[int], optional</em> - Session ID to retrieve variables from. Defaults to None.</li>
+<li><code>variables_to_filter</code> <em>Union[Set, List[str], None], optional</em> - List or set of variables to exclude. Defaults to None.</li>
+<li><code>output</code> <em>DAFile, optional</em> - DAFile to write the JSON output to. If None, a new DAFile is created.</li>
+<li><code>additional_variables_to_filter</code> <em>Union[Set, List[str], None], optional</em> - List or set of additional variables to exclude. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>DAFile</code> - DAFile with a JSON representation of the answers</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="is_valid_json">is_valid_json<a class="hash-link" aria-label="Direct link to is_valid_json" title="Direct link to is_valid_json" href="/docs/components/AssemblyLine/sessions#is_valid_json">​</a></h4>
+<p>Checks if the provided string is a valid JSON-formatted string.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>json_string</code> <em>str</em> - The string to be checked for JSON validity.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True if the string is a valid JSON, otherwise it raises a validation error and returns False.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="config_with_language_fallback">config_with_language_fallback<a class="hash-link" aria-label="Direct link to config_with_language_fallback" title="Direct link to config_with_language_fallback" href="/docs/components/AssemblyLine/sessions#config_with_language_fallback">​</a></h4>
+<p>Returns the value of a config key under <code>assembly line</code> <code>interview list</code> with options to fallback
+to an alternative key at the top level of the global configuration.</p>
+<p>Used in interview_list.yml to allow overriding some of the labels in the interview list
+with options specified in the global configuration. top_level_config should be reserved
+to handle backwards compatibility (e.g., changed location of some configuration keys)</p>
+<p>Example configuration, showing both the single-string and language-specific string options:
+assembly line:
+interview list:
+title:
+en: In progress forms
+es: Formularios en progreso
+short title: My forms</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>config_key</code> <em>str</em> - The config key to look up. The config can be a single string or a dictionary with language keys.</li>
+<li><code>top_level_config_key</code> <em>str, optional</em> - Optional, alternative top-level config key to look up. Defaults to None.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>str</code> - The value of the config key, or the alternative key, or None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_filenames_having_sessions">get_filenames_having_sessions<a class="hash-link" aria-label="Direct link to get_filenames_having_sessions" title="Direct link to get_filenames_having_sessions" href="/docs/components/AssemblyLine/sessions#get_filenames_having_sessions">​</a></h4>
+<p>Get a list of all filenames that have sessions saved for a given user, in order
+to help show the user a good list of interviews to filter search results.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>user_id</code> <em>Optional[Union[int, str]], optional</em> - User ID to get the list of filenames for. Defaults to current logged-in user. Use &quot;all&quot; to get all filenames.</li>
+<li><code>global_search_allowed_roles</code> <em>Optional[Union[Set[str], List[str]]], optional</em> - Roles that are allowed to search for all sessions. Defaults to admin, developer, and advocate.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>List[str]</code> - List of filenames that have sessions saved for the user.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="get_combined_filename_list">get_combined_filename_list<a class="hash-link" aria-label="Direct link to get_combined_filename_list" title="Direct link to get_combined_filename_list" href="/docs/components/AssemblyLine/sessions#get_combined_filename_list">​</a></h4>
+<p>Get a list of all filenames that have sessions saved for a given user. If it is possible
+to show a descriptive name for the filename (from the main dispatch area of the configuration),
+it will show that instead of the filename.</p>
+<p>The results will be in the form of [{filename: Descriptive name}], which is what the Docassemble
+radio button and dropdown list expect.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>user_id</code> <em>Optional[Union[int, str]], optional</em> - User ID to get the list of filenames for. Defaults to current logged in user. Use &quot;all&quot; to get all filenames.</li>
+<li><code>global_search_allowed_roles</code> <em>Optional[Union[Set[str], List[str]]], optional</em> - Roles that are allowed to search for all sessions. Defaults to admin, developer, and advocate.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>List[Dict[str, str]]: List of filenames that have sessions saved for the user.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/docs/components/AssemblyLine/sessions.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/components/AssemblyLine/language"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">language</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/components/ALRecipes/overview"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ALRecipes</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"></div></div></div></div></main></div></div></div><footer class="footer"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.</div></div></div></footer></div>
+</body>
+</html>
