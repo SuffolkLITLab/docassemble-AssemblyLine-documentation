@@ -92,7 +92,6 @@ module.exports = {
                 'coding_style/accessibility'
             ]
         },
-        'translation',
         {
             "type": "html",
             "value": "Assembly Line components",
@@ -117,6 +116,7 @@ module.exports = {
                 'components/AssemblyLine/magic_variables',
                 'components/AssemblyLine/reserved_keywords',
                 'components/AssemblyLine/navigation',
+                'components/AssemblyLine/translation',
                 'components/AssemblyLine/error_actions',
                 "components/AssemblyLine/al_general",
                 "components/AssemblyLine/al_courts",
