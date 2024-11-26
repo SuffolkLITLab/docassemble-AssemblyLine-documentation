@@ -305,7 +305,7 @@ bookmark
 
 For some people:
 
-- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](#special-html) in your interview for signatures.
+- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](writing_tests.mdx#special-html) in your interview for signatures.
 
 <!-- - TODO: package size? From experiments, it seems to not be a problem when they're installed on a Playground -->
 
@@ -318,7 +318,7 @@ For some people:
 
 The <AutoDIY/> tests are automated tests that you trigger manually from an interview you install on your docassemble [testing server](security.mdx#testing-server). The tests then run right on that server.
 
-Remember to use a [separate server](security.mdx#testing-server) for these types of tests. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#trigger-autodiy) in other documentation.
+Remember to use a [testing or development server](security.mdx#testing-server) for these types of tests. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#trigger-autodiy) in other documentation.
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
@@ -355,7 +355,7 @@ For everyone:
 For some people:
 
 - If you are using a docassemble Docker image created before April 9th, 2023, you will have to do a ["system upgrade"](https://docassemble.org/docs/docker.html#upgrading) to update your server to a newer docassemble Docker image. Any version of https://github.com/jhpyle/docassemble-os that is older than 1.0.8 uses versions of `node` that are too old for ALKiln. As of February 11th, 2024, ALKiln is using node version 18. A lot of people have upgraded already and it is a very good idea to do that, for security at the very least. If you do need to upgrade, though, you need to back up all your data, delete your old image and container, get the new image, create a new container, and restore your data. It may sound simple, but it is a tricky process.
-- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](#special-html) in your interview for signatures.
+- If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](writing_tests.mdx#special-html) in your interview for signatures.
 
 
 ## <!-- GitHub Sandbox --> <KittyLitter/> test details {#sandbox-details}
@@ -415,7 +415,7 @@ For some people:
 
 [ALKiln works hard to protect you from security vulnerabilities](security.mdx#alkilns-precautions) and there are lots of ways for you to [improve your own security](security.mdx). Even so, if you ever become uncomfortable or concerned about your ALKiln tests showing [personal or security-critical data](security.mdx#privilege), there are multiple ways you can disable the tests.
 
-If you are worried you have already shown sensitive information in your GitHub tests, you can delete your [logs and artifacts](writing_tests.mdx#github-output).
+If you are worried you have already shown sensitive information in your GitHub tests, you can [delete the GitHub action that ran the workflow](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/deleting-a-workflow-run). You can also just [delete your GitHub logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows/using-workflow-run-logs#deleting-logs) and [delete your GitHub artifacts](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/removing-workflow-artifacts).
 
 <!-- TODO: This should be in the tags section (when it exists) and we can put a link in here: If you want to avoid running one test, you can use tags (include link when ready) and a tag expression with "not" in it. For example: `not @test5`. You can do this in <AutoDIY/> or by running your tests manually in GitHub. You can also add the [`ALKILN_TAG_EXPRESSION` workflow input](writing_tests.mdx#workflow-inputs) in your workflow file. -->
 
@@ -443,7 +443,7 @@ The old tests will still be in the version history of your repository if you eve
 
 GitHub lets you disable or limit all tests, or all actions, in your repository. You can read [GitHub's documentation for managing repository actions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository) for more information.
 
-Another option is to [disable an individual workflow (action)](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow). Your package's GitHub [workflow file](#workflows) is what triggers ALKiln tests on GitHub.
+Another option is to [disable an individual workflow (action)](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow). Your package's GitHub [workflow file](writing_tests.mdx#workflows) is what triggers ALKiln tests on GitHub.
 
 You can also [delete](https://docs.github.com/en/repositories/working-with-files/managing-files/deleting-files-in-a-repository) the [workflow file that is in your repository](writing_tests.mdx#workflows-where) completely.
 

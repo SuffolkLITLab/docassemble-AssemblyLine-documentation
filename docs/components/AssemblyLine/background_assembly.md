@@ -150,7 +150,9 @@ the DOCX on the download screen.
 
 In turn, `generate_downloads_with_docx_task` triggers the event `create_downloads_with_docx`
 
-[get_cacheable_documents()](al_document.md#get_cacheable_documents) is a new method that generates
+<!-- No documentation yet exists here for `.get_cacheable_documents()` -->
+
+[get_cacheable_documents()](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/76ead20669674d1a458c15af99aeba44899866cd/docassemble/AssemblyLine/al_document.py#L1826) is a new method that generates
 all **enabled** documents in the bundle and returns a list, where each item is a tuple of the DOCX and 
 PDF versions of the document.
 
