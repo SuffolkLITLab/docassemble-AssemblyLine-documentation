@@ -79,6 +79,39 @@ module.exports = {
           {
             to: '/',
             from: '/docs'
+          },
+          {
+            from: '/docs/alkiln/intro',
+            to: '/docs/components/ALKiln/intro'
+          },
+          {
+            // Original
+            from: '/docs/automated_integrated_testing',
+            to: '/docs/components/ALKiln/alkiln'
+          },
+          {
+            from: '/docs/alkiln',
+            to: '/docs/components/ALKiln/alkiln'
+          },
+          {
+            from: '/docs/alkiln/advanced',
+            to: '/docs/components/ALKiln/advanced'
+          },
+          {
+            from: '/docs/alkiln/writing',
+            to: '/docs/components/ALKiln/writing'
+          },
+          {
+            from: '/docs/alkiln/setup',
+            to: '/docs/components/ALKiln/setup'
+          },
+          {
+            from: '/docs/alkiln/troubleshooting',
+            to: '/docs/components/ALKiln/trouble'
+          },
+          {
+            from: '/docs/alkiln/security',
+            to: '/docs/components/ALKiln/security'
           }
         ]
       }
