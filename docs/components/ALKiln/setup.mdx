@@ -5,6 +5,8 @@ sidebar_label: WIP Setup/Installation
 slug: setup
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from "/src/css/images.module.css"
 import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 
 :::warning
@@ -349,11 +351,12 @@ When the tests are done, the interview will go to the next page where you can se
 For everyone:
 
 - You cannot edit the Project that the test is testing.
-- You will miss catching some kinds of mistakes. ["File not found" errors](troubleshooting.mdx#file-not-found) can come up because of this.
+- You will miss catching some kinds of mistakes. For example, <AutoDIY/> tests will miss ["File not found" errors](troubleshooting.mdx#file-not-found).
 - Your tests can be more flaky. For example, if your server reloads while the tests are running, the tests may get unexpected results. You may have to start the tests all over again.
 
 For some people:
 
+- If your interview uses [docassemble background actions](https://docassemble.org/docs/background.html#background) then your server must let at least 3 celery processes run at the same time. You can [manually set the number of celery processes in your server's config file](https://docassemble.org/docs/config.html#celery%20processes).
 - If you are using a docassemble Docker image created before April 9th, 2023, you will have to do a ["system upgrade"](https://docassemble.org/docs/docker.html#upgrading) to update your server to a newer docassemble Docker image. Any version of https://github.com/jhpyle/docassemble-os that is older than 1.0.8 uses versions of `node` that are too old for ALKiln. As of February 11th, 2024, ALKiln is using node version 18. A lot of people have upgraded already and it is a very good idea to do that, for security at the very least. If you do need to upgrade, though, you need to back up all your data, delete your old image and container, get the new image, create a new container, and restore your data. It may sound simple, but it is a tricky process.
 - If you have `restrict input variables` set to `True` in your server's config and have signature screens in the interview you are testing, you *must* have the [trigger variable HTML](#special-html) in your interview for signatures.
 
@@ -396,14 +399,44 @@ For everyone:
 
 - Tests take about 5-10 minutes longer since they have to do things like create a docker container and start a server.
 - The GitHub server installs the latest version of docassemble, which might be a different version than the one you use on your production server. Any server other than your production server will be different in some ways, though. Since you should never run these tests on your production server, there is no way to avoid that.
-- In most cases, you should avoid hard-coded urls that go to your server. That is, avoid using `https://my-server.com` and interviews or other pages there. That will send the tests to your server, which makes them less secure again.
+- In most cases, you should avoid writing tests that use hard-coded urls that go to your server. That is, avoid using links in your tests that start with your server's address. For example, `https://my-server.com`. Avoid linking to interviews or other pages there. That will send the tests to your server, which makes them less secure again.
 
 For some people:
 
 - Right now, <KittyLitter/> tests are unable to handle data stored externally. For example, data stored in an S3 bucket.[^ways] <!--  If you still want this type of test, it is more work. You are welcome to use [our GitHub action code](https://github.com/SuffolkLITLab/ALKiln/blob/-/action_for_github_server/action.yml) as a starting point, of course, to write your own GitHub action to create a server on GitHub with the right Docker build environment variables, S3 credentials, and config details from your dev server. -->
-- You **must** make sure you have properly required all your "Dependencies" on your Packages page. That is the only way the isolated/sandboxed[^sand] server can know to download them.
-- All your package's dependencies **must** be published on pypi. That is the only place that the sandboxed server can get them.
+- If you are including any other packages in your interview, you **must** make sure you have properly required them in the "Dependencies" section of your [Playground Packages page](https://docassemble.org/docs/playground.html#packages). This is an example of code that uses the Assembly Line package:
+
+  ```yml
+  include:
+    - docassemble.AssemblyLine:al_package.yml
+  ```
+
+  Because of that code, the author needs to require the AssemblyLine package as a dependency. This is what it looks like to require the Assembly Line package:
+
+  <p><img src={useBaseUrl('/img/alk_require_an_external_package.png')} className={`${styles['w-75p']} ${styles.center}`} title="A row that says 'docassemble.AssemblyLine' is highlighted in gray in the 'Dependencies' section of the Packages page of a docassemble Playground Project called 'FinancialStatementIncome'."/></p>
+
+  <!-- That is the only way the isolated/sandboxed[^sand] server can know to download those packages.
+
+  One way to tell if your code uses an external package is to look at your `include` block. This is an example that includes the Assembly Line package and an organization branding package:
+
+  ```yml
+  include:
+    - docassemble.AssemblyLine:al_package.yml
+    - docassemble.MassAccess:massaccess.yml
+  ``` -->
+
+  Save your choices and commit them to GitHub.
+- All the packages your package uses, like Assembly Line, **must** be [published on pypi](https://docassemble.org/docs/packages.html#pypi). That is the only place that the sandboxed server can get them.
+- Those packages must also correctly require all *their* dependencies and those must be published on pypi as well.
 - If your package is too big, you will be unable to use this type of test. <KittyLitter/> tests install your package on the server itself. That makes sure your package's dependencies get automatically installed too. The method ALKiln needs to use to install your package on the server will reject big packages. We are unsure about the exact limits, but we know it must be less than 30 MB.
+- If you use any API keys for third-party services, like Google geolocation or recaptcha3, you must write code that has alternatives to using those services. This is fairly complicated. For a simple example with bad code, for recaptcha3 this code might technically work for some situations:
+
+  ```yml
+  code: |
+    if user_info().id != 1:
+      use_recaptcha
+  ```
+
 
 <!-- - TODO: Check on package size limitation. -->
 
@@ -488,7 +521,7 @@ Tags
 1. Commit the changes.
 
 :::warning
-To use this method, avoid using hard-coded urls to go to a test interview. That is, avoid using `https://my-server.com` to navigate to interviews or other server pages. That will send the tests to your server.
+To use this method, avoid writing tests that use hard-coded urls that go to your server. That is, avoid using links in your tests that start with your server's address. For example, `https://my-server.com`. Avoid linking to interviews or other pages there. That would send the tests to your server which would expose your server again and negate the security advantage of an isolated server
 :::
 
 If you need to troubleshoot the docker setup because the step to start the GitHub server keeps failing, you can make the docker startup logs visible and allow ALKiln to create an artifact of the docker installation logs. Do this by passing the input `SHOW_DOCKER_OUTPUT` to ALKiln's GitHub server action, like our script (linked above) does for itself. The input arguments might look like the below:
