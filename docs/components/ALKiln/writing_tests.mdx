@@ -5,6 +5,7 @@ sidebar_label: WIP Writing tests
 slug: writing
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from "/src/css/images.module.css"
 
 import NeedProxyVars from './components/\_need_proxy_vars.md';
@@ -2331,9 +2332,7 @@ Once the tests are finished, ALKiln creates the test run "artifacts" - files and
 
 If the test start up process failed, ALKiln will be [unable to create artifacts](troubleshooting.mdx#no-artifacts).
 
-import Dig from '../../assets/archaeology.png';
-
-<p><img src={Dig} className={`${styles['w-75p']} ${styles.center}`} alt="When the archaeologists opened the ancient vase, little did they know what primeval dark power they had unleashed. A cat in a terracota vase."/></p>
+<p><img src={useBaseUrl("/img/alk_archaeology.png")} className={`${styles['w-75p']} ${styles.center}`} title="When the archaeologists opened the ancient terracota vase, little did they know what primeval dark power they had unleashed - a cat."/></p>
 
 \- Text by [@Thinkwert](https://twitter.com/Thinkwert/status/1428488345357856777)[^text]
 \- Image by [PerspectiveFriendly](https://old.reddit.com/user/PerspectiveFriendly)[^img]
