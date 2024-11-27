@@ -263,11 +263,11 @@ If you need to use sensitive information in your tests:
 
 **This is for:** Everyone
 
-Avoid visually showing personal or security-critical data on an interview page. For example, you can show a server config value on an interview page in the text of a `subquestion`. Even though you yourself can try to avoid [taking pictures](writing_tests.mdx#pics) of those pages, an error can happen on that page. ALKiln takes pictures of pages that error and there is no way that ALKiln can know what text you are choosing to show to the user.
-
-Using ALKiln to fill in answers in the interview is different. You can safely use sensitive information to fill in fields by using the ["secret value" Step](#secret-val).
-
 <SecureEnvVars/>
+
+It is possible, though, for your interview to visually show personal or security-critical data on an interview page to the user. For example, you can show a server config value on an interview page in the text of a `subquestion`. There is no way ALKiln can know about that and might take a picture. For example, if there is an error on that page, ALKiln will take a picture. You can try to avoid [taking pictures](writing_tests.mdx#pic) of those pages yourself, but that may not be enough. Since there is no way that ALKiln can know what text you are choosing to show to the user, you should avoid putting sensitive information visually on the screen or you should avoid testing pages or interviews that show sensitive information.
+
+Using ALKiln to fill in sensitive answers with environment variables in the interview is different. You can safely use sensitive information to fill in fields by using the ["secret value" Step](writing_tests.mdx#secret-val).
 
 
 ### Avoid JSON Steps with sensitive data {#json-vars}
@@ -296,7 +296,7 @@ These are the only people that can create [GitHub secrets](writing_tests.mdx#sec
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
 
-Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx##sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](writing_tests.mdx#secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-diy).
+Sometimes authors do need to pass personal or security-critical information to their tests. For example, some tests require the "user" to [sign in](writing_tests.mdx#sign-in), so the tests need to know the email and password for that user. In GitHub, you can do this securely by using [GitHub secrets](writing_tests.mdx#secrets) and adding environment variables to your repository's GitHub workflow file. You can also read about [how to use sensitive information with <AutoDIY plain={true}/> tests](#sensitive-info-diy).
 
 1. Follow the [GitHub instructions](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to set up one or more GitHub secrets. You can add these secrets to one secrets or you can add these to your organization[^org_secrets], whichever is right for you.
 2. [Find your workflow file](writing_tests.mdx#workflows-where).
@@ -573,7 +573,7 @@ Private repositories can ignore this since they would first have to share their 
 
 On GitHub, workflow job logs and artifacts of public repositories are visible to the public, just like the code. Also, any logged-in user can download those workflow artifacts.
 
-That might be fine. Part of being transparent is letting the public understand how your packages are working. Also, there are [some ways](#secret-val) ALKiln lets you set variables that you want to keep secret. That said, if you are concerned about your logs and artifacts, there are some things you can do to make these less available:
+That might be fine. Part of being transparent is letting the public understand how your packages are working. Also, there are [some ways](writing_tests.mdx#secret-val) ALKiln lets you set variables that you want to keep secret. That said, if you are concerned about your logs and artifacts, there are some things you can do to make these less available:
 
 - Make your repository private
 - [Delete the logs](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs#deleting-logs) and [delete the artifacts](https://docs.github.com/en/actions/managing-workflow-runs/removing-workflow-artifacts).

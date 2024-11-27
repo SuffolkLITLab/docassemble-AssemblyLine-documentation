@@ -14,6 +14,7 @@ import WithSecretsForOrgs from './components/\_with_secrets.md';
 import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
 import { ScenarioDir } from './components/\_scenario_folder_contents.js';
 import { RobotStage } from './components/\_robot_stage.js';
+import { Anchor } from '/docs/react_components/\Anchor.js';
 
 
 :::warning
@@ -45,7 +46,7 @@ If you are coming back and just need some resource reminders, here is a short li
 - By default, each Step or page **must** be completed in at most 30 seconds. You can change that with the ["max seconds" Step](#custom-timeout).
 - ALKiln creates test [reports](#report) and pictures. For example, ALKiln saves [pictures and the HTML of pages that caused errors](#error-pics). In GitHub, those files are in the zip file in [your workflow's artifact section](#artifacts).
 - There are some field types that ALKiln cannot yet handle, including some `object`-type fields.
-- The tests use the [gherkin language and syntax](#gherkin).
+- The tests use the [gherkin language and syntax](#gherkin-keywords).
 
 Here is an example of a more complex test for a quick refresher on some of ALKiln's features:
 
@@ -153,7 +154,7 @@ The Step format:
 
 The two blanks to fill in are `<username env var>` and `<password env var>`. Each of them must be the name of an [environment variable](#env-vars) that you have already added to your [workflow file](#workflows).
 
-The `<username env var>` variable should contain the username of a [dedicated account](security.mdx#test_accounts) on your docassemble server. The `<password env var>` variable should contain the password of that account.
+The `<username env var>` variable should contain the username of a [dedicated account](security.mdx#test-accounts) on your docassemble server. The `<password env var>` variable should contain the password of that account.
 
 To use this Step:
 
@@ -179,7 +180,7 @@ env:
 You can have as many of these accounts as you want.
 
 :::danger Sensitive information
-If you run this in a <GTOYS/> test, you **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
+If you run this in a <GTOYS/> test, you **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test-accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
 :::
 
 ALKiln does avoid taking pictures or downloading the HTML for this Step, even when the test has an error on that page, so that information is still protected. ALKiln also avoids printing the value of these variables anywhere in the report or in the console. Even so, it is possible for you to [expose this information](security.mdx#no-show).
@@ -234,7 +235,7 @@ To set up the API key, do the following:
 1. Write this "sign in and clean up" Step in your `.feature` test file.
 
 :::danger Sensitive information
-If you run this in a <GTOYS/> test, you **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test_accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
+If you run this in a <GTOYS/> test, you **must** use [GitHub secrets](#secrets) to set the [environment variables](#env-vars) in order to keep the information secure. You should also use a [separate account](security.mdx#test-accounts) for signing in like this. [Never use a real person's account or information](security.mdx#mock-data).
 :::
 
 ALKiln does avoid taking pictures or downloading the HTML for this Step, even when the test has an error on that page, so that information is still protected. ALKiln also avoids printing the value of these variables anywhere in the report or in the console. Even so, it is possible for you to [expose this information](security.mdx#no-show).
@@ -383,7 +384,7 @@ You can use this Step to [upload files](#upload) and [fill in a signature](#sign
 :::
 -->
 
-Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.<span id="unused-rows"></span><span id="skipped-variable"></span>
+Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.<Anchor id="unused-rows"/><Anchor id="skipped-variable"/>
 
 :::warning Unused rows
 The Story Table does not care about extra rows that never get used. This can make Story Tables easier to write, but it also means that the tests will technically "pass" even if variables that *should* get set are never filled in.
@@ -426,7 +427,7 @@ The format of the Step:
   And I set the variable "<variable name>" to "<value>"
 ```
 
-There are two types of blanks you need to fill for this Step. The first set of quotes in this Step contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [Story Table's](#story-tables)'s `var` column and `value` column.
+There are two types of blanks you need to fill for this Step. The first set of quotes in this Step contain the name of the variable you need to set. The second set of quotes contain the value you want to set. This is the same as the [Story Table's](#story-table)'s `var` column and `value` column.
 
 This Step is "linear". That is, unlike Story Table rows, these "linear" variable-setting Steps have to be in the correct order and you **must** make sure your test has reached the exact page that has the field. Otherwise your test will fail.
 
@@ -1305,7 +1306,7 @@ Example:
 <SecureEnvVars/>
 
 
-<!-- ### `And I take a screenshot ?(?:named "([^"]+)")?` -->
+<!-- ### `And I take a screenshot ?(?:named "([^"]+)")?` {#pics} -->
 
 
 ### `I get the page's JSON variables and values` {#get-json}
@@ -1509,13 +1510,18 @@ Scenario Outline: I allow visitation
 
 ### Tags {#tags}
 
-You can use [Gherkin tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags) to choose to run only specific tests or files.
+You can tell ALKiln to run only some tests this way:
 
-To use a tag expression for GitHub tests you can [trigger your tests](#trigger-github) manually. When you do that, GitHub will offer you a drop down where you can give some inputs for your test run. One of the optional fields there will let you write a tag expression if you want. You can also add a tag expression to your workflow file as an [input](#optional-inputs).
+1. Add [Gherkin tags](https://cucumber.io/docs/cucumber/api/?lang=java#tags) at the top of your `.feature` file or above your `Scenario`.
+2. Use [a tag expression](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions) when you run your tests.
+
+For GitHub tests, you can use a tag expression when you [trigger your tests manually](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow#running-a-workflow). When you do that, GitHub will offer you a drop down where you can give some inputs for your test run (like that documentation describes). One of the optional fields there will let you write a tag expression if you want. If you want to *always* only run some GitHub tests, you can add a tag expression to your workflow file as an [input](#optional-inputs).
 
 The <AutoDIY/> test interview has a field where you can add a tag expression if you want.
 
-To use tags, you must first add them to your [test files](#test-files). You can add them above the `Feature` keyword, or above `Scenario` keywords, or both.
+This documentation will only show some basics about tags and tag expressions themselves.
+
+This is an example of adding tags to your [test files](#test-files). You can add them above the `Feature` keyword, or above `Scenario` keywords, or both.
 
 ```gherkin
 @likes_bears
@@ -1534,9 +1540,7 @@ Scenario: I like Jaime
   # Test 3 Steps...
 ```
 
-A [tag expression](https://cucumber.io/docs/cucumber/api/?lang=java#tag-expressions) is the magic formula an author can use to tell ALKiln which tests to run.
-
-This documentation will only show some basics about tags. Based on the example test file above, these are some examples of tag expressions and which tests they will run:
+Based on the example test file above, these are some examples of tag expressions and which tests they will run:
 
 | Tag expression | What tests run? |
 | - | - |
@@ -1657,7 +1661,7 @@ The [<GTOYS plain={true}/> test method](setup.mdx#recommended) workflow file has
 You can see examples of these inputs in the correct [ALKiln file](#workflows-examples).
 
 - `SERVER_URL` is the url of [your docassemble testing server](security.mdx#testing-server) - the server the tests should run on. If you are using ALKiln for a GitHub organization, you should store the value for this input in a [GitHub secret](#secrets) so that all your organization repositories can share it.
-- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for the ALKiln [testing account](security.mdx#test_accounts) on your server. You should store the value for this input in a [GitHub secret](#secrets) so that no one can see this secure information.
+- `DOCASSEMBLE_DEVELOPER_API_KEY` is a developer API key for the ALKiln [testing account](security.mdx#test-accounts) on your server. You should store the value for this input in a [GitHub secret](#secrets) so that no one can see this secure information.
 
 If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
 
@@ -1675,7 +1679,7 @@ These are values you can put in your workflow file directly under the `with:` ke
  -->
 
 
-[^org]: If your server is part of a GitHub organization, we recommend creating some of these values as organization secrets. That way, if you need to change the value of an input or environment variable you can do it one place.
+[^org]: If your server is part of a GitHub organization, we recommend creating some of these values as [organization secrets](#org-secrets). That way, if you need to change the value of an input or environment variable you can do it one place.
 
 
 ### Required inputs for <!-- GitHub Sandbox --> <KittyLitter/> tests {#sandbox-inputs}
@@ -1996,9 +2000,9 @@ You can [make secrets for individual GitHub repositories](https://docs.github.co
     # other code
   ```
 
-  Remember to create a [separate account](security.mdx#test_accounts) for that "user". <span id="org-secrets"></span>
+  Remember to create a [separate account](security.mdx#test-accounts) for that "user".
 
-2. GitHub secrets are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.<!-- TODO: Actually, SERVER_URL may be the best example because lots of users use it and it is an appropriate variable to use a secret for that isn't security-critical information. -->
+2. GitHub secrets<Anchor id="org-secrets"/> are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.<!-- TODO: Actually, SERVER_URL may be the best example because lots of users use it and it is an appropriate variable to use a secret for that isn't security-critical information. -->
 
   <details>
     <summary>Example situation</summary>
@@ -2091,9 +2095,9 @@ This section will talk about ways to start (trigger) [different types of tests](
 
 **This is for:** Everyone
 
-You control when your tests run and which tests run. How you do that depends on the [type of test](setup.mdx#types) you are using.<span id="trigger-github"></span>
+You control when your tests run and which tests run. How you do that depends on the [type of test](setup.mdx#types) you are using.
 
-**<GTOYS/> and <KittyLitter/> tests:**
+**<GTOYS/> and <KittyLitter/> tests:**<Anchor id="trigger-github"/>
 
 By default, you can trigger tests on GitHub by committing your edits to your repository or by running the tests manually.
 
@@ -2107,11 +2111,11 @@ You can use your [workflow file](#workflows) to customize some ALKiln test run s
 
 <!-- Best instructions for seeing workflow, action, and jobs: https://docs.github.com/en/actions/quickstart#viewing-your-workflow-results -->
 
-You can also [trigger your tests manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow#running-a-workflow). When you run your tests manually, you can use [tags](#tags) to limit which tests to run. You can also [use tags in your workflow file](#optional-inputs).
+You can also [trigger your tests manually](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow#running-a-workflow). When you run your tests manually, you can use [tags](#tags) to limit which tests to run. You can also [use tags in your workflow file](#optional-inputs).
 
-You can also edit your workflow file to [trigger your GitHub tests other ways](#workflow-extras).<span id="trigger-autodiy"></span>
+You can also edit your workflow file to [trigger your GitHub tests other ways](#workflow-extras).
 
-**<AutoDIY/> tests:**
+**<AutoDIY/> tests:**<Anchor id="trigger-autodiy"/>
 
 You can run <AutoDIY/> tests manually whenever you want to.
 
@@ -2312,7 +2316,7 @@ The console output should include at least one of these items, from top to botto
 - `F` - a test failed.
 
 3. The [ALKiln report](#report).
-1. Any errors from [the third-party libraries ALKiln uses](#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
+1. Any errors from [the third-party libraries ALKiln uses](intro.mdx#dependencies). We are keeping the errors from the third-party libraries until we handle all cases of the errors ourselves.
 1. How many tests pass or failed.
 1. In GitHub, data from the take-down processes as ALKiln and GitHub clean up.
 
@@ -2448,7 +2452,7 @@ We're always trying to understand what people would find helpful in these report
 <!--
 TODO: put in Story Tables:
 
-If you used a [story table](#story-tables) Step, a Scenario might look more like this:
+If you used a [story table](#story-table) Step, a Scenario might look more like this:
 
 ```
 ---------------

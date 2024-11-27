@@ -5,6 +5,8 @@ sidebar_label: Overview
 slug: alkiln
 ---
 
+import { Anchor } from '/docs/react_components/\Anchor.js';
+
 <!-- slug: /alkiln_old_overview -->
 
 **Any docassemble package can use ALKiln**, though it does have special features created especially for projects using AssemblyLine. Give us feedback and propose ideas by making issues at https://github.com/SuffolkLITLab/ALKiln/issues.
@@ -532,7 +534,7 @@ This Step can also be used anywhere else in your Scenario to give Steps more tim
 
 ([Moving](writing_tests.mdx#sign-in))
 
-You can use <span id="log-in-step">the `log in` Step</span> to sign into your docassemble server before going to the interview:
+You can use <Anchor id="log-in-step">the <code>log in</code> Step</Anchor> to sign into your docassemble server before going to the interview:
 
 ```
     Given I log in with the email "USER_EMAIL" and the password "USER_PASSWORD"
@@ -758,7 +760,7 @@ You can also use environment variables to set values with [the `secret variables
 
 ([Moving](writing_tests.mdx#secret-val))
 
-The <span id="secret-variables-step"><code>secret variables</code> Step</span> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. If there is an error on this page, ALKiln will still avoid taking a picture of the screen.
+<Anchor id="secret-variables-step">The <code>secret variables</code> Step</Anchor> can set variables that have sensitive information. For example, a password. The value of this variable will not appear anywhere in the report or in the console. If there is an error on this page, ALKiln will still avoid taking a picture of the screen.
 
 
 This is a complex Step to use and currently only works with tests running in GitHub (though it's in development for the Playground version). You can use a GitHub "secret" to store the value. To learn how to create and add a secret for the test, see the [GitHub secrets section](#github-secrets).
@@ -911,7 +913,7 @@ In a story table, use the name of the variable as usual and use the name of the 
 
 ([Moving](writing_tests.mdx#custom-timeout))
 
-Use <span id="custom-timeout-step">the `custom timeout` Step</span> to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
+Use <Anchor id="custom-timeout-step">the <code>custom timeout</code> Step</Anchor> to give your pages or Steps more time to finish. The default maximum time is 30 seconds. This Step can be useful if you know that a page or an interaction with a field will take longer. You can also use it to shorten the time to let tests fail faster. If you need, you can use it in multiple places in each Scenario.
 
 ```
     Then the maximum seconds for each Step is 200
@@ -1202,11 +1204,10 @@ That warning isn't a bug, but if the above doesn't apply to you, you can ignore 
 If you are using a story table with index variables or generic objects, you need to add some code to the interview file where you set your [`default screen parts` block](https://docassemble.org/docs/initial.html#default%20screen%20parts).
 
 <!-- This has to be a bit farther up than the code. For some reason the header isn't taken into account when jumping here. -->
-<a name="trigger_variable_code"></a>
 
 ([Moving](writing_tests.mdx#special-html))
 
-Add exactly this code to your `default screen parts` block to insert an invisible element in all your screens:
+Add exactly this code to your `default screen parts` block to insert an invisible element in all your screens<Anchor id="trigger_variable_code"/>:
 
 ```yml
 default screen parts:
@@ -1316,7 +1317,7 @@ In addition, here are some actions you can take to manage the security of the te
 
 ### Disable the tests
 
-([Moving](writing_tests.mdx#disable-test))
+([Moving](setup.mdx#disable-test))
 
 If you become worried about the tests, there are different ways you can stop the tests from running.
 
@@ -1325,7 +1326,7 @@ In order to run, the test setup interview added a "workflow" file to your reposi
 
 #### Disabling tests in one repository
 
-([Moving](writing_tests.mdx#disable-repo))
+([Moving](setup.mdx#disable-repo))
 
 GitHub lets you disable workflow files like these. See their instructions at https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow.
 
@@ -1336,7 +1337,7 @@ Another option is to disable or limit all tests, all actions, in your repository
 
 #### Disabling tests for the whole organization
 
-([Moving](writing_tests.mdx#disable-org))
+([Moving](setup.mdx#disable-org))
 
 You can disable these tests, or any actions, for a whole organization. GitHub's documentation for managing organization actions is at https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization.
 
@@ -1361,7 +1362,7 @@ In addition, some general good practices are:
 GitHub has documentation on some best practices as well: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions
 
 
-### Use ALKiln's commit sha
+### Use ALKiln's commit sha {#freeze}
 
 ([Moving](security.mdx#freeze))
 
@@ -1384,7 +1385,7 @@ When you want to update to a new version of the ALKiln, update that sha manually
 
 ([Moving](security.mdx#freeze))
 
-This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](../../get_started/intro.md#get-involved) any questions you might have.
+This section requires prior technical knowledge about [npm](https://docs.npmjs.com/about-npm) and [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](/docs/get_started/beginners_guide.md#join) any questions you might have.
 
 You can use an exact npm version of ALKiln by using your workflow file's `ALKILN_VERSION` input. The default uses a carat, for example `^4.0.0`. That means it will use the latest minor or patch in version 4 of ALKiln. You can instead use an exact version, for example `4.3.0`. See our section on [setting optional inputs](#optional-inputs).
 
@@ -1393,8 +1394,8 @@ You can use an exact npm version of ALKiln by using your workflow file's `ALKILN
 
 <!-- TODO: once "Moving" is changed "Moved", improve the accessibility of these links by putting their specific text in the link part -->
 
-- ([Moving](security.mdx#secrets) - secrets)
-- ([Moving](security.mdx#env-vars) - env vars)
+- ([Moving](writing_tests.mdx#secrets) - secrets)
+- ([Moving](writing_tests.mdx#env-vars) - env vars)
 - ([Moving](security.mdx#sensitive-info-github) - using sensitive info)
 
 <!-- TODO: Rearrange - Maybe use this section to refer to another section that is more focused on setting arbitrary environment variables in general -->
@@ -1470,7 +1471,7 @@ If you are still worried about the logs and artifacts in GitHub, [you can delete
 
 ## Your workflow file
 
-([Moving](security.mdx#workflows))
+([Moving](writing_tests.mdx#workflows))
 
 **Where is it?**
 
@@ -1486,7 +1487,7 @@ Among other things, the workflow file:
 
 You can also use the whole suite of GitHub's workflow and action functionality to do other things, like creating issues when tests fail.
 
-These following sections probably require prior technical knowledge about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](../../get_started/intro.md#get-involved) any questions you might have.
+These following sections probably require prior technical knowledge about [GitHub workflow files](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Feel free to [ask us](/docs/get_started/beginners_guide.md#join) any questions you might have.
 
 ### Required inputs
 
@@ -1517,7 +1518,7 @@ There are also optional inputs that can go under `with:`.
 
 `MAX_SECONDS_FOR_SETUP` lets you to set how long to allow ALKiln to try to pull your interview package's code into the docassemble Playground. The default is currently 120 seconds (2 minutes).
 
-`ALKILN_VERSION` can be useful for security. It gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" security section](#set-alkiln-s-npm-version).
+`ALKILN_VERSION` can be useful for security. It gives lets you control what npm version of ALKiln you're using. Read about that in [the "ALKiln's npm version" security section](#freeze).
 
 If you're using a GitHub repository or organization secret, it will look very similar to the [required inputs described above](#required-inputs). Here the values are in context:
 

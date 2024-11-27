@@ -14,7 +14,7 @@ Here are the steps:
 1. [Do the Hello, World exercise](#do-the-hello-world-exercise) for a friendly introduction to Docassemble
 2. [Watch a demonstration of the Weaver](#watch-a-demonstration-of-the-weaver), a Document Assembly Line tool for quickly turning prepared forms into draft Docassemble interviews
 3. [Review the interview project management page](#review-the-interview-project-management-guide)
-4. [Join the Document Assembly Line community](#join-the-document-assembly-line-community)
+4. [Join the Document Assembly Line community](#join)
 5. [Start building your first interview!](#start-building-your-first-interview)
 
 :::tip
@@ -49,7 +49,7 @@ Building a successful interview involves more than just coding in the Docassembl
 
 **➡️ [Review the interview project management guide.](project_management.md)**
 
-## Join the Document Assembly Line community
+## Join the Document Assembly Line community {#join}
 
 You know enough to get started, but you will need help. The Document Assembly Line community meets weekly on Zoom for live support, and coding help is available 24/7 in our Microsoft Teams forum.
 
