@@ -85,6 +85,10 @@ module.exports = {
             to: '/docs/authoring/pdfs'
           },
           {
+            from: '/docs/label_variables',
+            to: '/docs/authoring/label_variables'
+          },
+          {
             from: '/docs/docx',
             to: '/docs/authoring/docx'
           },
