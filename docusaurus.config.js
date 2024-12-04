@@ -81,6 +81,14 @@ module.exports = {
             from: '/docs'
           },
           {
+            from: '/docs/pdfs',
+            to: '/docs/authoring/pdfs'
+          },
+          {
+            from: '/docs/docx',
+            to: '/docs/authoring/docx'
+          },
+          {
             from: '/docs/alkiln/intro',
             to: '/docs/components/ALKiln/intro'
           },
