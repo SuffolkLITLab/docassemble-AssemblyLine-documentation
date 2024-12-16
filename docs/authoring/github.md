@@ -5,8 +5,9 @@ sidebar_label: "Using GitHub"
 slug: github
 ---
 
+We strongly recommend using [GitHub](https://github.com/) with Docassemble.
 
-We strongly recommend using [GitHub](https://github.com/) with Docassemble. GitHub is a version control system. It lets you save a snapshot of your interview that you can revert to an earlier version if you need to and see changes over time. GitHub also makes it easier to build interviews as a team, get help, and hand off your code to future interview builders and maintainers.
+GitHub is a version control system. It lets you save a snapshot of your interview that you can revert to an earlier version if you need to and see changes over time. GitHub also makes it easier to build interviews with a team, get help, and hand off your code to future interview builders and maintainers.
 
 Here are some more reasons to use GitHub with Docassemble:
 
@@ -27,7 +28,7 @@ Here is what we recommend for a workflow for using GitHub with the Docassemble p
 
 1. Create a new project in your Docassemble playground. Give it a name that describes the work to be done, then pull the `main` branch of your interview from GitHub into the project.
 2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code).
-3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#create-a-pull-request). If you are working with someone on the interview, request a review from them.
+3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#pull-requests). If you are working with someone on the interview, request a review from them.
 4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch.
 5. Decide on the next task or issue you want to work on and start over at #1.
 
@@ -37,15 +38,11 @@ We also shared this workflow in a Document Assembly Line workshop:
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4j7rRRvsbfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
-:::warning
-When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. Create a new project, first, if you don't want to risk this.
-:::
-
 For more detail on these steps, see below.
 
-## How To
+## How to
 
-### Set Up the GitHub Integration
+### Set up the GitHub integration
 
 In order to use GitHub with Docassemble you will need two things:
 
@@ -67,27 +64,101 @@ See [our package naming guidelines](naming#docassemble-projects-and-packages).
 In order to transfer a repository to an organization you must be a member of the organization and have permission to create a repository in the organization.
 :::
 
-### Create and Manage Playground Projects
+### Create and manage playground projects
 
 To create and manage projects, in the Docassemble playground click the ["**Playground**" dropdown](https://docassemble.org/docs/playground.html#projects) in the header, then click **Manage Projects**.
 
-:::tip
-You must use [PascalCase](naming#pascalcase) when naming projects.
+Projects and [branches](#branches) usually have similar names, but project names cannot have underscores, so use [PascalCase](naming#pascalcase).
+
+Every time you start working on a new issue, create a new project to work on it. This will help avoid merge conflicts and other problems.
+
+:::warning
+When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can avoid this by creating a new project instead of pulling a repository to an existing project.
 :::
 
-### Commit Your Code
+### Use issues
+
+In GitHub, **[issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)** are flexible items for planning, discussing, and tracking your work when building interviews. Issues are one of our primary tools for building and maintaining interviews. Discussions on issues can be especially useful for anyone who may work on the interview in the future—including you.
+
+[Create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) for:
+
+* Tasks
+* Bugs
+* Questions
+* Features
+* Ideas
+* Documentation
+* Etc.
+
+You can also [close issues in commit messages and pull request descriptions](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
+
+### Use branches {#branches}
+
+Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-requests) to merge the branch into **main**.
+
+As a general rule, avoid editing the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. This creates a cleaner record of changes over time.
+
+It's also best to avoid creating branches from branches other than **main**—this is a recipe for merge conflicts.
+
+#### Naming branches
+
+Name the branch for the issue you are working on. Branch names should be descriptive, unique, and in [snake case](naming#snake_case). One easy way to make the branch name unique is to include the issue or partial date.
+
+For example:
+
+* **78_update_review_screen** (Issue #78 calls for updating the review screen.)
+* **2024_01_update_court_form** (Including the year and month makes the branch name more specific.)
+
+Names like these make it easier to tell what issues you (or your teammates) are working on from the list of active branches.
+
+### Commit your code
+
+A commit is a save point. It saves your progress and creates a snapshot of the current state of your interview code. It also helps you find old, working code when something breaks or you need to track down a bug.
+
+GitHub can't help you if you don't use it, so **commit early and often**!
 
 1. In the Docassemble playground, click on the **Folders** menu and select **Packages**.
 2. Scroll to the bottom of the page and click on the **GitHub** button.
-3. Select the branch you want to commit to, enter a [commit message](#branches-pull-requests-and-commits), and click the **Commit** button. 
+3. Select the branch you want to commit to and enter a commit message that describes the change you just made to the interview code.
+4. **Do not** click the **Install package on this server also** checkbox.
+5. Click the **Commit** button.
 
-That's it! Your commit should show up on GitHub!
+That's it! Your commit should show up on GitHub! (If you get an error, check [these troubleshooting tips](#troubleshooting-commit-errors).)
 
-### Create a Pull Request
+:::tip
+When you first start working with Docassemble it can be hard to remember to stop and commit. Try creating a daily reminder on your phone.
+:::
+
+You can commit to a branch as often as you want. Developers often wait to commit code until they have it working, but they also might commit broken code so other people can help them troubleshoot, or to save their progress. If you are concerned about ruining working code, make a new branch for the broken code and commit it to that branch.
+
+#### Commit messages
+
+Take a moment to consider your commit message. Make it descriptive so you (or someone reviewing your commits) can reconstruct the work you did. This is especially helpful when your interview is broken and you need to find working code from a previous commit.
+
+Here are some example commit messages:
+
+  * Update cash income question
+  * Fix broken address field
+  * Update e-filing codes
+  * Update interview version
+
+### Create a pull request {#pull-requests}
 
 Refer to the [GitHub documentation for how to create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
-### Resolve Conflicts
+Pull request titles should be a summary of the purpose of your changes. They are usually more detailed than the branch name.
+
+Pull request descriptions should provide context, [mention related issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#about-linked-issues-and-pull-requests), and generally explain the reason for the change.
+
+Here are some good pull request examples:
+
+* [Fix ordering of sections](https://github.com/SuffolkLITLab/docassemble-MATCSmallClaims/pull/106) (SuffolkLITLab/docassemble-MATCSmallClaims)
+* [Basic background assembly implementation](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/pull/890) (SuffolkLITLab/docassemble-AssemblyLine)
+* [Add some safety for missing metadata that was causing build errors](https://github.com/SuffolkLITLab/courtformsonline.org/pull/108) (SuffolkLITLab/courtformsonline.org)
+
+This helps anyone reviewing your changes—now or in the future.
+
+### Resolve conflicts
 
 Merge conflicts happen to all of us. Refer to the [GitHub documentation on resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github).
 
@@ -102,7 +173,7 @@ To reduce merge conflicts:
 You can also [compare commits, branches, etc.](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) in GitHub at any time to see changes more clearly.
 :::
 
-### Review Pull Requests
+### Review pull requests
 
 When someone assigns you to review a pull request (PR), you will be able to see it in [your GitHub notifications](https://github.com/notifications). Don't let these requests sit around too long, or you increase the likelihood of [merge conflicts](#resolve-conflicts).
 
@@ -119,61 +190,18 @@ You can [make comments connected to specific lines of code](https://docs.github.
 
 Then, delete the playground project you created for the review.
 
-## Best Practices
+### Rename an interview repository
 
-### Commit Early & Often
+Changing the name of an interview repository is a multi-step process. For an example, here are the steps to rename **docassemble-OldName** to **docassemble-NewName**:
 
-A commit is a save point. It saves your progress and creates a snapshot of the current state of your interview code. It also helps you find old, working code when something breaks or you need to track down a bug.
+1. In GitHub, go the repository settings and change the name of the repository in the **General** settings using the **Repository name** field.
+2. Clone the repository to your computer (using [GitHub Desktop](https://desktop.github.com/download/), for example).
+3. In setup.py in the repository's root directory, search and replace "OldName" with "NewName".
+4. Inside the **docassemble** folder, rename the interview folder from **OldName** to **NewName**.
 
-GitHub can't help you if you don't use it, so **commit early and often**!
+Then you can pull the renamed repository to the Docassemble playground.
 
-:::tip
-When you first start working with Docassemble it can be hard to remember to stop and commit. Try creating a daily reminder on your phone.
-:::
-
-You can commit to a branch as often as you want. Developers often wait to commit code until they have it working, but they also might commit broken code so other people can help them troubleshoot, or to save their progress. If you are concerned about ruining working code, make a new branch for the broken code and commit it to that branch.
-
-### Use Issues
-
-In GitHub, **[issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)** are flexible items for planning, discussing, and tracking your work when building interviews. Issues are one of our primary tools for building and maintaining interviews. Discussions on issues can be especially useful for anyone who may work on the interview in the future—including you.
-
-[Create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) for:
-
-* Tasks
-* Bugs
-* Questions
-* Features
-* Ideas
-* Documentation
-* Etc.
-
-You can also [close issues in commit messages and pull request descriptions](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
-
-### Branches, Pull Requests, and Commits
-
-While you are building an interview, use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#create-a-pull-request) to merge this branch into the branch called `main`.
-
-As a general rule, avoid editing the branch called `main`, the default branch. Only update `main` with pull requests from other branches. As another general rule, avoid creating branches from branches other than `main`—this is a recipe for merge conflicts.
-
-When naming branches or writing commit messages or pull request titles, it is helpful to describe the change(s) they relate to.
-
-* Branch names are usually short. They are a description of the purpose of the changes you will make—a description that you or your teammates can understand at a glance.
-* While you are working on a branch, [commit early and often](#commit-early--often), and use the commit message to describe the change you just made to the interview code.
-* Pull request titles should be a summary of the purpose of your changes. They are usually more detailed than the branch name. Pull request descriptions should provide context, [mention related issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#about-linked-issues-and-pull-requests), and generally explain the reason for the change.
-
-Examples of a good branch name, commit messages, and pull request title:
-
-* Branch name: **2024_court_form_updates**
-* Commit messages:
-    * **Update cash income question**
-    * **Fix broken address field**
-    * **Update e-filing codes**
-    * **Update interview version**
-* Pull request title: **Updates the interview for the new 2024 court form**
-
-That way, when you look at the list of commits, pull requests, or branches you can more easily reconstruct the work you did (or in the case or branches, intended to do). This is especially helpful when you need to find working code from a previous save point.
-
-## Troubleshooting Errors when Committing from Docassemble
+## Troubleshooting errors when committing from Docassemble {#troubleshooting-commit-errors}
 
 When you get an error committing from Docassemble, it means Docassemble was unable to change anything on GitHub. One of three things is probably going on.
 
@@ -185,7 +213,7 @@ Scroll to the bottom of the page to see the details of the error. These are a st
 
 Here are details about the three problems above, how you can identify them, and possible solutions.
 
-#### If You See `nothing to commit, working tree clean`
+#### If you see `nothing to commit, working tree clean`
 
 This means git cannot detect any changes in your code. You cannot commit anything from docassemble if you have not made changes—not even to a new branch. These are some possibilities:
 
@@ -193,7 +221,7 @@ This means git cannot detect any changes in your code. You cannot commit anythin
 * You may not have saved changes to a file. If the file is still open you can click the **Save** button. If the file is closed you will have to open it and make the changes again.
 * You may not actually have made any changes to the files even though you thought you did.
 
-#### If You See `403`
+#### If you see `403`
 
 A [**403** error](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#403) means you do not have **write** permission for the repository. Ask the person or organization that owns it to give you permission or add you to a team that has permission.
 
@@ -201,6 +229,6 @@ If you are trying to make a new repository on your GitHub account, you may belon
 
 If you think your GitHub account does have permission, try [redoing the GitHub integration](https://docassemble.org/docs/installation.html#github).
 
-#### If You See `CONFLICT (content): Merge conflict`
+#### If you see `CONFLICT (content): Merge conflict`
 
 The text `CONFLICT (content): Merge conflict` means the branch you are trying to push to changed while you were making your changes. It is what a [merge conflict](#resolve-conflicts) looks like in docassemble in git. Simply make a new branch and commit the changes there. Work out the merge conflicts afterwards.
