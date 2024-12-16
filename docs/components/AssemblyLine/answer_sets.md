@@ -59,10 +59,7 @@ saved answers in.
 Next, use the main menu located in the top right of the browser and select the
 option "Load answer set."
 
-You will see a table that displays each answer set that you created on this
-server. Currently, only the most recent 500 answer sets that you authored are
-displayed. Click the name of the answer set (1) that you want to load to copy the
-answers into your current interview.
+You will see a table that displays each answer set that you created on this server. Currently, only the most recent 500 answer sets that you authored are displayed. Click the name of the answer set (labeled **1** in the image below) that you want to load to copy the answers into your current interview.
 
 ![](../../assets/load_answer_set_table.png)
 
@@ -75,12 +72,11 @@ set.
 To rename an answer set, first visit the answer set's information page:
 
 1. Find the answer set in the "My interviews" page and click to open
-2. Or, use the "Load answer set" menu and then click the "view" icon. (3)
+2. Or, use the "Load answer set" menu and then click the "view" icon. (the eye icon labeled **3** in the image below)
 
 ![](../../assets/load_answer_set_table.png)
 
-On the answer set's information page, use the "Rename" button (1) at the top of the
-screen to give the answer set a new name.
+On the answer set's information page, use the "Rename" button (labeled **1** in the image below) at the top of the screen to give the answer set a new name.
 
 ![](../../assets/answer_set_information_screen.png)
 
@@ -89,7 +85,7 @@ screen to give the answer set a new name.
 To delete an answer set that you no longer need:
 
 1. Use the "delete" button on the "My interviews" page, or
-1. Use the "Load answer set" menu and click the "delete" icon (2)
+1. Use the "Load answer set" menu and click the "delete" icon (the trash can icon labeled **2** in the image below)
 
 ![](../../assets/load_answer_set_table.png)
 
@@ -102,7 +98,7 @@ To export an answer set, visit the answer set's information page:
 1. Find the answer set in the "My interviews" page and click to open
 2. Or, use the "Load answer set" menu and then clicking the "view" icon.
 
-Next, click the "Export in JSON format" button (2). Save the "variables.json" file in
+Next, click the "Export in JSON format" button (labeled **2** in the image below). Save the "variables.json" file in
 a location of your choice.
 
 ![](../../assets/answer_set_information_screen.png)
