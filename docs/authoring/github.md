@@ -27,7 +27,7 @@ Here is what we recommend for a workflow for using GitHub with the Docassemble p
 
 1. Create a new project in your Docassemble playground. Give it a name that describes the work to be done, then pull the `main` branch of your interview from GitHub into the project.
 2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code).
-3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#create-a-pull-request). If you are working with someone on the interview, request a review from them.
+3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#pull-requests). If you are working with someone on the interview, request a review from them.
 4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch.
 5. Decide on the next task or issue you want to work on and start over at #1.
 
@@ -101,7 +101,7 @@ It's also best to avoid creating branches from branches other than **main**—th
 
 #### Naming branches
 
-Name the branch for the issue you are working on. Branch names should be descriptive, unique, and in [snake case](../coding_style/yaml#avoid-spaces-in-file-names-use-lowercase-letters). One easy way to make the branch name unique is to include the issue or partial date.
+Name the branch for the issue you are working on. Branch names should be descriptive, unique, and in [snake case](naming#snake_case). One easy way to make the branch name unique is to include the issue or partial date.
 
 For example:
 
@@ -118,7 +118,9 @@ GitHub can't help you if you don't use it, so **commit early and often**!
 
 1. In the Docassemble playground, click on the **Folders** menu and select **Packages**.
 2. Scroll to the bottom of the page and click on the **GitHub** button.
-3. Select the branch you want to commit to, enter a commit message that describes the change you just made to the interview code, and click the **Commit** button.
+3. Select the branch you want to commit to and enter a commit message that describes the change you just made to the interview code.
+4. **Do not** click the **Install package on this server also** checkbox.
+5. Click the **Commit** button.
 
 That's it! Your commit should show up on GitHub! (If you get an error, check [these troubleshooting tips](#troubleshooting-commit-errors).)
 
@@ -146,6 +148,12 @@ Refer to the [GitHub documentation for how to create a pull request](https://doc
 Pull request titles should be a summary of the purpose of your changes. They are usually more detailed than the branch name.
 
 Pull request descriptions should provide context, [mention related issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#about-linked-issues-and-pull-requests), and generally explain the reason for the change.
+
+Here are some good pull request examples:
+
+* [Fix ordering of sections](https://github.com/SuffolkLITLab/docassemble-MATCSmallClaims/pull/106) (SuffolkLITLab/docassemble-MATCSmallClaims)
+* [Basic background assembly implementation](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/pull/890) (SuffolkLITLab/docassemble-AssemblyLine)
+* [Add some safety for missing metadata that was causing build errors](https://github.com/SuffolkLITLab/courtformsonline.org/pull/108) (SuffolkLITLab/courtformsonline.org)
 
 This helps anyone reviewing your changes—now or in the future.
 
