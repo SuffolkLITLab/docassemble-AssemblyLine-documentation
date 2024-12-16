@@ -5,8 +5,9 @@ sidebar_label: "Using GitHub"
 slug: github
 ---
 
+We strongly recommend using [GitHub](https://github.com/) with Docassemble.
 
-We strongly recommend using [GitHub](https://github.com/) with Docassemble. GitHub is a version control system. It lets you save a snapshot of your interview that you can revert to an earlier version if you need to and see changes over time. GitHub also makes it easier to build interviews as a team, get help, and hand off your code to future interview builders and maintainers.
+GitHub is a version control system. It lets you save a snapshot of your interview that you can revert to an earlier version if you need to and see changes over time. GitHub also makes it easier to build interviews with a team, get help, and hand off your code to future interview builders and maintainers.
 
 Here are some more reasons to use GitHub with Docassemble:
 
@@ -36,10 +37,6 @@ We also shared this workflow in a Document Assembly Line workshop:
 <p align="center">
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4j7rRRvsbfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
-
-:::warning
-When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. Create a new project, first, if you don't want to risk this.
-:::
 
 For more detail on these steps, see below.
 
@@ -71,8 +68,12 @@ In order to transfer a repository to an organization you must be a member of the
 
 To create and manage projects, in the Docassemble playground click the ["**Playground**" dropdown](https://docassemble.org/docs/playground.html#projects) in the header, then click **Manage Projects**.
 
-:::tip
-Use [PascalCase](naming#pascalcase) when naming projects.
+Projects and [branches](#branches) usually have similar names, but project names cannot have underscores, so use [PascalCase](naming#pascalcase).
+
+Every time you start working on a new issue, create a new project to work on it. This will help avoid merge conflicts and other problems.
+
+:::warning
+When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can avoid this by creating a new project instead of pulling a repository to an existing project.
 :::
 
 ### Use issues
@@ -91,9 +92,9 @@ In GitHub, **[issues](https://docs.github.com/en/issues/tracking-your-work-with-
 
 You can also [close issues in commit messages and pull request descriptions](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword).
 
-### Use branches
+### Use branches {#branches}
 
-Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-request) to merge the branch into **main**.
+Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-requests) to merge the branch into **main**.
 
 As a general rule, avoid editing the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. This creates a cleaner record of changes over time.
 
