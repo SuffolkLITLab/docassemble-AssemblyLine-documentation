@@ -190,6 +190,17 @@ You can [make comments connected to specific lines of code](https://docs.github.
 
 Then, delete the playground project you created for the review.
 
+### Rename an interview repository
+
+Changing the name of an interview repository is a multi-step process. For an example, here are the steps to rename **docassemble-OldName** to **docassemble-NewName**:
+
+1. In GitHub, go the repository settings and change the name of the repository in the **General** settings using the **Repository name** field.
+2. Clone the repository to your computer (using [GitHub Desktop](https://desktop.github.com/download/), for example).
+3. In setup.py in the repository's root directory, search and replace "OldName" with "NewName".
+4. Inside the **docassemble** folder, rename the interview folder from **OldName** to **NewName**.
+
+Then you can pull the renamed repository to the Docassemble playground.
+
 ## Troubleshooting errors when committing from Docassemble {#troubleshooting-commit-errors}
 
 When you get an error committing from Docassemble, it means Docassemble was unable to change anything on GitHub. One of three things is probably going on.
