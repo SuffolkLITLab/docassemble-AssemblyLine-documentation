@@ -25,7 +25,7 @@ module.exports = {
         'get_started/development_roadmap',
         'contributors',
         {
-            label: 'Archived Pages',
+            label: 'Archived pages',
             type: 'category',
             items: [
                 'archive/bootcamp',
