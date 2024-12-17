@@ -7,7 +7,7 @@ module.exports = {
         'get_started/installation',
         'get_started/beginners_guide',
         {
-            label: 'Interview Projects',
+            label: 'Interview projects',
             collapsed: false,
             type: 'category',
             items: [

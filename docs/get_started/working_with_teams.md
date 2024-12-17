@@ -1,7 +1,6 @@
 ---
 id: working_with_teams
-title: Working with Teams
-sidebar_label: Working with Teams
+title: Working with teams
 slug: working_with_teams
 ---
 
