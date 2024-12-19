@@ -53,7 +53,7 @@ metadata:
 
 ## AssemblyLine metadata
 
-The AssemblyLine metadata block has different, AssemblyLine specific metadata that doesn't fit in the normal [metadata block](#metadata). Additionally, data in this block isn't overwritten if it's included in another interview.
+The [AssemblyLine package](../components/AssemblyLine/al_general_overview.md) adds AssemblyLine specific metadata to the basic [metadata block](#metadata).
 
 ```yml
 mandatory: True

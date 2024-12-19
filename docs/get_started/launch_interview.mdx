@@ -1,0 +1,54 @@
+---
+title: Launching an interview
+---
+
+To launch an interview:
+
+1. Publish the interview
+2. Create a landing page for the interview
+3. Promote the interview
+
+## Publishing an interview
+
+When your interview is ready for publication, publish it by deploying it to your Docassemble production server. But 
+
+This can be useful if you want to start with a "soft launch." A soft launch involves giving your interview to a test group of users in order to see if it works as expected. For example, you might give the interview to 5–10 people and ask them to use it. That way if there is a problem the impact is limited. Or if it goes smoothly, you can confidently put the interview link on a landing page and promote it.
+
+This is also a good time to review your interview repository's access settings in [GitHub](../authoring/github.md). Consider protecting the **main** branch with the following rules enabled:
+
+* Restrict deletions
+* Require a pull request before merging
+* Block force pushes
+
+## Creating a landing page for an interview
+
+A landing page is simply the page where people can find an interview. Here are some examples:
+
+* [Ask the Massachusetts Appeals Court to stop an eviction](https://courtformsonline.org/ma/forms/appeal-or-stay-your-eviction)
+* [Initiate a divorce, separation, or civil union dissolution in Vermont](https://vtlawhelp.org/vtcourtforms/divorce)
+* [E-file an appearance in Illinois](https://www.illinoislegalaid.org/legal-information/appearance-e-filing)
+
+A landing page includes information about the interview such as the forms it assembles, the laws and procedures involved, who can use it, links to more information, and anything else someone might need to complete it. You can include this information in the [interview metadata](../authoring/weaver_code_anatomy.md#assemblyline-metadata). (The AssemblyLine metadata is what we use to populate the landing pages on [Court Forms Online](https://courtformsonline.org/).)
+
+Whether you use the AssemblyLine metadata to generate interview landing pages or now, this is a good template for interview landing pages in general. Court Forms Online landing pages have the following structure (shown with the metadata source properties):
+
+:::note[Court Forms Online Landing Page Template]
+<h1>Interview Title <span style={{fontSize: '1rem', fontWeight: 'normal'}}>`metadata.title`</span></h1>
+
+Description `metadata.description`
+
+* Help page link `metadata.help_page_title` & `metadata.help_page_url`
+* Original form link `metadata.original_form`
+
+<h2>Can I use this interview?</h2>
+
+You can use this interview if … `metadata.can_I_use`
+
+<h2>Before you start</h2>
+
+Before you start … `metadata.before_you_start`
+
+<div className="button button--primary" style={{pointerEvents: 'none'}}>Start interview</div>
+:::
+
+## Promoting an interview
