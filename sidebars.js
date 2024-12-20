@@ -12,8 +12,8 @@ module.exports = {
             type: 'category',
             items: [
                 'get_started/project_management',
-                'get_started/launch_interview',
                 'get_started/working_with_teams',
+                'get_started/launch_interview',
             ],
         },
         'get_started/resources',

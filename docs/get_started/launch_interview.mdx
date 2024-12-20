@@ -4,51 +4,67 @@ title: Launching an interview
 
 To launch an interview:
 
-1. Publish the interview
+1. Deploy the interview to your production server
 2. Create a landing page for the interview
 3. Promote the interview
 
-## Publishing an interview
+:::tip
+You may want to "soft launch" new interviews by deploying the interview to your production server but waiting to create a landing page and promote the interview. This gives you a chance to collect initial feedback from actual users make sure the interview works as expected while limiting the impact of any problems or negative feedback.
+:::
 
-When your interview is ready for publication, publish it by deploying it to your Docassemble production server. But 
+## Deploy the interview to your production server
 
-This can be useful if you want to start with a "soft launch." A soft launch involves giving your interview to a test group of users in order to see if it works as expected. For example, you might give the interview to 5–10 people and ask them to use it. That way if there is a problem the impact is limited. Or if it goes smoothly, you can confidently put the interview link on a landing page and promote it.
+When your interview is ready for publication, publish it by [installing the package on your production server](https://docassemble.org/docs/packages.html#installing).
+
+Once the package is installed anyone with the [interview URL](https://docassemble.org/docs/interviews.html#invocation) will be able to use it. But [Docassemble discourages search engines](https://docassemble.org/docs/config.html#robots) from indexing interviews so it is extremely unlikely that anyone will just happen to find it.
+
+To ensure people can find the interview you'll need to create a landing page.
+
+## Creating an interview landing page
+
+An interview landing page is a web page with information about an interview. A good landing page should help someone figure out if they can use the interview, gather information they might need to complete it, link to additional relevant information and resources, and start the interview. An interview landing page also gives search engines a URL to index so people who need the interview can find it using a search engine like Google.
+
+Here are some interview landing pages from the Document Assembly Line community:
+
+* [Ask the Massachusetts Appeals Court to stop an eviction](https://courtformsonline.org/ma/forms/appeal-or-stay-your-eviction)
+* [Initiate a divorce, separation, or civil union dissolution in Vermont](https://vtlawhelp.org/vtcourtforms/divorce)
+* [E-file an appearance in Illinois](https://www.illinoislegalaid.org/legal-information/appearance-e-filing)
+
+This is the template we use for interview landing pages on [Court Forms Online](https://courtformsonline.org/):
+
+:::note[Court Forms Online Landing Page Template]
+_Note: Court Forms Online uses the [AssemblyLine metadata block](../authoring/weaver_code_anatomy.md#assemblyline-metadata) to generate interview landing pages. This way interview landing pages are updated when the interview package is updated._
+
+<h1>Interview Title</h1>
+
+Interview description. 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum tortor ligula, ac condimentum lorem dictum ac. Pellentesque convallis sem eros. Vivamus ut suscipit urna. Aliquam vehicula eget dui quis suscipit. Vestibulum viverra rutrum purus, vel sollicitudin erat aliquam non.
+
+* Help page link
+* Original form link
+
+<h2>Can I use this interview?</h2>
+
+You can use this interview if:
+
+* Lorem ipsum dolor sit amet
+* onsectetur adipiscing elit
+* Sed vestibulum tortor ligula
+
+<h2>Before you start</h2>
+
+Before you start … Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<div className="button button--primary" style={{pointerEvents: 'none'}}>Start interview</div>
+:::
+
+## Promoting an interview
+
+## Review GitHub repository settings
 
 This is also a good time to review your interview repository's access settings in [GitHub](../authoring/github.md). Consider protecting the **main** branch with the following rules enabled:
 
 * Restrict deletions
 * Require a pull request before merging
 * Block force pushes
-
-## Creating a landing page for an interview
-
-A landing page is simply the page where people can find an interview. Here are some examples:
-
-* [Ask the Massachusetts Appeals Court to stop an eviction](https://courtformsonline.org/ma/forms/appeal-or-stay-your-eviction)
-* [Initiate a divorce, separation, or civil union dissolution in Vermont](https://vtlawhelp.org/vtcourtforms/divorce)
-* [E-file an appearance in Illinois](https://www.illinoislegalaid.org/legal-information/appearance-e-filing)
-
-A landing page includes information about the interview such as the forms it assembles, the laws and procedures involved, who can use it, links to more information, and anything else someone might need to complete it. You can include this information in the [interview metadata](../authoring/weaver_code_anatomy.md#assemblyline-metadata). (The AssemblyLine metadata is what we use to populate the landing pages on [Court Forms Online](https://courtformsonline.org/).)
-
-Whether you use the AssemblyLine metadata to generate interview landing pages or now, this is a good template for interview landing pages in general. Court Forms Online landing pages have the following structure (shown with the metadata source properties):
-
-:::note[Court Forms Online Landing Page Template]
-<h1>Interview Title <span style={{fontSize: '1rem', fontWeight: 'normal'}}>`metadata.title`</span></h1>
-
-Description `metadata.description`
-
-* Help page link `metadata.help_page_title` & `metadata.help_page_url`
-* Original form link `metadata.original_form`
-
-<h2>Can I use this interview?</h2>
-
-You can use this interview if … `metadata.can_I_use`
-
-<h2>Before you start</h2>
-
-Before you start … `metadata.before_you_start`
-
-<div className="button button--primary" style={{pointerEvents: 'none'}}>Start interview</div>
-:::
-
-## Promoting an interview
