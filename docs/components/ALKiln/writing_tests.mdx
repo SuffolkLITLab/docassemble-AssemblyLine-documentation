@@ -1060,6 +1060,21 @@ or, in a Story Table:
 Especially notice the quotes just inside the first square brackets.
 :::
 
+To choose ["none of the above"](https://docassemble.org/docs/fields.html#none%20of%20the%20above) use the word `'None'` in your variable name:
+
+:::tip Right
+```gherkin
+  And I set the variable "best_friends['None']" to "True"
+```
+
+or, in a Story Table:
+
+```gherkin
+    | var | value |
+    | best_friends['None'] | True |
+```
+:::
+
 
 ### `file` {#upload}
 
