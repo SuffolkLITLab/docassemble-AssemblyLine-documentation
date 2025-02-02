@@ -1894,25 +1894,9 @@ You can edit the values of `title`, `body`, and `labels` to customize the issue.
 <!-- TODO: Inputs are configuration. -->
 <!-- TODO: differentiate between test _run_/suite configuration and individual test configuration. -->
 
-Environment variables are one of the few ways for you to get information from GitHub or your server to ALKiln. (You do that in your [workflow file](#workflows).)
+Environment variables are the way to configure ALKiln settings or give ALKiln dynamic values. They are available to the whole operating system and they are useful for [storing secret and sensitive information](security.mdx#sensitive-data). For <AutoDIY/> tests, you add the environment variables to [your server's config file under an `alkiln` keyword](#config-vars). For <GTOYS/> and <KittyLitter/> tests, you [add them to your workflow file](#github-vars).
 
-What is a variable?
-
-A "variable" is a name with a value[^vars]. That name, a "variable name", lets the rest of the program ask for that value when needed.[^name] You might already know what they are, but we are going to use a metaphor to help with the rest of the explanation. A variable name is like a kid's name and when the program asks for the value, that's like calling a kid in for dinner.
-
-[^name]: You might notice people also using the word "variable" to mean "variable name".
-
-[^vars]: A variable name is only sort of a label for a value. It is actually more like a label for a box and in that box is the value. You can change the value that's in the box and as long as the box and name stay the same, the program is happy. It will use whatever is in that box. Even that is a little bit untrue because in some languages, it is impossible to change the value in the box. Those variables are called "immutable".
-
-<!-- A flexible way to hold a value that you can change when you need to change it and so everything else in the program can use it, even if it changes. -->
-
-<!-- Variables in code are like boxes where you can put things you want to remember or use later. https://www.phind.com/agent?cache=cluroe4dp001ojl0bwystqj9g -->
-
-What are environment variables?
-
-Environment variables are variables that are available to the whole system - the whole environment the programs are working in. That's like the town where that kid lives and where their house is. That means every test in your test suite can use that variable. You can call that kid in for dinner no matter where in the city they are.
-
-Because environment variables are so global, we recommend you start all your environment variable names with "ALKILN_" so they have less chance to interfere with your system's other environment variables. If you are going to broadcast your message across the town, every kid should have a unique name so everyone knows who you are yelling at.
+We recommend you start all your environment variable names with "ALKILN_". System-wide environment variables, like one called `PATH`, already exist on your operating system and other processes use those for their own reasons. There is no definitive list of those variables. Starting your own names with "ALKILN_" means those names are less likely to interfere with your system's other environment variables.
 
 ### Docassemble config file env vars {#config-vars}
 
@@ -1967,13 +1951,6 @@ env:
 
 job:
   # other code
-```
-
-Playground: Variable names + values in your config under `alkiln`
-
-```yml
-alkiln:
-  ALKILN_USER_EMAIL: tests@example.com
 ```
 
 If you do use sensitive information like that in GitHub, you should put it in a [GitHub "secret"](#secrets).
