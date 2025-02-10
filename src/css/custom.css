@@ -140,11 +140,15 @@ article .markdown p img {
   }
 }
 
-html[class*="docs-doc-id-alkiln"] *:not(h1),
-html[class*="docs-doc-id-alkiln"] *:not(h2),
-html[class*="docs-doc-id-alkiln"] *:not(h3),
-html[class*="docs-doc-id-alkiln"] *:not(h4),
-html[class*="docs-doc-id-alkiln"] *:not(h5),
-html[class*="docs-doc-id-alkiln"] *:not(h6) {
-    scroll-margin-top: var(--ifm-navbar-height);
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] *:not(h1),
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] *:not(h2),
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] *:not(h3),
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] *:not(h4),
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] *:not(h5),
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] *:not(h6) {
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 0.7em);
+}
+
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] li:has(.target.highlight) {
+  box-shadow: inset -6px -6px 16px -16px rgba(0, 0, 0, 1), inset 10px 14px 25px -20px rgba(0, 0, 0, 1);
 }
