@@ -55,15 +55,6 @@ function Home() {
                 <Translate>Get Started</Translate>
               </Link>
             </div>
-            <div className={styles.indexCtasGitHubButtonWrapper}>
-                <iframe
-                  className={styles.indexCtasGitHubButton}
-                  src="https://ghbtns.com/github-btn.html?user=suffolklitlab&amp;repo=docassemble-AssemblyLine&amp;type=star&amp;count=true&amp;size=large"
-                  width={160}
-                  height={30}
-                  title="GitHub Stars"
-                />
-              </div>
           </div>
         </div>
         <div className={clsx(styles.announcement, styles.announcementDark)}>
