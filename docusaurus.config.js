@@ -1,6 +1,6 @@
 module.exports = {
   title: 'The Document Assembly Line',
-  tagline: 'From paper to webform, made easier',
+  tagline: 'Open-source tools for court forms, guided interviews, and e-filing',
   url: 'https://assemblyline.suffolklitlab.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -29,7 +29,7 @@ module.exports = {
         {
           type: 'docSidebar',
           sidebarId: 'get_started',
-          label: 'Get Started',
+          label: 'Get started',
         },
         {
           type: 'docSidebar',
@@ -38,12 +38,12 @@ module.exports = {
         },
         {
           href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-          label: 'Legal Tech Class',
+          label: 'Legal tech class',
           position: 'right',
         },
         {
           href: 'https://docassemble.org/docs.html',
-          label: 'Docassemble Docs',
+          label: 'Docassemble docs',
           position: 'right',
         },
         {
