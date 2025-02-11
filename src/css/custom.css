@@ -6,23 +6,26 @@
  * work well for content-centric websites.
  */
 
-/* Override the default Infima variables here. */
+/* Overrides the default Infima variables with Suffolk's brand colors. */
 :root {
   --suffolk-blue: #15284b;
+  --suffolk-medium-blue: #2c5697;
+  --suffolk-lighter-blue: #41b6e6;
+  --suffolk-blue-wash: rgba(65, 182, 230, .25);
   --suffolk-gold: #fdb924;
+  --suffolk-gold-wash: rgba(253, 185, 36, .25);
 
-  --ifm-color-primary: #0050a2;
-  --ifm-color-primary-dark: #004892;
-  --ifm-color-primary-darker: #00448a;
-  --ifm-color-primary-darkest: #003871; 
-  --ifm-color-primary-light: #0058b2; 
-  --ifm-color-primary-lighter: #005cba; 
-  --ifm-color-primary-lightest: #0066cf; 
+  --ifm-color-primary: var(--suffolk-blue);
+  --ifm-color-primary-dark: #565294;
+  --ifm-color-primary-darker: #51284f;
+  --ifm-color-primary-darkest: var(--suffolk-blue);
+  --ifm-color-primary-light: var(--suffolk-medium-blue);
+  --ifm-color-primary-lighter: #4e87a0;
+  --ifm-color-primary-lightest: var(--suffolk-lighter-blue);
   --ifm-code-font-size: 95%;
 
   --ifm-navbar-background-color: var(--suffolk-blue);
-  --ifm-navbar-link-color: #fff;
-
+  --ifm-navbar-link-color: white;
   --ifm-navbar-link-hover-color: #b79514;
 
   --ifm-heading-margin-bottom: 0;
@@ -37,8 +40,10 @@
   --ifm-color-primary-light: #eccd53;
   --ifm-color-primary-lighter: #edd060;
   --ifm-color-primary-lightest: #f3de8f;
+
   --ifm-navbar-background-color: var(--suffolk-blue);
-  --ifm-background-color:#002E60;
+  
+  --ifm-background-color: #002E60;
 }
 
 .navbar-sidebar__brand {

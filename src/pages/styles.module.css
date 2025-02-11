@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 :root {
-  --main-bg-color: #e6ecfc;
-  --main-color: #000;  
+  --main-bg-color: var(--suffolk-blue-wash);
+  --main-color: black;  
 }
 
 [data-theme='dark'] {
-  --main-bg-color: rgb(27, 27, 29);
+  --main-bg-color: var(--suffolk-blue);
   --main-color: #fff;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .hero {
-  background-color: var(--main-bg-color); 
+  background-color: var(--suffolk-blue-wash); 
   padding: calc(3 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
 }
 
@@ -62,7 +62,11 @@
     margin: 0;
   
     strong {
-      color: var(--ifm-color-primary);
+      color: var(--suffolk-medium-blue);
+
+      [data-theme='dark'] & {
+        color: var(--suffolk-gold); 
+      }
     }
   
     @media (max-width: 768px) {
@@ -70,7 +74,6 @@
     }
   }
 }
-
 
 .heroImage {
   grid-area: img;
@@ -107,7 +110,7 @@
 
   img {
     aspect-ratio: 1 / 1;
-    background-color: var(--main-bg-color); 
+    background-color: var(--suffolk-blue-wash); 
     border-radius: 9999px;
     padding: var(--ifm-global-spacing);
   }
