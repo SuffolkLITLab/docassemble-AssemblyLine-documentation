@@ -27,50 +27,190 @@ function Home() {
 
   return (
     <Layout title={tagline} description={description as string}>
-      <main>
+      <main className={styles.indexMain}>
         <div className={styles.hero}>
           <div className={styles.heroInner}>
-            <h1 className={styles.heroProjectTagline}>
-              <img
-                alt={translate({message: 'The Document Assembly Line'})}
-                className={styles.heroLogo}
-                src={useBaseUrl('/img/undraw_work_together_re_5yhn.svg')}
-                width="50%"
-              />
-              <span
-                className={styles.heroTitleTextHtml}
-                dangerouslySetInnerHTML={{
-                  __html: translate({
-                    id: 'homepage.hero.title',
-                    message:
-                      'Go from <b>paper court form</b> to <b>beautiful web app</b> with ease',
-                    description:
-                      'Turn PDF and DOCX templates into Docassemble interviews',
-                  }),
-                }}
-              />
-            </h1>
-            <div className={styles.indexCtas}>
-              <Link className="button button--primary" to="/docs/get_started">
-                <Translate>Get Started</Translate>
-              </Link>
+            <div className={styles.heroText}>
+              <h1 dangerouslySetInnerHTML={{
+                __html: translate({
+                  id: 'homepage.hero.title',
+                  description:
+                    'Open-source tools for court forms, guided interviews, and e-filing',
+                  message:
+                    'Open-source tools for <strong>court forms</strong>, <strong>guided interviews</strong>, and <strong>e-filing</strong>',
+                }),
+              }}></h1>
+              <div className={styles.heroCTAButtons}>
+                <Link className="button button--primary" to="/docs/get_started">
+                  <Translate>Get started</Translate>
+                </Link>
+              </div>
+            </div>
+            <img
+              alt={translate({message: 'The Document Assembly Line'})}
+              className={styles.heroImage}
+              src={useBaseUrl('/img/undraw_sync-files_64mj.svg')}
+              width="100%"
+            />
+          </div>
+        </div>
+        <section className={styles.section}>
+          <div className={clsx([
+            'container',
+            'row',
+            'margin-bottom--xl',
+            styles.dalBenefitsContainerRow
+          ])}>
+            <div className="col">
+              <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
+                <div className={clsx([
+                  'col', 
+                  'col--4',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsImageCol
+                ])}>
+                  <img src={useBaseUrl('/img/undraw_portfolio-update_6bro.svg')}/>
+                </div>
+                <div className={clsx([
+                  'col',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsHeaderCol
+                ])}>
+                  <h2 className="margin-bottom--md">
+                    <Translate>Guided interviews for court forms</Translate>
+                  </h2>
+                </div>
+              </div>
+              <div className={styles.dalBenefitsText}>  
+                <p><Translate>
+                  Build responsive, accessible online guided interviews for court forms and other documents.
+                </Translate></p>
+                <p><Translate>
+                  Well-crafted guided interviews:
+                </Translate></p>
+                <ul>
+                  <li><Translate>Increase access to justice</Translate></li>
+                  <li><Translate>Result in fewer errors</Translate></li>
+                  <li><Translate>Lighten the burden on court clerks, self-help staff, and legal aid advocates</Translate></li>
+                  <li dangerouslySetInnerHTML={{
+                    __html: translate({
+                      id: 'homepage.benefits.builtWithDocassemble',
+                      description:
+                        'Built with Docassemble',
+                      message:
+                        'Built with <a href="https://docassemble.org" target="_blank">Docassemble</a>',
+                    }),
+                  }}></li>
+                </ul>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
+                <div className={clsx([
+                  'col', 
+                  'col--4',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsImageCol
+                ])}>
+                  <img src={useBaseUrl('/img/undraw_judge_hyqv.svg')} />
+                </div>
+                <div className={clsx([
+                  'col',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsHeaderCol
+                ])}>
+                  <h2 className="margin-bottom--md">
+                    <Translate>Simplified e-filing for court forms</Translate>
+                  </h2>
+                </div>
+              </div>
+              <div className={styles.dalBenefitsText}>  
+                <p><Translate>
+                  Suffolk's open-source e-filing service provider (EFSP) makes it easier for people to file documents directly from online guided interviews.
+                </Translate></p>
+                <ul>
+                  <li><Translate>Certified with Tyler eFile & Serve</Translate></li>
+                  <li><Translate>Customizable for other e-filing systems</Translate></li>
+                  <li><strong>
+                    <Translate>Coming soon: simplified e-filing for self-represented litigants (SRLs)</Translate>
+                  </strong></li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={clsx(styles.announcement, styles.announcementDark)}>
-          <div className={styles.announcementInner}>
-            <Translate
-              values={{
-                styleGuideLink: (
-                  <Link to="docs/style_guide/question_overview">
-                    <Translate>style guide</Translate>
-                  </Link>
-                ),
-              }}>
-              {`Just want to write better guided interviews? Check out our {styleGuideLink}.`}
-            </Translate>
+          <div className={clsx([
+            'container',
+            'row',
+            styles.dalBenefitsContainerRow
+          ])}>
+            <div className="col">
+              <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
+                <div className={clsx([
+                  'col', 
+                  'col--4',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsImageCol
+                ])}>
+                  <img src={useBaseUrl('/img/undraw_group-hangout_o22u.svg')}/>
+                </div>
+                <div className={clsx([
+                  'col',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsHeaderCol
+                ])}>
+                  <h2 className="margin-bottom--md">
+                    <Translate>Community built and supported</Translate>
+                  </h2>
+                </div>
+              </div>
+              <div className={styles.dalBenefitsText}>  
+                <p><Translate>
+                  Get training and support from the Suffolk LIT Lab and an active community of courts, legal aid organizations, and volunteers.
+                </Translate></p>
+                <ul>
+                  <li><Translate>Weekly meetings</Translate></li>
+                  <li><a href="https://suffolklitlab.org/tag/first-wednesday-workshops/" target="_blank">
+                    <Translate>Monthly workshops</Translate>
+                  </a></li>
+                  <li><Translate>Quarterly trainings for new interview builders</Translate></li>
+                  <li><Translate>Online forum for coding help</Translate></li>
+                </ul>
+              </div>
+            </div>
+            <div className="col">
+              <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
+                <div className={clsx([
+                  'col', 
+                  'col--4',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsImageCol
+                ])}>
+                  <img src={useBaseUrl('/img/undraw_code-review_ept3.svg')} />
+                </div>
+                <div className={clsx([
+                  'col',
+                  'padding-horiz--sm',
+                  styles.dalBenefitsHeaderCol
+                ])}>
+                  <h2 className="margin-bottom--md">
+                    <Translate>Free and open source software</Translate>
+                  </h2>
+                </div>
+              </div>
+              <div className={styles.dalBenefitsText}>  
+                <p><Translate>
+                  All Document Assembly Line code is free and open source, forever.
+                </Translate></p>
+                <ul>
+                  <li><Translate>Reuse code written by other courts and orgs</Translate></li>
+                  <li><Translate>No vendor lock-in</Translate></li>
+                  <li><Translate>Customizable code</Translate></li>
+                  <li><Translate>Benefit</Translate></li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
         <div className={styles.section}>
           <div className="container text--center margin-bottom--xl">
             <div className="row">

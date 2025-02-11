@@ -4,17 +4,127 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+:root {
+  --main-bg-color: #e6ecfc;
+  --main-color: #000;  
+}
+
+[data-theme='dark'] {
+  --main-bg-color: rgb(27, 27, 29);
+  --main-color: #fff;
+}
+
+.indexMain {
+  a:global:not(.button) {
+    color: var(--ifm-link-hover-color);
+    text-decoration: underline;
+    text-decoration-thickness: 0.04em;
+    text-underline-offset: 0.3em;
+    transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+
+    &:hover {
+      color: var(--ifm-link-hover-color);
+      text-decoration: var(--ifm-link-hover-decoration);
+    }
+  }
+}
+
+.hero {
+  background-color: var(--main-bg-color); 
+  padding: calc(3 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
+}
+
+.heroInner {
+  align-items: center;
+  display: grid;
+  gap: calc(2 * var(--ifm-global-spacing));
+  grid-template-areas: 'h1 img';
+  grid-template-columns: 2fr 1fr;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1100px;
+
+  @media (max-width: 576px) {
+    gap: var(--ifm-global-spacing);
+    grid-template-areas:
+      'img'
+      'h1'
+    ;
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroText {
+  h1 {
+    color: var(--main-color);
+    font-size: 4rem;
+    grid-area: h1;
+    margin: 0;
+  
+    strong {
+      color: var(--ifm-color-primary);
+    }
+  
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+
+.heroImage {
+  grid-area: img;
+
+  @media (max-width: 576px) {
+    background: white;
+    border-radius: 9999px;
+    height: 150px;
+    padding: var(--ifm-global-spacing);
+    width: 150px;
+  }
+}
+
+.heroCTAButtons {
+  --ifm-button-size-multiplier: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ifm-spacing-horizontal);
+  align-items: center;
+  margin-top: calc(2 * var(--ifm-spacing-vertical));
+}
 
 .section {
-  padding: 72px 0;
+  margin: calc(4.5 * var(--ifm-spacing-vertical)) auto;
+  max-width: 1100px;
 }
 
-.sectionAlt {
-  background-color: var(--ifm-color-emphasis-100);
+.dalBenefitsContainerRow {
+  gap: calc(4.5 * var(--ifm-spacing-vertical)) calc(2 * var(--ifm-spacing-horizontal));
 }
 
-.sectionInner {
-  margin: 0 auto;
+.dalBenefitsImageCol {
+  --ifm-col-width: calc(4 / 12 * 100%) !important;
+
+  img {
+    aspect-ratio: 1 / 1;
+    background-color: var(--main-bg-color); 
+    border-radius: 9999px;
+    padding: var(--ifm-global-spacing);
+  }
+}
+
+.dalBenefitsHeaderCol {
+  flex: 1 1 auto;
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.dalBenefitsText {
+  font-size: 1.25rem;
+  padding-right: calc(2 * var(--ifm-spacing-horizontal));
+  padding-left: calc(2 * var(--ifm-spacing-horizontal));
 }
 
 .featureImage {
@@ -25,7 +135,7 @@
 
 .featureHeading {
   font-size: var(--ifm-h3-font-size);
-  padding-top: 1rem;
+  padding-top: var(--ifm-global-spacing);
 }
 
 .announcement {
@@ -39,120 +149,4 @@
 .announcementInner {
   margin: 0 auto;
   max-width: 768px;
-}
-
-:root {
-  --main-bg-color: #e6ecfc;
-  --main-color: #000;
-}
-
-[data-theme='dark'] {
-  --main-bg-color: rgb(27, 27, 29);
-  --main-color: #fff;
-}
-
-.hero {
-  background-color: var(--main-bg-color); 
-  padding: 48px;
-}
-
-.heroInner {
-  margin: 0 auto;
-  max-width: 1100px;
-  padding: 0 20px;
-}
-
-.heroProjectTagline {
-  color: var(--main-color);
-  font-size: 60px;
-  margin: 0;
-}
-
-.heroTitleTextHtml b {
-  color: var(--ifm-color-primary);
-}
-
-@keyframes jackInTheBox {
-  from {
-    opacity: 0;
-    transform: scale(0.1) rotate(30deg);
-    transform-origin: center bottom;
-  }
-
-  50% {
-    transform: rotate(-10deg);
-  }
-
-  70% {
-    transform: rotate(3deg);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.heroLogo {
-  /* animation-duration: 2s; */
-  /* animation-name: jackInTheBox; */
-  float: right;
-  margin-top: 20px;
-  padding: 0 20px 20px;
-}
-
-.indexCtas {
-  --ifm-button-size-multiplier: 1.6;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.indexCtasGitHubButtonWrapper {
-  display: flex;
-}
-
-.indexCtasGitHubButton {
-  overflow: hidden;
-}
-
-.indexCtaTryNowButton:hover {
-  color: var(--ifm-color-primary);
-}
-
-@media only screen and (max-width: 768px) {
-  .hero {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .heroInner {
-    padding: 0;
-  }
-
-  .heroProjectTagline {
-    font-size: 36px;
-    text-align: center;
-  }
-
-  .heroLogo {
-    display: block;
-    float: none;
-    margin: 0 auto;
-  }
-
-  .indexCtas {
-    justify-content: center;
-  }
-
-  .indexCtas a {
-    margin: 20px 36px;
-  }
-
-  .indexCtasGitHubButton {
-    display: none;
-  }
 }
