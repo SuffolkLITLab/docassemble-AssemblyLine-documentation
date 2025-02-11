@@ -4,16 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-:root {
-  --main-bg-color: var(--suffolk-blue-wash);
-  --main-color: black;  
-}
-
-[data-theme='dark'] {
-  --main-bg-color: var(--suffolk-blue);
-  --main-color: #fff;
-}
-
 .indexMain {
   a:global:not(.button) {
     color: var(--ifm-link-hover-color);
