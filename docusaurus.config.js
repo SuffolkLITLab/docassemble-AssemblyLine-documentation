@@ -22,8 +22,8 @@ module.exports = {
       title: 'The Document Assembly Line',
       logo: {
         alt: 'The Suffolk LIT Lab Logo',
-        src: 'img/LITLab_white_and_gold.svg',
-        srcDark: 'img/LITLab_white_and_gold.svg'
+        src: 'img/lit-lab-logo-small-inverted.svg',
+        srcDark: 'img/lit-lab-logo-small-inverted.svg'
       },
       items: [
         {
