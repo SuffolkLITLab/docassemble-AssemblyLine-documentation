@@ -35,7 +35,7 @@
   --ifm-navbar-link-hover-color: var(--suffolk-light-gold);
 }
 
-[data-theme='dark'] {
+html[data-theme='dark'] {
   --ifm-color-primary: var(--suffolk-light-gold);
   --ifm-color-primary-dark: #e1c37d;
   --ifm-color-primary-darker: #d5ad4d;
@@ -77,7 +77,7 @@
     color: rgb(28, 30, 33);
   }
 
-  [data-theme='dark'] & {
+  html[data-theme='dark'] & {
     background-color: var(--ifm-navbar-background-color);
   
     .clean-btn {
@@ -87,6 +87,7 @@
 }
 
 .header-github-link {
+  border-radius: 9999px;
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -105,12 +106,8 @@
     width: 100%;
   }
   
-  
   &:hover {
-    &::before {
-      background-color: var(--suffolk-light-gold);
-      border-radius: 9999px;
-    }
+    background-color: var(--suffolk-light-gold);
   }
 }
 
@@ -124,12 +121,30 @@
   }
 }
 
+.navbar__search {
+  margin-left: 0 !important;
+}
+
 /* Sidebar */
 
 /* This goes with the "Assembly Line components" sidebar heading added in PR #492 */
 .menu__list-item.sidebar-heading {
   font-weight: bold;
   padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+}
+
+html:not([data-theme='dark']) {
+  .navbar-sidebar__items {
+    .header-github-link {
+      &::before {
+        background-image: url('../../static/img/github-dark.svg');
+      }
+    
+      &:hover {
+        background-color: var(--ifm-menu-color-background-hover);
+      }
+    }
+  }
 }
 
 

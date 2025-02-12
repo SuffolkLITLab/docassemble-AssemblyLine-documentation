@@ -25,7 +25,7 @@ function Home() {
   return (
     <Layout title={tagline} description={description as string}>
       <main className={styles.indexMain}>
-        <div className={styles.hero}>
+        <header className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroText}>
               <h1 dangerouslySetInnerHTML={{
@@ -50,7 +50,37 @@ function Home() {
               width="100%"
             />
           </div>
-        </div>
+          <div className={styles.heroFooter}>
+            <div className={clsx([
+              'container',
+              'row',
+              'row--no-gutters',
+              styles.heroFooter__Inner
+            ])}>
+              <div className={clsx([
+                'col',
+                styles.heroFooterIconCol
+              ])}>
+                <i className={clsx(['col', styles.icon, styles.iconUpArrow])}></i>
+                <Translate>Increase access to justice</Translate>
+              </div>
+              <div className={clsx([
+                'col',
+                styles.heroFooterIconCol
+              ])}>
+                <i className={clsx(['col', styles.icon, styles.iconDownArrow])}></i>
+                <Translate>Reduce errors in court forms</Translate>
+              </div>
+              <div className={clsx([
+                'col',
+                styles.heroFooterIconCol
+              ])}>
+                <i className={clsx(['col', styles.icon, styles.iconHourglass])}></i>
+                <Translate>Save staff time</Translate>
+              </div>
+            </div>
+          </div>
+        </header>
         <section className={styles.indexSection}>
           <div className={clsx([
             'container',
@@ -80,19 +110,26 @@ function Home() {
               </div>
               <div className={styles.dalBenefitsText}>  
                 <p><Translate>
-                  Build responsive, accessible online guided interviews for court forms and other documents.
+                  Build beautiful, responsive, accessible online guided interviews for court forms and other documents with Docassemble and the Assembly Line tools.
                 </Translate></p>
                 <ul>
-                  <li><Translate>Increase access to justice</Translate></li>
-                  <li><Translate>Reduce errors in documents filed by self-represented litigants</Translate></li>
-                  <li><Translate>Lighten the burden on court staff and legal aid advocates</Translate></li>
+                  <li><Translate>Code handles complex court forms better than drag-and-drop tools</Translate></li>
+                  <li dangerouslySetInnerHTML={{
+                    __html: translate({
+                      id: 'homepage.benefits.visitCourtFormsOnline',
+                      description:
+                        'To see examples, visit Court Forms Online',
+                      message:
+                        'To see examples, visit <a href="https://courtformsonline.org" target="_blank">Court Forms Online</a>',
+                    }),
+                  }}></li>
                   <li dangerouslySetInnerHTML={{
                     __html: translate({
                       id: 'homepage.benefits.builtWithDocassemble',
                       description:
-                        'Document Assembly Line tools are powered by Docassemble',
+                        'Assembly Line tools are powered by Docassemble',
                       message:
-                        'Document Assembly Line tools are powered by <a href="https://docassemble.org" target="_blank">Docassemble</a>',
+                        'Assembly Line tools are powered by <a href="https://docassemble.org" target="_blank">Docassemble</a>',
                     }),
                   }}></li>
                 </ul>
@@ -114,7 +151,7 @@ function Home() {
                   styles.dalBenefitsHeaderCol
                 ])}>
                   <h2 className="margin-bottom--md">
-                    <Translate>Simplified e-filing for court forms</Translate>
+                    <Translate>E-filing for guided interviews</Translate>
                   </h2>
                 </div>
               </div>

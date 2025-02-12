@@ -18,7 +18,7 @@
 
 .hero {
   background-color: var(--suffolk-blue-wash); 
-  padding: calc(3 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
+  margin: 0;
 }
 
 .heroInner {
@@ -27,9 +27,10 @@
   gap: calc(2 * var(--ifm-global-spacing));
   grid-template-areas: 'h1 img';
   grid-template-columns: 2fr 1fr;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   max-width: 1100px;
+  padding: calc(3 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
+  padding-left: var(--ifm-spacing-horizontal);
 
   @media (max-width: 576px) {
     gap: var(--ifm-global-spacing);
@@ -77,6 +78,63 @@
   align-items: center;
   margin-top: calc(2 * var(--ifm-spacing-vertical));
 }
+
+.heroFooter {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  display: flex;
+  font-size: 1.25rem;
+  gap: var(--ifm-spacing-horizontal);
+  padding: calc(1.5 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
+  width: 100%;
+  
+  .heroFooter__Inner {
+    gap: var(--ifm-spacing-horizontal);
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1100px;
+  }
+
+  .heroFooterIconCol {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: calc(.5 * var(--ifm-spacing-horizontal));
+  }
+
+  .icon {
+    background-color: var(--suffolk-blue-wash);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border-radius: 9999px;
+    display: block;
+    flex-wrap: nowrap;
+    height: 1lh;
+    max-width: 1lh;
+    width: 1lh;
+    
+    html[data-theme='dark'] & {
+      background-color: var(--suffolk-blue-wash);
+    }
+  }
+  
+  .iconBalloon {
+    background-image: url('../../static/icons/balloon.svg');
+  }
+
+  .iconUpArrow {
+    background-image: url('../../static/icons/arrow-up.svg');
+  }
+  
+  .iconDownArrow {
+    background-image: url('../../static/icons/arrow-down.svg');
+  }
+
+  .iconHourglass {
+    background-image: url('../../static/icons/hourglass.svg');
+  }
+}
+
 
 .indexSection {
   margin: calc(4.5 * var(--ifm-spacing-vertical)) auto;
