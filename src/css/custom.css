@@ -8,42 +8,49 @@
 
 /* Overrides the default Infima variables with Suffolk's brand colors. */
 :root {
-  --suffolk-blue: #15284b;
-  --suffolk-medium-blue: #2c5697;
-  --suffolk-lighter-blue: #41b6e6;
-  --suffolk-blue-wash: rgba(65, 182, 230, .25);
-  --suffolk-gold: #fdb924;
-  --suffolk-gold-wash: rgba(253, 185, 36, .25);
+  /* Suffolk brand colors */
+  --suffolk-light-blue: #41b6e6; /* rgb(65, 182, 230), alt. color from Suffolk's brand guidelines */
+  --suffolk-medium-blue: #2c5697; /* rgb(44, 86, 151), alt. color from Suffolk's brand guidelines */
+  --suffolk-dark-blue: #15284b; /* rgb(21, 40, 75), primary color from Suffolk brand guidelines */
+  --suffolk-light-gold: #fdb924; /* rgb(253, 185, 36), from the suffolk.edu website */
+  --suffolk-dark-gold: #bc912c; /* rgb(188, 145, 44), primary color from Suffolk's brand guidelines */
+  --suffolk-blue-wash: rgba(65, 182, 230, .25); /* based on --suffolk-light-blue */
+  --suffolk-gold-wash: rgba(253, 185, 36, .25); /* based on --suffolk-gold, above */
 
-  --ifm-color-primary: var(--suffolk-blue);
-  --ifm-color-primary-dark: #565294;
-  --ifm-color-primary-darker: #51284f;
-  --ifm-color-primary-darkest: var(--suffolk-blue);
+  --ifm-color-primary: var(--suffolk-medium-blue);
+
+  /**
+   * These color ranges are based on the Suffolk brand colors.
+   * Each step is 3 steps away from the darkest/lightest on the ColorHexa shades and tints scale.
+   * See: https://www.colorhexa.com/15284b#shades-tints
+   */
+  --ifm-color-primary-dark: #2f5aa7;
+  --ifm-color-primary-darker: #224179;
+  --ifm-color-primary-darkest: var(--suffolk-dark-blue);
   --ifm-color-primary-light: var(--suffolk-medium-blue);
-  --ifm-color-primary-lighter: #4e87a0;
-  --ifm-color-primary-lightest: var(--suffolk-lighter-blue);
-  --ifm-code-font-size: 95%;
-
-  --ifm-navbar-background-color: var(--suffolk-blue);
+  --ifm-color-primary-lighter: #3970c5;
+  --ifm-color-primary-lightest: #6691d2;
+  
+  --ifm-navbar-background-color: var(--suffolk-dark-blue);
   --ifm-navbar-link-color: white;
-  --ifm-navbar-link-hover-color: var(--suffolk-gold);
+  --ifm-navbar-link-hover-color: var(--suffolk-light-gold);
+  
+  /* --ifm-heading-margin-bottom: 0;
+  --ifm-footer-padding-vertical: var(--ifm-spacing-vertical); */
 
-  --ifm-heading-margin-bottom: 0;
-  --ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
+  --ifm-code-font-size: 95%;
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: var(--suffolk-gold);
-  --ifm-color-primary-dark: #e6bd1f;
-  --ifm-color-primary-darker: #deb619;
-  --ifm-color-primary-darkest: #b79514;
-  --ifm-color-primary-light: #eccd53;
-  --ifm-color-primary-lighter: #edd060;
-  --ifm-color-primary-lightest: #f3de8f;
+  --ifm-color-primary: var(--suffolk-light-gold);
+  --ifm-color-primary-dark: #e1c37d;
+  --ifm-color-primary-darker: #d5ad4d;
+  --ifm-color-primary-darkest: var(--suffolk-dark-gold);
+  --ifm-color-primary-light: var(--suffolk-light-gold);
+  --ifm-color-primary-lighter: #fecc5e;
+  --ifm-color-primary-lightest: #fede99;
 
-  --ifm-navbar-background-color: var(--suffolk-blue);
-  
-  --ifm-background-color: #002E60;
+  --ifm-navbar-background-color: var(--suffolk-dark-blue);
 }
 
 .navbar-sidebar__brand {

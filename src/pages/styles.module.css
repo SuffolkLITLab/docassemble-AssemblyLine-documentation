@@ -6,14 +6,11 @@
  */
 .indexMain {
   a:global:not(.button) {
-    color: var(--ifm-link-hover-color);
     text-decoration: underline;
     text-decoration-thickness: 0.04em;
     text-underline-offset: 0.3em;
-    transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 
     &:hover {
-      color: var(--ifm-link-hover-color);
       text-decoration: var(--ifm-link-hover-decoration);
     }
   }
@@ -46,17 +43,12 @@
 
 .heroText {
   h1 {
-    color: var(--main-color);
     font-size: 4rem;
     grid-area: h1;
     margin: 0;
   
     strong {
-      color: var(--suffolk-medium-blue);
-
-      [data-theme='dark'] & {
-        color: var(--suffolk-gold); 
-      }
+      color: var(--ifm-color-primary);
     }
   
     @media (max-width: 768px) {
