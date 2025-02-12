@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'The Document Assembly Line',
+  title: 'Document Assembly Line',
   tagline: 'Open-source tools for court forms, guided interviews, and e-filing',
   url: 'https://assemblyline.suffolklitlab.org',
   baseUrl: '/',
@@ -19,7 +19,7 @@ module.exports = {
       isCloseable: false,
     },
     navbar: {
-      title: 'The Document Assembly Line',
+      title: 'Document Assembly Line',
       logo: {
         alt: 'The Suffolk LIT Lab Logo',
         src: 'img/lit-lab-logo-small-inverted.svg',

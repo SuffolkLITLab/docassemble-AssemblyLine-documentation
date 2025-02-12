@@ -10,12 +10,9 @@ import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Image from '@theme/IdealImage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-
-import myImageUrl from './assets/undraw_around_the_world.svg';
  
 function Home() {
   const {
@@ -85,20 +82,17 @@ function Home() {
                 <p><Translate>
                   Build responsive, accessible online guided interviews for court forms and other documents.
                 </Translate></p>
-                <p><Translate>
-                  Well-crafted guided interviews:
-                </Translate></p>
                 <ul>
                   <li><Translate>Increase access to justice</Translate></li>
-                  <li><Translate>Result in fewer errors</Translate></li>
-                  <li><Translate>Lighten the burden on court clerks, self-help staff, and legal aid advocates</Translate></li>
+                  <li><Translate>Reduce errors in documents filed by self-represented litigants</Translate></li>
+                  <li><Translate>Lighten the burden on court staff and legal aid advocates</Translate></li>
                   <li dangerouslySetInnerHTML={{
                     __html: translate({
                       id: 'homepage.benefits.builtWithDocassemble',
                       description:
-                        'Built with Docassemble',
+                        'Document Assembly Line tools are powered by Docassemble',
                       message:
-                        'Built with <a href="https://docassemble.org" target="_blank">Docassemble</a>',
+                        'Document Assembly Line tools are powered by <a href="https://docassemble.org" target="_blank">Docassemble</a>',
                     }),
                   }}></li>
                 </ul>
@@ -129,6 +123,8 @@ function Home() {
                   Suffolk's open-source e-filing service provider (EFSP) makes it easier for people to file documents directly from online guided interviews.
                 </Translate></p>
                 <ul>
+                  <li><Translate>More user-friendly than </Translate></li>
+                  <li><Translate>Lighten the burden on court clerks, self-help staff, and legal aid advocates</Translate></li>
                   <li><Translate>Certified with Tyler eFile & Serve</Translate></li>
                   <li><Translate>Customizable for other e-filing systems</Translate></li>
                   <li><strong>
