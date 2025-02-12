@@ -100,6 +100,8 @@ article a,
   display: inline-block;
   width: 2rem;
   height: 2rem;
+  margin-right: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+  margin-left: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
   padding: 0;
   
   &::before {
@@ -123,6 +125,10 @@ article a,
 }
 
 [class*="toggleButton_node_modules"] {
+  color: white;
+  margin-right: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+  margin-left: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+
   &:hover {
     background-color: var(--suffolk-gold) !important;
   }
@@ -132,10 +138,6 @@ article a,
   font-weight: bold;
   padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
 }
-
-
-
-
 
 article .markdown p img {
   box-shadow: 5px 5px 20px gray;
