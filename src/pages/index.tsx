@@ -51,7 +51,7 @@ function Home() {
             />
           </div>
         </div>
-        <section className={styles.section}>
+        <section className={styles.indexSection}>
           <div className={clsx([
             'container',
             'row',
@@ -207,7 +207,7 @@ function Home() {
             </div>
           </div>
         </section>
-        <div className={styles.section}>
+        <div className={styles.indexSection}>
           <div className="container text--center margin-bottom--xl">
             <div className="row">
               <div className="col">

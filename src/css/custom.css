@@ -61,7 +61,7 @@
 }
 
 .navbar__logo {
-  border-right: 3px solid var(--suffolk-gold);
+  border-right: 3px solid var(--suffolk-light-gold);
   margin-right: var(--ifm-spacing-horizontal);
   padding-right: var(--ifm-spacing-horizontal);
 }
@@ -108,7 +108,7 @@
   
   &:hover {
     &::before {
-      background-color: var(--suffolk-gold);
+      background-color: var(--suffolk-light-gold);
       border-radius: 9999px;
     }
   }
@@ -120,7 +120,7 @@
   margin-left: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
 
   &:hover {
-    background-color: var(--suffolk-gold) !important;
+    background-color: var(--suffolk-light-gold) !important;
   }
 }
 
