@@ -140,11 +140,18 @@ article .markdown p img {
   }
 }
 
-html[class*="docs-doc-id-alkiln"] *:not(h1),
-html[class*="docs-doc-id-alkiln"] *:not(h2),
-html[class*="docs-doc-id-alkiln"] *:not(h3),
-html[class*="docs-doc-id-alkiln"] *:not(h4),
-html[class*="docs-doc-id-alkiln"] *:not(h5),
-html[class*="docs-doc-id-alkiln"] *:not(h6) {
-    scroll-margin-top: var(--ifm-navbar-height);
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] .target {
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 0.7em);
+}
+
+html[class*="docs-doc-id-components/ALKiln/alkiln_setup"] .target.highlight {
+  /* All credit to https://stackoverflow.com/a/62484130/14144258 with some tweaking */
+  --ifm-color-info-light-highlight-nums: 110, 207, 239;
+  background: linear-gradient(104deg, rgba(var(--ifm-color-info-light-highlight-nums), 0) 0.9%, rgba(var(--ifm-color-info-light-highlight-nums), 1.25) 2.4%, rgba(var(--ifm-color-info-light-highlight-nums), 0.5) 5.8%, rgba(var(--ifm-color-info-light-highlight-nums), 0.1) 93%, rgba(var(--ifm-color-info-light-highlight-nums), 0.7) 96%, rgba(var(--ifm-color-info-light-highlight-nums), 0) 98%), linear-gradient(183deg, rgba(var(--ifm-color-info-light-highlight-nums), 0) 0%, rgba(var(--ifm-color-info-light-highlight-nums), 0.3) 7.9%, rgba(var(--ifm-color-info-light-highlight-nums), 0) 15%);
+  text-shadow: -7px 0px 9.8px rgba(var(--ifm-color-info-light-highlight-nums), 1), 21px -18.1px 7.3px rgba(255, 255, 255, 1), -18.1px -27.3px 30px rgba(255, 255, 255, 1);
+  padding: 0.4em .2em;
+  margin: -.4em -.2em;
+  border-radius: 7.5px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }

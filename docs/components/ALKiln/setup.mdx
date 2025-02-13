@@ -8,6 +8,7 @@ slug: setup
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from "/src/css/images.module.css"
 import { GTOYS, AutoDIY, KittyLitter } from './components/\_test_types.js';
+import { Anchor } from '/docs/react_components/\Anchor.js';
 
 :::warning
 WIP (Work in progress)
@@ -65,51 +66,38 @@ Each type of test has its advantages and disadvantages. This documentation expla
 
 ## Recommended setup: <!-- GitHub+You --> <GTOYS/> {#recommended}
 
-This is the way we recommend setting up ALKiln tests for a repository for the first time. It is the method that tends to work most smoothly. Every repository that needs to use this kind of test must go through this setup process.
+<GTOYS/> tests are the O.G. ALKiln tests and mix well with most docassemble server configurations and needs. Like other GitHub tests, you set them up for each repository separately.
 
-Remember to use a [separate server for these types of tests](security.mdx#testing-server).
+**You will need:**
 
-The tests [run](writing_tests.mdx#trigger-tests) whenever you commit any code to any branch on GitHub. You can read more details and the pros and cons of <GTOYS/> tests below.
-
-**You need:**
-
-- A developer or admin account on your docassemble server
 - A package with a repository on GitHub
-- A collaborator or admin account on your package's GitHub repository[^auth]
+- A developer or admin account on your docassemble server
+- A collaborator or admin account on your package's GitHub repository[^auth] or an admin account in your GitHub organization
 
-**It could help to know about:**
+Setting up can take some time for someone new, but we do our best to walk you through the process in our setup interview.
+
+<p><a href="https://apps-dev.suffolklitlab.org/start/test-setup" target="_blank" rel="noopener noreferrer" className="button button--primary text--no-decoration">Run the ALKiln <GTOYS plain={ true }/> setup interview</a></p>
+
+**The interview will help you use:**
 
 - [Docassemble API keys](https://docassemble.org/docs/api.html#manage_api)
 - [GitHub personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) (PATs)
 - [GitHub pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (PRs)
+
+Once you are ready to start running tests, you can read about [adding our example test](#first-test), [writing tests in general](writing_tests.mdx), or even more advanced techniques, like [different ways to trigger and run <GTOYS plain={true}/> tests on GitHub](writing_tests.mdx#trigger-tests).
 
 **Related topics:**
 
 - [GitHub secrets](writing_tests.mdx#secrets)
 - [GitHub workflows](writing_tests.mdx#workflows)
 
-**What to do:**
-
-Use [ALKiln's test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) to add ALKiln to your repository. You must run this setup interview for every package you want to test on GitHub. This setup interview can take over 30 minutes, especially if you are unfamiliar with GitHub or with docassemble API keys.
-
-When you set up, you can choose to create your [first test](#first-test). We recommend that you do this. Either way, you can [add more tests](writing_tests.mdx#new-file) later.
-
-To summarize, the ALKiln tests setup interview can help you do one or more of the following:
-
-1. Add GitHub secrets to your repository (or organization[^org])
-1. Make a new branch in your repository
-1. Add new code to that branch, including a new [workflow file](writing_tests.mdx#workflows)
-1. Add a new test file, like our [example test](#first-test), to your Project's "sources" folder
-1. Make a pull request with that branch
-
-Once you accept the pull request and merge the code into your repository's main branch, make sure to update your docassemble Projects to use that new code.
-
-If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or [trigger and run <GTOYS plain={true}/> tests on GitHub](writing_tests.mdx#trigger-tests).
-
+<!-- Where?: Remember to use a [separate server for these types of tests](security.mdx#testing-server). -->
 
 [^auth]: That is, you need to have the ability to edit the code in your package's GitHub repository. If you own the repository or organization, you are an admin and have the correct access level. If someone else is the owner and you are unsure of your access level, ask an admin what permission level you have for the repository. They can check [the repository's collaborators settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#filtering-the-list-of-teams-and-people).
 
+<!--
 [^org]: Do you have more than one repository? Do they all belong to a GitHub organization? If so, you can get one of the organization's admins to run the ALKiln test setup interview and create organization secrets. They can also [create them manually](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization). Each repository the organization has will use those secrets. You will not have to bother adding them to every repository. Otherwise, you have to create the same secrets for each repository. If one of the values changes, you will have to update it in every repository.
+-->
 
 
 ## First test {#first-test}
@@ -232,35 +220,35 @@ If you are ready to start running tests, you can read about how to [add our exam
 
 ## <!-- GitHub+You --> <GTOYS/> test details {#githubNyou-details}
 
-Any developer will [trigger <GTOYS plain={true}/> tests when they commit code to GitHub](writing_tests.mdx#trigger-tests). They then create and test a Project on your docassemble [testing server](security.mdx#testing-server). They are our recommended test method because they are the easiest to set up.
-
-Remember to use a [testing server](security.mdx#testing-server) for these types of tests.
+<GTOYS plain={true}/> tests run in GitHub whenever a developer commits code to the GitHub repository of the package. As you can read below, to use this type of test we strongly recommend you create a [developer account](security.mdx#test-accounts) for ALKiln on your server, a "testing account".
 
 
 ### What is ALKiln doing? {#githubNyou-how}
 
 When <GTOYS/> tests get triggered, ALKiln does the following:
 
-1. ALKiln creates a new Project for the [testing account](security.mdx#test-accounts) you set up on your server. If you logged into that account at the right time, you would be able to see the new Project in the list of projects.
-1. It uploads the relevant GitHub branch of your package into the Project.
-1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of that Project's interview (whatever interview you named in the test).
+1. ALKiln creates a new Project for the [testing account](security.mdx#test-accounts) you set up on your [testing server](security.mdx#testing-server)[^peek].
+1. It uploads the package into the Project using the correct GitHub branch.
+1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to interviews in that Project.
 1. It tries to fill out the fields and take the actions the tests describe.
 1. When all the tests are done, ALKiln deletes the Project it created.
 
+GitHub can show you [information your tests while they are running](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
+
+[^peek]: You can take a sneaky peek at that Project if you want - if you log into the testing account at the right time, you can see the new Project in the list of projects.
+
 <!-- TODO: File docusaurus issue: Components can't start paragraphs or the spacing gets weird and the links only show their text! -->
 
-The <GTOYS/> tests need to create a Project on your [testing server](security.mdx#testing-server) and pull code into it. Because of that, you need to create a [developer account](security.mdx#test-accounts) for these types of tests.
+<!-- ## Workflow file for <   !-- GitHub+You --   > <GTOYS/> tests {#githubNyou-workflow-file} 
 
-GitHub can show you [information about your running tests](writing_tests.mdx#running-data). When the tests are done, you can see the ["artifacts" of the tests](writing_tests.mdx#artifacts).
+---
+[](writing_tests.mdx#workflows-where)
 
+---
+Should the below be just in the setup interview? It seems like it should be here too, but that doubles up on information location. I _would_ really like to avoid duplication if possible, especially about the specific contents of the workflow files, which already has to be in the setup interview.
 
-<!-- ## Workflow file for <   !-- GitHub+You --   > <GTOYS/> tests {#githubNyou-workflow-file} -->
-
-<!-- [](writing_tests.mdx#workflows-where) -->
-
-<!-- Should the below be just in the setup interview? It seems like it should be here too, but that doubles up on information location. I _would_ really like to avoid duplication if possible, especially about the specific contents of the workflow files, which already has to be in the setup interview. -->
-
-<!-- Each package should have its own workflow file. It should be in your package's `.github` folder in your GitHub repository. That file triggers the tests to run and uses ALKiln to run them.
+---
+Each package should have its own workflow file. It should be in your package's `.github` folder in your GitHub repository. That file triggers the tests to run and uses ALKiln to run them.
 
 GitHub also calls this an "action". Their language around this is confusing. We use "workflow" to talk about your package's GitHub code. We use "action" to talk about ALKiln's GitHub files - the ones your workflow uses.
 
@@ -285,11 +273,14 @@ Tags
 
 ### Pros {#githubNyou-pros}
 
-- ALKiln on GitHub will test any changes any team member commits. In <AutoDIY/> tests, you only test your changes.
-- On GitHub, there are ways to schedule tests to run regularly - every week, every day, or whatever schedule you prefer. If packages you depend on change and break your code, those tests will let you know.
-- If you've forgotten to add a file to the package that an interview depends on (like a missing template file), GitHub will catch that. It installs the package freshly in a new Project, so it only has the files that have been committed properly.
-- Unlike <AutoDIY/> tests, you can continue editing most of the files in the same Project while the tests run because the <GTOYS/> tests create a whole new Project of their own to test with. The only files you must avoid editing are Python files because saving them reloads the server, causing problems for tests.
+- <GTOYS/> tests work well with most servers and infrastructure. Other types of tests can sometimes run into problems because of a quirk on your server, where you store your data, or some other complication. These tests are more easy going.
+- ALKiln on GitHub will test any changes any team member commits. <AutoDIY/> tests only test your changes.
+- <GTOYS/> tests are harsh, but honest. They install your package freshly each time they run. That means, for example, that if you forgot to commit a template file to a package, the tests will let you know by failing.
+- On GitHub, there are ways to schedule tests to run regularly - every week, every day, or on your birthday. While your code is sitting around happily staying the same, a package you use, or even docassemble itself, might update its code and break the interview. Scheduled tests will let you know.
+- Unlike <AutoDIY/> tests, you can keep editing your Project's code without a care in the world. Except python files. They cause the server to reload. If that is going to be a problem, <KittyLitter/> are better about [leaving your server completely alone](#edit_files_freely).
 - You can configure your GitHub "action" to do other things, like create GitHub issues whenever tests fail.
+
+<!--  (While you run <AutoDIY/> tests, you have to work in a different Project to avoid affecting) Unlike <AutoDIY/> tests, you can continue editing most of the files in the same Project while the tests run because the <GTOYS/> tests create a whole new Project of their own to test with. The only files you must avoid editing are Python files because saving them reloads the server, causing problems for tests. -->
 
 <!-- - TODO: Package size because of `dainstall`? -->
 <!-- [The <AutoDIY/> tests may also keep running. Have to test this out before adding this item] - If your server reloads during the test run, a few individual tests may fail, but ALKiln will still be able to continue and keep trying to run the rest of the tests. That is because the test code is in running from GitHub, so your reload doesn't stop that process. -->
@@ -299,11 +290,9 @@ Tags
 
 For everyone:
 
-bookmark
-
-- The setup for <GTOYS/> tests is more reliable, but also more complex than the other methods. The [ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) tries to help with that and even people with developer access can do it, but it is complex in its own ways[^manually].
-- When <GTOYS/> tests start up, they pull your package code into your docassemble server, just like any other developer. This means that if you test a package with a python module, your docassemble server will reload, slowing down access for other people who are using the server.
-- Your tests might be more flaky. That means they may fail for reasons that don't have to do with the interviews. For example, if your tests are running while your server is reloading, ALKiln will keep running, so other tests will still have an opportunity to continue, but individual tests may fail even if your code is correct. Your server can reload for many reasons - updating your config, installing a new package, another <GTOYS/> test pulling in a module when it is setting up, etc. When tests fail meaninglessly, it slows down your development cycle and sometimes people end up turning off the tests instead of dealing with the complexity.
+- <GTOYS/> tests work more reliably on more systems, but are more complex to setup than <AutoDIY/> tests. The [ALKiln test setup interview](https://apps-dev.suffolklitlab.org/start/test-setup) tries to help with that. When you become familiar with the process, you can even do it yourself directly on GitHub.
+- When <GTOYS/> tests start up, they pull your package code into your docassemble server, just like any other developer. This means that if you test a package with a python module, your docassemble server will reload, slowing down access for other people who are using the server and access for other tests.
+- Your tests might be more flaky. That means they may fail for reasons that have nothing to do with the code of your interview. For example, some tests may fail if your server reloads while they are running. Your server can reload when someone updates your server config, installs a new package, etc. It is darn frustrating when tests fail meaninglessly.
 
 For some people:
 
@@ -311,7 +300,7 @@ For some people:
 
 <!-- - TODO: package size? From experiments, it seems to not be a problem when they're installed on a Playground -->
 
-[^manually]: It is possible for you to set up <GTOYS/> tests manually on your own. You must understand the process already. If you do this by hand, you must also have admin access to the GitHub repository.
+<!-- [^manually]: It is possible for you to set up <GTOYS/> tests manually on your own. You must understand the process already. If you do this by hand, you must also have admin access to the GitHub repository. -->
 
 
 ## <!-- ALKilnInThePlayground --> <AutoDIY/> test details {#diy-details}
@@ -384,7 +373,7 @@ GitHub can show you [information about your running tests](writing_tests.mdx#run
 
 - All the [same advantages as regular GitHub tests](#githubNyou-pros) as well as some more.
 - This is the most secure of all the methods. The tests don't interact with your server at all.
-- You can edit whatever files you want on your own server.
+- <Anchor id="edit_files_freely">You can edit whatever files you want on your own server because <KittyLitter/> tests don't touch your server at all.</Anchor>
 - In some cases, no GitHub secrets are necessary.
 - Your tests will generally be less flaky. When a test fails it is more likely to be a problem with your code instead of a problem with the server, giving you better information. That's because the server is isolated, or "sandboxed"[^sand], on GitHub and no one is going to make that sandboxed server reload in the middle of the tests.
 - You do not have to set up or update any docassemble API keys or GitHub tokens.
