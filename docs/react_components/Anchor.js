@@ -3,13 +3,13 @@ import {useLocation} from "@docusaurus/router";
 
 
 export function Anchor({
-  id, className=``, do_highlight=true, children=``, ...other_props
+  id, className="", do_highlight=true, children="", ...other_props
 }) {
   /** Make sure Docusaurus sees this element as a valid element to link to,
    *    avoiding warnings about broken links.
    * 
    * It can also highlight text that is in this element when users navigate
-   *    to this element.
+   *    to this element. It does so by default.
    * 
    * @params {object} obj - Named arguments.
    * @params {string} obj.id - Required. Element id.
@@ -29,16 +29,21 @@ export function Anchor({
   // long-standing behavior with React/the browser:
   // https://github.com/vercel/next.js/issues/51346. The workarounds there are
   // for next.js, not plain React. It may have something to do with `pushState`
-  let highlight_class = "";
-  if ( do_highlight && hash === `#` + id ) {
-    highlight_class = ` highlight`;
+  if ( do_highlight && hash === "#" + id ) {
+    return (
+      <mark
+        id={ id }
+        style={{ scrollMarginTop: "calc(var(--ifm-navbar-height) + 0.7em)" }}
+        className={ className + " target highlight" }
+        { ...other_props }>{ children }</mark>
+    )
+  } else {
+    return (
+      <span
+        id={ id }
+        className={ className }
+        { ...other_props }>{ children }</span>
+    )
   }
 
-  return (
-    <span
-      id={ id }
-      style={{ scrollMarginTop: `calc(var(--ifm-navbar-height) + 0.7em)` }}
-      className={ className + ` target` + highlight_class }
-      { ...other_props }>{ children }</span>
-  )
 }
