@@ -160,7 +160,7 @@ It also helps to have a Project with at least one ALKiln test in it, but you can
 1. Run that interview.
 1. On the first page of that interview, choose to install the latest version of ALKiln by picking the top item in the list. You can choose to do this whenever we make a new version of ALKiln.
 
-If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or continue the above interview to [run your tests](writing_tests.mdx#trigger-autodiy).
+If you are ready to start running tests, you can read about how to [add our example test](#first-test), [write tests](writing_tests.mdx), or continue the above interview to [run your tests](writing_tests.mdx#trigger_autodiy).
 
 
 ## <!-- GitHub Sandbox --> <KittyLitter/> tests (advanced) {#sandbox-how-to}
@@ -277,7 +277,7 @@ Tags
 - ALKiln on GitHub will test any changes any team member commits. <AutoDIY/> tests only test your changes.
 - <GTOYS/> tests are harsh, but honest. They install your package freshly each time they run. That means, for example, that if you forgot to commit a template file to a package, the tests will let you know by failing.
 - On GitHub, there are ways to schedule tests to run regularly - every week, every day, or on your birthday. While your code is sitting around happily staying the same, a package you use, or even docassemble itself, might update its code and break the interview. Scheduled tests will let you know.
-- Unlike <AutoDIY/> tests, you can keep editing your Project's code without a care in the world. Except python files. They cause the server to reload. If that is going to be a problem, <KittyLitter/> are better about [leaving your server completely alone](#edit_files_freely).
+- Unlike <AutoDIY/> tests, you can keep editing your Project's code without a care in the world. Except python files. They cause the server to reload. If that is going to be a problem, <KittyLitter/> tests are better about [leaving your server completely alone](#edit_files_freely).
 - You can configure your GitHub "action" to do other things, like create GitHub issues whenever tests fail.
 
 <!--  (While you run <AutoDIY/> tests, you have to work in a different Project to avoid affecting) Unlike <AutoDIY/> tests, you can continue editing most of the files in the same Project while the tests run because the <GTOYS/> tests create a whole new Project of their own to test with. The only files you must avoid editing are Python files because saving them reloads the server, causing problems for tests. -->
@@ -309,7 +309,7 @@ For some people:
 
 The <AutoDIY/> tests are automated tests that you trigger manually from an interview you install on your docassemble [testing server](security.mdx#testing-server). The tests then run right on that server.
 
-Remember to use a [testing or development server](security.mdx#testing-server) for these types of tests. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#trigger-autodiy) in other documentation.
+Remember to use a [testing or development server](security.mdx#testing-server) for these types of tests. You can read more about [running <AutoDIY plain={true}/> tests](writing_tests.mdx#trigger_autodiy) in other documentation.
 
 <!-- TODO: How do I express that the code is installed in a way that docassemble doesn't control, but without alarming people more than the amount they should be alarmed? -->
 
@@ -318,7 +318,7 @@ The [ALKilnInThePlayground package](https://github.com/SuffolkLITLab/docassemble
 
 ### What is ALKiln doing? {#diy-how}
 
-When you [run](writing_tests.mdx#trigger-autodiy) the <AutoDIY/> tests while on your docassemble [testing server](security.mdx#testing-server), ALKiln does the following:
+When you [run](writing_tests.mdx#trigger_autodiy) the <AutoDIY/> tests while on your docassemble [testing server](security.mdx#testing-server), ALKiln does the following:
 
 1. For each <!--(`Scenario` or `Scenario Outline` and row in an `Examples` table)--> test, ALKiln pretends to be a human and goes to the url of the Project and interview you specified.
 1. It tries to fill out the fields and take the actions the tests describe.
