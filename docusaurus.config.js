@@ -56,6 +56,17 @@ module.exports = {
     },
     footer: {
       style: 'light',
+      links: [
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
+            },
+          ],
+        },
+      ],
       copyright: `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.`,
     },
   },
