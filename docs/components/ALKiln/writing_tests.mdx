@@ -385,7 +385,7 @@ You can use this Step to [upload files](#upload) and [fill in a signature](#sign
 :::
 -->
 
-Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.<Anchor id="unused-rows"/><Anchor id="skipped-variable"/>
+<Anchor id="unused_rows">Right now, Story Tables are unable to use environment variables to fill in answers, so you cannot use them to [set sensitive information](#secret-val) like passwords.</Anchor>
 
 :::warning Unused rows
 The Story Table does not care about extra rows that never get used. This can make Story Tables easier to write, but it also means that the tests will technically "pass" even if variables that *should* get set are never filled in.
@@ -981,7 +981,7 @@ Example Story Table Step:
 
 <!-- Maybe this section should go in the "I set the var" section and/or the Story Table section. It might need to be in all three places. This is such a common problem. If we didn't have to account for `False`, I'd say ALKiln should handle the way everyone seems to intuitively set checkboxes -->
 
-Checkboxes are one of the most challenging variables to set. This might lead to a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just [skip the field](#unused-rows) causing problems later on.
+Checkboxes are one of the most challenging variables to set. This might lead to a ["variable not found" error](troubleshooting.mdx#variable-not-found) or an ALKiln Story Table Step might just [skip the field](#unused_rows) causing problems later on.
 
 :::tip Advanced summary
 - The only value a checkbox can have is `True` or `False`.
@@ -1695,7 +1695,7 @@ These are values you can put in your workflow file directly under the `with:` ke
  -->
 
 
-[^org]: If your server is part of a GitHub organization, we recommend creating some of these values as [organization secrets](#org-secrets). That way, if you need to change the value of an input or environment variable you can do it one place.
+[^org]: If your server is part of a GitHub organization, we recommend creating some of these values as [organization secrets](#org_secrets). That way, if you need to change the value of an input or environment variable you can do it one place.
 
 
 ### Required inputs for <!-- GitHub Sandbox --> <KittyLitter/> tests {#sandbox-inputs}
@@ -1995,7 +1995,7 @@ You can [make secrets for individual GitHub repositories](https://docs.github.co
 
   Remember to create a [separate account](security.mdx#test-accounts) for that "user".
 
-2. GitHub secrets<Anchor id="org-secrets"/> are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.<!-- TODO: Actually, SERVER_URL may be the best example because lots of users use it and it is an appropriate variable to use a secret for that isn't security-critical information. -->
+2. <Anchor id="org_secrets">GitHub secrets</Anchor> are useful for sharing values between GitHub organization repositories. All the repositories of a GitHub organization can see its secrets, so you can affect all of those repositories at once from one location.<!-- TODO: Actually, SERVER_URL may be the best example because lots of users use it and it is an appropriate variable to use a secret for that isn't security-critical information. -->
 
   <details>
     <summary>Example situation</summary>
@@ -2090,7 +2090,7 @@ This section will talk about ways to start (trigger) [different types of tests](
 
 You control when your tests run and which tests run. How you do that depends on the [type of test](setup.mdx#types) you are using.
 
-**<GTOYS/> and <KittyLitter/> tests:**<Anchor id="trigger-github"/>
+**<GTOYS/> and <KittyLitter/> tests:**
 
 By default, you can trigger tests on GitHub by committing your edits to your repository or by running the tests manually.
 
@@ -2108,7 +2108,7 @@ You can also [trigger your tests manually](https://docs.github.com/en/actions/ma
 
 You can also edit your workflow file to [trigger your GitHub tests other ways](#workflow-extras).
 
-**<AutoDIY/> tests:**<Anchor id="trigger-autodiy"/>
+**<Anchor id="trigger_autodiy"><AutoDIY/> tests:</Anchor>**
 
 You can run <AutoDIY/> tests manually whenever you want to.
 
@@ -2425,7 +2425,7 @@ Accessibility on direct-standard-fields passed!
 ```
 
 :::warning Unused rows
-Even Scenarios that **pass** might have a section called "Unused rows" at the bottom of its part of the report, as you see above. [A Story Table will skip rows](#unused-rows) if it is unable to find any matching fields. That might mean that something actually did go wrong with the test.
+Even Scenarios that **pass** might have a section called "Unused rows" at the bottom of its part of the report, as you see above. [A Story Table will skip rows](#unused_rows) if it is unable to find any matching fields. That might mean that something actually did go wrong with the test.
 :::
 
 ALKiln currently only shows logs for some Steps, including:

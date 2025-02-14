@@ -230,8 +230,33 @@ install the fonts on your Docassemble server.
 
 Make sure that you have a license for each font you want to install.
 
-1. Locate the .otf or .ttf file representing the font that you want to use
+The first step is to locate the .otf or .ttf file representing the font that you want to use
    inside your Word template (note that these are often in c:\windows\fonts\)
+
+
+#### Use the ALDashboard to install the font
+
+The [ALDashboard](https://github.com/suffolklitlab/docassemble-ALDashboard) tool has a
+widget that helps you install a font server-wide so it is available when a DOCX
+is converted to PDF.
+
+If you do not already have ALDashboard installed: 
+
+1. Install the ALDashboard package via the global Package Management page (e.g., add `https://github.com/suffolklitlab/docassemble-ALDashboard` to the GitHub input field and click "update")
+2. Run it, either from the "Dashboard" menu item (if you added the menu shortcut) or by visiting /start/ALDashboard/menu on your
+   server.
+
+Once you are at the ALDashboard menu page:
+
+3. Click the Install Fonts button.
+4. Drag and drop the OTF or TTF file on the upload target and click "Continue". The font should be available
+   after a short wait.
+
+If the font isn't available, you can try stopping and then re-starting the container by logging in to the server
+hosting your Docassemble container and running `docker stop -t 600 CONTAINERNAME` followed by `docker start CONTAINERNAME`.
+
+#### Manually install the font
+
 1. Copy the font to your docassemble server
 1. Copy the font inside the docker container
 1. reset the font cache
@@ -240,7 +265,7 @@ Make sure that you have a license for each font you want to install.
 ```bash
 scp ~/myfont.ttf apps.example.com:
 ssh apps.example.com
-docker cp myfont.ttf mycontainer:/usr/share/fonts
+docker cp myfont.ttf CONTAINERNAME:/usr/share/fonts
 docker exec mycontainer /bin/bash
 fc-cache -f -v
 supervisorctl restart uwsgi
@@ -248,10 +273,13 @@ supervisorctl start reset
 supervisorctl -s http://localhost:9001 restart unoconv
 ```
 
+Replace "CONTAINERNAME" with the actual name of your container. You can often
+auto-complete the container name by hitting `tab`.
+
 Instead of copying the fonts to /usr/share/fonts, you could likely copy
 them to `/var/www/.fonts`. This has the advantage of being writable by the
 web process from a Python module.
 
 If the font still does not appear to be installed (try generating a PDF with the
-custom font),you may need to do a `docker stop -t 600 mycontainer` followed by a
-`docker start mycontainer`.
+custom font),you may need to do a `docker stop -t 600 CONTAINERNAME` followed by a
+`docker start CONTAINERNAME`.
