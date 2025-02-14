@@ -16,8 +16,9 @@ to help you offer your interview in multiple languages:
 ## Core concepts
 
 ### XLSX File format
+
 Docassemble interviews can be translated by adding a special Excel spreadsheet (XLSX format)
-in the `sources` folder of your package. Docassemble's translation system 
+in the `sources` folder of your package. Docassemble's translation system
 works without requiring you to maintain multiple YAML files. The translated phrases are loaded
 "live" when you run your interview.
 
@@ -47,11 +48,15 @@ The tool also will calculate how many words in the given language need to be tra
 without counting Mako and HTML code. The number it provides is suitable for you to share
 with a translation vendor.
 
+Note that if you have several YAML pathways in your interview, you may encounter duplicate
+phrases across the translation files. Most vendors will have an automated method to detect
+this.
+
 ## Variables used in translated interviews
 
 * `enable_al_language`: defaults to True, turning it off can partially ensure the language system in AssemblyLine doesn't interfere with existing language systems. It should be relatively easy for authors to migrate to this new system though.
 * `al_user_default_language`: can be controlled by interview author, this determines the language when the user makes no selection of their own. Defaults to "en".
-* `al_interview_languages`: a list of language codes, presumably ISO-639-1 (Alpha-2), like ["en","es"] etc. They should exist in the languages.yml file if you would like to display in the native language. The author can provide their own languages.yml file.
+* `al_interview_languages`: a list of language codes, presumably ISO-639-1 (Alpha-2), like ["en","es"] etc. The Assembly Line also contains a translation of several common language codes into the native-language version of the language (e.g., `es` is translated as `Español`).
 * `al_user_language`: normally set via a dropdown menu or passed as a URL argument, this stores the user's current selected language
 
 ## Make the translation file available in your interview
@@ -66,7 +71,7 @@ translations:
 
 :::caution Add the translation block up top
 
-Because of the way translations are loaded, 
+Because of the way translations are loaded,
 you need to add the translations block **before**
 any other questions or includes in your interview.
 
@@ -78,7 +83,8 @@ closer to the top of the file.
 ## Methods to change interview language
 
 ### Drop-down menu selector with `get_language_list_dropdown()`
-When `al_interview_languages` is defined (which is the default) and has at least 2 items, 
+
+When `al_interview_languages` is defined (which is the default) and has at least 2 items,
 the Assembly Line will add a drop-down menu item in the top right that allows the user
 to switch languages at any time.
 
@@ -137,7 +143,7 @@ fields:
 Make sure that expert users of your tool, like advocates
 shadowing or looking over the shoulder of an unrepresented
 litigant, know that they can use the dropdown menu to switch
-language "live." 
+language "live."
 
 For example, the SRL can work through the interview on their own
 until a point at which they get stuck. Then the helper can change 
@@ -218,6 +224,26 @@ subquestion: |
 pre: |
   ${ get_language_list(lang_codes=al_interview_languages, current=al_user_language) }
 ```
+
+## Customizing the native-language display of a language code by duplicating and editing `data/sources/languages.yml`
+
+When it is possible, the dropdown menu of languages provided by the Assembly Line will display the language name in the native
+name for that language. E.g.,  `es` is translated as `Español`.
+We didn't find a standard Python library that provides this functionality, so this functionality is provided by a file named
+["languages.yml"](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/sources/languages.yml).
+We manually translated the codes for about 45 common first languages for migrants to the United States.
+
+If you have a language your interview is available in that isn't contained in this file, you can copy
+and customize the ["languages.yml"](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/sources/languages.yml).
+**Be sure to place the customized file in the `data/sources/` folder in your
+Docassemble package, not in the normal `questions` folder.** The custom version will be substituted
+for the built-in version. Most US-based legal aid providers won't find it necessary to customize this
+file. We also welcome pull requests to add to the list of supported languages.
+
+If a language code is not listed in `languages.yml`, the Assembly Line functions try the following strategies, in order:
+
+1. Uses an English-language translation of the language code. E.g., `es` is listed as `Spanish`.
+1. Displays the literal language code. E.g., `es` stays `es`.
 
 ## Read more
 
