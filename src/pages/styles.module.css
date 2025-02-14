@@ -79,66 +79,38 @@
   margin-top: calc(2 * var(--ifm-spacing-vertical));
 }
 
-.heroFooter {
-  background-color: var(--ifm-color-primary);
-  color: white;
-  display: flex;
-  font-size: 1.25rem;
-  gap: var(--ifm-spacing-horizontal);
-  padding: calc(1.5 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
+.indexSection {
+  margin: calc(4.5 * var(--ifm-spacing-vertical)) auto;
+  max-width: 1100px;
+}
+
+.indexFullWidthSection {
+  background-color: var(--suffolk-blue-wash);
+  margin: calc(4.5 * var(--ifm-spacing-vertical)) 0 0 0;
+  max-width: unset;
+  padding-top: calc(4.5 * var(--ifm-spacing-vertical));
+  padding-bottom: calc(4.5 * var(--ifm-spacing-vertical));
   width: 100%;
-  
-  .heroFooter__Inner {
-    gap: var(--ifm-spacing-horizontal);
+
+  > * {
+    display: block;
     margin-right: auto;
     margin-left: auto;
     max-width: 1100px;
   }
-
-  .heroFooterIconCol {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: calc(.5 * var(--ifm-spacing-horizontal));
-  }
-
-  .icon {
-    background-color: var(--suffolk-blue-wash);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 70%;
-    border-radius: 9999px;
-    display: block;
-    flex-wrap: nowrap;
-    height: 1lh;
-    max-width: 1lh;
-    width: 1lh;
-    
-    html[data-theme='dark'] & {
-      background-color: var(--suffolk-blue-wash);
-    }
-  }
-  
-  .iconBalloon {
-    background-image: url('../../static/icons/balloon.svg');
-  }
-
-  .iconUpArrow {
-    background-image: url('../../static/icons/arrow-up.svg');
-  }
-  
-  .iconDownArrow {
-    background-image: url('../../static/icons/arrow-down.svg');
-  }
-
-  .iconHourglass {
-    background-image: url('../../static/icons/hourglass.svg');
-  }
 }
 
+.pullQuote {
+  border-left: 5px solid var(--suffolk-light-gold);
 
-.indexSection {
-  margin: calc(4.5 * var(--ifm-spacing-vertical)) auto;
-  max-width: 1100px;
+  > *:not(cite, :has(cite)) {
+    font-size: var(--ifm-h1-font-size);
+    font-weight: bold;
+  }
+
+  cite {
+    font-style: normal;
+  }
 }
 
 .dalBenefitsContainerRow {
@@ -166,8 +138,6 @@
 
 .dalBenefitsText {
   font-size: 1.25rem;
-  padding-right: calc(2 * var(--ifm-spacing-horizontal));
-  padding-left: calc(2 * var(--ifm-spacing-horizontal));
 }
 
 .featureImage {
@@ -192,4 +162,8 @@
 .announcementInner {
   margin: 0 auto;
   max-width: 768px;
+}
+
+.litLabLogo {
+  max-width: 576px;
 }

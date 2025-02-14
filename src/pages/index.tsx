@@ -10,6 +10,7 @@ import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Image from '@theme/IdealImage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import styles from './styles.module.css';
@@ -50,37 +51,22 @@ function Home() {
               width="100%"
             />
           </div>
-          <div className={styles.heroFooter}>
-            <div className={clsx([
-              'container',
-              'row',
-              'row--no-gutters',
-              styles.heroFooter__Inner
-            ])}>
-              <div className={clsx([
-                'col',
-                styles.heroFooterIconCol
-              ])}>
-                <i className={clsx(['col', styles.icon, styles.iconUpArrow])}></i>
-                <Translate>Increase access to justice</Translate>
-              </div>
-              <div className={clsx([
-                'col',
-                styles.heroFooterIconCol
-              ])}>
-                <i className={clsx(['col', styles.icon, styles.iconDownArrow])}></i>
-                <Translate>Reduce errors in court forms</Translate>
-              </div>
-              <div className={clsx([
-                'col',
-                styles.heroFooterIconCol
-              ])}>
-                <i className={clsx(['col', styles.icon, styles.iconHourglass])}></i>
-                <Translate>Save staff time</Translate>
-              </div>
-            </div>
-          </div>
         </header>
+        <section className={clsx(['container', styles.indexSection])}>
+          <blockquote className={styles.pullQuote}>
+            <p>A well-designed form allows people to express themselves in a way the court can understand.</p>
+            <p><cite
+             dangerouslySetInnerHTML={{
+              __html: translate({
+                id: 'homepage.benefits.davidColarusso',
+                description:
+                  'David Colarusso, Suffolk LIT Lab Co-Director',
+                message:
+                  '<strong>David Colarusso</strong>, <a href="https://suffolklitlab.org" target="_blank">Suffolk LIT Lab</a> Co-Director',
+              }),
+            }}></cite></p>
+          </blockquote>
+        </section>
         <section className={styles.indexSection}>
           <div className={clsx([
             'container',
@@ -110,26 +96,20 @@ function Home() {
               </div>
               <div className={styles.dalBenefitsText}>  
                 <p><Translate>
-                  Build beautiful, responsive, accessible online guided interviews for court forms and other documents with Docassemble and the Assembly Line tools.
+                  Build beautiful, responsive, accessible online guided interviews with Docassemble and the Document Assembly Line tools.
                 </Translate></p>
                 <ul>
+                  <li><Translate>Accessible and responsive by design</Translate></li>
+                  <li><Translate>Library of pre-built, user-tested questions and interview components</Translate></li>
+                  <li><Translate>Gentle learning curve</Translate></li>
                   <li><Translate>Code handles complex court forms better than drag-and-drop tools</Translate></li>
                   <li dangerouslySetInnerHTML={{
                     __html: translate({
                       id: 'homepage.benefits.visitCourtFormsOnline',
                       description:
-                        'To see examples, visit Court Forms Online',
+                        'See examples at Court Forms Online',
                       message:
-                        'To see examples, visit <a href="https://courtformsonline.org" target="_blank">Court Forms Online</a>',
-                    }),
-                  }}></li>
-                  <li dangerouslySetInnerHTML={{
-                    __html: translate({
-                      id: 'homepage.benefits.builtWithDocassemble',
-                      description:
-                        'Assembly Line tools are powered by Docassemble',
-                      message:
-                        'Assembly Line tools are powered by <a href="https://docassemble.org" target="_blank">Docassemble</a>',
+                        'See examples at <a href="https://courtformsonline.org" target="_blank">Court Forms Online</a>',
                     }),
                   }}></li>
                 </ul>
@@ -157,15 +137,14 @@ function Home() {
               </div>
               <div className={styles.dalBenefitsText}>  
                 <p><Translate>
-                  Suffolk's open-source e-filing service provider (EFSP) makes it easier for people to file documents directly from online guided interviews.
+                  Suffolk's open-source e-filing service provider (EFSP) delivers completed forms to court e-filing systems directly from Docassemble interviews.
                 </Translate></p>
                 <ul>
-                  <li><Translate>More user-friendly than </Translate></li>
-                  <li><Translate>Lighten the burden on court clerks, self-help staff, and legal aid advocates</Translate></li>
-                  <li><Translate>Certified with Tyler eFile & Serve</Translate></li>
-                  <li><Translate>Customizable for other e-filing systems</Translate></li>
+                  <li><Translate>Removes a major obstacle for self-represented litigants (SRLs)</Translate></li>
+                  <li><Translate>Reduces the burden on court staff</Translate></li>
+                  <li><Translate>Certified for Tyler eFile & Serve, and customizable for other e-filing systems</Translate></li>
                   <li><strong>
-                    <Translate>Coming soon: simplified e-filing for self-represented litigants (SRLs)</Translate>
+                    <Translate>Coming soon: simplified e-filing tool for SRLs</Translate>
                   </strong></li>
                 </ul>
               </div>
@@ -198,15 +177,16 @@ function Home() {
               </div>
               <div className={styles.dalBenefitsText}>  
                 <p><Translate>
-                  Get training and support from the Suffolk LIT Lab and an active community of courts, legal aid organizations, and volunteers.
+                  Learn and get help from the Suffolk LIT Lab and an active community of courts, legal aid organizations, and volunteers.
                 </Translate></p>
                 <ul>
-                  <li><Translate>Weekly meetings</Translate></li>
+                  <li><Translate>Training for new interview builders</Translate></li>
+                  <li><Translate>Weekly community meetings to share tips and troubleshoot issues</Translate></li>
+                  <li><Translate>Online community support forum</Translate></li>
                   <li><a href="https://suffolklitlab.org/tag/first-wednesday-workshops/" target="_blank">
                     <Translate>Monthly workshops</Translate>
                   </a></li>
-                  <li><Translate>Quarterly trainings for new interview builders</Translate></li>
-                  <li><Translate>Online forum for coding help</Translate></li>
+                  <li><Translate>Documentation</Translate></li>
                 </ul>
               </div>
             </div>
@@ -231,134 +211,30 @@ function Home() {
                 </div>
               </div>
               <div className={styles.dalBenefitsText}>  
-                <p><Translate>
-                  All Document Assembly Line code is free and open source, forever.
-                </Translate></p>
+                <p dangerouslySetInnerHTML={{
+                  __html: translate({
+                    id: 'homepage.benefits.dalIsFOSS',
+                    description:
+                      'All Document Assembly Line and Docassemble code is free and open source, released under the MIT license.',
+                    message:
+                      'All Document Assembly Line and Docassemble code is free and open source, released under the <a href="https://opensource.org/license/MIT" target="_blank">MIT license</a>.',
+                  }),
+                }}></p>
                 <ul>
-                  <li><Translate>Reuse code written by other courts and orgs</Translate></li>
                   <li><Translate>No vendor lock-in</Translate></li>
-                  <li><Translate>Customizable code</Translate></li>
-                  <li><Translate>Benefit</Translate></li>
+                  <li><Translate>Customizable for specific requirements</Translate></li>
+                  <li><Translate>Community-driven development roadmap</Translate></li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
-        <div className={styles.indexSection}>
-          <div className="container text--center margin-bottom--xl">
-            <div className="row">
-              <div className="col">
-                <img
-                  alt="Pre-built questions and components"
-                  className={styles.featureImage}
-                  // src={require('./assets/undraw_building_blocks_n0nc.png').default}
-                  src={useBaseUrl('/img/undraw_building_blocks_n0nc.png')}
-                />
-                <h2 className={clsx(styles.featureHeading)}>
-                  <Translate>Pre-built questions and components</Translate>
-                </h2>
-                <p className="padding-horiz--md">
-                  <Translate>
-                    Get started quickly by using expert-vetted, plain language
-                    questions covering all of the basics needed for court and 
-                    government forms.
-                  </Translate>
-                </p>
-              </div>               
-              <div className="col">                 
-                <img
-                  className={styles.featureImage}
-                  alt="Docassemble"
-                  src={useBaseUrl('/img/docassemble-white.png')}
-                />
-                <h2 className={clsx(styles.featureHeading)}>
-                  <Translate>Powered by Docassemble</Translate>
-                </h2>
-                <p className="padding-horiz--md">
-                  <Translate>
-                    The Document Assembly Line uses the free and open
-                    source Docassemble as its engine. Build with confidence
-                    knowing it will be free to use, forever.
-                  </Translate>
-                </p>
-              </div>
-              <div className="col">
-                <img
-                  alt="No spaghetti code here"
-                  className={styles.featureImage}
-                  src={useBaseUrl('/img/undraw_Code_review_re_woeb.png')}
-                />
-                <h2 className={clsx(styles.featureHeading)}>
-                  <Translate>No spaghetti code here</Translate>
-                </h2>
-                <p className="padding-horiz--md">
-                  <Translate>
-                    Our process quickly builds readable, maintainable
-                    code that follows best practices. We focus on getting
-                    a prototype up and running fast, without the mess of
-                    standard no-code tools.
-                  </Translate>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="container text--center">
-            <div className="row">
-            <div className="col">
-                <img
-                  alt="Ready for Translation"
-                  className={styles.featureImage}
-                  src={useBaseUrl('/img/undraw_Around_the_world_re_n353.png')}
-                />
-                <h2 className={clsx(styles.featureHeading)}>
-                  <Translate>Ready for Translation</Translate>
-                </h2>
-                <p className="padding-horiz--md">
-                  <Translate>
-                    Ready to translate and localize all over the world.
-                    Our library of vetted questions are already translated into 5
-                    languages, including Spanish.
-                  </Translate>
-                </p>
-              </div>
-              <div className="col">
-                <img
-                  alt="Assembly-line process"
-                  className={styles.featureImage}
-                  src={useBaseUrl('/img/undraw_Collaborators_re_hont.png')}
-                />
-                <h2 className={clsx(styles.featureHeading)}>
-                  <Translate>Assembly-line process</Translate>
-                </h2>
-                <p className="padding-horiz--md">
-                  <Translate>
-                    We made automating a legacy court form easy
-                    and step-by-step. Spread out the work
-                    load and leverage volunteers to help
-                    close the access to justice gap.
-                  </Translate>
-                </p>
-              </div>
-              <div className="col">
-                <img
-                  alt="Deliver straight to a court"
-                  className={styles.featureImage}
-                  src={useBaseUrl('/img/undraw_Message_sent_re_q2kl.png')}
-                />
-                <h2 className={clsx(styles.featureHeading)}>
-                  <Translate>Deliver straight to a court</Translate>
-                </h2>
-                <p className="padding-horiz--md">
-                  <Translate>
-                    Integrate forms directly with Tyler Technologies EFMs
-                    and courts in Louisiana, without paying an EFSP middleman.
-                  </Translate>
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <section className={clsx(['container', styles.indexFullWidthSection])}>
+          <a className={styles.litLabLogo} href="https://suffolklitlab.org" target="_blank">
+            <img className="light" alt="Suffolk LIT Lab logo" src={useBaseUrl('/img/lit-lab-logo-stacked.svg')}/>
+            <img className="dark"  alt="Suffolk LIT Lab logo" src={useBaseUrl('/img/lit-lab-logo-stacked-inverted.svg')}/>
+          </a>
+        </section>
       </main>
     </Layout>
   );
