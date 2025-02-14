@@ -61,8 +61,8 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
+              label: 'Suffolk LIT Lab',
+              href: 'https://suffolklitlab.org',
             },
           ],
         },
