@@ -227,6 +227,18 @@ html[class*="docs-doc-id-components/ALKiln"] {
   flex-wrap: nowrap !important;
 }
 
+html[data-theme='dark'] .light {
+  display: none;
+}
+
+.dark {
+  display: none;
+
+  html[data-theme='dark'] & {
+    display: revert;
+  }
+}
+
 .negative {
   color: var(--ifm-color-danger-dark);
 }
