@@ -161,7 +161,7 @@ dynamically, use the `lang=CODE` URL argument.
 
 E.g.,
 
-https://apps.suffolklitlab.org/start/uptocode/?lang=es
+`https://apps.suffolklitlab.org/start/uptocode/?lang=es`
 
 The interview will launch in the language specified by
 the language code (if it is translated into that language)
@@ -235,8 +235,8 @@ We manually translated the codes for about 45 common first languages for migrant
 
 If you have a language your interview is available in that isn't contained in this file, you can copy
 and customize the ["languages.yml"](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/blob/main/docassemble/AssemblyLine/data/sources/languages.yml).
-**Be sure to place the customized file in the `data/sources/` folder in your
-Docassemble package, not in the normal `questions` folder.** The custom version will be substituted
+**Be sure to place the customized file in the `data/sources/` folder in your Docassemble package, not in the normal `questions` folder.** 
+The custom version will be substituted
 for the built-in version. Most US-based legal aid providers won't find it necessary to customize this
 file. We also welcome pull requests to add to the list of supported languages.
 
