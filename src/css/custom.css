@@ -1,5 +1,5 @@
+/* stylelint-disable docusaurus/copyright-header */
 /**
- * stylelint-disable docusaurus/copyright-header
  *
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -35,7 +35,7 @@
   --ifm-navbar-link-hover-color: var(--suffolk-light-gold);
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --ifm-color-primary: var(--suffolk-light-gold);
   --ifm-color-primary-dark: #e1c37d;
   --ifm-color-primary-darker: #d5ad4d;
@@ -77,7 +77,7 @@ html[data-theme='dark'] {
     color: rgb(28, 30, 33);
   }
 
-  html[data-theme='dark'] & {
+  html[data-theme="dark"] & {
     background-color: var(--ifm-navbar-background-color);
   
     .clean-btn {
@@ -111,7 +111,7 @@ html[data-theme='dark'] {
   }
 }
 
-[class*="toggleButton_node_modules"] {
+button[class*="toggleButton_node_modules"] {
   color: white;
   margin-right: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
   margin-left: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
@@ -133,7 +133,7 @@ html[data-theme='dark'] {
   padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
 }
 
-html:not([data-theme='dark']) {
+html:not([data-theme="dark"]) {
   .navbar-sidebar__items {
     .header-github-link {
       &::before {
@@ -149,6 +149,17 @@ html:not([data-theme='dark']) {
 
 
 /* Pages */
+.front-page-main {
+  a:not(.button) {
+    text-decoration: underline;
+    text-decoration-thickness: 0.04em;
+    text-underline-offset: 0.3em;
+
+    &:hover {
+      text-decoration: var(--ifm-link-hover-decoration);
+    }
+  }
+}
 
 .table-of-contents {
   a.table-of-contents__link--active {
@@ -175,16 +186,16 @@ article {
 }
 
 
-/** ALKiln pages
-  * The :has() selector is unsupported in browser versions with  >6% use) 
-  */
+/* ALKiln pages */
+
+/* The :has() selector is unsupported in browser versions with  >6% use) */
 @supports selector(:has(> foo)) {
   html[class*="docs-doc-id-components/ALKiln"] {
-    & .table-of-contents a:has(> code),
-    & h2:has(code),
-    & h3:has(code),
-    & h4:has(code),
-    & h5:has(code) {
+    .table-of-contents a:has(> code),
+    h2:has(code),
+    h3:has(code),
+    h4:has(code),
+    h5:has(code) {
       background-color: var(--ifm-code-background);
       border: 0.1rem solid rgba(0, 0, 0, 0.1);
       border-radius: var(--ifm-code-border-radius);
@@ -196,7 +207,7 @@ article {
       }
     }
 
-    & .table-of-contents li:has(> a > code) {
+    .table-of-contents li:has(> a > code) {
       line-height: 1.5em;
     }
   }
@@ -209,8 +220,28 @@ html[class*="docs-doc-id-components/ALKiln"] {
     &.highlight {
       /* All credit to https://stackoverflow.com/a/62484130/14144258 with some tweaking */
       --ifm-color-info-light-highlight-nums: 110, 207, 239;
-      background: linear-gradient(104deg, rgba(var(--ifm-color-info-light-highlight-nums), 0) 0.9%, rgba(var(--ifm-color-info-light-highlight-nums), 0.7) 2.4%, rgba(var(--ifm-color-info-light-highlight-nums), 0.5) 5.8%, rgba(var(--ifm-color-info-light-highlight-nums), 0.1) 93%, rgba(var(--ifm-color-info-light-highlight-nums), 0.2) 96%, rgba(var(--ifm-color-info-light-highlight-nums), 0) 98%), linear-gradient(183deg, rgba(var(--ifm-color-info-light-highlight-nums), 0) 0%, rgba(var(--ifm-color-info-light-highlight-nums), 0.3) 7.9%, rgba(var(--ifm-color-info-light-highlight-nums), 0) 15%);
-      text-shadow: -7px 0px 9.8px rgba(var(--ifm-color-info-light-highlight-nums), 1), 21px -18.1px 7.3px rgba(255, 255, 255, 1), -18.1px -27.3px 30px rgba(255, 255, 255, 1);
+      background: 
+        linear-gradient(
+          104deg, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 0.9%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.7) 2.4%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.5) 5.8%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.1) 93%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.2) 96%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 98%
+        ), 
+        linear-gradient(
+          183deg, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 0%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.3) 7.9%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 15%
+        )
+      ;
+      text-shadow: 
+        -7px 0px 9.8px rgba(var(--ifm-color-info-light-highlight-nums), 1), 
+        21px -18.1px 7.3px rgba(255, 255, 255, 1),
+        -18.1px -27.3px 30px rgba(255, 255, 255, 1)
+      ;
       padding: 0.4em .2em;
       margin: -.4em -.2em;
       border-radius: 7.5px;
@@ -219,12 +250,12 @@ html[class*="docs-doc-id-components/ALKiln"] {
     }
   }
   
-  & *:not(h1),
-  & *:not(h2),
-  & *:not(h3),
-  & *:not(h4),
-  & *:not(h5),
-  & *:not(h6) {
+  :not(h1),
+  :not(h2),
+  :not(h3),
+  :not(h4),
+  :not(h5),
+  :not(h6) {
     scroll-margin-top: var(--ifm-navbar-height);
   }
 }
@@ -243,14 +274,16 @@ html[class*="docs-doc-id-components/ALKiln"] {
   flex-wrap: nowrap !important;
 }
 
-html[data-theme='dark'] .light {
-  display: none;
+html[data-theme="dark"] {
+  .light {
+    display: none;
+  }
 }
 
 .dark {
   display: none;
 
-  html[data-theme='dark'] & {
+  html[data-theme="dark"] & {
     display: revert;
   }
 }
@@ -260,5 +293,5 @@ html[data-theme='dark'] .light {
 }
 
 .positive {
-  color: var(--ifm-color-success-dark);;
+  color: var(--ifm-color-success-dark);
 }

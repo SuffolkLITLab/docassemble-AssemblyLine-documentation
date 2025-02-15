@@ -4,18 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-.indexMain {
-  a:global:not(.button) {
-    text-decoration: underline;
-    text-decoration-thickness: 0.04em;
-    text-underline-offset: 0.3em;
-
-    &:hover {
-      text-decoration: var(--ifm-link-hover-decoration);
-    }
-  }
-}
-
 .hero {
   background-color: var(--suffolk-blue-wash); 
   margin: 0;

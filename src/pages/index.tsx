@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <Layout title={tagline} description={description as string}>
-      <main className={styles.indexMain}>
+      <main className="front-page-main">
         <header className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroText}>
