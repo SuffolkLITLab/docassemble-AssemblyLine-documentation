@@ -1,16 +1,15 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+/*
+Copyright (c) Facebook, Inc. and its affiliates.
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+*/
 
 import React from 'react';
 import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Image from '@theme/IdealImage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import styles from './styles.module.css';
@@ -55,7 +54,7 @@ function Home() {
         <section className={clsx(['container', styles.indexSection])}>
           <blockquote className={styles.pullQuote}>
             <p>A well-designed form allows people to express themselves in a way the court can understand.</p>
-            <p><cite
+            <cite
              dangerouslySetInnerHTML={{
               __html: translate({
                 id: 'homepage.benefits.davidColarusso',
@@ -64,7 +63,7 @@ function Home() {
                 message:
                   '<strong>David Colarusso</strong>, <a href="https://suffolklitlab.org" target="_blank">Suffolk LIT Lab</a> Co-Director',
               }),
-            }}></cite></p>
+            }}></cite>
           </blockquote>
         </section>
         <section className={styles.indexSection}>
