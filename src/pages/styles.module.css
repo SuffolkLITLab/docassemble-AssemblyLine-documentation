@@ -4,17 +4,128 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-.section {
-  padding: 72px 0;
+.hero {
+  background-color: var(--suffolk-blue-wash); 
+  margin: 0;
 }
 
-.sectionAlt {
-  background-color: var(--ifm-color-emphasis-100);
-}
-
-.sectionInner {
+.heroInner {
+  align-items: center;
+  display: grid;
+  gap: calc(2 * var(--ifm-global-spacing));
+  grid-template-areas: 'h1 img';
+  grid-template-columns: 2fr 1fr;
   margin: 0 auto;
+  max-width: 1100px;
+  padding: calc(3 * var(--ifm-spacing-vertical)) var(--ifm-spacing-horizontal);
+  padding-left: var(--ifm-spacing-horizontal);
+
+  @media (max-width: 576px) {
+    gap: var(--ifm-global-spacing);
+    grid-template-areas:
+      'img'
+      'h1'
+    ;
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroText {
+  h1 {
+    font-size: 4rem;
+    grid-area: h1;
+    margin: 0;
+  
+    strong {
+      color: var(--ifm-color-primary);
+    }
+  
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.heroImage {
+  grid-area: img;
+
+  @media (max-width: 576px) {
+    background: white;
+    border-radius: 9999px;
+    height: 150px;
+    padding: var(--ifm-global-spacing);
+    width: 150px;
+  }
+}
+
+.heroCTAButtons {
+  --ifm-button-size-multiplier: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ifm-spacing-horizontal);
+  align-items: center;
+  margin-top: calc(2 * var(--ifm-spacing-vertical));
+}
+
+.indexSection {
+  margin: calc(4.5 * var(--ifm-spacing-vertical)) auto;
+  max-width: 1100px;
+}
+
+.indexFullWidthSection {
+  background-color: var(--suffolk-blue-wash);
+  margin: calc(4.5 * var(--ifm-spacing-vertical)) 0 0 0;
+  max-width: unset;
+  padding-top: calc(4.5 * var(--ifm-spacing-vertical));
+  padding-bottom: calc(4.5 * var(--ifm-spacing-vertical));
+  width: 100%;
+
+  > * {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1100px;
+  }
+}
+
+.pullQuote {
+  border-left: 5px solid var(--suffolk-light-gold);
+
+  > *:not(cite, :has(cite)) {
+    font-size: var(--ifm-h1-font-size);
+    font-weight: bold;
+  }
+
+  cite {
+    font-style: normal;
+  }
+}
+
+.dalBenefitsContainerRow {
+  gap: calc(4.5 * var(--ifm-spacing-vertical)) calc(2 * var(--ifm-spacing-horizontal));
+}
+
+.dalBenefitsImageCol {
+  --ifm-col-width: calc(4 / 12 * 100%) !important;
+
+  img {
+    aspect-ratio: 1 / 1;
+    background-color: var(--suffolk-blue-wash); 
+    border-radius: 9999px;
+    padding: var(--ifm-global-spacing);
+  }
+}
+
+.dalBenefitsHeaderCol {
+  flex: 1 1 auto;
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.dalBenefitsText {
+  font-size: 1.25rem;
 }
 
 .featureImage {
@@ -25,7 +136,7 @@
 
 .featureHeading {
   font-size: var(--ifm-h3-font-size);
-  padding-top: 1rem;
+  padding-top: var(--ifm-global-spacing);
 }
 
 .announcement {
@@ -41,118 +152,6 @@
   max-width: 768px;
 }
 
-:root {
-  --main-bg-color: #e6ecfc;
-  --main-color: #000;
-}
-
-[data-theme='dark'] {
-  --main-bg-color: rgb(27, 27, 29);
-  --main-color: #fff;
-}
-
-.hero {
-  background-color: var(--main-bg-color); 
-  padding: 48px;
-}
-
-.heroInner {
-  margin: 0 auto;
-  max-width: 1100px;
-  padding: 0 20px;
-}
-
-.heroProjectTagline {
-  color: var(--main-color);
-  font-size: 60px;
-  margin: 0;
-}
-
-.heroTitleTextHtml b {
-  color: var(--ifm-color-primary);
-}
-
-@keyframes jackInTheBox {
-  from {
-    opacity: 0;
-    transform: scale(0.1) rotate(30deg);
-    transform-origin: center bottom;
-  }
-
-  50% {
-    transform: rotate(-10deg);
-  }
-
-  70% {
-    transform: rotate(3deg);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.heroLogo {
-  /* animation-duration: 2s; */
-  /* animation-name: jackInTheBox; */
-  float: right;
-  margin-top: 20px;
-  padding: 0 20px 20px;
-}
-
-.indexCtas {
-  --ifm-button-size-multiplier: 1.6;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.indexCtasGitHubButtonWrapper {
-  display: flex;
-}
-
-.indexCtasGitHubButton {
-  overflow: hidden;
-}
-
-.indexCtaTryNowButton:hover {
-  color: var(--ifm-color-primary);
-}
-
-@media only screen and (max-width: 768px) {
-  .hero {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .heroInner {
-    padding: 0;
-  }
-
-  .heroProjectTagline {
-    font-size: 36px;
-    text-align: center;
-  }
-
-  .heroLogo {
-    display: block;
-    float: none;
-    margin: 0 auto;
-  }
-
-  .indexCtas {
-    justify-content: center;
-  }
-
-  .indexCtas a {
-    margin: 20px 36px;
-  }
-
-  .indexCtasGitHubButton {
-    display: none;
-  }
+.litLabLogo {
+  max-width: 576px;
 }

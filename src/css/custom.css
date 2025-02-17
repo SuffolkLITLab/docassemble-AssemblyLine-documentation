@@ -1,108 +1,291 @@
 /* stylelint-disable docusaurus/copyright-header */
 /**
+ *
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Override the default color palette with colors based on Suffolk's brand guidelines */
 :root {
-  --ifm-color-primary: #0050a2;
-  --ifm-color-primary-dark: #004892;
-  --ifm-color-primary-darker: #00448a;
-  --ifm-color-primary-darkest: #003871; 
-  --ifm-color-primary-light: #0058b2; 
-  --ifm-color-primary-lighter: #005cba; 
-  --ifm-color-primary-lightest: #0066cf; 
-  --ifm-code-font-size: 95%;
+  --suffolk-light-blue: #41b6e6; /* rgb(65, 182, 230), alt. color from Suffolk's brand guidelines */
+  --suffolk-medium-blue: #2c5697; /* rgb(44, 86, 151), alt. color from Suffolk's brand guidelines */
+  --suffolk-dark-blue: #15284b; /* rgb(21, 40, 75), primary color from Suffolk brand guidelines */
+  --suffolk-light-gold: #fdb924; /* rgb(253, 185, 36), from the suffolk.edu website */
+  --suffolk-dark-gold: #bc912c; /* rgb(188, 145, 44), primary color from Suffolk's brand guidelines */
+  --suffolk-blue-wash: rgba(65, 182, 230, .25); /* based on --suffolk-light-blue */
+  --suffolk-gold-wash: rgba(253, 185, 36, .25); /* based on --suffolk-gold, above */
 
-  --ifm-navbar-background-color: #002E60;
-  --ifm-navbar-link-color: #fff;
-
-  --ifm-navbar-link-hover-color: #b79514;
-
-  /* Give center section more room */
-  /*--doc-sidebar-width: 15em !important;*/
-  --ifm-heading-margin-bottom: 0;
-  --ifm-footer-padding-vertical: 15px;
+  
+  /**
+  * The color ranges below are based on the Suffolk brand colors.
+  * Each step is 3 steps away from the darkest/lightest on the ColorHexa shades and tints scale.
+  * See: https://www.colorhexa.com/15284b#shades-tints
+  */
+  --ifm-color-primary: var(--suffolk-medium-blue);
+  --ifm-color-primary-dark: #2f5aa7;
+  --ifm-color-primary-darker: #224179;
+  --ifm-color-primary-darkest: var(--suffolk-dark-blue);
+  --ifm-color-primary-light: var(--suffolk-medium-blue);
+  --ifm-color-primary-lighter: #3970c5;
+  --ifm-color-primary-lightest: #6691d2;
+  
+  --ifm-navbar-background-color: var(--suffolk-dark-blue);
+  --ifm-navbar-link-color: white;
+  --ifm-navbar-link-hover-color: var(--suffolk-light-gold);
 }
 
-article a,
-.table-of-contents a.table-of-contents__link--active {
-  text-decoration: underline;
-  text-decoration-thickness: 0.04em;
-  text-underline-offset: 0.3em;
+html[data-theme="dark"] {
+  --ifm-color-primary: var(--suffolk-light-gold);
+  --ifm-color-primary-dark: #e1c37d;
+  --ifm-color-primary-darker: #d5ad4d;
+  --ifm-color-primary-darkest: var(--suffolk-dark-gold);
+  --ifm-color-primary-light: var(--suffolk-light-gold);
+  --ifm-color-primary-lighter: #fecc5e;
+  --ifm-color-primary-lightest: #fede99;
+
+  --ifm-navbar-background-color: var(--suffolk-dark-blue);
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+
+/* Navbar */
+
+.navbar-sidebar__brand {
+  .clean-btn {
+    color: white;
+  }
+}
+
+.navbar__toggle {
+  color: white;
+}
+
+.navbar__logo {
+  border-right: 3px solid var(--suffolk-light-gold);
+  margin-right: var(--ifm-spacing-horizontal);
+  padding-right: var(--ifm-spacing-horizontal);
+}
+
+.navbar__item {
+  text-wrap: nowrap;
 }
 
 .navbar-sidebar__item {
-  background-color: #fff;
+  background-color: white;
+
+  .clean-btn {
+    color: rgb(28, 30, 33);
+  }
+
+  html[data-theme="dark"] & {
+    background-color: var(--ifm-navbar-background-color);
+  
+    .clean-btn {
+      color: white;
+    }
+  }
 }
 
-.navbar-sidebar__item .clean-btn {
-  color: rgb(28, 30, 33);
+.header-github-link {
+  border-radius: 9999px;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+  margin-left: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+  padding: 0;
+  
+  &::before {
+    background-image: url('../../static/img/github.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  
+  &:hover {
+    background-color: var(--suffolk-light-gold);
+  }
 }
 
-.navbar-sidebar__brand .clean-btn {
+button[class*="toggleButton_node_modules"] {
   color: white;
+  margin-right: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+  margin-left: calc(.25 * var(--ifm-navbar-item-padding-horizontal));
+
+  &:hover {
+    background-color: var(--suffolk-light-gold) !important;
+  }
 }
 
-.navbar__inner .clean-btn {
-  color: white;
+.navbar__search {
+  margin-left: 0 !important;
 }
 
-.header-github-link:hover {
-  opacity: 0.6;
-}
+/* Sidebar */
 
-.header-github-link::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
-}
-
+/* This goes with the "Assembly Line components" sidebar heading added in PR #492 */
 .menu__list-item.sidebar-heading {
   font-weight: bold;
   padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
 }
 
-[data-theme='dark'] .header-github-link::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
+html:not([data-theme="dark"]) {
+  .navbar-sidebar__items {
+    .header-github-link {
+      &::before {
+        background-image: url('../../static/img/github-dark.svg');
+      }
+    
+      &:hover {
+        background-color: var(--ifm-menu-color-background-hover);
+      }
+    }
+  }
 }
 
-[data-theme='dark'] {
-  --ifm-color-primary: #e9c539;
-  --ifm-color-primary-dark: #e6bd1f;
-  --ifm-color-primary-darker: #deb619;
-  --ifm-color-primary-darkest: #b79514;
-  --ifm-color-primary-light: #eccd53;
-  --ifm-color-primary-lighter: #edd060;
-  --ifm-color-primary-lightest: #f3de8f;
 
-  --ifm-navbar-background-color: rgb(36, 37, 38);
-  --ifm-background-color:#002E60;
+/* Pages */
+.front-page-main {
+  a:not(.button) {
+    text-decoration: underline;
+    text-decoration-thickness: 0.04em;
+    text-underline-offset: 0.3em;
+
+    &:hover {
+      text-decoration: var(--ifm-link-hover-decoration);
+    }
+  }
 }
 
-[data-theme='dark'] .navbar-sidebar__item {
-  background-color: var(--ifm-navbar-background-color);
+.table-of-contents {
+  a.table-of-contents__link--active {
+    text-decoration: underline;
+    text-decoration-thickness: 0.04em;
+    text-underline-offset: 0.3em;
+  }
 }
 
-[data-theme='dark'] .navbar-sidebar__item .clean-btn {
-  color: white;
+article {
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.04em;
+    text-underline-offset: 0.3em;
+  }
+
+  .markdown {
+    p {
+      img {
+        box-shadow: 5px 5px 20px gray;
+      }
+    }
+  }
 }
 
-article .markdown p img {
-  box-shadow: 5px 5px 20px gray;
+
+/* ALKiln pages */
+
+/* The :has() selector is unsupported in browser versions with  >6% use) */
+@supports selector(:has(> foo)) {
+  html[class*="docs-doc-id-components/ALKiln"] {
+    .table-of-contents a:has(> code),
+    h2:has(code),
+    h3:has(code),
+    h4:has(code),
+    h5:has(code) {
+      background-color: var(--ifm-code-background);
+      border: 0.1rem solid rgba(0, 0, 0, 0.1);
+      border-radius: var(--ifm-code-border-radius);
+      padding: var(--ifm-toc-padding-vertical) var(--ifm-toc-padding-horizontal);
+      
+      code {
+        border: none;
+        padding: 0;
+      }
+    }
+
+    .table-of-contents li:has(> a > code) {
+      line-height: 1.5em;
+    }
+  }
+}
+
+html[class*="docs-doc-id-components/ALKiln"] {
+  .target {
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 0.7em);
+    
+    &.highlight {
+      /* All credit to https://stackoverflow.com/a/62484130/14144258 with some tweaking */
+      --ifm-color-info-light-highlight-nums: 110, 207, 239;
+      background: 
+        linear-gradient(
+          104deg, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 0.9%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.7) 2.4%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.5) 5.8%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.1) 93%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.2) 96%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 98%
+        ), 
+        linear-gradient(
+          183deg, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 0%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0.3) 7.9%, 
+          rgba(var(--ifm-color-info-light-highlight-nums), 0) 15%
+        )
+      ;
+      text-shadow: 
+        -7px 0px 9.8px rgba(var(--ifm-color-info-light-highlight-nums), 1), 
+        21px -18.1px 7.3px rgba(255, 255, 255, 1),
+        -18.1px -27.3px 30px rgba(255, 255, 255, 1)
+      ;
+      padding: 0.4em .2em;
+      margin: -.4em -.2em;
+      border-radius: 7.5px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+  }
+  
+  :not(h1),
+  :not(h2),
+  :not(h3),
+  :not(h4),
+  :not(h5),
+  :not(h6) {
+    scroll-margin-top: var(--ifm-navbar-height);
+  }
+}
+
+
+/* Footer */
+
+.footer__title {
+  margin-bottom: 0;
+}
+
+
+/* Utility classes */
+
+.flex-wrap--nowrap {
+  flex-wrap: nowrap !important;
+}
+
+html[data-theme="dark"] {
+  .light {
+    display: none;
+  }
+}
+
+.dark {
+  display: none;
+
+  html[data-theme="dark"] & {
+    display: revert;
+  }
 }
 
 .negative {
@@ -110,48 +293,5 @@ article .markdown p img {
 }
 
 .positive {
-  color: var(--ifm-color-success-dark);;
-}
-
-/* The :has() selector is unsupported in browser versions with  >6% use) */
-@supports selector(:has(> foo)) {
-  html[class*="docs-doc-id-alkiln"] .table-of-contents a:has(> code) code,
-  html[class*="docs-doc-id-alkiln"] h2:has(code) code,
-  html[class*="docs-doc-id-alkiln"] h3:has(code) code,
-  html[class*="docs-doc-id-alkiln"] h4:has(code) code,
-  html[class*="docs-doc-id-alkiln"] h5:has(code) code {
-    border: none;
-    padding: 0;
-  }
-
-  html[class*="docs-doc-id-alkiln"] .table-of-contents li:has(> a > code),
-  html[class*="docs-doc-id-alkiln"] h2:has(code),
-  html[class*="docs-doc-id-alkiln"] h3:has(code),
-  html[class*="docs-doc-id-alkiln"] h4:has(code),
-  html[class*="docs-doc-id-alkiln"] h5:has(code) {
-    background-color: var(--ifm-code-background);
-    border: 0.1rem solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--ifm-code-border-radius);
-    padding: var(--ifm-toc-padding-vertical) var(--ifm-toc-padding-horizontal);
-  }
-
-  html[class*="docs-doc-id-alkiln"] .table-of-contents li:has(> a > code) {
-    line-height: 1.5em;
-  }
-}
-
-html[class*="docs-doc-id-components/ALKiln"] .target {
-    scroll-margin-top: calc(var(--ifm-navbar-height) + 0.7em);
-}
-
-html[class*="docs-doc-id-components/ALKiln"] .target.highlight {
-  /* All credit to https://stackoverflow.com/a/62484130/14144258 with some tweaking */
-  --ifm-color-info-light-highlight-nums: 110, 207, 239;
-  background: linear-gradient(104deg, rgba(var(--ifm-color-info-light-highlight-nums), 0) 0.9%, rgba(var(--ifm-color-info-light-highlight-nums), 0.7) 2.4%, rgba(var(--ifm-color-info-light-highlight-nums), 0.5) 5.8%, rgba(var(--ifm-color-info-light-highlight-nums), 0.1) 93%, rgba(var(--ifm-color-info-light-highlight-nums), 0.2) 96%, rgba(var(--ifm-color-info-light-highlight-nums), 0) 98%), linear-gradient(183deg, rgba(var(--ifm-color-info-light-highlight-nums), 0) 0%, rgba(var(--ifm-color-info-light-highlight-nums), 0.3) 7.9%, rgba(var(--ifm-color-info-light-highlight-nums), 0) 15%);
-  text-shadow: -7px 0px 9.8px rgba(var(--ifm-color-info-light-highlight-nums), 1), 21px -18.1px 7.3px rgba(255, 255, 255, 1), -18.1px -27.3px 30px rgba(255, 255, 255, 1);
-  padding: 0.4em .2em;
-  margin: -.4em -.2em;
-  border-radius: 7.5px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  color: var(--ifm-color-success-dark);
 }

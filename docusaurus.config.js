@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'The Document Assembly Line',
-  tagline: 'From paper to webform, made easier',
+  title: 'Document Assembly Line',
+  tagline: 'Open-source tools for court forms, guided interviews, and e-filing',
   url: 'https://assemblyline.suffolklitlab.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -19,17 +19,17 @@ module.exports = {
       isCloseable: false,
     },
     navbar: {
-      title: 'The Document Assembly Line',
+      title: 'Document Assembly Line',
       logo: {
         alt: 'The Suffolk LIT Lab Logo',
-        src: 'img/LITLab_white_and_gold.svg',
-        srcDark: 'img/LITLab_white_and_gold.svg'
+        src: 'img/lit-lab-logo-small-inverted.svg',
+        srcDark: 'img/lit-lab-logo-small-inverted.svg'
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'get_started',
-          label: 'Get Started',
+          label: 'Get started',
         },
         {
           type: 'docSidebar',
@@ -38,12 +38,12 @@ module.exports = {
         },
         {
           href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-          label: 'Legal Tech Class',
+          label: 'Legal tech class',
           position: 'right',
         },
         {
           href: 'https://docassemble.org/docs.html',
-          label: 'Docassemble Docs',
+          label: 'Docassemble docs',
           position: 'right',
         },
         {
@@ -61,8 +61,8 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
+              label: 'Suffolk LIT Lab',
+              href: 'https://suffolklitlab.org',
             },
           ],
         },
