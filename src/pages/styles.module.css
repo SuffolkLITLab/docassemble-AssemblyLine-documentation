@@ -69,13 +69,13 @@ LICENSE file in the root directory of this source tree.
 
 .indexSection {
   margin: calc(4.5 * var(--ifm-spacing-vertical)) auto;
-  max-width: 1100px;
+  max-width: 1100px !important;
 }
 
 .indexFullWidthSection {
   background-color: var(--suffolk-blue-wash);
   margin: calc(4.5 * var(--ifm-spacing-vertical)) 0 0 0;
-  max-width: unset;
+  max-width: unset !important;
   padding-top: calc(4.5 * var(--ifm-spacing-vertical));
   padding-bottom: calc(4.5 * var(--ifm-spacing-vertical));
   width: 100%;
