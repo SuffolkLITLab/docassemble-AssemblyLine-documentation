@@ -1,10 +1,7 @@
-/* stylelint-disable docusaurus/copyright-header */
-/**
- *
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* 
+stylelint-disable docusaurus/copyright-header
+Any CSS included here will be global. The classic template bundles Infima by default. Infima is a CSS frameworkdesigned to work well for content-centric websites.
+*/
 
 /* Override the default color palette with colors based on Suffolk's brand guidelines */
 :root {
@@ -15,12 +12,11 @@
   --suffolk-dark-gold: #bc912c; /* rgb(188, 145, 44), primary color from Suffolk's brand guidelines */
   --suffolk-blue-wash: rgba(65, 182, 230, .25); /* based on --suffolk-light-blue */
   --suffolk-gold-wash: rgba(253, 185, 36, .25); /* based on --suffolk-gold, above */
-
   
-  /**
-  * The color ranges below are based on the Suffolk brand colors.
-  * Each step is 3 steps away from the darkest/lightest on the ColorHexa shades and tints scale.
-  * See: https://www.colorhexa.com/15284b#shades-tints
+  /*
+  The color ranges below are based on the Suffolk brand colors.
+  Each step is 3 steps away from the darkest/lightest on the ColorHexa shades and tints scale.
+  See: https://www.colorhexa.com/15284b#shades-tints
   */
   --ifm-color-primary: var(--suffolk-medium-blue);
   --ifm-color-primary-dark: #2f5aa7;
@@ -282,7 +278,7 @@ html[data-theme="dark"] {
 
 .dark {
   display: none;
-
+  
   html[data-theme="dark"] & {
     display: revert;
   }

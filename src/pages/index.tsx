@@ -54,7 +54,7 @@ function Home() {
         <section className={clsx(['container', styles.indexSection])}>
           <blockquote className={styles.pullQuote}>
             <p>A well-designed form allows people to express themselves in a way the court can understand.</p>
-            <cite
+            <p><cite
              dangerouslySetInnerHTML={{
               __html: translate({
                 id: 'homepage.benefits.davidColarusso',
@@ -63,7 +63,7 @@ function Home() {
                 message:
                   '<strong>David Colarusso</strong>, <a href="https://suffolklitlab.org" target="_blank">Suffolk LIT Lab</a> Co-Director',
               }),
-            }}></cite>
+            }}></cite></p>
           </blockquote>
         </section>
         <section className={styles.indexSection}>

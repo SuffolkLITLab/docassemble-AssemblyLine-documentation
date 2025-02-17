@@ -12,9 +12,9 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.2.1",
-    "@docusaurus/mdx-loader": "^3.2.1",
-    "@docusaurus/plugin-client-redirects": "^3.2.1",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/mdx-loader": "^3.7.0",
+    "@docusaurus/plugin-client-redirects": "^3.7.0",
     "@docusaurus/plugin-google-gtag": "^3.2.1",
     "@docusaurus/plugin-ideal-image": "^3.2.1",
     "@docusaurus/preset-classic": "^3.2.1",
