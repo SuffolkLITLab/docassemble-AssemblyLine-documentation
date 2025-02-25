@@ -59,6 +59,8 @@ module.exports = {
                 // 'style_guide/question_style_sensitivities',
                 'style_guide/style_guide_readability',
                 'style_guide/question_style_structure',
+                'style_guide/question_style_exit_screen',
+                'style_guide/question_style_navigation',
                 'style_guide/question_style_organize_fields',
                 'style_guide/question_style_help_your_user',
                 'style_guide/style_guide_formatting',
