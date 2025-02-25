@@ -36,6 +36,11 @@ Diagrams and videos can explain information much more clearly than text:
 1. make use of timelines, charts, and similar visual aids if needed to help a
    user understand a larger process
 
+Example: a diagram of a form with the place that the tenant's information
+will appear highlighted.
+
+![](./assets/example_picture_of_form.png)
+
 ## Keep page content short and actionable
 
 A guided interview is **not** an appropriate place to educate your user

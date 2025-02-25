@@ -31,6 +31,41 @@ Your interview should start with a short screen that identifies the interview,
 gives the user context, and tells them anything that they need to have in front
 of them before they begin.
 
+#### Separating the terms of use from the "before you start" information
+
+CourtFormsOnline.org's style is to use two intro screens:
+
+1. A general-purpose intro screen that just states the name of the form
+   and includes a terms of use checkbox.
+2. A tailored intro screen that helps the user know what to expect and what they need
+   to know.
+
+  ![](./assets/example_intro_terms_of_use.png)
+  ![](./assets/example_intro_before_you_start.png)
+
+#### Make the user feel welcome, but don't say "welcome!"
+
+**Welcome** is a cliche that is best to avoid on an introductory screen.
+If the user may be particularly uncomfortable, affirmations can be appropriate!
+
+Keep them actionable and focused on what might make the user nervous to complete
+the interview.
+
+[Read more about avoiding the word "welcome"](https://www.nngroup.com/articles/top-ten-guidelines-for-homepage-usability/)
+
+Example affirmation in an interview supporting domestic violence survivors.
+This appears just before the emotionally hardest part of the interview, the
+affidavit where the survivor describes the abuse:
+
+![Example affirmation in an interview supporting domestic violence survivors](./assets/example_affirmation_209a.png)
+
+Example affirmation in a tool to help tenants sue their landlord. This
+comes at the beginning of the interview to help tenants overcome
+worries that their landlord will unfairly retaliate against them
+for reporting housing problems:
+
+![Example affirmation from a tool to sue your landlord](./assets/example_you_can_do_this_uptocode.png)
+
 ### Keep screening questions early in the interview
 
 Screening questions are questions that tell the user if they are using the right
@@ -82,56 +117,6 @@ have:
    questions with confidence
 1. a document they can print and take with them that tells them what to do after
    they have finished using the website, which we call a "next steps" document.
-
-## Add navigation
-
-All but the shortest interviews should also include some way to tell the user
-how long the process will take and where they are in the process.
-
-Use navigation sections with clear titles that give the user these cues.
-
-For example, consider the navigation for a hypothetical form that allows a user
-to request the court to waive fees:
-
-1. Introduction
-1. Can I get a fee waiver?
-1. My name
-1. My claim/defenses
-1. My information
-1. Information about the other side
-1. Review
-1. Signature
-1. Download and next steps
-
-In a HotDocs interview, these sections will correspond 1 to 1 to pages and
-titles of pages in the interview. In Docassemble, you must add these sections
-separately.
-
-In a Docassemble interview, consider using the sections to allow the user to
-edit and review their answers as they use the interview. This requires
-additional work but may build the user's confidence as they use your website.
-
-## Use signposting on longer interviews
-
-On longer interviews, it may not be enough to use the sections on the left
-to orient the user.
-
-One way to orient the user is to use "signposts". Signposts are screens
-that do not ask any questions, but instead tell the user what questions are
-coming next.
-
-Consider adding signposts:
-
-1. on longer interviews to remind the user that they are making progress
-1. to tell the user when they are about to ask questions about a very different topic
-1. to give the user a chance to reflect on the answers that they gave in another
-   long section and to correct any mistakes before continuing down a long new branch
-   of questions
-1. when the user may be getting tired, especially to let them know that they are
-   close to finishing
-   
-
-On very short interviews, signposts may not be needed.
 
 ## Read more
 
