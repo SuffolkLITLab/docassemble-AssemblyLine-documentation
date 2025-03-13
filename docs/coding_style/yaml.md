@@ -64,55 +64,126 @@ Where possible, avoid using leading digits in file names. Leading digits
 are not valid in Python variable names, and it is often convenient to have
 variable names and file names have matching prefixes.
 
-### Use descriptive names for YAML files
+### When there is just one YAML file in the package, use a descriptive name for it
 
-When you are editing a file, the context sometimes is missing in places that the
-file name is displayed. Therefore, you should prefer using file names like
-"eviction_interview.yml" to just "interview.yml". Have the name describe the
-function of the file, and give it a name that might be meaningful and build
-trust with your end user.
+Most interviews use just one YAML file. This name can "leak" into the user's view
+in some cases, so it is usually best to make it a complete, descriptive filename.
 
-Avoid using numbers, underscores, and other markers to indicate that you have a
-"final", "draft", etc. interview even during the editing process, as these have
-a chance of getting leaked to the public. Instead, use [version
-control](../authoring/github.md) to track the history of your files as your project develops.
+For example: `eviction.yml` is probably a better filename than `interview.yml`. It will
+be easier to know what file you are working on, and the name will be more descriptive if
+it shows to the final user of your tool.
 
-### Use a small number of YAML files for each project
+The descriptive name can, and often will, match the name of the package.
 
-It can be a frustrating game of "which file is that in, again?" if you have too
-many YAML files. Start out with just one YAML file for your interview. Start
-adding additional files when:
+Your interview YAML name should avoid:
 
-1. you want to use an interview like a module inside another interview
-1. your YAML file is thousands of lines long and you have clear functional
-   separation between each file. For example: code, style, questions; or
-   maybe "eviction", "appeals", "bad_housing_conditions".
-1. you need to split work between multiple developers and you are running into
-   challenges with overwriting each others' work
-1. you need non-technical members of your team to be able to make changes with
-   confidence. You might choose to separate code from question language, in that
-   case.
+* Suffixes like `_final`, `_draft`, etc., even when you are in the middle of building it.
+  Use GitHub [version control](../authoring/github.md) instead to track multiple versions of the work in progress.
+* Any other "insider" information that you do not want the public to see, like the statute number.
 
-### Use clear filenames for modular interview files
+Make sure to remove characters that accidentally got added during the edit process, like
+(1) that might have been added when you download the file to a Downloads folder that
+already has a copy of the same file.
 
-Docassemble allows you to include one interview into another interview file.
-If you want to design a file to be re-used:
+### When you have multiple files in a single package, give each file a clear prefix
 
-1. avoid putting any mandatory blocks in the file
+While simple interviews have one YAML file, there are three strong reasons to have more than one YAML file in
+a single Docassemble package:
+
+1. If one package has multiple, distinct interviews contained within it, perhaps for different audiences, like
+  children, parents, or interested people, or someone filing a complaint or someone answering it.
+2. If one interview assembles multiple complex forms. In that case, it may be helpful to put any unique
+   questions for each form, as well as the attachment block, into its own YAML file.
+3. If the YAML file simply is getting too large to easily manage. In that case, you might break up the YAML
+   into multiple files that are easier to edit. In this case, make sure the reasoning for each file is clear. E.g., you could separate the interview's metadata, questions, and logic into three separate files.
+
+Even if an interview makes sense on its own, you may want to make it re-usable as a module in other interviews.
+For example: a fee waiver, an interpreter notice, or a request for accommodation. In that case, you want
+to make sure that the mandatory logic and metadata are separated from the part you want to re-use in other
+interviews.
+
+Keep things simple when you can! Think ahead to the developer experience. If you are dividing work
+across multiple authors, think through what a single change will look like. Can an author make a change
+without having to edit multiple YAML files in most cases?
+
+Our current recommendations to name the files in this scenario are:
+
+1. Any runnable files in your package should be named `main.yml`. If there are multiple runnable files,
+   give each file the prefix `main_`. (`main` has a long history in computer programming.)
+1. If the interview assembles multiple documents, you can make a separate YAML file for each document that contains the unique questions it needs and the document's attachment block. Name it after the document itself,
+e.g., `financial_statement.yml`. (be consistent with this: if the
+separate documents are very short, you may not need this, but it should be all or nothing inside a single package.)
+1. Name the file that is used by multiple related interview endpoints `shared.yml`.
+
+:::info
+Remember, there should be only one `mandatory` block in a given combination of YAML files. That means
+you should never put a `mandatory` block in the files for each individual document.
+
+To group logic that you might want to run with the template it relates to, without making it mandatory:
+
 1. use the [`named block` pattern](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#triggering-code-and-then-continuing-using-named-blocks) for the `interview order` block
-1. reference your `named block` in the file users will run
-1. describe the function of each file in the name
+1. reference your `named block` in a mandatory block inside the `main` file that users will run.
 
-We recommend the annotations:
+While in the development phase, you might want to temporarily test a single document at a time.
+You can do so by making, e.g., a `financial_statement.yml` and a `main_financial_statement.yml` file.
+The `mandatory` block will be in the `main_financial_statement.yml` and reference the `named block`
+inside the `financial_statement.yml` file. Be careful to not rely on this for more than quick tests!
+You'll always want a final round of testing when `financial_statement.yml` runs in combination with
+the forms you want the user to interact with.
+:::
 
-1. `to_include` for the file with the interview logic, attachment block, and questions
-1. `standalone` for a file that includes and then runs just one `to_include` file
-1. `umbrella` for a file that generates multiple templates
+If you need to subdivide very long YAML files further:
 
-Example:
+1. Label files that contain only questions `questions.yml`, or prefix with `questions_`. If the name is too long, `ql_eviction.yml` is a reasonable abbreviation that follows the Assembly Line's existing conventions.
+1. Name shared files that contain other kind of functionality, e.g., integration with a separate service,
+   `support.yml` or prefix the filename with `support_`. E.g., `support_legal_server.yml`, `support_s3.yml`.
+1. Name files that contain only logic `logic.yml`, or prefix with `logic_`. E.g., `logic_eviction_defenses.yml`.
+1. Name files that contain functionality that only affects the appearance of the interview (e.g., loading CSS)`theme.yml` or `visual.yml`.
 
-Filename                | Purpose
-------------------------|--------------
-eviction_to_include.yml | The interview order block, questions, and content for one interview that cannot be run from this file.
-eviction_standalone.yml | Include and run just one interview about evictions
-eviction_umbrella.yml   | Include and run multiple interviews related to eviction
+Examples:
+
+#### An interview with exactly one YAML file in it
+
+Filename | Purpose
+---------|--------
+`eviction.yml` _or_ `main_eviction.yml` | The one YAML file containing mandatory blocks, attachments, metadata. The whole enchilada.
+
+`main_eviction.yml` is slightly more flexible for future growth. But, for many simple interviews,
+you know you do not need this future flexibility.
+
+#### A fee waiver that can be assembled by many different interviews
+
+Filename | Purpose
+---------|---------
+`main.yml` _or_ `main_fee_waiver.yml` | The runnable interview file when someone wants ONLY the fee waiver. Contains mandatory code and metadata (e.g., interview title), and the document bundle (al_user_bundle and al_court_bundle).
+`fee_waiver.yml` | Has **no** mandatory logic. Contains questions and the attachment block, and a "named block" with interview order logic that can be referenced in a parent interview's mandatory interview order block.
+
+#### An interview that assembles multiple documents in different combinations depending on audience
+
+Filename | Purpose
+---------|---------
+`main_petition_for_guardianship.yml` | Entry point for an interested person. Has metadata, a mandatory interview order block and the document bundle (al_user_bundle and al_court_bundle).
+`main_object_to_guardianship.yml` | Entry point for the person whose right is being restricted (e.g., a parent or incapacitated adult). Has metadata, a mandatory interview order block and the document bundle (al_user_bundle and al_court_bundle).
+`shared.yml` | Contains shared questions, and only questions (perhaps with some basic code setting simple shared variables), for the guardianship process that multiple documents might need written the same way.
+`petition_for_guardianship.yml` | Contains unique questions for the petition and attachment code. No mandatory blocks.
+`bond.yml` | Contains unique questions, logic, and attachment code for a bond form.
+`request_for_counsel.yml` | Contains unique questions, logic, and attachment code for a counsel request form. No mandatory blocks.
+
+#### A complex interview with only one entry point but where managing a single YAML file is too cumbersome
+
+Filename | Purpose
+---------|-------------
+`main.yml` _or_ `eviction.yml` | Metadata, mandatory logic, document bundle
+`questions.yml` | Only questions
+`logic.yml` | Code blocks that define various behavior, such as whether a defense or claim will be made.
+`support_legal_server.yml` | Support / setup code that handles connecting to the Legal Server CMS.
+`support_office_365.yml` | Support / setup code for connecting to Office 365.
+`theme.yml` | Code / setup / metadata that controls the appearance of the interview, but nothing else.
+
+:::info
+Above we suggest that you can use either `main.yml` (a functional name) or `eviction.yml` (descriptive).
+
+Remember that the descriptive name is great when you are sure that you will only have one "descriptive"
+name in the package. If you might edit the package later to add multiple documents, it might be best
+to start with `main.yml` right at the start of the interview.
+:::
