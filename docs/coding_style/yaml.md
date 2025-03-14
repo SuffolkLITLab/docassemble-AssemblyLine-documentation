@@ -138,7 +138,8 @@ If you need to subdivide very long YAML files further:
 1. Name shared files that contain other kind of functionality, e.g., integration with a separate service,
    `support.yml` or prefix the filename with `support_`. E.g., `support_legal_server.yml`, `support_s3.yml`.
 1. Name files that contain only logic `logic.yml`, or prefix with `logic_`. E.g., `logic_eviction_defenses.yml`.
-1. Name files that contain functionality that only affects the appearance of the interview (e.g., loading CSS)`theme.yml` or `visual.yml`.
+1. Name files that contain functionality that only affects the appearance of the interview (e.g., loading CSS, various `default screen parts`) `theme.yml` or `visual.yml`.
+1. Name files that contain the review screen logic `review.yml` or prefix with `review_`.
 
 Examples:
 
@@ -148,8 +149,14 @@ Filename | Purpose
 ---------|--------
 `eviction.yml` _or_ `main_eviction.yml` | The one YAML file containing mandatory blocks, attachments, metadata. The whole enchilada.
 
-`main_eviction.yml` is slightly more flexible for future growth. But, for many simple interviews,
-you know you do not need this future flexibility.
+:::info
+In our experience, some special setup/integration code, like e-filing, should normally go in its own file.
+We have found that developers of the guided interview do not want to be overwhelmed with the logic
+needed to support e-filing.
+
+If you are using e-filing, add a file named `support_efiling.yml` with any e-filing setup code
+inside of it.
+:::
 
 #### A fee waiver that can be assembled by many different interviews
 
@@ -176,9 +183,11 @@ Filename | Purpose
 `main.yml` _or_ `eviction.yml` | Metadata, mandatory logic, document bundle
 `questions.yml` | Only questions
 `logic.yml` | Code blocks that define various behavior, such as whether a defense or claim will be made.
+`support_efiling.yml` | Independent support / setup code to enable connection to the Suffolk E-filing proxy server.
 `support_legal_server.yml` | Support / setup code that handles connecting to the Legal Server CMS.
 `support_office_365.yml` | Support / setup code for connecting to Office 365.
-`theme.yml` | Code / setup / metadata that controls the appearance of the interview, but nothing else.
+`theme.yml` or `visual.yml` | Code / setup / metadata that controls the appearance of the interview, but nothing else.
+`review.yml` | The review screen, and any `revisit` blocks and `tables` needed purely for the review screen to work.
 
 :::info
 Above we suggest that you can use either `main.yml` (a functional name) or `eviction.yml` (descriptive).
