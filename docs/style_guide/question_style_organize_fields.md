@@ -10,12 +10,16 @@ you need to apply your own restraint to make sure that questions are asked
 at a pace that your user can answer easily.
 
 Screen breaks can act as a signpost that tells the user that you have finished
-one topic and are ready to move on to another.
+one topic and are ready to move on to another. Too many screen breaks can add
+delay and reduce the user's satisfaction with the interview.
 
 ## First, organize fields into topics
 
 Before you work on a screen, follow the guidance about [structuring your interview](question_style_structure.md#group-similar-questions-together-by-topic)
 to make sure your fields are grouped into logical topics.
+
+Each page should only contain related fields that are described
+accurately by the page's heading.
 
 ## Ask the most restrictive questions on the screen first
 
@@ -37,7 +41,7 @@ How old is John?
 
 ## Ask for only a few fields on each screen
 
-A good rule of thumb is to ask for no more than about 5 pieces of information on
+A good practice is to ask for no more than about 5 pieces of information on
 each screen. Users seldom mind answering a lot of simple questions one screen at 
 a time. A long screen that requires scrolling from the heading or instructions
 to each fill-in field can slow your user down more than clicking the "next"
@@ -49,6 +53,35 @@ see a list of 6 or 7 fields on one screen. This may be true especially
 when you are asking the user for a single piece of information, like their
 address, but ask them to provide it in multiple fields, like street address,
 postal code, and city.
+
+### The "doorway effect"
+
+Have you ever forgotten what you were looking for when you get up to go 
+into a new room? This is often called "the doorway effect", and it's a real
+phenomenon of memory.
+
+Adding a new screen can be like passing through a doorway for the user.
+Make sure that when you add a new screen, the user isn't forced to remember
+information that they just provided on the previous screen.
+
+This is especially important for open-ended questions that might be related.
+
+### Should I ask for just one field per screen?
+
+Some popular guided interview platforms, like A2JAuthor, only allow authors
+to place one question on each screen.
+
+Others, like HotDocs, can be formatted like a busy paper form, with dozens of fields
+on a screen in multiple columns.
+
+Docassemble is mobile first, and in mobile design of surveys, studies show that the best design
+to reduce interview time for the user and to reduce fatigue emphasizes "scrolling" (multiple
+fields per screen) over "paging" (one question per screen).
+
+Our magic number "5" fields per screen is a good rule to start with.
+
+* [Surveymonkey on paging vs scrolling](https://www.surveymonkey.com/curiosity/pros-cons-of-scrolling-and-multiple-pages-in-surveys/)
+* See also Antoun, C., Katz, J., Argueta, J., & Wang, L. (2017). Design Heuristics for Effective Smartphone Questionnaires. Social Science Computer Review, 36(5), 557-574. https://doi.org/10.1177/0894439317727072 (Original work published 2018)
 
 ## Where possible, ask short follow-up questions on the same screen
 
