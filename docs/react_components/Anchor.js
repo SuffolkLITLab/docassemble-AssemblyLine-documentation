@@ -1,5 +1,6 @@
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
 import {useLocation} from "@docusaurus/router";
+import { useEffect } from 'react';
 
 
 export function Anchor({
@@ -30,6 +31,12 @@ export function Anchor({
   // https://github.com/vercel/next.js/issues/51346. The workarounds there are
   // for next.js, not plain React. It may have something to do with `pushState`
   if ( do_highlight && hash === "#" + id ) {
+
+    useEffect(()=>{
+        const this_element = document.getElementById( id );
+        this_element.scrollIntoView(); 
+    }, []);
+
     return (
       <mark
         id={ id }
