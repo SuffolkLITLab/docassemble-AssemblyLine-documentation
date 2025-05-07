@@ -10,14 +10,14 @@ module.exports = {
   projectName: 'docassemble-AssemblyLine-documentation', // the repo name.
   themeConfig: {
     // Keep for the next LIT Con
-    announcementBar: {
-      id: 'lit_con',
-      content:
-        'Save the date for Suffolk\'s annual 🔥LIT Conference🔥 on April 7th, 2025! <strong><a target="_blank" rel="noopener noreferrer" href="https://suffolklitlab.org/events/lit-con/">Learn more</a></strong>',
-      backgroundColor: '#fafbfc',
-      textColor: '#091E42',
-      isCloseable: false,
-    },
+    // announcementBar: {
+    //   id: 'lit_con',
+    //   content:
+    //     'Save the date for Suffolk\'s annual 🔥LIT Conference🔥 on April 7th, 2025! <strong><a target="_blank" rel="noopener noreferrer" href="https://suffolklitlab.org/events/lit-con/">Learn more</a></strong>',
+    //   backgroundColor: '#fafbfc',
+    //   textColor: '#091E42',
+    //   isCloseable: false,
+    // },
     navbar: {
       title: 'Document Assembly Line',
       logo: {
