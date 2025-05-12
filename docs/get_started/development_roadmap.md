@@ -13,7 +13,7 @@ The Document Assembly Line is under continuous development. Our goal with this r
 
 In partnership with Legal Services Vermont, funded by a Technology Initiative Grant from the Legal Services Corporation, the LIT Lab is working on the following:
 
-* Managing Docassemble hosting for at least three jurisdictions, including Vermont, by January 2025
+* **Complete:** Managing Docassemble hosting for at least three jurisdictions, including Vermont, by January 2025
 * Creating a flexible, general-purpose e-filing tool that allows e-filing documents prepared outside of Docassemble interviews, by September 2025
 * Expanding e-filing beyond Massachusetts and Illinois to new jurisdictions, including Vermont, by September 2025
 * Supporting our existing e-filing code and staying current with third-party changes. Planned updates include:
