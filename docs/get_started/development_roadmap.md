@@ -21,7 +21,7 @@ In partnership with Legal Services Vermont, funded by a Technology Initiative Gr
   * Making it possible to separate e-filing configuration code from Docassemble interview code
 
 :::note
-Like all our work on the Document Assembly Line, our work toward grant-funded deliverables is also subsidized by—and would not be possible without—our other funding partners, including the State Justice Institute and the Massachusetts Trial Court.
+Like all our work on the Document Assembly Line, our work toward grant-funded deliverables is also subsidized by—and would not be possible without—our other funding partners, including the State Justice Institute, the Massachusetts Trial Court, and the Alaska Court System.
 :::
 
 ### Additional priorities
