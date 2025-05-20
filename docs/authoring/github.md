@@ -94,13 +94,15 @@ You can also [close issues in commit messages and pull request descriptions](htt
 
 ### Use branches {#branches}
 
-Branches are the key to working on an interview as part of a team.
+As a general rule, avoid committing to the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. (You can require this by [protecting your repository](#protect-repo).)
 
-As a general rule, avoid committing to the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. This creates a cleaner record of changes over time.
+Using branches and pull requests instead of committing directly to **main** creates a cleaner record of changes over time and is the key to building interviews as part of a team.
 
 Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-requests) to merge the branch into **main**.
 
-It's also best to avoid creating branches from branches other than **main**—this is a recipe for merge conflicts.
+:::tip
+It's best to avoid creating branches from branches other than **main**. Sub-branches tend to make merge conflicts more likely.
+:::
 
 #### Naming branches
 
@@ -198,7 +200,7 @@ You can [make comments connected to specific lines of code](https://docs.github.
 
 Then, delete the playground project you created for the review.
 
-### Protect your interview repository
+### Protect your interview repository {#protect-repo}
 
 It is a good idea to add some basic protections to your interview repository.
 
