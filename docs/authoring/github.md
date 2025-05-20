@@ -11,12 +11,12 @@ GitHub is a version control system. It lets you save a snapshot of your intervie
 
 Here are some more reasons to use GitHub with Docassemble:
 
-* Save versions of the interview code you are working on so you can back up to an earlier version/save point if new edits break something.
-* Collaborate with others to build Docassemble interviews, get help, and hand off your code to future interview builders and maintainers.
-* Share your code with others who might want to build similar interviews.
-* Create branches to work on specific issues, or create multiple branches to keep different issues isolated from each other while you work on them.
+* Save versions of the interview code you are working on so you can back up to an earlier version/save point if new edits break something
+* Collaborate with others to build Docassemble interviews, get help, and hand off your code to future interview builders and maintainers
+* Share your code with others who might want to build similar interviews
+* Create branches to work on specific issues, or create multiple branches to keep different issues isolated from each other while you work on them
 * Track and discuss issues with your code, like tasks, bugs, feature requests, etc. Issues can be assigned, tagged, and attached to commits and pull requests that complete or fix them.
-* Use projects to gather issues from multiple repositories and organize them on a Kanban-style project board.
+* Use projects to gather issues from multiple repositories and organize them on a Kanban-style project board
 
 :::info
 This page covers how to use GitHub with Docassemble. Refer to the [GitHub documentation](https://docs.github.com/en) if you see unfamiliar vocabulary or have questions about its features.
@@ -26,12 +26,12 @@ This page covers how to use GitHub with Docassemble. Refer to the [GitHub docume
 
 Here is what we recommend for a workflow for using GitHub with the Docassemble playground. Repeat these steps each time you start working on a new task or issue:
 
-1. Create a new project in your Docassemble playground. Give it a name that describes the work to be done, then pull the `main` branch of your interview from GitHub into the project.
-2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code).
+1. Create a new project in your Docassemble playground. Give it a name that describes the work to be done, then pull the **main** branch of your interview from GitHub into the project.
+2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code)
 3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#pull-requests). If you are working with someone on the interview, request a review from them.
-4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch.
-5. Delete the Docassemble playground project.
-6. Decide on the next task or issue you want to work on and start over at #1.
+4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch
+5. Delete the Docassemble playground project
+6. Decide on the next task or issue you want to work on and start over at #1
 
 We also shared this workflow in a Document Assembly Line workshop:
 
@@ -50,31 +50,30 @@ In order to use GitHub with Docassemble you will need two things:
 1. Developer privileges on a Docassemble development server with the [GitHub integration configured](https://docassemble.org/docs/installation.html#github). (If you don't have access to a Docassemble development server, [contact us](mailto:litlab@suffolk.edu).)
 2. A [GitHub](https://github.com/) account. If this is a new account, you may want to [keep your email address private](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github) and [avoid sharing your email address on commits](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address).
 
-Once you are set up on GitHub, you can publish your interview package to a GitHub repository.
+### Publish your interview to GitHub
 
-:::warning
-When publishing your interview package to GitHub for the first time, take a moment to consider the **[Package Name](https://docassemble.org/docs/playground.html#packages:~:text=Package%20Name:)** before you create it. The package name will become part of the GitHub repository name and URL, and it is difficult to change later on.
+The first time you [commit](#commit-your-code) a new interview from the Docassemble playground, it will create a new repository in your GitHub account.
 
-See [our package naming guidelines](naming#docassemble-projects-and-packages).
+:::warning[Check the package name before committing]
+The first time you commit an interview to GitHub, the package name will become part of the GitHub repository name and URL, and it is difficult to change later on. Use our [package naming guidelines](naming#docassemble-projects-and-packages).
 :::
 
-1. Download your interview package generated by the Weaver, then [upload the interview package](generating_code#download-your-interview-at-the-end) to a new project in the Docassemble playground.
-2. Follow the [Docassemble instructions for publishing an interview package to GitHub](https://docassemble.org/docs/packages.html#github). This will create a repository in your personal GitHub account. After you have created the repository, follow [these GitHub instructions to transfer it to your organization](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository).
+Follow the [Docassemble instructions for publishing an interview package to GitHub](https://docassemble.org/docs/packages.html#github). This will create a repository in your personal GitHub account.
 
-:::tip
-In order to transfer a repository to an organization you must be a member of the organization and have permission to create a repository in the organization.
-:::
+After you have created the repository, follow [these GitHub instructions to transfer it to your organization](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository). (You must be a member of the organization and have permission to create a repository in the organization.)
 
-### Create and manage playground projects
+### Pull a GitHub repository to the playground
 
-To create and manage projects, in the Docassemble playground click the ["**Playground**" dropdown](https://docassemble.org/docs/playground.html#projects) in the header, then click **Manage Projects**.
+1. In the Docassemble playground, click on the **Folders** menu and select **Packages**
+2. Click the **Pull** button
+3. Paste the repository URL into the **GitHub URL** field
+4. Select the **main** branch
+5. Click the **Pull** button
 
-Projects and [branches](#branches) usually have similar names, but project names cannot have underscores, so use [PascalCase](naming#pascalcase).
+:::warning[Always pull to a newly created project]
+When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can lose work from this, and it can cause merge conflicts and other problems.
 
-Every time you start working on a new issue, create a new project to work on it. This will help avoid merge conflicts and other problems.
-
-:::warning
-When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can avoid this by creating a new project instead of pulling a repository to an existing project.
+To avoid these problems, always create a new project instead of pulling to an existing project.
 :::
 
 ### Use issues
@@ -95,9 +94,11 @@ You can also [close issues in commit messages and pull request descriptions](htt
 
 ### Use branches {#branches}
 
-Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-requests) to merge the branch into **main**.
+Branches are the key to working on an interview as part of a team.
 
-As a general rule, avoid editing the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. This creates a cleaner record of changes over time.
+As a general rule, avoid committing to the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. This creates a cleaner record of changes over time.
+
+Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-requests) to merge the branch into **main**.
 
 It's also best to avoid creating branches from branches other than **main**—this is a recipe for merge conflicts.
 
@@ -118,11 +119,17 @@ A commit is a save point. It saves your progress and creates a snapshot of the c
 
 GitHub can't help you if you don't use it, so **commit early and often**!
 
-1. In the Docassemble playground, click on the **Folders** menu and select **Packages**.
-2. Scroll to the bottom of the page and click on the **GitHub** button.
-3. Select the branch you want to commit to and enter a commit message that describes the change you just made to the interview code.
-4. **Do not** click the **Install package on this server also** checkbox.
-5. Click the **Commit** button.
+1. In the Docassemble playground, click on the **Folders** menu and select **Packages**
+2. On the **Packages** screen, review the following fields and update them if necessary:
+   1. **Author name and email.** These will be included in the public README file. Consider using your organization's name and email, instead.
+   2. **Description.** Change the default to something that actually describes the interview. For example: "A Docassemble interview for a Massachusetts 209A Protection from Abuse Order."
+   3. **URL.** If the interview is live, use the landing-page URL.
+   4. **Interview, template, static, and source files.** Only selected files will be uploaded to GitHub.
+   5. **README.** Add information for future developers.
+3. Scroll to the bottom of the page and click on the **GitHub** button
+4. Select the branch you want to commit to and enter a commit message that describes the change you just made to the interview code
+5. **Do not** click the **Install package on this server also** checkbox
+6. Click the **Commit** button
 
 That's it! Your commit should show up on GitHub! (If you get an error, check [these troubleshooting tips](#troubleshooting-commit-errors).)
 
