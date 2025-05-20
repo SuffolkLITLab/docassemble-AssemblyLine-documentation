@@ -30,7 +30,8 @@ Here is what we recommend for a workflow for using GitHub with the Docassemble p
 2. When you make your first commit from the new project, [commit to a new branch](#commit-your-code).
 3. When you finish working on the branch, commit it one last time, then go to the repository in GitHub and [create a pull request](#pull-requests). If you are working with someone on the interview, request a review from them.
 4. Once you have resolved any conflicts and any reviewers have signed off, merge the pull request and delete the branch.
-5. Decide on the next task or issue you want to work on and start over at #1.
+5. Delete the Docassemble playground project.
+6. Decide on the next task or issue you want to work on and start over at #1.
 
 We also shared this workflow in a Document Assembly Line workshop:
 
