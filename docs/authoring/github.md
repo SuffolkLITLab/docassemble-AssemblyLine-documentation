@@ -39,8 +39,6 @@ We also shared this workflow in a Document Assembly Line workshop:
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4j7rRRvsbfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
-For more detail on these steps, see below.
-
 ## Collaboration
 
 GitHub is built for collaboration, and tips for collaborating are included throughout this page, but here are some key highlights:
@@ -49,7 +47,7 @@ GitHub is built for collaboration, and tips for collaborating are included throu
 * Work on one issue (or group of issues related to the same code) at a time, and commit your work in progress to a branch
 * Keep your branches "small"—change just one section of code at a time
 * Use pull requests to merge completed branches back into **main**
-* Have a collaborator review your pull requests
+* Have a collaborator [review](#review-pull-requests) your pull requests
 * Delete branches and playground projects after merging a pull request
 
 And here are some things to avoid:
@@ -110,13 +108,13 @@ You can also [close issues in commit messages and pull request descriptions](htt
 
 ### Use branches {#branches}
 
-As a general rule, avoid committing to the **main** branch—the default branch. Instead, update **main** with pull requests from other branches. (You can require this by [protecting your repository](#protect-repo).)
+As a general rule, avoid committing to **main**—the default branch. Instead, update **main** with pull requests from other branches. (You can require this by [protecting your repository](#protect-repo).)
 
 Using branches and pull requests instead of committing directly to **main** creates a cleaner record of changes over time and is the key to building interviews as part of a team.
 
 Use branches to isolate the feature, bug, or other issue you are working on. Commit to the branch as you edit, and then when you are finished making your changes, [create a pull request](#pull-requests) to merge the branch into **main**.
 
-:::tip
+:::warning[Don't use sub-branches]
 It's best to avoid creating branches from branches other than **main**. Sub-branches tend to make merge conflicts more likely.
 :::
 
@@ -199,7 +197,7 @@ To reduce merge conflicts:
 You can also [compare commits, branches, etc.](https://docs.github.com/en/github/committing-changes-to-your-project/comparing-commits) in GitHub at any time to see changes more clearly.
 :::
 
-### Review pull requests
+### Review pull requests {#review-pull-requests}
 
 When someone assigns you to review a pull request (PR), you will be able to see it in [your GitHub notifications](https://github.com/notifications). Don't let these requests sit around too long, or you increase the likelihood of [merge conflicts](#resolve-conflicts).
 
