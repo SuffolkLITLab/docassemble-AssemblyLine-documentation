@@ -198,6 +198,24 @@ You can [make comments connected to specific lines of code](https://docs.github.
 
 Then, delete the playground project you created for the review.
 
+### Protect your interview repository
+
+It is a good idea to add some basic protections to your interview repository.
+
+1. On GitHub, go to the repository, then click on the **Settings** tab
+2. In the sidebar, click on **Rules** / **Rulesets**
+3. Click the **New ruleset** button and select either:
+   1. **New branch ruleset** to manually select options, or
+   2. **Import a ruleset** to upload a JSON file like [our example ruleset](../assets/Protect.repo.json)
+
+We recommend targeting the **main** branch and enabling these rules:
+
+* **Restrict deletions.** Restricts deleting repository contents to organization admins.
+* **Require a pull request before merging.** Prevents committing directly to **main**. Also, require at least one reviewer to approve the pull request.
+* **Block force pushes.** Prevents forcing commits, which can cause lost work.
+
+(The example ruleset includes these options.)
+
 ### Rename an interview repository
 
 Changing the name of an interview repository is a multi-step process. For an example, here are the steps to rename **docassemble-OldName** to **docassemble-NewName**:
