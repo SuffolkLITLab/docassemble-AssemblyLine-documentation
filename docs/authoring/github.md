@@ -41,6 +41,22 @@ We also shared this workflow in a Document Assembly Line workshop:
 
 For more detail on these steps, see below.
 
+## Collaboration
+
+GitHub is built for collaboration, and tips for collaborating are included throughout this page, but here are some key highlights:
+
+* Use issues to identify the work to be done
+* Work on one issue (or group of issues related to the same code) at a time, and commit your work in progress to a branch
+* Keep your branches "small"—change just one section of code at a time
+* Use pull requests to merge completed branches back into **main**
+* Have a collaborator review your pull requests
+* Delete branches and playground projects after merging a pull request
+
+And here are some things to avoid:
+
+* Avoid working on the same code at the same time, which tends to create merge conflicts
+* Avoid using forks, because Docassemble does not handle pull requests from forks very well
+
 ## How to
 
 ### Set up the GitHub integration
@@ -75,22 +91,6 @@ When you pull a GitHub repository to a playground project, the files in the repo
 
 To avoid these problems, always create a new project instead of pulling to an existing project.
 :::
-
-### Collaborate on interview building
-
-GitHub is built for collaboration, and tips for collaborating are included throughout this page, but here are some key highlights:
-
-* Use issues to identify the work to be done
-* Work on one issue (or group of issues related to the same code) at a time, and commit your work in progress to a branch
-* Keep your branches "small"—change just one section of code at a time
-* Use pull requests to merge completed branches back into **main**
-* Have a collaborator review your pull requests
-* Delete branches and playground projects after merging a pull request
-
-And here are some things to avoid:
-
-* Avoid working on the same code at the same time, which tends to create merge conflicts
-* Avoid using forks, because Docassemble does not handle pull requests from forks very well
 
 ### Use issues
 
