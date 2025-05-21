@@ -52,7 +52,7 @@ GitHub is built for collaboration, and tips for collaborating are included throu
 
 And here are some things to avoid:
 
-* Avoid working on the same code at the same time, which tends to create merge conflicts
+* Avoid multiple people working on the same code at the same time, which tends to create merge conflicts
 * Avoid using forks, because Docassemble does not handle pull requests from forks very well
 
 ## How to
