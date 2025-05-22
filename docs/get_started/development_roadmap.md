@@ -5,7 +5,7 @@ sidebar_label: Development roadmap
 slug: development_roadmap
 ---
 
-The Document Assembly Line is under continuous development, based on input from the courts and legal aid organizations that use it and participate in the [community](intro.md#join-the-community). This roadmap contains the current development priorities.
+The Document Assembly Line is under continuous development, based on input from the courts and legal aid organizations that use it and participate in the [community](intro.md#join-the-community). This roadmap contains the master plan and current development priorities, which are made possible by our [funding partners](../../#funding-partners).
 
 To raise an issue or make a suggestion, you can:
 
@@ -14,7 +14,7 @@ To raise an issue or make a suggestion, you can:
 * Create an issue in an appropriate [GitHub repository](#releases)
 * [Email the LIT Lab](mailto:litlab@suffolk.edu)
 
-## Master plan and long-term goals
+## Master plan
 
 Our ambitious, long-term goals for the Document Assembly Line are:
 
@@ -33,10 +33,6 @@ In partnership with Legal Services Vermont, funded by a Technology Initiative Gr
 * Support our existing e-filing code and staying current with third-party changes. Planned updates include:
   * ECF 5 compliance
   * Make it possible to separate e-filing configuration code from Docassemble interview code
-
-:::note
-Like all our work on the Document Assembly Line, our work toward grant-funded deliverables is also subsidized by—and would not be possible without—our other funding partners, including the State Justice Institute, the Massachusetts Trial Court, and the Alaska Court System.
-:::
 
 ### Additional priorities
 

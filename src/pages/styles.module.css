@@ -101,11 +101,13 @@ LICENSE file in the root directory of this source tree.
   }
 }
 
-.dalBenefitsContainerRow {
+.dalBenefitsContainerRow,
+.dalPartnersContainerRow {
   gap: calc(4.5 * var(--ifm-spacing-vertical)) calc(2 * var(--ifm-spacing-horizontal));
 }
 
-.dalBenefitsImageCol {
+.dalBenefitsImageCol,
+.dalPartnersImageCol {
   --ifm-col-width: calc(4 / 12 * 100%) !important;
 
   img {
@@ -116,7 +118,8 @@ LICENSE file in the root directory of this source tree.
   }
 }
 
-.dalBenefitsHeaderCol {
+.dalBenefitsHeaderCol,
+.dalPartnersHeaderCol {
   flex: 1 1 auto;
 
   h2 {
@@ -124,7 +127,8 @@ LICENSE file in the root directory of this source tree.
   }
 }
 
-.dalBenefitsText {
+.dalBenefitsText,
+.dalPartnersText {
   font-size: 1.25rem;
 }
 

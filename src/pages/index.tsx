@@ -228,6 +228,45 @@ function Home() {
             </div>
           </div>
         </section>
+        <section id="funding-partners" className={styles.indexSection}>
+          <div className={clsx([
+            'container',
+            'row',
+            'margin-bottom--xl',
+            styles.dalPartnersContainerRow
+          ])}>
+            <div className="col">
+              <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
+                <div className={clsx([
+                  'col', 
+                  'col--4',
+                  'padding-horiz--sm',
+                  styles.dalPartnersImageCol
+                ])}>
+                  <img src={useBaseUrl('/img/undraw_showing-support_ixfc.svg')} />
+                </div>
+                <div className={clsx([
+                  'col',
+                  'padding-horiz--sm',
+                  styles.dalPartnersHeaderCol
+                ])}>
+                  <h2 className="margin-bottom--md">
+                    <Translate>Partners</Translate>
+                  </h2>
+                </div>
+              </div>
+              <p className={styles.dalPartnersText}><Translate>The Document Assembly Line is supported by funding from these partners:</Translate></p>
+              <ul className={styles.dalPartnersText}>
+                <li><Translate>The State Justice Institute</Translate></li>
+                <li><Translate>Legal Services Vermont, funded by a grant from the Legal Services Corporation</Translate></li>
+                <li><Translate>The Massachusetts Trial Court</Translate></li>
+                <li><Translate>The Alaska Court System</Translate></li>
+                <li><Translate>Legal Services State Support of Minnesota (Mid-Minnesota Legal Aid)</Translate></li>
+              </ul>
+            </div>
+            <div className="col">{/* Spacer */}</div>
+          </div>
+        </section>
         <section className={clsx(['container', styles.indexFullWidthSection])}>
           <a className={styles.litLabLogo} href="https://suffolklitlab.org" target="_blank">
             <img className="light" alt="Suffolk LIT Lab logo" src={useBaseUrl('/img/lit-lab-logo-stacked.svg')}/>
