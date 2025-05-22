@@ -78,17 +78,14 @@ After you have created the repository, follow [these GitHub instructions to tran
 
 ### Pull a GitHub repository to the playground
 
-1. In the Docassemble playground, click on the **Folders** menu and select **Packages**
-2. Click the **Pull** button
-3. Paste the repository URL into the **GitHub URL** field
-4. Select the **main** branch
-5. Click the **Pull** button
+1. Make a new project in the Docassemble playground[^old-project-warning]
+2. In the new project, click on the **Folders** menu and select **Packages**
+3. Click the **Pull** button
+4. Paste the repository URL into the **GitHub URL** field
+5. Select the **main** branch
+6. Click the **Pull** button
 
-:::warning[Always pull to a newly created project]
-When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can lose work from this, and it can cause merge conflicts and other problems.
-
-To avoid these problems, always create a new project instead of pulling to an existing project.
-:::
+[^old-project-warning]: **Always pull to a newly created project.** When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can lose work from this, and it can cause merge conflicts and other problems. To avoid these problems, always create a new project instead of pulling to an existing project.'
 
 ### Use issues
 
