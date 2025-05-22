@@ -5,7 +5,21 @@ sidebar_label: Development roadmap
 slug: development_roadmap
 ---
 
-The Document Assembly Line is under continuous development. Our goal with this roadmap is to share our plans and priorities for the Document Assembly Line with the community.
+The Document Assembly Line is under continuous development, based on input from the courts and legal aid organizations that use it and participate in the [community](intro.md#join-the-community). This roadmap contains the current development priorities.
+
+To raise an issue or make a suggestion, you can:
+
+* Attend the weekly community meetings
+* Post in the online discussion forum
+* Create an issue in an appropriate [GitHub repository](#releases)
+* [Email the LIT Lab](mailto:litlab@suffolk.edu)
+
+## Master plan and long-term goals
+
+Our ambitious, long-term goals for the Document Assembly Line are:
+
+* Establish a national document assembly and e-filing infrastructure for courts and legal-aid organizations
+* Foster a community of courts and legal aid organizations building access-to-justice tools using the Document Assembly Line
 
 ## Current priorities
 
@@ -13,12 +27,12 @@ The Document Assembly Line is under continuous development. Our goal with this r
 
 In partnership with Legal Services Vermont, funded by a Technology Initiative Grant from the Legal Services Corporation, the LIT Lab is working on the following:
 
-* **Complete:** Managing Docassemble hosting for at least three jurisdictions, including Vermont, by January 2025
-* Creating a flexible, general-purpose e-filing tool that allows e-filing documents prepared outside of Docassemble interviews, by September 2025
-* Expanding e-filing beyond Massachusetts and Illinois to new jurisdictions, including Vermont, by September 2025
-* Supporting our existing e-filing code and staying current with third-party changes. Planned updates include:
+* **Complete:** Manage Docassemble hosting for at least three jurisdictions, including Vermont, by January 2025
+* Create a flexible, general-purpose e-filing tool that allows e-filing documents prepared outside of Docassemble interviews, by September 2025
+* Expand e-filing beyond Massachusetts and Illinois to new jurisdictions, including Vermont, by September 2025
+* Support our existing e-filing code and staying current with third-party changes. Planned updates include:
   * ECF 5 compliance
-  * Making it possible to separate e-filing configuration code from Docassemble interview code
+  * Make it possible to separate e-filing configuration code from Docassemble interview code
 
 :::note
 Like all our work on the Document Assembly Line, our work toward grant-funded deliverables is also subsidized by—and would not be possible without—our other funding partners, including the State Justice Institute, the Massachusetts Trial Court, and the Alaska Court System.
@@ -26,20 +40,13 @@ Like all our work on the Document Assembly Line, our work toward grant-funded de
 
 ### Additional priorities
 
-* Creating an ongoing process for shaping this development roadmap with input from the community, funding partners, etc.
-* Updating this documentation website to better serve Document Assembly Line users and the project's needs
-* Ongoing outreach to courts and legal aid organizations
-
-## Long-term goals
-
-Our ambitious, long-term goals for the Document Assembly Line are:
-
-* Establish a national document assembly and e-filing infrastructure for courts and legal-aid organizations
-* Foster a community of courts and legal aid organizations building access-to-justice tools using the Document Assembly Line
+* Update this website to better serve Document Assembly Line users and the project's needs
+* Expand the Document Assembly Line community
+* Offer regular interview builder trainings
 
 ## Releases
 
-Versions and release notes can be found in the Document Assembly Line GitHub repositories:
+Software versions and release notes can be found in the Document Assembly Line GitHub repositories:
 
 * [AssemblyLine](https://github.com/SuffolkLITLab/docassemble-AssemblyLine/releases)
 * [courtformsonline.org](https://github.com/SuffolkLITLab/courtformsonline.org/pulls?q=is%3Apr) (no formal releases)
