@@ -75,13 +75,11 @@ To join the community, just [email us](mailto:litlab@suffolk.edu)!
 [Get our one-page overview comparing Document Assemble Line partnerships with other online guided interview–building options.](https://suffolklitlab.org/onepagers/partnerships/)
 :::
 
-The LIT Lab's work has been and will continue to be supported by grants. Moving forward we will also rely on our court partners to help support our work. Funded partners pay for software development and support, training, user research, community building, project management, and technical support as well as direct costs like servers and staff time.
+The LIT Lab's work has been and will continue to be supported by grants. Moving forward we will also rely on our court and community partners to help support our work. Funding from partners pays for software development and support, training, user research, community building, project management, and technical support as well as direct costs like servers and staff time.
 
-* We can partner with legal aid organizations on grant applications for building online interview portals.
-* We can partner with courts that want to build online interview portals.
-* We can partner with granting organizations that want to help us expand access to justice by building digital public infrastructure.
-
-Our funded partners can access additional training, Docassemble server hosting, and e-filing.
+* We offer Docassemble hosting and e-filing for courts that want to build their own interviews or enable e-filing for third-party interviews
+* We offer Docassemble hosting for legal aid organizations, with a free option if the court is a funding partner
+* We work with granting organizations that want to support the Document Assembly Line
 
 ## Our repositories
 
