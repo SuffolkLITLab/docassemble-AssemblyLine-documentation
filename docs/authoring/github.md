@@ -80,10 +80,12 @@ After you have created the repository, follow [these GitHub instructions to tran
 
 1. Make a new project in the Docassemble playground[^old-project-warning]
 2. In the new project, click on the **Folders** menu and select **Packages**
-3. Click the **Pull** button
+3. Click the **Pull** button[^github-integration-necessary]
 4. Paste the repository URL into the **GitHub URL** field
-5. Select the **main** branch
+5. Select the branch you want to work on—usually **main**
 6. Click the **Pull** button
+
+[^github-integration-necessary]: You must have already [set up the GitHub integration](#set-up-the-github-integration).
 
 [^old-project-warning]: **Always pull to a newly created project.** When you pull a GitHub repository to a playground project, the files in the repository will overwrite any files with the same name in your project **without warning**. You can lose work from this, and it can cause merge conflicts and other problems. To avoid these problems, always create a new project instead of pulling to an existing project.'
 
