@@ -124,6 +124,10 @@ module.exports = {
           {
             from: '/docs/alkiln/security',
             to: '/docs/components/ALKiln/security'
+          },
+          {
+            from: '/docs/get_started/working_with_teams',
+            to: '/docs/archive/working_with_teams'
           }
         ]
       }

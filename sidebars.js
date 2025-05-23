@@ -13,7 +13,6 @@ module.exports = {
             items: [
                 'get_started/project_management',
                 'get_started/search_engine_optimization',
-                'get_started/working_with_teams',
             ],
         },
         'get_started/resources',
@@ -30,6 +29,7 @@ module.exports = {
             type: 'category',
             items: [
                 'archive/bootcamp',
+                'archive/working_with_teams',
             ],
         }
     ],
