@@ -254,6 +254,10 @@ html[class*="docs-doc-id-components/ALKiln"] {
   :not(h6) {
     scroll-margin-top: var(--ifm-navbar-height);
   }
+
+  code code {
+    color: var(--ifm-color-success);
+  }
 }
 
 
