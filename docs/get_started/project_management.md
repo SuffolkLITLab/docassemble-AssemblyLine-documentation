@@ -8,7 +8,7 @@ toc_max_heading_level: 4
 
 Whether you are building interviews for a court or legal aid organization, a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else building online guided interviews, this page will guide you through the stages of a successful project.
 
-This contains the procedures, templates, and tools the LIT Lab uses on our own interview-building projects, which you can adapt to yours.
+This contains the procedures, templates, and tools the LIT Lab uses in our own interview-building projects, which you can adapt to yours.
 
 :::tip
 If this is your first interview-building project, it may help to read more about [planning and building your first expert system](https://projects.suffolklitlab.org/legal-tech-class/docs/interview-structure/building-an-app-outline).
@@ -115,7 +115,7 @@ To strike the right balance, each user persona should reflect about 20–30% of 
 
 ### Design {#design}
 
-Before you start building anything, make sure everyone agrees on what you will be building.
+Before you start building anything, make sure everyone agrees on what you will be building. The decisionmaker should sign off on the requirements as well as any flowcharts or wireframes.
 
 #### Identify the project requirements/MVP {#requirements}
 
@@ -131,62 +131,69 @@ Start by listing the requirements for your project—what it must do to be accep
   Different projects will have different MVPs/skateboards.
 </details>
 
-The LIT Lab's [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) is a framework for thinking about your MVP. For interviews built for legal professionals, level 1.5 is usually enough. Interviews built for the general public should usually target level 2+. Levels 3 and 4 are meant for future iterations.
+The LIT Lab's [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) is a framework for thinking about online guided interview MVPs. For interviews built for legal professionals, level 1.5 is usually enough. Interviews built for the general public should usually target level 2+. Levels 3 and 4 are meant for future iterations.
 
 An MVP can be as simple as a list of requirements.
 
 <details>
-  <summary>Sample MVP description for a court form</summary>
+  <summary>Sample MVP requirements for a court form</summary>
 
   Maturity model target level: 2
 
+  * The user can correctly complete every field/blank on the form
   * The interview flows like a natural-language intake with a new legal aid employee
-  * Compound questions are broken up into separate screens
+  * The form identifies users who cannot use the firm as early as possible, and gives them an "off-ramp"
   * The interview uses branching logic to skip unnecessary questions and provide a logical flow
+  * Compound questions are broken up into separate screens
   * The user is not asked for the same information twice
   * The interview correctly populates every field on the form
   * The user can sign on their computer or phone screen
   * Questions are written in plain language (for a 6th-grade reading level)
   * The user will be offered a next-steps document to download
-  * The form identifies users who cannot use the firm as early as possible, and gives them an "off-ramp"
   * The interview has been approved by key subject-matter experts
   * The interview has been tested rigorously with a combination of scenario-baesd user testing, random input testing, or automated testing
 </details>
 
-Once everyone agrees on an MVP for this project, stick to it. Refer to the MVP description to help resolve questions about  to  Don't add to the MVP without a compelling justification.
+Once the decisionmaker agrees on the MVP requirements, stick to them. Don't add to the MVP without a compelling justification.
 
+#### Use flowcharts or wireframes
 
-#### Create a flowchart
+Flowcharts and wireframes allow you to "sketch" the interview you plan to build. They may not be necessary for very simple interviews, but they are worthwhile if your interview has conditional elements or unique questions.
 
-Create a flowchart showing branching logic, follow-up questions, and changes to the output documents
+A flowchart illustrates the branching logic of an interview and can help identify hidden complexities early on. For example, a flowchart would be helpful to illustrate:
 
-#### Wireframing
+* Whether the user qualifies to use the interview/court form
+* Which form or sections of the form the user must complete
+* Whether to ask particular follow-up questions
+* Which values should be provided to which variables in which circumstances
+* Whether additional information or documents should be included in the output
+* Which court the user should file in
+* Which filing codes to use
 
-Use wireframes, decision trees, and other low-fidelity tools to "sketch" the interview you are going to build.
+A [low-fidelity wireframe](https://en.wikipedia.org/wiki/Website_wireframe#Low-fidelity) is a simplified prototype of a user interface element that emphasizes function over form. Wireframes are helpful if you need to design a new type of form element (i.e., one that does not already exist in the [question library](../authoring/customizing_interview/#understanding-the-question-library)).
+
+Pen and paper works fine for flowcharts and wireframes, but there are plenty of software tools available. Consider using one that lets you save your flowchart or wireframe in a format you can save along with the interview.
 
 ### Development {#development}
 
-#### Work planning
+Once the decisionmaker has signed off on the requirements/MVP and any flowcharts or wireframes, it's time to start building the interview!
 
-The LIT Lab's interview project template can help you keep your team organized and your project on track. It is based on the [Scrum agile project management framework](https://www.atlassian.com/agile/scrum). To use the project template:
+The LIT Lab's interview project template can help you keep your team organized and your project on track. It is based on the [Scrum agile project management framework](https://www.atlassian.com/agile/scrum).
 
-1. Make a copy of the [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) by clicking the **Use this template** button (you'll need a free [GitHub](../authoring/github.md) account)
+To use the project template:
+
+1. Go to the [interview project template](https://github.com/orgs/SuffolkLITLab/projects/22) and make a copy for yourself by clicking the **Use this template** button (you'll need a free [GitHub](../authoring/github.md) account)
 2. Once you have [published your interview to GitHub](../authoring/github.md#publish-your-interview-to-github), [connect the project board to your interview repository](https://github.com/orgs/SuffolkLITLab/projects/22/views/2?pane=issue&itemId=66449601)
    1. New issues will be added to the backlog automatically
    2. Issues will be closed automatically when the card is moved to the **Done** column
-3. As you work on the interview, follow the [GitHub workflow](../authoring/github.md#workflow) and move issues/cards from left to right
+3. As you work on your interview, follow the [GitHub workflow](../authoring/github.md#workflow) and move issues/cards from left to right
+
+You can also find a [beginner's guide](beginners_guide.md), [interview-builder resources](resources.md), and [extensive documentation](../overview.md) elsewhere on this website.
 
 ### Feedback {#feedback}
 
-Once the interview works from start to finish and you have closed all the issues that are in scope for the [MVP](#mvp), it is ready for feedback. Start by getting feedback internally, from your team. After you have made revisions based on the internal feedback, get external feednack from the decisionmaker and stakeholders.
+The interview is ready for feedback when it works, and you have closed all the [MVP](#mvp) issues. (You can also find a [checklist in the interview project template](https://github.com/orgs/SuffolkLITLab/projects/22/views/2?pane=issue&itemId=61504799).)
 
-After getting feedback, create a [GitHub issue](../authoring/github.md#use-issues) for each change request from the tester or decisionmaker. Consider this your "punch list" to finish the project. Then get back to work on those issues!
-
-When you have closed all the issues/items on your punch list, send it back to the decisionmaker for further feedback. Each round of feedback should result in fewer change requests and move the project closer to completion.
-
-:::info
-Two rounds of feedback and revision are usually enough.
-:::
 
 #### Internal feedback
 
@@ -196,10 +203,11 @@ Before you show the interview to the decisionmaker and stakeholders, get someone
 If you aren't sure where to find someone to give you preliminary feedback, try asking [the community](https://assemblyline.suffolklitlab.org/docs/get_started#join-the-community)! Come to one of the Monday community meetings or ask in the Microsoft Teams forum.
 :::
 
-Schedule a video meeting with the tester so you can watch them go through the interview. Or they can watch you demonstrate it. Record the test if you can so you can focus on the test instead of taking notes.
+Schedule a video meeting with the tester. You can demonstrate it for them, or you can watch them go through the interview. Record the test if you can so you can focus on the feedback and asking follow-up questions instead of taking notes.
 
-During the demonstration or testing:
+During the demo:
 
+* Remind the tester that they are testing the interview; they are not being tested (and neither are you!)
 * Encourage the tester to comment on all aspects of the interview
 * Ask them to follow different branches of the interview logic
 * Listen carefully to their feedback and ask follow-up questions to make sure you understand it
@@ -215,25 +223,27 @@ Share the interview with the decisionmaker and give them a few tips for giving h
 * Change requests should be specific. For example, if the text of a question should be changed, the change request should include the new text.
 * At the top of each page of the interview is an ID. Use the ID to refer to specific interview pages, not a page number.
 
+:::info
+Two rounds of external feedback and revision are usually enough to get you to the point where you just have a punch list of final tasks to do before the interview is ready for launch.
+:::
+
 ### Launch {#launch}
 
 When the interview is complete, there is one last decision for the decisionmaker to make: whether the interview is ready to go live.
 
-If the answer is yes, launch the interview!
+If the answer is yes, launch the interview! (You can find a [launch checklist](https://github.com/orgs/SuffolkLITLab/projects/22/views/2?pane=issue&itemId=61508986) on our interview project template.)
 
 If the answer is no, find out if further revision would result in a yes. If not, [do a retrospective](#do-a-retrospective) and try to understand what happened.
 
-When you are ready to launch, add the interview to your production server and make sure it works as intended.
+When you are ready to launch, add the interview to your production server and make sure it works as intended. Now is also a good time to check and update the GitHub repository details and [add some protections](../authoring/github.md#protect-repo).
 
 ### Promotion {#promotion}
 
 Once the interview is live, consider how people who need it will find it.
 
-* You should have a dedicated page on your website that tells people about the interview and links to it. Put some thought into this page so people can find it by searching Google.
+* You should have a dedicated page on your website that tells people about the interview and links to it. [Optimize the page for search engines](search_engine_optimization.md), too!
 * Others might want to direct people to the interview, like courts, legal aid organizations, and other advocates. Ask them to link to your landing page from their own websites.
 * Paid advertising can help spread awareness, if you have a budget for it.
-
-It's worth investing some time in [search engine optimization (SEO)](search_engine_optimization). You can also set up [collect analytics](../components/InterviewStats/interviewstats_overview.md) to learn how people are finding and using the interview.
 
 ### Retrospective {#retrospective}
 
@@ -266,6 +276,14 @@ Consider measuring the success of your project in terms of:
 You can use the [Interview Stats](../components/InterviewStats/interviewstats_overview.md) package to track usage. Usability tests, reading grade level measurements, and auditing for best practices can help you understand how your interview has affected the access gap.
 
 #### Transfer docs {#transfer-docs}
+
+Before you set the project aside, take some time to help the next developer—which might be you!
+
+One of the best places to store information and documents for the next developer is in the GitHub repository.
+
+1. Create an issue for anything left unfinished, feedback you couldn't implement, ideas for future improvement, etc.
+2. Add any other helpful notes or details to the README file
+3. You can also add a **transfer** folder to hold research, flowcharts, wireframes, feedback, and other documentation
 
 ## Timeline {#timeline}
 
