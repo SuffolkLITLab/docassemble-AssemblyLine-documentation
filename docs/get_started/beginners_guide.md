@@ -45,7 +45,7 @@ Now you are probably itching to start building your first interview! But before 
 
 ## Review the interview project management guide
 
-Building a successful interview involves more than just coding in the Docassemble playground. You'll also need to consider things like project management, [working with a team](working_with_teams.md), [requirements](working_with_teams.md#understanding-the-projects-users-and-intended-purpose), [usability](../style_guide/question_style_overview.md), [testing](../components/ALKiln/intro.mdx), etc.
+Building a successful interview involves more than just coding in the Docassemble playground. You'll also need to consider [project management](project_management.md), [usability](../style_guide/question_style_overview.md), [testing](../components/ALKiln/intro.mdx), etc.
 
 **➡️ [Review the interview project management guide.](project_management.md)**
 
