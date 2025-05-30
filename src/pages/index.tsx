@@ -228,7 +228,7 @@ function Home() {
             </div>
           </div>
         </section>
-        <section id="funding-partners" className={styles.indexSection}>
+        <section id="partners" className={styles.indexSection}>
           <div className={clsx([
             'container',
             'row',
@@ -261,7 +261,8 @@ function Home() {
                 <li><Translate>Legal Services Vermont, funded by a grant from the Legal Services Corporation</Translate></li>
                 <li><Translate>The Massachusetts Trial Court</Translate></li>
                 <li><Translate>The Alaska Court System</Translate></li>
-                <li><Translate>Legal Services State Support of Minnesota (Mid-Minnesota Legal Aid)</Translate></li>
+                <li><Translate>Legal Services State Support (Mid-Minnesota Legal Aid)</Translate></li>
+                <li><Translate>Illinois Supreme Court Commission on Access to Justice</Translate></li>
               </ul>
             </div>
             <div className="col">{/* Spacer */}</div>

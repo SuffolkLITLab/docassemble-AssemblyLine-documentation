@@ -1385,26 +1385,284 @@ This Step can help humans keep track of what page the tests are on. It will also
 <!-- ### `Then an element should have the id "some_HTML_element_id"` -->
 
 
-## Generate a Story Table {#alkiln_story}
+## Make constrained random tests {#constrained_random}
 
-You can use the [story table generator](https://plocket.github.io/alkiln_story/) to generate a Scenario draft. Depending on your interview's code you might need to edit the table for it to work properly, but it can give you a good start.
+*Only for GitHub tests at the moment.*
 
-Follow these instructions to use the generator:
+You can make template `.feature` files that each generate multiple tests with different combinations of answers. On GitHub, generated tests will be in your GitHub artifacts folder. You can download them and copy them into your test suite if you want. 
 
-1. Ensure your server config is set up to [show debug info](https://docassemble.org/docs/config.html#debug).
+<details>
+  <summary>When to use random tests</summary>
+
+  Use random tests to:
+
+  - Explore paths you didn't think of
+  - Generate test ideas
+  - Build up a strong set of test suite files by downloading and saving generated tests
+
+  Avoid random tests for:
+
+  - Safety concerns like impounding addresses
+  - Important edge-cases[^edge_cases]
+  - Bugs you already know about
+  - Other tests you need to make sure you run regularly
+
+  Hand-written tests use your deep knowledge of the code and your human intelligence to reliably and consistently test known critical paths and edge cases. They are your strongest tool. Still, random tests can add be a good supplement.
+</details>
+
+[^edge_cases]: Edge cases are places where you know your users go down different paths. For example, when a user's income is below the federal poverty limit they might go down a different path and get different questions.
+
+Example of the template file named `alkiln_random_no_children.feature` for users with no children:
+
+```gherkin
+Feature: Random no children tests
+
+@no_children
+Scenario: I have no children
+  Given ALKiln will make 2 constrained random answers tests
+  And I start the interview at "package.yml"
+  And I wait 1 second
+  Then ALKiln will reach any of the question ids "encouragement 1" or "wrong State kickout" with:
+    | var | possible values |
+    | number_of_children | 0 |
+    | lives_in_MA | True;; False |
+    | is_married | True;; False |
+    | spouse_hair_color | red;; brown;; blue;; other |
+    | spouse_other_hair_color | magenta |
+  And I take a picture
+  Then ALKiln will reach any of the question ids "no children end" with:
+    | var | possible values |
+    | impound_address | True;; False |
+    | wants_a_translator | True;; False |
+    | translation_language | Spanish;; Portuguese;; Mandarin |
+  And I take a picture
+```
+
+Example of the newly generated file, `alkiln_generated_1_1744635556587.feature`:
+
+```gherkin
+@alkiln @generated @randomized @constraints
+Feature: Random no children tests
+
+@no_children @scenario1_of_2
+Scenario: I have no children (1 of 2)
+  And I start the interview at "package.yml"
+  And I wait 1 second
+  And I get to any of the question ids ["encouragement 1", "wrong State kickout"] with this data:
+    | var | value |
+    | number_of_children | 0 |
+    | lives_in_MA | False |
+    | is_married | False |
+    | spouse_hair_color | red |
+    | spouse_other_hair_color | magenta |
+  And I take a picture
+  And I get to any of the question ids ["no children end"] with:
+    | var | value |
+    | impound_address | True |
+    | wants_a_translator | False |
+    | translation_language | Portuguese |
+  And I take a picture
+
+@no_children @scenario2_of_2
+Scenario: I have no children (2 of 2)
+  And I start the interview at "package.yml"
+  And I wait 1 second
+  And I get to any of the question ids ["encouragement 1", "wrong State kickout"] with this data:
+    | var | value |
+    | number_of_children | 0 |
+    | lives_in_MA | True |
+    | is_married | False |
+    | spouse_hair_color | other |
+    | spouse_other_hair_color | magenta |
+  And I take a picture
+  And I get to any of the question ids ["no children end"] with:
+    | var | value |
+    | impound_address | True |
+    | wants_a_translator | True |
+    | translation_language | Mandarin |
+  And I take a picture
+```
+
+Key rules:
+
+1. Name your template files starting with `alkiln_random`
+1. Put only ONE scenario in each template file
+1. [Tell ALKiln how many tests to create](#num_random)
+1. [List at least one answer for every required field for every page ALKiln might visit](#constraints)
+
+During the test run, ALKiln will generate the tests and then run them.
+
+**Failing:** A random test fails if ALKiln gets stuck or runs into a System error. For example, the interview might get an "Index out of range" error.
+
+**Passing:** A random test that passes can still be wrong. The report will have more information. For example, you can make sure:
+
+- ALKiln visited the right pages for the answers it gave
+- ALKiln reached the right page ids
+- The report doesn't have any unexpected warnings
+
+
+### <code>ALKiln will make `<number>` constrained random answers tests</code> {#num_random}
+
+Use a "test count" Step in a template file to tell ALKiln how many tests to make. Example:
+
+``` gherkin
+  Given ALKiln will make 10 random constrained tests
+```
+
+ALKiln will avoid making duplicate tests[^unique_random] even when ALKiln generates the tests from separate template files. If necessary, ALKiln will make fewer tests and add [a warning Scenario](#template_warnings) to the generated file. You can see it in the report.
+
+[^unique_random]: Random tests are only unique from each other right now. They might repeat tests that are already in your Sources folder.
+
+
+### <code>ALKiln will reach "`<question id 1>`" or "`<question id n>`" with:</code> {#constraints}
+
+Use the "constraints" Steps in a template file to tell ALKiln:
+
+1. What answers it must choose from to build the random tests
+1. Where to finish this constraints Step
+
+ALKiln will turn every constraints Step into one or more [Story Tables](#story-table).
+
+Example of a constraints Step:
+
+```gherkin
+  Then ALKiln will reach "encouragement 1" or "wrong State kickout" with:
+    | var | possible values |
+    | number_of_children | 0 |
+    | lives_in_MA | True;; False |
+    | is_married | True;; False |
+    | spouse_hair_color | red;; brown;; blue;; other |
+    | spouse_other_hair_color | magenta |
+```
+
+Example of a Story Table ALKiln might generate:
+
+```gherkin
+  And I get to any of the question ids ["encouragement 1", "wrong State kickout"] with this data:
+    | var | value |
+    | number_of_children | 0 |
+    | lives_in_MA | False |
+    | is_married | False |
+    | spouse_hair_color | brown |
+    | spouse_other_hair_color | magenta |
+```
+
+There are two parts to the constraints Step—the Step text and the fields table.
+
+1. The Step text has one type of value to fill in—1 or more page ids. Each page id must be in double quotes (`"`). This is like a [Story Table](#story-table)—the page ids tell ALKiln when to finish with this Step.
+2. Every row of the fields table has 2 columns. The first row must be the header row:
+
+   ```gherkin
+       | var | possible values |
+   ```
+
+   For every other row:
+
+   - The 1st column **must** name the variable to set, just like in [a Story Table](#story-table).
+   - The 2nd column **must** have 1 or more [values](#values) that ALKiln can choose from. If there is more than 1 value, you **must** use 2 semicolons (`;;`) to separate the values.
+
+You can have as many of these “constraints” Steps in a template Scenario as you want. You can put any other steps you want in between those “constraints” Steps. You can put any kind of Step you want after your last “constraints” Step.
+
+<details>
+  <summary>You must define all variables that the interview might require ALKiln to answer</summary>
+
+  Note that the example above gives options for `spouse_hair_color` even though the user can say they don't have a spouse. If the user is married `spouse_hair_color` is a **required field** and ALKiln will need to know the possible answers for that field.
+
+  Don't worry about including rows that might not get used. ALKiln is just fine with skipping extraneous table rows.
+
+  If a field is optional and you don't want ALKiln to give an answer for it, leave out that row.
+</details>
+
+<details>
+  <summary>Tip: You can use strict limitations to focus on important paths</summary>
+
+  You can force the tests to focus on a specific path by only putting one option in a `possible values` column. You can do this to as many rows as you want.
+
+  You can see the example above only gives one option for `number_of_children`—`0`. The author of this test wants to make sure ALKiln makes a good number of random tests that are just about users who have no children. The author might make another template file to generate random tests for users that have 2 children.
+</details>
+
+::::caution Beware empty values
+<Anchor id="empty_constraint_values">Avoid putting the semicolons separator (`;;`) at the end of the choices. It will make a choice that is an empty string. If you deliberately want to include that option, include it in the middle of your choices instead.</Anchor>
+
+
+:::danger Confusing
+```gherkin
+| favorite_bear | teddy;; grizzly;; |
+```
+:::
+
+:::tip Better
+```gherkin
+| favorite_bear | teddy;; ;; grizzly |
+```
+:::
+::::
+
+
+### Warnings for templates {#template_warnings}
+
+ALKiln will throw an error if the file or Scenario is invalid. There are some typos or misbehaviors that ALKiln will only warn you about, though. Some examples:
+
+- Your Scenario has no digit value for the test count. ALKlin will make 1 test.
+- Your Scenario asks for more than the maximum number of tests. You can set this number with the `ALKILN_MAX_RANDOM_TESTS_PER_SCENARIO` environment variable.
+- ALKiln tries to make the number of tests you asked for, but it is unable to keep them all unique so it makes fewer tests.
+
+ALKiln will put a "warning Scenario" at the top of the file it generates. You can also see it in your test report. Example warning:
+
+```gherkin
+@alkiln_extra_intro @alkiln_generator_warning
+Scenario: ALKiln begs the author's forgiveness. The next tests might be flawed.
+  Then ALKiln warns the author about a generator flub:
+    """
+    ――――― Template file warnings ―――――
+    🔎 ALK0239 generating files WARNING: A generator Scenario is missing the number of tests to make. ALKiln will now make 1 constrained random answers test. The current Step:
+          Given ALKiln will make constrained random answers tests
+    ―――――
+    """
+```
+
+
+<!-- 
+TODO
+## Debug failing tests
+
+Take screenshots. Stop at earlier page ids and take a screenshot
+
+```gherkin
+# Add debug steps to failing scenarios
+@debug
+Scenario: Debug failing test
+  Given ALKiln will make 1 constrained random answers test
+  And I start the interview at "package.yml"
+  Then ALKiln will reach "screen 3" with:
+    | var | possible values |
+    | var1 | value1;; value2 |
+    | var2 | value3;; value4 |
+  And I take a screenshot
+```
+-->
+
+
+## Convert an interview into a Story Table {#alkiln_story}
+
+You can use the [Story Table converter](https://plocket.github.io/alkiln_story/) to create a Scenario draft based on the data from an interview you have gone through. Depending on your interview's code you might need to edit the new table for it to work properly, but it can give you a good start.
+
+Follow these instructions to use the converter:
+
+1. Make sure your server config is set up to [show debug info](https://docassemble.org/docs/config.html#debug).
 1. Run your interview manually until you reach the page you want the story table to get to.
 1. Open the "source" display of the interview. Currently, that looks like angle brackets, `</>`, in the header of the page.
 1. Note the `id` of the page.
 1. Tap the "Show variables and values" button. It will open a new tab showing a big JSON object.
 1. Copy all the text on that page.
-1. Go to the [story table generator](https://plocket.github.io/alkiln_story/).
+1. Go to the [Story Table converter](https://plocket.github.io/alkiln_story/).
 1. Paste the JSON into the text area there, as instructed.
 1. Use the other input fields to help finalize your Scenario, including the question `id`.
-1. Download the file the generator created. It should end in `.feature`.
+1. Download the file the converter created. It should end in `.feature`.
 1. Upload that `.feature` file into your "Sources" folder in your Project.
 
 
-## Test file anatomy {#test-files}
+## The anatomy of a test file {#test-files}
 
 Your tests files have the code that tells ALKiln how to answer questions in your interview and do other things. The code may look different than other code you have seen, but it is still code. It is still rigid and needs you to use the right syntax and spelling.
 
@@ -1495,7 +1753,7 @@ Feature: I have children
 # the variables in any order you want.
 @disallow_visitation
 Scenario: I disallow visitation
-  Given I go to the interview at "protective_order.yml"
+  Given I start the interview at "protective_order.yml"
   And I get to the question id "what kind of visitation?" with this data:
     | var | value |
     | needs_allow_visitation | False |
@@ -1507,7 +1765,7 @@ Scenario: I disallow visitation
 # between the "<" and ">" is the name of a column in the `Examples` table.
 @allow_visitation
 Scenario Outline: I allow visitation
-  Given I go to the interview at "<url>"
+  Given I start the interview at "<url>"
   Then I should see the phrase "<name>"
   When I set "user_name" to "Rea"
   And I tap to continue
@@ -1681,7 +1939,7 @@ You can see examples of these inputs in the correct [ALKiln file](#workflows-exa
 
 If you do not already have these secrets, add them to your package's repository or GitHub organization[^org].
 
-Use them the same way that the example workflow file uses them. They appear in 2 places.
+Use them the same way that the [ALKiln workflow files](#workflows-examples) uses them. They appear in 2 places.
 
 <!-- We recommend keeping the API key a GitHub secret for security reasons, but the server url can be typed in plainly. For example `SERVER_URL: "https://apps-test.example.com"`.
 
@@ -1711,7 +1969,14 @@ You can see examples of these inputs in the correct [ALKiln file](#workflows-exa
 - `INSTALL_METHOD` is an internal value ALKiln needs from <KittyLitter/> tests. The value in ALKiln's example file is the correct value.
 
 
-### Optional inputs for all GitHub tests {#optional-inputs}
+### Optional inputs for any kind of test {#optional-inputs}
+
+**This is for** any kind of testing environment.
+
+- `ALKILN_MAX_RANDOM_TESTS_PER_SCENARIO` is the maximum number of random tests ALKiln will generate. The default is 40.
+
+
+### Optional inputs for all GitHub tests {#github-optional-inputs}
 
 **This is for:** all tests that run on GitHub. That is, <GTOYS/> or <KittyLitter/> tests.
 
@@ -1799,7 +2064,7 @@ Use these inputs in the same way and in the same places as the required inputs. 
 ```
 
 
-## GitHub workflow extras {#workflow-extras}
+## GitHub workflow extra features {#workflow-extras}
 
 **This is for:** all tests that run on GitHub
 

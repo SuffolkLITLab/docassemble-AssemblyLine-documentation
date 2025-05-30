@@ -5,7 +5,7 @@ sidebar_label: Development roadmap
 slug: development_roadmap
 ---
 
-The Document Assembly Line is under continuous development, based on input from the courts and legal aid organizations that use it and participate in the [community](intro.md#join-the-community). This roadmap contains the master plan and current development priorities, which are made possible by our [funding partners](/#funding-partners).
+The Document Assembly Line is under continuous development, based on input from the courts and legal aid organizations that use it and participate in the [community](intro.md#join-the-community). This roadmap contains the master plan and current development priorities, which are made possible by our [partners](/#partners).
 
 To raise an issue or make a suggestion, you can:
 
