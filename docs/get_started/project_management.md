@@ -6,13 +6,7 @@ slug: project_management
 toc_max_heading_level: 4
 ---
 
-Whether you are building interviews for a court or legal aid organization, a LIT Clinic student, a recent [Forms Camp](https://www.ncsc.org/consulting-and-research/areas-of-expertise/access-to-justice/forms-camp) graduate, or anyone else building online guided interviews, this page will guide you through the stages of a successful project.
-
-This contains the procedures, templates, and tools the LIT Lab uses in our own interview-building projects, which you can adapt to yours.
-
-:::tip
-If this is your first interview-building project, it may help to read more about [planning and building your first expert system](https://projects.suffolklitlab.org/legal-tech-class/docs/interview-structure/building-an-app-outline).
-:::
+If you are building online guided interviews, whether for a court, legal aid organization, or the LIT Clinic, this page will guide you through the stages of a successful project. This page includes procedures, templates, and tools the LIT Lab uses in our own interview-building projects, which you can use as-is or adapt for your own team.
 
 ## Overview {#overview}
 
@@ -22,14 +16,18 @@ Interview-building project generally follows these phases:
 | :------------------------------ | :-------------------- |
 | [Kickoff](#kickoff)             | See [sample agenda](#kickoff:~:text=Sample%20kickoff%20meeting%20agenda)     |
 | [Research](#research)           | Gain insight into and understanding of the problem to be solved |
-| [Design](#design)               | Agree on an MVP       |
+| [Design](#design)               | Agree on the project requirements\/MVP |
 | [Development](#development)     | Build the interview   |
-| [Feedback](#feedback)           | 1–3 rounds of feedback and further development |per feedback round |
+| [Feedback](#feedback)           | Feedback, revision, and further development |
 | [Launch](#launch)               | Publish the interview |
-| [Promotion](#promotion)         | Ensure that people who need the interview will |
+| [Promotion](#promotion)         | Make sure people who need the interview can find it |
 | [Retrospective](#retrospective) | Identify areas of improvement for the next interview project |
 
-After the kickoff through launch, the interview building team should hold regular [standups](#development-standups) and [check-ins](#decisionmaker-check-ins) with the decisionmaker and key stakeholders, with additional [communication](#communication) as necessary.
+After the kickoff through launch, the interview building team should hold regular [standups](#development-standups) and [check-ins](#decisionmaker-check-ins) with the decisionmaker and key stakeholders.
+
+:::tip
+If this is your first interview-building project, it may help to read more about [planning and building your first expert system](https://projects.suffolklitlab.org/legal-tech-class/docs/interview-structure/building-an-app-outline).
+:::
 
 ### Kickoff {#kickoff}
 
@@ -59,7 +57,7 @@ The goal of a kickoff meeting is to get everyone on the same page when it comes 
 
 Before you start building anything, gain a thorough understanding of the problem you are trying to solve.
 
-Work with the decisionmaker and subject-matter experts to document the process and develop user personas. Make sure they agree with your understanding before you move on to [design](#design).
+Work with the decisionmaker and subject-matter experts to research the process and intended users. Consider developing user personas. Make sure the deciscion maker and key subject-matter experts agree with your understanding before you move on to [design](#design).
 
 #### Document the process {#document-process}
 
@@ -155,7 +153,7 @@ Start by listing the requirements for your project—what it must do to be accep
   Different projects will have different MVPs/skateboards.
 </details>
 
-The LIT Lab's [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) is a framework for thinking about online guided interview MVPs. For interviews built for legal professionals, level 1.5 is usually enough. Interviews built for the general public should usually target level 2+. Levels 3 and 4 are meant for future iterations.
+The LIT Lab's [legal form maturity model](https://suffolklitlab.org/legal-tech-class/docs/legal-tech-overview/maturity-model/#quick-summary) is a framework for thinking about online guided interview MVPs. For interviews built for legal professionals, level 1.5 is usually enough. Interviews built for the general public should usually target level 2+. Levels 3 and 4 are mostly meant for future iterations.
 
 An MVP can be as simple as a list of requirements.
 
@@ -178,7 +176,7 @@ An MVP can be as simple as a list of requirements.
   * The interview has been tested rigorously with a combination of scenario-baesd user testing, random input testing, or automated testing
 </details>
 
-Once the decisionmaker agrees on the MVP requirements, stick to them. Don't add to the MVP without a compelling justification.
+Once the decisionmaker agrees on the requirements, stick to them. Don't add requirements without a compelling justification.
 
 #### Use flowcharts or wireframes
 
@@ -236,7 +234,7 @@ During the demo:
 * Ask them to follow different branches of the interview logic
 * Listen carefully to their feedback and ask follow-up questions to make sure you understand it
 
-#### Client feedback
+#### External feedback
 
 Once you have closed all the issues that are in scope for the [MVP](#mvp) and tested the interview yourself, it should be ready to hand off to the decisionmaker and stakeholders for their testing and feedback.
 
@@ -257,7 +255,7 @@ When the interview is complete, there is one last decision for the decisionmaker
 
 If the answer is yes, launch the interview! (You can find a [launch checklist](https://github.com/orgs/SuffolkLITLab/projects/22/views/2?pane=issue&itemId=61508986) on our interview project template.)
 
-If the answer is no, find out if further revision would result in a yes. If not, [do a retrospective](#do-a-retrospective) and try to understand what happened.
+If the answer is no, find out if further revision would result in a yes. If not, [do a retrospective](#retrospective) and try to understand what happened.
 
 When you are ready to launch, add the interview to your production server and make sure it works as intended. Now is also a good time to check and update the GitHub repository details and [add some protections](../authoring/github.md#protect-repo).
 
@@ -297,9 +295,9 @@ Consider measuring the success of your project in terms of:
 * People helped as a percentage of total filings of the same type
 * Closing an access gap by enabling people to do something they couldn't before
 
-You can use the [Interview Stats](../components/InterviewStats/interviewstats_overview.md) package to track usage. Usability tests, reading grade level measurements, and auditing for best practices can help you understand how your interview has affected the access gap.
+You can use the [InterviewStats](../components/InterviewStats/interviewstats_overview.md) package to track usage. Usability tests, reading grade level measurements, and auditing for best practices can help you understand how your interview has affected the access gap.
 
-#### Transfer docs {#transfer-docs}
+#### Transfer documentation {#transfer-docs}
 
 Before you set the project aside, take some time to help the next developer—which might be you!
 
@@ -323,7 +321,7 @@ Every interview project has several roles:
 You may have a team of interview builders and dozens of stakeholders, or you may be the only person working on this project. Even if this is a solo project, it helps to keep your different roles in mind.
 :::
 
-#### The decisionmaker {#decisionmaker}
+### The decisionmaker {#decisionmaker}
 
 **While a successful interview project needs all these roles, the decisionmaker is especially important.** Most interview projects involve multiple stakeholders. When the interview building team requests guidance or feedback, multiple stakeholders may give multiple responses that may be confusing or conflicting and dramatically slow progress.
 
