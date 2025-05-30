@@ -31,6 +31,30 @@ Interview-building project generally follows these phases:
 
 After the kickoff through launch, the interview building team should hold regular [standups](#development-standups) and [check-ins](#decisionmaker-check-ins) with the decisionmaker and key stakeholders, with additional [communication](#communication) as necessary.
 
+### Kickoff {#kickoff}
+
+Hold a kickoff meeting for the project as early as possible. Everyone who is important to the success of the project—the interview building team, the decisionmaker, and the key stakeholders—should attend.
+
+The goal of a kickoff meeting is to get everyone on the same page when it comes to roles, expectations, and timeline. A good kickoff meeting sets the stage for a successful project.
+
+<details>
+  <summary>Sample kickoff meeting agenda</summary>
+
+  * Introductions
+  * Decide who will be the [decisionmaker](#decisionmaker)
+  * Review the interview-building process (i.e., refer to this page)
+  * Agree on a [target launch date](#timeline)
+  * Schedule regular [decisionmaker check-ins](#decisionmaker-check-ins)
+  * Decide on [communication](#communication) tools
+  * Ask the stakeholders to [summarize the process](#document-process) (you can follow up later to get more details)
+  * Discuss the requirements for this interview and the [minimum viable product (MVP)](#mvp)
+  * Agree on a process for changing the scope of the project (i.e., adding features)
+  * Discuss what [success](#success-metrics) looks like for this project
+  * Consider doing a pre-mortem[^pre-mortem]
+</details>
+
+[^pre-mortem]: A [pre-mortem](https://hbr.org/2007/09/performing-a-project-premortem) can be helpful on larger and riskier projects. A pre-mortem asks participants to imagine a project's failure in advance, without judgment or blame. Studies show that premortems can increase the success of projects because they make it easier for stakeholders to "correctly identify the reasons for future outcomes" by as much as 30%, reduce the risks, or reconsider the project.
+
 ### Research {#research}
 
 Before you start building anything, gain a thorough understanding of the problem you are trying to solve.
@@ -285,82 +309,6 @@ One of the best places to store information and documents for the next developer
 2. Add any other helpful notes or details to the README file
 3. You can also add a **transfer** folder to hold research, flowcharts, wireframes, feedback, and other documentation
 
-## Timeline {#timeline}
-
-<details>
-  <summary>Sample timeline</summary>
-
-  This is a sample timeline with estimated **minimum** times to complete each [project phase](#overview). Your team may decide it needs or wants more time for any of these phases.
-
-  | Phase                           | Estimated minimum time  |
-  | :------------------------------ | :------------------- |
-  | [Kickoff](#kickoff)             | 1–2 hours            |
-  | [Research](#research)           | 1–2 weeks            |
-  | [Design](#design)               | 1 week               |
-  | [Development](#development)     | See [estimating development time](#estimating-development-time) |
-  | [Feedback](#feedback)           | 6 weeks (see [estimating feedback time](#estimating-development-time)) |
-  | [Launch](#launch)               | 1 day                |
-  | [Promotion](#promotion)         | 1 week, then ongoing |
-  | [Retrospective](#retrospective) | 20 minutes per team member |
-</details>
-
-### Estimating development time {#estimating-development-time}
-
-Development is a function of the complexity of the interview and the development resources (developer time) available.
-
-Start by estimating the time required to develop the interview based on:
-
-* The number of templates
-* The number of fields
-* The number of branching points in the interview logic
-* How dynamic the interview questions need to be (i.e., to account for quantity, pronouns, and relationships, etc.)
-* How dynamic the output documents need to be
-
-Developer time depends on availability and experience:
-
-* An experienced full-time developer has about 25 productive hours in a week
-* A beginner may take 3–5 times as long to do the same work
-* Other projects and obligations may reduce the available time
-
-A single, fairly simple form might take about 20 hours. But if a beginner developer is going to work on it, it's safe to assume it will takek them at least 60 hours. And if the developer has only 3 hours per week, it will take about 5 months (20 weeks).
-
-Come up with a schedule and key dates and milestones, working backward from the target launch date.
-
-* Start date
-* MVP and maturity level agreed on
-* Ready for internal feedback
-* Ready for client feedback 
-* Go/no-go decision
-* Target launch date
-
-### Estimating feedback time {#estimating-feedback-time}
-
-Most interview projects will involve 1 round of internal feedback and revision and 2 or 3 rounds of feedback and revision, then a final punch list to finalize the interview for the go/no-go decision. 
-
-A round of feedback includes:
-
-1. Demonstrating or handing off the draft interview
-2. Feedback, which may be:
-   1. Given synchronously (i.e., as part of a demo)
-   2. Given asynchronoustly (i.e., the decisionmaker coordinates testing among stakeholders, compiles and clarifies their feedback, and delivers it to the interview-building team)
-3. Revision or further development based on the feedback
-
-#### Internal feedback
-
-Internal feedback can be informal. For example, in the LIT Clinic, students demonstrate their interview in class, followed by 10–15 minutes of real-time feedback. If the interview-building team is too small for internal feedback to make sense, you could substitute a informal live feedback session with just the decisionmaker, not all the stakeholders.
-
-Allow at least a week for further development before the interview is ready for for client feedback.
-
-Assume at least 1 week for an internal feedback round.
-
-#### Client feedback
-
-One week (5 business days) should generally be enough time for the client to deliver feedback. Allow at least a week after that for further development and revision before seeking further feedback.
-
-Two rounds of client feedback should be enough to arrive at a "punch list" of tasks necessary to finalize the interview before launch.
-
-Assume at least 5 weeks for client feedback (2 rounds plus the final punch list).
-
 ## Roles and responsibilities
 
 ![Interview project roles & lines of communication](../assets/interview-project-roles-communication.png)
@@ -389,33 +337,70 @@ The decisionmaker's job is to gather and clarify stakeholders' feedback so that 
 
 The decisionmaker must either (1) have the authority necessary to carry out these responsiblities, or (2) be responsible for getting authority when necessary.
 
-## Meetings {#meetings}
+## Timeline {#timeline}
 
-Every interview building project should start with a kickoff meeting and then follow a regular cadence of interview-builder standups and decisionmaker-stakeholder check-ins.
+When creating your project timeline, keep in mind the experience and availability of your team—especially the interview builders.
 
-### Kickoff meeting {#kickoff}
+* An experienced, full-time developer has about 25 productive hours in a week
+* A beginner may take 3–5 times as long to do the same work
+* Other projects and obligations will reduce availability
 
-Hold a kickoff meeting for the project as early as possible. Everyone who is important to the success of the project—the interview building team, the decisionmaker, and the key stakeholders—should attend.
+For a single, fairly simple form, it might take about 20 hours for research, design, and development. But if a beginner is doing the work, assume it will take them 60 hours. And if they only have 3 hours per week, it will take about 5 months (20 weeks).
 
-The goal of a kickoff meeting is to get everyone on the same page when it comes to roles, expectations, and timeline. A good kickoff meeting sets the stage for a successful project.
+Modify the sample and estimation guides below based on your team's experience and availability.
 
 <details>
-  <summary>Sample kickoff meeting agenda</summary>
+  <summary>Sample timeline</summary>
 
-  * Introductions
-  * Decide who will be the [decisionmaker](#decisionmaker)
-  * Review the interview-building process (i.e., refer to this page)
-  * Agree on a [target launch date](#timeline)
-  * Schedule regular [decisionmaker check-ins](#decisionmaker-check-ins)
-  * Decide on [communication](#communication) tools
-  * Ask the stakeholders to [summarize the process](#document-process) (you can follow up later to get more details)
-  * Discuss the requirements for this interview and the [minimum viable product (MVP)](#mvp)
-  * Agree on a process for changing the scope of the project (i.e., adding features)
-  * Discuss what [success](#success-metrics) looks like for this project
-  * Consider doing a pre-mortem[^pre-mortem]
+  This is a sample timeline with estimated **minimum** times to complete each [project phase](#overview). Your team may decide it needs or wants more time for any of these phases due to experience, availability, or other reasons.
+
+  | Phase                           | Estimated minimum time  |
+  | :------------------------------ | :------------------- |
+  | [Kickoff](#kickoff)             | 1–2 hours            |
+  | [Research](#research)           | 1–2 weeks            |
+  | [Design](#design)               | 1 week               |
+  | [Development](#development)     | See [estimating development time](#estimating-development-time) |
+  | [Feedback](#feedback)           | 6 weeks (see [estimating feedback time](#estimating-development-time)) |
+  | [Launch](#launch)               | 1 day                |
+  | [Promotion](#promotion)         | 1 week, then ongoing |
+  | [Retrospective](#retrospective) | 20 minutes per team member |
 </details>
 
-[^pre-mortem]: A [pre-mortem](https://hbr.org/2007/09/performing-a-project-premortem) can be helpful on larger and riskier projects. A pre-mortem asks participants to imagine a project's failure in advance, without judgment or blame. Studies show that premortems can increase the success of projects because they make it easier for stakeholders to "correctly identify the reasons for future outcomes" by as much as 30%, reduce the risks, or reconsider the project.
+### Estimating development time {#estimating-development-time}
+
+Development is a function of the complexity of the interview and the development resources (developer time) available.
+
+When estimating development time, take into consideration:
+
+* The number of templates
+* The number of fields
+* The number of branching points in the interview logic
+* How dynamic the interview questions need to be (i.e., to account for quantity, pronouns, and relationships, etc.)
+* How dynamic the output documents need to be
+
+### Estimating feedback time {#estimating-feedback-time}
+
+Most interview projects will involve 1 round of internal feedback and revision and 2 rounds of external feedback and revision, then a final punch list to finalize the interview for the go/no-go decision. 
+
+A round of feedback includes:
+
+1. Demonstrating or handing off the draft interview
+2. Feedback, which may be:
+   1. Given synchronously (i.e., as part of a demo)
+   2. Given asynchronoustly (i.e., the decisionmaker coordinates testing among stakeholders, compiles and clarifies their feedback, and delivers it to the interview-building team)
+3. Revision or further development based on the feedback
+
+Internal feedback can be informal. For example, in the LIT Clinic, students demonstrate their interview in class, followed by 10–15 minutes of real-time feedback. 
+
+When seeking external feedback, stakeholders will need time to test and review the interview, and the decisionmaker will need time to consolidate and clarify the stakeholders' feedback. This will generally take at least a week.
+
+Each round of feedback should include time for revision or further development based on the feedback received.
+
+Assume at least 1 week for internal feedback (demo with live feedback, then revision). Assume at least 5 weeks for external feedback (2 rounds of feedback and revision, plus a final punch list).
+
+## Meetings {#meetings}
+
+Every interview building project should start with a [kickoff meeting](#kickoff) and then follow a regular cadence of interview-builder standups and decisionmaker-stakeholder check-ins.
 
 ### Development standups {#development-standups}
 
@@ -470,19 +455,12 @@ Use [GitHub issues](../authoring/github.md#use-issues) to keep track of your que
 
 You will need to communicate outside of meetings, of course. Agree on the tools you will use internally (i.e., within the interview-building team) and externally (i.e., with the decisionmaker and stakeholders).
 
-If your team does not already have a preference, here is what we use for LIT Lab projects:
-
-#### For internal communications:
+For LIT Lab projects, we use:
 
 * Zoom for meetings
-* GitHub issues in the interview repository or [project board](https://github.com/orgs/SuffolkLITLab/projects/22)
-* Microsoft Teams for general communications and file storage
-
-#### For external communications:
-
-* Zoom for meetings
-* Email
-* In some cases, GitHub or Teams
+* GitHub issues for internal communications
+* Microsoft Teams for general internal communications and file storage
+* Email for external communications
 
 ## Tips from the community
 
