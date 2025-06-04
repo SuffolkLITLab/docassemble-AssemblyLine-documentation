@@ -68,18 +68,17 @@ Start by researching that process from beginning to end—especially what happen
 <details>
   <summary>Process documentation checklist</summary>
 
-  1. Familiarize yourself with the relevant law and procedure
-  2. Identify 2 or 3 subject-matter experts you can call on
-  3. Create a flowchart of the process from beginning to end
-  4. Identify the user's ultimate goal
-  5. What must have happened in order for someone to use this interview?
-  6. What pieces of information will the user need to provide during the interview? Make a list, and classify each according to the [Jarrett and Gaffney](https://www.sciencedirect.com/book/9781558607101/forms-that-work) framework:
-    * **Slot-in** information the user already knows, like their own name and address
-    * **Gathered** information the user will look up from a readily available source like a court notice or a government ID (that you can tell them they will need before they start!)
-    * **Third-party** information the user will get by calling someone or looking it up in a database (make a list of the sources of this information)
-    * **Created** answers the user will make on the spot
-  7. What documents must the interview assemble?
-  8. What will the user have to do after completing the interview?
+  1. Identify the user's ultimate goal
+  2. Review the relevant law and procedure
+  3. List the documents the interview must assemble
+  4. Create a flowchart of the process from beginning to end, including:
+     * What must have happened in order for someone to use this interview
+     * What the user will have to do after completing the interview
+  7. List the pieces of information the user will have to provide to complete the interview, and classify each according to the [Jarrett-Gaffney](https://www.sciencedirect.com/book/9781558607101/forms-that-work) framework:
+     * **Slot-in** information the user already knows, like their own name and address
+     * **Gathered** information the user will look up from a readily available source like a court notice or a government ID (that you can tell them they will need before they start!)
+     * **Third-party** information the user will get by calling someone or looking it up in a database (make a list of the sources of this information)
+     * **Created** answers the user will make on the spot
 </details>
 
 #### User research and personas {#user-research}
