@@ -213,7 +213,7 @@ You can also find a [beginner's guide](beginners_guide.md), [interview-builder r
 
 ### Feedback {#feedback}
 
-The interview is ready for feedback when it works, and you have closed all the [MVP](#mvp) issues. (You can also find a [checklist in the interview project template](https://github.com/orgs/SuffolkLITLab/projects/22/views/2?pane=issue&itemId=61504799).)
+The interview is ready for feedback when it works, and you have closed all the [MVP](#mvp) issues. (You can also find a [checklist in the interview project template](https://github.com/orgs/SuffolkLITLab/projects/22/views/2?pane=issue&itemId=73754238).)
 
 
 #### Internal feedback
