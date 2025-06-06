@@ -25,7 +25,7 @@ See: https://assemblyline.suffolklitlab.org/docs/document_variables
 
 Transforms a string of text into a snake_case variable close in length to `max_length` name by
 summarizing the string and stitching the summary together in snake_case.
-h/t https://towardsdatascience.com/nlp-building-a-summariser-68e0c19e3a93
+h/t https://medium.com/data-science/nlp-building-a-summariser-68e0c19e3a93
 
 #### norm
 

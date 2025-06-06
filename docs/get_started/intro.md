@@ -92,7 +92,7 @@ All code generated as part of this project is available for free [on GitHub](htt
   rapidly generating interviews from marked-up court form PDF and DOCX templates.
 * [ALToolbox](https://github.com/SuffolkLITLab/docassemble-ALToolbox) contains functions and components that might benefit Docassemble developers whether or not they choose not to install the full Document Assembly Line toolbox.
 * [ALRecipes](https://github.com/SuffolkLITLab/docassemble-ALRecipes) examples and snippets that use Assembly Line features or demonstrate best practices. Can be included directly in the Docassemble Playground to supplement the list of Playground examples.
-* [PovertyScale](https://github.com/SuffolkLITLab/docassemble-PovertyScale) which contains a Python library, Docassemble code, static JSON and a REST server for determining income qualification based on the [United States Federal Poverty Scale](https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines), updated on an annual basis.
+* [PovertyScale](https://github.com/SuffolkLITLab/docassemble-PovertyScale) which contains a Python library, Docassemble code, static JSON and a REST server for determining income qualification based on the [United States Federal Poverty Scale](https://web.archive.org/web/20250528044709/http://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines), updated on an annual basis.
 * [GithubFeedbackForm](https://github.com/SuffolkLITLab/docassemble-GithubFeedbackForm) helps Docassemble authors collect feedback from users and generate GitHub issues.
 
 ### Docassemble server tools

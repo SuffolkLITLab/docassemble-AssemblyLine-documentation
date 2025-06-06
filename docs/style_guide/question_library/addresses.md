@@ -362,8 +362,8 @@ Your default address question should be more standardized.
 
 ### Collecting international addresses
 
-* https://www.uxmatters.com/mt/archives/2008/06/international-address-fields-in-web-forms.php
-* https://ux.shopify.com/designing-address-forms-for-everyone-everywhere-f481f6baf513
+* [International Address Fields in Web Forms](https://www.uxmatters.com/mt/archives/2008/06/international-address-fields-in-web-forms.php)
+* [Designing Address Forms for Everyone, Everywhere (Shopify)](https://medium.com/shopify-ux/designing-address-forms-for-everyone-everywhere-f481f6baf513)
 
 ### Collecting address of an unhoused person
 
