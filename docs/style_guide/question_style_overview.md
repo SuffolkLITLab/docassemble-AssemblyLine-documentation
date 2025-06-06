@@ -44,16 +44,15 @@ Usability testing can be simple, cheap, and easy!
 
 ## Other content resources
 ### Quick reads
-* [Best practice in form design: round up](https://www.effortmark.co.uk/best-practice-forms-design-round/)
+* [Best practice in form design](https://www.effortmark.co.uk/forms/)
 * How to write [good legal stuff](https://www.law.indiana.edu/instruction/tanford/web/reference/how2writegood.pdf)
-* Readable [Info Sheet](https://www.masslegalservices.org/system/files/library/Create%20a%20Readable%20Info%20Sheet%20in%206%20Steps.pdf)
 * Make it Readable [cheat sheet](https://cheatography.com/stevem/cheat-sheets/make-it-readable/)
 * En rules or em dashes ([google search](https://www.google.com/search?client=safari&rls=en&q=en+rules+or+em+dashes&ie=UTF-8&oe=UTF-8) for this)
-* Mass Legal Services [page](https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) (Assembly Line team member Caroline edited most of this content)
+* [Mass Legal Services page](https://web.archive.org/web/20230321113402/https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) (Assembly Line team member Caroline edited most of this content)
 * [Gerunds and Participles](https://www.geist.com/writers/writers-toolbox/gerunds-and-participles-avoid-ing-words/): Avoiding -ING words
 
 ### Comprehensive style guides
-* [UK.gov](http://uk.gov/) style guide - [online](https://www.gov.uk/guidance/content-design/writing-for-gov-uk#date-ranges)
+* [Gov.uk](https://gov.uk/) style guide - [online](https://www.gov.uk/guidance/content-design/writing-for-gov-uk#date-ranges)
 * [How to write good questions for forms (NHS)](https://service-manual.nhs.uk/content/how-to-write-good-questions-for-forms)
 * MailChimp [style guide](https://styleguide.mailchimp.com/word-list/)
 

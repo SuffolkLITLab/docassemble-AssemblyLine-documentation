@@ -53,7 +53,7 @@ The LIT Lab continues to develop and maintain the Document Assembly Line with he
 * Henry Strum [LinkedIn](https://www.linkedin.com/in/henry-sturm/)
 * Jason Swadel
 * Nicholas Taltos [LinkedIn](https://www.linkedin.com/in/nicholas-taltos-17aa07179/)
-* Vincent Tamburino [LinkedIn](http://www.linkedin.com/in/vincenttamburino)
+* Vincent Tamburino [LinkedIn](https://www.linkedin.com/in/vincenttamburino)
 * Philip Titcomb [LinkedIn](https://www.linkedin.com/in/philip-titcomb/)
 * Sinéad Vaughan [LinkedIn](https://www.linkedin.com/in/sin%C3%A9ad-vaughan-she-her-963788140/)
 * Katharine Walton [LinkedIn](https://www.linkedin.com/in/katharine-walton/)
@@ -63,7 +63,7 @@ The LIT Lab continues to develop and maintain the Document Assembly Line with he
 ### Organizations
 
 * [Suffolk University Law School](https://www.suffolk.edu/law)
-* [Docassemble](https://docassemble.org/docassemble)
+* [Docassemble](https://docassemble.org/)
 * [The Massachusetts Access to Justice Commission](http://www.massa2j.org/a2j/)
 * [Greater Boston Legal Services](https://www.gbls.org/)
 * [Northeast Legal Aid](https://www.northeastlegalaid.org/)
