@@ -25,24 +25,24 @@ Consider whether to use a DOCX template instead.
 PDF templates can be edited in:
 
 * Adobe Acrobat Professional
-* [the Documate online free PDF editor](https://www.documate.org/pdf)
+* [the Gavel online free PDF editor](https://start.gavel.io/pdf)
 * many other PDF editors that support Acrobat Forms (mostly paid)
 
-The free [Documate PDF editor](https://www.documate.org/pdf) will meet most people's needs. It will allow you to:
+The free [Gavel PDF editor](https://start.gavel.io/pdf) will meet most people's needs. It will allow you to:
 
 1. add text, checkbox, and digital signature fields
 1. easily rename fields
 1. edit existing field properties
 
-Documate has [a page that talks about its PDF
-editor](https://help.documate.org/articles/unlocking-pdf-documents).
+Gavel has [a page that talks about its PDF
+editor](https://help.gavel.io/articles/automating-pdf-documents?query=pdf).
 
 Adobe Acrobat can still be helpful. The most important feature it has that
-Documate lacks is the ability to automatically recognize blank spaces and turn them into fields. You may decide to use a trial version of Adobe Acrobat for this feature, which is only needed at the beginning of your project.
+Gavel lacks is the ability to automatically recognize blank spaces and turn them into fields. You may decide to use a trial version of Adobe Acrobat for this feature, which is only needed at the beginning of your project.
 
 Watch a 2 minute video segment on [how to edit a
-PDF](https://help.documate.org/articles/unlocking-pdf-documents) with Documate's editor.
-<iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Documate's editor">
+PDF](https://help.gavel.io/articles/automating-pdf-documents?query=pdf) with Gavel's editor.
+<iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Gavel's editor">
 </iframe>
 
 ## Use limited field types
