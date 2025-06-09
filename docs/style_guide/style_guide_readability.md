@@ -44,7 +44,7 @@ Below is a shortened version of the list. Whenever it is possible, replace the w
 | provide | give |
 | assist | help |
 
-It's a good idea to draw most words from the list of [the most common 2000 words](https://www.talkenglish.com/vocabulary/top-2000-vocabulary.aspx) in the English language. A [vocabulary profiler](http://www4.caes.hku.hk/vocabulary/profile.htm) can help you check
+It's a good idea to draw most words from the list of [the most common 2000 words](https://www.talkenglish.com/vocabulary/top-2000-vocabulary.aspx) in the English language. A [vocabulary profiler](https://ngslprofiler.com) can help you check
 to see if you are using uncommon words.
 
 For a fun option, the [UpGoer5](https://splasho.com/upgoer5/latest.php) text editor
@@ -164,12 +164,11 @@ File a motion if you want the judge to order something else.
 
 ## Other content resources
 * How to write [good legal stuff](https://www.law.indiana.edu/instruction/tanford/web/reference/how2writegood.pdf)
-* Readable [Info Sheet](https://www.masslegalservices.org/system/files/library/Create%20a%20Readable%20Info%20Sheet%20in%206%20Steps.pdf)
 * Make it Readable [cheat sheet](https://cheatography.com/stevem/cheat-sheets/make-it-readable/)
-* [UK.gov](http://uk.gov/) style guide - [online](https://www.gov.uk/guidance/content-design/writing-for-gov-uk#date-ranges)
+* [Gov.uk](https://gov.uk/) style guide - [online](https://www.gov.uk/guidance/content-design/writing-for-gov-uk#date-ranges)
 * En rules or em dashes ([google search](https://www.google.com/search?client=safari&rls=en&q=en+rules+or+em+dashes&ie=UTF-8&oe=UTF-8) for this)
-* Mass Legal Services [page](https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) w/ info Caroline wrote
-* MailChimp [style guide](https://styleguide.mailchimp.com/word-list/)
+* [Mass Legal Services page](https://web.archive.org/web/20230321113402/https://www.masslegalservices.org/content/making-legal-information-readable-more-plain-language) w/ info Caroline wrote
+* [MailChimp style guide](https://styleguide.mailchimp.com/word-list/)
 * [Gerunds and Participles](https://www.geist.com/writers/writers-toolbox/gerunds-and-participles-avoid-ing-words/): Avoiding -ING words
 * [LSC-funded readability materials and course](https://sites.google.com/a/lawny.org/plain-language-library/)
 * [Plain Language Guide](https://bit.ly/plainlanguageguide), National

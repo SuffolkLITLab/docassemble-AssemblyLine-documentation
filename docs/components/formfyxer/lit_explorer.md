@@ -19,13 +19,13 @@ Capture PascalCase, snake_case and kebab-case terms and add spaces to separate t
 #### regex\_norm\_field
 
 Apply some heuristics to a field name to see if we can get it to match AssemblyLine conventions.
-See: https://assemblyline.suffolklitlab.org/docs/document_variables
+See: https://assemblyline.suffolklitlab.org/docs/authoring/label_variables#fields-labels-and-variables
 
 #### reformat\_field
 
 Transforms a string of text into a snake_case variable close in length to `max_length` name by
 summarizing the string and stitching the summary together in snake_case.
-h/t https://towardsdatascience.com/nlp-building-a-summariser-68e0c19e3a93
+h/t https://medium.com/data-science/nlp-building-a-summariser-68e0c19e3a93
 
 #### norm
 

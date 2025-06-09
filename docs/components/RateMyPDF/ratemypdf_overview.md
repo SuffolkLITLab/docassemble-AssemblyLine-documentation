@@ -173,12 +173,12 @@ to identify and validate the features the RateMyPDF score measures.
 1. John P Sabatini. 2002. Efficiency in Word Reading of Adults: Ability Group Comparisons. Scientific Studies of Reading 6, 3 (July 2002), 267–298. DOI:https://doi.org/10.1207/S1532799XSSR0603_4
 1. Mirjam Seckler, Silvia Heinz, Javier A Bargas-Avila, Klaus Opwis, and Alexandre N Tuch. 2014. Designing Usable Web Forms – Empirical Evaluation of Web Form Improvement Guidelines. (2014), 10.
 1. Quinten Steenhuis and David Colarusso. 2021. Digital Curb Cuts: Towards an Open Forms Ecosystem. Akron Law Review 54, 4 (2021), 2.
-1. Survey Monkey. 2008. Smart Survey Design. Survey Monkey. Retrieved December 7, 2021 from https://s3.amazonaws.com/SurveyMonkeyFiles/SmartSurvey.pdf
+1. Survey Monkey. 2008. Smart Survey Design. Survey Monkey. Retrieved December 7, 2021 from https://irp-cdn.multiscreensite.com/89b37107/files/uploaded/SmartSurvey.pdf
 1. Susanne Trauzettel-Klosinski, Klaus Dietz, and the IReST Study Group. 2012. Standardized Assessment of Reading Performance: The New International Reading Speed Texts IReST. Investigative Ophthalmology & Visual Science 53, 9 (August 2012), 5452–5461. DOI:https://doi.org/10.1167/iovs.11-8284
 1. Washington Law Help. 2022. How to File Petition for Order of Protection. Retrieved February 6, 2023 from https://www.washingtonlawhelp.org/files/C9D2EA3F-0350-D9AF-ACAE-BF37E9BC9FFA/attachments/9100D6C9-D107-4B15-87B3-A898F12B6FD8/3701en_how-to-file-petition-for-order-of-protection.pdf
 1. Antoinette Welsh. 2013. Effects of Trauma Induced Stress on Attention, Executive Functioning, Processing Speed, and Resilience in Urban Children. Seton Hall University Dissertations and Theses (ETDs) (December 2013). Retrieved from https://scholarship.shu.edu/dissertations/1907
 1. Jenny Ziviani and John Elkins. 1984. An Evaluation of Handwriting Performance. Educational Review 36, 3 (November 1984), 249–261. DOI:https://doi.org/10.1080/0013191840360304
-1. (2015). Paperwork Reduction Act (44 U.S.C. 3501 et seq.). Digital.gov. Retrieved February 2, 2023 from https://digital.gov/resources/paperwork-reduction-act-44-u-s-c-3501-et-seq/
+1. (2015). Paperwork Reduction Act (44 U.S.C. 3501 et seq.). Digital.gov. Retrieved February 2, 2023 from https://web.archive.org/web/20250124035641/https://digital.gov/resources/paperwork-reduction-act-44-u-s-c-3501-et-seq/
 1. (2023). Textstat. Retrieved February 7, 2023 from https://github.com/textstat/textstat
 1. Field labels to use in template files | The Document Assembly Line Project. Retrieved February 3, 2023 from https://assemblyline.suffolklitlab.org/docs/label_variables
 1. How to estimate burden | A Guide to the Paperwork Reduction Act. Retrieved November 9, 2022 from https://pra.digital.gov/burden/estimation/

@@ -48,7 +48,7 @@ Avoid validation when:
 ## Further reading
 * [UK.gov guidance on writing error messages](https://design-system.service.gov.uk/components/error-message/#be-clear-and-concise)
 * [UK's NHS guidance on writing error messages](https://service-manual.nhs.uk/design-system/components/error-message)
-* https://uxplanet.org/how-to-write-good-error-messages-858e4551cd4
+* https://uxplanet.org/how-to-write-a-perfect-error-message-da1ca65a8f36
 
 ## "Soft" validation: how to use warnings
 
