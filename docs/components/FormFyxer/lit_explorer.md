@@ -19,7 +19,7 @@ Capture PascalCase, snake_case and kebab-case terms and add spaces to separate t
 #### regex\_norm\_field
 
 Apply some heuristics to a field name to see if we can get it to match AssemblyLine conventions.
-See: https://assemblyline.suffolklitlab.org/docs/document_variables
+See: https://assemblyline.suffolklitlab.org/docs/authoring/label_variables#fields-labels-and-variables
 
 #### reformat\_field
 
