@@ -263,6 +263,7 @@ function Home() {
                 <li><Translate>The Alaska Court System</Translate></li>
                 <li><Translate>Legal Services State Support (Mid-Minnesota Legal Aid)</Translate></li>
                 <li><Translate>Illinois Supreme Court Commission on Access to Justice</Translate></li>
+                <li><Translate>Illinois Legal Aid Online</Translate></li>
               </ul>
             </div>
             <div className="col">{/* Spacer */}</div>
