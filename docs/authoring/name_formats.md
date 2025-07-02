@@ -91,7 +91,7 @@ For a boolean value, use a word or phrase that you can answer with yes or no. Th
 
 Use a plural word for a list of things, and a singular word for one thing. **Examples:** `children`, `child`
 
-### Docassemble Projects and Packages
+### Docassemble projects and packages
 
 In the Docassemble playground:
 
