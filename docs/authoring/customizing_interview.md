@@ -443,17 +443,10 @@ A more complete guide to [helping your user](../coding_style/yaml_interface.md#a
 Here are a few reasons that a question may be getting 
 asked that you did not expect:
 
-1. You may have referenced a built-in question from the   
-   question library.
-1. The question might be needed to ask another question,
-   such as a name to personalize a question, or an address
-   to locate a court.
-1. You may have made a typo or mistake with your variable
-   names, and ended up asking something that is also defined
-   by an Assembly Line question. This could lead to 2 or more
-   very similar questions.
-1. You might not have defined something, like the party roles,
-   that your interview now needs to know in order to make sense.
+1. You may have referenced a built-in question from the question library.
+2. The question might be needed to ask another question, such as a name to personalize a question, or an address to locate a court.
+3. You may have made a typo or mistake with your variable names, and ended up asking something that is also defined by an Assembly Line question. This could lead to 2 or more very similar questions.
+4. You might not have defined something, like the party roles, that your interview now needs to know in order to make sense.
 
 ### Understanding the question library
 
@@ -484,9 +477,7 @@ Here's how:
 
 
 :::note About `generic object`
-The [`generic object`](https://docassemble.org/docs/modifiers.html#generic%20object) modifier is a special way to make
-one question work for many different objects, like people
-or lists of people.
+The [`generic object`](https://docassemble.org/docs/modifiers.html#generic%20object) modifier is a special way to make one question work for many different objects, like people or lists of people.
 :::
 
 When you customize a question from the question library,
@@ -498,10 +489,7 @@ To make it specific:
 1. Replace `x` with your variable name.
 1. Customize the `question` and `subquestion` as needed.
 
-For example, suppose your interview asks for a list of
-`guardians`. There is no special question about `guardians`
-in the question library, so your interview will use the `generic object`
-version of the question, which looks like this:
+For example, suppose your interview asks for a list of `guardians`. There is no special question about `guardians` in the question library, so your interview will use the `generic object` version of the question, which looks like this:
 
 ```yaml
 ---
@@ -545,12 +533,18 @@ fields:
 A **specific** version of a question is always used
 before the **generic object** version.
 
-:::note About the variable `i`
-Just like `generic object` works for any object,
-the variable `i` (and other [`index variables`](https://docassemble.org/docs/fields.html#index%20variables)) lets you write a question for any item 
-in a list. Using a **specific** number (typically, just the first, or 0th item is treated specially) overrides the 
-one that uses the letter `i`.
+:::note About the variable `i` 
+Just like `generic object` works for any object, the variable `i` (and other [index variables](https://docassemble.org/docs/fields.html#index%20variables)) lets you write a question for any item  in a list. Using a **specific** number (typically, just the first, or 0th item is treated specially) overrides the one that uses the letter `i`.
 :::
+
+<details>
+  <summary>More  about `i` and `x`</summary>
+
+  Learn more about `i` and `x` and how they work in Docassemble code in this Document Assembly Line workshop:
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/sRfo3ZhbbnY?si=YLwmuxwi4qb3DZLo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</details>
+
 
 ### Learning why a question got asked
 
