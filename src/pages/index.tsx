@@ -255,15 +255,14 @@ function Home() {
                   </h2>
                 </div>
               </div>
-              <p className={styles.dalPartnersText}><Translate>The Document Assembly Line is supported by funding from these partners:</Translate></p>
+              <p className={styles.dalPartnersText}><Translate>The Document Assembly Line is funded by a grant from the State Justice Institute and service contracts with the following courts and legal aid organizations:</Translate></p>
               <ul className={styles.dalPartnersText}>
-                <li><Translate>The State Justice Institute</Translate></li>
-                <li><Translate>Legal Services Vermont, funded by a grant from the Legal Services Corporation</Translate></li>
+                <li><Translate>Legal Services Vermont (through a grant from the Legal Services Corporation)</Translate></li>
                 <li><Translate>The Massachusetts Trial Court</Translate></li>
                 <li><Translate>The Alaska Court System</Translate></li>
                 <li><Translate>Legal Services State Support (Mid-Minnesota Legal Aid)</Translate></li>
                 <li><Translate>Illinois Supreme Court Commission on Access to Justice</Translate></li>
-                <li><Translate>Illinois Legal Aid Online</Translate></li>
+                <li><Translate>Illinois Legal Aid Online (ILAO)</Translate></li>
               </ul>
             </div>
             <div className="col">{/* Spacer */}</div>
