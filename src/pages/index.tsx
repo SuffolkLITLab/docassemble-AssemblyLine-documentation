@@ -41,6 +41,9 @@ function Home() {
                 <Link className="button button--primary" to="/docs/get_started">
                   <Translate>Get started</Translate>
                 </Link>
+                <Link className="button button--primary button--outline" to="/docs/volunteer">
+                  <Translate>Volunteer</Translate>
+                </Link>
               </div>
             </div>
             <img
