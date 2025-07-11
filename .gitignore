@@ -23,3 +23,9 @@ yarn-error.log*
 target/
 .vscode/
 .obsidian/
+
+yarn.lock
+.yarn
+.yarn/
+.pnp.cjs
+.pnp.loader.mjs

@@ -122,6 +122,7 @@ module.exports = {
                 'components/AssemblyLine/translation',
                 'components/AssemblyLine/error_actions',
                 'components/AssemblyLine/background_assembly',
+                "components/AssemblyLine/signatures",
                 "components/AssemblyLine/al_general",
                 "components/AssemblyLine/al_courts",
                 "components/AssemblyLine/al_document",

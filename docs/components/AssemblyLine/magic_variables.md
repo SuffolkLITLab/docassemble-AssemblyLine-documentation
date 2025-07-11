@@ -322,6 +322,18 @@ code: |
   al_form_requires_digital_signature = False
 ```
 
+### `al_typed_signature_prefix`
+
+Defaults to `/s/`. Controls the prefix when user decides to use a typed signature.
+
+### `al_typed_signature_font`
+
+Defaults to `"/usr/share/fonts/truetype/google-fonts/BadScript-Regular.ttf"`.
+
+Can be the exact path to a font installed on the server. If it is not an exact path,
+the font name will be searched for in `/usr/share/fonts` and `/var/www/.fonts`, with `.ttf`
+appended to the filename.
+
 ### `al_form_type`
 
 `al_form_type` is used to control some dynamic questions to give more specific
