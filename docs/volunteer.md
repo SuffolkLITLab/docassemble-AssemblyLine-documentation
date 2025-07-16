@@ -5,35 +5,42 @@ sidebar_label: Volunteer
 slug: volunteer
 ---
 
-We welcome volunteers to help us build and maintain the online guided interviews on [Court Forms Online](https://courtformsonline.org/)!
+We would love your help! building and maintaining the guided interviews on [Court Forms Online](https://courtformsonline.org/)!
 
 ## Volunteer opportunities
 
-All training, meetings, and communication happen online, via Zoom, Microsoft Teams, and GitHub.
+There are several ways you can volunteer with the Document Assembly Line:
 
-### Updating the interviews on Court Forms Online
+* [Updates.](#interview-updates) Help us work through our backlog of update tasks.
+* [Testing.](#user-testing) Test live interviews and report issues for the updates team.
+* [Translation.](#translation) Review translations for accuracy.
+* [Data validation.](#data-validation) Update data sources like courthouse addresses.
 
-This is our primary need, best suited to volunteers who can commit at least 5–10 hours per month for at least 3 months.
+All volunteer work is done remotely, and all training, meetings, and communication happen online, via Zoom, Microsoft Teams, and GitHub.
 
-Volunteering involves working with Docassemble, but **no coding experience is necessary**. We can teach anyone who wants to learn.
+### Interview updates
 
-You'll start by completing our interview builder training (currently three 90-minute live sessions, plus a final project). After your training, we'll assign your first task. (Visit our [Interview updates project board](https://github.com/orgs/SuffolkLITLab/projects/23/views/5) to see the kinds of tasks we have for volunteers.) You'll work independently, and attend our weekly community meetings or office hours (via Zoom) to keep us updated and get help when you need it.
+Update interviews from a backlog of tasks. This involves coding in Docassemble, but **no coding experience is necessary**. We will teach you everything you need to get started and support you with regular check-ins. You just need to be willing to learn!
 
-Volunteers should be:
+The updates team requires a long-term commitment. Volunteers should be able to commit at least 5–10 hours per month for at least 3 months.
 
-* Willing to learn to code in Docassemble
-* Willing and able to commit 5–10 hours per month for at least 3 months
-* Comfortable working independently and seeking help from the community when stuck
+### User testing
+
+Test interviews independently or live over Zoom, depending on what we need to test. No experience or legal knowledge is necessary.
+
+We organize an interview testing project about once a year, usually during the summer, and we ask for live-testing volunteers as needed.
+
+### Translation
+
+Review draft translations for accuracy to help make interviews more accessible. The translation team primarily needs native speakers to ensure clear translations.
+
+We ask for translation volunteers as needed.
 
 ### Data validation
 
-Some of our projects uch as checking courthouse addresses
+Collect and update the information that powers guided interview features, such as courthouse addresses or resources.
 
-### Checking interviews for updates
-
-### Reviewing interview translations
-
-### Court Forms Online updates
+We ask for data validation volunteers as needed.
 
 ## Sign up to volunteer
 
