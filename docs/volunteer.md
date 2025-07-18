@@ -46,4 +46,4 @@ We ask for data validation volunteers as needed.
 
 Click the button and fill out a brief volunteer interest form:
 
-<a class="button button--primary" target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps-dev.suffolklitlab.org/interview?i=docassemble.playground432VolunteerSignup:main.yml?hide_hud=1">Sign up to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
+<a class="button button--primary" target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps.suffolklitlab.org/interview?i=docassemble.DALVolunteerSignup:main.yml">Sign up to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
