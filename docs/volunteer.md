@@ -5,8 +5,8 @@ sidebar_label: Volunteer
 slug: volunteer
 ---
 
-We would love your help! building and maintaining the guided interviews on [Court Forms Online](https://courtformsonline.org/)!
-
+We would love your help building and maintaining the guided interviews on [Court Forms Online](https://courtformsonline.org/)!
+<a class="button button--primary" target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps.suffolklitlab.org/start/DALVolunteerSignup/main">Sign up to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
 ## Volunteer opportunities
 
 There are several ways you can volunteer with the Document Assembly Line:
@@ -20,7 +20,7 @@ All volunteer work is done remotely, and all training, meetings, and communicati
 
 ### Interview updates
 
-Update interviews from a backlog of tasks. This involves coding in Docassemble, but **no coding experience is necessary**. We will teach you everything you need to get started and support you with regular check-ins. You just need to be willing to learn!
+Update interviews from a backlog of tasks. **No coding experience is necessary to join this team**. This does involve coding in Docassemble, but we will teach you everything you need to get started and support you with regular check-ins. You just need to be willing to learn!
 
 The updates team requires a long-term commitment. Volunteers should be able to commit at least 5–10 hours per month for at least 3 months.
 
