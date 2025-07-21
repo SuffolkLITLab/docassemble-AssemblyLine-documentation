@@ -60,11 +60,16 @@ LICENSE file in the root directory of this source tree.
 
 .heroCTAButtons {
   --ifm-button-size-multiplier: 1.6;
+  --ifm-button-border-width: 3px;
   display: flex;
   flex-wrap: wrap;
   gap: var(--ifm-spacing-horizontal);
   align-items: center;
   margin-top: calc(2 * var(--ifm-spacing-vertical));
+
+  a:where(:hover) {
+    --ifm-button-background-color: var(--ifm-color-primary-dark);
+  }
 }
 
 .indexSection {

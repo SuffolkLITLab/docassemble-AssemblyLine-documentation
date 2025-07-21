@@ -22,6 +22,7 @@ module.exports = {
             "href": "/docs/overview",
             "description": "View developer documentation"
         },
+        'volunteer',
         'get_started/development_roadmap',
         'contributors',
         {
