@@ -6,7 +6,7 @@ slug: dynamic_phrasing_based_on_values
 ---
 
 Docassemble has several clever features that you can use in templates
-and in the body of your interview to automatically rephrase text in a 
+and in the body of your interview to automatically rephrase text in a
 context specific way depending on:
 
 1. the length of a list
@@ -15,7 +15,7 @@ context specific way depending on:
 In general, these features are useful short-hand solutions for problems that
 you could also solve with ordinary conditional text (e.g., an `if` statement).
 
-These are covered in more depth in the documentation for 
+These are covered in more depth in the documentation for
 [DAList](https://docassemble.org/docs/objects.html#DAList), although it may be hard to 
 find the specific functions on that fairly long documentation page without internal anchors. The best solution
 to learn more may be to read about the method on this page, then visit the DAList documentation page
@@ -30,6 +30,34 @@ can result in nonsense. It's usually best to use a condition at the whole paragr
 It's often safe to use the grammar shortcuts inside a template (because it will be single language), and best
 to avoid them inside the interview itself.
 :::
+
+## What do to instead for text that will be translated
+
+Instead of using the special grammar functions below, use conditional logic at the sentence level
+when the text might be translated in the future.
+
+You might want to use the special [`label`/`field` syntax](https://docassemble.org/docs/fields.html#label) to make it 
+easier to use conditional logic on the `field` level. This syntax allows you to use multi-line `mako` conditional
+syntax.
+
+For example:
+
+```yaml
+question: |
+  % if children.number_gathered() > 1:
+  Where do the children live?
+  % else:
+  Where does your child live?
+  % endif
+fields:
+  - label: |
+      % if children.number_gathered() > 1:
+      Children's address
+      % else:
+      Child's address
+      % endif
+    field: children.shared_address
+```
 
 ## Show the person's full name, without abbreviation
 
