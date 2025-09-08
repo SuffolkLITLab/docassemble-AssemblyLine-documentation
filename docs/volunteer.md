@@ -7,7 +7,11 @@ slug: volunteer
 
 We would love your help building and maintaining the guided interviews on [Court Forms Online](https://courtformsonline.org/)!
 
-<a class="button button--primary" target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps.suffolklitlab.org/start/DALVolunteerSignup/main">Sign up to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
+:::note
+We’ve had an amazing response to our posting and we have all the volunteers we can handle right now. If you submit [the form at this link](https://apps.suffolklitlab.org/interview?i=docassemble.DALVolunteerSignup:main.yml), we will add you to our volunteer list and get in touch when we are ready to take on more volunteers.
+:::
+
+<a class="button button--primary" disabled target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps.suffolklitlab.org/interview?i=docassemble.DALVolunteerSignup:main.yml">Sign up to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
 ## Volunteer opportunities
 
 There are several volunteer teams you can join:
@@ -57,6 +61,12 @@ Also, let us know if you need something else to work on.
 
 ## Sign up to volunteer
 
-Click the button and fill out a brief volunteer interest form:
+:::note
+We’ve had an amazing response to our posting and we have all the volunteers we can handle right now. If you submit [the form at this link](https://apps.suffolklitlab.org/interview?i=docassemble.DALVolunteerSignup:main.yml), we will add you to our volunteer list and get in touch when we are ready to take on more volunteers.
+:::
 
-<a class="button button--primary" target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps.suffolklitlab.org/interview?i=docassemble.DALVolunteerSignup:main.yml">Sign up to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
+<div style={{opacity: 0.65}}>
+Click the button and fill out a brief volunteer interest form:
+</div>
+
+<a class="button button--primary" disabled target="_blank" style={{'--ifm-button-size-multiplier': '1.25', fontWeight: 'normal', textDecoration: 'none'}} href="https://apps.suffolklitlab.org/interview?i=docassemble.DALVolunteerSignup:main.yml">Sign to volunteer<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a>
