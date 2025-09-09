@@ -358,6 +358,224 @@ know in advance.
 Keep in mind that this may not be a very good user experience for most users.
 Your default address question should be more standardized.
 
+## Impounded addresses
+
+Impounded addresses are addresses that should be hidden or redacted on certain documents for safety or privacy reasons. This feature is commonly needed in domestic violence cases, restraining orders, or other sensitive legal situations where revealing an address could put someone at risk.
+
+The Assembly Line framework supports both impounded addresses and impounded phone numbers.
+
+### When to use impounded addresses
+
+Use the impounded address feature when:
+
+- The user's address needs to be kept confidential for safety reasons
+- Court rules allow or require address impounding in your jurisdiction  
+- The user may need some documents to show their full address (like for service), while other documents should redact it
+- You need to collect the address for court records but hide it from opposing parties
+
+### Basic impounded address collection
+
+Add the `ask_if_impounded=True` parameter to the `address_fields()` method to include a checkbox asking if the address should be impounded:
+
+<Tabs>
+  <TabItem value="Assembly Line Example" label="Assembly Line Example" default>
+
+```yaml
+id: user address
+sets:
+  - users[0].address.address
+  - users[0].address.city
+question: |
+  Your address
+subquestion: |
+  What is your current address?
+fields:
+  - code: |
+      users[0].address_fields(ask_if_impounded=True)
+```
+
+  </TabItem>
+  <TabItem value="Vanilla Docassemble" label="Vanilla Docassemble">
+
+```yaml
+---
+id: user address  
+question: |
+  Your address
+subquestion: |
+  What is your current address?
+fields:
+  - Street address: users[0].address.address
+    address autocomplete: True
+  - Unit: users[0].address.unit
+    required: False
+  - City: users[0].address.city
+  - State: users[0].address.state
+    code: |
+      states_list()
+    default: MA      
+  - Zip: users[0].address.zip
+    required: False
+  - This address is impounded: users[0].address.impounded
+    datatype: yesno
+    help: |
+      Check this box if this address should be kept confidential for safety reasons.
+```
+
+  </TabItem>
+</Tabs>
+
+### Impounded phone numbers
+
+Similarly, you can collect and impound phone numbers:
+
+<Tabs>
+  <TabItem value="Assembly Line Example" label="Assembly Line Example" default>
+
+```yaml
+id: contact information
+question: |
+  Your contact information
+fields:  
+  - Mobile number: users[0].mobile_number
+    required: False
+  - Other phone number: users[0].phone_number
+    required: False
+  - My phone number is impounded: users[0].phone_impounded
+    datatype: yesno
+    help: |
+      Check this if your phone number should be kept confidential.
+  - Email address: users[0].email    
+    datatype: email
+    required: False
+```
+
+  </TabItem>
+  <TabItem value="Vanilla Docassemble" label="Vanilla Docassemble">
+
+```yaml
+id: contact information
+question: |
+  Your contact information
+fields:  
+  - Mobile number: users[0].mobile_number
+    required: False
+  - Other phone number: users[0].phone_number
+    required: False  
+  - My phone number is impounded: users[0].phone_impounded
+    datatype: yesno
+    help: |
+      Check this if your phone number should be kept confidential.
+  - Email address: users[0].email    
+    datatype: email
+    required: False
+```
+
+  </TabItem>
+</Tabs>
+
+### Displaying impounded information
+
+By default, if an address or phone number is marked as impounded, it will display as **IMPOUNDED** instead of the actual information when used in templates or document assembly.
+
+To override this and show the actual impounded information (for example, on documents meant for court filing), use the `show_impounded=True` parameter:
+
+```yaml
+# This will show "**IMPOUNDED**" if the address is impounded
+${ users[0].address_block() }
+
+# This will show the actual address even if impounded  
+${ users[0].address_block(show_impounded=True) }
+
+# Same applies to phone numbers
+${ users[0].phone_numbers() }  # Shows "**IMPOUNDED**" if impounded
+${ users[0].phone_numbers(show_impounded=True) }  # Shows actual number
+```
+
+### Methods that support impounded addresses
+
+All address display methods support the `show_impounded` parameter:
+
+- `address.block(show_impounded=True)`
+- `address.line_one(show_impounded=True)` 
+- `address.line_two(show_impounded=True)`
+- `address.on_one_line(show_impounded=True)`
+- `person.address_block(show_impounded=True)`
+- `person.phone_numbers(show_impounded=True)`
+
+### Custom impounded text labels
+
+You can customize the text that appears when information is impounded by defining these templates in your interview:
+
+```yaml
+# Custom label for the impounded checkbox
+template: ALAddress.impounded_label
+content: |
+  Keep this address confidential
+
+# Custom text shown instead of impounded addresses  
+template: ALAddress.impounded_output_label
+content: |
+  [CONFIDENTIAL ADDRESS]
+
+# Custom text shown instead of impounded phone numbers
+template: ALIndividual.impounded_phone_output_label  
+content: |
+  [CONFIDENTIAL PHONE]
+```
+
+### Complete example
+
+Here's a complete example showing how to collect and use impounded information:
+
+```yaml
+---
+include:
+  - assembly_line.yml
+---
+mandatory: True
+code: |
+  users[0].address.address
+  users[0].phone_number
+  final_screen
+---
+sets:
+  - users[0].address.address
+question: |
+  Your address
+fields:
+  - code: |
+      users[0].address_fields(ask_if_impounded=True)
+---
+question: |
+  Your contact information
+fields:  
+  - Phone number: users[0].phone_number
+    required: False
+  - My phone number is impounded: users[0].phone_impounded
+    datatype: yesno
+---
+event: final_screen
+question: |
+  Review your information
+subquestion: |
+  ## For most documents (public filing):
+  
+  **Address:** ${ users[0].address_block() }
+  
+  **Phone:** ${ users[0].phone_numbers() }
+  
+  ## For confidential court records:
+  
+  **Address:** ${ users[0].address_block(show_impounded=True) }
+  
+  **Phone:** ${ users[0].phone_numbers(show_impounded=True) }
+```
+
+:::warning
+When using `normalized_address()`, the geocoded result will not be redacted even if the original address is impounded. Use the original address object for impounded content.
+:::
+
 ## Further reading
 
 ### Collecting international addresses
