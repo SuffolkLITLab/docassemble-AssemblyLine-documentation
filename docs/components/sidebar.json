@@ -1,12 +1,5 @@
 {
-  "items": [
-    "components/ALToolbox/al_income",
-    "components/ALToolbox/business_days",
-    "components/ALToolbox/copy_button",
-    "components/ALToolbox/llms",
-    "components/ALToolbox/misc",
-    "components/ALToolbox/save_input_data"
-  ],
-  "label": "ALToolbox",
+  "items": [],
+  "label": null,
   "type": "category"
 }
