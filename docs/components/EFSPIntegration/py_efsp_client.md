@@ -7,6 +7,20 @@ The base python client used to communicate with the E-file proxy server.
 
 Doesn&#x27;t include anything from docassemble, and can be used without having it installed.
 
+#### CORR\_ID\_HEADER
+
+TODO(brycew): Figure out how to add
+
+## LoggerWithContext Objects
+
+```python
+class LoggerWithContext(LoggerAdapter)
+```
+
+Acts like the `merge_extra` feature from LoggerAdapter (python 3.13) is always on.
+
+See https://github.com/python/cpython/pull/107292/files.
+
 ## EfspConnection Objects
 
 ```python
@@ -85,6 +99,6 @@ provided at a time.
 Params:
 court_id (str)
 person_name (dict)
-buisness_name (str)
+business_name (str)
 docket_number (str)
 

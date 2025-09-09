@@ -3,6 +3,14 @@ sidebar_label: language
 title: AssemblyLine.language
 ---
 
+#### get\_local\_languages\_yaml
+
+Get the path to the local languages.yml file. If it does not exist, it will return the path to the languages.yml
+
+**Returns**:
+
+- `str` - the path to the local languages.yml file if it exists, otherwise the path to the languages.yml file
+
 #### get\_tuples
 
 Returns a list of tuples representing the language name, followed by language ISO 639-1 code.

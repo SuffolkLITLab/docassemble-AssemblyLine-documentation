@@ -1,12 +1,12 @@
 {
   "items": [
-    "components/AssemblyLine/al_courts",
-    "components/AssemblyLine/al_document",
-    "components/AssemblyLine/al_general",
-    "components/AssemblyLine/language",
-    "components/AssemblyLine/project_maintenance",
-    "components/AssemblyLine/sessions"
+    "components/ALToolbox/al_income",
+    "components/ALToolbox/business_days",
+    "components/ALToolbox/copy_button",
+    "components/ALToolbox/llms",
+    "components/ALToolbox/misc",
+    "components/ALToolbox/save_input_data"
   ],
-  "label": "AssemblyLine",
+  "label": "ALToolbox",
   "type": "category"
 }
