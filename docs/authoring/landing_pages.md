@@ -58,7 +58,7 @@ Users need to know their next steps:
 Since users often skip detailed reading, prioritize information they absolutely need before starting. Save detailed explanations for help text within the interview itself.
 
 ### Use plain language
-- Write at an 8th-grade reading level or lower
+- Write at an 6th-grade reading level or lower
 - Avoid legal jargon and technical terms
 - Define necessary legal terms clearly
 - Use active voice and short sentences
