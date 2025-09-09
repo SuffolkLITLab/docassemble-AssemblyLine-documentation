@@ -135,17 +135,6 @@ module.exports = {
       },
       
     ],
-    [
-      'docusaurus-plugin-papersaurus',
-      {
-        keepDebugHtmls: false,
-        sidebarNames: ['docs', 'get_started'],
-        addDownloadButton: true,
-        autoBuildPdfs: true,
-        ignoreDocs: ['licenses'],
-        author: 'Author name'
-      },
-    ],    
   ],
   themes: [
 	  [
