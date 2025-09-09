@@ -13,12 +13,7 @@
   * [filter\_codes](#EFSPIntegration.interview_logic.filter_codes)
   * [get\_available\_efile\_courts](#EFSPIntegration.interview_logic.get_available_efile_courts)
 
----
-sidebar_label: interview_logic
-title: EFSPIntegration.interview_logic
----
-
-A group of methods that were code blocks in various parts of the EFSP
+pydoc-module-header.hbsA group of methods that were code blocks in various parts of the EFSP
 package, but for better python tooling support, were moved here.
 
 <a id="EFSPIntegration.interview_logic.EFCaseSearch"></a>

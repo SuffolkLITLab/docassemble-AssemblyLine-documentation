@@ -25,12 +25,7 @@
   * [IntakeQuestionList](#ALToolbox.llms.IntakeQuestionList)
     * [need\_more\_questions](#ALToolbox.llms.IntakeQuestionList.need_more_questions)
 
----
-sidebar_label: llms
-title: ALToolbox.llms
----
-
-<a id="ALToolbox.llms.chat_completion"></a>
+pydoc-module-header.hbs<a id="ALToolbox.llms.chat_completion"></a>
 
 #### chat\_completion(system\_message: Optional[str] = None, user\_message: Optional[str] = None, openai\_client: Optional[OpenAI] = None, openai\_api: Optional[str] = None, temperature: float = 0.5, json\_mode=False, model: str = "gpt-4o", messages: Optional[List[Dict[str, str]]] = None, skip\_moderation: bool = False, openai\_base\_url: Optional[str] = None, max\_output\_tokens: Optional[int] = None, max\_input\_tokens: Optional[int] = None)
 

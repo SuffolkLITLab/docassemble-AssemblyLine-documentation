@@ -1,8 +1,6 @@
 # Table of Contents
 
 * [EFSPIntegration.efm\_client](#EFSPIntegration.efm_client)
-  * [DALogger](#EFSPIntegration.efm_client.DALogger)
-    * [log](#EFSPIntegration.efm_client.DALogger.log)
   * [ProxyConnection](#EFSPIntegration.efm_client.ProxyConnection)
     * [\_\_init\_\_](#EFSPIntegration.efm_client.ProxyConnection.__init__)
     * [authenticate\_user](#EFSPIntegration.efm_client.ProxyConnection.authenticate_user)
@@ -10,31 +8,7 @@
     * [get\_service\_types](#EFSPIntegration.efm_client.ProxyConnection.get_service_types)
   * [serialize\_person](#EFSPIntegration.efm_client.serialize_person)
 
----
-sidebar_label: efm_client
-title: EFSPIntegration.efm_client
----
-
-<a id="EFSPIntegration.efm_client.DALogger"></a>
-
-## DALogger Objects
-
-```python
-class DALogger(LoggerAdapter)
-```
-
-<a id="EFSPIntegration.efm_client.DALogger.log"></a>
-
-#### log(level, msg, \*args, \*\*kwargs)
-
-```python
-def log(level, msg, *args, **kwargs)
-```
-
-Delegate a log call to Docassemble&#x27;s `log` function, after adding
-contextual information from this adapter instance.
-
-<a id="EFSPIntegration.efm_client.ProxyConnection"></a>
+pydoc-module-header.hbs<a id="EFSPIntegration.efm_client.ProxyConnection"></a>
 
 ## ProxyConnection Objects
 

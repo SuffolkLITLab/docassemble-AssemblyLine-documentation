@@ -74,12 +74,7 @@
   * [parse\_custom\_pronouns](#AssemblyLine.al_general.parse_custom_pronouns)
   * [get\_visible\_al\_nav\_items](#AssemblyLine.al_general.get_visible_al_nav_items)
 
----
-sidebar_label: al_general
-title: AssemblyLine.al_general
----
-
-<a id="AssemblyLine.al_general.safe_subdivision_type"></a>
+pydoc-module-header.hbs<a id="AssemblyLine.al_general.safe_subdivision_type"></a>
 
 #### safe\_subdivision\_type(country\_code: str)
 

@@ -117,12 +117,7 @@
   * [ALDocumentUpload](#AssemblyLine.al_document.ALDocumentUpload)
   * [unpack\_dafilelist](#AssemblyLine.al_document.unpack_dafilelist)
 
----
-sidebar_label: al_document
-title: AssemblyLine.al_document
----
-
-<a id="AssemblyLine.al_document.random_suffix"></a>
+pydoc-module-header.hbs<a id="AssemblyLine.al_document.random_suffix"></a>
 
 #### random\_suffix(length: int = 8)
 

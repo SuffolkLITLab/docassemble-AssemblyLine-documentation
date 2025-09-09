@@ -18,19 +18,18 @@
   * [filing\_id\_and\_label](#EFSPIntegration.conversions.filing_id_and_label)
   * [get\_tyler\_roles](#EFSPIntegration.conversions.get_tyler_roles)
 
----
-sidebar_label: conversions
-title: EFSPIntegration.conversions
----
-
-Functions that help convert the JSON-ized XML from the proxy server into usable information.
+pydoc-module-header.hbsFunctions that help convert the JSON-ized XML from the proxy server into usable information.
 
 <a id="EFSPIntegration.conversions.error_notification"></a>
 
-#### error\_notification(err, message=None, trace=None, referer=None)
+#### error\_notification(err, message=None, trace=None, referer=None, the\_vars=None)
 
 ```python
-def error_notification(err, message=None, trace=None, referer=None)
+def error_notification(err,
+                       message=None,
+                       trace=None,
+                       referer=None,
+                       the_vars=None)
 ```
 
 Copied from docassemble.webapp.server.error_notification, since:
@@ -145,7 +144,7 @@ def tyler_daterep_to_datetime(tyler_daterep: Mapping) -> DADateTime
 ```
 
 Takes an jsonized-XML object of &quot;\{http://niem.gov/niem/niem-core/2.0\}ActivityDate,
-returns the datetime it represents.
+returns the datetime it repsents.
 
 <a id="EFSPIntegration.conversions.tyler_timestamp_to_datetime"></a>
 

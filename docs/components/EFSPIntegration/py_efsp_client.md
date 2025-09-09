@@ -1,8 +1,6 @@
 # Table of Contents
 
 * [EFSPIntegration.py\_efsp\_client](#EFSPIntegration.py_efsp_client)
-  * [CORR\_ID\_HEADER](#EFSPIntegration.py_efsp_client.CORR_ID_HEADER)
-  * [LoggerWithContext](#EFSPIntegration.py_efsp_client.LoggerWithContext)
   * [EfspConnection](#EFSPIntegration.py_efsp_client.EfspConnection)
     * [\_\_init\_\_](#EFSPIntegration.py_efsp_client.EfspConnection.__init__)
     * [authenticate\_user](#EFSPIntegration.py_efsp_client.EfspConnection.authenticate_user)
@@ -18,32 +16,9 @@
     * [get\_service\_types](#EFSPIntegration.py_efsp_client.EfspConnection.get_service_types)
     * [get\_cases\_raw](#EFSPIntegration.py_efsp_client.EfspConnection.get_cases_raw)
 
----
-sidebar_label: py_efsp_client
-title: EFSPIntegration.py_efsp_client
----
-
-The base python client used to communicate with the E-file proxy server.
+pydoc-module-header.hbsThe base python client used to communicate with the E-file proxy server.
 
 Doesn&#x27;t include anything from docassemble, and can be used without having it installed.
-
-<a id="EFSPIntegration.py_efsp_client.CORR_ID_HEADER"></a>
-
-#### CORR\_ID\_HEADER
-
-TODO(brycew): Figure out how to add
-
-<a id="EFSPIntegration.py_efsp_client.LoggerWithContext"></a>
-
-## LoggerWithContext Objects
-
-```python
-class LoggerWithContext(LoggerAdapter)
-```
-
-Acts like the `merge_extra` feature from LoggerAdapter (python 3.13) is always on.
-
-See https://github.com/python/cpython/pull/107292/files.
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection"></a>
 
@@ -57,14 +32,10 @@ A python client that communicates with the E-file proxy server.
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.__init__"></a>
 
-#### \_\_init\_\_(\*, url: str, api\_key: str, default\_jurisdiction: str = None, logger=None)
+#### \_\_init\_\_(\*, url: str, api\_key: str, default\_jurisdiction: str = None)
 
 ```python
-def __init__(*,
-             url: str,
-             api_key: str,
-             default_jurisdiction: str = None,
-             logger=None)
+def __init__(*, url: str, api_key: str, default_jurisdiction: str = None)
 ```
 
 **Arguments**:
@@ -223,6 +194,6 @@ provided at a time.
 Params:
 court_id (str)
 person_name (dict)
-business_name (str)
+buisness_name (str)
 docket_number (str)
 

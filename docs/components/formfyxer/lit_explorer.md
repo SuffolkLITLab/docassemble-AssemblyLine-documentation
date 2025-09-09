@@ -18,13 +18,10 @@
   * [time\_to\_answer\_field](#formfyxer.lit_explorer.time_to_answer_field)
   * [time\_to\_answer\_form](#formfyxer.lit_explorer.time_to_answer_form)
   * [cleanup\_text](#formfyxer.lit_explorer.cleanup_text)
-  * [text\_complete](#formfyxer.lit_explorer.text_complete)
   * [complete\_with\_command](#formfyxer.lit_explorer.complete_with_command)
   * [needs\_calculations](#formfyxer.lit_explorer.needs_calculations)
-  * [tools\_passive](#formfyxer.lit_explorer.tools_passive)
   * [get\_passive\_sentences](#formfyxer.lit_explorer.get_passive_sentences)
   * [get\_citations](#formfyxer.lit_explorer.get_citations)
-  * [get\_sensitive\_data\_types](#formfyxer.lit_explorer.get_sensitive_data_types)
   * [substitute\_phrases](#formfyxer.lit_explorer.substitute_phrases)
   * [substitute\_neutral\_gender](#formfyxer.lit_explorer.substitute_neutral_gender)
   * [substitute\_plain\_language](#formfyxer.lit_explorer.substitute_plain_language)
@@ -32,12 +29,7 @@
   * [parse\_form](#formfyxer.lit_explorer.parse_form)
   * [form\_complexity](#formfyxer.lit_explorer.form_complexity)
 
----
-sidebar_label: lit_explorer
-title: formfyxer.lit_explorer
----
-
-<a id="formfyxer.lit_explorer.recursive_get_id"></a>
+pydoc-module-header.hbs<a id="formfyxer.lit_explorer.recursive_get_id"></a>
 
 #### recursive\_get\_id(values\_to\_unpack: Union[dict, list], tmpl: Optional[set] = None)
 
@@ -87,12 +79,10 @@ See: https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/docum
 
 <a id="formfyxer.lit_explorer.reformat_field"></a>
 
-#### reformat\_field(text: str, max\_length: int = 30, tools\_token: Optional[str] = None)
+#### reformat\_field(text: str, max\_length: int = 30, tools\_token=None)
 
 ```python
-def reformat_field(text: str,
-                   max_length: int = 30,
-                   tools_token: Optional[str] = None)
+def reformat_field(text: str, max_length: int = 30, tools_token=None)
 ```
 
 Transforms a string of text into a snake_case variable close in length to `max_length` name by
@@ -124,9 +114,7 @@ Vectorize a string of text.
 - `text` - a string of multiple words to vectorize
 - `tools_token` - the token to tools.suffolklitlab.org, used for micro-service
   to reduce the amount of memory you need on your machine. If
-  not passed, you need to have `en_core_web_lg` installed. NOTE: this
-  last bit is nolonger correct, you have to use the micor-service
-  as we have had to remove SpaCY due to a breaking change
+  not passed, you need to have `en_core_web_lg` installed
 
 <a id="formfyxer.lit_explorer.normalize_name"></a>
 
@@ -315,26 +303,6 @@ def cleanup_text(text: str, fields_to_sentences: bool = False) -> str
 
 Apply cleanup routines to text to provide more accurate readability statistics.
 
-<a id="formfyxer.lit_explorer.text_complete"></a>
-
-#### text\_complete(prompt: str, max\_tokens: int = 500, creds: Optional[OpenAiCreds] = None, temperature: float = 0)
-
-```python
-def text_complete(prompt: str,
-                  max_tokens: int = 500,
-                  creds: Optional[OpenAiCreds] = None,
-                  temperature: float = 0) -> str
-```
-
-Run a prompt via openAI&#x27;s API and return the result.
-
-**Arguments**:
-
-- `prompt` _str_ - The prompt to send to the API.
-- `max_tokens` _int, optional_ - The number of tokens to generate. Defaults to 500.
-- `creds` _Optional[OpenAiCreds], optional_ - The credentials to use. Defaults to None.
-- `temperature` _float, optional_ - The temperature to use. Defaults to 0.
-
 <a id="formfyxer.lit_explorer.complete_with_command"></a>
 
 #### complete\_with\_command(text, command, tokens, creds: Optional[OpenAiCreds] = None)
@@ -350,35 +318,22 @@ Combines some text with a command to send to open ai.
 
 <a id="formfyxer.lit_explorer.needs_calculations"></a>
 
-#### needs\_calculations(text: Union[str])
+#### needs\_calculations(text: Union[str, Doc])
 
 ```python
-def needs_calculations(text: Union[str]) -> bool
+def needs_calculations(text: Union[str, Doc]) -> bool
 ```
 
 A conservative guess at if a given form needs the filler to make math calculations,
 something that should be avoided. If
 
-<a id="formfyxer.lit_explorer.tools_passive"></a>
-
-#### tools\_passive(input: Union[List[str], str], tools\_token: Optional[str] = None)
-
-```python
-def tools_passive(input: Union[List[str], str],
-                  tools_token: Optional[str] = None)
-```
-
-Ping passive voice API for list of sentences using the passive voice
-
 <a id="formfyxer.lit_explorer.get_passive_sentences"></a>
 
-#### get\_passive\_sentences(text: Union[List, str], tools\_token: Optional[str] = None)
+#### get\_passive\_sentences(text: Union[List, str])
 
 ```python
 def get_passive_sentences(
-    text: Union[List, str],
-    tools_token: Optional[str] = None
-) -> List[Tuple[str, List[Tuple[int, int]]]]
+        text: Union[List, str]) -> List[Tuple[str, List[Tuple[int, int]]]]
 ```
 
 Return a list of tuples, where each tuple represents a
@@ -402,24 +357,6 @@ def get_citations(text: str, tokenized_sentences: List[str]) -> List[str]
 Get citations and some extra surrounding context (the full sentence), if the citation is
 fewer than 5 characters (often eyecite only captures a section symbol
 for state-level short citation formats)
-
-<a id="formfyxer.lit_explorer.get_sensitive_data_types"></a>
-
-#### get\_sensitive\_data\_types(fields: List[str], fields\_old: Optional[List[str]] = None)
-
-```python
-def get_sensitive_data_types(
-        fields: List[str],
-        fields_old: Optional[List[str]] = None) -> Dict[str, List[str]]
-```
-
-Given a list of fields, identify those related to sensitive information and return a dictionary with the sensitive
-fields grouped by type. A list of the old field names can also be provided. These fields should be in the same
-order. Passing the old field names allows the sensitive field algorithm to match more accurately. The return value
-will not contain the old field name, only the corresponding field name from the first parameter.
-
-The sensitive data types are: Bank Account Number, Credit Card Number, Driver&#x27;s License Number, and Social Security
-Number.
 
 <a id="formfyxer.lit_explorer.substitute_phrases"></a>
 

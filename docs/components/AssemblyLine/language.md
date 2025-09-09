@@ -8,12 +8,7 @@
   * [get\_language\_list](#AssemblyLine.language.get_language_list)
   * [get\_language\_list\_item](#AssemblyLine.language.get_language_list_item)
 
----
-sidebar_label: language
-title: AssemblyLine.language
----
-
-<a id="AssemblyLine.language.get_local_languages_yaml"></a>
+pydoc-module-header.hbs<a id="AssemblyLine.language.get_local_languages_yaml"></a>
 
 #### get\_local\_languages\_yaml()
 

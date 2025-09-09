@@ -9,12 +9,7 @@
   * [if\_final](#AssemblyLine.custom_jinja_filters.if_final)
   * [catchall\_fields\_code](#AssemblyLine.custom_jinja_filters.catchall_fields_code)
 
----
-sidebar_label: custom_jinja_filters
-title: AssemblyLine.custom_jinja_filters
----
-
-<a id="AssemblyLine.custom_jinja_filters.catchall_options"></a>
+pydoc-module-header.hbs<a id="AssemblyLine.custom_jinja_filters.catchall_options"></a>
 
 #### catchall\_options(value: Any, \*raw\_items: Any)
 

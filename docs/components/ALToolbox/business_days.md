@@ -6,12 +6,7 @@
   * [get\_next\_business\_day](#ALToolbox.business_days.get_next_business_day)
   * [get\_date\_after\_n\_business\_days](#ALToolbox.business_days.get_date_after_n_business_days)
 
----
-sidebar_label: business_days
-title: ALToolbox.business_days
----
-
-<a id="ALToolbox.business_days.standard_holidays"></a>
+pydoc-module-header.hbs<a id="ALToolbox.business_days.standard_holidays"></a>
 
 #### standard\_holidays(year, country="US", subdiv="MA", add\_holidays: Optional[Mapping] = None, remove\_holidays: Optional[Iterable[str]] = None)
 

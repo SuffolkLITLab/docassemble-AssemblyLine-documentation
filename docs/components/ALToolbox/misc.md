@@ -23,12 +23,7 @@
   * [age\_in\_years](#ALToolbox.misc.age_in_years)
   * [format\_date\_if\_defined](#ALToolbox.misc.format_date_if_defined)
 
----
-sidebar_label: misc
-title: ALToolbox.misc
----
-
-<a id="ALToolbox.misc.thousands"></a>
+pydoc-module-header.hbs<a id="ALToolbox.misc.thousands"></a>
 
 #### thousands(num: Union[float, str, Decimal], show\_decimals=False)
 

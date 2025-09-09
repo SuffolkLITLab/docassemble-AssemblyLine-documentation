@@ -31,12 +31,7 @@
   * [auto\_add\_fields](#formfyxer.pdf_wrangling.auto_add_fields)
   * [is\_tagged](#formfyxer.pdf_wrangling.is_tagged)
 
----
-sidebar_label: pdf_wrangling
-title: formfyxer.pdf_wrangling
----
-
-<a id="formfyxer.pdf_wrangling.FieldType"></a>
+pydoc-module-header.hbs<a id="formfyxer.pdf_wrangling.FieldType"></a>
 
 ## FieldType Objects
 

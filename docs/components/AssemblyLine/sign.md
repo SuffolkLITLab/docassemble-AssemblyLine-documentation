@@ -5,12 +5,7 @@
   * [get\_font](#AssemblyLine.sign.get_font)
   * [create\_signature](#AssemblyLine.sign.create_signature)
 
----
-sidebar_label: sign
-title: AssemblyLine.sign
----
-
-<a id="AssemblyLine.sign.find_font_file_by_name"></a>
+pydoc-module-header.hbs<a id="AssemblyLine.sign.find_font_file_by_name"></a>
 
 #### find\_font\_file\_by\_name(font\_name: str, search\_dirs: List[str])
 

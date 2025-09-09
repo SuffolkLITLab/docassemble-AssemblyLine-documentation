@@ -20,12 +20,7 @@
     * [filter\_courts](#AssemblyLine.al_courts.ALCourtLoader.filter_courts)
     * [as\_court](#AssemblyLine.al_courts.ALCourtLoader.as_court)
 
----
-sidebar_label: al_courts
-title: AssemblyLine.al_courts
----
-
-Package for a very simple / MVP list of courts that is mostly signature compatible w/ MACourts for now
+pydoc-module-header.hbsPackage for a very simple / MVP list of courts that is mostly signature compatible w/ MACourts for now
 
 <a id="AssemblyLine.al_courts.ALCourt"></a>
 

@@ -30,12 +30,7 @@
   * [update\_session\_metadata](#AssemblyLine.sessions.update_session_metadata)
   * [update\_current\_session\_metadata](#AssemblyLine.sessions.update_current_session_metadata)
 
----
-sidebar_label: sessions
-title: AssemblyLine.sessions
----
-
-<a id="AssemblyLine.sessions.is_file_like"></a>
+pydoc-module-header.hbs<a id="AssemblyLine.sessions.is_file_like"></a>
 
 #### is\_file\_like(obj: Any)
 

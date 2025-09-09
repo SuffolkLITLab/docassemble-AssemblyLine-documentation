@@ -63,12 +63,7 @@
     * [deduction\_total](#ALToolbox.al_income.ALItemizedJobList.deduction_total)
     * [net\_total](#ALToolbox.al_income.ALItemizedJobList.net_total)
 
----
-sidebar_label: al_income
-title: ALToolbox.al_income
----
-
-<a id="ALToolbox.al_income.times_per_year"></a>
+pydoc-module-header.hbs<a id="ALToolbox.al_income.times_per_year"></a>
 
 #### times\_per\_year(times\_per\_year\_list: List[Tuple[int, str]], times\_per\_year: float)
 
