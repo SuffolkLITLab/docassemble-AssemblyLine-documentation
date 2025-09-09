@@ -42,6 +42,7 @@ module.exports = {
             items: [
                 'authoring/pdf_templates',
                 'authoring/docx_templates',
+                'authoring/landing_pages',
                 'authoring/dynamic_phrasing_based_on_values',
                 'authoring/document_variables_reference',
                 'authoring/name_formats',

@@ -112,7 +112,7 @@ In addition the content in the interview itself, a guided interview should also
 have:
 
 1. a landing page that gives users context before they click a link to start the
-   interview
+   interview. Learn more about [creating effective landing pages](../authoring/landing_pages.md).
 1. help at appropriate points inside the interview that allows users to answer
    questions with confidence
 1. a document they can print and take with them that tells them what to do after

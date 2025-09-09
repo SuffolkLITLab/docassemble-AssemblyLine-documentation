@@ -262,7 +262,7 @@ When you are ready to launch, add the interview to your production server and ma
 
 Once the interview is live, consider how people who need it will find it.
 
-* You should have a dedicated page on your website that tells people about the interview and links to it. [Optimize the page for search engines](search_engine_optimization.md), too!
+* You should have a dedicated page on your website that tells people about the interview and links to it. Learn more about [creating effective landing pages](../authoring/landing_pages.md) and [optimizing them for search engines](search_engine_optimization.md).
 * Others might want to direct people to the interview, like courts, legal aid organizations, and other advocates. Ask them to link to your landing page from their own websites.
 * Paid advertising can help spread awareness, if you have a budget for it.
 
