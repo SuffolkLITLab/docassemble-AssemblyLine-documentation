@@ -28,7 +28,7 @@ jobs:
           path: docassemble-AssemblyLine
       - uses: actions/checkout@v3
         with:
-          repository: SuffolkLITLab/docassemble-AssemblyLine
+          repository: SuffolkLITLab/FormFyxer
           path: FormFyxer
       - uses: actions/checkout@v3
         with:
