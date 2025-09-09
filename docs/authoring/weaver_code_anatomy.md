@@ -191,7 +191,7 @@ code: |
 ---
 ```
 
-1. `allowed_courts` allows the developer to limit which courts the person filling out the form can pick from, making it easier for them to pick the right court. This is now configured directly in the interview code as shown above, rather than using the deprecated `interview_metadata` approach.
+1. `allowed_courts` allows the developer to limit which courts the person filling out the form can pick from, making it easier for them to pick the right court. This is now configured directly in the interview code as shown above, rather than using the deprecated `interview_metadata` approach. This is currently used only in Massachusetts court forms.
 1. `nav.set_section()` comes after `al_intro_screen` and `a_258e_motion_for_impoundment_intro` so that the user can't click to edit their answers before they've actually been asked any questions.
 1. `user_role` and `user_ask_role` tell AssemblyLine which questions to ask about the main party and opposing parties listed on the form. These should be the same as the `typical role`. However, if `typical role` is `unknown`, then the `user_ask_role` variable will be here instead, and will ask the user what role they have in the case.
 
