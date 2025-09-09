@@ -3,6 +3,17 @@ sidebar_label: efm_client
 title: EFSPIntegration.efm_client
 ---
 
+## DALogger Objects
+
+```python
+class DALogger(LoggerAdapter)
+```
+
+#### log
+
+Delegate a log call to Docassemble&#x27;s `log` function, after adding
+contextual information from this adapter instance.
+
 ## ProxyConnection Objects
 
 ```python
@@ -11,7 +22,7 @@ class ProxyConnection(EfspConnection)
 
 The main class you use to communicate with the E-file proxy server from docassemble.
 
-Many methods are unchanged from the parent class, [EfspConnection](py_efsp_client),
+Many methods are unchanged from the parent class, [EfspConnection](py_efsp_client#EfspConnection),
 and are documented there.
 
 #### \_\_init\_\_

@@ -11,10 +11,21 @@ Package for a very simple / MVP list of courts that is mostly signature compatib
 class ALCourt(Court)
 ```
 
-Object representing a court in Massachusetts.
-TODO: it could be interesting to store a jurisdiction on a court. But this is non-trivial. Should it be geo boundaries?
-A list of cities? A list of counties? Instead, we use a function on the CourtList object that filters courts by
+Object representing a court in Massachusetts. We use a function on the CourtList object that filters courts by
 address and can use any of those three features of the court to do the filtering.
+
+&lt;!-- TODO: it could be interesting to store a jurisdiction on a court. But this is non-trivial. Should it be geo boundaries?
+A list of cities? A list of counties? Instead, we use a function on the CourtList object that filters courts by
+address and can use any of those three features of the court to do the filtering.--&gt;
+
+#### init
+
+Create a new court object.
+
+**Arguments**:
+
+- `*pargs` - Standard DAObject positional arguments
+- `**kwargs` - Standard DAObject keyword arguments
 
 #### short\_label
 
@@ -83,6 +94,15 @@ Built around Pandas dataframe.
 - `filename` _str_ - Path to the file containing court information.
 - `converters` _Dict[str, Callable]_ - A dictionary of functions to apply to columns in the dataframe.
 
+#### init
+
+Create a new courtloader object.
+
+**Arguments**:
+
+- `*pargs` - Standard DAObject positional arguments
+- `**kwargs` - Standard DAObject keyword arguments
+
 #### all\_courts
 
 Return a list of all courts in the spreadsheet.
@@ -102,8 +122,9 @@ Retrieve a set of unique values present in a specified dataframe column.
 
 **Returns**:
 
-- `Set[str]` - A set containing unique values from the specified column.
-  Returns an empty set if an error occurs.
+  Set[str]:
+  - A set containing unique values from the specified column.
+  - Returns an empty set if the column does not exist or an error occurs.
 
 #### county\_list
 

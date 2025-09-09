@@ -28,7 +28,7 @@ you more control over the icon that is inserted.
 
 - `icon` - a string representing a fontawesome icon. The icon needs to be in the
   [free library](https://fontawesome.com/search?o=r&amp;m=free).
-- `color` - can be any [Bootstrap color variable](https://getbootstrap.com/docs/5.0/utilities/colors/).
+- `color` - can be any [Bootstrap color variable](https://getbootstrapc.mo/docs/4.0/utilities/colors).
   For example: `primary`, `secondary`, `warning`
 - `color_css` - allows you to use a CSS code to represent the color, e.g., `blue`, or ``fff`` for black
 - `size` - used to control the [fontawesome size](https://fontawesome.com/v6.0/docs/web/style/size)
@@ -147,4 +147,115 @@ of privileges.
 **Returns**:
 
   HTML for a grid of buttons
+
+#### none\_to\_empty
+
+If the value is None or &quot;None&quot;, return a DAEmpty value. Otherwise return the value.
+
+This is useful for filling in a template and to prevent the word None from appearing in the output. For example,
+when handling a radio button that is not required and left unanswered.
+
+A DAEmpty value appears as an empty string in the output. You can also safely transform it or use any method on it
+without raising an error.
+
+**Arguments**:
+
+- `val` - the value to check
+
+**Returns**:
+
+  a DAEmpty if the value is None, otherwise the value
+
+#### option\_or\_other
+
+If the variable is set to &#x27;Other&#x27;, return the value of the &#x27;other&#x27; variable. Otherwise return the value of the variable.
+
+This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.
+
+**Arguments**:
+
+- `variable_name` - the name of the variable to check
+- `other_variable_name` - the name of the variable to return if the value of the first variable is &#x27;Other&#x27;
+
+**Returns**:
+
+  the value of the variable if it is not &#x27;Other&#x27;, otherwise the value of the other variable
+
+#### true\_values\_with\_other
+
+Return a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.
+
+This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.
+
+**Arguments**:
+
+- `variable` - the dictionary of variables to check
+- `other_variable_name` - the name of the variable (as a string) to return if the value of the first variable is &#x27;Other&#x27;
+
+**Returns**:
+
+  a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.
+
+#### include\_a\_year
+
+Validates whether the input text contains at least one 4-digit sequence
+that occurs within a range of ~ 200 years, indicating a valid &quot;year&quot;
+for an event that should be reported on most court forms, like a birthdate
+or a moving date.
+
+Returns True if found, otherwise raises a DAValidationError.
+
+#### is\_leap\_year
+
+Helper function for `age_in_years` to determine if a year is a leap year.
+
+**Arguments**:
+
+- `year` - The year to check.
+
+**Returns**:
+
+  True if the year is a leap year, False otherwise.
+
+#### age\_in\_years
+
+Calculate the age in years from a date (treated like a date of birth).
+
+**Arguments**:
+
+- `the_date` - A string or DADateTime object representing the date of birth.
+
+**Returns**:
+
+  The age in years as an integer.
+
+#### format\_date\_if\_defined
+
+Format a date string if it is defined, otherwise return an empty string.
+
+Passes all additional arguments to the `format_date` function.
+
+**Arguments**:
+
+- `date_object_name` - The date string to format.
+- `*pargs` - Additional positional arguments to pass to `format_date`.
+- `default` - A default string to return if `date_object_name` is not defined.
+- `**kwargs` - Additional keyword arguments to pass to `format_date`. E.g., format=&quot;yyyy-MM-dd&quot;
+  
+
+**Returns**:
+
+  A formatted date string if `date_object_name` is defined, otherwise an empty string.
+  
+
+**Example**:
+
+  
+  &gt;&gt;&gt; format_date_if_defined(&quot;users[0].birthdate&quot;, format=&#x27;yyyy-MM-dd&#x27;)
+  
+  Returns a formatted date string if &quot;users[0].birthdate&quot; is defined, otherwise returns an empty string.
+  
+  &gt;&gt;&gt; format_date_if_defined(&quot;users[0].birthdate&quot;, default=&quot;No date provided&quot;, format=&#x27;yyyy-MM-dd &#x27;)
+  
+  Returns a formatted date string followed by one space if &quot;users[0].birthdate&quot; is defined, otherwise returns &quot;No date provided&quot;. (Note space is added to the format=&quot;...&quot; parameter)
 

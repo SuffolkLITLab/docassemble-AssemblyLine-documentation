@@ -58,6 +58,7 @@ NOTE: This function is stateful under specific conditions. Refer to the conditio
 - `allow_no_address` _bool_ - Allow users to specify they don&#x27;t have an address. Defaults to False.
 - `ask_if_impounded` _Optional[bool]_ - Whether to ask if the address is impounded. Defaults to False.
 - `maxlengths` _Optional[Dict[str, int]]_ - A dictionary of field names and their maximum lengths. Defaults to None.
+- `required` _Dict[str, bool], optional_ - A dictionary of field names and if they should be required. Default is None (everything but unit and zip is required)
   
 
 **Returns**:
@@ -91,7 +92,8 @@ Returns the unit, formatted appropriately.
 
 **Returns**:
 
-- `str` - The formatted unit. If the unit attribute does not exist and require is set to False, this will be an
+  str:
+  The formatted unit. If the unit attribute does not exist and require is set to False, this will be an
   empty string. If the unit attribute exists and is not None or an empty string, the function will return
   the unit number, possibly prefixed with &#x27;Unit&#x27;. If the unit attribute exists and is None or an empty
   string, the function will return an empty string.
@@ -179,7 +181,8 @@ Warning: currently the normalized address will not be redacted if the address is
 
 **Returns**:
 
-  Union[Address, &quot;ALAddress&quot;]: Normalized address if geocoding is successful, otherwise
+  Union[Address, &quot;ALAddress&quot;]:
+  Normalized address if geocoding is successful, otherwise
   the original address.
 
 #### state\_name
@@ -216,6 +219,15 @@ Extends the DAList class and specifically caters to ALAddress objects.
 It provides methods to initialize the list and get a string representation
 of the list in a formatted manner.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### \_\_str\_\_
 
 Provide a string representation of the ALAddressList.
@@ -237,6 +249,15 @@ A class to store a list of IndividualName objects.
 
 Extends the DAList class and is tailored for IndividualName objects.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### \_\_str\_\_
 
 Provide a string representation of the ALNameList.
@@ -254,6 +275,15 @@ class ALPeopleList(DAList)
 Class to store a list of ALIndividual objects, representing people.
 
 For example, defendants, plaintiffs, or children.
+
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
 
 #### names\_and\_addresses\_on\_one\_line
 
@@ -369,6 +399,15 @@ other addresses, mailing addresses, previous names, aliases, and a preferred nam
   Objects as attributes should not be passed directly to the constructor due to
   initialization requirements in the Docassemble framework. See the `init` method.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### signature\_if\_final
 
 Returns the individual&#x27;s signature if `i` is &quot;final&quot;, which usually means we are assembling the final version of the document (as opposed to a preview).
@@ -385,6 +424,14 @@ Returns the individual&#x27;s signature if `i` is &quot;final&quot;, which usual
 #### phone\_numbers
 
 Fetches and formats the phone numbers of the individual.
+
+Supports the following attributes:
+
+- `mobile_number`: Mobile phone number
+- `phone_number`: Other phone number
+- `work_number`: Work phone number
+- `other_number`: Any other phone number
+- `home_number`: Home phone number (if applicable)
 
 **Arguments**:
 
@@ -443,11 +490,13 @@ and other provided parameters.
   Default is True.
 - `show_title` - (bool, optional): Determines if the name&#x27;s title (e.g., Mr., Ms.) should be included in the prompts.
   Default is False.
-- `title_options` _List[str], optional_ - A list of title options to use in the prompts. Default is defined as a list
-  of common titles in English-speaking countries.
+- `title_choices` _Union[List[str], Callable], optional_ - A list or callable of title options to use in the prompts. Default is defined as a list
+  of common titles in English-speaking countries, or overridden by value of global `al_name_titles`.
 - `show_if` _Union[str, Dict[str, str], None], optional_ - Condition to determine which fields to show.
   It can be a string, a dictionary with conditions, or None. Default is None.
 - `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
+- `suffix_choices` _Union[List[str], Callable], optional_ - A list of suffix options or a callable to generate suffix options, or overridden by value of global `al_name_suffixes`.
+- `title_options` - (Union[List[str], Callable], optional): Deprecated parameter, use `title_choices` instead. If provided, it will be used to set the title choices.
   
 
 **Returns**:
@@ -474,6 +523,7 @@ Generate field prompts for capturing an address.
 - `allow_no_address` _bool_ - Whether to permit entries with no address. Defaults to False.
 - `ask_if_impounded` _bool_ - Whether to ask if the address is impounded. Defaults to False.
 - `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
+- `required` _Dict[str, bool], optional_ - A dictionary of field names and if they should be required. Default is None (everything but unit and zip is required)
   
 
 **Returns**:
@@ -490,11 +540,17 @@ self-described option.
 - `show_help` _bool_ - Whether to show additional help text. Defaults to False.
 - `show_if` _Union[str, Dict[str, str], None]_ - Condition to determine if the field should be shown. Defaults to None.
 - `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
+- `choices` _Optional[Union[List[Dict[str, str]], Callable]]_ - A list of choices of genders to use in the prompts, or a callable that returns such a list. Default set of choices includes male, female, nonbinary, prefer-not-to-say, self-described, and unknown.
   
 
 **Returns**:
 
   List[Dict[str, str]]: A list of dictionaries with field prompts for gender.
+  
+
+**Notes**:
+
+  self-described will provide an input that overrides the value of `gender` and is not persisted.
 
 #### pronoun\_fields
 
@@ -508,6 +564,7 @@ Generate fields for capturing pronoun information.
 - `shuffle` _bool_ - Whether to shuffle the order of pronouns. Defaults to False.
 - `show_unknown` _Union[Literal[&quot;guess&quot;], bool]_ - Whether to show an &quot;unknown&quot; option. Can be &quot;guess&quot;, True, or False. Defaults to &quot;guess&quot;.
 - `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
+- `choices` _Optional[List[Dict[str, str]]]_ - A list of custom pronoun choices. Defaults to None. If not provided, global magic variable `al_pronoun_choices` will be used.
   
 
 **Returns**:
@@ -541,7 +598,7 @@ Generate fields for capturing language preferences.
 
 **Arguments**:
 
-- `choices` _Optional[List[Dict[str, str]]]_ - A list of language choices. Defaults to None.
+- `choices` _Optional[Union[List[Dict[str, str]], Callable]]_ - A list or callable of language choices. Defaults to None.
 - `style` _str_ - The display style of choices. Defaults to &quot;radio&quot;.
 - `show_if` _Union[str, Dict[str, str], None]_ - Condition to determine if the field should be shown. Defaults to None.
 - `maxlengths` _Dict[str, int], optional_ - A dictionary of field names and their maximum lengths. Default is None.
@@ -735,15 +792,23 @@ See: https://www.merriam-webster.com/wordplay/themself
 
 Returns the individual&#x27;s full name.
 
+If the person has the attribute person_type and it is defined
+as either `business` or `organization`, it will only return
+the first name, even if middle, last, or suffix are defined.
+
 **Returns**:
 
-- `str` - The individual&#x27;s full name.
+- `str` - The individual or business&#x27;s full name.
 
 #### name\_initials
 
 Returns the individual&#x27;s name with the middle name as an initial.
 Equivalent to `name.full(middle="initial")`, which is also the default.
 Defined only to make it possible to be explicit about the name form.
+
+If the person has the attribute person_type and it is defined
+as either `business` or `organization`, it will only return
+the &quot;initials&quot; of the first name, even if middle, last, or suffix are defined.
 
 **Returns**:
 
@@ -754,6 +819,10 @@ Defined only to make it possible to be explicit about the name form.
 Returns the individual&#x27;s name without any middle name.
 
 Equivalent to self.name.firstlast()
+
+If the person has the attribute person_type and it is defined
+as either `business` or `organization`, it will only return
+the first name, even if middle, last, or suffix are defined.
 
 **Returns**:
 
@@ -778,6 +847,10 @@ In order, it will try to use:
 * the default value, e.g., &quot;the minor&quot;, if provided
 * the full name
 
+If the person has the attribute `person_type` and it is defined
+as either `business` or `organization`, it will only return
+the first name, even if middle, last, or suffix are defined.
+
 **Arguments**:
 
 - `unique_names` _Optional[List[Any]]_ - A list of unique names to compare against. Defaults to None.
@@ -794,6 +867,19 @@ In order, it will try to use:
     ```mako
     Who do you want to take care of $\{ children.familiar(unique_names=parents + petitioners, default="the minor") \}
     ```
+
+#### \_\_str\_\_
+
+Returns a string representation of the individual, which is their full name with the
+middle name shortened to one letter.
+
+If the individual has the attribute `person_type` and it is defined
+as either `business` or `organization`, it will only return
+the first name, even if middle, last, or suffix are defined.
+
+**Returns**:
+
+- `str` - The individual&#x27;s name.
 
 #### section\_links
 

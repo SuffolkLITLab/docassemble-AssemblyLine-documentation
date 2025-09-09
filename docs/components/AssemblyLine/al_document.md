@@ -3,6 +3,22 @@ sidebar_label: al_document
 title: AssemblyLine.al_document
 ---
 
+#### random\_suffix
+
+Return a random string for use in unique IDs.
+
+Note: this is powerful enough for the expected usecase of distinguishing a few
+HTML elements from each other, but not cryptographically secure or as strong as
+a true GUID.
+
+**Arguments**:
+
+- `length` _int_ - The length of the random string to generate. Defaults to 8.
+
+**Returns**:
+
+- `str` - A random string of lowercase letters and digits.
+
 #### base\_name
 
 Extracts the base name of a file without its extension.
@@ -144,6 +160,15 @@ is not currently supported.
 **Notes**:
 
   The attributes `headers` and `field_style` are planned for future releases and are not currently implemented.
+
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
 
 #### overflow\_value
 
@@ -399,6 +424,15 @@ Adding a new entry will implicitly set the `field_name` attribute of the field
 - `style` _str_ - Determines the display behavior. If set to &quot;overflow_only&quot;,
   only the overflow text will be displayed.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### initializeObject
 
 Initializes a new dictionary entry and sets its `field_name` attribute.
@@ -617,6 +651,15 @@ on the final download screen.
       my_doc.overflow_fields.gathered = True
     ```
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### as\_pdf
 
 Generates a PDF version of the assembled document.
@@ -803,6 +846,15 @@ A class for initializing static documents for inclusion in an ALDocumentBundle w
 
   Consider handling files in `/data/templates` if deemed useful, potentially by copying into a DAFile using `pdf_concatenate()`.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### \_\_getitem\_\_
 
 Override to ensure &#x27;final&#x27; and &#x27;private&#x27; keys always exist and reference the same file.
@@ -929,6 +981,15 @@ bundles, each can be rendered as a merged PDF or a list of documents.
     ```
     zipped_files = bundle.as_zip()
     ```
+
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
 
 #### as\_pdf
 
@@ -1091,6 +1152,38 @@ For documents that are not in DOCX or RTF formats, the original file format is r
 
 - `List[DAFile]` - Flat list of documents in DOCX or RTF formats or their original format.
 
+#### get\_cacheable\_documents
+
+Generates a cache of all enabled documents in the bundle, and returns it in a structure that can be cached
+and returned for use in a background process.
+
+The result looks like this:
+
+[
+\{&quot;title&quot;: &quot;Document 1&quot;, &quot;pdf&quot;: DAFile, &quot;docx&quot;: DAFile, download_filename: str\},
+],
+DAFile, # Zip of whole bundle
+DAFile # PDF of whole bundle
+
+**Arguments**:
+
+- `key` _str_ - Identifier for the document version, default is &quot;final&quot;.
+- `pdf` _bool_ - Flag to include a PDF version of each file, default is True.
+- `docx` _bool_ - Flag to include a DOCX version of each file, default is False.
+- `original` _bool_ - Flag to include the original version of each file, default is False.
+- `refresh` _bool_ - Flag to reconsider the &#x27;enabled&#x27; attribute, default is True.
+- `pdfa` _bool_ - Flag to return documents in PDF/A format, default is False.
+- `include_zip` _bool_ - Flag to include a zip option, default is True.
+- `include_full_pdf` _bool_ - Flag to include a PDF version of the whole bundle, default is False.
+- `append_matching_suffix` _bool_ - Flag to determine if matching suffix should be appended to file name, default is True.
+- `zip_include_pdf` _Optional[bool]_ - If True, includes a PDF version in the zip file even if original is in DOCX format.
+- `zip_format` _Optional[str]_ - Format of the primary version of each document.
+  
+
+**Returns**:
+
+  Tuple[List[Dict[str, DAFile]], Optional[DAFile], Optional[DAFile]]: A list of dictionaries containing the enabled documents, a zip file of the whole bundle, and a PDF of the whole
+
 #### download\_list\_html
 
 Constructs an HTML table displaying a list of documents with &#x27;view&#x27; and &#x27;download&#x27; buttons.
@@ -1107,10 +1200,19 @@ Constructs an HTML table displaying a list of documents with &#x27;view&#x27; an
 - `view_icon` _str_ - Icon for the &#x27;view&#x27; button, default is &quot;eye&quot;.
 - `download_label` _str_ - Label for the &#x27;download&#x27; button, default is &quot;Download&quot;.
 - `download_icon` _str_ - Icon for the &#x27;download&#x27; button, default is &quot;download&quot;.
+- `send_label` _str_ - Label for the &#x27;send&#x27; button. Default is &quot;Send&quot;.
+- `send_icon` _str_ - Fontawesome icon for the &#x27;send&#x27; button. Default is &quot;envelope&quot;.
 - `zip_label` _Optional[str]_ - Label for the zip option. If not provided, uses the generic template for `self.zip_label` (&quot;Download all&quot;).
 - `zip_icon` _str_ - Icon for the zip option, default is &quot;file-archive&quot;.
+- `zip_row_label` _str, optional_ - Text to go in the left-most column
+  of the table&#x27;s zip row. Will default to the value of `self.title`.
 - `append_matching_suffix` _bool_ - Flag to determine if matching suffix should be appended to file name, default is True.
-- `include_email` _bool_ - Flag to include an email option, default is False.
+- `include_email` _bool_ - Flag to include an option, default is False.
+- `use_previously_cached_files` _bool_ - Flag to use previously cached files (e.g., made in background) if defined. default is False.
+- `include_full_pdf` _bool_ - Flag to include a full PDF option, default is False.
+- `full_pdf_label` _Optional[str]_ - Label for the full PDF option. If not provided, uses the generic template for `self.full_pdf_label` (&quot;Download all&quot;).
+- `zip_include_pdf` _Optional[bool]_ - Flag to include PDF files in the zip archive, default is True. If `None` value of `view` will be used.
+- `zip_format` _Optional[str]_ - Format of the files in the zip archive. If None, defaults to value of &quot;format&quot; parameter.
   
 
 **Returns**:
@@ -1149,6 +1251,8 @@ someone to send the bundle to the specified email address.
 **Arguments**:
 
 - `key` _str_ - A key used to identify which version of the ALDocument to send. Defaults to &quot;final&quot;.
+- `send_label` _str_ - Label for the &#x27;send&#x27; button. Default is &quot;Send&quot;.
+- `send_icon` _str_ - Icon for the &#x27;send&#x27; button. Default is &quot;envelope&quot;.
   
 
 **Returns**:
@@ -1164,12 +1268,13 @@ in contrast to send_button_html.
 **Arguments**:
 
 - `email` _str_ - The recipient&#x27;s email address.
-- `editable` _bool, optional_ - Flag indicating if the bundle is editable. Defaults to False.
+- `editable` _bool, optional_ - Flag indicating if the bundle is editable. Defaults to False. (deprecated; use preferred_formats instead)
 - `template_name` _str, optional_ - The name of the template to be used. Defaults to an empty string.
 - `label` _str, optional_ - The label for the button. Defaults to &quot;Send&quot;.
 - `icon` _str, optional_ - The Fontawesome icon for the button. Defaults to &quot;envelope&quot;.
 - `color` _str, optional_ - The Bootstrap color of the button. Defaults to &quot;primary&quot;.
 - `key` _str, optional_ - A key used to identify which version of the ALDocument to send. Defaults to &quot;final&quot;.
+- `preferred_formats` _Optional[Union[str,List[str]]], optional_ - A list of allowed formats for the document. Defaults to &quot;pdf&quot; if not specified.
   
 
 **Returns**:
@@ -1189,9 +1294,13 @@ include an editable (Word) copy of the file, if and only if it is available.
 - `key` _str, optional_ - A key used to identify which version of the ALDocument to send. Defaults to &quot;final&quot;.
 - `show_editable_checkbox` _bool, optional_ - Flag indicating if the checkbox
   for deciding the inclusion of an editable (Word) copy should be displayed.
-  Defaults to True.
+  Defaults to True. If preferred_formats = [&quot;pdf&quot;], this will be ignored and no checkbox will be shown.
 - `template_name` _str, optional_ - Name of the template variable that is used to fill
   the email contents. By default, the `x.send_email_template` template will be used.
+- `label` _str, optional_ - The label for the button. Defaults to &quot;Send&quot;.
+- `icon` _str, optional_ - The Fontawesome icon for the button. Defaults
+  to &quot;envelope&quot;.
+- `preferred_formats` _Optional[Union[str,List[str]]], optional_ - A list of allowed formats for the document. Defaults to &quot;pdf&quot; if not specified.
   
 
 **Returns**:
@@ -1206,11 +1315,11 @@ https://docassemble.org/docs/functions.html#send_email with additional parameter
 
 **Arguments**:
 
-- `to` _Any_ - The email address or list of addresses to send to. It can be a string
-  or objects with such. Similar to da send_email `to`.
+- `to` _Any_ - The email address, list of email addresses, or list of Individuals with a .email attribute to send to.
 - `key` _str, optional_ - Specifies which version of the document to send. Defaults to &quot;final&quot;.
-- `editable` _bool, optional_ - If True, sends the editable documents. Defaults to False.
-- `template` _Any_ - The template variable, similar to da `send_email` `template` variable.
+- `editable` _bool, optional_ - If True, sends the editable documents. Defaults to False. (Deprecated)
+- `template` _Any_ - The template variable for the subject and body of the email, similar to da `send_email` `template` variable.
+- `preferred_formats` _str_ - Specifies the format of the files to send. Can be &quot;pdf&quot; or &quot;docx&quot;, or a list of these formats. Overrides deprecated `editable` keyword.
 - `**kwargs` - Additional parameters to pass to the da `send_email` function.
   
 
@@ -1275,6 +1384,15 @@ Class to represent a single exhibit, with cover page, which may contain multiple
   Will typically say something like &quot;Exhibit 1&quot;
 - `label` _str_ - A label, like &quot;A&quot; or &quot;1&quot; for this exhibit in the cover page and table of contents
 - `starting_page` _int_ - first page number to use in table of contents
+
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
 
 #### ocr\_ready
 
@@ -1384,6 +1502,15 @@ and rendering them into a single PDF file.
   Uses A..Z labels by default.
 - `auto_ocr` _bool_ - If True, automatically starts OCR processing for uploaded exhibits. Defaults to True.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### as\_pdf
 
 Compiles all exhibits in the list into a single PDF.
@@ -1472,6 +1599,15 @@ objects:
 objects:
   - exhibit_attachment: ALExhibitDocument.using(title="Exhibits", filename="exhibits" , auto_labeler=item_label)
 ```
+
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
 
 #### has\_overflow
 
@@ -1567,6 +1703,15 @@ This class provides functionality to export data as a table in various formats s
 - `file` _DAFile, optional_ - Reference to the generated file (can be PDF, DOCX, etc.).
 - `table` _???_ - Represents the actual table data. Type and attributes need more context to document.
 
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
+
 #### has\_overflow
 
 Check for overflow in the document.
@@ -1654,6 +1799,15 @@ compatibility with ALDocument.
 
 - `has_addendum` _bool_ - A flag indicating the presence of an addendum in the document.
 - `suffix_to_append` _str_ - Suffix that can be appended to file names, defaulting to &quot;preview&quot;.
+
+#### init
+
+Standard DAObject init method.
+
+**Arguments**:
+
+- `*pargs` - Positional arguments
+- `**kwargs` - Keyword arguments
 
 #### has\_overflow
 

@@ -81,8 +81,8 @@ an existing interview to the answer set.
 
 #### find\_matching\_sessions
 
-Get a list of sessions where the metadata for the session matches the provided keyword search terms.
-This function is designed to be used in a search interface where the user can search for sessions by keyword.
+Get a list of sessions where the metadata for the session matches the provided keyword search terms and metadata filters.
+This function is designed to be used in a search interface where the user can search for sessions by keyword and specific metadata values.
 The keyword search is case-insensitive and will match any part of the metadata column values.
 
 **Arguments**:
@@ -99,19 +99,35 @@ The keyword search is case-insensitive and will match any part of the metadata c
 - `exclude_filenames` _Optional[List[str]], optional_ - A list of filenames to exclude from the results. Defaults to None.
 - `exclude_newly_started_sessions` _bool, optional_ - Whether to exclude sessions that are still on &quot;step 1&quot;. Defaults to False.
 - `global_search_allowed_roles` _Union[Set[str],List[str]], optional_ - A list or set of roles that are allowed to search all sessions. Defaults to \{&#x27;admin&#x27;,&#x27;developer&#x27;, &#x27;advocate&#x27;\}. &#x27;admin&#x27; and &#x27;developer&#x27; are always allowed to search all sessions.
+- `metadata_filters` _Optional[Dict[str, Tuple[Any, str, Optional[str]]]], optional_ - A dictionary of metadata column names and their corresponding filter tuples.
+  Each tuple should contain (value, operator, cast_type).
+  - value: The value to compare against
+  - operator: One of &#x27;=&#x27;, &#x27;!=&#x27;, &#x27;&lt;&#x27;, &#x27;&lt;=&#x27;, &#x27;&gt;&#x27;, &#x27;&gt;=&#x27;, &#x27;LIKE&#x27;, &#x27;ILIKE&#x27;
+  - cast_type: Optional. One of &#x27;int&#x27;, &#x27;float&#x27;, or None for string (default)
   
 
 **Returns**:
 
-  List[Dict[str, Any]]: A list of saved sessions for the specified filename that match the search keyword
+  List[Dict[str, Any]]: A list of saved sessions for the specified filename that match the search keyword and metadata filters
   
 
 **Example**:
 
+  matching_sessions = find_matching_sessions(
+  &quot;smith&quot;,
+  user_id=&quot;all&quot;,
+  filenames=[f&quot;\{current_context().package\}:intake.yml&quot;, &quot;docassemble.MyPackage:intake.yml&quot;],
+  metadata_filters=\{
+- `"owner"` - (&quot;samantha&quot;, &quot;ILIKE&quot;, None),
+- `"age"` - (30, &quot;&gt;=&quot;, &quot;int&quot;),
+- `"status"` - (&quot;%complete%&quot;, &quot;LIKE&quot;, None)
+  \}
+  )
   
-    ```python
-    matching_sessions=find_matching_sessions("smith", user_id="all", filenames=[f"\{user_info().package\}:intake.yml", "docassemble.MyPackage:intake.yml"])
-    ```
+
+**Example**:
+
+- `\{"owner"` - (&quot;samantha&quot;, &quot;ILIKE&quot;, None), &quot;age&quot;: (30, &quot;&gt;=&quot;, &quot;int&quot;), &quot;status&quot;: (&quot;%complete%&quot;, &quot;LIKE&quot;, None)\}
 
 #### delete\_interview\_sessions
 
@@ -265,6 +281,7 @@ user sessions. The results exclude the answer set filename by default.
 - `show_copy_button` _bool, optional_ - If True, show a copy button for answer sets. Defaults to True.
 - `limit` _int, optional_ - Limit for the number of sessions returned. Defaults to 50.
 - `offset` _int, optional_ - Offset for the session list. Defaults to 0.
+- `answers` _Optional[List[Dict[str, Any]], optional_ - A list of answers to format and display. Defaults to showing all sessions for the current user.
   
   
 
@@ -457,4 +474,63 @@ short title: My forms
 **Returns**:
 
 - `str` - The value of the config key, or the alternative key, or None.
+
+#### get\_filenames\_having\_sessions
+
+Get a list of all filenames that have sessions saved for a given user, in order
+to help show the user a good list of interviews to filter search results.
+
+**Arguments**:
+
+- `user_id` _Optional[Union[int, str]], optional_ - User ID to get the list of filenames for. Defaults to current logged-in user. Use &quot;all&quot; to get all filenames.
+- `global_search_allowed_roles` _Optional[Union[Set[str], List[str]]], optional_ - Roles that are allowed to search for all sessions. Defaults to admin, developer, and advocate.
+  
+
+**Returns**:
+
+- `List[str]` - List of filenames that have sessions saved for the user.
+
+#### get\_combined\_filename\_list
+
+Get a list of all filenames that have sessions saved for a given user. If it is possible
+to show a descriptive name for the filename (from the main dispatch area of the configuration),
+it will show that instead of the filename.
+
+The results will be in the form of [\{filename: Descriptive name\}], which is what the Docassemble
+radio button and dropdown list expect.
+
+**Arguments**:
+
+- `user_id` _Optional[Union[int, str]], optional_ - User ID to get the list of filenames for. Defaults to current logged in user. Use &quot;all&quot; to get all filenames.
+- `global_search_allowed_roles` _Optional[Union[Set[str], List[str]]], optional_ - Roles that are allowed to search for all sessions. Defaults to admin, developer, and advocate.
+  
+
+**Returns**:
+
+  List[Dict[str, str]]: List of filenames that have sessions saved for the user.
+
+#### update\_session\_metadata
+
+Upsert session metadata into jsonstorage using a PostgreSQL advisory lock
+(two-int form) to serialize concurrent upserts on the same (session_id,filename,tags) key.
+
+**Arguments**:
+
+- `filename` - The filename of the interview session to update.
+- `session_id` - The ID of the session to update.
+- `data` - A dict of metadata to add or update.
+- `metadata_key_name` - The tag for the metadata in jsonstorage. Defaults to &quot;metadata&quot;.
+
+#### update\_current\_session\_metadata
+
+Updates metadata for the current session without retrieving the data first.
+
+This is a wrapper for update_session_metadata() that uses the
+current interview&#x27;s filename and session ID from current_context().
+
+**Arguments**:
+
+- `data` _Dict[str, Any]_ - A dictionary of metadata to add or update.
+- `metadata_key_name` _str, optional_ - The tag for the metadata in the
+  jsonstorage table. Defaults to &quot;metadata&quot;.
 

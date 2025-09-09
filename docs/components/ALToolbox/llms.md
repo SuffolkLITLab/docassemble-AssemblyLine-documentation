@@ -7,12 +7,7 @@ title: ALToolbox.llms
 
 A light wrapper on the OpenAI chat endpoint.
 
-Includes support for token limits, error handling, and moderation queue.
-
-It is also possible to specify an alternative model, and we support GPT-4-turbo&#x27;s JSON
-mode.
-
-As of today (1/2/2024) JSON mode requires the model to be set to &quot;gpt-4-1106-preview&quot; or &quot;gpt-3.5-turbo-1106&quot;
+Includes support for token limits, minimal error handling, and moderation.
 
 **Arguments**:
 
@@ -20,8 +15,14 @@ As of today (1/2/2024) JSON mode requires the model to be set to &quot;gpt-4-110
 - `user_message` _str_ - The message (data) from the user
 - `openai_client` _Optional[OpenAI]_ - An OpenAI client object, optional. If omitted, will fall back to creating a new OpenAI client with the API key provided as an environment variable
 - `openai_api` _Optional[str]_ - the API key for an OpenAI client, optional. If provided, a new OpenAI client will be created.
-- `temperature` _float_ - The temperature to use for the GPT-4-turbo API
-- `json_mode` _bool_ - Whether to use JSON mode for the GPT-4-turbo API
+- `temperature` _float_ - The temperature to use for the GPT API
+- `json_mode` _bool_ - Whether to use JSON mode for the GPT API. Requires the word `json` in the system message, but will add if you omit it.
+- `model` _str_ - The model to use for the GPT API
+- `messages` _Optional[List[Dict[str, str]]]_ - A list of messages to send to the chat engine. If provided, system_message and user_message will be ignored.
+- `skip_moderation` _bool_ - Whether to skip the OpenAI moderation step, which may save seconds but risks banning your account. Only enable when you have full control over the inputs.
+- `openai_base_url` _Optional[str]_ - The base URL for the OpenAI API. Defaults to value provided in the configuration or &quot;https://api.openai.com/v1/&quot;.
+- `max_output_tokens` _Optional[int]_ - The maximum number of tokens to return from the API. Defaults to 16380.
+- `max_input_tokens` _Optional[int]_ - The maximum number of tokens to send to the API. Defaults to 128000.
   
 
 **Returns**:
@@ -44,7 +45,7 @@ Extracts fields from text.
 
 #### match\_goals\_from\_text
 
-Read&#x27;s a user&#x27;s message and determines whether it meets a set of goals, with the help of an LLM.
+Reads a user&#x27;s message and determines whether it meets a set of goals, with the help of an LLM.
 
 **Arguments**:
 
@@ -231,4 +232,60 @@ Returns the next unsatisfied goal, along with a follow-up question to ask the us
 #### synthesize\_draft\_response
 
 Returns a draft response that synthesizes the user&#x27;s responses to the questions.
+
+#### provide\_feedback
+
+Returns feedback to the user based on the goals they satisfied.
+
+## IntakeQuestion Objects
+
+```python
+class IntakeQuestion(DAObject)
+```
+
+A class to represent a question in an LLM-assisted intake questionnaire.
+
+**Attributes**:
+
+- `question` _str_ - The question to ask the user
+- `response` _str_ - The user&#x27;s response to the question
+
+## IntakeQuestionList Objects
+
+```python
+class IntakeQuestionList(DAList)
+```
+
+Class to help create an LLM-assisted intake questionnaire.
+
+The LLM will be provided a free-form set of in/out criteria (like that
+provided to a phone intake worker), an initial draft question from the user,
+and then guide the user through a series of follow-up questions to gather only
+enough information to determine if the user meets the criteria.
+
+In/out criteria are often pretty short, so we do not make or support
+embeddings at the moment.
+
+**Attributes**:
+
+- `criteria` _Dict[str, str]_ - A dictionary of criteria to match, indexed by problem type
+- `problem_type_descriptions` _Dict[str, str]_ - A dictionary of descriptions of the problem types
+- `problem_type` _str_ - The type of problem to match. E.g., a unit/department inside the law firm
+- `initial_problem_description` _str_ - The initial description of the problem from the user
+- `initial_question` _str_ - The original question posed in the interview
+- `question_limit` _int_ - The maximum number of follow-up questions to ask the user. Defaults to 10.
+- `model` _str_ - The model to use for the GPT API. Defaults to gpt-4.1.
+- `max_output_tokens` _int_ - The maximum number of tokens to return from the API. Defaults to 4096
+- `llm_role` _str_ - The role the LLM should play. Allows you to customize the script the LLM uses to guide the user.
+  We have provided a default script that should work for most intake questionnaires.
+- `llm_user_qualifies_prompt` _str_ - The prompt to use to determine if the user qualifies. We have provided a default prompt.
+- `out_of_questions` _bool_ - Whether the user has run out of questions to answer
+- `qualifies` _bool_ - Whether the user qualifies based on the criteria
+
+#### need\_more\_questions
+
+Returns True if the user needs to answer more questions, False otherwise.
+
+Also has the side effect of checking the user&#x27;s most recent response to see if it satisfies the criteria
+and updating both the next question to be asked and the current qualification status.
 

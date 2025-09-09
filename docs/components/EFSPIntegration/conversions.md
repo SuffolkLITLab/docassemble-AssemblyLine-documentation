@@ -81,7 +81,7 @@ or it&#x27;s data run through [pretty_display](#pretty_display)
 #### tyler\_daterep\_to\_datetime
 
 Takes an jsonized-XML object of &quot;\{http://niem.gov/niem/niem-core/2.0\}ActivityDate,
-returns the datetime it repsents.
+returns the datetime it represents.
 
 #### tyler\_timestamp\_to\_datetime
 
