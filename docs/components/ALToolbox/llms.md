@@ -1,9 +1,55 @@
+# Table of Contents
+
+* [ALToolbox.llms](#ALToolbox.llms)
+  * [chat\_completion](#ALToolbox.llms.chat_completion)
+  * [extract\_fields\_from\_text](#ALToolbox.llms.extract_fields_from_text)
+  * [match\_goals\_from\_text](#ALToolbox.llms.match_goals_from_text)
+  * [classify\_text](#ALToolbox.llms.classify_text)
+  * [synthesize\_user\_responses](#ALToolbox.llms.synthesize_user_responses)
+  * [define\_fields\_from\_dict](#ALToolbox.llms.define_fields_from_dict)
+  * [Goal](#ALToolbox.llms.Goal)
+    * [response\_satisfies\_me\_or\_follow\_up](#ALToolbox.llms.Goal.response_satisfies_me_or_follow_up)
+    * [get\_next\_question](#ALToolbox.llms.Goal.get_next_question)
+  * [GoalDict](#ALToolbox.llms.GoalDict)
+    * [satisfied](#ALToolbox.llms.GoalDict.satisfied)
+  * [GoalQuestion](#ALToolbox.llms.GoalQuestion)
+  * [GoalSatisfactionList](#ALToolbox.llms.GoalSatisfactionList)
+    * [mark\_satisfied\_goals](#ALToolbox.llms.GoalSatisfactionList.mark_satisfied_goals)
+    * [keep\_going](#ALToolbox.llms.GoalSatisfactionList.keep_going)
+    * [need\_more\_questions](#ALToolbox.llms.GoalSatisfactionList.need_more_questions)
+    * [satisfied](#ALToolbox.llms.GoalSatisfactionList.satisfied)
+    * [get\_next\_goal\_and\_question](#ALToolbox.llms.GoalSatisfactionList.get_next_goal_and_question)
+    * [synthesize\_draft\_response](#ALToolbox.llms.GoalSatisfactionList.synthesize_draft_response)
+    * [provide\_feedback](#ALToolbox.llms.GoalSatisfactionList.provide_feedback)
+  * [IntakeQuestion](#ALToolbox.llms.IntakeQuestion)
+  * [IntakeQuestionList](#ALToolbox.llms.IntakeQuestionList)
+    * [need\_more\_questions](#ALToolbox.llms.IntakeQuestionList.need_more_questions)
+
 ---
 sidebar_label: llms
 title: ALToolbox.llms
 ---
 
-#### chat\_completion
+<a id="ALToolbox.llms.chat_completion"></a>
+
+#### chat\_completion(system\_message: Optional[str] = None, user\_message: Optional[str] = None, openai\_client: Optional[OpenAI] = None, openai\_api: Optional[str] = None, temperature: float = 0.5, json\_mode=False, model: str = "gpt-4o", messages: Optional[List[Dict[str, str]]] = None, skip\_moderation: bool = False, openai\_base\_url: Optional[str] = None, max\_output\_tokens: Optional[int] = None, max\_input\_tokens: Optional[int] = None)
+
+```python
+def chat_completion(
+    system_message: Optional[str] = None,
+    user_message: Optional[str] = None,
+    openai_client: Optional[OpenAI] = None,
+    openai_api: Optional[str] = None,
+    temperature: float = 0.5,
+    json_mode=False,
+    model: str = "gpt-4o",
+    messages: Optional[List[Dict[str, str]]] = None,
+    skip_moderation: bool = False,
+    openai_base_url: Optional[str] = None,
+    max_output_tokens: Optional[int] = None,
+    max_input_tokens: Optional[int] = None
+) -> Union[List[Any], Dict[str, Any], str]
+```
 
 A light wrapper on the OpenAI chat endpoint.
 
@@ -29,7 +75,18 @@ Includes support for token limits, minimal error handling, and moderation.
 
   A string with the response from the API endpoint or JSON data if json_mode is True
 
-#### extract\_fields\_from\_text
+<a id="ALToolbox.llms.extract_fields_from_text"></a>
+
+#### extract\_fields\_from\_text(text: str, field\_list: Dict[str, str], openai\_client: Optional[OpenAI] = None, openai\_api: Optional[str] = None, temperature: float = 0, model="gpt-4o-mini")
+
+```python
+def extract_fields_from_text(text: str,
+                             field_list: Dict[str, str],
+                             openai_client: Optional[OpenAI] = None,
+                             openai_api: Optional[str] = None,
+                             temperature: float = 0,
+                             model="gpt-4o-mini") -> Dict[str, Any]
+```
 
 Extracts fields from text.
 
@@ -43,7 +100,19 @@ Extracts fields from text.
 
   A dictionary of fields extracted from the text
 
-#### match\_goals\_from\_text
+<a id="ALToolbox.llms.match_goals_from_text"></a>
+
+#### match\_goals\_from\_text(question: str, user\_response: str, goals: Dict[str, str], openai\_client: Optional[OpenAI] = None, openai\_api: Optional[str] = None, temperature: float = 0, model="gpt-4o-mini")
+
+```python
+def match_goals_from_text(question: str,
+                          user_response: str,
+                          goals: Dict[str, str],
+                          openai_client: Optional[OpenAI] = None,
+                          openai_api: Optional[str] = None,
+                          temperature: float = 0,
+                          model="gpt-4o-mini") -> Dict[str, Any]
+```
 
 Reads a user&#x27;s message and determines whether it meets a set of goals, with the help of an LLM.
 
@@ -57,7 +126,19 @@ Reads a user&#x27;s message and determines whether it meets a set of goals, with
 
   A dictionary of fields extracted from the text
 
-#### classify\_text
+<a id="ALToolbox.llms.classify_text"></a>
+
+#### classify\_text(text: str, choices: Dict[str, str], default\_response: str = "null", openai\_client: Optional[OpenAI] = None, openai\_api: Optional[str] = None, temperature: float = 0, model="gpt-4o-mini")
+
+```python
+def classify_text(text: str,
+                  choices: Dict[str, str],
+                  default_response: str = "null",
+                  openai_client: Optional[OpenAI] = None,
+                  openai_api: Optional[str] = None,
+                  temperature: float = 0,
+                  model="gpt-4o-mini") -> str
+```
 
 Given a text, classify it into one of the provided choices with the assistance of a large language model.
 
@@ -70,7 +151,18 @@ Given a text, classify it into one of the provided choices with the assistance o
 - `temperature` _float_ - The temperature to use for GPT. Defaults to 0.
 - `model` _str_ - The model to use for the GPT API
 
-#### synthesize\_user\_responses
+<a id="ALToolbox.llms.synthesize_user_responses"></a>
+
+#### synthesize\_user\_responses(messages: List[Dict[str, str]], custom\_instructions: Optional[str] = "", openai\_client: Optional[OpenAI] = None, openai\_api: Optional[str] = None, temperature: float = 0, model: str = "gpt-4o-mini")
+
+```python
+def synthesize_user_responses(messages: List[Dict[str, str]],
+                              custom_instructions: Optional[str] = "",
+                              openai_client: Optional[OpenAI] = None,
+                              openai_api: Optional[str] = None,
+                              temperature: float = 0,
+                              model: str = "gpt-4o-mini") -> str
+```
 
 Given a first draft and a series of follow-up questions and answers, use an LLM to synthesize the user&#x27;s responses
 into a single, coherent reply.
@@ -85,7 +177,14 @@ into a single, coherent reply.
 - `temperature` _float_ - The temperature to use for GPT. Defaults to 0.
 - `model` _str_ - The model to use for the GPT API
 
-#### define\_fields\_from\_dict
+<a id="ALToolbox.llms.define_fields_from_dict"></a>
+
+#### define\_fields\_from\_dict(field\_dict: Dict[str, Any], fields\_to\_ignore: Optional[List] = None)
+
+```python
+def define_fields_from_dict(field_dict: Dict[str, Any],
+                            fields_to_ignore: Optional[List] = None) -> None
+```
 
 Assigns the values in a dictionary of fields to the corresponding fields in a Docassemble interview.
 
@@ -103,6 +202,8 @@ Docassemble and built-in keywords are never defined by this function. If fields_
 
   None
 
+<a id="ALToolbox.llms.Goal"></a>
+
 ## Goal Objects
 
 ```python
@@ -117,7 +218,19 @@ A class to represent a goal.
 - `description` _str_ - A description of the goal
 - `satisfied` _bool_ - Whether the goal is satisfied
 
-#### response\_satisfies\_me\_or\_follow\_up
+<a id="ALToolbox.llms.Goal.response_satisfies_me_or_follow_up"></a>
+
+#### response\_satisfies\_me\_or\_follow\_up(messages: List[Dict[str, str]], openai\_client: Optional[OpenAI] = None, model="gpt-4o-mini", system\_message: Optional[str] = None, llm\_assumed\_role: Optional[str] = "teacher", user\_assumed\_role: Optional[str] = "student")
+
+```python
+def response_satisfies_me_or_follow_up(
+        messages: List[Dict[str, str]],
+        openai_client: Optional[OpenAI] = None,
+        model="gpt-4o-mini",
+        system_message: Optional[str] = None,
+        llm_assumed_role: Optional[str] = "teacher",
+        user_assumed_role: Optional[str] = "student") -> str
+```
 
 Returns the text of the next question to ask the user or the string &quot;satisfied&quot;
 if the user&#x27;s response satisfies the goal.
@@ -131,9 +244,19 @@ if the user&#x27;s response satisfies the goal.
 
   True if the response satisfies the goal, False otherwise
 
-#### get\_next\_question
+<a id="ALToolbox.llms.Goal.get_next_question"></a>
+
+#### get\_next\_question(thread\_so\_far: List[Dict[str, str]], openai\_client: Optional[OpenAI] = None, model="gpt-4o-mini")
+
+```python
+def get_next_question(thread_so_far: List[Dict[str, str]],
+                      openai_client: Optional[OpenAI] = None,
+                      model="gpt-4o-mini") -> str
+```
 
 Returns the text of the next question to ask the user.
+
+<a id="ALToolbox.llms.GoalDict"></a>
 
 ## GoalDict Objects
 
@@ -143,9 +266,17 @@ class GoalDict(DADict)
 
 A class to represent a DADict of Goals.
 
-#### satisfied
+<a id="ALToolbox.llms.GoalDict.satisfied"></a>
+
+#### satisfied()
+
+```python
+def satisfied()
+```
 
 Returns True if all goals are satisfied, False otherwise.
+
+<a id="ALToolbox.llms.GoalQuestion"></a>
 
 ## GoalQuestion Objects
 
@@ -160,6 +291,8 @@ A class to represent a question about a goal.
 - `goal` _Goal_ - The goal the question is about
 - `question` _str_ - The question to ask the user
 - `response` _str_ - The user&#x27;s response to the question
+
+<a id="ALToolbox.llms.GoalSatisfactionList"></a>
 
 ## GoalSatisfactionList Objects
 
@@ -196,7 +329,13 @@ open ai:
 - `initial_draft` _str_ - The initial draft of the user&#x27;s response
 - `initial_question` _str_ - The original question posed in the interview
 
-#### mark\_satisfied\_goals
+<a id="ALToolbox.llms.GoalSatisfactionList.mark_satisfied_goals"></a>
+
+#### mark\_satisfied\_goals()
+
+```python
+def mark_satisfied_goals() -> None
+```
 
 Marks goals as satisfied if the user&#x27;s response satisfies the goal.
 This should be used as soon as the user gives their initial reply.
@@ -205,22 +344,46 @@ This should be used as soon as the user gives their initial reply.
 
   None
 
-#### keep\_going
+<a id="ALToolbox.llms.GoalSatisfactionList.keep_going"></a>
+
+#### keep\_going()
+
+```python
+def keep_going()
+```
 
 Returns True if there is at least one unsatisfied goal and if the number of follow-up questions asked is less than the question limit, False otherwise.
 
-#### need\_more\_questions
+<a id="ALToolbox.llms.GoalSatisfactionList.need_more_questions"></a>
+
+#### need\_more\_questions()
+
+```python
+def need_more_questions()
+```
 
 Returns True if there is at least one unsatisfied goal, False otherwise.
 
 Also has the side effect of checking the user&#x27;s most recent response to see if it satisfies the goal
 and updating the next question to be asked.
 
-#### satisfied
+<a id="ALToolbox.llms.GoalSatisfactionList.satisfied"></a>
+
+#### satisfied()
+
+```python
+def satisfied()
+```
 
 Returns True if all goals are satisfied, False otherwise.
 
-#### get\_next\_goal\_and\_question
+<a id="ALToolbox.llms.GoalSatisfactionList.get_next_goal_and_question"></a>
+
+#### get\_next\_goal\_and\_question()
+
+```python
+def get_next_goal_and_question()
+```
 
 Returns the next unsatisfied goal, along with a follow-up question to ask the user, if relevant.
 
@@ -229,13 +392,27 @@ Returns the next unsatisfied goal, along with a follow-up question to ask the us
   A tuple of (Goal, str) where the first item is the next unsatisfied goal and the second item is the next question to ask the user, if relevant.
   If the user&#x27;s response to the last question satisfied the goal, returns (None, None).
 
-#### synthesize\_draft\_response
+<a id="ALToolbox.llms.GoalSatisfactionList.synthesize_draft_response"></a>
+
+#### synthesize\_draft\_response()
+
+```python
+def synthesize_draft_response()
+```
 
 Returns a draft response that synthesizes the user&#x27;s responses to the questions.
 
-#### provide\_feedback
+<a id="ALToolbox.llms.GoalSatisfactionList.provide_feedback"></a>
+
+#### provide\_feedback(feedback\_prompt: str = "")
+
+```python
+def provide_feedback(feedback_prompt: str = "")
+```
 
 Returns feedback to the user based on the goals they satisfied.
+
+<a id="ALToolbox.llms.IntakeQuestion"></a>
 
 ## IntakeQuestion Objects
 
@@ -249,6 +426,8 @@ A class to represent a question in an LLM-assisted intake questionnaire.
 
 - `question` _str_ - The question to ask the user
 - `response` _str_ - The user&#x27;s response to the question
+
+<a id="ALToolbox.llms.IntakeQuestionList"></a>
 
 ## IntakeQuestionList Objects
 
@@ -282,7 +461,13 @@ embeddings at the moment.
 - `out_of_questions` _bool_ - Whether the user has run out of questions to answer
 - `qualifies` _bool_ - Whether the user qualifies based on the criteria
 
-#### need\_more\_questions
+<a id="ALToolbox.llms.IntakeQuestionList.need_more_questions"></a>
+
+#### need\_more\_questions()
+
+```python
+def need_more_questions()
+```
 
 Returns True if the user needs to answer more questions, False otherwise.
 

@@ -1,9 +1,26 @@
+# Table of Contents
+
+* [AssemblyLine.custom\_jinja\_filters](#AssemblyLine.custom_jinja_filters)
+  * [catchall\_options](#AssemblyLine.custom_jinja_filters.catchall_options)
+  * [catchall\_label](#AssemblyLine.custom_jinja_filters.catchall_label)
+  * [catchall\_datatype](#AssemblyLine.custom_jinja_filters.catchall_datatype)
+  * [catchall\_question](#AssemblyLine.custom_jinja_filters.catchall_question)
+  * [catchall\_subquestion](#AssemblyLine.custom_jinja_filters.catchall_subquestion)
+  * [if\_final](#AssemblyLine.custom_jinja_filters.if_final)
+  * [catchall\_fields\_code](#AssemblyLine.custom_jinja_filters.catchall_fields_code)
+
 ---
 sidebar_label: custom_jinja_filters
 title: AssemblyLine.custom_jinja_filters
 ---
 
-#### catchall\_options
+<a id="AssemblyLine.custom_jinja_filters.catchall_options"></a>
+
+#### catchall\_options(value: Any, \*raw\_items: Any)
+
+```python
+def catchall_options(value: Any, *raw_items: Any) -> DACatchAll
+```
 
 Jinja2 filter to support defining options for DACatchAll fields inside a DOCX template.
 
@@ -52,7 +69,13 @@ fields:
 
 - `DACatchAll` - The modified DACatchAll object with the assigned options.
 
-#### catchall\_label
+<a id="AssemblyLine.custom_jinja_filters.catchall_label"></a>
+
+#### catchall\_label(value: Any, label: str)
+
+```python
+def catchall_label(value: Any, label: str) -> DACatchAll
+```
 
 Jinja2 filter to allow you to define a label for a DACatchAll field inside a DOCX template.
 
@@ -84,7 +107,13 @@ fields:
 
 - `DACatchAll` - The modified DACatchAll object with the assigned label.
 
-#### catchall\_datatype
+<a id="AssemblyLine.custom_jinja_filters.catchall_datatype"></a>
+
+#### catchall\_datatype(value: Any, datatype: str)
+
+```python
+def catchall_datatype(value: Any, datatype: str) -> DACatchAll
+```
 
 Jinja2 filter to allow you to define a datatype for a DACatchAll field inside a DOCX template.
 
@@ -108,7 +137,13 @@ Example usage in a DOCX template:
 
 - `DACatchAll` - The modified DACatchAll object with the assigned datatype.
 
-#### catchall\_question
+<a id="AssemblyLine.custom_jinja_filters.catchall_question"></a>
+
+#### catchall\_question(value: Any, question: str)
+
+```python
+def catchall_question(value: Any, question: str) -> DACatchAll
+```
 
 Jinja2 filter to allow you to define a question for a DACatchAll field inside a DOCX template.
 
@@ -132,7 +167,13 @@ Example usage in a DOCX template:
 
 - `DACatchAll` - The modified DACatchAll object with the assigned question.
 
-#### catchall\_subquestion
+<a id="AssemblyLine.custom_jinja_filters.catchall_subquestion"></a>
+
+#### catchall\_subquestion(value: Any, subquestion: str)
+
+```python
+def catchall_subquestion(value: Any, subquestion: str) -> DACatchAll
+```
 
 Jinja2 filter to allow you to define a subquestion for a DACatchAll field inside a DOCX template.
 
@@ -156,7 +197,18 @@ Example usage in a DOCX template:
 
 - `DACatchAll` - The modified DACatchAll object with the assigned subquestion.
 
-#### if\_final
+<a id="AssemblyLine.custom_jinja_filters.if_final"></a>
+
+#### if\_final(context: Jinja2Context, value: Any, i: Optional[str] = None, expected\_i: Union[str, List[str]] = "final", placeholder: Optional[str] = None)
+
+```python
+@pass_context
+def if_final(context: Jinja2Context,
+             value: Any,
+             i: Optional[str] = None,
+             expected_i: Union[str, List[str]] = "final",
+             placeholder: Optional[str] = None) -> Any
+```
 
 Jinja2 filter to only seek the definition of a variable if the current value of `i`
 is equal to the expected value (normally &quot;final&quot;); otherwise,
@@ -231,7 +283,13 @@ as in an ALDocument&#x27;s &quot;preview&quot; or &quot;final&quot; values.
 
 - `Any` - The original `value` if `i` matches `expected_i`, otherwise the `placeholder`.
 
-#### catchall\_fields\_code
+<a id="AssemblyLine.custom_jinja_filters.catchall_fields_code"></a>
+
+#### catchall\_fields\_code(value: Any)
+
+```python
+def catchall_fields_code(value: Any) -> List[Dict[str, Any]]
+```
 
 Create Docassemble code for a catchall field with the appropriate datatypes.
 

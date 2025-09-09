@@ -295,3 +295,141 @@ html[data-theme="dark"] {
 .positive {
   color: var(--ifm-color-success-dark);
 }
+
+/* API Documentation improvements */
+
+/* Apply to all auto-generated API documentation pages */
+html[class*="docs-doc-id-components/"] {
+  /* Better spacing for method sections */
+  h4[id*="init"], 
+  h4[id*="__init__"],
+  h4[id*="all_"],
+  h4[id*="short_"],
+  h4[id*="from_"],
+  h4[id*="geo"],
+  h4[id*="county"],
+  h4[id*="matching"],
+  h4[id*="filter"],
+  h4[id*="as_"],
+  h4[id*="unique"] {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--ifm-table-border-color);
+  }
+
+  /* Better styling for class headings */
+  h2[id*="Objects"] code {
+    background-color: var(--ifm-color-primary-light);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--ifm-code-border-radius);
+    font-weight: bold;
+  }
+
+  /* Improve code block appearance in method signatures */
+  h4 code {
+    background-color: var(--ifm-code-background);
+    border: 1px solid var(--ifm-table-border-color);
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--ifm-code-border-radius);
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 0.9rem;
+  }
+
+  /* Better styling for argument and return value sections */
+  p strong:first-child {
+    color: var(--ifm-color-primary);
+    font-size: 1.1rem;
+  }
+
+  /* Improve parameter lists */
+  ul li code:first-child {
+    background-color: var(--ifm-color-info-contrast-background);
+    color: var(--ifm-color-info-dark);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* Better spacing for method descriptions */
+  p + p strong {
+    margin-top: 1rem;
+  }
+
+  /* Enhance table of contents in right sidebar */
+  .table-of-contents {
+    h4 code,
+    a code {
+      background-color: var(--ifm-code-background);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+    }
+    
+    /* Better nesting for class methods */
+    li li a {
+      padding-left: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Improve the main table of contents */
+  h1 + ul {
+    background-color: var(--ifm-color-secondary-contrast-background);
+    border: 1px solid var(--ifm-table-border-color);
+    border-radius: var(--ifm-card-border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Style class names in TOC */
+    > li > a {
+      font-weight: 600;
+      color: var(--ifm-color-primary);
+    }
+    
+    /* Style method names in TOC */
+    li li a {
+      color: var(--ifm-color-emphasis-700);
+      font-family: var(--ifm-font-family-monospace);
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Better code block styling */
+  pre code {
+    border-radius: var(--ifm-code-border-radius);
+  }
+
+  /* Improve signature code blocks */
+  .language-python {
+    margin: 1rem 0;
+    
+    .token.keyword {
+      color: var(--ifm-color-primary);
+    }
+    
+    .token.function {
+      color: var(--ifm-color-info-dark);
+    }
+    
+    .token.string {
+      color: var(--ifm-color-success-dark);
+    }
+  }
+}
+
+/* Dark mode adjustments for API docs */
+html[data-theme="dark"][class*="docs-doc-id-components/"] {
+  h2[id*="Objects"] code {
+    background-color: var(--ifm-color-primary-dark);
+  }
+  
+  ul li code:first-child {
+    background-color: var(--ifm-color-info-dark);
+    color: var(--ifm-color-info-contrast-foreground);
+  }
+}
