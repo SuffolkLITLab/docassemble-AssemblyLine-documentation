@@ -51,43 +51,87 @@ metadata:
 ---
 ```
 
-## AssemblyLine metadata
+## Expanded metadata block
 
-The AssemblyLine metadata block has different, AssemblyLine specific metadata that doesn't fit in the normal [metadata block](#metadata). Additionally, data in this block isn't overwritten if it's included in another interview.
+Current AssemblyLine interviews use an expanded [metadata block](https://docassemble.org/docs/initial.html#metadata) that includes additional fields beyond the basic `title` and `short title`. This expanded metadata helps organizations better categorize, describe, and manage their interviews.
+
+:::info
+The `interview_metadata` variable used in older AssemblyLine interviews is now deprecated. New interviews should include all metadata directly in the `metadata` block as shown below.
+:::
 
 ```yml
-mandatory: True
-code: |
-  interview_metadata # make sure we initialize the object
-  if not defined("interview_metadata['a_258e_motion_for_impoundment']"):
-    interview_metadata.initializeObject('a_258e_motion_for_impoundment')
-  interview_metadata['a_258e_motion_for_impoundment'].update({
-    "al_weaver_version": "0.82",
-    "generated on": "2021-05-28",
-    "title": "209a 258e motion for impoundment",
-    "short title": "209a 258e motion for impoundment",
-    "description": "209a 258e motion for impoundment",
-    "original_form": "",
-    "allowed courts": [
-      "Land Court",
-    ],
-    "categories": [
-      "BE-04-00-00-00",
-    ],
-    "logic block variable": "a_258e_motion_for_impoundment",
-    "attachment block variable": "a_258e_motion_for_impoundment_attachment",
-    "typical role": "plaintiff",
-  })
+metadata:
+  title: |
+    209a 258e motion for impoundment
+  short title: |
+    209a 258e motion for impoundment
+  description: |
+    This interview helps you fill out a form to ask the court to keep 
+    certain information in your case private (impounded).
+  can_I_use_this_form: |
+    You can use this form if you want to ask the court to keep some 
+    information in your case private. This might include personal 
+    information or details about your case.
+  before_you_start: |
+    Before you start, gather information about what specific details 
+    you want the court to keep private and why this is necessary.
+  maturity: production
+  estimated_completion_minutes: 15
+  estimated_completion_delta: 5
+  languages:
+    - en
+  help_page_url: https://www.mass.gov/info-details/impoundment
+  help_page_title: Information about Impoundment
+  LIST_topics:
+    - BE-04-00-00-00
+  tags:
+    - BE-04-00-00-00
+  jurisdiction: NAM-US-US+MA
+  original_form: https://www.mass.gov/forms/motion-for-impoundment
+  original_form_published_on: 2021-01-01
+  review_date: 2024-01-01
+  form_titles:
+    - Motion for Impoundment
+  form_numbers:
+    - MPC-123
+  fees:
+    - Filing fee: 0.00
+  update_notes: |
+    Form created in 2021. Last reviewed 2024 with no changes needed.
 ---
 ```
 
-1. `title`, `short title`, and `description` allow your organization's site to show more information about your form and to organize your forms more easily.
-1. `original_form` is a link to the original, fillable PDF form that this interview is automating, if it exists.
-1. 🚧 `allowed courts` allows your code to decide which courts to let the user pick from when they need to pick their court, usually used in conjunction with [ALThemeTemplate](https://github.com/SuffolkLITLab/docassemble-ALThemeTemplate).
-1. `categories` is the [LIST taxonomy](https://taxonomy.legal/) code for this interview, which can be used by your organization to organize your interviews.
-1. `attachment block variable` used to be used in the code that sends documents to courts, but now the [ALDocument object block](../components/AssemblyLine/al_document#aldocument-objects) is used instead.
-1. `logic block variable` should also no longer be used.
-1. `typical role`: controls which questions the user gets asked about themselves and other parties.
+### Expanded metadata fields
+
+1. **Basic information fields:**
+   - `title` and `short title`: Control the interview name in browser tabs and saved interview lists
+   - `description`: A detailed explanation of what the interview does and helps accomplish
+   - `can_I_use_this_form`: Helps users determine if this is the right form for their situation
+   - `before_you_start`: Information users should gather or consider before beginning
+
+2. **Technical and administrative fields:**
+   - `maturity`: The development status (`production`, `development`, or `testing`)
+   - `estimated_completion_minutes`: How long most users take to complete the interview
+   - `estimated_completion_delta`: The typical variation in completion time (±)
+   - `languages`: List of language codes for available translations (e.g., `en`, `es`)
+   - `review_date`: When the interview should next be reviewed for updates
+
+3. **Help and reference fields:**
+   - `help_page_url`: Link to additional help resources
+   - `help_page_title`: Display name for the help page link
+   - `original_form`: URL to the original blank form being automated
+   - `original_form_published_on`: Publication date of the original form
+
+4. **Classification and organization:**
+   - `LIST_topics`: [LIST taxonomy](https://taxonomy.legal/) codes (preferred method)
+   - `tags`: Fallback taxonomy codes if LIST_topics isn't available
+   - `jurisdiction`: Geographic scope using jurisdiction codes
+   - `form_titles`: Human-readable names of forms included
+   - `form_numbers`: Official form numbers, if assigned
+   - `fees`: Filing fees and other costs
+
+5. **Maintenance and updates:**
+   - `update_notes`: Record of changes and review history
 
 ## Main intro page
 Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right (or wrong) form. Note that this can (and should) be a more direct and detailed call to action, e.g. ("File a \_\_\_\_" or "Ask the court for \_\_\_\_"), rather than a simple short title, like the short title in the [metadata block](#metadata).
@@ -131,8 +175,8 @@ The full interview order block will look something like this. We'll go over each
 ```yml
 id: interview_order_a_258e_motion_for_impoundment
 code: |
-  # Set the allowed courts for this interview
-  allowed_courts = interview_metadata["a_258e_motion_for_impoundment"]["allowed courts"]
+  # Set the allowed courts for this interview (if needed)
+  # allowed_courts = ["Probate and Family Court", "District Court"]
   nav.set_section("review_a_258e_motion_for_impoundment")
   user_role ="plaintiff"
   user_ask_role = "plaintiff"
@@ -147,7 +191,7 @@ code: |
 ---
 ```
 
-1. `allowed_courts` allows the developer to limit which courts the person filling out the form can pick from, making it easier for them to pick the right court. By default, it's using the same values that are in the [metadata block](#assemblyline-metadata).
+1. `allowed_courts` allows the developer to limit which courts the person filling out the form can pick from, making it easier for them to pick the right court. This is now configured directly in the interview code as shown above, rather than using the deprecated `interview_metadata` approach.
 1. `nav.set_section()` comes after `al_intro_screen` and `a_258e_motion_for_impoundment_intro` so that the user can't click to edit their answers before they've actually been asked any questions.
 1. `user_role` and `user_ask_role` tell AssemblyLine which questions to ask about the main party and opposing parties listed on the form. These should be the same as the `typical role`. However, if `typical role` is `unknown`, then the `user_ask_role` variable will be here instead, and will ask the user what role they have in the case.
 
