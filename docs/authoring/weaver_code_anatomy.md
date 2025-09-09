@@ -51,7 +51,7 @@ metadata:
 ---
 ```
 
-## Expanded metadata block
+## Interview metadata and metadata for publishing on CourtFormsOnline
 
 Current AssemblyLine interviews use an expanded [metadata block](https://docassemble.org/docs/initial.html#metadata) that includes additional fields beyond the basic `title` and `short title`. This expanded metadata helps organizations better categorize, describe, and manage their interviews.
 
