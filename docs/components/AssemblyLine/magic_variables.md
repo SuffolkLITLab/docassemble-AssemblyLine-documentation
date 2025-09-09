@@ -457,6 +457,89 @@ the value of `user_ask_role` is checked.
 
 It is then used to make the question about `other_parties` dynamic.
 
+### `al_menu_items_custom_items`
+
+`al_menu_items_custom_items` allows you to add custom menu items to the dropdown/hamburger menu that appears in the interview navigation. Custom items are displayed before the default Assembly Line menu items (such as "Start over", "Exit and delete my answers", etc.).
+
+This variable should be a list of dictionaries, where each dictionary represents a menu item. Each menu item should follow the standard Docassemble menu item format with these keys:
+
+- `url` (required): The URL that the menu item should link to
+- `label` (required): The text displayed for the menu item  
+- `hidden` (optional): A boolean value that controls whether the menu item is visible. If `True`, the menu item will not be shown
+
+#### Basic static menu items
+
+For simple static menu items, you can use a `data` block:
+
+```yaml
+---
+variable name: al_menu_items_custom_items
+data:
+  - url: https://example.com/help
+    label: Help and Support
+  - url: https://example.com/about
+    label: About this form
+```
+
+#### Dynamic menu items with show/hide logic
+
+For menu items that should appear or disappear based on user choices, use a `data from code` block with the `reconsider` modifier:
+
+```yaml
+---
+reconsider: True
+variable name: al_menu_items_custom_items
+data from code:
+  - url: |
+      "https://example.com/help"
+    label: |
+       "Help and Support"
+  - url: |
+      url_ask(['download_progress'])
+    label: |
+       "Download my progress"
+    hidden: not user_logged_in()
+  - url: |
+      "https://example.com/advanced"
+    label: |
+       "Advanced options"
+    hidden: not showifdef("user_is_advanced")
+```
+
+#### Tips for dynamic menu items
+
+When using dynamic menu items:
+
+1. **Use `reconsider: True`** to ensure the menu items are re-evaluated on each page
+2. **Avoid triggering undefined variables** by using functions like `showifdef()`, `defined()`, or `hasattr()` in your `hidden` conditions
+3. **Use `data from code` for complex logic** since labels need to be Python string expressions (hence the `|` and quotes)
+4. **Consider using `_internal.get('steps') < 2`** to hide items until the user has progressed past the first page
+
+#### Example: Context-sensitive help menu
+
+```yaml
+---
+reconsider: True  
+variable name: al_menu_items_custom_items
+data from code:
+  - url: |
+      "https://example.com/general-help"
+    label: |
+       "General help"
+  - url: |
+      "https://example.com/income-help"  
+    label: |
+       "Help with income questions"
+    hidden: not showifdef("asking_about_income")
+  - url: |
+      url_action('save_progress')
+    label: |
+       "Save my progress"
+    hidden: not user_logged_in() or (_internal.get('steps') < 2)
+```
+
+By default, `al_menu_items_custom_items` is set to an empty list, so no custom menu items will appear unless you define them.
+
 ### `users` and `other_parties`
 
 The variables `users` and `other_parties` can be used directly in your template,
