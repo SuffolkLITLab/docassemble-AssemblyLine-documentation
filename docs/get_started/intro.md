@@ -81,6 +81,10 @@ The LIT Lab's work has been and will continue to be supported by grants. Moving 
 * We offer Docassemble hosting for legal aid organizations, with a free option if the court is a funding partner
 * We work with granting organizations that want to support the Document Assembly Line
 
+### Support our work
+
+You can support the LIT Lab's work on the Document Assembly Line by [making a donation to the Legal Innovation and Tech Lab (LIT) Fund](https://www.givecampus.com/campaigns/55401/donations/new). Your contributions help us continue developing these free and open-source tools for the legal community.
+
 ## Our repositories
 
 All code generated as part of this project is available for free [on GitHub](https://github.com/SuffolkLITLab) under the [MIT license](https://opensource.org/license/mit).
