@@ -199,6 +199,11 @@ your interviews directly or via a shared YAML file.
 
 ### Localization and translation variables
 
+These variables are used for basic address and language configuration.
+For the Assembly Line's advanced language switching system, see the
+[Assembly Line language system variables](#assembly-line-language-system-variables)
+section below and the [translation documentation](translation.md).
+
 * `AL_DEFAULT_COUNTRY`: [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) 2
   letter code representing the default country of the interview user for address
   questions. E.g., `US` for United States of America, `UK` for United Kingdom of
@@ -389,6 +394,59 @@ If all of your packages are kept in a single GitHub organization, you might
 choose to define this value on an organization-wide basis by placing it in a
 shared YAML file, such as the YAML that defines your theme or other branding
 elements.
+
+### Assembly Line language system variables
+
+These variables control the Assembly Line's built-in language switching system
+defined in `al_language.yml`. See the [translation documentation](translation.md)
+for complete usage examples.
+
+#### `enable_al_language`
+
+Controls whether the Assembly Line language system is active. Defaults to `True`.
+Set to `False` to disable the language switching functionality if you need to use
+a custom language system.
+
+```yaml
+code: |
+  enable_al_language = True
+```
+
+#### `al_user_default_language`
+
+The default language code (ISO 639-1 format) to use when a user hasn't selected
+a specific language. Defaults to `"en"` (English).
+
+```yaml
+code: |
+  al_user_default_language = "es"  # Default to Spanish
+```
+
+#### `al_interview_languages`
+
+A list of language codes (ISO 639-1 format) that your interview supports.
+When this list contains more than one language, the Assembly Line will
+automatically show a language selection dropdown in the navigation bar.
+
+```yaml
+code: |
+  al_interview_languages = ["en", "es", "fr"]  # English, Spanish, French
+```
+
+#### `al_user_language`
+
+The currently selected language for the user. This is typically set automatically
+through the language selection interface or URL parameters, but can be set directly
+if needed.
+
+#### `al_change_language` (event)
+
+An event triggered when the user clicks a language selection link. The event
+handler automatically updates `al_user_language` based on the `lang` action
+argument and calls Docassemble's `set_language()` function.
+
+This event is used internally by the language switching functions like
+`get_language_list_dropdown()` and `get_language_list()`.
 
 ## Run-time options
 
