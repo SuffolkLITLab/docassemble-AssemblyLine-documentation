@@ -1,4 +1,4 @@
-# Table of Contents
+# EFSPIntegration.py_efsp_client
 
 * [EFSPIntegration.py\_efsp\_client](#EFSPIntegration.py_efsp_client)
   * [EfspConnection](#EFSPIntegration.py_efsp_client.EfspConnection)
@@ -16,7 +16,8 @@
     * [get\_service\_types](#EFSPIntegration.py_efsp_client.EfspConnection.get_service_types)
     * [get\_cases\_raw](#EFSPIntegration.py_efsp_client.EfspConnection.get_cases_raw)
 
-pydoc-module-header.hbsThe base python client used to communicate with the E-file proxy server.
+
+The base python client used to communicate with the E-file proxy server.
 
 Doesn&#x27;t include anything from docassemble, and can be used without having it installed.
 
@@ -32,13 +33,13 @@ A python client that communicates with the E-file proxy server.
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.__init__"></a>
 
-#### \_\_init\_\_(\*, url: str, api\_key: str, default\_jurisdiction: str = None)
+### \_\_init\_\_
 
 ```python
 def __init__(*, url: str, api_key: str, default_jurisdiction: str = None)
 ```
 
-**Arguments**:
+#### Arguments
 
   url (str)
   api_key (str)
@@ -46,7 +47,7 @@ def __init__(*, url: str, api_key: str, default_jurisdiction: str = None)
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.authenticate_user"></a>
 
-#### authenticate\_user(\*, tyler\_email: Optional[str] = None, tyler\_password: Optional[str] = None, jeffnet\_key: Optional[str] = None, jurisdiction: str = None)
+### authenticate\_user
 
 ```python
 def authenticate_user(*,
@@ -60,7 +61,7 @@ Authenticates the user with the EFM server (not the E-file proxy).
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.register_user"></a>
 
-#### register\_user(person: dict, registration\_type: str, \*, password: str = None, firm\_name\_or\_id: str = None)
+### register\_user
 
 ```python
 def register_user(person: dict,
@@ -76,7 +77,7 @@ If it&#x27;s FIRM_ADMINISTRATOR or FIRM_ADMIN_NEW_MEMBER, you need a firm_name_o
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_password_rules"></a>
 
-#### get\_password\_rules()
+### get\_password\_rules
 
 ```python
 def get_password_rules() -> ApiResponse
@@ -88,7 +89,7 @@ TODO: They&#x27;re in other courts too, including 1. Could they ever be differen
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_notification_options"></a>
 
-#### get\_notification\_options()
+### get\_notification\_options
 
 ```python
 def get_notification_options() -> ApiResponse
@@ -98,7 +99,7 @@ AKA NotificationPreferencesList
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_firm"></a>
 
-#### get\_firm()
+### get\_firm
 
 ```python
 def get_firm() -> ApiResponse
@@ -109,7 +110,7 @@ contains their address information.
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.update_firm"></a>
 
-#### update\_firm(firm: dict)
+### update\_firm
 
 ```python
 def update_firm(firm: dict) -> ApiResponse
@@ -124,7 +125,7 @@ firm should have the below keys:
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_courts"></a>
 
-#### get\_courts(fileable\_only: bool = False, with\_names: bool = False)
+### get\_courts
 
 ```python
 def get_courts(fileable_only: bool = False,
@@ -135,7 +136,7 @@ Gets the list of courts.
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_court"></a>
 
-#### get\_court(court\_id: str)
+### get\_court
 
 ```python
 def get_court(court_id: str) -> ApiResponse
@@ -145,7 +146,7 @@ Gets codes for a specific court
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_court_list"></a>
 
-#### get\_court\_list()
+### get\_court\_list
 
 ```python
 def get_court_list() -> ApiResponse
@@ -156,7 +157,7 @@ Gets a list of all of the courts that you can file into. Slightly more limited t
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_filing_list"></a>
 
-#### get\_filing\_list(court\_id: str, user\_id: str = None, start\_date: datetime = None, before\_date: datetime = None)
+### get\_filing\_list
 
 ```python
 def get_filing_list(court_id: str,
@@ -169,7 +170,7 @@ Returns a list of filings that a particular user has made with a court.
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_service_types"></a>
 
-#### get\_service\_types(court\_id: str, all\_vars: dict = None)
+### get\_service\_types
 
 ```python
 def get_service_types(court_id: str, all_vars: dict = None) -> ApiResponse
@@ -179,7 +180,7 @@ Checks the court info: if it has conditional service types, call a special API w
 
 <a id="EFSPIntegration.py_efsp_client.EfspConnection.get_cases_raw"></a>
 
-#### get\_cases\_raw(court\_id: str, \*, person\_name: dict = None, business\_name: str = None, docket\_number: str = None)
+### get\_cases\_raw
 
 ```python
 def get_cases_raw(court_id: str,
@@ -194,6 +195,6 @@ provided at a time.
 Params:
 court_id (str)
 person_name (dict)
-buisness_name (str)
+business_name (str)
 docket_number (str)
 

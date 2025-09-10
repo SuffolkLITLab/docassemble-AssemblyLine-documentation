@@ -1,11 +1,12 @@
-# Table of Contents
+# ALToolbox.save_input_data
 
 * [ALToolbox.save\_input\_data](#ALToolbox.save_input_data)
   * [save\_input\_data](#ALToolbox.save_input_data.save_input_data)
 
-pydoc-module-header.hbs<a id="ALToolbox.save_input_data.save_input_data"></a>
 
-#### save\_input\_data(title: str = "", input\_dict: Optional[Dict[str, Any]] = None, tags: Optional[List[str]] = None)
+<a id="ALToolbox.save_input_data.save_input_data"></a>
+
+### save\_input\_data
 
 ```python
 def save_input_data(title: str = "",

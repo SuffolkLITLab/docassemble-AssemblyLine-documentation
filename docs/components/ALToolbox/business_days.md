@@ -1,4 +1,4 @@
-# Table of Contents
+# ALToolbox.business_days
 
 * [ALToolbox.business\_days](#ALToolbox.business_days)
   * [standard\_holidays](#ALToolbox.business_days.standard_holidays)
@@ -6,9 +6,10 @@
   * [get\_next\_business\_day](#ALToolbox.business_days.get_next_business_day)
   * [get\_date\_after\_n\_business\_days](#ALToolbox.business_days.get_date_after_n_business_days)
 
-pydoc-module-header.hbs<a id="ALToolbox.business_days.standard_holidays"></a>
 
-#### standard\_holidays(year, country="US", subdiv="MA", add\_holidays: Optional[Mapping] = None, remove\_holidays: Optional[Iterable[str]] = None)
+<a id="ALToolbox.business_days.standard_holidays"></a>
+
+### standard\_holidays
 
 ```python
 def standard_holidays(
@@ -41,7 +42,7 @@ the keys are datetime.date objects.
 
 <a id="ALToolbox.business_days.is_business_day"></a>
 
-#### is\_business\_day(date: Union[str, DADateTime], country="US", subdiv="MA", add\_holidays: Optional[Mapping] = None, remove\_holidays: Optional[Iterable[str]] = None)
+### is\_business\_day
 
 ```python
 def is_business_day(date: Union[str, DADateTime],
@@ -64,7 +65,7 @@ assert(is_business_day("2023-03-26") == False)
 
 <a id="ALToolbox.business_days.get_next_business_day"></a>
 
-#### get\_next\_business\_day(start\_date: Union[str, DADateTime], wait\_n\_days=1, country="US", subdiv="MA", add\_holidays: Optional[Mapping] = None, remove\_holidays: Optional[Iterable[str]] = None)
+### get\_next\_business\_day
 
 ```python
 def get_next_business_day(
@@ -86,7 +87,7 @@ holidays around the world and in various states and provinces, but local
 court rules may differ. You can see what holidays are used at
 https://github.com/dr-prodigy/python-holidays/tree/master/holidays/countries
 
-**Arguments**:
+#### Arguments
 
 - `start_date` - the date to start with. Can be a date-formatted string (i.e. &quot;2023-03-37&quot;, or
   &quot;3-27-2023&quot;) or a DADateTime object
@@ -100,7 +101,7 @@ https://github.com/dr-prodigy/python-holidays/tree/master/holidays/countries
 
 <a id="ALToolbox.business_days.get_date_after_n_business_days"></a>
 
-#### get\_date\_after\_n\_business\_days(start\_date: Union[str, DADateTime], wait\_n\_days=1, country="US", subdiv="MA", add\_holidays: Optional[Mapping] = None, remove\_holidays: Optional[Iterable[str]] = None)
+### get\_date\_after\_n\_business\_days
 
 ```python
 def get_date_after_n_business_days(
@@ -114,7 +115,7 @@ def get_date_after_n_business_days(
 
 Returns a time period which contains a minimum of `n` business days.
 
-**Arguments**:
+#### Arguments
 
 - `start_date` - the date to start with. Can be a date-formatted string (i.e. &quot;2023-03-37&quot;, or
   &quot;3-27-2023&quot;) or a DADateTime object

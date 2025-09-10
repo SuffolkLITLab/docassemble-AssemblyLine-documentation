@@ -1,4 +1,4 @@
-# Table of Contents
+# ALToolbox.misc
 
 * [ALToolbox.misc](#ALToolbox.misc)
   * [thousands](#ALToolbox.misc.thousands)
@@ -23,9 +23,10 @@
   * [age\_in\_years](#ALToolbox.misc.age_in_years)
   * [format\_date\_if\_defined](#ALToolbox.misc.format_date_if_defined)
 
-pydoc-module-header.hbs<a id="ALToolbox.misc.thousands"></a>
 
-#### thousands(num: Union[float, str, Decimal], show\_decimals=False)
+<a id="ALToolbox.misc.thousands"></a>
+
+### thousands
 
 ```python
 def thousands(num: Union[float, str, Decimal], show_decimals=False) -> str
@@ -40,7 +41,7 @@ rounding to the closest int.
 
 <a id="ALToolbox.misc.tel"></a>
 
-#### tel(phone\_number)
+### tel
 
 ```python
 def tel(phone_number) -> str
@@ -50,7 +51,7 @@ Format a phone number so you can click on it to open in your phone dialer
 
 <a id="ALToolbox.misc.fa_icon"></a>
 
-#### fa\_icon(icon: str, color: Optional[str] = "primary", color\_css: Optional[str] = None, size: Optional[str] = "sm", fa\_class: str = "fa-solid", aria\_hidden: bool = True)
+### fa\_icon
 
 ```python
 def fa_icon(icon: str,
@@ -67,7 +68,7 @@ Docassemble allows you to display an icon from [fontawesome](https://fontawesome
 but it does not provide control over the size or color of the icon. This function gives
 you more control over the icon that is inserted.
 
-**Arguments**:
+#### Arguments
 
 - `icon` - a string representing a fontawesome icon. The icon needs to be in the
   [free library](https://fontawesome.com/search?o=r&amp;m=free).
@@ -82,13 +83,13 @@ you more control over the icon that is inserted.
 - `aria_hidden` - if True, adds `aria-hidden="true"` to the icon, which is the default
   
 
-**Returns**:
+#### Returns
 
   HTML for a font-awesome icon of the specified size and color.
 
 <a id="ALToolbox.misc.space"></a>
 
-#### space(var\_name: str, prefix=" ", suffix="")
+### space
 
 ```python
 def space(var_name: str, prefix=" ", suffix="") -> str
@@ -100,7 +101,7 @@ HotDocs.
 
 <a id="ALToolbox.misc.yes_no_unknown"></a>
 
-#### yes\_no\_unknown(var\_name: str, condition: Optional[bool], unknown="Unknown", placeholder=0)
+### yes\_no\_unknown
 
 ```python
 def yes_no_unknown(var_name: str,
@@ -114,7 +115,7 @@ yesnomaybe fields
 
 <a id="ALToolbox.misc.number_to_letter"></a>
 
-#### number\_to\_letter(n: Optional[int])
+### number\_to\_letter
 
 ```python
 def number_to_letter(n: Optional[int]) -> str
@@ -125,7 +126,7 @@ once you reach 26 in a way compatible with Excel/Google Sheets column naming con
 
 <a id="ALToolbox.misc.collapse_template"></a>
 
-#### collapse\_template(template: DALazyTemplate, classname: str | None = None, closed\_icon: str = "caret-right", open\_icon: str = "caret-down", collapsed: bool = True)
+### collapse\_template
 
 ```python
 def collapse_template(template: DALazyTemplate,
@@ -144,7 +145,7 @@ The default icons are &quot;right caret&quot; which displays when the text is co
 
 <a id="ALToolbox.misc.tabbed_templates_html"></a>
 
-#### tabbed\_templates\_html(tab\_group\_name: str, \*pargs)
+### tabbed\_templates\_html
 
 ```python
 def tabbed_templates_html(tab_group_name: str, *pargs) -> str
@@ -154,7 +155,7 @@ Provided a list of templates, create Bootstrap v 4.5 tabs with the `subject` as 
 
 <a id="ALToolbox.misc.review_widget"></a>
 
-#### review\_widget(\*, up\_action: str, down\_action: str, review\_action: Optional[str] = None, thumbs\_display: str = "Did we help you?", review\_display: str = "Thank you for your feedback. Let us know what we could do better", submit\_review\_button: str = "Add your review", post\_review\_display: str = "Thank you for your review!")
+### review\_widget
 
 ```python
 def review_widget(
@@ -176,7 +177,7 @@ If `review_action` is provided, once you press either of the thumbs, a text inpu
 a submit button appears, and once the text review is submitted (or after the thumbs, if no
 `review_action` was provided), a final &quot;thank you&quot; message is displayed.
 
-**Arguments**:
+#### Arguments
 
 - `up_action` - the variable name of an event to be executed on the server if the
   thumbs up is pressed
@@ -189,13 +190,13 @@ a submit button appears, and once the text review is submitted (or after the thu
 - `submit_review_button` - text on the button to submit their text review
 - `post_review_display` - text displayed to user after review is submitted
 
-**Returns**:
+#### Returns
 
   the HTML string of the widget
 
 <a id="ALToolbox.misc.sum_if_defined"></a>
 
-#### sum\_if\_defined(\*pargs)
+### sum\_if\_defined
 
 ```python
 def sum_if_defined(*pargs)
@@ -205,7 +206,7 @@ Lets you add up the value of variables that are not in a list
 
 <a id="ALToolbox.misc.add_records"></a>
 
-#### add\_records(obj, labels)
+### add\_records
 
 ```python
 def add_records(obj, labels)
@@ -215,7 +216,7 @@ List demo interviews in the current package to be run from the landing page
 
 <a id="ALToolbox.misc.output_checkbox"></a>
 
-#### output\_checkbox(value\_to\_check: bool, checked\_value: str = "[X]", unchecked\_value: str = "[  ]")
+### output\_checkbox
 
 ```python
 def output_checkbox(value_to_check: bool,
@@ -225,7 +226,7 @@ def output_checkbox(value_to_check: bool,
 
 Generate a conditional checkbox for docx templates
 
-**Arguments**:
+#### Arguments
 
 - `checked_value` - defaults to `[X]` but can be set to any string or even a `DAFile` or `DAStaticFile`
   with the image of a checkbox
@@ -233,7 +234,7 @@ Generate a conditional checkbox for docx templates
 
 <a id="ALToolbox.misc.nice_county_name"></a>
 
-#### nice\_county\_name(address: Address)
+### nice\_county\_name
 
 ```python
 def nice_county_name(address: Address) -> str
@@ -244,7 +245,7 @@ Autocomplete does by default, remove it.
 
 <a id="ALToolbox.misc.button_array"></a>
 
-#### button\_array(buttons: List[ButtonDict], custom\_container\_class="", custom\_link\_class="")
+### button\_array
 
 ```python
 def button_array(buttons: List[ButtonDict],
@@ -261,7 +262,7 @@ on any page of an interview in the `subquestion` area.
 Optionally, you can limit access to paricular buttons by specifying a privilege or a list
 of privileges.
 
-**Arguments**:
+#### Arguments
 
 - `button_list` - a dictionary of ButtonDicts (or plain dictionaries) with the following keys:
   - `name`: the text to display on the button
@@ -273,13 +274,13 @@ of privileges.
 - `custom_link_class` - optional, a string of additional CSS classes to add to each link
   
 
-**Returns**:
+#### Returns
 
   HTML for a grid of buttons
 
 <a id="ALToolbox.misc.none_to_empty"></a>
 
-#### none\_to\_empty(val: Any)
+### none\_to\_empty
 
 ```python
 def none_to_empty(val: Any)
@@ -293,17 +294,17 @@ when handling a radio button that is not required and left unanswered.
 A DAEmpty value appears as an empty string in the output. You can also safely transform it or use any method on it
 without raising an error.
 
-**Arguments**:
+#### Arguments
 
 - `val` - the value to check
 
-**Returns**:
+#### Returns
 
   a DAEmpty if the value is None, otherwise the value
 
 <a id="ALToolbox.misc.option_or_other"></a>
 
-#### option\_or\_other(variable\_name: str, other\_variable\_name: Optional[str] = None)
+### option\_or\_other
 
 ```python
 def option_or_other(variable_name: str,
@@ -314,18 +315,18 @@ If the variable is set to &#x27;Other&#x27;, return the value of the &#x27;other
 
 This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.
 
-**Arguments**:
+#### Arguments
 
 - `variable_name` - the name of the variable to check
 - `other_variable_name` - the name of the variable to return if the value of the first variable is &#x27;Other&#x27;
 
-**Returns**:
+#### Returns
 
   the value of the variable if it is not &#x27;Other&#x27;, otherwise the value of the other variable
 
 <a id="ALToolbox.misc.true_values_with_other"></a>
 
-#### true\_values\_with\_other(variable\_name: str, other\_variable\_name: Optional[str] = None)
+### true\_values\_with\_other
 
 ```python
 def true_values_with_other(
@@ -337,18 +338,18 @@ Return a list of values that are True, with the value of the &#x27;other&#x27; v
 
 This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.
 
-**Arguments**:
+#### Arguments
 
 - `variable` - the dictionary of variables to check
 - `other_variable_name` - the name of the variable (as a string) to return if the value of the first variable is &#x27;Other&#x27;
 
-**Returns**:
+#### Returns
 
   a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.
 
 <a id="ALToolbox.misc.include_a_year"></a>
 
-#### include\_a\_year(text: str, field: Optional[str] = None)
+### include\_a\_year
 
 ```python
 def include_a_year(text: str, field: Optional[str] = None) -> bool
@@ -363,7 +364,7 @@ Returns True if found, otherwise raises a DAValidationError.
 
 <a id="ALToolbox.misc.is_leap_year"></a>
 
-#### is\_leap\_year(year: int)
+### is\_leap\_year
 
 ```python
 def is_leap_year(year: int) -> bool
@@ -371,17 +372,17 @@ def is_leap_year(year: int) -> bool
 
 Helper function for `age_in_years` to determine if a year is a leap year.
 
-**Arguments**:
+#### Arguments
 
 - `year` - The year to check.
 
-**Returns**:
+#### Returns
 
   True if the year is a leap year, False otherwise.
 
 <a id="ALToolbox.misc.age_in_years"></a>
 
-#### age\_in\_years(the\_date: Union[str, DADateTime])
+### age\_in\_years
 
 ```python
 def age_in_years(the_date: Union[str, DADateTime]) -> int
@@ -389,17 +390,17 @@ def age_in_years(the_date: Union[str, DADateTime]) -> int
 
 Calculate the age in years from a date (treated like a date of birth).
 
-**Arguments**:
+#### Arguments
 
 - `the_date` - A string or DADateTime object representing the date of birth.
 
-**Returns**:
+#### Returns
 
   The age in years as an integer.
 
 <a id="ALToolbox.misc.format_date_if_defined"></a>
 
-#### format\_date\_if\_defined(date\_object\_name: str, \*pargs, default: str = "", \*\*kwargs)
+### format\_date\_if\_defined
 
 ```python
 def format_date_if_defined(date_object_name: str,
@@ -412,7 +413,7 @@ Format a date string if it is defined, otherwise return an empty string.
 
 Passes all additional arguments to the `format_date` function.
 
-**Arguments**:
+#### Arguments
 
 - `date_object_name` - The date string to format.
 - `*pargs` - Additional positional arguments to pass to `format_date`.
@@ -420,7 +421,7 @@ Passes all additional arguments to the `format_date` function.
 - `**kwargs` - Additional keyword arguments to pass to `format_date`. E.g., format=&quot;yyyy-MM-dd&quot;
   
 
-**Returns**:
+#### Returns
 
   A formatted date string if `date_object_name` is defined, otherwise an empty string.
   

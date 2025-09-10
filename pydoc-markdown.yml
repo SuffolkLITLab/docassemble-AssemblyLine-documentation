@@ -44,4 +44,3 @@ renderer:
     
     # Better anchor insertion
     insert_header_anchors: true
-    render_module_header_template: "pydoc-module-header.hbs"

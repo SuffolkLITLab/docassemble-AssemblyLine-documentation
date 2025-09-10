@@ -42,6 +42,7 @@ jobs:
         run: |
           cd docs
           pydoc-markdown
+          ./fix-doc-titles.sh
       - uses: actions/setup-node@v3
         with:
           node-version: 20

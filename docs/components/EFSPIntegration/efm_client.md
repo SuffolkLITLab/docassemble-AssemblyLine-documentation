@@ -1,4 +1,4 @@
-# Table of Contents
+# EFSPIntegration.efm_client
 
 * [EFSPIntegration.efm\_client](#EFSPIntegration.efm_client)
   * [ProxyConnection](#EFSPIntegration.efm_client.ProxyConnection)
@@ -8,7 +8,8 @@
     * [get\_service\_types](#EFSPIntegration.efm_client.ProxyConnection.get_service_types)
   * [serialize\_person](#EFSPIntegration.efm_client.serialize_person)
 
-pydoc-module-header.hbs<a id="EFSPIntegration.efm_client.ProxyConnection"></a>
+
+<a id="EFSPIntegration.efm_client.ProxyConnection"></a>
 
 ## ProxyConnection Objects
 
@@ -23,7 +24,7 @@ and are documented there.
 
 <a id="EFSPIntegration.efm_client.ProxyConnection.__init__"></a>
 
-#### \_\_init\_\_(\*, url: str = None, api\_key: str = None, credentials\_code\_block: str = "tyler\_login", default\_jurisdiction: str = None)
+### \_\_init\_\_
 
 ```python
 def __init__(*,
@@ -38,7 +39,7 @@ be overriden with parameters to __init__.
 
 <a id="EFSPIntegration.efm_client.ProxyConnection.authenticate_user"></a>
 
-#### authenticate\_user(tyler\_email: str = None, tyler\_password: str = None, jeffnet\_key: str = None, \*, jurisdiction: str = None)
+### authenticate\_user
 
 ```python
 def authenticate_user(tyler_email: str = None,
@@ -55,7 +56,7 @@ jeffnet_key (str)
 
 <a id="EFSPIntegration.efm_client.ProxyConnection.register_user"></a>
 
-#### register\_user(person: Union[Individual, dict], registration\_type: str, \*, password: str = None, firm\_name\_or\_id: str = None)
+### register\_user
 
 ```python
 def register_user(person: Union[Individual, dict],
@@ -71,7 +72,7 @@ If it&#x27;s FIRM_ADMINISTRATOR or FIRM_ADMIN_NEW_MEMBER, you need a firm_name_o
 
 <a id="EFSPIntegration.efm_client.ProxyConnection.get_service_types"></a>
 
-#### get\_service\_types(court\_id: str, court\_bundle: Union[ALDocumentBundle, dict] = None)
+### get\_service\_types
 
 ```python
 def get_service_types(
@@ -83,7 +84,7 @@ Checks the court info: if it has conditional service types, call a special API w
 
 <a id="EFSPIntegration.efm_client.serialize_person"></a>
 
-#### serialize\_person(person: Union[Person, Individual])
+### serialize\_person
 
 ```python
 def serialize_person(person: Union[Person, Individual]) -> Dict

@@ -1,4 +1,4 @@
-# Table of Contents
+# formfyxer.lit_explorer
 
 * [formfyxer.lit\_explorer](#formfyxer.lit_explorer)
   * [recursive\_get\_id](#formfyxer.lit_explorer.recursive_get_id)
@@ -18,10 +18,13 @@
   * [time\_to\_answer\_field](#formfyxer.lit_explorer.time_to_answer_field)
   * [time\_to\_answer\_form](#formfyxer.lit_explorer.time_to_answer_form)
   * [cleanup\_text](#formfyxer.lit_explorer.cleanup_text)
+  * [text\_complete](#formfyxer.lit_explorer.text_complete)
   * [complete\_with\_command](#formfyxer.lit_explorer.complete_with_command)
   * [needs\_calculations](#formfyxer.lit_explorer.needs_calculations)
+  * [tools\_passive](#formfyxer.lit_explorer.tools_passive)
   * [get\_passive\_sentences](#formfyxer.lit_explorer.get_passive_sentences)
   * [get\_citations](#formfyxer.lit_explorer.get_citations)
+  * [get\_sensitive\_data\_types](#formfyxer.lit_explorer.get_sensitive_data_types)
   * [substitute\_phrases](#formfyxer.lit_explorer.substitute_phrases)
   * [substitute\_neutral\_gender](#formfyxer.lit_explorer.substitute_neutral_gender)
   * [substitute\_plain\_language](#formfyxer.lit_explorer.substitute_plain_language)
@@ -29,9 +32,10 @@
   * [parse\_form](#formfyxer.lit_explorer.parse_form)
   * [form\_complexity](#formfyxer.lit_explorer.form_complexity)
 
-pydoc-module-header.hbs<a id="formfyxer.lit_explorer.recursive_get_id"></a>
 
-#### recursive\_get\_id(values\_to\_unpack: Union[dict, list], tmpl: Optional[set] = None)
+<a id="formfyxer.lit_explorer.recursive_get_id"></a>
+
+### recursive\_get\_id
 
 ```python
 def recursive_get_id(values_to_unpack: Union[dict, list],
@@ -42,7 +46,7 @@ Pull ID values out of the LIST/NSMI results from Spot.
 
 <a id="formfyxer.lit_explorer.spot"></a>
 
-#### spot(text: str, lower: float = 0.25, pred: float = 0.5, upper: float = 0.6, verbose: float = 0, token: str = "")
+### spot
 
 ```python
 def spot(text: str,
@@ -58,7 +62,7 @@ the NSMIv2/LIST taxonomy (https://taxonomy.legal/), but returns only the IDs of 
 
 <a id="formfyxer.lit_explorer.re_case"></a>
 
-#### re\_case(text: str)
+### re\_case
 
 ```python
 def re_case(text: str) -> str
@@ -68,7 +72,7 @@ Capture PascalCase, snake_case and kebab-case terms and add spaces to separate t
 
 <a id="formfyxer.lit_explorer.regex_norm_field"></a>
 
-#### regex\_norm\_field(text: str)
+### regex\_norm\_field
 
 ```python
 def regex_norm_field(text: str)
@@ -79,10 +83,12 @@ See: https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/docum
 
 <a id="formfyxer.lit_explorer.reformat_field"></a>
 
-#### reformat\_field(text: str, max\_length: int = 30, tools\_token=None)
+### reformat\_field
 
 ```python
-def reformat_field(text: str, max_length: int = 30, tools_token=None)
+def reformat_field(text: str,
+                   max_length: int = 30,
+                   tools_token: Optional[str] = None)
 ```
 
 Transforms a string of text into a snake_case variable close in length to `max_length` name by
@@ -91,7 +97,7 @@ h/t https://towardsdatascience.com/nlp-building-a-summariser-68e0c19e3a93
 
 <a id="formfyxer.lit_explorer.norm"></a>
 
-#### norm(row)
+### norm
 
 ```python
 def norm(row)
@@ -101,7 +107,7 @@ Normalize a word vector.
 
 <a id="formfyxer.lit_explorer.vectorize"></a>
 
-#### vectorize(text: Union[List[str], str], tools\_token: Optional[str] = None)
+### vectorize
 
 ```python
 def vectorize(text: Union[List[str], str], tools_token: Optional[str] = None)
@@ -109,16 +115,18 @@ def vectorize(text: Union[List[str], str], tools_token: Optional[str] = None)
 
 Vectorize a string of text.
 
-**Arguments**:
+#### Arguments
 
 - `text` - a string of multiple words to vectorize
 - `tools_token` - the token to tools.suffolklitlab.org, used for micro-service
   to reduce the amount of memory you need on your machine. If
-  not passed, you need to have `en_core_web_lg` installed
+  not passed, you need to have `en_core_web_lg` installed. NOTE: this
+  last bit is nolonger correct, you have to use the micor-service
+  as we have had to remove SpaCY due to a breaking change
 
 <a id="formfyxer.lit_explorer.normalize_name"></a>
 
-#### normalize\_name(jur: str, group: str, n: int, per, last\_field: str, this\_field: str, tools\_token: Optional[str] = None)
+### normalize\_name
 
 ```python
 def normalize_name(jur: str,
@@ -138,7 +146,7 @@ Will be replaced with call to LLM soon.
 
 <a id="formfyxer.lit_explorer.cluster_screens"></a>
 
-#### cluster\_screens(fields: List[str] = [], damping: float = 0.7, tools\_token: Optional[str] = None)
+### cluster\_screens
 
 ```python
 def cluster_screens(fields: List[str] = [],
@@ -148,7 +156,7 @@ def cluster_screens(fields: List[str] = [],
 
 Groups the given fields into screens based on how much they are related.
 
-**Arguments**:
+#### Arguments
 
 - `fields` - a list of field names
 - `damping` - a value &gt;= 0.5 and &lt; 1. Tunes how related screens should be
@@ -170,7 +178,7 @@ handle text, checkbox, and signature fields.
 
 <a id="formfyxer.lit_explorer.field_types_and_sizes"></a>
 
-#### field\_types\_and\_sizes(fields: Optional[Iterable[FormField]])
+### field\_types\_and\_sizes
 
 ```python
 def field_types_and_sizes(
@@ -207,7 +215,7 @@ See Jarret and Gaffney, Forms That Work (2008)
 
 <a id="formfyxer.lit_explorer.classify_field"></a>
 
-#### classify\_field(field: FieldInfo, new\_name: str)
+### classify\_field
 
 ```python
 def classify_field(field: FieldInfo, new_name: str) -> AnswerType
@@ -218,7 +226,7 @@ it as either a &quot;slot-in&quot;, &quot;gathered&quot;, &quot;third party&quot
 
 <a id="formfyxer.lit_explorer.get_adjusted_character_count"></a>
 
-#### get\_adjusted\_character\_count(field: FieldInfo)
+### get\_adjusted\_character\_count
 
 ```python
 def get_adjusted_character_count(field: FieldInfo) -> float
@@ -231,13 +239,13 @@ The function chunks the answers into 5 different lengths (checkboxes, 2 words, s
 instead of directly using the character count, as forms can allocate different spaces
 for the same data without considering the space the user actually needs.
 
-**Arguments**:
+#### Arguments
 
 - `field` _FieldInfo_ - An object containing information about the input field,
   including the &quot;max_length&quot; attribute.
   
 
-**Returns**:
+#### Returns
 
 - `float` - The approximate length of the field content, categorized into checkboxes, 2 words, short,
   medium, or long based on the max_length attribute.
@@ -258,7 +266,7 @@ for the same data without considering the space the user actually needs.
 
 <a id="formfyxer.lit_explorer.time_to_answer_field"></a>
 
-#### time\_to\_answer\_field(field: FieldInfo, new\_name: str, cpm: int = 40, cpm\_std\_dev: int = 17)
+### time\_to\_answer\_field
 
 ```python
 def time_to_answer_field(field: FieldInfo,
@@ -275,7 +283,7 @@ The return value is a function that can return N samples of how long it will tak
 
 <a id="formfyxer.lit_explorer.time_to_answer_form"></a>
 
-#### time\_to\_answer\_form(processed\_fields, normalized\_fields)
+### time\_to\_answer\_form
 
 ```python
 def time_to_answer_form(processed_fields,
@@ -295,7 +303,7 @@ b. long created (anything over 3 lines)
 
 <a id="formfyxer.lit_explorer.cleanup_text"></a>
 
-#### cleanup\_text(text: str, fields\_to\_sentences: bool = False)
+### cleanup\_text
 
 ```python
 def cleanup_text(text: str, fields_to_sentences: bool = False) -> str
@@ -303,9 +311,29 @@ def cleanup_text(text: str, fields_to_sentences: bool = False) -> str
 
 Apply cleanup routines to text to provide more accurate readability statistics.
 
+<a id="formfyxer.lit_explorer.text_complete"></a>
+
+### text\_complete
+
+```python
+def text_complete(prompt: str,
+                  max_tokens: int = 500,
+                  creds: Optional[OpenAiCreds] = None,
+                  temperature: float = 0) -> str
+```
+
+Run a prompt via openAI&#x27;s API and return the result.
+
+#### Arguments
+
+- `prompt` _str_ - The prompt to send to the API.
+- `max_tokens` _int, optional_ - The number of tokens to generate. Defaults to 500.
+- `creds` _Optional[OpenAiCreds], optional_ - The credentials to use. Defaults to None.
+- `temperature` _float, optional_ - The temperature to use. Defaults to 0.
+
 <a id="formfyxer.lit_explorer.complete_with_command"></a>
 
-#### complete\_with\_command(text, command, tokens, creds: Optional[OpenAiCreds] = None)
+### complete\_with\_command
 
 ```python
 def complete_with_command(text,
@@ -318,22 +346,35 @@ Combines some text with a command to send to open ai.
 
 <a id="formfyxer.lit_explorer.needs_calculations"></a>
 
-#### needs\_calculations(text: Union[str, Doc])
+### needs\_calculations
 
 ```python
-def needs_calculations(text: Union[str, Doc]) -> bool
+def needs_calculations(text: Union[str]) -> bool
 ```
 
 A conservative guess at if a given form needs the filler to make math calculations,
 something that should be avoided. If
 
+<a id="formfyxer.lit_explorer.tools_passive"></a>
+
+### tools\_passive
+
+```python
+def tools_passive(input: Union[List[str], str],
+                  tools_token: Optional[str] = None)
+```
+
+Ping passive voice API for list of sentences using the passive voice
+
 <a id="formfyxer.lit_explorer.get_passive_sentences"></a>
 
-#### get\_passive\_sentences(text: Union[List, str])
+### get\_passive\_sentences
 
 ```python
 def get_passive_sentences(
-        text: Union[List, str]) -> List[Tuple[str, List[Tuple[int, int]]]]
+    text: Union[List, str],
+    tools_token: Optional[str] = None
+) -> List[Tuple[str, List[Tuple[int, int]]]]
 ```
 
 Return a list of tuples, where each tuple represents a
@@ -348,7 +389,7 @@ sentences containing fewer than 2 words will be ignored.
 
 <a id="formfyxer.lit_explorer.get_citations"></a>
 
-#### get\_citations(text: str, tokenized\_sentences: List[str])
+### get\_citations
 
 ```python
 def get_citations(text: str, tokenized_sentences: List[str]) -> List[str]
@@ -358,9 +399,27 @@ Get citations and some extra surrounding context (the full sentence), if the cit
 fewer than 5 characters (often eyecite only captures a section symbol
 for state-level short citation formats)
 
+<a id="formfyxer.lit_explorer.get_sensitive_data_types"></a>
+
+### get\_sensitive\_data\_types
+
+```python
+def get_sensitive_data_types(
+        fields: List[str],
+        fields_old: Optional[List[str]] = None) -> Dict[str, List[str]]
+```
+
+Given a list of fields, identify those related to sensitive information and return a dictionary with the sensitive
+fields grouped by type. A list of the old field names can also be provided. These fields should be in the same
+order. Passing the old field names allows the sensitive field algorithm to match more accurately. The return value
+will not contain the old field name, only the corresponding field name from the first parameter.
+
+The sensitive data types are: Bank Account Number, Credit Card Number, Driver&#x27;s License Number, and Social Security
+Number.
+
 <a id="formfyxer.lit_explorer.substitute_phrases"></a>
 
-#### substitute\_phrases(input\_string: str, substitution\_phrases: Dict[str, str])
+### substitute\_phrases
 
 ```python
 def substitute_phrases(
@@ -371,13 +430,13 @@ def substitute_phrases(
 
 Substitute phrases in the input string and return the new string and positions of substituted phrases.
 
-**Arguments**:
+#### Arguments
 
 - `input_string` _str_ - The input string containing phrases to be replaced.
 - `substitution_phrases` _Dict[str, str]_ - A dictionary mapping original phrases to their replacement phrases.
   
 
-**Returns**:
+#### Returns
 
   Tuple[str, List[Tuple[int, int]]]: A tuple containing the new string with substituted phrases and a list of
   tuples, each containing the start and end positions of the substituted
@@ -396,7 +455,7 @@ Substitute phrases in the input string and return the new string and positions o
 
 <a id="formfyxer.lit_explorer.substitute_neutral_gender"></a>
 
-#### substitute\_neutral\_gender(input\_string: str)
+### substitute\_neutral\_gender
 
 ```python
 def substitute_neutral_gender(
@@ -408,7 +467,7 @@ Primary source is https://github.com/joelparkerhenderson/inclusive-language
 
 <a id="formfyxer.lit_explorer.substitute_plain_language"></a>
 
-#### substitute\_plain\_language(input\_string: str)
+### substitute\_plain\_language
 
 ```python
 def substitute_plain_language(
@@ -420,7 +479,7 @@ Source of terms is drawn from https://www.plainlanguage.gov/guidelines/words/
 
 <a id="formfyxer.lit_explorer.transformed_sentences"></a>
 
-#### transformed\_sentences(sentence\_list: List[str], fun: Callable)
+### transformed\_sentences
 
 ```python
 def transformed_sentences(
@@ -434,7 +493,7 @@ of each changed fragment in the sentence.
 
 <a id="formfyxer.lit_explorer.parse_form"></a>
 
-#### parse\_form(in\_file: str, title: Optional[str] = None, jur: Optional[str] = None, cat: Optional[str] = None, normalize: bool = True, spot\_token: Optional[str] = None, tools\_token: Optional[str] = None, openai\_creds: Optional[OpenAiCreds] = None, rewrite: bool = False, debug: bool = False)
+### parse\_form
 
 ```python
 def parse_form(in_file: str,
@@ -455,7 +514,7 @@ NSMI code. If you pass openai creds, we will give suggestions for the title and 
 
 <a id="formfyxer.lit_explorer.form_complexity"></a>
 
-#### form\_complexity(stats)
+### form\_complexity
 
 ```python
 def form_complexity(stats)
