@@ -1,0 +1,13 @@
+---
+sidebar_label: "{{ module.name }}"
+title: "{{#if module.docstring.summary}}{{ module.docstring.summary }}{{else}}{{ module.name }}{{/if}}"
+---
+
+# Table of Contents
+
+{{#each module.members}}
+* [{{ name }}](#{{ name }})
+{{#each members}}
+  * [{{ name }}](#{{ ../name }}.{{ name }})
+{{/each}}
+{{/each}}

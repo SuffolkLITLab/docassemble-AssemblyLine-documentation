@@ -18,8 +18,29 @@ renderer:
   relative_sidebar_path: sidebar.json
   sidebar_top_level_label: null
   markdown:
+    # Better escaping and HTML handling
     escape_html_in_docstring: true
     escape_curly_braces_in_docstring: true
-    signature_code_block: false
+    
+    # Enhanced code and signature formatting
+    signature_code_block: true
+    signature_in_header: true
+    code_headers: false
+    html_headers: false
+    
+    # Better type hints and data rendering
     render_typehint_in_data_header: true
-    toc_maxdepth: 6
+    
+    # Enhanced table of contents with proper depth
+    render_toc: true
+    toc_maxdepth: 3
+    
+    # Better titles and descriptions
+    descriptive_class_title: true
+    descriptive_module_title: false
+    
+    # Fixed header levels for better hierarchy
+    use_fixed_header_levels: true
+    
+    # Better anchor insertion
+    insert_header_anchors: true

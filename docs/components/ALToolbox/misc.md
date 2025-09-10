@@ -1,9 +1,36 @@
----
-sidebar_label: misc
-title: ALToolbox.misc
----
+# ALToolbox.misc
 
-#### thousands
+* [ALToolbox.misc](#ALToolbox.misc)
+  * [thousands](#ALToolbox.misc.thousands)
+  * [tel](#ALToolbox.misc.tel)
+  * [fa\_icon](#ALToolbox.misc.fa_icon)
+  * [space](#ALToolbox.misc.space)
+  * [yes\_no\_unknown](#ALToolbox.misc.yes_no_unknown)
+  * [number\_to\_letter](#ALToolbox.misc.number_to_letter)
+  * [collapse\_template](#ALToolbox.misc.collapse_template)
+  * [tabbed\_templates\_html](#ALToolbox.misc.tabbed_templates_html)
+  * [review\_widget](#ALToolbox.misc.review_widget)
+  * [sum\_if\_defined](#ALToolbox.misc.sum_if_defined)
+  * [add\_records](#ALToolbox.misc.add_records)
+  * [output\_checkbox](#ALToolbox.misc.output_checkbox)
+  * [nice\_county\_name](#ALToolbox.misc.nice_county_name)
+  * [button\_array](#ALToolbox.misc.button_array)
+  * [none\_to\_empty](#ALToolbox.misc.none_to_empty)
+  * [option\_or\_other](#ALToolbox.misc.option_or_other)
+  * [true\_values\_with\_other](#ALToolbox.misc.true_values_with_other)
+  * [include\_a\_year](#ALToolbox.misc.include_a_year)
+  * [is\_leap\_year](#ALToolbox.misc.is_leap_year)
+  * [age\_in\_years](#ALToolbox.misc.age_in_years)
+  * [format\_date\_if\_defined](#ALToolbox.misc.format_date_if_defined)
+
+
+<a id="ALToolbox.misc.thousands"></a>
+
+### thousands
+
+```python
+def thousands(num: Union[float, str, Decimal], show_decimals=False) -> str
+```
 
 Return a whole number formatted with thousands separator.
 Optionally, format with 2 decimal points (for a PDF form with the
@@ -12,11 +39,28 @@ currency symbol already present in the form)
 If `show_decimals`, will call `int(num)`, truncating the decimals instead of
 rounding to the closest int.
 
-#### tel
+<a id="ALToolbox.misc.tel"></a>
+
+### tel
+
+```python
+def tel(phone_number) -> str
+```
 
 Format a phone number so you can click on it to open in your phone dialer
 
-#### fa\_icon
+<a id="ALToolbox.misc.fa_icon"></a>
+
+### fa\_icon
+
+```python
+def fa_icon(icon: str,
+            color: Optional[str] = "primary",
+            color_css: Optional[str] = None,
+            size: Optional[str] = "sm",
+            fa_class: str = "fa-solid",
+            aria_hidden: bool = True) -> str
+```
 
 Display a fontawesome icon inline.
 
@@ -24,7 +68,7 @@ Docassemble allows you to display an icon from [fontawesome](https://fontawesome
 but it does not provide control over the size or color of the icon. This function gives
 you more control over the icon that is inserted.
 
-**Arguments**:
+#### Arguments
 
 - `icon` - a string representing a fontawesome icon. The icon needs to be in the
   [free library](https://fontawesome.com/search?o=r&amp;m=free).
@@ -39,27 +83,58 @@ you more control over the icon that is inserted.
 - `aria_hidden` - if True, adds `aria-hidden="true"` to the icon, which is the default
   
 
-**Returns**:
+#### Returns
 
   HTML for a font-awesome icon of the specified size and color.
 
-#### space
+<a id="ALToolbox.misc.space"></a>
+
+### space
+
+```python
+def space(var_name: str, prefix=" ", suffix="") -> str
+```
 
 If the value as a string is defined, return it prefixed/suffixed. Defaults to prefix
 of a space. Helps build a sentence with less cruft. Equivalent to SPACE function in
 HotDocs.
 
-#### yes\_no\_unknown
+<a id="ALToolbox.misc.yes_no_unknown"></a>
+
+### yes\_no\_unknown
+
+```python
+def yes_no_unknown(var_name: str,
+                   condition: Optional[bool],
+                   unknown="Unknown",
+                   placeholder=0)
+```
 
 Return &#x27;unknown&#x27; if the value is None rather than False. Helper for PDF filling with
 yesnomaybe fields
 
-#### number\_to\_letter
+<a id="ALToolbox.misc.number_to_letter"></a>
+
+### number\_to\_letter
+
+```python
+def number_to_letter(n: Optional[int]) -> str
+```
 
 Returns a capital letter representing ordinal position. E.g., 1=A, 2=B, etc. Appends letters
 once you reach 26 in a way compatible with Excel/Google Sheets column naming conventions. 27=AA, 28=AB...
 
-#### collapse\_template
+<a id="ALToolbox.misc.collapse_template"></a>
+
+### collapse\_template
+
+```python
+def collapse_template(template: DALazyTemplate,
+                      classname: str | None = None,
+                      closed_icon: str = "caret-right",
+                      open_icon: str = "caret-down",
+                      collapsed: bool = True) -> str
+```
 
 Insert HTML for a Bootstrap &quot;collapse&quot; div.
 
@@ -68,11 +143,32 @@ Optionally, you can specify a custom icon to override the defaults:
 The default icons are &quot;right caret&quot; which displays when the text is collapsed (`closed_icon`) and
 &quot;down caret&quot; which displays when the text is open (`open_icon`).
 
-#### tabbed\_templates\_html
+<a id="ALToolbox.misc.tabbed_templates_html"></a>
+
+### tabbed\_templates\_html
+
+```python
+def tabbed_templates_html(tab_group_name: str, *pargs) -> str
+```
 
 Provided a list of templates, create Bootstrap v 4.5 tabs with the `subject` as the tab label.
 
-#### review\_widget
+<a id="ALToolbox.misc.review_widget"></a>
+
+### review\_widget
+
+```python
+def review_widget(
+        *,
+        up_action: str,
+        down_action: str,
+        review_action: Optional[str] = None,
+        thumbs_display: str = "Did we help you?",
+        review_display:
+    str = "Thank you for your feedback. Let us know what we could do better",
+        submit_review_button: str = "Add your review",
+        post_review_display: str = "Thank you for your review!") -> str
+```
 
 A widget that allows people to give a quick review (thumbs up and down, with an optional text
 component) in the middle of an interview without triggering a page reload.
@@ -81,7 +177,7 @@ If `review_action` is provided, once you press either of the thumbs, a text inpu
 a submit button appears, and once the text review is submitted (or after the thumbs, if no
 `review_action` was provided), a final &quot;thank you&quot; message is displayed.
 
-**Arguments**:
+#### Arguments
 
 - `up_action` - the variable name of an event to be executed on the server if the
   thumbs up is pressed
@@ -94,34 +190,68 @@ a submit button appears, and once the text review is submitted (or after the thu
 - `submit_review_button` - text on the button to submit their text review
 - `post_review_display` - text displayed to user after review is submitted
 
-**Returns**:
+#### Returns
 
   the HTML string of the widget
 
-#### sum\_if\_defined
+<a id="ALToolbox.misc.sum_if_defined"></a>
+
+### sum\_if\_defined
+
+```python
+def sum_if_defined(*pargs)
+```
 
 Lets you add up the value of variables that are not in a list
 
-#### add\_records
+<a id="ALToolbox.misc.add_records"></a>
+
+### add\_records
+
+```python
+def add_records(obj, labels)
+```
 
 List demo interviews in the current package to be run from the landing page
 
-#### output\_checkbox
+<a id="ALToolbox.misc.output_checkbox"></a>
+
+### output\_checkbox
+
+```python
+def output_checkbox(value_to_check: bool,
+                    checked_value: str = "[X]",
+                    unchecked_value: str = "[  ]")
+```
 
 Generate a conditional checkbox for docx templates
 
-**Arguments**:
+#### Arguments
 
 - `checked_value` - defaults to `[X]` but can be set to any string or even a `DAFile` or `DAStaticFile`
   with the image of a checkbox
 - `unchecked_value` - opposite meaning of `checked_value` and defaults to `[  ]`
 
-#### nice\_county\_name
+<a id="ALToolbox.misc.nice_county_name"></a>
+
+### nice\_county\_name
+
+```python
+def nice_county_name(address: Address) -> str
+```
 
 If the county name contains the word &quot;County&quot;, which Google Address
 Autocomplete does by default, remove it.
 
-#### button\_array
+<a id="ALToolbox.misc.button_array"></a>
+
+### button\_array
+
+```python
+def button_array(buttons: List[ButtonDict],
+                 custom_container_class="",
+                 custom_link_class="") -> str
+```
 
 Create a grid of da-buttons from a dictionary of links and icons
 
@@ -132,7 +262,7 @@ on any page of an interview in the `subquestion` area.
 Optionally, you can limit access to paricular buttons by specifying a privilege or a list
 of privileges.
 
-**Arguments**:
+#### Arguments
 
 - `button_list` - a dictionary of ButtonDicts (or plain dictionaries) with the following keys:
   - `name`: the text to display on the button
@@ -144,11 +274,17 @@ of privileges.
 - `custom_link_class` - optional, a string of additional CSS classes to add to each link
   
 
-**Returns**:
+#### Returns
 
   HTML for a grid of buttons
 
-#### none\_to\_empty
+<a id="ALToolbox.misc.none_to_empty"></a>
+
+### none\_to\_empty
+
+```python
+def none_to_empty(val: Any)
+```
 
 If the value is None or &quot;None&quot;, return a DAEmpty value. Otherwise return the value.
 
@@ -158,45 +294,66 @@ when handling a radio button that is not required and left unanswered.
 A DAEmpty value appears as an empty string in the output. You can also safely transform it or use any method on it
 without raising an error.
 
-**Arguments**:
+#### Arguments
 
 - `val` - the value to check
 
-**Returns**:
+#### Returns
 
   a DAEmpty if the value is None, otherwise the value
 
-#### option\_or\_other
+<a id="ALToolbox.misc.option_or_other"></a>
+
+### option\_or\_other
+
+```python
+def option_or_other(variable_name: str,
+                    other_variable_name: Optional[str] = None) -> str
+```
 
 If the variable is set to &#x27;Other&#x27;, return the value of the &#x27;other&#x27; variable. Otherwise return the value of the variable.
 
 This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.
 
-**Arguments**:
+#### Arguments
 
 - `variable_name` - the name of the variable to check
 - `other_variable_name` - the name of the variable to return if the value of the first variable is &#x27;Other&#x27;
 
-**Returns**:
+#### Returns
 
   the value of the variable if it is not &#x27;Other&#x27;, otherwise the value of the other variable
 
-#### true\_values\_with\_other
+<a id="ALToolbox.misc.true_values_with_other"></a>
+
+### true\_values\_with\_other
+
+```python
+def true_values_with_other(
+        variable_name: str,
+        other_variable_name: Optional[str] = None) -> List[str]
+```
 
 Return a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.
 
 This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.
 
-**Arguments**:
+#### Arguments
 
 - `variable` - the dictionary of variables to check
 - `other_variable_name` - the name of the variable (as a string) to return if the value of the first variable is &#x27;Other&#x27;
 
-**Returns**:
+#### Returns
 
   a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.
 
-#### include\_a\_year
+<a id="ALToolbox.misc.include_a_year"></a>
+
+### include\_a\_year
+
+```python
+def include_a_year(text: str, field: Optional[str] = None) -> bool
+```
 
 Validates whether the input text contains at least one 4-digit sequence
 that occurs within a range of ~ 200 years, indicating a valid &quot;year&quot;
@@ -205,37 +362,58 @@ or a moving date.
 
 Returns True if found, otherwise raises a DAValidationError.
 
-#### is\_leap\_year
+<a id="ALToolbox.misc.is_leap_year"></a>
+
+### is\_leap\_year
+
+```python
+def is_leap_year(year: int) -> bool
+```
 
 Helper function for `age_in_years` to determine if a year is a leap year.
 
-**Arguments**:
+#### Arguments
 
 - `year` - The year to check.
 
-**Returns**:
+#### Returns
 
   True if the year is a leap year, False otherwise.
 
-#### age\_in\_years
+<a id="ALToolbox.misc.age_in_years"></a>
+
+### age\_in\_years
+
+```python
+def age_in_years(the_date: Union[str, DADateTime]) -> int
+```
 
 Calculate the age in years from a date (treated like a date of birth).
 
-**Arguments**:
+#### Arguments
 
 - `the_date` - A string or DADateTime object representing the date of birth.
 
-**Returns**:
+#### Returns
 
   The age in years as an integer.
 
-#### format\_date\_if\_defined
+<a id="ALToolbox.misc.format_date_if_defined"></a>
+
+### format\_date\_if\_defined
+
+```python
+def format_date_if_defined(date_object_name: str,
+                           *pargs,
+                           default: str = "",
+                           **kwargs) -> str
+```
 
 Format a date string if it is defined, otherwise return an empty string.
 
 Passes all additional arguments to the `format_date` function.
 
-**Arguments**:
+#### Arguments
 
 - `date_object_name` - The date string to format.
 - `*pargs` - Additional positional arguments to pass to `format_date`.
@@ -243,7 +421,7 @@ Passes all additional arguments to the `format_date` function.
 - `**kwargs` - Additional keyword arguments to pass to `format_date`. E.g., format=&quot;yyyy-MM-dd&quot;
   
 
-**Returns**:
+#### Returns
 
   A formatted date string if `date_object_name` is defined, otherwise an empty string.
   

@@ -1,9 +1,25 @@
----
-sidebar_label: business_days
-title: ALToolbox.business_days
----
+# ALToolbox.business_days
 
-#### standard\_holidays
+* [ALToolbox.business\_days](#ALToolbox.business_days)
+  * [standard\_holidays](#ALToolbox.business_days.standard_holidays)
+  * [is\_business\_day](#ALToolbox.business_days.is_business_day)
+  * [get\_next\_business\_day](#ALToolbox.business_days.get_next_business_day)
+  * [get\_date\_after\_n\_business\_days](#ALToolbox.business_days.get_date_after_n_business_days)
+
+
+<a id="ALToolbox.business_days.standard_holidays"></a>
+
+### standard\_holidays
+
+```python
+def standard_holidays(
+        year,
+        country="US",
+        subdiv="MA",
+        add_holidays: Optional[Mapping] = None,
+        remove_holidays: Optional[Iterable[str]] = None
+) -> holidays.HolidayBase
+```
 
 Get all holidays in the specified year, country, and state (or other subdivision).
 Note that this draws on the &quot;holidays&quot; package which may deviate slightly from
@@ -24,7 +40,17 @@ the keys are datetime.date objects.
 \}
 ```
 
-#### is\_business\_day
+<a id="ALToolbox.business_days.is_business_day"></a>
+
+### is\_business\_day
+
+```python
+def is_business_day(date: Union[str, DADateTime],
+                    country="US",
+                    subdiv="MA",
+                    add_holidays: Optional[Mapping] = None,
+                    remove_holidays: Optional[Iterable[str]] = None) -> bool
+```
 
 Returns true if and only if the specified date is a business day (i.e., not a holiday)
 in the specified jurisdiction. Business days are considered to be:
@@ -37,7 +63,19 @@ in the specified jurisdiction. Business days are considered to be:
 assert(is_business_day("2023-03-26") == False)
 ```
 
-#### get\_next\_business\_day
+<a id="ALToolbox.business_days.get_next_business_day"></a>
+
+### get\_next\_business\_day
+
+```python
+def get_next_business_day(
+        start_date: Union[str, DADateTime],
+        wait_n_days=1,
+        country="US",
+        subdiv="MA",
+        add_holidays: Optional[Mapping] = None,
+        remove_holidays: Optional[Iterable[str]] = None) -> DADateTime
+```
 
 Returns the first day AFTER the specified start date that is
 not a federal or state holiday, Saturday or Sunday. Optionally,
@@ -49,7 +87,7 @@ holidays around the world and in various states and provinces, but local
 court rules may differ. You can see what holidays are used at
 https://github.com/dr-prodigy/python-holidays/tree/master/holidays/countries
 
-**Arguments**:
+#### Arguments
 
 - `start_date` - the date to start with. Can be a date-formatted string (i.e. &quot;2023-03-37&quot;, or
   &quot;3-27-2023&quot;) or a DADateTime object
@@ -61,11 +99,23 @@ https://github.com/dr-prodigy/python-holidays/tree/master/holidays/countries
   will add those holidays to be considered
 - `remove_holidays` - the list of date strings (&quot;12/25&quot;) of dates that are no longer holidays
 
-#### get\_date\_after\_n\_business\_days
+<a id="ALToolbox.business_days.get_date_after_n_business_days"></a>
+
+### get\_date\_after\_n\_business\_days
+
+```python
+def get_date_after_n_business_days(
+        start_date: Union[str, DADateTime],
+        wait_n_days=1,
+        country="US",
+        subdiv="MA",
+        add_holidays: Optional[Mapping] = None,
+        remove_holidays: Optional[Iterable[str]] = None) -> DADateTime
+```
 
 Returns a time period which contains a minimum of `n` business days.
 
-**Arguments**:
+#### Arguments
 
 - `start_date` - the date to start with. Can be a date-formatted string (i.e. &quot;2023-03-37&quot;, or
   &quot;3-27-2023&quot;) or a DADateTime object
