@@ -68,6 +68,7 @@ module.exports = {
                 'style_guide/question_style_help_your_user',
                 'style_guide/style_guide_formatting',
                 'style_guide/question_style_validation',
+                'style_guide/sms_style_guidelines',
                 {
                     label: 'Question library',
                     type: 'category',

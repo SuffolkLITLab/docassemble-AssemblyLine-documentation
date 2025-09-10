@@ -83,6 +83,10 @@ To use the reminder system, you will need to customize
 the `al_reminders` dictionary and add any email and SMS 
 templates that you want to use.
 
+:::tip SMS Style Guidelines
+When creating SMS templates, follow the [SMS notification style guidelines](/docs/style_guide/sms_style_guidelines) to ensure your messages are effective, accessible, and professional.
+:::
+
 `al_reminders` is a dictionary. Each entry is a dictionary
 with the following keys:
 
