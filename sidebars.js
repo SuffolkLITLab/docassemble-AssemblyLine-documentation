@@ -130,6 +130,8 @@ module.exports = {
                 "components/AssemblyLine/al_document",
                 "components/AssemblyLine/language",
                 "components/AssemblyLine/sessions",
+                "components/AssemblyLine/custom_jinja_filters",
+                "components/AssemblyLine/sign",
             ]
         },
         'components/ALRecipes/alrecipes_overview',
@@ -183,7 +185,6 @@ module.exports = {
                 'components/EFSPIntegration/conversions',
                 'components/EFSPIntegration/interview_logic',
                 'components/EFSPIntegration/py_efsp_client',
-                'components/EFSPIntegration/test/test_conversions',
             ]
         },
         {
