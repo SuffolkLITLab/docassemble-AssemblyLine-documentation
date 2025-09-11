@@ -69,7 +69,7 @@ your user may give up when asked to get information that is not
 already in their head.
 
 :::info Workshop Resource
-📺 **First Wednesday Workshop:** For detailed strategies on creating user-friendly interviews, accessibility best practices, and usability testing techniques, explore our [user experience and design workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/). These sessions cover everything from question design to mobile optimization.
+📺 **First Wednesday Workshop:** For detailed strategies on creating user-friendly interviews and accessibility best practices, watch our workshop on [Guided interview user experience design best practices](https://suffolklitlab.org/guided-interview-user-experience-design-best-practices/). This session covers question design, usability testing, and creating interviews that work well for all users.
 :::
 
 ## Answer questions for your user when you can

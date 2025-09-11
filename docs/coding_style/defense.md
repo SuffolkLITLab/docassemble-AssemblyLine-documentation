@@ -7,6 +7,10 @@ sidebar_label: |
 slug: defense
 ---
 
+:::info Workshop Resource
+📺 **First Wednesday Workshop:** For hands-on help with debugging and error resolution, watch our workshop on [Troubleshooting Docassemble interview errors](https://suffolklitlab.org/troubleshooting-docassemble-interview-errors-workshop/). This community Q&A session covers common error patterns, debugging strategies, and prevention techniques.
+:::
+
 ## Use Docassemble lists, dictionaries, and sets, or subclasses
 
 Docassemble relies heavily on exceptions for its declarative logic

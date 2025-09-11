@@ -79,5 +79,9 @@ Docassemble interview files use several kinds of markup. Most of what you will n
 You can also use [HTML](https://docassemble.org/docs/markup.html#markdownhtml), [CSS](https://docassemble.org/docs/ui.html#css), and [Javascript](https://docassemble.org/docs/initial.html#javascript) in Docassemble interviews.
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) (advanced formatting)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) (customizing the UI)
+* [CSS](https://developer.mozilla.org/en/docs/Web/CSS/Reference) (customizing the UI)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [jQuery](https://api.jquery.com/) (advanced customization)
+
+:::info JavaScript Workshop Resource
+📺 **First Wednesday Workshop:** For practical guidance on integrating JavaScript into your Docassemble interviews, watch our workshop [Using JavaScript in Docassemble](https://suffolklitlab.org/using-javascript-in-docassemble/). This session covers common JavaScript patterns, jQuery integration, and best practices for enhancing interview functionality.
+:::

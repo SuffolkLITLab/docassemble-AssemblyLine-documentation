@@ -45,9 +45,6 @@ PDF](https://help.gavel.io/articles/automating-pdf-documents?query=pdf) with Gav
 <iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Gavel's editor">
 </iframe>
 
-:::info Workshop Resource
-📺 **First Wednesday Workshop:** For in-depth guidance on working with PDF templates, including field setup, troubleshooting, and best practices, check out our [workshop on PDF template creation and automation](https://suffolklitlab.org/tag/first-wednesday-workshops/). These monthly sessions include live Q&A and hands-on demonstrations.
-:::
 
 ## Use limited field types
 

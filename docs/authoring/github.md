@@ -40,7 +40,7 @@ We also shared this workflow in a Document Assembly Line workshop:
 </p>
 
 :::info Workshop Resource
-📺 **First Wednesday Workshop:** For comprehensive coverage of GitHub workflows, version control strategies, and collaboration best practices with Docassemble, visit our [GitHub and version control workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/). These sessions include live demonstrations of branching, merging, and team development workflows.
+📺 **First Wednesday Workshop:** For comprehensive coverage of GitHub workflows with Docassemble, watch our workshop on [The GitHub-Docassemble workflow](https://suffolklitlab.org/github-docassemble-workflow/). This session includes live demonstrations of branching, merging, and team development workflows specifically designed for Docassemble interview building.
 :::
 
 ## Collaboration

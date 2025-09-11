@@ -30,7 +30,7 @@ If this is your first interview-building project, it may help to read more about
 :::
 
 :::info Workshop Resource
-📺 **First Wednesday Workshop:** For comprehensive guidance on project management, team collaboration, and stakeholder communication in interview development, check out our [project management and workflow workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/). These sessions cover planning, scoping, launch strategies, and working effectively with courts and legal organizations.
+📺 **First Wednesday Workshop:** For comprehensive guidance on project management, team collaboration, and stakeholder communication in interview development, watch our workshop on [Interview project management](https://suffolklitlab.org/interview-project-management/). This session covers planning, scoping, launch strategies, and working effectively with courts and legal organizations.
 :::
 
 ### Kickoff {#kickoff}
