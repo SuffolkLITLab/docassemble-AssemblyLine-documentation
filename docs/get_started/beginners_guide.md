@@ -63,6 +63,25 @@ You know enough to get started, but you will need help. The Document Assembly Li
 
 You can also take advantage of other [interview building resources and documentation](resources.md).
 
+<details>
+  <summary>📺 Related First Wednesday Workshops</summary>
+
+  The Suffolk LIT Lab hosts monthly First Wednesday workshops covering topics relevant to building Docassemble interviews. These are informal, interactive sessions where you can ask questions and learn from the community.
+
+  **Workshop topics that may be helpful for beginners:**
+  
+  - Getting Started with Docassemble
+  - Introduction to the Document Assembly Line
+  - Using the Assembly Line Weaver
+  - Best Practices for Interview Design
+  - Common Beginner Mistakes and How to Avoid Them
+
+  All workshops are recorded and available on our [workshop archive](https://suffolklitlab.org/tag/first-wednesday-workshops/). New workshops are held on the first Wednesday of each month at 3 PM Eastern.
+
+  [📅 View all workshops →](https://suffolklitlab.org/tag/first-wednesday-workshops/)
+
+</details>
+
 ## Start building your first interview!
 
 You probably already have an idea of the first form you want to work on, so pull up the [project management guide](project_management.md) and get started!

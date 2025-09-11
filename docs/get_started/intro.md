@@ -67,6 +67,36 @@ You don't have to go it alone! We offer:
 * **Community forum.** The LIT Lab hosts a community forum for the Document Assembly Line in Microsoft Teams for general discussions, coding help, server admin, and more.
 * **First-Wednesday workshops.** On the first Wednesday of each month at 3pm Eastern we host online workshops where we go in-depth on topics requested by the community. These are informal sessions centered around questions from viewers. Our workshops are also streamed and archived on YouTube.
 
+<details>
+  <summary>📺 Explore Workshop Topics</summary>
+
+  Our monthly First Wednesday workshops cover a wide range of topics relevant to building court forms and guided interviews:
+
+  **Technical Topics:**
+  - Docassemble fundamentals for beginners
+  - Advanced interview logic and branching
+  - Working with PDF and DOCX templates
+  - Testing strategies and debugging techniques
+  - API integrations and external services
+
+  **Design & User Experience:**
+  - Creating accessible interviews
+  - Mobile-first design principles
+  - Writing clear, user-friendly questions
+  - Usability testing for legal interviews
+
+  **Project Management:**
+  - Planning and scoping interview projects
+  - Working with stakeholders and courts
+  - Version control and collaboration workflows
+  - Launch strategies and user adoption
+
+  All sessions are recorded and archived for the community. Whether you're just getting started or looking to solve specific technical challenges, there's likely a workshop that addresses your needs.
+
+  [📚 Browse workshop archive →](https://suffolklitlab.org/tag/first-wednesday-workshops/)
+
+</details>
+
 To join the community, just [email us](mailto:litlab@suffolk.edu)!
 
 ### Partner with the LIT Lab

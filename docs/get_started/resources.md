@@ -29,6 +29,31 @@ Docassemble and the Document Assembly Line tools are open-source, which means th
 
 [Email us](mailto:litlab@suffolk.edu) to join!
 
+<details>
+  <summary>📺 First Wednesday Workshops</summary>
+
+  Every first Wednesday of the month at 3 PM Eastern, the Suffolk LIT Lab hosts interactive online workshops. These sessions are informal and centered around community questions and requests.
+
+  **Popular workshop topics include:**
+  
+  - Docassemble fundamentals and best practices
+  - Advanced Assembly Line features
+  - Form automation techniques
+  - PDF and DOCX template creation
+  - Testing and debugging interviews
+  - E-filing integration
+  - Accessibility and user experience design
+
+  **How to participate:**
+  - All workshops are free and open to the community
+  - Sessions are streamed live and recorded for later viewing
+  - Bring your questions! These are interactive sessions
+  - [View archived workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/)
+
+  [📅 Browse all workshop recordings →](https://suffolklitlab.org/tag/first-wednesday-workshops/)
+
+</details>
+
 ### Docassemble
 
 * [Slack group](https://join.slack.com/t/docassemble/shared_invite/zt-2cspzjo9j-YyE7SrLmi5muAvnPv~Bz~A)
