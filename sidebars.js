@@ -13,6 +13,7 @@ module.exports = {
             type: 'category',
             items: [
                 'get_started/project_management',
+                'get_started/feedback_and_testing',
                 'get_started/search_engine_optimization',
             ],
         },
