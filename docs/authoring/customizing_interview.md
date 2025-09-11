@@ -716,6 +716,23 @@ code: |
     users.there_is_another = False
 ```
 
+## Debugging your interview
+
+When making changes to your interview, you may encounter errors or unexpected behavior. The most important tools for debugging are:
+
+1. **The "Show variables and values" button** - Click this in the top-right corner of any interview screen to see all defined variables and their values
+2. **The playground's Variables tab** - Provides a structured view of your interview's data
+3. **Error messages** - Read them carefully as they usually point to the exact problem
+
+For comprehensive guidance on debugging, see our [Debugging and troubleshooting guide](debugging_and_troubleshooting.md).
+
+### Quick debugging tips
+
+- **Check variable names**: Make sure spellings match between questions, logic, and templates
+- **Use the Variables tab**: Verify that lists are actually lists, dates are date objects, etc.
+- **Test incrementally**: Comment out sections to isolate problems
+- **Read error messages completely**: They usually contain the information you need to fix the issue
+
 ## How to make changes safely
 
 You can always:
