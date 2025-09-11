@@ -5,6 +5,10 @@ sidebar_label: Python
 slug: python
 ---
 
+:::info Workshop Resource
+📺 **First Wednesday Workshop:** For help understanding index variables and loop constructs in Docassemble, watch our workshop [Demystifying i and x in Docassemble](https://suffolklitlab.org/demystifying-i-and-x-in-docassemble/). This session clarifies common confusion around indexing and iteration patterns in Docassemble interviews.
+:::
+
 ## Use Python conventions for Python code
 
 In general, we refer to Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) for all Python code.

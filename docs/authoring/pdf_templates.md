@@ -45,6 +45,7 @@ PDF](https://help.gavel.io/articles/automating-pdf-documents?query=pdf) with Gav
 <iframe width="560" height="315" src="https://youtube.com/embed/HHGTWJ4r2hk?start=83" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="How to edit a PDF with Gavel's editor">
 </iframe>
 
+
 ## Use limited field types
 
 Use **only** these field types in your PDF document:

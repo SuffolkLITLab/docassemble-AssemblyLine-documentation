@@ -29,6 +29,31 @@ Docassemble and the Document Assembly Line tools are open-source, which means th
 
 [Email us](mailto:litlab@suffolk.edu) to join!
 
+<details>
+  <summary>📺 First Wednesday Workshops</summary>
+
+  Every first Wednesday of the month at 3 PM Eastern, the Suffolk LIT Lab hosts interactive online workshops. These sessions are informal and centered around community questions and requests.
+
+  **Popular workshop topics include:**
+  
+  - Docassemble fundamentals and best practices
+  - Advanced Assembly Line features
+  - Form automation techniques
+  - PDF and DOCX template creation
+  - Testing and debugging interviews
+  - E-filing integration
+  - Accessibility and user experience design
+
+  **How to participate:**
+  - All workshops are free and open to the community
+  - Sessions are streamed live and recorded for later viewing
+  - Bring your questions! These are interactive sessions
+  - [View archived workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/)
+
+  [📅 Browse all workshop recordings →](https://suffolklitlab.org/tag/first-wednesday-workshops/)
+
+</details>
+
 ### Docassemble
 
 * [Slack group](https://join.slack.com/t/docassemble/shared_invite/zt-2cspzjo9j-YyE7SrLmi5muAvnPv~Bz~A)
@@ -54,5 +79,9 @@ Docassemble interview files use several kinds of markup. Most of what you will n
 You can also use [HTML](https://docassemble.org/docs/markup.html#markdownhtml), [CSS](https://docassemble.org/docs/ui.html#css), and [Javascript](https://docassemble.org/docs/initial.html#javascript) in Docassemble interviews.
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) (advanced formatting)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) (customizing the UI)
+* [CSS](https://developer.mozilla.org/en/docs/Web/CSS/Reference) (customizing the UI)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [jQuery](https://api.jquery.com/) (advanced customization)
+
+:::info JavaScript Workshop Resource
+📺 **First Wednesday Workshop:** For practical guidance on integrating JavaScript into your Docassemble interviews, watch our workshop [Using JavaScript in Docassemble](https://suffolklitlab.org/using-javascript-in-docassemble/). This session covers common JavaScript patterns, jQuery integration, and best practices for enhancing interview functionality.
+:::

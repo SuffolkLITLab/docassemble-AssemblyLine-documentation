@@ -29,6 +29,10 @@ After the kickoff through launch, the interview building team should hold regula
 If this is your first interview-building project, it may help to read more about [planning and building your first expert system](https://projects.suffolklitlab.org/legal-tech-class/docs/interview-structure/building-an-app-outline).
 :::
 
+:::info Workshop Resource
+📺 **First Wednesday Workshop:** For comprehensive guidance on project management, team collaboration, and stakeholder communication in interview development, watch our workshop on [Interview project management](https://suffolklitlab.org/interview-project-management/). This session covers planning, scoping, launch strategies, and working effectively with courts and legal organizations.
+:::
+
 ### Kickoff {#kickoff}
 
 Hold a kickoff meeting for the project as early as possible. Everyone who is important to the success of the project—the interview building team, the decisionmaker, and the key stakeholders—should attend.

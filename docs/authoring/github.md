@@ -39,6 +39,10 @@ We also shared this workflow in a Document Assembly Line workshop:
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4j7rRRvsbfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
+:::info Workshop Resource
+📺 **First Wednesday Workshop:** For comprehensive coverage of GitHub workflows with Docassemble, watch our workshop on [The GitHub-Docassemble workflow](https://suffolklitlab.org/github-docassemble-workflow/). This session includes live demonstrations of branching, merging, and team development workflows specifically designed for Docassemble interview building.
+:::
+
 ## Collaboration
 
 GitHub is built for collaboration, and tips for collaborating are included throughout this page, but here are some key highlights:
