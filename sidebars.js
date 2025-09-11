@@ -5,6 +5,7 @@ module.exports = {
         'get_started/intro',
         'get_started/al_project_architecture',
         'get_started/installation',
+        'get_started/plan_interview',
         'get_started/beginners_guide',
         {
             label: 'Interview projects',
