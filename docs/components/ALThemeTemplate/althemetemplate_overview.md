@@ -178,6 +178,37 @@ Your new `custom.css` file is in the
 `~/bootstrap-5.1.3/dist/css` directory. Copy this file to your Docassemble
 `static` folder and reference it as a `bootstrap theme`.
 
+### Overriding the favicon for a single interview
+
+Docassemble's global configuration only allows you to define the favicon server-wide,
+but sometimes you have a reason for a single interview to use a different one.
+
+You can override the favicon at runtime by loading a custom JavaScript file in your interview:
+
+```javascript
+$(document).on('daPageLoad', function(){
+    var link = document.querySelector("link[rel*='shortcut icon'") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = "/packagestatic/docassemble.YourPackage/your_favicon.svg?v=2023_02_04_1";
+    document.getElementsByTagName('head')[0].appendChild(link);
+});
+```
+
+To use this:
+
+1. Create a JavaScript file (e.g., `favicon.js`) in your package's `data/static` folder with the code above
+2. Customize the SVG filename in the `link.href` line, replacing `YourPackage` with your package name and `your_favicon.svg` with your favicon filename
+3. Add the JavaScript file to your interview's `features` block:
+
+```yaml
+features:
+  javascript:
+    - favicon.js
+```
+
+The favicon will be updated whenever a new page loads in your interview, overriding the server's default favicon for that specific interview only.
+
 ### Using dark mode
 
 Docassemble by default will show an alternate "dark mode" version of your interview to
