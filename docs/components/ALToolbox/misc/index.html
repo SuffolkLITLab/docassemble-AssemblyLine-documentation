@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.d69c202a.css">
-<script src="/assets/js/runtime~main.b123e26c.js" defer="defer"></script>
-<script src="/assets/js/main.35e67844.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b58a3027.js" defer="defer"></script>
+<script src="/assets/js/main.a3d9c225.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -45,15 +45,42 @@
 <a id="ALToolbox.misc.thousands"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="thousands">thousands<a href="#thousands" class="hash-link" aria-label="Direct link to thousands" title="Direct link to thousands">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">thousands</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">num</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Union</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> Decimal</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> show_decimals</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token boolean" style="color:rgb(255, 88, 116)">False</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>Return a whole number formatted with thousands separator.
-Optionally, format with 2 decimal points (for a PDF form with the
-currency symbol already present in the form)</p>
-<p>If <code>show_decimals</code>, will call <code>int(num)</code>, truncating the decimals instead of
-rounding to the closest int.</p>
+<p>Return a whole number formatted with thousands separator.</p>
+<p>Optionally, format with 2 decimal points (for a PDF form with the
+currency symbol already present in the form). If <code>show_decimals</code> is False,
+will call <code>int(num)</code>, truncating the decimals instead of rounding to the
+closest int.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments">Arguments<a href="#arguments" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>num</code> <em>Union[float, str, Decimal]</em> - The numeric value to format.</li>
+<li><code>show_decimals</code> <em>bool, optional</em> - Whether to display 2 decimal places.
+Defaults to False.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The formatted number string with thousands separators, optionally
+with 2 decimal places.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; thousands(1234.56)
+&#x27;1,234&#x27;
+&gt;&gt;&gt; thousands(1234.56, show_decimals=True)
+&#x27;1,234.56&#x27;</p>
 <a id="ALToolbox.misc.tel"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="tel">tel<a href="#tel" class="hash-link" aria-label="Direct link to tel" title="Direct link to tel">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">tel</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">phone_number</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>Format a phone number so you can click on it to open in your phone dialer</p>
+<p>Format a phone number so you can click on it to open in your phone dialer.</p>
+<p>Creates an HTML anchor tag with tel: protocol that allows users to click
+and dial the number on mobile devices or applications that support tel links.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-1">Arguments<a href="#arguments-1" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>phone_number</code> - The phone number to format. Can be string or numeric type.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>str</code> - HTML anchor tag with tel: link containing the phone number.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; tel(&quot;555-123-4567&quot;)
+&#x27;&lt;a href=&quot;tel:555-123-4567&quot;&gt;555-123-4567&lt;/a&gt;&#x27;</p>
 <a id="ALToolbox.misc.fa_icon"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="fa_icon">fa_icon<a href="#fa_icon" class="hash-link" aria-label="Direct link to fa_icon" title="Direct link to fa_icon">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">fa_icon</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">icon</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            color</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;primary&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            color_css</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            size</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;sm&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            fa_class</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;fa-solid&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            aria_hidden</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">True</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -61,11 +88,11 @@ rounding to the closest int.</p>
 <p>Docassemble allows you to display an icon from <a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer">fontawesome</a>,
 but it does not provide control over the size or color of the icon. This function gives
 you more control over the icon that is inserted.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments">Arguments<a href="#arguments" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-2">Arguments<a href="#arguments-2" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>icon</code> - a string representing a fontawesome icon. The icon needs to be in the
 <a href="https://fontawesome.com/search?o=r&amp;m=free" target="_blank" rel="noopener noreferrer">free library</a>.</li>
-<li><code>color</code> - can be any <a href="https://getbootstrapc.mo/docs/4.0/utilities/colors" target="_blank" rel="noopener noreferrer">Bootstrap color variable</a>.
+<li><code>color</code> - can be any <a href="https://getbootstrap.com/docs/5.0/utilities/colors/" target="_blank" rel="noopener noreferrer">Bootstrap color variable</a>.
 For example: <code>primary</code>, <code>secondary</code>, <code>warning</code></li>
 <li><code>color_css</code> - allows you to use a CSS code to represent the color, e.g., <code>blue</code>, or <code>fff</code> for black</li>
 <li><code>size</code> - used to control the <a href="https://fontawesome.com/v6.0/docs/web/style/size" target="_blank" rel="noopener noreferrer">fontawesome size</a>
@@ -75,35 +102,120 @@ For example: <code>primary</code>, <code>secondary</code>, <code>warning</code><
 the default class of <code>fa-solid</code>, like <code>fa-brands</code>, or <code>fa-regular</code> and <code>fa-light</code>.</li>
 <li><code>aria_hidden</code> - if True, adds <code>aria-hidden=&quot;true&quot;</code> to the icon, which is the default</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>HTML for a font-awesome icon of the specified size and color.</p>
 <a id="ALToolbox.misc.space"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="space">space<a href="#space" class="hash-link" aria-label="Direct link to space" title="Direct link to space">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">space</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">var_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> prefix</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot; &quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> suffix</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>If the value as a string is defined, return it prefixed/suffixed. Defaults to prefix
-of a space. Helps build a sentence with less cruft. Equivalent to SPACE function in
-HotDocs.</p>
+<p>If the value as a string is defined, return it prefixed/suffixed.</p>
+<p>Defaults to prefix of a space. Helps build a sentence with less cruft.
+Equivalent to SPACE function in HotDocs. Only returns the formatted value
+if the variable name is valid and the variable is defined and has a value.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-3">Arguments<a href="#arguments-3" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>var_name</code> <em>str</em> - The name of the variable to check and format.</li>
+<li><code>prefix</code> <em>str, optional</em> - String to prepend to the value. Defaults to &quot; &quot;.</li>
+<li><code>suffix</code> <em>str, optional</em> - String to append to the value. Defaults to &quot;&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The variable value with prefix and suffix if variable is defined
+and has a value, otherwise an empty string.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; space(&quot;user_middle_name&quot;, prefix=&quot; &quot;, suffix=&quot;&quot;)
+&quot; John&quot;  # if user_middle_name is defined as &quot;John&quot;
+&gt;&gt;&gt; space(&quot;undefined_var&quot;)
+&quot;&quot;  # if variable is not defined</p>
 <a id="ALToolbox.misc.yes_no_unknown"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="yes_no_unknown">yes_no_unknown<a href="#yes_no_unknown" class="hash-link" aria-label="Direct link to yes_no_unknown" title="Direct link to yes_no_unknown">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">yes_no_unknown</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">var_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                   condition</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                   unknown</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Unknown&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                   placeholder</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token number" style="color:rgb(247, 140, 108)">0</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
-<p>Return &#x27;unknown&#x27; if the value is None rather than False. Helper for PDF filling with
-yesnomaybe fields</p>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">yes_no_unknown</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">var_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                   condition</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                   unknown</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Unknown&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                   placeholder</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token number" style="color:rgb(247, 140, 108)">0</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Any</span><br></span></code></pre></div></div>
+<p>Return &#x27;unknown&#x27; if the value is None rather than False.</p>
+<p>Helper for PDF filling with yesnomaybe fields. Distinguishes between
+False (explicitly no) and None (unknown/not answered).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-4">Arguments<a href="#arguments-4" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>var_name</code> <em>str</em> - The name of the variable to return if condition is True.</li>
+<li><code>condition</code> <em>Optional[bool]</em> - The condition to evaluate. True returns the
+variable value, False returns placeholder, None returns unknown.</li>
+<li><code>unknown</code> <em>str, optional</em> - Value to return when condition is None.
+Defaults to &quot;Unknown&quot;.</li>
+<li><code>placeholder</code> - Value to return when condition is False. Defaults to 0.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The value of var_name if condition is True, the unknown string if
+condition is None, or the placeholder value if condition is False.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; yes_no_unknown(&quot;user_answer&quot;, True, &quot;Unknown&quot;, 0)</p>
+<h1>Returns value of user_answer variable</h1>
+<p>&gt;&gt;&gt; yes_no_unknown(&quot;user_answer&quot;, None, &quot;Unknown&quot;, 0)
+&quot;Unknown&quot;
+&gt;&gt;&gt; yes_no_unknown(&quot;user_answer&quot;, False, &quot;Unknown&quot;, 0)
+0</p>
 <a id="ALToolbox.misc.number_to_letter"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="number_to_letter">number_to_letter<a href="#number_to_letter" class="hash-link" aria-label="Direct link to number_to_letter" title="Direct link to number_to_letter">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">number_to_letter</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">n</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>Returns a capital letter representing ordinal position. E.g., 1=A, 2=B, etc. Appends letters
-once you reach 26 in a way compatible with Excel/Google Sheets column naming conventions. 27=AA, 28=AB...</p>
+<p>Returns a capital letter representing ordinal position.</p>
+<p>E.g., 1=A, 2=B, etc. Appends letters once you reach 26 in a way compatible
+with Excel/Google Sheets column naming conventions. 27=AA, 28=AB...</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-5">Arguments<a href="#arguments-5" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>n</code> <em>Optional[int]</em> - The number to convert to letters. If None, treated as 0.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>str</code> - The letter representation of the number using Excel-style column naming.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; number_to_letter(1)
+&#x27;A&#x27;
+&gt;&gt;&gt; number_to_letter(26)
+&#x27;Z&#x27;
+&gt;&gt;&gt; number_to_letter(27)
+&#x27;AA&#x27;</p>
 <a id="ALToolbox.misc.collapse_template"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="collapse_template">collapse_template<a href="#collapse_template" class="hash-link" aria-label="Direct link to collapse_template" title="Direct link to collapse_template">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">collapse_template</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">template</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> DALazyTemplate</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                      classname</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">|</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                      closed_icon</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;caret-right&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                      open_icon</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;caret-down&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                      collapsed</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">True</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
 <p>Insert HTML for a Bootstrap &quot;collapse&quot; div.</p>
-<p>Optionally, you can specify a custom icon to override the defaults:</p>
-<p>The default icons are &quot;right caret&quot; which displays when the text is collapsed (<code>closed_icon</code>) and
-&quot;down caret&quot; which displays when the text is open (<code>open_icon</code>).</p>
+<p>Creates a collapsible section with a clickable header that shows/hides content.
+Optionally, you can specify custom icons to override the defaults.</p>
+<p>The default icons are &quot;right caret&quot; which displays when the text is collapsed
+(<code>closed_icon</code>) and &quot;down caret&quot; which displays when the text is open (<code>open_icon</code>).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-6">Arguments<a href="#arguments-6" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>template</code> <em>DALazyTemplate</em> - The docassemble template to render in the collapsible section.</li>
+<li><code>classname</code> <em>str | None, optional</em> - CSS class name for styling the content container.
+Defaults to None (uses &quot;bg-light&quot;).</li>
+<li><code>closed_icon</code> <em>str, optional</em> - FontAwesome icon name for collapsed state.
+Defaults to &quot;caret-right&quot;.</li>
+<li><code>open_icon</code> <em>str, optional</em> - FontAwesome icon name for expanded state.
+Defaults to &quot;caret-down&quot;.</li>
+<li><code>collapsed</code> <em>bool, optional</em> - Whether the section should start collapsed.
+Defaults to True.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>Complete HTML string for the Bootstrap collapse component, or empty
+string if template has no content.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; collapse_template(my_template, classname=&quot;bg-primary&quot;, collapsed=False)
+&#x27;&lt;div id=&quot;...&quot; class=&quot;al_collapse_template&quot;&gt;...&lt;/div&gt;&#x27;</p>
 <a id="ALToolbox.misc.tabbed_templates_html"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="tabbed_templates_html">tabbed_templates_html<a href="#tabbed_templates_html" class="hash-link" aria-label="Direct link to tabbed_templates_html" title="Direct link to tabbed_templates_html">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">tabbed_templates_html</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">tab_group_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>Provided a list of templates, create Bootstrap v 4.5 tabs with the <code>subject</code> as the tab label.</p>
+<p>Create Bootstrap v 4.5 tabs with template subjects as tab labels.</p>
+<p>Provided a list of templates, creates a tabbed interface where each template&#x27;s
+subject becomes the tab label and the content becomes the tab panel content.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-7">Arguments<a href="#arguments-7" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>tab_group_name</code> <em>str</em> - The base name for the tab group, used to generate
+unique IDs for the tabs.</li>
+<li><code>*pargs</code> - Variable number of template objects that have subject and content_as_html
+methods.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>Complete HTML string containing Bootstrap tabs navigation and content
+panels.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; tabbed_templates_html(&quot;my_tabs&quot;, template1, template2, template3)
+&#x27;&lt;ul class=&quot;nav nav-tabs&quot; id=&quot;my_tabs&quot;&gt;...&lt;/ul&gt;&lt;div class=&quot;tab-content&quot;&gt;...&lt;/div&gt;&#x27;</p>
 <a id="ALToolbox.misc.review_widget"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="review_widget">review_widget<a href="#review_widget" class="hash-link" aria-label="Direct link to review_widget" title="Direct link to review_widget">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">review_widget</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        up_action</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        down_action</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        review_action</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        thumbs_display</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Did we help you?&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        review_display</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Thank you for your feedback. Let us know what we could do better&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        submit_review_button</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Add your review&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        post_review_display</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Thank you for your review!&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -112,7 +224,7 @@ component) in the middle of an interview without triggering a page reload.</p>
 <p>If <code>review_action</code> is provided, once you press either of the thumbs, a text input screen with
 a submit button appears, and once the text review is submitted (or after the thumbs, if no
 <code>review_action</code> was provided), a final &quot;thank you&quot; message is displayed.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-1">Arguments<a href="#arguments-1" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-8">Arguments<a href="#arguments-8" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>up_action</code> - the variable name of an event to be executed on the server if the
 thumbs up is pressed</li>
@@ -125,31 +237,82 @@ server when someone submits their text review</li>
 <li><code>submit_review_button</code> - text on the button to submit their text review</li>
 <li><code>post_review_display</code> - text displayed to user after review is submitted</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>the HTML string of the widget</p>
 <a id="ALToolbox.misc.sum_if_defined"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="sum_if_defined">sum_if_defined<a href="#sum_if_defined" class="hash-link" aria-label="Direct link to sum_if_defined" title="Direct link to sum_if_defined">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sum_if_defined</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
-<p>Lets you add up the value of variables that are not in a list</p>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sum_if_defined</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Union</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> Decimal</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
+<p>Add up the value of variables that are not in a list.</p>
+<p>Lets you sum the values of multiple variables, but only includes variables
+that are defined. Undefined variables are skipped rather than causing errors.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-9">Arguments<a href="#arguments-9" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>*pargs</code> - Variable number of variable names (strings) to sum up.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-9">Returns<a href="#returns-9" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The sum of all defined variable values. Variables that are not defined
+are treated as 0 (skipped).</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; sum_if_defined(&quot;income1&quot;, &quot;income2&quot;, &quot;income3&quot;)</p>
+<h1>Returns sum of defined income variables, skipping any undefined ones</h1>
 <a id="ALToolbox.misc.add_records"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="add_records">add_records<a href="#add_records" class="hash-link" aria-label="Direct link to add_records" title="Direct link to add_records">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">add_records</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">obj</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> labels</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
-<p>List demo interviews in the current package to be run from the landing page</p>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">add_records</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">obj</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> labels</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Any</span><br></span></code></pre></div></div>
+<p>List demo interviews in the current package to be run from the landing page.</p>
+<p>Populates a DAList object with records containing interview information
+including name, description, and reference for creating a demo landing page.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-10">Arguments<a href="#arguments-10" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>obj</code> - A DAList object to populate with interview records.</li>
+<li><code>labels</code> <em>dict</em> - Dictionary where keys are interview names and values are
+tuples/lists containing [description, reference].</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-10">Returns<a href="#returns-10" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The populated obj (DAList) with interview records added.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; interviews = {&quot;intake&quot;: [&quot;Intake Interview&quot;, &quot;intake.yml&quot;]}
+&gt;&gt;&gt; add_records(my_list, interviews)</p>
+<h1>my_list[0].name = &quot;intake&quot;, description = &quot;Intake Interview&quot;, etc.</h1>
 <a id="ALToolbox.misc.output_checkbox"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="output_checkbox">output_checkbox<a href="#output_checkbox" class="hash-link" aria-label="Direct link to output_checkbox" title="Direct link to output_checkbox">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">output_checkbox</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">value_to_check</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                    checked_value</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;[X]&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                    unchecked_value</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;[  ]&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
-<p>Generate a conditional checkbox for docx templates</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-2">Arguments<a href="#arguments-2" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">output_checkbox</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">value_to_check</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                    checked_value</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;[X]&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                    unchecked_value</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;[  ]&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
+<p>Generate a conditional checkbox for docx templates.</p>
+<p>Returns different values based on whether a boolean condition is true or false,
+useful for creating checkboxes in document templates.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-11">Arguments<a href="#arguments-11" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>checked_value</code> - defaults to <code>[X]</code> but can be set to any string or even a <code>DAFile</code> or <code>DAStaticFile</code>
-with the image of a checkbox</li>
-<li><code>unchecked_value</code> - opposite meaning of <code>checked_value</code> and defaults to <code>[  ]</code></li>
+<li><code>value_to_check</code> <em>bool</em> - The boolean value to evaluate.</li>
+<li><code>checked_value</code> <em>str, optional</em> - Value to return when condition is True.
+Defaults to &quot;[X]&quot;. Can be any string or even a DAFile or DAStaticFile
+with the image of a checkbox.</li>
+<li><code>unchecked_value</code> <em>str, optional</em> - Value to return when condition is False.
+Defaults to &quot;[  ]&quot;. Opposite meaning of <code>checked_value</code>.</li>
 </ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-11">Returns<a href="#returns-11" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The checked_value if value_to_check is True, otherwise unchecked_value.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; output_checkbox(True)
+&#x27;[X]&#x27;
+&gt;&gt;&gt; output_checkbox(False, checked_value=&quot;YES&quot;, unchecked_value=&quot;NO&quot;)
+&#x27;NO&#x27;</p>
 <a id="ALToolbox.misc.nice_county_name"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="nice_county_name">nice_county_name<a href="#nice_county_name" class="hash-link" aria-label="Direct link to nice_county_name" title="Direct link to nice_county_name">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">nice_county_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">address</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Address</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
+<p>Clean up county name by removing &quot; County&quot; suffix if present.</p>
 <p>If the county name contains the word &quot;County&quot;, which Google Address
-Autocomplete does by default, remove it.</p>
+Autocomplete does by default, remove it to get a cleaner display name.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-12">Arguments<a href="#arguments-12" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>address</code> <em>Address</em> - A docassemble Address object that may have a county attribute.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-12">Returns<a href="#returns-12" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The county name with &quot; County&quot; suffix removed, or empty string if
+the address has no county attribute.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; nice_county_name(address_with_county)
+&#x27;Suffolk&#x27;  # if address.county was &quot;Suffolk County&quot;
+&gt;&gt;&gt; nice_county_name(address_without_county)
+&#x27;&#x27;</p>
 <a id="ALToolbox.misc.button_array"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="button_array">button_array<a href="#button_array" class="hash-link" aria-label="Direct link to button_array" title="Direct link to button_array">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">button_array</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">buttons</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> List</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">ButtonDict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                 custom_container_class</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                 custom_link_class</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -159,105 +322,127 @@ doesn&#x27;t have the limits of that particular input method. This is meant to a
 on any page of an interview in the <code>subquestion</code> area.</p>
 <p>Optionally, you can limit access to paricular buttons by specifying a privilege or a list
 of privileges.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-3">Arguments<a href="#arguments-3" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-13">Arguments<a href="#arguments-13" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li>
-<p><code>button_list</code> - a dictionary of ButtonDicts (or plain dictionaries) with the following keys:</p>
+<li><code>buttons</code> <em>List[ButtonDict]</em> - A list of ButtonDicts (or plain dictionaries)
+with the following keys:<!-- -->
 <ul>
 <li><code>name</code>: the text to display on the button</li>
 <li><code>image</code>: the name of a fontawesome icon to display on the button</li>
 <li><code>url</code>: the name of the page to link to</li>
-<li><code>privilege</code>: optional, the name of a Docassemble privilege that the user must have to see the button. Can be a list or a single string.</li>
+<li><code>privilege</code>: optional, the name of a Docassemble privilege that the
+user must have to see the button. Can be a list or a single string.</li>
 </ul>
 </li>
-<li>
-<p><code>custom_container_class</code> - optional, a string of additional CSS classes to add to the container div</p>
-</li>
-<li>
-<p><code>custom_link_class</code> - optional, a string of additional CSS classes to add to each link</p>
-</li>
+<li><code>custom_container_class</code> <em>str, optional</em> - Additional CSS classes to add to
+the container div. Defaults to &quot;&quot;.</li>
+<li><code>custom_link_class</code> <em>str, optional</em> - Additional CSS classes to add to each
+link. Defaults to &quot;&quot;.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
-<p>HTML for a grid of buttons</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-13">Returns<a href="#returns-13" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>str</code> - HTML for a grid of buttons that mimics Docassemble&#x27;s button field type.</li>
+</ul>
 <a id="ALToolbox.misc.none_to_empty"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="none_to_empty">none_to_empty<a href="#none_to_empty" class="hash-link" aria-label="Direct link to none_to_empty" title="Direct link to none_to_empty">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">none_to_empty</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">val</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Any</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">none_to_empty</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">val</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Any</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Any</span><br></span></code></pre></div></div>
 <p>If the value is None or &quot;None&quot;, return a DAEmpty value. Otherwise return the value.</p>
 <p>This is useful for filling in a template and to prevent the word None from appearing in the output. For example,
 when handling a radio button that is not required and left unanswered.</p>
 <p>A DAEmpty value appears as an empty string in the output. You can also safely transform it or use any method on it
 without raising an error.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-4">Arguments<a href="#arguments-4" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-14">Arguments<a href="#arguments-14" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>val</code> - the value to check</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-14">Returns<a href="#returns-14" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>a DAEmpty if the value is None, otherwise the value</p>
 <a id="ALToolbox.misc.option_or_other"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="option_or_other">option_or_other<a href="#option_or_other" class="hash-link" aria-label="Direct link to option_or_other" title="Direct link to option_or_other">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">option_or_other</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">variable_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                    other_variable_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
 <p>If the variable is set to &#x27;Other&#x27;, return the value of the &#x27;other&#x27; variable. Otherwise return the value of the variable.</p>
 <p>This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-5">Arguments<a href="#arguments-5" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-15">Arguments<a href="#arguments-15" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>variable_name</code> - the name of the variable to check</li>
 <li><code>other_variable_name</code> - the name of the variable to return if the value of the first variable is &#x27;Other&#x27;</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-15">Returns<a href="#returns-15" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>the value of the variable if it is not &#x27;Other&#x27;, otherwise the value of the other variable</p>
 <a id="ALToolbox.misc.true_values_with_other"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="true_values_with_other">true_values_with_other<a href="#true_values_with_other" class="hash-link" aria-label="Direct link to true_values_with_other" title="Direct link to true_values_with_other">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">true_values_with_other</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        variable_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        other_variable_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> List</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
 <p>Return a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.</p>
 <p>This is useful for filling in a template and to prevent the word &#x27;Other&#x27; from appearing in the output.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-6">Arguments<a href="#arguments-6" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-16">Arguments<a href="#arguments-16" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>variable</code> - the dictionary of variables to check</li>
-<li><code>other_variable_name</code> - the name of the variable (as a string) to return if the value of the first variable is &#x27;Other&#x27;</li>
+<li><code>variable_name</code> <em>str</em> - The dictionary of variables to check.</li>
+<li><code>other_variable_name</code> <em>Optional[str], optional</em> - The name of the variable
+(as a string) to return if the value of the first variable is &#x27;Other&#x27;.
+Defaults to None (uses variable_name + &quot;_other&quot;).</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
-<p>a list of values that are True, with the value of the &#x27;other&#x27; variable appended to the end of the list.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-16">Returns<a href="#returns-16" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>A list of values that are True, with the value of the &#x27;other&#x27;
+variable appended to the end of the list if &#x27;other&#x27;/&#x27;Other&#x27; was selected.</p>
 <a id="ALToolbox.misc.include_a_year"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="include_a_year">include_a_year<a href="#include_a_year" class="hash-link" aria-label="Direct link to include_a_year" title="Direct link to include_a_year">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">include_a_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">text</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> field</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><br></span></code></pre></div></div>
+<p>Validates whether the input text contains at least one 4-digit year.</p>
 <p>Validates whether the input text contains at least one 4-digit sequence
-that occurs within a range of ~ 200 years, indicating a valid &quot;year&quot;
-for an event that should be reported on most court forms, like a birthdate
-or a moving date.</p>
-<p>Returns True if found, otherwise raises a DAValidationError.</p>
+that occurs within a range of ~ 200 years (1800-2199), indicating a valid
+&quot;year&quot; for an event that should be reported on most court forms, like a
+birthdate or a moving date.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-17">Arguments<a href="#arguments-17" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>text</code> <em>str</em> - The text to search for a year pattern.</li>
+<li><code>field</code> <em>Optional[str], optional</em> - The field name to use in validation
+error messages. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-17">Returns<a href="#returns-17" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>bool</code> - True if a valid year is found, otherwise raises a DAValidationError.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="raises">Raises<a href="#raises" class="hash-link" aria-label="Direct link to Raises" title="Direct link to Raises">​</a></h4>
+<ul>
+<li><code>DAValidationError</code> - If no valid year pattern is found in the text.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; include_a_year(&quot;Born in 1985&quot;)
+True
+&gt;&gt;&gt; include_a_year(&quot;Born long ago&quot;)  # raises DAValidationError</p>
 <a id="ALToolbox.misc.is_leap_year"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="is_leap_year">is_leap_year<a href="#is_leap_year" class="hash-link" aria-label="Direct link to is_leap_year" title="Direct link to is_leap_year">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">is_leap_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">bool</span><br></span></code></pre></div></div>
 <p>Helper function for <code>age_in_years</code> to determine if a year is a leap year.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-7">Arguments<a href="#arguments-7" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-18">Arguments<a href="#arguments-18" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>year</code> - The year to check.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-18">Returns<a href="#returns-18" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>True if the year is a leap year, False otherwise.</p>
 <a id="ALToolbox.misc.age_in_years"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="age_in_years">age_in_years<a href="#age_in_years" class="hash-link" aria-label="Direct link to age_in_years" title="Direct link to age_in_years">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">age_in_years</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">the_date</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Union</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> DADateTime</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><br></span></code></pre></div></div>
 <p>Calculate the age in years from a date (treated like a date of birth).</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-8">Arguments<a href="#arguments-8" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-19">Arguments<a href="#arguments-19" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>the_date</code> - A string or DADateTime object representing the date of birth.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-19">Returns<a href="#returns-19" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The age in years as an integer.</p>
 <a id="ALToolbox.misc.format_date_if_defined"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="format_date_if_defined">format_date_if_defined<a href="#format_date_if_defined" class="hash-link" aria-label="Direct link to format_date_if_defined" title="Direct link to format_date_if_defined">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">format_date_if_defined</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">date_object_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                           </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                           default</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                           </span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">kwargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
 <p>Format a date string if it is defined, otherwise return an empty string.</p>
 <p>Passes all additional arguments to the <code>format_date</code> function.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-9">Arguments<a href="#arguments-9" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-20">Arguments<a href="#arguments-20" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>date_object_name</code> - The date string to format.</li>
 <li><code>*pargs</code> - Additional positional arguments to pass to <code>format_date</code>.</li>
 <li><code>default</code> - A default string to return if <code>date_object_name</code> is not defined.</li>
 <li><code>**kwargs</code> - Additional keyword arguments to pass to <code>format_date</code>. E.g., format=&quot;yyyy-MM-dd&quot;</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-20">Returns<a href="#returns-20" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>A formatted date string if <code>date_object_name</code> is defined, otherwise an empty string.</p>
 <p><strong>Example</strong>:</p>
 <p>&gt;&gt;&gt; format_date_if_defined(&quot;users[0].birthdate&quot;, format=&#x27;yyyy-MM-dd&#x27;)</p>

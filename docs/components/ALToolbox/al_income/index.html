@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.d69c202a.css">
-<script src="/assets/js/runtime~main.b123e26c.js" defer="defer"></script>
-<script src="/assets/js/main.35e67844.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b58a3027.js" defer="defer"></script>
+<script src="/assets/js/main.a3d9c225.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -34,6 +34,7 @@
 <li><a href="#ALToolbox.al_income.ALExpense">ALExpense</a></li>
 <li><a href="#ALToolbox.al_income.ALIncomeList">ALIncomeList</a>
 <ul>
+<li><a href="#ALToolbox.al_income.ALIncomeList.init">init</a></li>
 <li><a href="#ALToolbox.al_income.ALIncomeList.sources">sources</a></li>
 <li><a href="#ALToolbox.al_income.ALIncomeList.matches">matches</a></li>
 <li><a href="#ALToolbox.al_income.ALIncomeList.total">total</a></li>
@@ -42,6 +43,7 @@
 </li>
 <li><a href="#ALToolbox.al_income.ALJob">ALJob</a>
 <ul>
+<li><a href="#ALToolbox.al_income.ALJob.init">init</a></li>
 <li><a href="#ALToolbox.al_income.ALJob.gross_total">gross_total</a></li>
 <li><a href="#ALToolbox.al_income.ALJob.deductions">deductions</a></li>
 <li><a href="#ALToolbox.al_income.ALJob.net_total">net_total</a></li>
@@ -51,6 +53,7 @@
 </li>
 <li><a href="#ALToolbox.al_income.ALJobList">ALJobList</a>
 <ul>
+<li><a href="#ALToolbox.al_income.ALJobList.init">init</a></li>
 <li><a href="#ALToolbox.al_income.ALJobList.total">total</a></li>
 <li><a href="#ALToolbox.al_income.ALJobList.gross_total">gross_total</a></li>
 <li><a href="#ALToolbox.al_income.ALJobList.net_total">net_total</a></li>
@@ -93,12 +96,14 @@
 <li><a href="#ALToolbox.al_income.ALItemizedValue">ALItemizedValue</a>
 <ul>
 <li><a href="#ALToolbox.al_income.ALItemizedValue.income_fields">income_fields</a></li>
+<li><a href="#ALToolbox.al_income.ALItemizedValue.total">total</a></li>
 <li><a href="#ALToolbox.al_income.ALItemizedValue.__str__">__str__</a></li>
 </ul>
 </li>
 <li><a href="#ALToolbox.al_income.ALItemizedValueDict">ALItemizedValueDict</a>
 <ul>
 <li><a href="#ALToolbox.al_income.ALItemizedValueDict.hook_after_gather">hook_after_gather</a></li>
+<li><a href="#ALToolbox.al_income.ALItemizedValueDict.total">total</a></li>
 <li><a href="#ALToolbox.al_income.ALItemizedValueDict.__str__">__str__</a></li>
 </ul>
 </li>
@@ -143,20 +148,43 @@ times_per_year_list, although they are not commonly used. E.g., <code>.5</code> 
 represent &quot;every two years&quot;. Items not contained in the list (to provide a
 specific lookup name) will have a string representation that is rounded to
 the nearest whole integer.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments">Arguments<a href="#arguments" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year_list</code> <em>List[Tuple[int, str]]</em> - List of tuples containing
+(frequency, description) pairs to match against.</li>
+<li><code>times_per_year</code> <em>float</em> - The numeric frequency to look up in the list.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The lowercase textual description of the frequency, or a generated
+description if not found in the list.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; times_per_year([(12, &quot;Monthly&quot;), (1, &quot;Annually&quot;)], 12)
+&#x27;monthly&#x27;
+&gt;&gt;&gt; times_per_year([(12, &quot;Monthly&quot;)], 5)
+&#x27;Five times per year&#x27;</p>
 <a id="ALToolbox.al_income.recent_years"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="recent_years">recent_years<a href="#recent_years" class="hash-link" aria-label="Direct link to recent_years" title="Direct link to recent_years">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">recent_years</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">past</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">25</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                 order</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;descending&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                 future</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> List</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
-<p>Returns a list of the most recent past years, continuing into the future.
-Defaults to most recent 15 years+1. Useful to populate a combobox of years
+<p>Returns a list of the most recent past years, continuing into the future.</p>
+<p>Defaults to most recent 25 years+1. Useful to populate a combobox of years
 where the most recent ones are most likely. E.g. automobile years or
 birthdate.</p>
-<p>Keyword parameters:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-1">Arguments<a href="#arguments-1" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li>past {float} The number of past years to list, including the current year.
-The default is 15</li>
-<li>order {string} &#x27;descending&#x27; or &#x27;ascending&#x27;. Default is <code>descending</code>.</li>
-<li>future (defaults to 1).</li>
+<li><code>past</code> <em>int, optional</em> - The number of past years to list, including the
+current year. Defaults to 25.</li>
+<li><code>order</code> <em>str, optional</em> - &#x27;descending&#x27; or &#x27;ascending&#x27;. Defaults to &#x27;descending&#x27;.</li>
+<li><code>future</code> <em>int, optional</em> - Number of future years to include. Defaults to 1.</li>
 </ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>List[int]</code> - List of years in the specified order.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; recent_years(past=3, future=1)  # if current year is 2023
+[2024, 2023, 2022, 2021]
+&gt;&gt;&gt; recent_years(past=2, order=&quot;ascending&quot;, future=0)
+[2022, 2023]</p>
 <a id="ALToolbox.al_income.ALPeriodicAmount"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alperiodicamount-objects">ALPeriodicAmount Objects<a href="#alperiodicamount-objects" class="hash-link" aria-label="Direct link to ALPeriodicAmount Objects" title="Direct link to ALPeriodicAmount Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALPeriodicAmount</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAObject</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -174,12 +202,29 @@ user, as opposed to a raw english string from the program</p>
 <a id="ALToolbox.al_income.ALPeriodicAmount.__str__"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="__str__">__str__<a href="#__str__" class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">__str__</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>Returns the income&#x27;s <code>.total()</code> as string, not its object name.</p>
+<p>Returns the income&#x27;s total value as a string representation.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The string representation of this income&#x27;s total value.</p>
 <a id="ALToolbox.al_income.ALPeriodicAmount.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total">total<a href="#total" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
-<p>Returns the income over the specified times_per_year,</p>
+<p>Returns the income over the specified times_per_year.</p>
 <p>To calculate <code>.total()</code>, an ALPeriodicAmount must have a <code>.times_per_year</code> and <code>.value</code>.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-2">Arguments<a href="#arguments-2" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to convert the income to.
+Defaults to 1 (annual).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The calculated income amount for the specified frequency.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; income = ALPeriodicAmount(value=1000, times_per_year=12)  # $1000/month
+&gt;&gt;&gt; income.total(1)  # Annual total
+Decimal(&#x27;12000&#x27;)
+&gt;&gt;&gt; income.total(12)  # Monthly total
+Decimal(&#x27;1000&#x27;)</p>
 <a id="ALToolbox.al_income.ALIncome"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alincome-objects">ALIncome Objects<a href="#alincome-objects" class="hash-link" aria-label="Direct link to ALIncome Objects" title="Direct link to ALIncome Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALIncome</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALPeriodicAmount</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -202,12 +247,20 @@ hours per week. This attribute is required if <code>.is_hourly</code> is True.
 <a id="ALToolbox.al_income.ALIncome.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-1">total<a href="#total-1" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
+<p>Calculate the income over the specified times_per_year frequency.</p>
 <p>Returns the income over the specified times_per_year, taking into account
 hours per period for hourly items. For example, for an hourly income of 10
 an hour, 40 hours a week, <code>income.total(1)</code> would be 20,800, the yearly income,
 and <code>income.total(52)</code> would be 400, the weekly income.</p>
 <p>To calculate <code>.total()</code>, an ALIncome must have a <code>.times_per_year</code> and <code>.value</code>.
 It can also have <code>.is_hourly</code> and <code>.hours_per_period</code>.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-3">Arguments<a href="#arguments-3" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to calculate income for.
+Defaults to 1 (annual).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The calculated income amount for the specified frequency.</p>
 <a id="ALToolbox.al_income.ALExpense"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alexpense-objects">ALExpense Objects<a href="#alexpense-objects" class="hash-link" aria-label="Direct link to ALExpense Objects" title="Direct link to ALExpense Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALExpense</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALPeriodicAmount</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -222,35 +275,102 @@ use of these attributes and methods in its items:</p>
 .times_per_year
 .value
 .total()</p>
+<a id="ALToolbox.al_income.ALIncomeList.init"></a>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="init">init<a href="#init" class="hash-link" aria-label="Direct link to init" title="Direct link to init">​</a></h3>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">init</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">kwargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><br></span></code></pre></div></div>
+<p>Initialize an ALIncomeList object with default settings.</p>
+<p>Sets up the object type to ALIncome if not already specified, ensuring
+the list contains appropriate income objects for processing.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-4">Arguments<a href="#arguments-4" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>*pargs</code> - Variable length argument list passed to parent class.</li>
+<li><code>**kwargs</code> - Arbitrary keyword arguments passed to parent class.</li>
+</ul>
 <a id="ALToolbox.al_income.ALIncomeList.sources"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="sources">sources<a href="#sources" class="hash-link" aria-label="Direct link to sources" title="Direct link to sources">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sources</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Set</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
 <p>Returns a set of the unique sources in the ALIncomeList.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Set[str]</code> - A set containing all unique source names from items in the list.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; income_list = ALIncomeList([
+...     ALIncome(source=&quot;wages&quot;),
+...     ALIncome(source=&quot;tips&quot;),
+...     ALIncome(source=&quot;wages&quot;)
+... ])
+&gt;&gt;&gt; income_list.sources()
+{&#x27;wages&#x27;, &#x27;tips&#x27;}</p>
 <a id="ALToolbox.al_income.ALIncomeList.matches"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="matches">matches<a href="#matches" class="hash-link" aria-label="Direct link to matches" title="Direct link to matches">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">matches</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;ALIncomeList&quot;</span><br></span></code></pre></div></div>
-<p>Returns an ALIncomeList consisting only of elements matching the specified
-income source, assisting in filling PDFs with predefined spaces. <code>source</code>
-may be a list.</p>
+<p>Returns an ALIncomeList consisting only of elements matching the specified income source.</p>
+<p>Assists in filling PDFs with predefined spaces by filtering income items
+by their source. The source parameter may be a string or a list.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-5">Arguments<a href="#arguments-5" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>source</code> <em>SourceType</em> - The income source(s) to match. Can be a string or list of strings.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType], optional</em> - Source(s) to exclude from the results.
+Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>ALIncomeList</code> - A new ALIncomeList containing only items with matching sources.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; income_list = ALIncomeList([
+...     ALIncome(source=&quot;wages&quot;, value=1000),
+...     ALIncome(source=&quot;tips&quot;, value=200),
+...     ALIncome(source=&quot;wages&quot;, value=1200)
+... ])
+&gt;&gt;&gt; wages_only = income_list.matches(&quot;wages&quot;)
+&gt;&gt;&gt; len(wages_only)
+2</p>
 <a id="ALToolbox.al_income.ALIncomeList.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-2">total<a href="#total-2" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          owner</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
-<p>Returns the total periodic value in the list, gathering the list items
-if necessary. You can optionally filter by <code>source</code>. <code>source</code> can be a
-string or a list. You can also filter by one <code>owner</code>.</p>
-<p>To calculate <code>.total()</code> correctly, all items must have a <code>.total()</code> and
-it should be a positive value. Job-type incomes should automatically
+<p>Returns the total periodic value in the list, gathering the list items if necessary.</p>
+<p>You can optionally filter by <code>source</code> (string or list) and/or by one <code>owner</code>.
+To calculate <code>.total()</code> correctly, all items must have a <code>.total()</code> method
+and it should be a positive value. Job-type incomes should automatically
 exclude deductions.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-6">Arguments<a href="#arguments-6" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to convert income to.
+Defaults to 1 (annual).</li>
+<li><code>source</code> <em>Optional[SourceType], optional</em> - Income source(s) to include.
+Can be string or list. Defaults to None (all sources).</li>
+<li><code>exclude_source</code> <em>Optional[SourceType], optional</em> - Source(s) to exclude.
+Defaults to None.</li>
+<li><code>owner</code> <em>Optional[str], optional</em> - Filter by specific owner name.
+Defaults to None (all owners).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The total income amount for the specified frequency and filters.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; income_list = ALIncomeList([wages_income, tips_income])
+&gt;&gt;&gt; income_list.total(times_per_year=12)  # Monthly total
+Decimal(&#x27;5000.00&#x27;)
+&gt;&gt;&gt; income_list.total(source=&quot;wages&quot;)  # Annual wages only
+Decimal(&#x27;60000.00&#x27;)</p>
 <a id="ALToolbox.al_income.ALIncomeList.move_checks_to_list"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="move_checks_to_list">move_checks_to_list<a href="#move_checks_to_list" class="hash-link" aria-label="Direct link to move_checks_to_list" title="Direct link to move_checks_to_list">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">move_checks_to_list</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">selected_types</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">DADict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                        selected_terms</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">Mapping</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">move_checks_to_list</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">selected_types</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">DADict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                        selected_terms</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">Mapping</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><br></span></code></pre></div></div>
 <p>Gives a &#x27;gather by checklist&#x27; option.
 If no selected_types param is passed, requires that a .selected_types
 attribute be set by a <code>datatype: checkboxes</code> fields
-If &quot;other&quot; is in the selected_types, the source will not be set directly</p>
+If &quot;other&quot; is in the selected_types, the source will not be set directly.</p>
 <p>Sets the attribute &quot;moved&quot; to true, doesn&#x27;t set gathered, because this isn&#x27;t
 idempotent, so trying to also gather all info about the checks in the list doesn&#x27;t
 work well.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-7">Arguments<a href="#arguments-7" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>selected_types</code> <em>Optional[DADict]</em> - A dictionary of selected types.</li>
+<li><code>selected_terms</code> <em>Optional[Mapping]</em> - A mapping of selected terms.</li>
+</ul>
 <a id="ALToolbox.al_income.ALJob"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="aljob-objects">ALJob Objects<a href="#aljob-objects" class="hash-link" aria-label="Direct link to ALJob Objects" title="Direct link to ALJob Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALJob</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALIncome</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -274,53 +394,103 @@ If this job is hourly, deduction is still from each period, not each hour. Used 
 calculate the net income in <code>net_income()</code>.
 .employer {Individual} (Optional) A docassemble Individual object, employer.address is the address
 and employer.phone is the phone</p>
+<a id="ALToolbox.al_income.ALJob.init"></a>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="init-1">init<a href="#init-1" class="hash-link" aria-label="Direct link to init" title="Direct link to init">​</a></h3>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">init</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">kwargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
+<p>Initialize an ALJob object with employer setup.</p>
+<p>Initializes the employer attribute based on the employer_type if available,
+defaulting to Individual type if no specific type is set.</p>
 <a id="ALToolbox.al_income.ALJob.gross_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="gross_total">gross_total<a href="#gross_total" class="hash-link" aria-label="Direct link to gross_total" title="Direct link to gross_total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">gross_total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
+<p>Calculate the gross total income over the specified times_per_year.</p>
 <p>Same as ALIncome total. Returns the income over the specified times_per_year,
 representing the <code>.value</code> attribute of the item.</p>
-<p><code>times_per_year</code> is some denominator of a year. E.g. to express a weekly
-period, use 52. The default is 1 (a year).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-8">Arguments<a href="#arguments-8" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to calculate income for.
+Is some denominator of a year. E.g. to express a weekly period,
+use 52. The default is 1 (a year).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The calculated gross income amount for the specified frequency.</p>
 <a id="ALToolbox.al_income.ALJob.deductions"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="deductions">deductions<a href="#deductions" class="hash-link" aria-label="Direct link to deductions" title="Direct link to deductions">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">deductions</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
-<p>Returns the total deductions from someone&#x27;s pay over the specificed times_per_year
+<p>Calculate the total deductions from someone&#x27;s pay over the specified times_per_year.</p>
+<p>Returns the total deductions from someone&#x27;s pay over the specified times_per_year
 (not per hour if hourly).</p>
-<p><code>times_per_year</code> is some denominator of a year. E.g. to express a weekly
-period, use 52. The default is 1 (a year).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-9">Arguments<a href="#arguments-9" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to calculate deductions for.
+Is some denominator of a year. E.g. to express a weekly period,
+use 52. The default is 1 (a year).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-9">Returns<a href="#returns-9" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The calculated deduction amount for the specified frequency.</p>
 <a id="ALToolbox.al_income.ALJob.net_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="net_total">net_total<a href="#net_total" class="hash-link" aria-label="Direct link to net_total" title="Direct link to net_total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">net_total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
+<p>Calculate the net income over a time period using value and deduction.</p>
 <p>Returns the net income over a time period, found using
 <code>self.value</code> and <code>self.deduction</code>.</p>
-<p><code>times_per_year</code> is some denominator of a year. E.g, to express a weekly
-period, use 52. The default is 1 (a year).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-10">Arguments<a href="#arguments-10" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to calculate net income for.
+Is some denominator of a year. E.g, to express a weekly period,
+use 52. The default is 1 (a year).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-10">Returns<a href="#returns-10" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The calculated net income amount (gross - deductions) for the specified frequency.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="notes">Notes<a href="#notes" class="hash-link" aria-label="Direct link to Notes" title="Direct link to Notes">​</a></h4>
 <p><code>self.deduction</code> is the amount deducted from one&#x27;s pay over a period (not
-per hour if hourly).</p>
-<p>This will force the gathering of the ALJob&#x27;s <code>.value</code> and <code>.deduction</code> attributes.</p>
+per hour if hourly). This will force the gathering of the ALJob&#x27;s <code>.value</code>
+and <code>.deduction</code> attributes.</p>
 <a id="ALToolbox.al_income.ALJob.employer_name_address_phone"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="employer_name_address_phone">employer_name_address_phone<a href="#employer_name_address_phone" class="hash-link" aria-label="Direct link to employer_name_address_phone" title="Direct link to employer_name_address_phone">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">employer_name_address_phone</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
+<p>Get formatted employer information as a string.</p>
 <p>Returns name, address and phone number of employer as a string. Forces
 gathering the <code>.employer</code>, <code>.employer_address</code>, and <code>.employer_phone</code>
 attributes.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-11">Returns<a href="#returns-11" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>A formatted string containing employer name, optionally with address
+and/or phone number if available.</p>
 <a id="ALToolbox.al_income.ALJob.normalized_hours"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="normalized_hours">normalized_hours<a href="#normalized_hours" class="hash-link" aria-label="Direct link to normalized_hours" title="Direct link to normalized_hours">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">normalized_hours</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><br></span></code></pre></div></div>
+<p>Calculate the normalized number of hours worked in a given times_per_year.</p>
 <p>Returns the normalized number of hours worked in a given times_per_year,
 based on the self.hours_per_period and self.times_per_year attributes.</p>
-<p>For example, if the person works 10 hours a week, it will return
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-11">Arguments<a href="#arguments-11" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float, optional</em> - The frequency to normalize hours for.
+Is some denominator of a year. E.g, to express a weekly period,
+use 52. The default is 1 (a year).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-12">Returns<a href="#returns-12" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The normalized number of hours worked for the specified frequency.</p>
+<p><strong>Example</strong>:</p>
+<p>If the person works 10 hours a week, it will return
 520 when the times_per_year parameter is 1.</p>
-<p><code>times_per_year</code> is some denominator of a year. E.g, to express a weekly
-period, use 52. The default is 1 (a year).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="notes-1">Notes<a href="#notes-1" class="hash-link" aria-label="Direct link to Notes" title="Direct link to Notes">​</a></h4>
 <p>This will force the gathering of the attributes <code>.hours_per_period</code> and
-<code>.times_per_year</code></p>
+<code>.times_per_year</code>.</p>
 <a id="ALToolbox.al_income.ALJobList"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="aljoblist-objects">ALJobList Objects<a href="#aljoblist-objects" class="hash-link" aria-label="Direct link to ALJobList Objects" title="Direct link to ALJobList Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALJobList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALIncomeList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
 <p>Represents a list of ALJobs. Adds the <code>.gross_total()</code> and
 <code>.net_total()</code> methods to the ALIncomeList class. It&#x27;s a more common
 way of reporting income than ALItemizedJobList.</p>
+<a id="ALToolbox.al_income.ALJobList.init"></a>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="init-2">init<a href="#init-2" class="hash-link" aria-label="Direct link to init" title="Direct link to init">​</a></h3>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">init</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">kwargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
+<p>Initialize an ALJobList with ALJob as the default object type.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-12">Arguments<a href="#arguments-12" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>*pargs</code> - Variable length argument list passed to parent class.</li>
+<li><code>**kwargs</code> - Arbitrary keyword arguments passed to parent class.</li>
+</ul>
 <a id="ALToolbox.al_income.ALJobList.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-3">total<a href="#total-3" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          owner</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
@@ -335,8 +505,14 @@ period, use 52. The default is 1 (a year).</p>
 <p>Returns the sum of the gross incomes of its ALJobs divided by the time
 times_per_year. You can filter the jobs by <code>source</code>. <code>source</code> can be a
 string or a list.</p>
-<p><code>times_per_year</code> is some denominator of a year. E.g, to express a weekly
-period, use 52. The default is 1 (a year).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-13">Arguments<a href="#arguments-13" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float</em> - The time period to divide the gross income by. Defaults to 1.</li>
+<li><code>source</code> <em>Optional[SourceType]</em> - The source of the jobs to include. Defaults to None.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the jobs to exclude. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-13">Returns<a href="#returns-13" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The sum of the gross incomes of its ALJobs divided by the time times_per_year.</p>
 <a id="ALToolbox.al_income.ALJobList.net_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="net_total-1">net_total<a href="#net_total-1" class="hash-link" aria-label="Direct link to net_total" title="Direct link to net_total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">net_total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">              source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">              exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
@@ -345,14 +521,28 @@ times_per_year. You can filter the jobs by <code>source</code>. <code>source</co
 string or a list. Leaving out <code>source</code> will use all sources.</p>
 <p>If the job is hourly, the <code>net_total()</code> may not be comparable to the
 <code>gross_total()</code>.</p>
-<p><code>times_per_year</code> is some denominator of a year. E.g, to express a weekly
-period, use 52. The default is 1 (a year).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-14">Arguments<a href="#arguments-14" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float</em> - The time period to divide the net income by. Defaults to 1.</li>
+<li><code>source</code> <em>Optional[SourceType]</em> - The source of the jobs to include. Defaults to None.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the jobs to exclude. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-14">Returns<a href="#returns-14" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The sum of the net incomes of its ALJobs divided by the time times_per_year.</p>
 <a id="ALToolbox.al_income.ALJobList.deductions"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="deductions-1">deductions<a href="#deductions-1" class="hash-link" aria-label="Direct link to deductions" title="Direct link to deductions">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">deductions</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">               source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">               exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the sum of the deductions of its ALJobs divided by the time
 times_per_year. You can filter the jobs by <code>source</code>. Leaving out <code>source</code>
 will use all sources.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-15">Arguments<a href="#arguments-15" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float</em> - The time period to divide the deductions by. Defaults to 1.</li>
+<li><code>source</code> <em>Optional[SourceType]</em> - The source of the jobs to include. Defaults to None.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the jobs to exclude. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-15">Returns<a href="#returns-15" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The sum of the deductions of its ALJobs divided by the time times_per_year.</p>
 <a id="ALToolbox.al_income.ALExpenseList"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alexpenselist-objects">ALExpenseList Objects<a href="#alexpenselist-objects" class="hash-link" aria-label="Direct link to ALExpenseList Objects" title="Direct link to ALExpenseList Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALExpenseList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALIncomeList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -388,11 +578,11 @@ earns the income listed in the <code>value</code> attribute.
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the .value attribute divided by the times per year you want to calculate. The value defaults to 0.</p>
 <p><code>times_per_year</code> is some denominator of a year. E.g, to express a weekly period, use 52. The default is 1 (a year).</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments">Arguments<a href="#arguments" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-16">Arguments<a href="#arguments-16" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>times_per_year</code> <em>float, optional</em> - The number of times per year to calculate. Defaults to 1.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-16">Returns<a href="#returns-16" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li><code>Decimal</code> - The .value attribute divided by the times per year.</li>
 </ul>
@@ -400,11 +590,11 @@ earns the income listed in the <code>value</code> attribute.
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="equity">equity<a href="#equity" class="hash-link" aria-label="Direct link to equity" title="Direct link to equity">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">equity</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">loan_attribute</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;balance&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the total equity in the asset (e.g., market value minus balance).</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-1">Arguments<a href="#arguments-1" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-17">Arguments<a href="#arguments-17" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>loan_attribute</code> <em>str, optional</em> - The attribute of the asset to use as the loan value. Defaults to &quot;balance&quot;.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-17">Returns<a href="#returns-17" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li><code>Decimal</code> - The total equity in the asset.</li>
 </ul>
@@ -434,14 +624,14 @@ earns the income listed in the <code>value</code> attribute.</li>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">market_value</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                 exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the total <code>.market_value</code> of assets in the list.</p>
 <p>You can filter the assets by <code>source</code>. <code>source</code> can be a string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-2">Arguments<a href="#arguments-2" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-18">Arguments<a href="#arguments-18" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>source</code> <em>Optional[SourceType]</em> - The source of the assets to include in the calculation.
 If None, all sources are included. Can be a string or a list.</li>
 <li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the assets to exclude from the calculation.
 If None, no sources are excluded.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-18">Returns<a href="#returns-18" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li><code>Decimal</code> - The total market value of the assets.</li>
 </ul>
@@ -450,14 +640,14 @@ If None, no sources are excluded.</li>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">balance</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">            exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the total <code>.balance</code> of assets in the list, which typically corresponds to the available funds in a financial account.</p>
 <p>You can filter the assets by <code>source</code>. <code>source</code> can be a string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-3">Arguments<a href="#arguments-3" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-19">Arguments<a href="#arguments-19" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>source</code> <em>Optional[SourceType]</em> - The source of the assets to include in the calculation.
 If None, all sources are included. Can be a string or a list.</li>
 <li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the assets to exclude from the calculation.
 If None, no sources are excluded.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-19">Returns<a href="#returns-19" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li><code>Decimal</code> - The total balance of the assets.</li>
 </ul>
@@ -467,13 +657,13 @@ If None, no sources are excluded.</li>
 <p>Calculates and returns the total equity in the assets.</p>
 <p>This method triggers the gathering of assets, then iterates over each asset. If a source or exclude_source is not
 specified, or if the asset&#x27;s source satisfies the source criteria, the equity of the asset is added to the total.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-4">Arguments<a href="#arguments-4" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-20">Arguments<a href="#arguments-20" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>source</code> <em>Optional[SourceType]</em> - The source of the assets to include in the calculation. If None, all sources are included.</li>
 <li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the assets to exclude from the calculation. If None, no sources are excluded.</li>
 <li><code>loan_attribute</code> <em>str, optional</em> - The attribute of the asset to use as the loan value. Defaults to &quot;balance&quot;.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-20">Returns<a href="#returns-20" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li><code>Decimal</code> - The total equity in the assets.</li>
 </ul>
@@ -482,14 +672,14 @@ specified, or if the asset&#x27;s source satisfies the source criteria, the equi
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">owners</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">           exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Set</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
 <p>Returns a set of the unique owners of the assets.</p>
 <p>You can filter the assets by <code>source</code>. <code>source</code> can be a string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-5">Arguments<a href="#arguments-5" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-21">Arguments<a href="#arguments-21" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
 <li><code>source</code> <em>Optional[SourceType]</em> - The source of the assets to include in the calculation.
 If None, all sources are included. Can be a string or a list.</li>
 <li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the assets to exclude from the calculation.
 If None, no sources are excluded.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-21">Returns<a href="#returns-21" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <ul>
 <li><code>Set[str]</code> - A set of the unique owners of the assets.</li>
 </ul>
@@ -516,12 +706,23 @@ statement forms.</p>
 <a id="ALToolbox.al_income.ALVehicle.year_make_model"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="year_make_model">year_make_model<a href="#year_make_model" class="hash-link" aria-label="Direct link to year_make_model" title="Direct link to year_make_model">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">year_make_model</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">separator</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot; / &quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
-<p>Returns a string of the format year/make/model of the vehicle. Triggers
-gathering those attributes.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-6">Arguments<a href="#arguments-6" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
-<p>separator {str} (Optional) The separator between the year, make and model.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
-<p>A string of the format year/make/model of the vehicle.</p>
+<p>Returns a string of the format year/make/model of the vehicle.</p>
+<p>Triggers gathering those attributes and formats them as a single string.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-22">Arguments<a href="#arguments-22" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>separator</code> <em>str, optional</em> - The separator between the year, make and model.
+Defaults to &quot; / &quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-22">Returns<a href="#returns-22" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>str</code> - A formatted string combining year, make, and model of the vehicle.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; vehicle = ALVehicle(year=2020, make=&quot;Toyota&quot;, model=&quot;Camry&quot;)
+&gt;&gt;&gt; vehicle.year_make_model()
+&#x27;2020 / Toyota / Camry&#x27;
+&gt;&gt;&gt; vehicle.year_make_model(separator=&quot;, &quot;)
+&#x27;2020, Toyota, Camry&#x27;</p>
 <a id="ALToolbox.al_income.ALVehicleList"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alvehiclelist-objects">ALVehicleList Objects<a href="#alvehiclelist-objects" class="hash-link" aria-label="Direct link to ALVehicleList Objects" title="Direct link to ALVehicleList Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALVehicleList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALAssetList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -544,6 +745,8 @@ negative). Setting transaction_type = &#x27;expense&#x27; makes the value negati
 Use min=0 in that case.</p>
 <p>If you use signed values, be careful when placing in an ALIncomeList
 object. The <code>total()</code> method may return unexpected results in that case.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-23">Returns<a href="#returns-23" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The total value of the item, taking into account the transaction type.</p>
 <a id="ALToolbox.al_income.ALSimpleValue.__str__"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="__str__-1">__str__<a href="#__str__-1" class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">__str__</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -556,12 +759,21 @@ object. The <code>total()</code> method may return unexpected results in that ca
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="sources-1">sources<a href="#sources-1" class="hash-link" aria-label="Direct link to sources" title="Direct link to sources">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sources</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Set</span><br></span></code></pre></div></div>
 <p>Returns a set of the unique sources of values stored in the list.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-24">Returns<a href="#returns-24" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>A set of the unique sources of values stored in the list.</p>
 <a id="ALToolbox.al_income.ALSimpleValueList.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-6">total<a href="#total-6" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the total value in the list, gathering the list items if
 necessary. You can filter the values by <code>source</code>. <code>source</code> can be a
 string or a list.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-23">Arguments<a href="#arguments-23" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>source</code> <em>Optional[SourceType]</em> - The source of the values to include. Defaults to None.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the values to exclude. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-25">Returns<a href="#returns-25" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The total value in the list.</p>
 <a id="ALToolbox.al_income.ALItemizedValue"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alitemizedvalue-objects">ALItemizedValue Objects<a href="#alitemizedvalue-objects" class="hash-link" aria-label="Direct link to ALItemizedValue Objects" title="Direct link to ALItemizedValue Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALItemizedValue</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAObject</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -587,6 +799,28 @@ when calculating totals.</p>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">income_fields</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">use_exists</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token boolean" style="color:rgb(255, 88, 116)">True</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> List</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">Dict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> Any</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
 <p>Returns a YAML structure representing the list of fields for an itemized value,
 to be passed to a <code>code</code> attribute of a question&#x27;s fields</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-24">Arguments<a href="#arguments-24" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>use_exists</code> <em>bool</em> - Whether to include the &#x27;exists&#x27; field. Defaults to True.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-26">Returns<a href="#returns-26" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>A list of dictionaries representing the fields for an itemized value.</p>
+<a id="ALToolbox.al_income.ALItemizedValue.total"></a>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-7">total<a href="#total-7" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
+<p>Calculate the total value of this itemized income item.</p>
+<p>If an item&#x27;s value doesn&#x27;t exist or the item is marked as not existing,
+returns 0. Otherwise returns the decimal value of the item.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-27">Returns<a href="#returns-27" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The total value of this item, or 0 if the item doesn&#x27;t exist
+or has no value.</p>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; item = ALItemizedValue(value=1500, exists=True)
+&gt;&gt;&gt; item.total()
+Decimal(&#x27;1500&#x27;)
+&gt;&gt;&gt; item_disabled = ALItemizedValue(exists=False)
+&gt;&gt;&gt; item_disabled.total()
+Decimal(&#x27;0&#x27;)</p>
 <a id="ALToolbox.al_income.ALItemizedValue.__str__"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="__str__-2">__str__<a href="#__str__-2" class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">__str__</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -609,6 +843,22 @@ want without affecting this functionality.
 See <a href="https://docassemble.org/docs/objects.html#DAList.hook_after_gather" target="_blank" rel="noopener noreferrer">https://docassemble.org/docs/objects.html#DAList.hook_after_gather</a>.</p>
 <p>If a developer wants to remove these items <em>before</em> gathering is finished,
 they can use similar code in their question&#x27;s <code>validation code:</code></p>
+<a id="ALToolbox.al_income.ALItemizedValueDict.total"></a>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-8">total<a href="#total-8" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
+<p>Calculate the total value of all items in this itemized value dictionary.</p>
+<p>Sums up all values in the dictionary, skipping items that are marked
+as not existing (exists=False).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-28">Returns<a href="#returns-28" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The sum of all existing item values in the dictionary.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<p>&gt;&gt;&gt; value_dict = ALItemizedValueDict()
+&gt;&gt;&gt; value_dict[&#x27;wages&#x27;] = ALItemizedValue(value=1000, exists=True)
+&gt;&gt;&gt; value_dict[&#x27;bonus&#x27;] = ALItemizedValue(value=500, exists=False)
+&gt;&gt;&gt; value_dict.total()
+Decimal(&#x27;1000&#x27;)  # Only includes wages, not bonus</p>
 <a id="ALToolbox.al_income.ALItemizedValueDict.__str__"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="__str__-3">__str__<a href="#__str__-3" class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">__str__</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -672,21 +922,35 @@ and the total of money going in and money coming out.</li>
 </li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJob.total"></a>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-7">total<a href="#total-7" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-9">total<a href="#total-9" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Alias for ALItemizedJob.gross_total to integrate with ALIncomeList math.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-25">Arguments<a href="#arguments-25" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float</em> - The time period to divide the gross total by. Defaults to 1.</li>
+<li><code>source</code> <em>Optional[SourceType]</em> - The source of the items to include. Defaults to None.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the items to exclude. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-29">Returns<a href="#returns-29" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The gross total of the job.</p>
 <a id="ALToolbox.al_income.ALItemizedJob.gross_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="gross_total-2">gross_total<a href="#gross_total-2" class="hash-link" aria-label="Direct link to gross_total" title="Direct link to gross_total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">gross_total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the sum of positive values (payments) for a given times_per_year.
 You can filter the items by <code>source</code>. <code>source</code> can be a string or a list.
 If you use sources from deductions, they will be ignored.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-7">Arguments<a href="#arguments-7" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-26">Arguments<a href="#arguments-26" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>kwarg</code> - times_per_year {float} (Optional) Number of times per year you
-want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
-<li><code>kwarg</code> - source {str | [str]} (Optional) Source or list of sources of desired
-item(s).</li>
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year you want to
+calculate. E.g, to express a weekly period, use 52. Defaults to 1.</li>
+<li><code>source</code> <em>str | List[str], optional</em> - Source or list of sources of desired
+item(s). Defaults to None.</li>
+<li><code>exclude_source</code> <em>str | List[str], optional</em> - Source or list of sources to
+exclude from calculation. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-30">Returns<a href="#returns-30" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The sum of positive values for the given parameters.</li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJob.deduction_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="deduction_total">deduction_total<a href="#deduction_total" class="hash-link" aria-label="Direct link to deduction_total" title="Direct link to deduction_total">​</a></h3>
@@ -694,12 +958,18 @@ item(s).</li>
 <p>Returns the sum of money going out (normally, deductions like union
 dues) divided by a pay times_per_year as a positive value. You can
 filter the items by <code>source</code>. <code>source</code> can be a string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-8">Arguments<a href="#arguments-8" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-27">Arguments<a href="#arguments-27" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>kwarg</code> - times_per_year {float} (Optional) Number of times per year you
-want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
-<li><code>kwarg</code> - source {str | List[str]} (Optional) Source or list of sources of desired
-item(s).</li>
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year you want to
+calculate. E.g, to express a weekly period, use 52. Defaults to 1.</li>
+<li><code>source</code> <em>str | List[str], optional</em> - Source or list of sources of desired
+item(s). Defaults to None.</li>
+<li><code>exclude_source</code> <em>str | List[str], optional</em> - Source or list of sources to
+exclude from calculation. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-31">Returns<a href="#returns-31" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The sum of deductions for the given parameters as a positive value.</li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJob.net_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="net_total-2">net_total<a href="#net_total-2" class="hash-link" aria-label="Direct link to net_total" title="Direct link to net_total">​</a></h3>
@@ -707,18 +977,26 @@ item(s).</li>
 <p>Returns the net (gross minus deductions) value of the job divided by
 <code>times_per_year</code>. You can filter the items by <code>source</code>. <code>source</code> can be a
 string or a list. E.g. &quot;full time&quot; or [&quot;full time&quot;, &quot;union dues&quot;]</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-9">Arguments<a href="#arguments-9" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-28">Arguments<a href="#arguments-28" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>kwarg</code> - times_per_year {float} (Optional) Number of times per year you
-want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
-<li><code>kwarg</code> - source {str | List[str]} (Optional) Source or list of sources of desired
-item(s).</li>
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year you want to
+calculate. E.g, to express a weekly period, use 52. Defaults to 1.</li>
+<li><code>source</code> <em>str | List[str], optional</em> - Source or list of sources of desired
+item(s). Defaults to None.</li>
+<li><code>exclude_source</code> <em>str | List[str], optional</em> - Source or list of sources to
+exclude from calculation. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-32">Returns<a href="#returns-32" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The net value (gross minus deductions) for the given parameters.</li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJob.employer_name_address_phone"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="employer_name_address_phone-1">employer_name_address_phone<a href="#employer_name_address_phone-1" class="hash-link" aria-label="Direct link to employer_name_address_phone" title="Direct link to employer_name_address_phone">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">employer_name_address_phone</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
 <p>Returns concatenation of employer name and, if they exist, employer
 address and phone number.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-33">Returns<a href="#returns-33" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>A string containing the employer&#x27;s name, address, and phone number.</p>
 <a id="ALToolbox.al_income.ALItemizedJob.normalized_hours"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="normalized_hours-1">normalized_hours<a href="#normalized_hours-1" class="hash-link" aria-label="Direct link to normalized_hours" title="Direct link to normalized_hours">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">normalized_hours</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><br></span></code></pre></div></div>
@@ -726,6 +1004,12 @@ address and phone number.</p>
 based on the self.hours_per_period and self.times_per_year attributes.</p>
 <p>For example, if the person works 10 hours a week, it will return
 520 when the times_per_year parameter is 1.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-29">Arguments<a href="#arguments-29" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float</em> - The time period to normalize the hours to. Defaults to 1.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-34">Returns<a href="#returns-34" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The normalized number of hours worked in the given time period.</p>
 <a id="ALToolbox.al_income.ALItemizedJobList"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alitemizedjoblist-objects">ALItemizedJobList Objects<a href="#alitemizedjoblist-objects" class="hash-link" aria-label="Direct link to ALItemizedJobList Objects" title="Direct link to ALItemizedJobList Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALItemizedJobList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -736,24 +1020,44 @@ out. This is a less common way of reporting income.</p>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sources</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">which_side</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Set</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
 <p>Returns a set of the unique sources in all of the jobs.
 By default gets from both sides, if which_side is &quot;deductions&quot;, only gets from deductions.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-30">Arguments<a href="#arguments-30" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>which_side</code> <em>Optional[str]</em> - The side of the job to get the sources from. Can be &quot;incomes&quot;, &quot;deductions&quot;, or &quot;all&quot;. Defaults to &quot;all&quot;.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-35">Returns<a href="#returns-35" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>A set of the unique sources in all of the jobs.</p>
 <a id="ALToolbox.al_income.ALItemizedJobList.total"></a>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-8">total<a href="#total-8" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-10">total<a href="#total-10" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">          exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Alias for ALItemizedJobList.gross_total to integrate with
 ALIncomeList math.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-31">Arguments<a href="#arguments-31" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<ul>
+<li><code>times_per_year</code> <em>float</em> - The time period to divide the gross total by. Defaults to 1.</li>
+<li><code>source</code> <em>Optional[SourceType]</em> - The source of the items to include. Defaults to None.</li>
+<li><code>exclude_source</code> <em>Optional[SourceType]</em> - The source of the items to exclude. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-36">Returns<a href="#returns-36" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p>The gross total of the list.</p>
 <a id="ALToolbox.al_income.ALItemizedJobList.gross_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="gross_total-3">gross_total<a href="#gross_total-3" class="hash-link" aria-label="Direct link to gross_total" title="Direct link to gross_total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">gross_total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">                exclude_source</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">SourceType</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
 <p>Returns the sum of the gross incomes of the list&#x27;s jobs divided by the
 times_per_year. You can filter the items by <code>source</code>. <code>source</code> can be a
 string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-10">Arguments<a href="#arguments-10" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-32">Arguments<a href="#arguments-32" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>kwarg</code> - source {str | [str]} - (Optional) Source or list of sources of
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year you want to
+calculate. E.g, to express a weekly period, use 52. Defaults to 1.</li>
+<li><code>source</code> <em>str | List[str], optional</em> - Source or list of sources of
 desired job items to sum from every itemized job.
-E.g. [&#x27;tips&#x27;, &#x27;commissions&#x27;]</li>
-<li><code>kwarg</code> - times_per_year {float} (Optional) Number of times per year you
-want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
+E.g. [&#x27;tips&#x27;, &#x27;commissions&#x27;]. Defaults to None.</li>
+<li><code>exclude_source</code> <em>str | List[str], optional</em> - Source or list of sources to
+exclude from calculation. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-37">Returns<a href="#returns-37" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The sum of the gross incomes for the given parameters.</li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJobList.deduction_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="deduction_total-1">deduction_total<a href="#deduction_total-1" class="hash-link" aria-label="Direct link to deduction_total" title="Direct link to deduction_total">​</a></h3>
@@ -761,13 +1065,19 @@ want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
 <p>Returns the sum of the deductions of the list&#x27;s jobs divided by the
 times_per_year. You can filter the items by <code>source</code>. <code>source</code> can be a
 string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-11">Arguments<a href="#arguments-11" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-33">Arguments<a href="#arguments-33" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>kwarg</code> - source {str | [str]} - (Optional) Source or list of sources of
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year you want to
+calculate. E.g, to express a weekly period, use 52. Defaults to 1.</li>
+<li><code>source</code> <em>str | List[str], optional</em> - Source or list of sources of
 desired job items to sum from every itemized job.
-E.g. [&#x27;taxes&#x27;, &#x27;dues&#x27;]</li>
-<li><code>kwarg</code> - times_per_year {float} (Optional) Number of times per year you
-want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
+E.g. [&#x27;taxes&#x27;, &#x27;dues&#x27;]. Defaults to None.</li>
+<li><code>exclude_source</code> <em>str | List[str], optional</em> - Source or list of sources to
+exclude from calculation. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-38">Returns<a href="#returns-38" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The sum of the deductions for the given parameters.</li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJobList.net_total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="net_total-3">net_total<a href="#net_total-3" class="hash-link" aria-label="Direct link to net_total" title="Direct link to net_total">​</a></h3>
@@ -775,13 +1085,19 @@ want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
 <p>Returns the net of the list&#x27;s jobs (money in minus money out) divided by
 the times_per_year. You can filter the items by <code>source</code>. <code>source</code> can be a
 string or a list.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-12">Arguments<a href="#arguments-12" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-34">Arguments<a href="#arguments-34" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>
-<li><code>kwarg</code> - source {str | List[str]} - (Optional) Source or list of sources of
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year you want to
+calculate. E.g, to express a weekly period, use 52. Defaults to 1.</li>
+<li><code>source</code> <em>str | List[str], optional</em> - Source or list of sources of
 desired job items to sum from every itemized job.
-E.g. [&#x27;tips&#x27;, &#x27;taxes&#x27;]</li>
-<li><code>kwarg</code> - times_per_year {float} (Optional) Number of times per year you
-want to calculate. E.g, to express a weekly period, use 52. Default is 1.</li>
-</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/docs/components/ALToolbox/al_income.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/components/ALToolbox/ALIncome/itemizedjobs"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Itemized jobs</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/components/ALToolbox/business_days"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ALToolbox.business_days</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#times_per_year" class="table-of-contents__link toc-highlight">times_per_year</a></li><li><a href="#recent_years" class="table-of-contents__link toc-highlight">recent_years</a></li><li><a href="#alperiodicamount-objects" class="table-of-contents__link toc-highlight">ALPeriodicAmount Objects</a><ul><li><a href="#__str__" class="table-of-contents__link toc-highlight">__str__</a></li><li><a href="#total" class="table-of-contents__link toc-highlight">total</a></li></ul></li><li><a href="#alincome-objects" class="table-of-contents__link toc-highlight">ALIncome Objects</a><ul><li><a href="#total-1" class="table-of-contents__link toc-highlight">total</a></li></ul></li><li><a href="#alexpense-objects" class="table-of-contents__link toc-highlight">ALExpense Objects</a></li><li><a href="#alincomelist-objects" class="table-of-contents__link toc-highlight">ALIncomeList Objects</a><ul><li><a href="#sources" class="table-of-contents__link toc-highlight">sources</a></li><li><a href="#matches" class="table-of-contents__link toc-highlight">matches</a></li><li><a href="#total-2" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#move_checks_to_list" class="table-of-contents__link toc-highlight">move_checks_to_list</a></li></ul></li><li><a href="#aljob-objects" class="table-of-contents__link toc-highlight">ALJob Objects</a><ul><li><a href="#gross_total" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#deductions" class="table-of-contents__link toc-highlight">deductions</a></li><li><a href="#net_total" class="table-of-contents__link toc-highlight">net_total</a></li><li><a href="#employer_name_address_phone" class="table-of-contents__link toc-highlight">employer_name_address_phone</a></li><li><a href="#normalized_hours" class="table-of-contents__link toc-highlight">normalized_hours</a></li></ul></li><li><a href="#aljoblist-objects" class="table-of-contents__link toc-highlight">ALJobList Objects</a><ul><li><a href="#total-3" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#gross_total-1" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#net_total-1" class="table-of-contents__link toc-highlight">net_total</a></li><li><a href="#deductions-1" class="table-of-contents__link toc-highlight">deductions</a></li></ul></li><li><a href="#alexpenselist-objects" class="table-of-contents__link toc-highlight">ALExpenseList Objects</a></li><li><a href="#alasset-objects" class="table-of-contents__link toc-highlight">ALAsset Objects</a><ul><li><a href="#total-4" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#equity" class="table-of-contents__link toc-highlight">equity</a></li></ul></li><li><a href="#alassetlist-objects" class="table-of-contents__link toc-highlight">ALAssetList Objects</a><ul><li><a href="#market_value" class="table-of-contents__link toc-highlight">market_value</a></li><li><a href="#balance" class="table-of-contents__link toc-highlight">balance</a></li><li><a href="#equity-1" class="table-of-contents__link toc-highlight">equity</a></li><li><a href="#owners" class="table-of-contents__link toc-highlight">owners</a></li></ul></li><li><a href="#alvehicle-objects" class="table-of-contents__link toc-highlight">ALVehicle Objects</a><ul><li><a href="#year_make_model" class="table-of-contents__link toc-highlight">year_make_model</a></li></ul></li><li><a href="#alvehiclelist-objects" class="table-of-contents__link toc-highlight">ALVehicleList Objects</a></li><li><a href="#alsimplevalue-objects" class="table-of-contents__link toc-highlight">ALSimpleValue Objects</a><ul><li><a href="#total-5" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#__str__-1" class="table-of-contents__link toc-highlight">__str__</a></li></ul></li><li><a href="#alsimplevaluelist-objects" class="table-of-contents__link toc-highlight">ALSimpleValueList Objects</a><ul><li><a href="#sources-1" class="table-of-contents__link toc-highlight">sources</a></li><li><a href="#total-6" class="table-of-contents__link toc-highlight">total</a></li></ul></li><li><a href="#alitemizedvalue-objects" class="table-of-contents__link toc-highlight">ALItemizedValue Objects</a><ul><li><a href="#income_fields" class="table-of-contents__link toc-highlight">income_fields</a></li><li><a href="#__str__-2" class="table-of-contents__link toc-highlight">__str__</a></li></ul></li><li><a href="#alitemizedvaluedict-objects" class="table-of-contents__link toc-highlight">ALItemizedValueDict Objects</a><ul><li><a href="#hook_after_gather" class="table-of-contents__link toc-highlight">hook_after_gather</a></li><li><a href="#__str__-3" class="table-of-contents__link toc-highlight">__str__</a></li></ul></li><li><a href="#alitemizedjob-objects" class="table-of-contents__link toc-highlight">ALItemizedJob Objects</a><ul><li><a href="#total-7" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#gross_total-2" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#deduction_total" class="table-of-contents__link toc-highlight">deduction_total</a></li><li><a href="#net_total-2" class="table-of-contents__link toc-highlight">net_total</a></li><li><a href="#employer_name_address_phone-1" class="table-of-contents__link toc-highlight">employer_name_address_phone</a></li><li><a href="#normalized_hours-1" class="table-of-contents__link toc-highlight">normalized_hours</a></li></ul></li><li><a href="#alitemizedjoblist-objects" class="table-of-contents__link toc-highlight">ALItemizedJobList Objects</a><ul><li><a href="#sources-2" class="table-of-contents__link toc-highlight">sources</a></li><li><a href="#total-8" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#gross_total-3" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#deduction_total-1" class="table-of-contents__link toc-highlight">deduction_total</a></li><li><a href="#net_total-3" class="table-of-contents__link toc-highlight">net_total</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://suffolklitlab.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Suffolk LIT Lab<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.</div></div></div></footer></div>
+E.g. [&#x27;tips&#x27;, &#x27;taxes&#x27;]. Defaults to None.</li>
+<li><code>exclude_source</code> <em>str | List[str], optional</em> - Source or list of sources to
+exclude from calculation. Defaults to None.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-39">Returns<a href="#returns-39" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<ul>
+<li><code>Decimal</code> - The net total (gross minus deductions) for the given parameters.</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/docs/components/ALToolbox/al_income.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/components/ALToolbox/ALIncome/itemizedjobs"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Itemized jobs</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/components/ALToolbox/business_days"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ALToolbox.business_days</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#times_per_year" class="table-of-contents__link toc-highlight">times_per_year</a></li><li><a href="#recent_years" class="table-of-contents__link toc-highlight">recent_years</a></li><li><a href="#alperiodicamount-objects" class="table-of-contents__link toc-highlight">ALPeriodicAmount Objects</a><ul><li><a href="#__str__" class="table-of-contents__link toc-highlight">__str__</a></li><li><a href="#total" class="table-of-contents__link toc-highlight">total</a></li></ul></li><li><a href="#alincome-objects" class="table-of-contents__link toc-highlight">ALIncome Objects</a><ul><li><a href="#total-1" class="table-of-contents__link toc-highlight">total</a></li></ul></li><li><a href="#alexpense-objects" class="table-of-contents__link toc-highlight">ALExpense Objects</a></li><li><a href="#alincomelist-objects" class="table-of-contents__link toc-highlight">ALIncomeList Objects</a><ul><li><a href="#init" class="table-of-contents__link toc-highlight">init</a></li><li><a href="#sources" class="table-of-contents__link toc-highlight">sources</a></li><li><a href="#matches" class="table-of-contents__link toc-highlight">matches</a></li><li><a href="#total-2" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#move_checks_to_list" class="table-of-contents__link toc-highlight">move_checks_to_list</a></li></ul></li><li><a href="#aljob-objects" class="table-of-contents__link toc-highlight">ALJob Objects</a><ul><li><a href="#init-1" class="table-of-contents__link toc-highlight">init</a></li><li><a href="#gross_total" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#deductions" class="table-of-contents__link toc-highlight">deductions</a></li><li><a href="#net_total" class="table-of-contents__link toc-highlight">net_total</a></li><li><a href="#employer_name_address_phone" class="table-of-contents__link toc-highlight">employer_name_address_phone</a></li><li><a href="#normalized_hours" class="table-of-contents__link toc-highlight">normalized_hours</a></li></ul></li><li><a href="#aljoblist-objects" class="table-of-contents__link toc-highlight">ALJobList Objects</a><ul><li><a href="#init-2" class="table-of-contents__link toc-highlight">init</a></li><li><a href="#total-3" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#gross_total-1" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#net_total-1" class="table-of-contents__link toc-highlight">net_total</a></li><li><a href="#deductions-1" class="table-of-contents__link toc-highlight">deductions</a></li></ul></li><li><a href="#alexpenselist-objects" class="table-of-contents__link toc-highlight">ALExpenseList Objects</a></li><li><a href="#alasset-objects" class="table-of-contents__link toc-highlight">ALAsset Objects</a><ul><li><a href="#total-4" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#equity" class="table-of-contents__link toc-highlight">equity</a></li></ul></li><li><a href="#alassetlist-objects" class="table-of-contents__link toc-highlight">ALAssetList Objects</a><ul><li><a href="#market_value" class="table-of-contents__link toc-highlight">market_value</a></li><li><a href="#balance" class="table-of-contents__link toc-highlight">balance</a></li><li><a href="#equity-1" class="table-of-contents__link toc-highlight">equity</a></li><li><a href="#owners" class="table-of-contents__link toc-highlight">owners</a></li></ul></li><li><a href="#alvehicle-objects" class="table-of-contents__link toc-highlight">ALVehicle Objects</a><ul><li><a href="#year_make_model" class="table-of-contents__link toc-highlight">year_make_model</a></li></ul></li><li><a href="#alvehiclelist-objects" class="table-of-contents__link toc-highlight">ALVehicleList Objects</a></li><li><a href="#alsimplevalue-objects" class="table-of-contents__link toc-highlight">ALSimpleValue Objects</a><ul><li><a href="#total-5" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#__str__-1" class="table-of-contents__link toc-highlight">__str__</a></li></ul></li><li><a href="#alsimplevaluelist-objects" class="table-of-contents__link toc-highlight">ALSimpleValueList Objects</a><ul><li><a href="#sources-1" class="table-of-contents__link toc-highlight">sources</a></li><li><a href="#total-6" class="table-of-contents__link toc-highlight">total</a></li></ul></li><li><a href="#alitemizedvalue-objects" class="table-of-contents__link toc-highlight">ALItemizedValue Objects</a><ul><li><a href="#income_fields" class="table-of-contents__link toc-highlight">income_fields</a></li><li><a href="#total-7" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#__str__-2" class="table-of-contents__link toc-highlight">__str__</a></li></ul></li><li><a href="#alitemizedvaluedict-objects" class="table-of-contents__link toc-highlight">ALItemizedValueDict Objects</a><ul><li><a href="#hook_after_gather" class="table-of-contents__link toc-highlight">hook_after_gather</a></li><li><a href="#total-8" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#__str__-3" class="table-of-contents__link toc-highlight">__str__</a></li></ul></li><li><a href="#alitemizedjob-objects" class="table-of-contents__link toc-highlight">ALItemizedJob Objects</a><ul><li><a href="#total-9" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#gross_total-2" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#deduction_total" class="table-of-contents__link toc-highlight">deduction_total</a></li><li><a href="#net_total-2" class="table-of-contents__link toc-highlight">net_total</a></li><li><a href="#employer_name_address_phone-1" class="table-of-contents__link toc-highlight">employer_name_address_phone</a></li><li><a href="#normalized_hours-1" class="table-of-contents__link toc-highlight">normalized_hours</a></li></ul></li><li><a href="#alitemizedjoblist-objects" class="table-of-contents__link toc-highlight">ALItemizedJobList Objects</a><ul><li><a href="#sources-2" class="table-of-contents__link toc-highlight">sources</a></li><li><a href="#total-10" class="table-of-contents__link toc-highlight">total</a></li><li><a href="#gross_total-3" class="table-of-contents__link toc-highlight">gross_total</a></li><li><a href="#deduction_total-1" class="table-of-contents__link toc-highlight">deduction_total</a></li><li><a href="#net_total-3" class="table-of-contents__link toc-highlight">net_total</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://suffolklitlab.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Suffolk LIT Lab<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.</div></div></div></footer></div>
 </body>
 </html>
