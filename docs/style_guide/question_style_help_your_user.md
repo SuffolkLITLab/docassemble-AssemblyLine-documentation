@@ -68,6 +68,10 @@ At best, these questions will annoy and slow down your user. At worst,
 your user may give up when asked to get information that is not
 already in their head.
 
+:::info Workshop Resource
+📺 **First Wednesday Workshop:** For detailed strategies on creating user-friendly interviews, accessibility best practices, and usability testing techniques, explore our [user experience and design workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/). These sessions cover everything from question design to mobile optimization.
+:::
+
 ## Answer questions for your user when you can
 
 For example, computers can very easily:

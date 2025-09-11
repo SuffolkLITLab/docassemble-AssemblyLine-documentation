@@ -61,6 +61,10 @@ The steps that the Weaver will walk you through are as follows:
 
 [Launch the Assembly Line Weaver](https://apps-dev.suffolklitlab.org/start/ALWeaver/assembly_line?new_session=1)
 
+:::info Workshop Resource
+📺 **First Wednesday Workshop:** For step-by-step guidance on using the Assembly Line Weaver, including tips for efficient workflow and avoiding common pitfalls, check out our [Weaver tutorial workshops](https://suffolklitlab.org/tag/first-wednesday-workshops/). These sessions include live demonstrations and Q&A about the Weaver process.
+:::
+
 ## Information you will be asked
 
 To prepare to run your form through the Weaver, think about how you will answer
