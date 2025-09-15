@@ -266,6 +266,7 @@ function Home() {
                 <li><Translate>Legal Services State Support (Mid-Minnesota Legal Aid)</Translate></li>
                 <li><Translate>Illinois Supreme Court Commission on Access to Justice</Translate></li>
                 <li><Translate>Illinois Legal Aid Online (ILAO)</Translate></li>
+                <li><Translate>Michigan Legal Help (Michigan Statewide Advocacy Services)</Translate></li>
               </ul>
             </div>
             <div className="col">{/* Spacer */}</div>
