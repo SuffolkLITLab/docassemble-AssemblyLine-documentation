@@ -197,7 +197,8 @@ $(document).on('daPageLoad', function(){
 
 To use this:
 
-1. Create a JavaScript file (e.g., `favicon.js`) in your package's `data/static` folder with the code above
+1. Install the package server-wide. The link will need to be pointed to a permanent location on the server, so you will not be able to test changes to the favicon from the playground.
+1. Create a JavaScript file (e.g., `favicon.js`) in your package's `data/static` folder with the code above. You can test the image is properly installed by visiting a url like `https://apps.yourserver.com/packagestatic/docassemble.YourPackage/your_favicon.svg?v=2023_02_04_1` after replacing the information with your actual package and image name. Notice 
 2. Customize the SVG filename in the `link.href` line, replacing `YourPackage` with your package name and `your_favicon.svg` with your favicon filename
 3. Add the JavaScript file to your interview's `features` block:
 
@@ -208,6 +209,7 @@ features:
 ```
 
 The favicon will be updated whenever a new page loads in your interview, overriding the server's default favicon for that specific interview only.
+
 
 ### Using dark mode
 
