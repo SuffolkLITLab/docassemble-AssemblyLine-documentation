@@ -1,7 +1,7 @@
 ---
 id: aldashboard_overview
 title: ALDashboard overview
-sidebar_label: Overview
+sidebar_label: About ALDashboard
 slug: /components/ALDashboard/overview
 ---
 

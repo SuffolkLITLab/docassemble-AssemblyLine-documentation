@@ -166,6 +166,19 @@ module.exports = {
         'components/InterviewStats/interviewstats_overview',
         'components/ALDashboard/aldashboard_overview',
         {
+            label: 'ALDashboard modules',
+            type: 'category',
+            items: [
+                'components/ALDashboard/aldashboard',
+                'components/ALDashboard/create_package',
+                'components/ALDashboard/docx_wrangling',
+                'components/ALDashboard/package_scanner',
+                'components/ALDashboard/project_maintenance',
+                'components/ALDashboard/translation',
+                'components/ALDashboard/validate_docx',
+            ],
+        },
+        {
             "label": "FormFyxer",
             "type": "category",
             "items": [

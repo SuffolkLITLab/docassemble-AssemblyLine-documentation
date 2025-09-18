@@ -1,5 +1,13 @@
 {
-  "items": [],
-  "label": null,
+  "items": [
+    "components/ALDashboard/aldashboard",
+    "components/ALDashboard/create_package",
+    "components/ALDashboard/docx_wrangling",
+    "components/ALDashboard/package_scanner",
+    "components/ALDashboard/project_maintenance",
+    "components/ALDashboard/translation",
+    "components/ALDashboard/validate_docx"
+  ],
+  "label": "ALDashboard",
   "type": "category"
 }

@@ -27,10 +27,14 @@ Functions that help convert the JSON-ized XML from the proxy server into usable 
 
 <a id="EFSPIntegration.conversions.error_notification"></a>
 
-#### error\_notification(err, message=None, trace=None, referer=None)
+#### error\_notification(err, message=None, trace=None, referer=None, the\_vars=None)
 
 ```python
-def error_notification(err, message=None, trace=None, referer=None)
+def error_notification(err,
+                       message=None,
+                       trace=None,
+                       referer=None,
+                       the_vars=None)
 ```
 
 Copied from docassemble.webapp.server.error_notification, since:
