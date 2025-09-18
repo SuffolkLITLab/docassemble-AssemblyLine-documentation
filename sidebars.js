@@ -5,13 +5,13 @@ module.exports = {
         'get_started/intro',
         'get_started/al_project_architecture',
         'get_started/installation',
-        'get_started/plan_interview',
         'get_started/beginners_guide',
         {
             label: 'Interview projects',
             collapsed: false,
             type: 'category',
             items: [
+                'get_started/plan_interview',
                 'get_started/project_management',
                 'get_started/search_engine_optimization',
             ],
