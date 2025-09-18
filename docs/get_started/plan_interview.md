@@ -71,55 +71,82 @@ The automation process will go much better if you have planned out the basic str
 
 Planning your interview flow before diving into coding helps you:
 
-- **Identify complex logic early**: Spot conditional sections, branching paths, and dependencies before they become problems
-- **Create a logical question order**: Ensure users aren't asked to provide information they don't have yet
-- **Avoid major rework**: Changes to flow are much easier to make in planning than after coding
-- **Ensure completeness**: Make sure you gather all required information without redundancy
-- **Design for user experience**: Think through the user's journey and mental model
+* **Identify complex logic early**: Spot conditional sections, branching paths, and dependencies before they become problems
+* **Validate the legal research**: If the interview helps complete a legal form, mapping the law's requirements on paper and validating with an expert can prevent early missteps and save time
+* **Create a logical question order**: Ensure users aren't asked to provide information they don't have yet
+* **Avoid major rework**: Changes to flow are much easier to make in planning than after coding
+* **Ensure completeness**: Make sure you gather all required information without redundancy
+* **Design for user experience**: Think through the user's journey and mental model
 
 ### Tools for planning your interview flow
 
-You have many options for mapping out your interview, from simple to sophisticated:
+1. Create a flowchart that explains key decision points in the interview. Simple computer programs can help:
 
-#### Paper and pencil
-- **Best for**: Quick brainstorming and initial sketches
-- **Pros**: Fast, flexible, no learning curve
-- **Cons**: Hard to share and iterate with teams
+* [Diagrams.net](https://diagrams.net) is an online graphical flowchart tool.
+* [Flowchart.fun](https://flowchart.fun) lets you build flowcharts with text and simple indentation.
+* [Mermaid.js](https://mermaid.live/) can build charts that can be embedded in GitHub markdown, but has a more complex syntax.
 
-#### Digital flowchart tools
-- **[draw.io](https://draw.io)** (now Diagrams.net): Free, web-based, integrates with Google Drive/GitHub
-- **[Lucidchart](https://www.lucidchart.com/)**: Professional diagramming with collaboration features
-- **[Miro](https://miro.com/)** or **[Mural](https://www.mural.co/)**: Digital whiteboarding for collaborative planning
-- **[Whimsical](https://whimsical.com/)**: Simple, clean interface for flowcharts and wireframes
+Paper and pencil works for early sketches, too.
 
-#### Specialized planning methods
-- **User journey mapping**: Map the user's path from start to finish, including their goals and pain points
-- **Story mapping**: Break down the interview into user stories and organize them by priority
-- **Paper prototyping**: Create mockups of key screens to test the flow with real users
+2. If your interview involves complex legal decisions that do not easily fit in a flowchart, consider using spreadsheets (or
+  [truth tables](https://en.wikipedia.org/wiki/Truth_table)) to systematically lay out the combination of variables that leads
+  to various claims being valid or invalid.
+
+Here is an example of a truth table for a defamation claim, with the familiar elements of defamation turned into Python
+variables.
+
+| false_statement | publication | harm | malice | is_public_figure | defamation_claim |
+|-----------------|-------------|------|--------|------------------|------------------|
+| False           | False       | False| False  | False            | False            |
+| True            | False       | True | False  | False            | False            |
+| True            | True        | True | False  | False            | True             |
+| True            | True        | True | True   | False            | True             |
+| True            | True        | True | False  | True             | False            |
+| True            | True        | True | True   | True             | True             |
+
+A more complex alternative to a truth table (that handles different kinds of values) is a [DMN](https://camunda.com/dmn/).
+
+Here is a DMN (decision model notation)-like map of the same logical rule above:
+
+### Decision Table: Defamation Claim
+
+| Rule | false_statement | publication | harm | malice | is_public_figure | defamation_claim |
+|------|-----------------|-------------|------|--------|------------------|------------------|
+| private figures   | true            | true        | true | -      | false            | True             |
+| public figures   | true            | true        | true | true   | true             | True             |
+| All other cases   | -               | -           | -    | -      | -                | False            |
+
+Flowcharts and tables can not only help you understand the logic involved in your interview, but help you communicate it
+and validate it with an expert.
 
 ### What to include in your interview plan
 
 Your planning should cover these key elements:
 
 #### 1. User journey and entry points
-- How do users find your interview?
-- What brings them to this point?
-- What's their mental state and level of legal knowledge?
+
+* How do users find your interview?
+* What brings them to this point?
+* What's their mental state and level of legal knowledge?
+* What steps in their legal process must already be complete before they can use your interview?
 
 #### 2. Information gathering sequence
-- What information do you need to collect?
-- What order makes sense to the user?
-- Which questions depend on previous answers?
+
+* What information do you need to collect?
+* What order makes sense to the user?
+* Which questions depend on previous answers?
 
 #### 3. Conditional logic and branching
-- When should users skip certain sections?
-- What different paths might users take?
-- How do different user types experience the interview?
+
+* When should users skip certain sections?
+* What different paths might users take?
+* How do different user types experience the interview?
 
 #### 4. Review and completion
-- How will users review their answers?
-- What documents will be generated?
-- What happens after completion?
+
+* How will users review their answers?
+* What documents will be generated?
+* What happens after completion?
 
 ### Sample planning workflow
 
@@ -141,7 +168,7 @@ Your planning should cover these key elements:
 
 Here's how you might plan a basic court motion interview:
 
-```
+```text
 Start → Court information → User type (attorney/self-rep) 
    ↓
 Party information → Case details → Motion type
@@ -152,21 +179,28 @@ Review screen → Document generation → Next steps/filing information
 ```
 
 Even this simple flow reveals important questions:
-- Should court information come first, or party information?
-- How does the user type affect what questions we ask?
-- What motion-specific questions are needed for each type?
+
+* Should court information come first, or party information?
+* How does the user type affect what questions we ask?
+* What motion-specific questions are needed for each type?
 
 ### Integration with project management
 
 Your interview planning should connect with your broader [project management approach](project_management.md). Share your flowcharts and planning documents with your team, and use them to:
 
-- Estimate development time more accurately
-- Identify potential technical challenges early
-- Create test cases for different user paths
-- Brief developers on the intended user experience
+* Communicate with subject matter experts and confirm your understanding of the law or process you are implementing
+* Estimate development time more accurately
+* Identify potential technical challenges early
+* Create test cases for different user paths
+* Brief developers on the intended user experience
 
-## Preparing your template for automation
+### Continue with the automation process
 
-Once you have decided on the template file that you will use, you need to add
-labels to each empty space on the form that will be filled in to match the
-user's specific situation.
+Once you have finished these early planning steps, it will be time to start building.
+
+Start by learning about the automation process for your template, whether it is:
+
+* A [PDF](../authoring/pdf_templates.md), or
+* A [DOCX](../authoring/docx_templates.md) file.
+
+And then continuing through [labeling](../authoring/doc_vars_reference.md) and running your template through the Weaver(../authoring/weaver_overview.md).
