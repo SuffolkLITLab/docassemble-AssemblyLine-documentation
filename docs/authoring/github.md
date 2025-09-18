@@ -142,7 +142,7 @@ GitHub can't help you if you don't use it, so **commit early and often**!
 2. On the **Packages** screen, review the following fields and update them if necessary:
    1. **Author name and email.** These will be included in the public README file. Consider using your organization's name and email, instead.
    2. **Description.** Change the default to something that actually describes the interview. For example: "A Docassemble interview for a Massachusetts 209A Protection from Abuse Order."
-   3. **URL.** If the interview is live, use the landing-page URL. Learn more about [creating effective landing pages](landing_pages.md).
+   3. **URL.** If the interview is live, use the landing-page URL. Learn more about [creating effective landing pages](../get_started/landing_pages.md).
    4. **Interview, template, static, and source files.** Only selected files will be uploaded to GitHub. (Hold Control on Windows or Command on macOS while you click to select multiple files.)
    5. **README.** Add information for future developers.
 3. Scroll to the bottom of the page and click on the **GitHub** button
