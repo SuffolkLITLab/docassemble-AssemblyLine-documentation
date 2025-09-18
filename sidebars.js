@@ -164,6 +164,7 @@ module.exports = {
         'components/RateMyPDF/ratemypdf_overview',
         'components/GithubFeedbackForm/githubfeedbackform_overview',
         'components/InterviewStats/interviewstats_overview',
+        'components/ALDashboard/aldashboard_overview',
         {
             "label": "FormFyxer",
             "type": "category",

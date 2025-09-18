@@ -38,6 +38,10 @@ jobs:
         with:
           repository: SuffolkLITLab/docassemble-EFSPIntegration
           path: docassemble-EFSPIntegration
+      - uses: actions/checkout@v3
+        with:
+          repository: SuffolkLITLab/docassemble-ALDashboard
+          path: docassemble-ALDashboard
       - name: Go to Docs directory
         run: |
           cd docs
