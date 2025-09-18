@@ -200,7 +200,7 @@ Once you have finished these early planning steps, it will be time to start buil
 
 Start by learning about the automation process for your template, whether it is:
 
-* A [PDF](../authoring/pdf_templates.mdpdf_templates.md), or
+* A [PDF](../authoring/pdf_templates.md), or
 * A [DOCX](../authoring/docx_templates.md) file.
 
 And then continuing through [labeling](../authoring/doc_vars_reference.md) and running your template through the Weaver(../authoring/weaver_overview.md).
