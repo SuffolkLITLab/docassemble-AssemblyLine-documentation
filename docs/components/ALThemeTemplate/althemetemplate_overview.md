@@ -198,9 +198,10 @@ $(document).on('daPageLoad', function(){
 To use this:
 
 1. Install the package server-wide. The link will need to be pointed to a permanent location on the server, so you will not be able to test changes to the favicon from the playground.
-1. Create a JavaScript file (e.g., `favicon.js`) in your package's `data/static` folder with the code above. You can test the image is properly installed by visiting a url like `https://apps.yourserver.com/packagestatic/docassemble.YourPackage/your_favicon.svg?v=2023_02_04_1` after replacing the information with your actual package and image name. Notice 
-2. Customize the SVG filename in the `link.href` line, replacing `YourPackage` with your package name and `your_favicon.svg` with your favicon filename
-3. Add the JavaScript file to your interview's `features` block:
+1. Create a JavaScript file (e.g., `favicon.js`) in your package's `data/static` folder with the code above. You can test the image is properly installed by visiting a url like `https://apps.yourserver.com/packagestatic/docassemble.YourPackage/your_favicon.svg?v=2023_02_04_1` after replacing the information with your actual package and image name.
+1. Customize the SVG filename in the `link.href` line, replacing `YourPackage` with your package name and `your_favicon.svg` with your favicon filename.
+    * It is a good practice to update the `v=...` value after each change to the icon itself to avoid problems with the browser cache. The specific value is not important, but using a date in the parameter is a common practice called [cache busting](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching#avoiding_revalidation).
+1. Add the JavaScript file to your interview's `features` block:
 
 ```yaml
 features:
