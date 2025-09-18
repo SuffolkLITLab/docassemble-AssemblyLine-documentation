@@ -82,7 +82,7 @@ a bootstrap.css file from this site.
     * Under Typography, customize any fonts that you wish to use
     * Under forms, you may want to customize button size and rounded edges
 1. Click the "export theme" button (it may be hidden behind a banner at the top of the page) and choose the
-  "`_variables.scss_`" option.
+  "`_variables.scss`" option.
 
 #### Compile your theme using the ALDashboard tool
 
