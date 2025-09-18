@@ -452,44 +452,16 @@ This event is used internally by the language switching functions like
 
 #### `speak_text`
 
-Controls whether the Assembly Line's built-in screen reader functionality is enabled.
+Controls whether the screen reader functionality is enabled.
 The screen reader feature was added not primarily for blind users, but for people with
 low literacy and users on shared workstations or when borrowing mobile devices.
 
-Defaults to `True` (screen reader enabled). Set to `False` to disable the text-to-speech
-functionality for the interview.
+Currently defaults to `True` (screen reader enabled). Set to `False` in a `mandatory` block to disable the text-to-speech functionality for the interview. This block must be before the `mandatory` block that runs your interview order.
 
 ```yaml
-code: |
-  speak_text = False
-```
-
-This can be set on a per-interview basis in any mandatory code block or in the
-interview order block. For organization-wide control, you can set this variable
-in a shared YAML file that all your interviews include.
-
-**Per-interview example:**
-```yaml
----
 mandatory: True
 code: |
   speak_text = False
-  # ... rest of your interview order
----
-```
-
-**Organization-wide example (in a shared file):**
-```yaml
----
-code: |
-  speak_text = False
----
-```
-
-Note: This setting controls the Assembly Line's screen reader feature. For more information
-about Docassemble's built-in text-to-speech functionality, see the
-[Docassemble documentation](https://docassemble.org/docs/special.html#speak_text).
-
 ## Run-time options
 
 These options are ones that you can sometimes configure when you author the
