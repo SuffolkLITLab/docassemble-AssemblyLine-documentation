@@ -64,7 +64,6 @@
   * [section\_links](#AssemblyLine.al_general.section_links)
   * [will\_send\_to\_real\_court](#AssemblyLine.al_general.will_send_to_real_court)
   * [filter\_letters](#AssemblyLine.al_general.filter_letters)
-  * [fa\_icon](#AssemblyLine.al_general.fa_icon)
   * [is\_sms\_enabled](#AssemblyLine.al_general.is_sms_enabled)
   * [is\_phone\_or\_email](#AssemblyLine.al_general.is_phone_or_email)
   * [github\_modified\_date](#AssemblyLine.al_general.github_modified_date)
@@ -1429,33 +1428,6 @@ Avoid using, this is created for 209A.
 **Returns**:
 
 - `str` - A string of unique letters.
-
-<a id="AssemblyLine.al_general.fa_icon"></a>
-
-#### fa\_icon(icon: str, color: str = "primary", color\_css: Optional[str] = None, size: str = "sm")
-
-```python
-def fa_icon(icon: str,
-            color: str = "primary",
-            color_css: Optional[str] = None,
-            size: str = "sm") -> str
-```
-
-Return HTML for a font-awesome icon of the specified size and color. You can reference
-a CSS variable (such as Bootstrap theme color) or a true CSS color reference, such as &#x27;blue&#x27; or
-&#x27;`DDDDDD`&#x27;. Defaults to Bootstrap theme color &quot;primary&quot;.
-
-**Arguments**:
-
-- `icon` _str_ - The name of the icon to use. See https://fontawesome.com/icons for a list of icons.
-- `color` _str_ - The color of the icon. Defaults to &quot;primary&quot;.
-- `color_css` _Optional[str]_ - A CSS variable or color reference. Defaults to None.
-- `size` _str_ - The size of the icon. Defaults to &quot;sm&quot;.
-  
-
-**Returns**:
-
-- `str` - HTML for the icon.
 
 <a id="AssemblyLine.al_general.is_sms_enabled"></a>
 
