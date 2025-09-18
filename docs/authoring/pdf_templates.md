@@ -6,11 +6,11 @@ slug: pdfs
 ---
 
 :::tip
-Consider whether to use a DOCX template instead.
+If strict layout is not important, consider whether to use a DOCX template instead.
 
 **Reasons to use PDF:**
 
-* PDF files may be the best choice if you are automating an approved court form that already exists as a PDF
+* PDF files are usually the best choice if you are automating an approved court form that already exists as a PDF
 * PDF files are good for heavily formatted content that includes columns and multiple fields on a single line
 
 **Reasons to avoid PDF:**
