@@ -134,7 +134,7 @@ id: language
 question: |
     What language / que idioma?
 fields:
-    - Language/idioma: al_interview_languages
+    - Language/idioma: al_user_language
       datatype: radio
       choices:
         - English: en

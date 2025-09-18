@@ -183,14 +183,14 @@ Create a new courtloader object.
 #### all\_courts()
 
 ```python
-def all_courts() -> List[Dict[int, str]]
+def all_courts() -> List[Tuple[int, str]]
 ```
 
 Return a list of all courts in the spreadsheet.
 
 **Returns**:
 
-  List[Dict[int, str]]: List of all ALCourt instances without filtering.
+  List[Tuple[int, str]]: List of tuples where each tuple contains (dataframe_index, display_value). The dataframe_index (int) can be used with as_court() to retrieve the full court object. The display_value (str) is the court&#x27;s name or other display column value.
 
 <a id="AssemblyLine.al_courts.ALCourtLoader.unique_column_values"></a>
 
@@ -292,14 +292,15 @@ def matching_courts_in_county(
     display_column: str = "name",
     search_string: Optional[str] = None,
     search_columns: Optional[Union[List[str], str]] = None
-) -> List[Dict[int, str]]
+) -> List[Tuple[int, str]]
 ```
 
 Retrieve a list of all courts in the specified county.
 
 This function fetches courts suitable for displaying as a drop-down or radio button list
-in Docassemble. The results are dictionaries where the key is the index in the dataframe,
-useful for retrieving the court&#x27;s full details later using the as_court() method.
+in Docassemble. The results are tuples where the first element is the dataframe index
+(useful for retrieving the court&#x27;s full details later using the as_court() method) and
+the second element is the display value from the specified display_column.
 
 **Arguments**:
 
@@ -313,7 +314,7 @@ useful for retrieving the court&#x27;s full details later using the as_court() m
 
 **Returns**:
 
-  List[Dict[int, str]]: List of dictionaries representing matching courts.
+  List[Tuple[int, str]]: List of tuples where each tuple contains (dataframe_index, display_value). The dataframe_index (int) can be used with as_court() to retrieve the full court object. The display_value (str) is the court&#x27;s name or other display column value.
 
 <a id="AssemblyLine.al_courts.ALCourtLoader.filter_courts"></a>
 
@@ -326,12 +327,12 @@ def filter_courts(
     display_column: str = "name",
     search_string: Optional[str] = None,
     search_columns: Optional[Union[List[str], str]] = None
-) -> List[Dict[int, str]]
+) -> List[Tuple[int, str]]
 ```
 
-Return a filtered subset of courts represented as a list of dictionaries.
+Return a filtered subset of courts represented as a list of tuples.
 
-Each dictionary has the format \{index: name\}, where &quot;index&quot; refers to the dataframe index and &quot;name&quot;
+Each tuple has the format (index, display_value), where &quot;index&quot; refers to the dataframe index and &quot;display_value&quot;
 is determined by the `display_column`.
 
 **Arguments**:
@@ -347,7 +348,7 @@ is determined by the `display_column`.
 
 **Returns**:
 
-  List[Dict[int, str]]: List of dictionaries representing filtered courts.
+  List[Tuple[int, str]]: List of tuples where each tuple contains (dataframe_index, display_value). The dataframe_index (int) can be used with as_court() to retrieve the full court object. The display_value (str) is the court&#x27;s name or other display column value.
 
 <a id="AssemblyLine.al_courts.ALCourtLoader.as_court"></a>
 
