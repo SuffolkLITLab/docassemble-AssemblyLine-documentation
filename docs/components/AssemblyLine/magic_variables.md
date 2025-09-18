@@ -448,6 +448,20 @@ argument and calls Docassemble's `set_language()` function.
 This event is used internally by the language switching functions like
 `get_language_list_dropdown()` and `get_language_list()`.
 
+### Screen reader control
+
+#### `speak_text`
+
+Controls whether the screen reader functionality is enabled.
+The screen reader feature was added not primarily for blind users, but for people with
+low literacy and users on shared workstations or when borrowing mobile devices.
+
+Currently defaults to `True` (screen reader enabled). Set to `False` in a `mandatory` block to disable the text-to-speech functionality for the interview. This block must be before the `mandatory` block that runs your interview order.
+
+```yaml
+mandatory: True
+code: |
+  speak_text = False
 ## Run-time options
 
 These options are ones that you can sometimes configure when you author the
