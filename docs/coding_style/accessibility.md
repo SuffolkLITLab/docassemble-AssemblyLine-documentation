@@ -13,6 +13,51 @@ Other parts of web accessibility involve writing the interview in a way that the
 
 To help you find accessibility problems in your interview you can use the [WAVE browser extension](https://wave.webaim.org/extension/), or if you want to check accessibility of your interview automatically, you can use the [ALKiln testing framework](../components/ALKiln/automated_testing.mdx#accessibility).
 
+## Accessibility testing tools
+
+Testing your interview with assistive technology and accessibility tools is essential to ensure it works for all users. Here are some popular tools to help you test and validate the accessibility of your interviews:
+
+### Screen readers
+
+Screen readers are assistive technologies that read content aloud for users who are blind or have low vision. Testing with screen readers helps ensure your interview is usable for these users.
+
+**Free screen readers:**
+* **[NVDA (NonVisual Desktop Access)](https://www.nvaccess.org/)** - Free, open-source screen reader for Windows. Widely used and regularly updated.
+* **[VoiceOver](https://www.apple.com/accessibility/vision/)** - Built into macOS and iOS devices. Activate with Command+F5 on Mac.
+* **[Orca](https://help.gnome.org/users/orca/stable/)** - Open-source screen reader for Linux systems.
+* **[ChromeVox](https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn)** - Chrome extension screen reader, useful for quick testing.
+
+**Commercial screen readers:**
+* **[JAWS (Job Access With Speech)](https://www.freedomscientific.com/products/software/jaws/)** - Popular commercial screen reader for Windows with advanced features.
+* **[Dragon NaturallySpeaking](https://www.nuance.com/dragon.html)** - Voice recognition software that can be used alongside screen readers.
+
+### Browser accessibility checkers
+
+These tools can automatically scan your interview pages for accessibility issues:
+
+* **[WAVE Web Accessibility Evaluator](https://wave.webaim.org/extension/)** - Browser extension that highlights accessibility issues directly on the page.
+* **[axe DevTools](https://www.deque.com/axe/devtools/)** - Browser extension for Chrome, Firefox, and Edge that integrates with developer tools.
+* **[Lighthouse](https://developer.chrome.com/docs/lighthouse/)** - Built into Chrome DevTools, includes accessibility auditing alongside performance testing.
+* **[Accessibility Insights](https://accessibilityinsights.io/)** - Microsoft's accessibility testing tools for web and Windows applications.
+
+### Manual testing tools
+
+* **[Colour Contrast Analyser](https://www.tpgi.com/color-contrast-checker/)** - Desktop application for testing color contrast ratios.
+* **[Accessibility bookmarklets](https://accessibility-bookmarklets.org/)** - Collection of browser bookmarklets for quick accessibility checks.
+* **[Web Accessibility Toolbar](https://www.tpgi.com/web-accessibility-toolbar/)** - Internet Explorer and Firefox toolbar with accessibility testing features.
+
+### Mobile accessibility testing
+
+* **[TalkBack](https://support.google.com/accessibility/android/answer/6283677)** - Android's built-in screen reader.
+* **[Switch Access](https://support.google.com/accessibility/android/answer/6122836)** - Android feature for users with motor disabilities.
+* **[Voice Control](https://support.apple.com/en-us/HT210417)** - iOS voice navigation feature.
+
+### Automated testing integration
+
+* **[ALKiln](../components/ALKiln/automated_testing.mdx#accessibility)** - Assembly Line's testing framework with built-in accessibility testing using aXe-core.
+* **[Pa11y](https://pa11y.org/)** - Command-line accessibility testing tool that can be integrated into CI/CD pipelines.
+* **[aXe-core](https://github.com/dequelabs/axe-core)** - Open-source accessibility testing engine used by many tools.
+
 ## Use colors that contrast strongly with their backgrounds
 
 One thing that you have control over in your interviews is your interview "branding", including fonts, styles, and importantly, colors. Making sure the text colors and background colors that you choose have high enough contrast is important to both low-vision and sighted users. Web accessibility standards like WCAG 2 define the **minimum** proper color contrast between an element and it's background color as 4.5:1. For larger text like headings, the minimum is 3:1.
