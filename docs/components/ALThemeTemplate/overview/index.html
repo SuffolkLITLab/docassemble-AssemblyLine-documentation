@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.d69c202a.css">
-<script src="/assets/js/runtime~main.e03b3357.js" defer="defer"></script>
-<script src="/assets/js/main.e5d4338a.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7396b97e.js" defer="defer"></script>
+<script src="/assets/js/main.998be72b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -115,8 +115,12 @@ but sometimes you have a reason for a single interview to use a different one.</
 <p>To use this:</p>
 <ol>
 <li>Install the package server-wide. The link will need to be pointed to a permanent location on the server, so you will not be able to test changes to the favicon from the playground.</li>
-<li>Create a JavaScript file (e.g., <code>favicon.js</code>) in your package&#x27;s <code>data/static</code> folder with the code above. You can test the image is properly installed by visiting a url like <code>https://apps.yourserver.com/packagestatic/docassemble.YourPackage/your_favicon.svg?v=2023_02_04_1</code> after replacing the information with your actual package and image name. Notice</li>
-<li>Customize the SVG filename in the <code>link.href</code> line, replacing <code>YourPackage</code> with your package name and <code>your_favicon.svg</code> with your favicon filename</li>
+<li>Create a JavaScript file (e.g., <code>favicon.js</code>) in your package&#x27;s <code>data/static</code> folder with the code above. You can test the image is properly installed by visiting a url like <code>https://apps.yourserver.com/packagestatic/docassemble.YourPackage/your_favicon.svg?v=2023_02_04_1</code> after replacing the information with your actual package and image name.</li>
+<li>Customize the SVG filename in the <code>link.href</code> line, replacing <code>YourPackage</code> with your package name and <code>your_favicon.svg</code> with your favicon filename.<!-- -->
+<ul>
+<li>It is a good practice to update the <code>v=...</code> value after each change to the icon itself to avoid problems with the browser cache. The specific value is not important, but using a date in the parameter is a common practice called <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching#avoiding_revalidation" target="_blank" rel="noopener noreferrer">cache busting</a>.</li>
+</ul>
+</li>
 <li>Add the JavaScript file to your interview&#x27;s <code>features</code> block:</li>
 </ol>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token key atrule">features</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token key atrule">javascript</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">-</span><span class="token plain"> favicon.js</span><br></span></code></pre></div></div>
