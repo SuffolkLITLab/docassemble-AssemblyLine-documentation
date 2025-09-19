@@ -13,6 +13,7 @@ module.exports = {
             items: [
                 'get_started/plan_interview',
                 'get_started/project_management',
+                'get_started/feedback_and_testing',
                 'get_started/search_engine_optimization',
                 'get_started/landing_pages',
             ],
