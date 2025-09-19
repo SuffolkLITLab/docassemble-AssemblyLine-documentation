@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.d69c202a.css">
-<script src="/assets/js/runtime~main.bafc3431.js" defer="defer"></script>
-<script src="/assets/js/main.80546b17.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9bab5b49.js" defer="defer"></script>
+<script src="/assets/js/main.956c6d18.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -157,7 +157,7 @@ the nearest whole integer.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The lowercase textual description of the frequency, or a generated
 description if not found in the list.</p>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; times_per_year([(12, &quot;Monthly&quot;), (1, &quot;Annually&quot;)], 12)
 &#x27;monthly&#x27;
 &gt;&gt;&gt; times_per_year([(12, &quot;Monthly&quot;)], 5)
@@ -180,7 +180,7 @@ current year. Defaults to 25.</li>
 <ul>
 <li><code>List[int]</code> - List of years in the specified order.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; recent_years(past=3, future=1)  # if current year is 2023
 [2024, 2023, 2022, 2021]
 &gt;&gt;&gt; recent_years(past=2, order=&quot;ascending&quot;, future=0)
@@ -192,13 +192,15 @@ current year. Defaults to 25.</li>
 that reoccurs some times per year. E.g, to express a weekly period, use 52. The default
 is 1 (a year).</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes">Attributes<a href="#attributes" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.value {str | float | Decimal} A number representing an amount of money accumulated during
-the <code>times_per_year</code> of this income.
-.times_per_year {float | Decimal} Represents a number of the annual frequency of
-the income. E.g. 12 for a monthly income.
-.source {str} (Optional) The &quot;source&quot; of the income, like a &quot;job&quot; or a &quot;house&quot;.
-.display_name {str} (Optional) If present, will have a translated string to show the
-user, as opposed to a raw english string from the program</p>
+<ul>
+<li><code>value</code> <em>str | float | Decimal</em> - A number representing an amount of money accumulated during
+the <code>times_per_year</code> of this income.</li>
+<li><code>times_per_year</code> <em>float | Decimal</em> - Represents a number of the annual frequency of
+the income. E.g. 12 for a monthly income.</li>
+<li><code>source</code> <em>str, optional</em> - The &quot;source&quot; of the income, like a &quot;job&quot; or a &quot;house&quot;.</li>
+<li><code>display_name</code> <em>str, optional</em> - If present, will have a translated string to show the
+user, as opposed to a raw english string from the program.</li>
+</ul>
 <a id="ALToolbox.al_income.ALPeriodicAmount.__str__"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="__str__">__str__<a href="#__str__" class="hash-link" aria-label="Direct link to __str__" title="Direct link to __str__">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">__str__</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><br></span></code></pre></div></div>
@@ -219,7 +221,7 @@ Defaults to 1 (annual).</li>
 <ul>
 <li><code>Decimal</code> - The calculated income amount for the specified frequency.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; income = ALPeriodicAmount(value=1000, times_per_year=12)  # $1000/month
 &gt;&gt;&gt; income.total(1)  # Annual total
 Decimal(&#x27;12000&#x27;)
@@ -233,17 +235,19 @@ incomes must include hours per period (times per year). Period is some
 denominator of a year. E.g, to express a weekly period, use 52. The default
 is 1 (a year).</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes-1">Attributes<a href="#attributes-1" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.value {str | float | Decimal} A number representing an amount of money accumulated during
-the <code>times_per_year</code> of this income.
-.times_per_year {float | Decimal} Represents a number of the annual frequency of
-the income. E.g. 12 for a monthly income.
-.is_hourly {bool} (Optional) True if the income is hourly.
-.hours_per_period {float | Decimal} (Optional) If the income is hourly, the number of
+<ul>
+<li><code>value</code> <em>str | float | Decimal</em> - A number representing an amount of money accumulated during
+the <code>times_per_year</code> of this income.</li>
+<li><code>times_per_year</code> <em>float | Decimal</em> - Represents a number of the annual frequency of
+the income. E.g. 12 for a monthly income.</li>
+<li><code>is_hourly</code> <em>bool, optional</em> - True if the income is hourly.</li>
+<li><code>hours_per_period</code> <em>float | Decimal, optional</em> - If the income is hourly, the number of
 hours during the annual frequency of this job. E.g. if the annual
 frequency is 52 (weekly), the hours per week might be 50. That is, 50
-hours per week. This attribute is required if <code>.is_hourly</code> is True.
-.source {str} (Optional) The &quot;source&quot; of the income, like a &quot;job&quot; or a &quot;house&quot;.
-.owner {str} (Optional) Full name of the income&#x27;s owner as a single string.</p>
+hours per week. This attribute is required if <code>.is_hourly</code> is True.</li>
+<li><code>source</code> <em>str, optional</em> - The &quot;source&quot; of the income, like a &quot;job&quot; or a &quot;house&quot;.</li>
+<li><code>owner</code> <em>str, optional</em> - Full name of the income&#x27;s owner as a single string.</li>
+</ul>
 <a id="ALToolbox.al_income.ALIncome.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-1">total<a href="#total-1" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
@@ -268,13 +272,15 @@ Defaults to 1 (annual).</li>
 <a id="ALToolbox.al_income.ALIncomeList"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alincomelist-objects">ALIncomeList Objects<a href="#alincomelist-objects" class="hash-link" aria-label="Direct link to ALIncomeList Objects" title="Direct link to ALIncomeList Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALIncomeList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">DAList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
-<p>Represents a filterable DAList of incomes-type items. It can make
-use of these attributes and methods in its items:</p>
-<p>.source
-.owner
-.times_per_year
-.value
-.total()</p>
+<p>Represents a filterable DAList of incomes-type items.</p>
+<p>This list expects its items to have the following attributes and methods:</p>
+<ul>
+<li>source: Source identifier for filtering</li>
+<li>owner: Owner name for filtering</li>
+<li>times_per_year: Frequency of the income</li>
+<li>value: Amount value</li>
+<li>total(): Calculate total amount for a given frequency</li>
+</ul>
 <a id="ALToolbox.al_income.ALIncomeList.init"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="init">init<a href="#init" class="hash-link" aria-label="Direct link to init" title="Direct link to init">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">init</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">kwargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><br></span></code></pre></div></div>
@@ -294,7 +300,7 @@ the list contains appropriate income objects for processing.</p>
 <ul>
 <li><code>Set[str]</code> - A set containing all unique source names from items in the list.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; income_list = ALIncomeList([
 ...     ALIncome(source=&quot;wages&quot;),
 ...     ALIncome(source=&quot;tips&quot;),
@@ -318,7 +324,7 @@ Defaults to None.</li>
 <ul>
 <li><code>ALIncomeList</code> - A new ALIncomeList containing only items with matching sources.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; income_list = ALIncomeList([
 ...     ALIncome(source=&quot;wages&quot;, value=1000),
 ...     ALIncome(source=&quot;tips&quot;, value=200),
@@ -350,7 +356,7 @@ Defaults to None (all owners).</li>
 <ul>
 <li><code>Decimal</code> - The total income amount for the specified frequency and filters.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; income_list = ALIncomeList([wages_income, tips_income])
 &gt;&gt;&gt; income_list.total(times_per_year=12)  # Monthly total
 Decimal(&#x27;5000.00&#x27;)
@@ -380,20 +386,22 @@ individual items like wages, tips or deductions that may appear on a paycheck--t
 user must enter the total amount for &quot;net&quot; and &quot;gross&quot; income for a given period.</p>
 <p>Can be stored in an ALJobList.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes-2">Attributes<a href="#attributes-2" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.value {float | Decimal} A number representing an amount of money accumulated during
-the <code>times_per_year</code> of this income.
-.times_per_year {float} Represents a number of the annual frequency of
-the value. E.g. 12 for a monthly value.
-.is_hourly {bool} (Optional): Whether the gross total should be calculated based on hours
-worked per week
-.hours_per_period {float} (Optional) The number of hours during the annual
+<ul>
+<li><code>value</code> <em>float | Decimal</em> - A number representing an amount of money accumulated during
+the <code>times_per_year</code> of this income.</li>
+<li><code>times_per_year</code> <em>float</em> - Represents a number of the annual frequency of
+the value. E.g. 12 for a monthly value.</li>
+<li><code>is_hourly</code> <em>bool, optional</em> - Whether the gross total should be calculated based on hours
+worked per week.</li>
+<li><code>hours_per_period</code> <em>float, optional</em> - The number of hours during the annual
 frequency of this job. E.g. if the annual frequency is 52 (weekly), the
-hours per week might be 50. That is, 50 hours per week.
-.deduction {float} (Optional) The amount of money deducted from the total value each period.
+hours per week might be 50. That is, 50 hours per week.</li>
+<li><code>deduction</code> <em>float, optional</em> - The amount of money deducted from the total value each period.
 If this job is hourly, deduction is still from each period, not each hour. Used to
-calculate the net income in <code>net_income()</code>.
-.employer {Individual} (Optional) A docassemble Individual object, employer.address is the address
-and employer.phone is the phone</p>
+calculate the net income in <code>net_income()</code>.</li>
+<li><code>employer</code> <em>Individual, optional</em> - A docassemble Individual object, employer.address is the address
+and employer.phone is the phone.</li>
+</ul>
 <a id="ALToolbox.al_income.ALJob.init"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="init-1">init<a href="#init-1" class="hash-link" aria-label="Direct link to init" title="Direct link to init">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">init</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">pargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">kwargs</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -470,7 +478,7 @@ use 52. The default is 1 (a year).</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-12">Returns<a href="#returns-12" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The normalized number of hours worked for the specified frequency.</p>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>If the person works 10 hours a week, it will return
 520 when the times_per_year parameter is 1.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="notes-1">Notes<a href="#notes-1" class="hash-link" aria-label="Direct link to Notes" title="Direct link to Notes">​</a></h4>
@@ -546,13 +554,11 @@ will use all sources.</p>
 <a id="ALToolbox.al_income.ALExpenseList"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alexpenselist-objects">ALExpenseList Objects<a href="#alexpenselist-objects" class="hash-link" aria-label="Direct link to ALExpenseList Objects" title="Direct link to ALExpenseList Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALExpenseList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALIncomeList</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
-<p>A list of expenses</p>
-<ul>
-<li>each element has a:</li>
-<li>value</li>
-<li>source</li>
-<li>display name</li>
-</ul>
+<p>A list of expenses.</p>
+<p>Each element has:
+value: The monetary value of the expense
+source: The source category of the expense
+display_name: Human-readable name for display</p>
 <a id="ALToolbox.al_income.ALAsset"></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="alasset-objects">ALAsset Objects<a href="#alasset-objects" class="hash-link" aria-label="Direct link to ALAsset Objects" title="Direct link to ALAsset Objects">​</a></h2>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(255, 203, 107)">ALAsset</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ALIncome</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre></div></div>
@@ -561,18 +567,20 @@ that the asset earns, and an optional balance which may be helpful if the
 asset represents a financial account rather than a physical asset.</p>
 <p>Can be stored in an ALAssetList.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes-3">Attributes<a href="#attributes-3" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.market_value {float | Decimal} Market value of the asset.
-.balance {float | Decimal } Current balance of the account, e.g., like
+<ul>
+<li><code>market_value</code> <em>float | Decimal</em> - Market value of the asset.</li>
+<li><code>balance</code> <em>float | Decimal</em> - Current balance of the account, e.g., like
 the balance in a checking account, but could also represent a loan
-amount.
-.value {float | Decimal} (Optional) Represents the income the asset earns
+amount.</li>
+<li><code>value</code> <em>float | Decimal, optional</em> - Represents the income the asset earns
 for a given <code>times_per_year</code>, such as interest earned in a checking
 account. If not defined, the income will be set to 0, to simplify
-representing the many common assets that do not earn any income.
-.times_per_year {float} (Optional) Number of times per year the asset
-earns the income listed in the <code>value</code> attribute.
-.owner {str} (Optional) Full name of the asset owner as a single string.
-.source {str} (Optional) The &quot;source&quot; of the asset, like &quot;vase&quot;.</p>
+representing the many common assets that do not earn any income.</li>
+<li><code>times_per_year</code> <em>float, optional</em> - Number of times per year the asset
+earns the income listed in the <code>value</code> attribute.</li>
+<li><code>owner</code> <em>str, optional</em> - Full name of the asset owner as a single string.</li>
+<li><code>source</code> <em>str, optional</em> - The &quot;source&quot; of the asset, like &quot;vase&quot;.</li>
+</ul>
 <a id="ALToolbox.al_income.ALAsset.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-4">total<a href="#total-4" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">times_per_year</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">float</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
@@ -717,7 +725,7 @@ Defaults to &quot; / &quot;.</li>
 <ul>
 <li><code>str</code> - A formatted string combining year, make, and model of the vehicle.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; vehicle = ALVehicle(year=2020, make=&quot;Toyota&quot;, model=&quot;Camry&quot;)
 &gt;&gt;&gt; vehicle.year_make_model()
 &#x27;2020 / Toyota / Camry&#x27;
@@ -733,10 +741,12 @@ Defaults to &quot; / &quot;.</li>
 <p>Represents a currency value. It&#x27;s meant to be stored in a list. Can be an
 item in an ALSimpleValueList.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes-6">Attributes<a href="#attributes-6" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.value {str | float } The monetary value of the item.
-.transaction_type {str} (Optional) Can be &quot;expense&quot;, which will give a
-negative value to the total of the item.
-.source {str} (Optional) The &quot;source&quot; of the item, like &quot;vase&quot;.</p>
+<ul>
+<li><code>value</code> <em>str | float</em> - The monetary value of the item.</li>
+<li><code>transaction_type</code> <em>str, optional</em> - Can be &quot;expense&quot;, which will give a
+negative value to the total of the item.</li>
+<li><code>source</code> <em>str, optional</em> - The &quot;source&quot; of the item, like &quot;vase&quot;.</li>
+</ul>
 <a id="ALToolbox.al_income.ALSimpleValue.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-5">total<a href="#total-5" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Decimal</span><br></span></code></pre></div></div>
@@ -780,20 +790,31 @@ string or a list.</p>
 <p>An item in an ALItemizedValueDict (a line item like wages, tips or union dues).
 Should be a positive number, even if it will later be subtracted from the
 job&#x27;s net total.</p>
-<p>WARNING: This item&#x27;s period-based value can&#x27;t be calculated correctly
+<p><strong>Warnings</strong>:</p>
+<p>This item&#x27;s period-based value can&#x27;t be calculated correctly
 outside of an ALItemizedJob. Its value should only be accessed through the
 filtering methods of the ALItemizedJob that contains it.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes-7">Attributes<a href="#attributes-7" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.value {float | Decimal} A number representing an amount of money accumulated
-during the <code>times_per_year</code> of this item or this item&#x27;s job.
-.is_hourly {bool} Whether this particular item is calculated hourly.
-.times_per_year { float} A denominator of a year representing the annual
-frequency of the job. E.g. 12 for monthly.
-.exists {bool} (Optional) Allows an interview author to pre-define some common
+<ul>
+<li>
+<p><code>value</code> <em>float | Decimal</em> - A number representing an amount of money accumulated
+during the <code>times_per_year</code> of this item or this item&#x27;s job.</p>
+</li>
+<li>
+<p><code>is_hourly</code> <em>bool</em> - Whether this particular item is calculated hourly.</p>
+</li>
+<li>
+<p><code>times_per_year</code> <em>float</em> - A denominator of a year representing the annual
+frequency of the job. E.g. 12 for monthly.</p>
+</li>
+<li>
+<p><code>exists</code> <em>bool, optional</em> - Allows an interview author to pre-define some common
 descriptors, like &quot;wages&quot; or &quot;union dues&quot; without requiring the user to
 provide a value for each item.</p>
 <p>If the &quot;.exists&quot; attribute is False or undefined, the item will not be used
 when calculating totals.</p>
+</li>
+</ul>
 <a id="ALToolbox.al_income.ALItemizedValue.income_fields"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="income_fields">income_fields<a href="#income_fields" class="hash-link" aria-label="Direct link to income_fields" title="Direct link to income_fields">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">income_fields</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">use_exists</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token boolean" style="color:rgb(255, 88, 116)">True</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> List</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">Dict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> Any</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
@@ -814,7 +835,7 @@ returns 0. Otherwise returns the decimal value of the item.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-27">Returns<a href="#returns-27" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The total value of this item, or 0 if the item doesn&#x27;t exist
 or has no value.</p>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; item = ALItemizedValue(value=1500, exists=True)
 &gt;&gt;&gt; item.total()
 Decimal(&#x27;1500&#x27;)
@@ -832,7 +853,8 @@ Decimal(&#x27;0&#x27;)</p>
 ALItemizedJob. E.g., wages, tips and deductions being the most common.</p>
 <p>An ALItemizedJob will have two ALItemizedValueDicts, one for income
 and one for deductions.</p>
-<p>WARNING: Should only be accessed through an ALItemizedJob. Otherwise
+<p><strong>Warnings</strong>:</p>
+<p>Should only be accessed through an ALItemizedJob. Otherwise
 you may get unexpected results.</p>
 <a id="ALToolbox.al_income.ALItemizedValueDict.hook_after_gather"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="hook_after_gather">hook_after_gather<a href="#hook_after_gather" class="hash-link" aria-label="Direct link to hook_after_gather" title="Direct link to hook_after_gather">​</a></h3>
@@ -853,7 +875,7 @@ as not existing (exists=False).</p>
 <ul>
 <li><code>Decimal</code> - The sum of all existing item values in the dictionary.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<p><strong>Examples</strong>:</p>
 <p>&gt;&gt;&gt; value_dict = ALItemizedValueDict()
 &gt;&gt;&gt; value_dict[&#x27;wages&#x27;] = ALItemizedValue(value=1000, exists=True)
 &gt;&gt;&gt; value_dict[&#x27;bonus&#x27;] = ALItemizedValue(value=500, exists=False)
@@ -886,23 +908,24 @@ many financial statements, just reporting gross and net income is sufficient.</p
 ALJobList has a simpler API and may be the preferred way to represent the
 income in code.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="attributes-8">Attributes<a href="#attributes-8" class="hash-link" aria-label="Direct link to Attributes" title="Direct link to Attributes">​</a></h4>
-<p>.to_add {ALItemizedValueDict} Dict of ALItemizedValues that would be added
-to a job&#x27;s net total, like wages and tips.
-.to_subtract {ALItemizedValueDict} Dict of ALItemizedValues that would be
-subtracted from a net total, like union dues or insurance premiums.
-.times_per_year {float} A denominator of a year, like 12 for monthly, that
-represents how frequently the income is earned
-.is_hourly {bool} (Optional) Whether the value represents a figure that the
-user earns on an hourly basis, rather than for the full time period
-.hours_per_period {int} (Optional) If the job is hourly, how many hours the
-user works per period.
-.employer {Individual} (Optional) Individual assumed to have a name and,
-optionally, an address and phone.
-.source {str} (Optional) The category of this item, like &quot;public service&quot;.
-Defaults to &quot;job&quot;.</p>
 <ul>
-<li>
-<p><code>WARNING</code> - Individual items in <code>.to_add</code> and <code>.to_subtract</code> should not be used
+<li><code>to_add</code> <em>ALItemizedValueDict</em> - Dict of ALItemizedValues that would be added
+to a job&#x27;s net total, like wages and tips.</li>
+<li><code>to_subtract</code> <em>ALItemizedValueDict</em> - Dict of ALItemizedValues that would be
+subtracted from a net total, like union dues or insurance premiums.</li>
+<li><code>times_per_year</code> <em>float</em> - A denominator of a year, like 12 for monthly, that
+represents how frequently the income is earned.</li>
+<li><code>is_hourly</code> <em>bool, optional</em> - Whether the value represents a figure that the
+user earns on an hourly basis, rather than for the full time period.</li>
+<li><code>hours_per_period</code> <em>int, optional</em> - If the job is hourly, how many hours the
+user works per period.</li>
+<li><code>employer</code> <em>Individual, optional</em> - Individual assumed to have a name and,
+optionally, an address and phone.</li>
+<li><code>source</code> <em>str, optional</em> - The category of this item, like &quot;public service&quot;.
+Defaults to &quot;job&quot;.</li>
+</ul>
+<p><strong>Warnings</strong>:</p>
+<p>Individual items in <code>.to_add</code> and <code>.to_subtract</code> should not be used
 directly. They should only be accessed through the filtering methods of
 this job.</p>
 <p>Fulfills these requirements:</p>
@@ -918,8 +941,6 @@ such as tips or taxes.</li>
 <li>The developer needs access to total money coming in, total money going out,
 and the total of money going in and money coming out.</li>
 <li>A user must be able to add their own arbitrary items.</li>
-</ul>
-</li>
 </ul>
 <a id="ALToolbox.al_income.ALItemizedJob.total"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="total-9">total<a href="#total-9" class="hash-link" aria-label="Direct link to total" title="Direct link to total">​</a></h3>

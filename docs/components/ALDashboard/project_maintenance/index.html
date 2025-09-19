@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.d69c202a.css">
-<script src="/assets/js/runtime~main.bafc3431.js" defer="defer"></script>
-<script src="/assets/js/main.80546b17.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9bab5b49.js" defer="defer"></script>
+<script src="/assets/js/main.956c6d18.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -31,6 +31,145 @@
 </ul>
 </li>
 </ul>
+<p>GitHub Project Maintenance Tool for Docassemble</p>
+<p>This module provides command-line tools for automating GitHub repository maintenance tasks
+across multiple repositories, particularly for Docassemble packages. It enables bulk operations
+like adding issues, managing tags, and linking issues to GitHub projects.</p>
+<h1>PREREQUISITES:</h1>
+<ol>
+<li>
+<p>Install required dependencies:
+pip install PyGithub</p>
+</li>
+<li>
+<p>GitHub Personal Access Token (PAT):
+You need a GitHub Personal Access Token with the following permissions:</p>
+</li>
+</ol>
+<ul>
+<li>repo (full control of private repositories)</li>
+<li>admin<!-- -->:org<!-- --> (for organization operations)</li>
+<li>project (for GitHub Projects v2 access)</li>
+</ul>
+<p>Create one at: <a href="https://github.com/settings/tokens" target="_blank" rel="noopener noreferrer">https://github.com/settings/tokens</a></p>
+<h1>AVAILABLE COMMANDS:</h1>
+<ol>
+<li>
+<p>get_package_names
+Gets package names from a Docassemble server.</p>
+</li>
+<li>
+<p>add_tag_to_repos
+Adds a topic/tag to specific repositories.</p>
+</li>
+<li>
+<p>process_packages_and_add_tag
+Gets packages from a Docassemble server and adds tags to corresponding repositories.</p>
+</li>
+<li>
+<p>add_issues_and_create_cards
+Creates issues across repositories with a specific topic and adds them to a GitHub project.</p>
+</li>
+<li>
+<p>link_issues
+Links existing issues with specific titles to a GitHub project.</p>
+</li>
+</ol>
+<h1>USAGE EXAMPLES:</h1>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="basic-usage">Basic Usage:<a href="#basic-usage" class="hash-link" aria-label="Direct link to Basic Usage:" title="Direct link to Basic Usage:">​</a></h2>
+<p>python project_maintenance.py &lt;command&gt; [arguments]</p>
+<ol>
+<li>
+<p>Get package names from a Docassemble server:
+python project_maintenance.py get_package_names courtformsonline.org</p>
+</li>
+<li>
+<p>Add a tag to specific repositories:
+python project_maintenance.py add_tag_to_repos <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->docassemble-ALAffidavitOfIndigency docassemble-ALDocument <br>
+<!-- -->legal-tech</p>
+</li>
+<li>
+<p>Process packages from server and add tags:
+python project_maintenance.py process_packages_and_add_tag <br>
+<!-- -->courtformsonline.org <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->assembly-line</p>
+</li>
+<li>
+<p>Add issues across repositories and create project cards:
+python project_maintenance.py add_issues_and_create_cards <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->&quot;Assembly Line Maintenance&quot; <br>
+<!-- -->assembly-line <br>
+<!-- -->&quot;Update documentation&quot; <br>
+<!-- -->&quot;Please update the README.md file with current installation instructions.&quot;</p>
+</li>
+<li>
+<p>Link existing issues to a project:
+python project_maintenance.py link_issues <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->&quot;Assembly Line Maintenance&quot; <br>
+<!-- -->assembly-line <br>
+<!-- -->&quot;Update documentation&quot;</p>
+</li>
+</ol>
+<h1>COMMON WORKFLOWS:</h1>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="workflow-1-batch-issue-creation-for-maintenance">Workflow 1: Batch Issue Creation for Maintenance<a href="#workflow-1-batch-issue-creation-for-maintenance" class="hash-link" aria-label="Direct link to Workflow 1: Batch Issue Creation for Maintenance" title="Direct link to Workflow 1: Batch Issue Creation for Maintenance">​</a></h2>
+<h1>Step 1: Create issues across all Assembly Line packages</h1>
+<p>python project_maintenance.py add_issues_and_create_cards <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->&quot;Q1 2024 Maintenance&quot; <br>
+<!-- -->assembly-line <br>
+<!-- -->&quot;Security audit required&quot; <br>
+<!-- -->&quot;Please review and update dependencies for security vulnerabilities. See issue template for checklist.&quot;</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="workflow-2-repository-organization">Workflow 2: Repository Organization<a href="#workflow-2-repository-organization" class="hash-link" aria-label="Direct link to Workflow 2: Repository Organization" title="Direct link to Workflow 2: Repository Organization">​</a></h2>
+<h1>Step 1: Get packages from production server</h1>
+<p>python project_maintenance.py get_package_names courtformsonline.org</p>
+<h1>Step 2: Add organization tags based on server packages</h1>
+<p>python project_maintenance.py process_packages_and_add_tag <br>
+<!-- -->courtformsonline.org <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->production-ready</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="workflow-3-project-management">Workflow 3: Project Management<a href="#workflow-3-project-management" class="hash-link" aria-label="Direct link to Workflow 3: Project Management" title="Direct link to Workflow 3: Project Management">​</a></h2>
+<h1>Step 1: Create issues for a new initiative</h1>
+<p>python project_maintenance.py add_issues_and_create_cards <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->&quot;Accessibility Improvements&quot; <br>
+<!-- -->assembly-line <br>
+<!-- -->&quot;WCAG 2.1 Compliance Review&quot; <br>
+<!-- -->&quot;Review forms for WCAG 2.1 AA compliance. Focus on: keyboard navigation, screen reader compatibility, color contrast, and form labels.&quot;</p>
+<h1>Step 2: Later, link related existing issues</h1>
+<p>python project_maintenance.py link_issues <br>
+<!-- -->YOUR_GITHUB_TOKEN <br>
+<!-- -->SuffolkLITLab <br>
+<!-- -->&quot;Accessibility Improvements&quot; <br>
+<!-- -->assembly-line <br>
+<!-- -->&quot;Screen reader compatibility&quot;</p>
+<h1>AUTHENTICATION SECURITY:</h1>
+<ul>
+<li>Never commit your GitHub token to version control</li>
+<li>Use environment variables: export GITHUB_TOKEN=your_token_here</li>
+<li>Then use: $GITHUB_TOKEN in place of YOUR_GITHUB_TOKEN in examples</li>
+<li>Consider using GitHub CLI authentication: gh auth token</li>
+</ul>
+<h1>TIPS:</h1>
+<ul>
+<li>Use quotes around multi-word arguments (project names, issue titles, etc.)</li>
+<li>Repository names are automatically converted from package names (dots become hyphens)</li>
+<li>The script filters repositories by GitHub topics/tags for targeted operations</li>
+<li>GitHub Projects v2 (Next-Generation) are required for project operations</li>
+<li>Large batch operations may hit GitHub API rate limits - the script includes error handling</li>
+</ul>
+<p>For more information, see: <a href="https://github.com/SuffolkLITLab/docassemble-ALDashboard" target="_blank" rel="noopener noreferrer">https://github.com/SuffolkLITLab/docassemble-ALDashboard</a></p>
 <a id="ALDashboard.project_maintenance.get_package_names"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="get_package_names">get_package_names<a href="#get_package_names" class="hash-link" aria-label="Direct link to get_package_names" title="Direct link to get_package_names">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">get_package_names</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">server_name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> List</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
@@ -165,6 +304,6 @@ and adds a specified tag to each repository.</p>
 <a id="ALDashboard.project_maintenance.main"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="main">main<a href="#main" class="hash-link" aria-label="Direct link to main" title="Direct link to main">​</a></h3>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">main</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">None</span><br></span></code></pre></div></div>
-<p>Main function to run the specified project maintenance command.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/docs/components/ALDashboard/project_maintenance.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/components/ALDashboard/package_scanner"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">ALDashboard.package_scanner</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/components/ALDashboard/translation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ALDashboard.translation</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#get_package_names" class="table-of-contents__link toc-highlight">get_package_names</a></li><li><a href="#add_tag_to_repos" class="table-of-contents__link toc-highlight">add_tag_to_repos</a></li><li><a href="#process_packages_and_add_tag" class="table-of-contents__link toc-highlight">process_packages_and_add_tag</a></li><li><a href="#get_project_by_name" class="table-of-contents__link toc-highlight">get_project_by_name</a></li><li><a href="#get_repos_by_topic" class="table-of-contents__link toc-highlight">get_repos_by_topic</a></li><li><a href="#add_issues_and_create_cards" class="table-of-contents__link toc-highlight">add_issues_and_create_cards</a></li><li><a href="#find_issues_by_title" class="table-of-contents__link toc-highlight">find_issues_by_title</a></li><li><a href="#add_issue_to_project" class="table-of-contents__link toc-highlight">add_issue_to_project</a></li><li><a href="#link_issue_title_to_project" class="table-of-contents__link toc-highlight">link_issue_title_to_project</a></li><li><a href="#main" class="table-of-contents__link toc-highlight">main</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://suffolklitlab.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Suffolk LIT Lab<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.</div></div></div></footer></div>
+<p>Main function to run the specified project maintenance command.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/docs/components/ALDashboard/project_maintenance.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/components/ALDashboard/package_scanner"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">ALDashboard.package_scanner</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/components/ALDashboard/translation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ALDashboard.translation</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#basic-usage" class="table-of-contents__link toc-highlight">Basic Usage:</a></li><li><a href="#workflow-1-batch-issue-creation-for-maintenance" class="table-of-contents__link toc-highlight">Workflow 1: Batch Issue Creation for Maintenance</a></li><li><a href="#workflow-2-repository-organization" class="table-of-contents__link toc-highlight">Workflow 2: Repository Organization</a></li><li><a href="#workflow-3-project-management" class="table-of-contents__link toc-highlight">Workflow 3: Project Management</a><ul><li><a href="#get_package_names" class="table-of-contents__link toc-highlight">get_package_names</a></li><li><a href="#add_tag_to_repos" class="table-of-contents__link toc-highlight">add_tag_to_repos</a></li><li><a href="#process_packages_and_add_tag" class="table-of-contents__link toc-highlight">process_packages_and_add_tag</a></li><li><a href="#get_project_by_name" class="table-of-contents__link toc-highlight">get_project_by_name</a></li><li><a href="#get_repos_by_topic" class="table-of-contents__link toc-highlight">get_repos_by_topic</a></li><li><a href="#add_issues_and_create_cards" class="table-of-contents__link toc-highlight">add_issues_and_create_cards</a></li><li><a href="#find_issues_by_title" class="table-of-contents__link toc-highlight">find_issues_by_title</a></li><li><a href="#add_issue_to_project" class="table-of-contents__link toc-highlight">add_issue_to_project</a></li><li><a href="#link_issue_title_to_project" class="table-of-contents__link toc-highlight">link_issue_title_to_project</a></li><li><a href="#main" class="table-of-contents__link toc-highlight">main</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://suffolklitlab.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Suffolk LIT Lab<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> | This documentation website is built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.</div></div></div></footer></div>
 </body>
 </html>
