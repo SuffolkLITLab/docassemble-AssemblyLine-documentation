@@ -462,6 +462,8 @@ Currently defaults to `True` (screen reader enabled). Set to `False` in a `manda
 mandatory: True
 code: |
   speak_text = False
+```
+
 ## Run-time options
 
 These options are ones that you can sometimes configure when you author the
