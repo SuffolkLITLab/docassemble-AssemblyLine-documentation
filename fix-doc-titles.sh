@@ -6,6 +6,8 @@
 
 echo "Fixing documentation titles and navigation..."
 
+mv docs/components/formfyxer/* docs/components/FormFyxer
+
 for file in $(find docs/components -name "*.md" -exec grep -l "# Table of Contents" {} \;); do
   # Extract the module name from the first TOC entry
   module_name=$(grep -m 1 "^\* \[.*\]" "$file" | sed 's/^\* \[\(.*\)\](#.*)/\1/' | sed 's/\\_/_/g')
