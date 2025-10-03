@@ -10,8 +10,13 @@ to help you offer your interview in multiple languages:
 
 1. Widgets that you can display to allow the user to switch languages
 1. A tool to generate blank translation XLSX files and a tool to help get translation quotes
-1. Special variables to turn translation on and off and make it more convenient to list the available languages
-   in your interview.
+1. Special variables to turn translation on and off and make it more convenient to list the available languages in your interview.
+
+<details>
+  <summary>Workshop: The Assembly Line’s AI-assisted interview translation workflow</summary>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/oJoasdia2c4?si=1GejSB44IUoaFeuV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</details>
 
 ## Core concepts
 
