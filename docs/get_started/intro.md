@@ -113,7 +113,7 @@ The LIT Lab's work has been and will continue to be supported by grants. Moving 
 
 ### Support our work
 
-You can support the LIT Lab's work on the Document Assembly Line by [making a donation to the Legal Innovation and Tech Lab (LIT) Fund](https://www.givecampus.com/campaigns/55401/donations/new). Your contributions help us continue developing these free and open-source tools for the legal community.
+You can support the LIT Lab's work on the Document Assembly Line by [making a donation to the Legal Innovation and Tech Lab (LIT) Fund](https://www.givecampus.com/campaigns/70271/donations/new). Your contributions help us continue developing these free and open-source tools for the legal community.
 
 ## Our repositories
 
