@@ -117,6 +117,28 @@ button[class*="toggleButton"] {
   }
 }
 
+.navbar-donate-button {
+  background-color: var(--suffolk-light-gold) !important;
+  color: var(--suffolk-dark-blue) !important;
+  border-radius: 6px !important;
+  padding: 0.375rem 0.75rem !important;
+  font-weight: 600 !important;
+  margin-left: 0.5rem !important;
+  transition: all 0.2s ease-in-out !important;
+
+  &:hover {
+    background-color: var(--suffolk-dark-gold) !important;
+    color: white !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Remove external link icon from donate button */
+.navbar-donate-button [class*="icon"],
+.navbar-donate-button [class*="Icon"] {
+  display: none !important;
+}
+
 .navbar__search {
   margin-left: 0 !important;
 }

@@ -47,6 +47,12 @@ module.exports = {
           position: 'right',
         },
         {
+          href: 'https://www.givecampus.com/campaigns/70271/donations/new',
+          label: 'Donate',
+          position: 'right',
+          className: 'navbar-donate-button',
+        },
+        {
           href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
