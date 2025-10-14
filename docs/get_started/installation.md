@@ -6,7 +6,7 @@ slug: installation
 ---
 
 Before you get started, make sure that you have [installed
-Docassemble](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/setup-server)
+Docassemble](../admin_guide_docassemble/setup-server)
 on a server that you maintain.
 
 Installing the Assembly Line covers the following basic steps:

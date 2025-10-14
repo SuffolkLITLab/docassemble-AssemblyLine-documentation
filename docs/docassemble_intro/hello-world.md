@@ -13,7 +13,7 @@ language.
 ## What is Docassemble?
 
 Docassemble is a system for running interactive questionnaires. It uses several
-open source technologies, including [Python](/docs/python.md), [Markdown](/docs/markdown.md), [YAML](/docs/yaml.md) and docx-template to
+open source technologies, including [Python](python.md), [Markdown](markdown.md), [YAML](yaml.md) and docx-template to
 let you concentrate on writing your interviews and writing very little code.
 Yet, it's flexible enough to allow you to use advanced coding techniques when
 you need to do so.

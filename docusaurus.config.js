@@ -37,11 +37,6 @@ module.exports = {
           label: 'Documentation',
         },
         {
-          href: 'https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble',
-          label: 'Legal tech class',
-          position: 'right',
-        },
-        {
           href: 'https://docassemble.org/docs.html',
           label: 'Docassemble docs',
           position: 'right',

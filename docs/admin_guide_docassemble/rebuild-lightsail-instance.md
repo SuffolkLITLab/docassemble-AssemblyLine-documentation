@@ -37,7 +37,7 @@ the following setup:
 
 It also assumes you can access all those items through AWS, including SSH access to
 the Lightsail instance. See
-[Installing a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/setup-server)
+[Installing a docassemble server](setup-server)
 for instructions on setting up a server.
 
 It is also important that you make note of your existing admin and developer accounts
@@ -137,7 +137,7 @@ On the new instance:
 ## Follow instructions on Installing a docassemble server
 
 Most of the remaining steps are the same ones used in the [Finish installation on your Lightsail instance over
-SSH](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/setup-server#finish-installation-on-your-lightsail-instance-over-ssh)
+SSH](setup-server#finish-installation-on-your-lightsail-instance-over-ssh)
 section of **Installing a docassemble server**.
 
 Note: When entering the Linux commands in those instructions, it works best to enter them one

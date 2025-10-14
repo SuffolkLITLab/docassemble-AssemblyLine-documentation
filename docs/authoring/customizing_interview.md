@@ -9,7 +9,7 @@ slug: customizing_interview
 
 While the Weaver is a menu-driven, step-by-step process, you'll make further
 edits in the Playground. In the playground, you can directly edit the
-[YAML](https://suffolklitlab.org/legal-tech-class/docs/yaml) text to:
+[YAML](../docassemble_intro/yaml) text to:
 
 1. Change the wording of questions
 1. Change the datatype of questions and add show/hide logic
@@ -22,7 +22,7 @@ many changes can be understood by reading the text and then experimenting.
 
 This pages offers information about making some common, simple edits.
 You may also want to take this time to read through the materials in
-the [Legal Tech Class](https://suffolklitlab.org/legal-tech-class/docs/introduction-to-docassemble)
+[Introduction to Docassemble](../docassemble_intro/introduction-to-docassemble)
 about the underlying Docassemble platform and how it works.
 
 ## Double-check that you got things right in the Weaver stage
@@ -135,7 +135,7 @@ you get the name of the user, you would simply switch the order of those 2 lines
 
 :::note Learn more about interview order
 This section mentions a bit about interview order, but if you want to learn more,
-you can read it on the [Legal Tech Class](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order) site.
+you can read it on the [Legal Tech Class](../docassemble_intro/controlling-interview-order) site.
 :::
 
 ### Order is usually determined by the first variable on the screen

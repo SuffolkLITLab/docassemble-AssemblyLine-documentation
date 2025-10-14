@@ -46,7 +46,7 @@ Microsoft Word document, surrounded by two sets of curly braces, like: `{{ varia
 
 The syntax to type in fields in a DOCX template is named `jinja2`.
 
-[Learn more about Jinja2](https://suffolklitlab.org/legal-tech-class/docs/jinja2)
+[Learn more about Jinja2](../docassemble_intro/jinja2)
 and about [DOCX templates in Docassemble](https://docassemble.org/docs/documents.html#docx%20template%20file).
 
 

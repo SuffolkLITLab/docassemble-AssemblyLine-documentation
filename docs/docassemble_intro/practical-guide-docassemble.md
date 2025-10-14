@@ -6,9 +6,6 @@ sidebar_label: What should you use Docassemble for?
 
 ## What should you use Docassemble for?
 
-If we look over our [legal technology taxonomy](legal-tech-overview/legal-tech-overview.md),
-which of these tasks is Docassemble best suited for?
-
 Docassemble's main metaphor is a linear series of step-by-step questions. Many of the things Docassemble does best are controlled by that choice: 
 
 * Expert systems

@@ -59,15 +59,15 @@ using your host operating system's package manager.
 
 Docassemble has two parts: 
 
-1. a [Python](/docs/python.md) web application, built around the [Flask
+1. a [Python](../docassemble_intro/python.md) web application, built around the [Flask
 framework](https://flask.palletsprojects.com/en/2.2.x/)
 1. An Ubuntu docker image and a series of Linux applications that the web
    frontend communicates with, including
-    - A specific version of [Python](/docs/python.md) (3.10 as of this writing)
+    - A specific version of [Python](../docassemble_intro/python.md) (3.10 as of this writing)
     - [LibreOffice](https://www.libreoffice.org/discover/writer) for converting
       Word documents to PDF
     - [LaTeX](https://www.latex-project.org/) for assembling
-      [Markdown](/docs/markdown.md) files
+      [Markdown](../docassemble_intro/markdown.md) files
     - [PDFtk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) for
       manipulating PDF files and templates
     - [LetsEncrypt](https://letsencrypt.org/) for SSL certificate management
@@ -254,7 +254,7 @@ sudo shutdown -r now
     for a security vulnerability.
     - Beyond periodic updates, the version of Ubuntu software may need an upgrade. This is like going from
       Windows 10 to 11, or macOS Ventura to Sonoma. Every 2 years, there's a new Ubuntu Long Term Support
-      (LTS) version. See [Rebuilding your AWS Lightsail instance](https://projects.suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/rebuild-lightsail-instance).
+      (LTS) version. See [Rebuilding your AWS Lightsail instance](rebuild-lightsail-instance).
   - What to back up - Keep a copy of the latest env.list file in case a rebuild is required.
   - Wnen to back up - After a backup copy of env.list is made, a new backup is needed only if the contents
     of that file changes.
@@ -283,7 +283,7 @@ software runs within. Using a virtual machine adds to resiliency, though it also
 
  - How to monitor - Use `docker ps` command to make sure it is running.
  - How to update - See
-   [Updates to the Docassemble container](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/maintaining-docassemble#updates-to-the-docassemble-container).
+   [Updates to the Docassemble container](maintaining-docassemble#updates-to-the-docassemble-container).
    You will use these commands: `docker stop, pull, run,` and `prune`. 
     - If you [updated the nginx timeout to 5 minutes](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation/#increase-nginx-timeouts-to-5-minutes)
       earlier, you will need to redo it.
@@ -299,7 +299,7 @@ Playground.
  - How to monitor - If you can get to the Playground, My Interviews, or an individual program, then it's working.
    [UptimeRobot](https://uptimerobot.com/) can be used to receive server up/down notifications by email.
  - How to update - Log in as an administrator. Go to Package Management. Click the "Upgrade" button. See
-   [Updates to the Docassemble frontend](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/maintaining-docassemble#updates-to-the-docassemble-frontend)
+   [Updates to the Docassemble frontend](maintaining-docassemble#updates-to-the-docassemble-frontend)
  - When to update - Every few weeks or as needed if there is a critical bug fix or a desired new feature.
 
 ### Packages
@@ -308,10 +308,9 @@ These are the program code, frameworks, and utilities that run on the Docassembl
 is an example used by many programs.
  - How to monitor - Monitors like [httpstatus.io](https://httpstatus.io/) or homegrown programs can check if individual
    programs are running. Note: These tools just check whether individual interview pages are reachable. Learn about using
-   [ALKiln](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/alkiln/) to do automated
+   [ALKiln](../components/ALKiln/alkiln) to do automated
    start-to-finish testing and monitoring.
- - How to update - You can
-   [update Assembly Line packages individually](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/alkiln/),
-   or you can use the [ALDashboard](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/alkiln/).
+ - How to update - You can update Assembly Line packages individually,
+   or you can use the [ALDashboard](../components/ALDashboard/overview)
    You can also update individual packages on the Package Management screen.
  - When to update - Every few weeks or as needed if there is a critical bug fix or a desired new feature.

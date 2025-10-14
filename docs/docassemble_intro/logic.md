@@ -72,7 +72,7 @@ with `%`. We also need to use an `endif` statement, instead of using indentation
 to show the beginning and end of the `if` statement.
 
 :::info About the `%` symbol in Mako
-The ``%` symbol has a special meaning in [Mako](../../mako.md). It
+The ``%` symbol has a special meaning in [Mako](mako.md). It
 lets you use Python syntax at the start and end of a block, usually
 to control conditional text. It is very handy when you have a large block
 of text that you want to show or hide, especially if the block has formatting

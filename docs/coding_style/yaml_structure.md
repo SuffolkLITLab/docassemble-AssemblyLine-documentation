@@ -14,7 +14,7 @@ good practice for organizing your blocks into a YAML file:
    `include`s are in the wrong order. Keep them up top.
 1. Metadata, such as file description and title, navigation [`sections`](https://docassemble.org/docs/initial.html#sections).
 1. Your single, mandatory, [interview
-   order](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#the-interview-order-block)
+   order](../docassemble_intro/controlling-interview-order#the-interview-order-block)
    block. Ideally this should start "above the fold" in your playground. I.e.,
    in the first 20 or so lines. Relocate other blocks as needed to get this "above the fold" (except the `include` block).
 1. `object` blocks representing variables used in your interview.
@@ -80,13 +80,13 @@ Adding an id to each question:
 1. can prevent some (rare) docassemble bugs, or make it easier to find them
 1. make it easier to read and understand an interview phrase translation file
 
-### Use an [interview order](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#the-interview-order-block) block
+### Use an [interview order](../docassemble_intro/controlling-interview-order#the-interview-order-block) block
 
 It is important to be able view the logic of your interview at a glance. The
 `interview order` block concept is the most powerful way that we have found to
 accomplish that goal in Docassemble.
 
-[Read more about interview order blocks](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#the-interview-order-block).
+[Read more about interview order blocks](../docassemble_intro/controlling-interview-order#the-interview-order-block).
 
 ### Avoid setting values in your interview order block
 

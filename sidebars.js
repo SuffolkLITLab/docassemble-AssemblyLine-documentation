@@ -69,23 +69,15 @@ module.exports = {
                     ]
                 },
                 {
-                    type: "category",
-                    label: "Customizing Docassemble",
-                    items: [
-                        'docassemble_intro/theming-docassemble',
-                        'docassemble_intro/translating-interviews',
-                    ]
-                },
-                {
                     type: 'category',
                     label: 'Administering Docassemble',
                     items: [
-                        'admin-guide-docassemble/setup-server',
-                        'admin-guide-docassemble/rebuild-lightsail-instance',
-                        'admin-guide-docassemble/run-docassemble-docker-vscode',
-                        //'admin-guide-docassemble/combining-interviews',
-                        'admin-guide-docassemble/installing-production-app',
-                        'admin-guide-docassemble/updates-and-maintenance',
+                        'admin_guide_docassemble/setup-server',
+                        'admin_guide_docassemble/rebuild-lightsail-instance',
+                        'admin_guide_docassemble/run-docassemble-docker-vscode',
+                        //'admin_guide_docassemble/combining-interviews',
+                        'admin_guide_docassemble/installing-production-app',
+                        'admin_guide_docassemble/updates-and-maintenance',
                     ],
                 },
             ]
