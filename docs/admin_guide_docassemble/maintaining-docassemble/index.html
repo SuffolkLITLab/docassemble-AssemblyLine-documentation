@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.fb371b19.css">
-<script src="/assets/js/runtime~main.2cfebcf7.js" defer="defer"></script>
-<script src="/assets/js/main.3fcabf63.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.87d4e326.js" defer="defer"></script>
+<script src="/assets/js/main.f7fa2997.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -118,6 +118,22 @@ Docker container and copying the information into it, either from a shared
 Docker volume or from S3. If the Docker container did not properly shut down,
 the data that you want to migrate might not be backed up and the new container
 may not have the information.</p>
+<p>To prepare for the upgrade:</p>
+<ol>
+<li>
+<p>Schedule a period of time to update the docassemble container. The steps below can take between
+30 and 90 minutes, but it&#x27;s good to schedule the time for 2 to 3 hours, in case something unexpected
+happens during the upgrade.</p>
+</li>
+<li>
+<p>Inform your users about your scheduled upgrade. A method that&#x27;s worked well for us is to add the
+following lines to your docassemble configuration:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token key atrule">raw global javascript</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">|</span><span class="token scalar string" style="color:rgb(195, 232, 141)"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token scalar string" style="color:rgb(195, 232, 141)">  &lt;script defer&gt;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token scalar string" style="color:rgb(195, 232, 141)">    var waitForJQuery = setInterval(function () {</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token scalar string" style="color:rgb(195, 232, 141)">      if (typeof $ != &#x27;undefined&#x27;) {  </span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token scalar string" style="color:rgb(195, 232, 141)">          var alert_text = &quot;This server will be unavailable for maintenance on _ from _ to _.&quot;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token scalar string" style="color:rgb(195, 232, 141)">          var downtime_alert = `&lt;div class=&quot;da-alert alert alert-warning alert-dismissible fade show&quot; role=&quot;alert&quot;&gt;${ alert_text}&lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;&lt;/div&gt;`</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token scalar string" style="color:rgb(195, 232, 141)">          $(&#x27;[role=&quot;main&quot;]&#x27;).prepend(downtime_alert)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">         clearInterval(waitForJQuery);</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> 10);</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  &lt;/script</span><span class="token punctuation" style="color:rgb(199, 146, 234)">&gt;</span><br></span></code></pre></div></div>
+<p>This will show a banner to users in the style of a <a href="https://docassemble.org/docs/functions.html#flash" target="_blank" rel="noopener noreferrer">&quot;flash()&quot;</a>.
+The banner will show up at the beginning of each interview (or when a user reloads the page in an interview),
+so it&#x27;ll remind them without being too intrusive.</p>
+</li>
+</ol>
 <p>Here is the upgrade process:</p>
 <ol>
 <li>
@@ -127,7 +143,7 @@ may not have the information.</p>
 <p>In the virtual machine&#x27;s command line, copy and run the following commands:</p>
 </li>
 </ol>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker stop -t 600 $(docker ps -a -q)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker pull jhpyle/docassemble-os</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker pull jhpyle/docassemble</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker run -d -p 443:443 -p 80:80 --restart always --env-file env.list jhpyle/docassemble</span><br></span></code></pre></div></div>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker pull jhpyle/docassemble-os</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker pull jhpyle/docassemble</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker stop -t 600 $(docker ps -a -q)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">docker run -d -p 443:443 -p 80:80 --restart always --env-file env.list jhpyle/docassemble</span><br></span></code></pre></div></div>
 <ol start="3">
 <li>After the container has safely started up, login to the web application to make
 sure all data is still present.</li>
