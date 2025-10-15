@@ -22,8 +22,8 @@ Before you start, we'll assume that you:
 
 * have access to a [developer account on a docassemble server](https://suffolklitlab.org/legal-tech-class/docs/classes/assembly-line/2020-assembly-line-assignment-1#before-you-get-started)
 * have the [`ALToolbox` package installed on your server](../../get_started/installation.md#run-the-installation-script)
-* know [what the playground is](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world#hello-world)
-* know [what "blocks" are](https://suffolklitlab.org/legal-tech-class/docs/yaml#documents) in docassemble
+* know [what the playground is](/docs/docassemble_intro/hello-world#introduction-to-the-docassemble-playground) and [how to use it to develop a docassemble interview](/docs/docassemble_intro/hello-world#hello-world)
+* know [what "blocks" are](/docs/docassemble_intro/yaml#documents) in docassemble
 
 ### Writing the interview
 
@@ -57,7 +57,7 @@ objects:
 
 :::
 
-Next, add a [interview order code block](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#the-interview-order-block):
+Next, add a [interview order code block](/docs/docassemble_intro/controlling-interview-order#the-interview-order-block):
 
 ```yml
 mandatory: True

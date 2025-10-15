@@ -20,6 +20,20 @@ to help you offer your interview in multiple languages:
 
 ## Core concepts
 
+### Language Codes
+
+In Docassemble, you reference the language you are using with a short name of
+your choice.
+
+Most authors use 2-letter [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 
+language codes to name their languages. If there is no appropriate
+2-letter code, you should consider using [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3).
+
+Some system phrases are already translated and keyed to the two-letter ISO 639-1
+code. So it's a good idea to stick with this convention. But if you need to 
+translate into a dialect and you can't find an official name, feel free to use
+one of your own invention, as long as you use the same one everywhere for that dialect. The official code is just a convention.
+
 ### XLSX File format
 
 Docassemble interviews can be translated by adding a special Excel spreadsheet (XLSX format)
@@ -27,10 +41,10 @@ in the `sources` folder of your package. Docassemble's translation system
 works without requiring you to maintain multiple YAML files. The translated phrases are loaded
 "live" when you run your interview.
 
+### What the translator sees
+
 In the XLSX file, the translator sees two columns: one with English (or your source language)
 phrases, and an empty column where they can write the translated phrases.
-
-### What the translator sees
 
 Any mako tags that you used, for example, `${ variable }`, will be visible in the English
 version of the cell, but will be highlighted in a distinct color. Similarly, HTML will also
@@ -43,6 +57,13 @@ Some parts of the interview require special handling:
 * Buttons and system phrases need to be translated in a `words.yml` file.
 * Blocks that do not use Mako, like the `sections` block, need to be translated
   in-place with the `language` modifier.
+
+When a phrase has not been translated yet, the user will not get an error. Instead, Docassemble will show the default language.
+
+Translation works off of an exact match. When you change the original language
+of a question, the translation will no longer be valid. Even changes to 
+punctuation and white space will cause Docassemble to ignore the translation and
+show the page in its original language.
 
 ## Making a translation file
 
@@ -288,3 +309,9 @@ If a language code is not listed in `languages.yml`, the Assembly Line functions
 You can read more about the stock language features in the official Docassemble [language features documentation](https://docassemble.org/docs/language.html).
 
 Also, see the documentation for the [AL language module](language.md) for complete API documentation of all language-related functions.
+
+### More complex multi-lingual interviews you can inspect
+
+* [MADE](https://gbls.org/MADE), ([GitHub source code](https://github.com/GBLS/docassemble-maevictiondefense))
+* [UpToCode](https://getuptocode.org), ([GitHub source code][https://github.com/LemmaLegalConsulting/docassemble-HousingCodeChecklist])
+* [Massachusetts 209A Abuse Prevention Petition](https://courtformsonline.org/dv/#209A), ([GitHub source code](https://github.com/suffolklitlab/docassemble-MA209AProtectiveOrder))

@@ -85,7 +85,7 @@ copying and pasting code.
 ### Use the "named block" pattern sparingly
 
 The [`named block`
-pattern](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#triggering-code-and-then-continuing-using-named-blocks)
+pattern](../docassemble_intro/controlling-interview-order#triggering-code-and-then-continuing-using-named-blocks)
 should not be overused. Most often, it is appropriate to just use a standard
 code block that defines a variable without giving it a "name".
 

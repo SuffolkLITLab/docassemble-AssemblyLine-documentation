@@ -39,6 +39,50 @@ module.exports = {
     docs: [
         'overview',
         {
+            label: 'Introduction to Docassemble',
+            type: 'category',
+            items: [
+                'docassemble_intro/introduction-to-docassemble',
+                'docassemble_intro/practical-guide-docassemble',
+                'docassemble_intro/hello-world',
+                'docassemble_intro/logic',
+                'docassemble_intro/working-with-docx',
+                'docassemble_intro/controlling-interview-order',
+                'docassemble_intro/basic-troubleshooting',
+                {
+                    type: "category",
+                    label: "Docassemble syntax",
+                    items: [
+                        'docassemble_intro/yaml',
+                        'docassemble_intro/markdown',
+                        'docassemble_intro/mako',
+                        'docassemble_intro/python',
+                        'docassemble_intro/jinja2',
+                    ]
+                },
+                {
+                    type: "category",
+                    label: "Working with lists and objects",
+                    items: [
+                        'docassemble_intro/object-oriented-programming',
+                        'docassemble_intro/repeated-information',
+                    ]
+                },
+                {
+                    type: 'category',
+                    label: 'Administering Docassemble',
+                    items: [
+                        'admin_guide_docassemble/setup-server',
+                        'admin_guide_docassemble/rebuild-lightsail-instance',
+                        'admin_guide_docassemble/run-docassemble-docker-vscode',
+                        //'admin_guide_docassemble/combining-interviews',
+                        'admin_guide_docassemble/installing-production-app',
+                        'admin_guide_docassemble/updates-and-maintenance',
+                    ],
+                },
+            ]
+        },
+        {
             label: 'Authoring interviews',
             type: 'category',
             items: [

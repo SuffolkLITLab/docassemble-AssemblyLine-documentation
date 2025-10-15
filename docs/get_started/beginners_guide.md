@@ -23,11 +23,11 @@ In order to build interviews you will need access to a [Docassemble playground](
 
 ## Do the Hello, World exercise
 
-In his Legal Tech Class, Quinten Steenhuis introduces Docassemble with a [short "Hello, World" exercise](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world). This introductory exercise is a great way to demystify Docassemble and see what it's like to build a simple interview—by actually doing it.
+We usually introduces Docassemble with a [short "Hello, World" exercise](../docassemble_intro/hello-world). This introductory exercise is a great way to demystify Docassemble and see what it's like to build a simple interview—by actually doing it.
 
-**➡️ [Go to the Hello, World exercise.](https://suffolklitlab.org/legal-tech-class/docs/classes/docacon-2020/hello-world)**
+**➡️ [Go to the Hello, World exercise.](../docassemble_intro/hello-world)**
 
-Once you have successfully completed the Hello, World exercise you might want to continue with the next few lessons in the Legal Tech Class to learn more about building interviews in Docassemble.
+Once you have successfully completed the Hello, World exercise you might want to continue with the next few pages in the Introduction to Docassemble to learn more about building interviews in Docassemble.
 
 When you have finished the Hello, World exercise, move on to the next step: learning about the Weaver.
 

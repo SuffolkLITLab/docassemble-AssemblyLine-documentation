@@ -6,7 +6,7 @@ slug: yaml
 ---
 
 Docassemble interviews are written in
-[YAML](https://suffolklitlab.org/legal-tech-class/docs/yaml).
+[YAML](../docassemble_intro/yaml).
 
 They may also contain:
 
@@ -121,7 +121,7 @@ you should never put a `mandatory` block in the files for each individual docume
 
 To group logic that you might want to run with the template it relates to, without making it mandatory:
 
-1. use the [`named block` pattern](https://suffolklitlab.org/legal-tech-class/docs/practical-guide-docassemble/controlling-interview-order#triggering-code-and-then-continuing-using-named-blocks) for the `interview order` block
+1. use the [`named block` pattern](../docassemble_intro/controlling-interview-order#triggering-code-and-then-continuing-using-named-blocks) for the `interview order` block
 1. reference your `named block` in a mandatory block inside the `main` file that users will run.
 
 While in the development phase, you might want to temporarily test a single document at a time.
