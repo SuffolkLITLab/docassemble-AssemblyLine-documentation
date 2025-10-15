@@ -132,6 +132,33 @@ Docker volume or from S3. If the Docker container did not properly shut down,
 the data that you want to migrate might not be backed up and the new container
 may not have the information.
 
+To prepare for the upgrade:
+
+1. Schedule a period of time to update the docassemble container. The steps below can take between
+    30 and 90 minutes, but it's good to schedule the time for 2 to 3 hours, in case something unexpected
+    happens during the upgrade.
+2. Inform your users about your scheduled upgrade. A method that's worked well for us is to add the
+    following lines to your docassemble configuration:
+
+    ```yaml
+    raw global javascript: |
+      <script defer>
+        var waitForJQuery = setInterval(function () {
+          if (typeof $ != 'undefined') {  
+              var alert_text = "This server will be unavailable for maintenance on _ from _ to _."
+              var downtime_alert = `<div class="da-alert alert alert-warning alert-dismissible fade show" role="alert">${ alert_text}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+              $('[role="main"]').prepend(downtime_alert)
+
+             clearInterval(waitForJQuery);
+          }
+        }, 10);
+      </script>
+    ```
+
+    This will show a banner to users in the style of a ["flash()"](https://docassemble.org/docs/functions.html#flash).
+    The banner will show up at the beginning of each interview (or when a user reloads the page in an interview), 
+    so it'll remind them without being too intrusive.
+
 Here is the upgrade process:
 
 1. SSH into the virtual machine or server that hosts your Docassemble docker container
@@ -139,9 +166,10 @@ Here is the upgrade process:
 2. In the virtual machine's command line, copy and run the following commands:
 
 ```bash
-docker stop -t 600 $(docker ps -a -q)
 docker pull jhpyle/docassemble-os
 docker pull jhpyle/docassemble
+
+docker stop -t 600 $(docker ps -a -q)
 docker run -d -p 443:443 -p 80:80 --restart always --env-file env.list jhpyle/docassemble
 ```
 
