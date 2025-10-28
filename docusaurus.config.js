@@ -9,52 +9,7 @@ module.exports = {
   organizationName: 'SuffolkLITLab', // the GitHub org name.
   projectName: 'docassemble-AssemblyLine-documentation', // the repo name.
   themeConfig: {
-    // Keep for the next LIT Con
-    // announcementBar: {
-    //   id: 'lit_con',
-    //   content:
-    //     'Save the date for Suffolk\'s annual 🔥LIT Conference🔥 on April 7th, 2025! <strong><a target="_blank" rel="noopener noreferrer" href="https://suffolklitlab.org/events/lit-con/">Learn more</a></strong>',
-    //   backgroundColor: '#fafbfc',
-    //   textColor: '#091E42',
-    //   isCloseable: false,
-    // },
-    navbar: {
-      title: 'Document Assembly Line',
-      logo: {
-        alt: 'The Suffolk LIT Lab Logo',
-        src: 'img/lit-lab-logo-small-inverted.svg',
-        srcDark: 'img/lit-lab-logo-small-inverted.svg'
-      },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'get_started',
-          label: 'Get started',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'docs',
-          label: 'Documentation',
-        },
-        {
-          href: 'https://docassemble.org/docs.html',
-          label: 'Docassemble docs',
-          position: 'right',
-        },
-        {
-          href: 'https://www.givecampus.com/campaigns/70271/donations/new',
-          label: 'Donate',
-          position: 'right',
-          className: 'navbar-donate-button',
-        },
-        {
-          href: 'https://github.com/SuffolkLITLab/docassemble-AssemblyLine',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
-          position: 'right',
-        },
-      ],
-    },
+    // ...existing code...
     footer: {
       style: 'light',
       links: [
@@ -129,12 +84,26 @@ module.exports = {
           {
             from: '/docs/get_started/working_with_teams',
             to: '/docs/archive/working_with_teams'
+          },
+          {
+            from: '/docs/efiling/overview/',
+            to: '/docs/components/EFSPIntegration/overview'
           }
         ],
-        
-
+        createRedirects(existingPath) {
+          // Redirect any path under /docs/efiling to /docs/components/EFSPIntegration
+          if (existingPath.startsWith('/docs/components/EFSPIntegration')) {
+            // Remove the prefix to get the subpath
+            const subPath = existingPath.substring('/docs/components/EFSPIntegration'.length);
+            // Only redirect if the subPath is not empty (i.e., not just the base path)
+            if (subPath === '' || subPath.startsWith('/')) {
+              // Redirect from /docs/efiling and all subpaths
+              return ['/docs/efiling' + subPath];
+            }
+          }
+          return undefined;
+        },
       },
-      
     ],
   ],
   themes: [
