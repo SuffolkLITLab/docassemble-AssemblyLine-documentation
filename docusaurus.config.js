@@ -131,7 +131,19 @@ module.exports = {
             to: '/docs/archive/working_with_teams'
           }
         ],
-        
+        createRedirects(existingPath) {
+          // For every canonical page under /docs/components/EFSPIntegration,
+          // create a redirect-from path under /docs/efiling so old URLs
+          // like /docs/efiling/... redirect to the new canonical pages.
+          if (existingPath.startsWith('/docs/components/EFSPIntegration')) {
+            const subPath = existingPath.substring('/docs/components/EFSPIntegration'.length);
+            // include both base and subpaths
+            if (subPath === '' || subPath.startsWith('/')) {
+              return ['/docs/efiling' + subPath];
+            }
+          }
+          return undefined;
+        },
 
       },
       
