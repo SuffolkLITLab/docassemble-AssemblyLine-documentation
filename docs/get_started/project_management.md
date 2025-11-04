@@ -176,7 +176,7 @@ An MVP can be as simple as a list of requirements.
   * Questions are written in plain language (for a 6th-grade reading level)
   * The user will be offered a next-steps document to download
   * The interview has been approved by key subject-matter experts
-  * The interview has been tested rigorously with a combination of scenario-baesd user testing, random input testing, or automated testing
+  * The interview has been tested rigorously with a combination of scenario-based user testing, random input testing, or automated testing
 </details>
 
 Once the decisionmaker agrees on the requirements, stick to them. Don't add requirements without a compelling justification.
