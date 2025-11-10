@@ -74,6 +74,7 @@ module.exports = {
                     items: [
                         'admin_guide_docassemble/setup-server',
                         'admin_guide_docassemble/rebuild-lightsail-instance',
+                        'admin_guide_docassemble/running-docassemble-without-aws',
                         'admin_guide_docassemble/run-docassemble-docker-vscode',
                         //'admin_guide_docassemble/combining-interviews',
                         'admin_guide_docassemble/installing-production-app',
