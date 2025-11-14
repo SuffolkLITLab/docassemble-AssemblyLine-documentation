@@ -70,7 +70,7 @@ The resulting directory, `backup`, will have folders named after
 each date when the backup was taken, and the server can be restored from
 at any time.
 
-## Restorting Backup data
+## Restoring Backup data
 
 If you want to rollback to data from a certain date, first stop the existing
 Docassemble container, and create (but don't start) a new one:
