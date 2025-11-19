@@ -353,6 +353,30 @@ Valid values:
 - Letter: `'letter'`
 - Other: `'other'`
 
+### `al_person_answering`
+
+Defines who is sitting in front of the screen--for example: the user or an attorney.
+
+Defaults to `"user"`.
+
+When the value is not `"user"`, will update the text in some questions in `ql_baseline.yml` so
+that they say `${ users[0] }` instead of "you".
+
+If you want to let the person sitting in front of the computer answer to say who they are, you
+need to add your own question. For example:
+
+```yaml
+id: who is using this form
+question: |
+  Are you filling this out for yourself, or someone else?
+fields:
+  - I am filling this out for: al_person_answering
+    datatype: radio
+    choices:
+      - Myself: user
+      - As an attorney for someone else: attorney
+```
+
 ### `github_repo_name`
 
 Set this value to the name of the interview's GitHub repository, without the
