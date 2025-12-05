@@ -61,6 +61,8 @@ for file in $(find docs/components -name "*.md" -exec grep -l "# Table of Conten
     sed -i 's/^\*\*Attributes\*\*:/#### Attributes/g' "$file"
     sed -i 's/^\*\*Notes\*\*:/#### Notes/g' "$file"
     sed -i 's/^\*\*Raises\*\*:/#### Raises/g' "$file"
+    sed -i 's/^\*\*Example\*\*:/#### Example/g' "$file"
+    sed -i 's/^\*\*Examples\*\*:/#### Examples/g' "$file"
     
     # Remove stray YAML frontmatter blocks that appear in the middle of files
     # These are artifacts from the old template processing
