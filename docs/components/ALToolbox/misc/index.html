@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.fb371b19.css">
-<script src="/assets/js/runtime~main.4862c3fb.js" defer="defer"></script>
-<script src="/assets/js/main.90086801.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7e55a48d.js" defer="defer"></script>
+<script src="/assets/js/main.debb5e39.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -59,7 +59,7 @@ Defaults to False.</li>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The formatted number string with thousands separators, optionally
 with 2 decimal places.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; thousands(1234.56)
 &#x27;1,234&#x27;
 &gt;&gt;&gt; thousands(1234.56, show_decimals=True)
@@ -78,7 +78,7 @@ and dial the number on mobile devices or applications that support tel links.</p
 <ul>
 <li><code>str</code> - HTML anchor tag with tel: link containing the phone number.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-1">Example<a href="#example-1" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; tel(&quot;555-123-4567&quot;)
 &#x27;&lt;a href=&quot;tel:555-123-4567&quot;&gt;555-123-4567&lt;/a&gt;&#x27;</p>
 <a id="ALToolbox.misc.fa_icon"></a>
@@ -120,7 +120,7 @@ if the variable name is valid and the variable is defined and has a value.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The variable value with prefix and suffix if variable is defined
 and has a value, otherwise an empty string.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-2">Example<a href="#example-2" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; space(&quot;user_middle_name&quot;, prefix=&quot; &quot;, suffix=&quot;&quot;)
 &quot; John&quot;  # if user_middle_name is defined as &quot;John&quot;
 &gt;&gt;&gt; space(&quot;undefined_var&quot;)
@@ -143,7 +143,7 @@ Defaults to &quot;Unknown&quot;.</li>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The value of var_name if condition is True, the unknown string if
 condition is None, or the placeholder value if condition is False.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-3">Example<a href="#example-3" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; yes_no_unknown(&quot;user_answer&quot;, True, &quot;Unknown&quot;, 0)</p>
 <h1>Returns value of user_answer variable</h1>
 <p>&gt;&gt;&gt; yes_no_unknown(&quot;user_answer&quot;, None, &quot;Unknown&quot;, 0)
@@ -164,7 +164,7 @@ with Excel/Google Sheets column naming conventions. 27=AA, 28=AB...</p>
 <ul>
 <li><code>str</code> - The letter representation of the number using Excel-style column naming.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-4">Example<a href="#example-4" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; number_to_letter(1)
 &#x27;A&#x27;
 &gt;&gt;&gt; number_to_letter(26)
@@ -194,7 +194,7 @@ Defaults to True.</li>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>Complete HTML string for the Bootstrap collapse component, or empty
 string if template has no content.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-5">Example<a href="#example-5" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; collapse_template(my_template, classname=&quot;bg-primary&quot;, collapsed=False)
 &#x27;&lt;div id=&quot;...&quot; class=&quot;al_collapse_template&quot;&gt;...&lt;/div&gt;&#x27;</p>
 <a id="ALToolbox.misc.tabbed_templates_html"></a>
@@ -213,7 +213,7 @@ methods.</li>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>Complete HTML string containing Bootstrap tabs navigation and content
 panels.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-6">Example<a href="#example-6" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; tabbed_templates_html(&quot;my_tabs&quot;, template1, template2, template3)
 &#x27;&lt;ul class=&quot;nav nav-tabs&quot; id=&quot;my_tabs&quot;&gt;...&lt;/ul&gt;&lt;div class=&quot;tab-content&quot;&gt;...&lt;/div&gt;&#x27;</p>
 <a id="ALToolbox.misc.review_widget"></a>
@@ -252,7 +252,7 @@ that are defined. Undefined variables are skipped rather than causing errors.</p
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-9">Returns<a href="#returns-9" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The sum of all defined variable values. Variables that are not defined
 are treated as 0 (skipped).</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-7">Example<a href="#example-7" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; sum_if_defined(&quot;income1&quot;, &quot;income2&quot;, &quot;income3&quot;)</p>
 <h1>Returns sum of defined income variables, skipping any undefined ones</h1>
 <a id="ALToolbox.misc.add_records"></a>
@@ -269,7 +269,7 @@ tuples/lists containing [description, reference].</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-10">Returns<a href="#returns-10" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The populated obj (DAList) with interview records added.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-8">Example<a href="#example-8" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; interviews = {&quot;intake&quot;: [&quot;Intake Interview&quot;, &quot;intake.yml&quot;]}
 &gt;&gt;&gt; add_records(my_list, interviews)</p>
 <h1>my_list[0].name = &quot;intake&quot;, description = &quot;Intake Interview&quot;, etc.</h1>
@@ -290,7 +290,7 @@ Defaults to &quot;[  ]&quot;. Opposite meaning of <code>checked_value</code>.</l
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-11">Returns<a href="#returns-11" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The checked_value if value_to_check is True, otherwise unchecked_value.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-9">Example<a href="#example-9" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; output_checkbox(True)
 &#x27;[X]&#x27;
 &gt;&gt;&gt; output_checkbox(False, checked_value=&quot;YES&quot;, unchecked_value=&quot;NO&quot;)
@@ -308,7 +308,7 @@ Autocomplete does by default, remove it to get a cleaner display name.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-12">Returns<a href="#returns-12" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>The county name with &quot; County&quot; suffix removed, or empty string if
 the address has no county attribute.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-10">Example<a href="#example-10" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; nice_county_name(address_with_county)
 &#x27;Suffolk&#x27;  # if address.county was &quot;Suffolk County&quot;
 &gt;&gt;&gt; nice_county_name(address_without_county)
@@ -406,7 +406,7 @@ error messages. Defaults to None.</li>
 <ul>
 <li><code>DAValidationError</code> - If no valid year pattern is found in the text.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-11">Example<a href="#example-11" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; include_a_year(&quot;Born in 1985&quot;)
 True
 &gt;&gt;&gt; include_a_year(&quot;Born long ago&quot;)  # raises DAValidationError</p>
@@ -444,7 +444,7 @@ True
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-20">Returns<a href="#returns-20" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p>A formatted date string if <code>date_object_name</code> is defined, otherwise an empty string.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-12">Example<a href="#example-12" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; format_date_if_defined(&quot;users[0].birthdate&quot;, format=&#x27;yyyy-MM-dd&#x27;)</p>
 <p>Returns a formatted date string if &quot;users[0].birthdate&quot; is defined, otherwise returns an empty string.</p>
 <p>&gt;&gt;&gt; format_date_if_defined(&quot;users[0].birthdate&quot;, default=&quot;No date provided&quot;, format=&#x27;yyyy-MM-dd &#x27;)</p>

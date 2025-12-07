@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.fb371b19.css">
-<script src="/assets/js/runtime~main.4862c3fb.js" defer="defer"></script>
-<script src="/assets/js/main.90086801.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7e55a48d.js" defer="defer"></script>
+<script src="/assets/js/main.debb5e39.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -84,7 +84,7 @@ in an addendum section if truncation occurs.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="notes">Notes<a href="#notes" class="hash-link" aria-label="Direct link to Notes" title="Direct link to Notes">​</a></h4>
 <p>Sets self.text_cutoff to the truncated text (with addendum notice if needed)
 and self.txtList to contain addendum data if truncation occurred.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; text_handler = myTextList(&quot;Very long text...&quot;, 100, &quot;Description&quot;)
 &gt;&gt;&gt; # If text &gt; 100 chars, text_cutoff will end with &quot; (See Addendum.)&quot;</p>
 <a id="ALToolbox.addenda.safe_json2"></a>
@@ -107,7 +107,7 @@ Defaults to False.</li>
 <p>A JSON-serializable representation of the input object. Returns &quot;None&quot; for
 keys or None for values when objects cannot be serialized and recursion
 limit is exceeded.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-1">Example<a href="#example-1" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; import datetime
 &gt;&gt;&gt; obj = {&quot;date&quot;: datetime.datetime(2023, 12, 25)}
 &gt;&gt;&gt; safe_json2(obj)</p>
@@ -128,7 +128,7 @@ class name, removing the surrounding type syntax.</p>
 <ul>
 <li><code>str</code> - The class name of the object, or the full type string if parsing fails.</li>
 </ul>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-2">Example<a href="#example-2" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; type_name(&quot;hello&quot;)
 &#x27;str&#x27;
 &gt;&gt;&gt; type_name([1, 2, 3])

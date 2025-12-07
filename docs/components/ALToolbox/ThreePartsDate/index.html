@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.fb371b19.css">
-<script src="/assets/js/runtime~main.4862c3fb.js" defer="defer"></script>
-<script src="/assets/js/main.90086801.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7e55a48d.js" defer="defer"></script>
+<script src="/assets/js/main.debb5e39.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -51,7 +51,7 @@ Defaults to &quot;{} is not a valid date&quot;.</li>
 <p>Error message if validation fails, None if date is valid.
 Returns None when the date is complete and valid, otherwise returns
 a localized error message indicating which parts need to be entered.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>&gt;&gt;&gt; check_empty_parts(&quot;12//2023&quot;)
 &quot;Enter a day&quot;
 &gt;&gt;&gt; check_empty_parts(&quot;//&quot;)
@@ -79,7 +79,7 @@ None</p>
 </ul>
 <a id="ALToolbox.ThreePartsDate.ThreePartsDate.transform"></a>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="transform">transform<a href="#transform" class="hash-link" aria-label="Direct link to transform" title="Direct link to transform">​</a></h3>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token decorator annotation punctuation" style="color:rgb(199, 146, 234)">@classmethod</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">transform</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">cls</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> item</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">datetime</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token decorator annotation punctuation" style="color:rgb(199, 146, 234)">@classmethod</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">transform</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">cls</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> item</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Optional</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain">DADateTime</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre></div></div>
 <p>Transform a date string into a datetime object.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="arguments-2">Arguments<a href="#arguments-2" class="hash-link" aria-label="Direct link to Arguments" title="Direct link to Arguments">​</a></h4>
 <ul>

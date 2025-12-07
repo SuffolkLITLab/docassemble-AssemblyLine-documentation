@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.fb371b19.css">
-<script src="/assets/js/runtime~main.4862c3fb.js" defer="defer"></script>
-<script src="/assets/js/main.90086801.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7e55a48d.js" defer="defer"></script>
+<script src="/assets/js/main.debb5e39.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -126,7 +126,7 @@ shown to the signer, but show the actual signature when the document is finalize
 or [ variable_name ] if it is not an attribute of an item.</p>
 <p><code>i</code> will be the value from the template&#x27;s context unless it is explicitly passed,
 as in an ALDocument&#x27;s &quot;preview&quot; or &quot;final&quot; values.</p>
-<p><strong>Example</strong>:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
 <p>Contents of test_if_final.docx:</p>
 <div class="language-jinja codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-jinja codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">{{ users[0].signature | if_final }}</span><br></span></code></pre></div></div>
 <p>Returns &quot;[ signature ]&quot; if <code>i</code> (passed to the context of the attachment block) is not &quot;final&quot;,
