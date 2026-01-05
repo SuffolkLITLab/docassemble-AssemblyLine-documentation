@@ -55,8 +55,10 @@ be highlighted.
 Some parts of the interview require special handling:
 
 * Buttons and system phrases need to be translated in a `words.yml` file.
+    * At this writing, the AssemblyLine has words.yml translation files for Spanish, Arabic, French, and Nepali, named es-words.yml, ar-words.yml, etc.
 * Blocks that do not use Mako, like the `sections` block, need to be translated
   in-place with the `language` modifier.
+* Literal Python strings, like you might use in a call to `validation_code()`
 
 When a phrase has not been translated yet, the user will not get an error. Instead, Docassemble will show the default language.
 
