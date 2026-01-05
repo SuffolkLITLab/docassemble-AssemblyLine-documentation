@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-622Z2D6Q3Q"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-622Z2D6Q3Q",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.08e9b620.css">
-<script src="/assets/js/runtime~main.baa6fc0e.js" defer="defer"></script>
-<script src="/assets/js/main.a0f6ecee.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.c9b3fc47.js" defer="defer"></script>
+<script src="/assets/js/main.a9b8521f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -48,9 +48,14 @@ be highlighted.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="text-that-isnt-translated-using-the-xlsx-translation-system">Text that isn&#x27;t translated using the XLSX translation system<a href="#text-that-isnt-translated-using-the-xlsx-translation-system" class="hash-link" aria-label="Direct link to Text that isn&#x27;t translated using the XLSX translation system" title="Direct link to Text that isn&#x27;t translated using the XLSX translation system">​</a></h3>
 <p>Some parts of the interview require special handling:</p>
 <ul>
-<li>Buttons and system phrases need to be translated in a <code>words.yml</code> file.</li>
+<li>Buttons and system phrases need to be translated in a <code>words.yml</code> file.<!-- -->
+<ul>
+<li>At this writing, the AssemblyLine has words.yml translation files for Spanish, Arabic, French, and Nepali, named es-words.yml, ar-words.yml, etc.</li>
+</ul>
+</li>
 <li>Blocks that do not use Mako, like the <code>sections</code> block, need to be translated
 in-place with the <code>language</code> modifier.</li>
+<li>Literal Python strings, like you might use in a call to <code>validation_code()</code></li>
 </ul>
 <p>When a phrase has not been translated yet, the user will not get an error. Instead, Docassemble will show the default language.</p>
 <p>Translation works off of an exact match. When you change the original language
