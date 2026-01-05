@@ -70,7 +70,7 @@ metadata:
   authors:
     - Jane Doe
     - Suffolk LIT Lab
-  approved by:
+  approved_by:
     - name: Suffolk LIT Lab
       url: https://suffolklitlab.org
       logo: https://suffolklitlab.org/assets/logo.png
@@ -127,7 +127,7 @@ metadata:
    - `before_you_start`: Information users should gather or consider before beginning
    - `when_you_are_finished`: Information users should know when they are finished. Optional; some generic information will be shown if omitted.
    - `authors`: A list of people who contributed to the interview. Will be shown in the "about" page of the interview when it runs.
-   - `approved by`: A list of organizations who officially approved the interview, will be shown with logo on the landing page to convey authority and promote trust.
+   - `approved_by`: A list of organizations who officially approved the interview, will be shown with logo on the landing page to convey authority and promote trust.
 
 2. **Technical and administrative fields:**
    - `maturity`: The development status (`production`, `development`, or `testing`)
