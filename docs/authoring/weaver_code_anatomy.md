@@ -7,10 +7,6 @@ sidebar_label: |
 slug: generated_yaml
 ---
 
-:::warning
-This page is very much under construction as we develop the Weaver's capabilities. These 🚧 emoji notes features that are being actively developed in the Weaver and thus might change
-:::
-
 The [ALWeaver](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) generates code that is a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses questions and features from the AssemblyLine library.
 
 This page breaks down what each of these "blocks" (the sections of text that appear between `---`s)
@@ -19,6 +15,7 @@ you use more advanced features of [docassemble](https://docassemble.org/docs.htm
 will help.
 
 ## Include
+
 An include block incorporates content (code blocks, questions blocks, etc.) from other YAML files. When you run the interview, docassemble acts as if all of the content in the YAML files listed below was copied and pasted right in this exact spot. 
 This is described in more detail in the [docassemble documentation](https://docassemble.org/docs/initial.html#include).
 
@@ -33,6 +30,7 @@ include:
 ```
 
 ## Metadata
+
 These [metadata block](https://docassemble.org/docs/initial.html#metadata) values control two things:
 
 1. the text in this interview's browser tab
@@ -67,14 +65,33 @@ metadata:
     209a 258e motion for impoundment
   description: |
     This interview helps you fill out a form to ask the court to keep 
-    certain information in your case private (impounded).
+    certain information in your 209A or 258 personal protection order
+    or restraining order case private (impounded).
+  authors:
+    - Jane Doe
+    - Suffolk LIT Lab
+  approved by:
+    - name: Suffolk LIT Lab
+      url: https://suffolklitlab.org
+      logo: https://suffolklitlab.org/assets/logo.png
+    - name: Massachusetts Trial Court
+      url: https://www.mass.gov/info-details/trial-court
+      logo: https://www.mass.gov/files/styles/organization_logo/public/2025-08/Trial-Court-Seal-Final-color.png?itok=tQKsUwsu
   can_I_use_this_form: |
     You can use this form if you want to ask the court to keep some 
-    information in your case private. This might include personal 
+    information in your restraining order case private. This might include personal 
     information or details about your case.
   before_you_start: |
     Before you start, gather information about what specific details 
     you want the court to keep private and why this is necessary.
+  when_you_are_finished: |
+    When you are finished with this form, you need to download and file it with the
+    court. The court will either let you know when you need to appear to argue
+    your motion or they may decide based only on the paper that you file.
+    Either way, you will wait about a week for a letter from the court.
+  integrated_efiling: False
+  integrated_email_filing: False
+  landing_page_url: https://courtformsonline.org/ma/forms/209a-258e-motion-for-impoundment
   maturity: production
   estimated_completion_minutes: 15
   estimated_completion_delta: 5
@@ -106,8 +123,11 @@ metadata:
 1. **Basic information fields:**
    - `title` and `short title`: Control the interview name in browser tabs and saved interview lists
    - `description`: A detailed explanation of what the interview does and helps accomplish
-   - `can_I_use_this_form`: Helps users determine if this is the right form for their situation
+   - `can_I_use_this_form`: Helps users determine if this is the right form for their situation.
    - `before_you_start`: Information users should gather or consider before beginning
+   - `when_you_are_finished`: Information users should know when they are finished. Optional; some generic information will be shown if omitted.
+   - `authors`: A list of people who contributed to the interview. Will be shown in the "about" page of the interview when it runs.
+   - `approved by`: A list of organizations who officially approved the interview, will be shown with logo on the landing page to convey authority and promote trust.
 
 2. **Technical and administrative fields:**
    - `maturity`: The development status (`production`, `development`, or `testing`)
@@ -115,17 +135,21 @@ metadata:
    - `estimated_completion_delta`: The typical variation in completion time (±)
    - `languages`: List of language codes for available translations (e.g., `en`, `es`)
    - `review_date`: When the interview should next be reviewed for updates
+   - `integrated_efiling`: Whether the form is integrated with efiling
+   - `integrated_email_filing`: Whether the form is integrated with email filing
 
 3. **Help and reference fields:**
    - `help_page_url`: Link to additional help resources
    - `help_page_title`: Display name for the help page link
    - `original_form`: URL to the original blank form being automated
    - `original_form_published_on`: Publication date of the original form
+   - `landing_page_url`: URL to the landing page for the form, for help with back links. If it is not a subdomain of courtformsonline.org, the provided landing page will be used
+      instead of generating a landing page in the CourtFormsOnline.org site.
 
 4. **Classification and organization:**
    - `LIST_topics`: [LIST taxonomy](https://taxonomy.legal/) codes (preferred method)
    - `tags`: Fallback taxonomy codes if LIST_topics isn't available
-   - `jurisdiction`: Geographic scope using jurisdiction codes
+   - `jurisdiction`: Geographic scope using SALI/FOLIO jurisdiction codes (see https://openlegalstandard.org/), like NAM-US-US+MA (Usually just need to adjust the last two letters). Can be a list, like `['NAM-US-US+MA', 'NAM-US']`
    - `form_titles`: Human-readable names of forms included
    - `form_numbers`: Official form numbers, if assigned
    - `fees`: Filing fees and other costs
@@ -133,7 +157,22 @@ metadata:
 5. **Maintenance and updates:**
    - `update_notes`: Record of changes and review history
 
+### Syndication tips
+
+If you would like your state's forms to be syndicated on CourtFormsOnline.org, you should include at least the following metadata:
+
+1. `title`
+1. `short title`
+1. `description`
+1. `LIST_topics`
+1. `jurisdiction`
+1. `landing_page_url`
+
+When `landing_page_url` is provided, we will index your forms on the landing page, an `all forms` page for your jurisdiction,
+and then link directly to your landing page from the individual form's card.
+
 ## Main intro page
+
 Adds this text to the organization's intro page that appears at the beginning of every interview. This lets your user know right away that they have gotten to the right (or wrong) form. Note that this can (and should) be a more direct and detailed call to action, e.g. ("File a \_\_\_\_" or "Ask the court for \_\_\_\_"), rather than a simple short title, like the short title in the [metadata block](#metadata).
 
 ```yml
@@ -143,7 +182,8 @@ code: |
 ```
 
 ## Case type questions
-Changes the wording of AssemblyLine questions depending on it's value. It can be either:
+
+Changes the wording of AssemblyLine questions depending on its value. It can be either:
 
 - a court-case type: 'starts_case', 'existing_case', or 'appeal'
 - a letter: 'letter'
@@ -156,6 +196,7 @@ code: |
 ```
 
 ## Navigation
+
 [`navigation`](https://docassemble.org/docs/initial.html#navigation%20bar) and [`sections`](https://docassemble.org/docs/initial.html#sections) work with [`nav.set_section()`](https://docassemble.org/docs/functions.html#DANav.show_sections) to show the column on the left that lets your users jump to a screen that lets them edit their information in your interview. 
 This helps users avoid using the 'Back' button which deletes their answers.
 
@@ -168,6 +209,7 @@ sections:
 ```
 
 ## Interview order
+
 Controls the order in which your screens are shown.
 
 The full interview order block will look something like this. We'll go over each line individually below.
@@ -203,6 +245,7 @@ Code for your custom questions comes next. All your questions should be triggere
 If you are including this interview in another interview, remove the main order block. Then you can use this variable if you want to trigger this particular question order.
 
 ## Main Order
+
 This block controls the order of things that do not need to be customized for your specific interview, like intro screens, signatures, etc. 
 You shouldn't have to change that code unless you are 🚧 combining multiple interviews together 🚧.
 
@@ -236,6 +279,7 @@ There is some AssemblyLine code that comes after your own custom interview order
 1. `users[0].signature` shows the user the signature screen.
 
 ## Your screens
+
 These `question` blocks control the screens your clients will see that are specific to your interview.
 
 ### Your interview's intro
@@ -251,6 +295,7 @@ subquestion: |
 ```
 
 ### Preview
+
 Users can see the final form that they will then be signing before they sign it.
 
 ```yml
@@ -268,6 +313,7 @@ subquestion: |
 ```
 
 ## Your questions
+
 [Question blocks](https://docassemble.org/docs/questions.html) will show screens with information and questions. You will probably edit these blocks as you identify your needs and the needs of the people using your tools.
 
 ```yml
@@ -289,6 +335,7 @@ fields:
 ```
 
 ## Download
+
 Users will be able to download or email the form. They may sometimes be able to submit it to the court.
 
 ```yml
@@ -367,6 +414,7 @@ attachment:
 ```
 
 ## Review screen
+
 The 'Back' button deletes answers as the user goes farther back. When they press to continue, they will have to fill in their answers again. The review screen lets them edit their answers without deleting any of them.
 
 The code generated for this section is just a starting point. You will probably have to make changes to get what you need.
