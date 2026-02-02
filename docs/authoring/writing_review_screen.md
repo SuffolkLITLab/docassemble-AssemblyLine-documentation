@@ -225,7 +225,7 @@ Some common issues to the generated review screen that I personally have run int
 
    If editing the value of a variable like this would only lead the person to a kickout screen and not change any other logic of the interview, then the generated review section should be removed.
 
-### Step 4: Things to add to the review screen
+### Step 3: Things to add to the review screen
 
 1. You'll find that certain variables often depend on each other, either explicitly or implicitly. For example, if you have a variable called `hearing_date_and_time` that you set to `hearing_date + " " + hearing_time`, you should recompute that field whenever the user edits the hearing date or time. You can do something like this to update the variable whenever you edit the hearing date:
 
