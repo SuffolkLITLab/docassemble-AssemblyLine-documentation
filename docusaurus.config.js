@@ -4,7 +4,11 @@ module.exports = {
   url: 'https://assemblyline.suffolklitlab.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  'markdown': {
+    'hooks': {
+      onBrokenMarkdownLinks: 'warn',
+    }
+  },
   favicon: 'img/favicon.ico',
   organizationName: 'SuffolkLITLab', // the GitHub org name.
   projectName: 'docassemble-AssemblyLine-documentation', // the repo name.
