@@ -97,6 +97,7 @@ module.exports = {
                 'authoring/customizing_interview',
                 'authoring/writing_review_screen',
                 'authoring/yaml_anatomy',
+                'authoring/authoring_with_ai',
             ],
         },
         {
