@@ -1,13 +1,21 @@
 ---
 id: authoring_with_ai
-title: Authoring with AI assistance
-sidebar_label: Authoring with AI assistance
+title: Coding with AI assistance
+sidebar_label: Coding with AI assistance
 slug: authoring_with_ai
 ---
 
 Here's an experimental workflow for using AI assistance to generate Docassemble interviews,
 while leveraging the Assembly Line framework's predictable, rules-based assistance
 at every stage where it can be helpful.
+
+For API-first workflows, see:
+
+- [Use MCP and REST endpoints for AI-assisted coding](ai_mcp_and_rest.md)
+- [AI checklist: project setup and context](ai_checklist_project_setup.md)
+- [AI checklist: field labeling](ai_checklist_field_labeling.md)
+- [AI checklist: Weaver generation and interview editing](ai_checklist_weaver_editing.md)
+- [AI checklist: quality checks and publishing](ai_checklist_quality_publish.md)
 
 You can follow these instructions with any AI coding assistant: one that runs in
 a local code editor is best in order to run the different pieces. You might use:
