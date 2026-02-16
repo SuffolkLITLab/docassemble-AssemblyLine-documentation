@@ -97,7 +97,18 @@ module.exports = {
                 'authoring/customizing_interview',
                 'authoring/writing_review_screen',
                 'authoring/yaml_anatomy',
-                'authoring/authoring_with_ai',
+                {
+                    label: 'Coding with AI assistance',
+                    type: 'category',
+                    items: [
+                        'authoring/authoring_with_ai',
+                        'authoring/ai_mcp_and_rest',
+                        'authoring/ai_checklist_project_setup',
+                        'authoring/ai_checklist_field_labeling',
+                        'authoring/ai_checklist_weaver_editing',
+                        'authoring/ai_checklist_quality_publish',
+                    ],
+                },
             ],
         },
         {
