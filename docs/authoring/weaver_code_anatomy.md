@@ -89,8 +89,11 @@ metadata:
     court. The court will either let you know when you need to appear to argue
     your motion or they may decide based only on the paper that you file.
     Either way, you will wait about a week for a letter from the court.
+  efiling_enabled: False
   integrated_efiling: False
   integrated_email_filing: False
+  requires_notarization: False
+  unlisted: False
   landing_page_url: https://courtformsonline.org/ma/forms/209a-258e-motion-for-impoundment
   maturity: production
   estimated_completion_minutes: 15
@@ -113,10 +116,52 @@ metadata:
     - MPC-123
   fees:
     - Filing fee: 0.00
+  footer: |
+    Created by Suffolk LIT Lab and community partners.
   update_notes: |
     Form created in 2021. Last reviewed 2024 with no changes needed.
 ---
 ```
+
+### CourtFormsOnline metadata fields currently used
+
+CourtFormsOnline currently reads and uses the following `metadata` keys from interview `/list?json=1` responses:
+
+1. `title`
+1. `short title`
+1. `description`
+1. `can_I_use_this_form`
+1. `before_you_start`
+1. `help_page_url`
+1. `help_page_title`
+1. `original_form`
+1. `original_form_published_on`
+1. `review_date`
+1. `form_titles`
+1. `form_numbers`
+1. `fees`
+1. `LIST_topics`
+1. `jurisdiction`
+1. `maturity`
+1. `efiling_enabled`
+1. `integrated_efiling`
+1. `integrated_email_filing`
+1. `requires_notarization`
+1. `estimated_completion_minutes`
+1. `estimated_completion_delta`
+1. `languages`
+1. `unlisted`
+1. `footer`
+1. `update_notes`
+
+Newly supported metadata fields in CourtFormsOnline include:
+
+1. `efiling_enabled`: Used for form status labels (for example, e-filing available).
+1. `integrated_efiling`: Alternative key for e-filing availability; supported by CourtFormsOnline.
+1. `integrated_email_filing`: Alternative key for email-filing availability; supported by CourtFormsOnline.
+1. `requires_notarization`: Shows a notary warning and links to the jurisdiction-specific notary guide.
+1. `unlisted`: Hides interviews from CourtFormsOnline listings.
+1. `footer`: Reserved custom footer text (currently normalized and available to components).
 
 ### Expanded metadata fields
 
@@ -135,8 +180,12 @@ metadata:
    - `estimated_completion_delta`: The typical variation in completion time (±)
    - `languages`: List of language codes for available translations (e.g., `en`, `es`)
    - `review_date`: When the interview should next be reviewed for updates
-   - `integrated_efiling`: Whether the form is integrated with efiling
-   - `integrated_email_filing`: Whether the form is integrated with email filing
+   - `efiling_enabled`: Whether e-filing is available (boolean or `"email"` for email filing workflows)
+   - `integrated_efiling`: Alternative key for e-filing support; accepted by CourtFormsOnline
+   - `integrated_email_filing`: Alternative key for email filing support; accepted by CourtFormsOnline
+   - `requires_notarization`: Whether signing the completed form requires notarization
+   - `unlisted`: If `true`, excludes the interview from CourtFormsOnline listings
+   - `footer`: Optional custom footer content for downstream display/integrations
 
 3. **Help and reference fields:**
    - `help_page_url`: Link to additional help resources
