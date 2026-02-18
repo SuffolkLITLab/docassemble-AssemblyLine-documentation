@@ -24,7 +24,7 @@ insurance as an option.
 
 ## ALExpense
 
-If you want to jump right in, check out a [live demo of the ALExpense feature](https://apps-test.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALExpense).
+If you want to jump right in, check out a [live demo of the ALExpenseList feature](https://apps-dev.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALExpenseList).
 
 
 `ALExpense` is a class that represents an amount that re-occurs periodically, like a monthly

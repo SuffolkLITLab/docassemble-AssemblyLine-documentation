@@ -8,7 +8,7 @@ slug: ALIncome/jobs
 
 Asking people about their jobs is a common task when getting financial information. The `ALJob` class tries to be complete but simple for your users to answer, doing the math for them, and straight-forward for you to use.
 
-If you want to jump right in, check out a [live demo of the ALJob feature](https://apps-test.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALJob).
+If you want to jump right in, check out a [live demo of the ALJob feature](https://apps-dev.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALJob).
 
 ## ALJobList tutorial
 

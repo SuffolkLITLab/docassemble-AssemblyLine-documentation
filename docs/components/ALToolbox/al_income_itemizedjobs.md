@@ -12,7 +12,7 @@ how much is deducted from their paycheck for different reasons. `ALItemizedJob` 
 
 ## ALItemizedJob
 
-If you want to jump right in, check out a [live demo of the ALItemizedJob feature](https://apps-test.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALItemizedJob).
+If you want to jump right in, check out a [live demo of the ALItemizedJob feature](https://apps-dev.suffolklitlab.org/start/ALToolbox/al_income_demo?use_feature=ALItemizedJob).
 
 Sometimes, courts will ask for specific pieces of information about a person's pay, such as how many tips they received, or how much is deducted from their pay for health insurance. To keep track of all of those pieces of information for several jobs, you, the interview author,
 will want to use a job that can handle itemizing different types of incomes and deductions for the same type of job.
