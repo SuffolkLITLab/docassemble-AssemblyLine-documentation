@@ -7,7 +7,7 @@ sidebar_label: |
 slug: generated_yaml
 ---
 
-The [ALWeaver](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) generates code that is a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses questions and features from the AssemblyLine library.
+The [ALWeaver](https://apps-dev.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) generates code that is a starting point. It uses the [labels and variables you added to your documents](doc_vars_reference.md) to make an interview that uses questions and features from the AssemblyLine library.
 
 This page breaks down what each of these "blocks" (the sections of text that appear between `---`s)
 do individually. You don't have to think about every block as you develop your interview, but as
@@ -289,7 +289,7 @@ code: |
 Code for your custom questions comes next. All your questions should be triggered in here. You will probably make major edits to the code here, changing the order and adding branching logic.
 
 1. `set_parts(subtitle=str(users))` adds to the information a logged in user will see for this interview in their list of interviews. For an attorney, they should see the name of their clients. For a self represented litigant, they should see their name. You can read more about `set_parts` in the [docassemble documentation](https://docassemble.org/docs/functions.html#set_parts).
-1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://apps-test.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
+1. `set_progress()` changes the progress bar shown to the person who's interacting with the form. When they are at the beginning of the form, it should be empty. When they are at the end, other code will make sure it is full. The [ALWeaver](https://apps-dev.suffolklitlab.org/start/ALWeaver/assembly_line/#/1&new_session=1) tries to handle intermediate values between those two places that will make sense to the user. The example interview is short, so intermediate progress is only set once.
 1. The final variable in the block (`interview_order_a_258e_motion_for_impoundment` above) is customized for your interview. It lets you trigger all the code in this entire code block. In this generated code, the [main order block](#main-order) triggers it. 
 If you are including this interview in another interview, remove the main order block. Then you can use this variable if you want to trigger this particular question order.
 
