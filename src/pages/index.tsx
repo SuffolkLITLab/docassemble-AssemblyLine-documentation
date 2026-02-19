@@ -260,13 +260,14 @@ function Home() {
               </div>
               <p className={styles.dalPartnersText}><Translate>The Document Assembly Line is funded by a grant from the State Justice Institute and service contracts with the following courts and legal aid organizations:</Translate></p>
               <ul className={styles.dalPartnersText}>
-                <li><Translate>Legal Services Vermont (through a grant from the Legal Services Corporation)</Translate></li>
-                <li><Translate>The Massachusetts Trial Court</Translate></li>
-                <li><Translate>The Alaska Court System</Translate></li>
-                <li><Translate>Legal Services State Support (Mid-Minnesota Legal Aid)</Translate></li>
-                <li><Translate>Illinois Supreme Court Commission on Access to Justice</Translate></li>
-                <li><Translate>Illinois Legal Aid Online (ILAO)</Translate></li>
-                <li><Translate>Michigan Legal Help (Michigan Statewide Advocacy Services)</Translate></li>
+                <li>Legal Services Vermont (<Translate>through a grant from the Legal Services Corporation</Translate>)</li>
+                <li>The Massachusetts Trial Court</li>
+                <li>The Alaska Court System</li>
+                <li>Legal Services State Support (Mid-Minnesota Legal Aid)</li>
+                <li>Illinois Supreme Court Commission on Access to Justice</li>
+                <li>Illinois Legal Aid Online (ILAO)</li>
+                <li>Michigan Legal Help (Michigan Statewide Advocacy Services)</li>
+                <li>Lagniappe Law Lab</li>
               </ul>
             </div>
             <div className="col">{/* Spacer */}</div>
