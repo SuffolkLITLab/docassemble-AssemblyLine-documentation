@@ -119,7 +119,9 @@ LICENSE file in the root directory of this source tree.
     aspect-ratio: 1 / 1;
     background-color: var(--suffolk-blue-wash); 
     border-radius: 9999px;
+    max-width: unset;
     padding: var(--ifm-global-spacing);
+    width: 100%;
   }
 }
 
