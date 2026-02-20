@@ -19,7 +19,7 @@ export function VolunteerFormLink( props ) {
   return (<a
     className={`button button--primary ${ props.className }`}
     target="_blank"
-    disabled={ source == null }
+    // disabled={ source == null }
     style={{
       "--ifm-button-size-multiplier": "1.25",
       fontWeight: "normal",
