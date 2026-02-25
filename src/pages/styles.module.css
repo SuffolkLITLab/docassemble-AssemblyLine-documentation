@@ -86,7 +86,6 @@ LICENSE file in the root directory of this source tree.
   width: 100%;
 
   > * {
-    display: block;
     margin-right: auto;
     margin-left: auto;
     max-width: 1100px;
@@ -164,5 +163,6 @@ LICENSE file in the root directory of this source tree.
 }
 
 .litLabLogo {
+  display: block;
   max-width: 576px;
 }
