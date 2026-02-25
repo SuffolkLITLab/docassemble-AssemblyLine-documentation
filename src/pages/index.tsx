@@ -56,7 +56,7 @@ function Home() {
         </header>
         <section className={clsx(['container', styles.indexSection])}>
           <blockquote className={styles.pullQuote}>
-            <p>A well-designed form allows people to express themselves in a way the court can understand.</p>
+            <p><Translate>A well-designed form allows people to express themselves in a way the court can understand.</Translate></p>
             <p><cite
              dangerouslySetInnerHTML={{
               __html: translate({
@@ -231,14 +231,14 @@ function Home() {
             </div>
           </div>
         </section>
-        <section id="partners" className={styles.indexSection}>
+        <div id="partners" className={styles.indexSection}>
           <div className={clsx([
             'container',
             'row',
             'margin-bottom--xl',
             styles.dalPartnersContainerRow
           ])}>
-            <div className="col">
+            <section className="col">
               <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
                 <div className={clsx([
                   'col', 
@@ -269,10 +269,43 @@ function Home() {
                 <li>Michigan Legal Help (Michigan Statewide Advocacy Services)</li>
                 <li>Lagniappe Law Lab</li>
               </ul>
-            </div>
-            <div className="col">{/* Spacer */}</div>
+            </section>
+            <section className="col">
+              <div className="row row--align-center flex-wrap--nowrap margin-bottom--md">
+                <div className={clsx([
+                  'col', 
+                  'col--4',
+                  'padding-horiz--sm',
+                  styles.dalServicesImageCol
+                ])}>
+                  <img src={useBaseUrl('/img/undraw_maintenance_4unj.svg')} />
+                </div>
+                <div className={clsx([
+                  'col',
+                  'padding-horiz--sm',
+                  styles.dalServicesHeaderCol
+                ])}>
+                  <h2 className="margin-bottom--md">
+                    <Translate>Services</Translate>
+                  </h2>
+                </div>
+              </div>
+              <p className={styles.dalPartnersText}><Translate>
+                To facilitate the adoption of open-source access-to-justice tools, we offer affordable Docassemble hosting and e-filing tools for courts and legal aid organizations. If you are interested, send us an email.
+              </Translate></p>
+              <Link
+                className={clsx([
+                  'button', 
+                  'button--primary', 
+                  styles.dalPartnersText
+                ])}
+                to="mailto:litlab@suffolk.edu"
+              >
+                <Translate>Email us</Translate>
+              </Link>
+            </section>
           </div>
-        </section>
+        </div>
         <section className={clsx(['container', styles.indexFullWidthSection])}>
           <a className={styles.litLabLogo} href="https://suffolklitlab.org" target="_blank">
             <img className="light" alt="Suffolk LIT Lab logo" src={useBaseUrl('/img/lit-lab-logo-stacked.svg')}/>

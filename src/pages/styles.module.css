@@ -111,7 +111,8 @@ LICENSE file in the root directory of this source tree.
 }
 
 .dalBenefitsImageCol,
-.dalPartnersImageCol {
+.dalPartnersImageCol,
+.dalServicesImageCol {
   --ifm-col-width: calc(4 / 12 * 100%) !important;
 
   img {
@@ -125,7 +126,8 @@ LICENSE file in the root directory of this source tree.
 }
 
 .dalBenefitsHeaderCol,
-.dalPartnersHeaderCol {
+.dalPartnersHeaderCol,
+.dalServicesHeaderCol {
   flex: 1 1 auto;
 
   h2 {
@@ -134,7 +136,8 @@ LICENSE file in the root directory of this source tree.
 }
 
 .dalBenefitsText,
-.dalPartnersText {
+.dalPartnersText,
+.dalServicesText {
   font-size: 1.25rem;
 }
 
