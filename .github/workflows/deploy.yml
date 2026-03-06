@@ -18,7 +18,7 @@ jobs:
       - name: Clear pip cache
         run: |
           pip cache purge
-      - run: pip install docspec_python==2.2.1 git+https://github.com/nonprofittechy/pydoc-markdown@escape-brackets
+      - run: pip install ruamel.yaml docspec_python==2.2.1 git+https://github.com/nonprofittechy/pydoc-markdown@escape-brackets
       - uses: actions/checkout@v3
         with:
           path: docs
@@ -46,6 +46,7 @@ jobs:
         run: |
           cd docs
           pydoc-markdown
+          ./make_interview_docs.py ../docassemble-ALDashboard
           ./fix-doc-titles.sh
       - uses: actions/setup-node@v3
         with:
