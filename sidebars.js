@@ -223,6 +223,12 @@ module.exports = {
         'components/InterviewStats/interviewstats_overview',
         'components/ALDashboard/aldashboard_overview',
         {
+            label: 'ALDashboard Interviews',
+            type: 'category',
+            items: [
+            ],
+        }
+        {
             label: 'ALDashboard modules',
             type: 'category',
             items: [
