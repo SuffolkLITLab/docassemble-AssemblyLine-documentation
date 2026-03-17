@@ -58,7 +58,7 @@ To join the community, just [email us](mailto:litlab@suffolk.edu)!
 ## Get involved/support our work
 
 - We offer affordable Docassemble hosting and e-filing tools for courts and legal aid organizations. Interested? [Email us!](mailto:litlab@suffolk.edu)
-- We need [volunteers](volunteer.mdx) to help update, test, and translate interviews. We also need volunteers to help us organize volunteers.
+- We need [volunteers](/docs/volunteer/volunteer.mdx) to help update, test, and translate interviews. We also need volunteers to help us organize volunteers.
 - We also accept [donations](https://www.givecampus.com/campaigns/70271/donations/new) to help us continue developing these free and open-source tools.
 
 ## Our code

@@ -24,7 +24,15 @@ module.exports = {
             "href": "/docs/overview",
             "description": "View developer documentation"
         },
-        'volunteer',
+        {
+            label: 'Volunteer',
+            type: 'category',
+            items: [
+                'volunteer/sign_up',
+                'volunteer/volunteer_resources',
+                'volunteer/volunteer_flows',
+            ]
+        },
         'get_started/development_roadmap',
         'contributors',
         {

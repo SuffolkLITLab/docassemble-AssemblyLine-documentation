@@ -138,6 +138,10 @@ module.exports = {
           {
             from: '/docs/get_started/working_with_teams',
             to: '/docs/archive/working_with_teams'
+          },
+          {
+            from: '/docs/volunteer',
+            to: '/docs/volunteer/sign_up'
           }
         ],
         
