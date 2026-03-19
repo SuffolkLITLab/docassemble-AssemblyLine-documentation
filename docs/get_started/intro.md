@@ -7,7 +7,7 @@ slug: /get_started
 
 The Document Assembly Line helps people build open-source access-to-justice tools and resources for court forms, online guided interviews, and e-filing. We also provide affordable Docassemble hosting and e-filing tools for courts and legal aid organizations.
 
-The Document Assembly Line is supported by the [Legal Innovation and Technology Lab (LIT Lab)](https://suffolklitlab.org/) at [Suffolk University Law School](https://www.suffolk.edu/law/) and a community of courts, orgs, and volunteers.
+The Document Assembly Line is supported by the [Legal Innovation and Technology Lab (LIT Lab)](https://suffolklitlab.org/) at [Suffolk University Law School](https://www.suffolk.edu/law/) and a community of courts, orgs, and volunteers. [Our community goals and practices](/docs/get_started/community_practices.md) describe the collaborative environment we aim to foster.
 
 ## Background
 
