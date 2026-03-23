@@ -42,7 +42,8 @@ module.exports = {
                 'archive/bootcamp',
                 'archive/working_with_teams',
             ],
-        }
+        },
+        'get_started/community_practices',
     ],
     docs: [
         'overview',
