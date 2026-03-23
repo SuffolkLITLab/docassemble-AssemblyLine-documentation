@@ -27,7 +27,7 @@ We also encourage everyone to follow these guidelines:
 
 **Prefer public channels.** Our goal is sharing knowledge to build community, so conversations should default in public channels where we can all benefit from what you share. It’s OK to message someone privately, but generally you should ask publicly first. Keep private messages focused on our work. 
 
-**Follow the [Platinum Rule](mailto:https://en.wikipedia.org/wiki/Golden_Rule).** Treat others the way they want to be treated. If you don’t know how they want to be treated, ask—or take a step back. 
+**Follow the [Platinum Rule](https://en.wikipedia.org/wiki/Golden_Rule#Variations).** Treat others the way they want to be treated. If you don’t know how they want to be treated, ask—or take a step back. 
 
 **Seek repair.** We all miss the mark sometimes. Be kind when you give feedback and be open to receiving it. If you find you may have harmed others, acknowledge it, apologize, make it right if you can, and commit to learn and improve. 
 
