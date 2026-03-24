@@ -12,7 +12,7 @@ The Document Assembly Line is supported by the [Legal Innovation and Technology 
 ## Background
 
 :::info
-[Get our one-page, printable overview of the Document Assembly Line.](https://suffolklitlab.org/onepagers/docassemblyline/)
+[Get our one-page, printable overview of the Document Assembly Line.](https://onepagers.suffolklitlab.org/overview/)
 :::
 
 This short, 3-minute video by David Colarusso and Quinten Steenhuis explains how the Document Assembly Line was born from a large-scale international pandemic collaboration:
