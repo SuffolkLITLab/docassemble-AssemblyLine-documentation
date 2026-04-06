@@ -22,7 +22,7 @@ Below is a snapshot of the Project's overall architecture as of **June 2022**. W
 | [ALDashboard](/docs/components/ALDashboard/overview) | A collection of tools to help administer a Docassemble server and debug interviews. | [SuffolkLITLab/docassemble-ALDashboard](https://github.com/SuffolkLITLab/docassemble-ALDashboard) |
 | [ALRecipes](../components/ALRecipes/alrecipes_overview.md) | Examples for Document Assembly Line interviews, plus generic Docassemble examples addressing specific needs. | [SuffolkLITLab/docassemble-ALRecipes](https://github.com/SuffolkLITLab/docassemble-ALRecipes) |
 | [InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/) | A docassemble interview that lets you view statistics from other saved interview responses. | [SuffolkLITLab/InterviewStats/docassemble-InterviewStats](https://github.com/SuffolkLITLab/docassemble-InterviewStats/) |
-| Documentation | This website. | [SuffolkLITLab/docassemble-AssemblyLine-documentation](https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation) |
+| Documentation | This website. | [SuffolkLITLab/AssemblyLine-docs](https://github.com/SuffolkLITLab/AssemblyLine-docs) |
 | E-Filing Proxy Server |  | [SuffolkLITLab/EfileProxyServer](https://github.com/SuffolkLITLab/EfileProxyServer) |
 | E-Filing Integration |  | [SuffolkLITLab/docassemble-EFSPIntegration](https://github.com/SuffolkLITLab/docassemble-EFSPIntegration/) |
 

@@ -11,7 +11,7 @@ module.exports = {
   },
   favicon: 'img/favicon.ico',
   organizationName: 'SuffolkLITLab', // the GitHub org name.
-  projectName: 'docassemble-AssemblyLine-documentation', // the repo name.
+  projectName: 'AssemblyLine-docs', // the repo name.
   themeConfig: {
     // Keep for the next LIT Con
     // announcementBar: {
@@ -165,7 +165,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/SuffolkLITLab/docassemble-AssemblyLine-documentation/edit/main/',
+            'https://github.com/SuffolkLITLab/AssemblyLine-docs/edit/main/',
         },
         blog: false,
         pages: {

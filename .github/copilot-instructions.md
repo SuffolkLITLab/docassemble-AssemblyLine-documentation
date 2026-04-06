@@ -15,7 +15,7 @@ Bootstrap, build, and test the repository:
   git clone https://github.com/SuffolkLITLab/FormFyxer.git  
   git clone https://github.com/SuffolkLITLab/docassemble-ALToolbox.git
   git clone https://github.com/SuffolkLITLab/docassemble-EFSPIntegration.git
-  cd docassemble-AssemblyLine-documentation # return to repo root
+  cd AssemblyLine-docs # return to repo root
   ```
 - Generate Python API documentation: `pydoc-markdown` -- takes 2 seconds
 - Fix FormFyxer case sensitivity: `rm -rf docs/components/formfyxer` (if the directory exists)

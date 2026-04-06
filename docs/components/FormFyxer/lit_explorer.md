@@ -83,7 +83,7 @@ def regex_norm_field(text: str)
 ```
 
 Apply some heuristics to a field name to see if we can get it to match AssemblyLine conventions.
-See: https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/document_variables
+See: https://assemblyline.suffolklitlab.org/docs/document_variables
 
 <a id="formfyxer.lit_explorer.reformat_field"></a>
 

@@ -214,4 +214,4 @@ custom font),you may need to do a `docker stop -t 600 mycontainer` followed by a
 
 ## See also
 
-* [Customizing Assembly Line interviews](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/customization/overview)
+* [Customizing Assembly Line interviews](https://assemblyline.suffolklitlab.org/docs/customization/overview)
