@@ -201,7 +201,7 @@ Assembly Line packages.
 ### Updating the AssemblyLine packages
 
 The [Assembly
-Line](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/) project's
+Line](https://assemblyline.suffolklitlab.org/) project's
 framework must be updated manually, whenever there is a new feature that you 
 want. 
 
@@ -313,7 +313,7 @@ software runs within. Using a virtual machine adds to resiliency, though it also
  - How to update - See
    [Updates to the Docassemble container](maintaining-docassemble#updates-to-the-docassemble-container).
    You will use these commands: `docker stop, pull, run,` and `prune`. 
-    - If you [updated the nginx timeout to 5 minutes](https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/installation/#increase-nginx-timeouts-to-5-minutes)
+    - If you [updated the nginx timeout to 5 minutes](https://assemblyline.suffolklitlab.org/docs/installation/#increase-nginx-timeouts-to-5-minutes)
       earlier, you will need to redo it.
     - This will pull the latest version of each package unless specific version of a package was pinned via PyPI.
   - When to update - If the [Docassemble Change Log](https://docassemble.org/docs/changelog.html) has an update
